@@ -1,6 +1,6 @@
 'use strict';
 
-const COLORS = { 'private-land': '#42d7a6', 'private-home': '#137b5a', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
+const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
 const map = L.map('map', { zoomControl: false }).setView([41.45, -122.45], 9);
 L.control.zoom({ position: 'bottomright' }).addTo(map);
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {

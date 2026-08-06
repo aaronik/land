@@ -40,13 +40,13 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .legend input { display: block; width: 14px; height: 14px; flex: 0 0 14px; accent-color: var(--ink); margin: 0; }
 .legend .swatch { flex: 0 0 12px; margin: 0; }
 .swatch { display: inline-block; width: 12px; height: 12px; margin-right: 7px; border-radius: 3px; vertical-align: -1px; }
-.swatch.private-land { background: #42d7a6; } .swatch.private-home { background: #137b5a; }
+.swatch.private-land { background: #42d7a6; } .swatch.private-home { background: #7653b5; }
 .swatch.public-land { background: #ff9d4d; } .swatch.public-home { background: #b94b18; }
 .details h3 { margin: 0 0 4px; font: 500 23px Georgia, serif; }
 .details .meta { margin: 0 0 14px; color: #687169; font-size: 12px; }
 .record { margin-top: 11px; padding: 11px; background: white; border: 1px solid var(--line); border-left: 4px solid #42d7a6; border-radius: 6px; font-size: 12px; }
 .record.public { border-left-color: #ff9d4d; }
-.record.home { border-left-color: #137b5a; }
+.record.home { border-left-color: #7653b5; }
 .record.public.home { border-left-color: #b94b18; }
 .record strong { font-size: 13px; }
 .record p { margin: 4px 0; }
