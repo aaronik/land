@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive Siskiyou County public auction and private land parcel map">
+  <title>Shasta Land Atlas</title>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="masthead">
+    <div>
+      <p class="eyebrow">Siskiyou County · California</p>
+      <h1>Shasta Land Atlas</h1>
+    </div>
+    <p class="tagline">Public auction history and private land listings, drawn on the county parcel map.</p>
+  </header>
+
+  <main>
+    <aside class="panel" aria-label="Map controls">
+      <section>
+        <h2>Show parcels</h2>
+        <div class="segmented" role="group" aria-label="Listing type">
+          <button class="filter active" data-filter="both">Both</button>
+          <button class="filter" data-filter="private">Private</button>
+          <button class="filter" data-filter="public">Public</button>
+        </div>
+      </section>
+
+      <section class="stats" aria-live="polite">
+        <div><strong id="visible-count">—</strong><span>visible parcels</span></div>
+        <div><strong id="private-count">—</strong><span>private</span></div>
+        <div><strong id="public-count">—</strong><span>public</span></div>
+      </section>
+
+      <section>
+        <label for="search">Find an APN or listing</label>
+        <div class="search-row">
+          <input id="search" type="search" placeholder="021-232-030" autocomplete="off">
+          <button id="search-button">Find</button>
+        </div>
+      </section>
+
+      <section class="legend">
+        <h2>Legend</h2>
+        <p><i class="swatch private"></i> Private listing</p>
+        <p><i class="swatch public"></i> Public auction record</p>
+        <p><i class="swatch both"></i> Appears in both</p>
+      </section>
+
+      <section class="details" id="details">
+        <p class="muted">Hover over a parcel for a quick summary. Click it to keep the details here.</p>
+      </section>
+
+      <footer>
+        <p id="updated">Loading parcel data…</p>
+        <p>Boundaries are approximate screening data. Verify title, access, acreage, zoning, and sale status with official sources.</p>
+      </footer>
+    </aside>
+
+    <div id="map" aria-label="Satellite parcel map"></div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
