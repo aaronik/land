@@ -36,10 +36,32 @@ function parcelDestination(feature) {
   return `https://govauctions.app/feed?q=${encodeURIComponent(feature.properties.APN)}&category=real-estate`;
 }
 function summary(feature) {
-  const records = feature.properties.records || [];
+  const p = feature.properties;
+  const records = p.records || [];
   const privateRecord = records.find(record => record.kind === 'private');
   const publicRecord = records.find(record => record.kind === 'public');
-  return `<strong>${escapeHtml(feature.properties.APN)}</strong><br>${escapeHtml(privateRecord?.title || publicRecord?.title || 'Siskiyou County parcel')}<br>${escapeHtml(feature.properties.Acres || privateRecord?.acres || '—')} acres`;
+  const rows = [
+    ['APN', p.APN],
+    ['GIS acres', p.Acres || privateRecord?.acres || '—'],
+    ['Land use', p.LandUse1 || '—'],
+    ['Township / range', [p.Township, p.Range].filter(Boolean).join(' / ') || '—'],
+    ['Section', p.Section || '—'],
+  ];
+  if (privateRecord) {
+    rows.push(['Listing', privateRecord.title || 'Private land listing']);
+    rows.push(['Price', money(privateRecord.price) || '—']);
+    rows.push(['Listing acres', privateRecord.acres || '—']);
+    rows.push(['Price / acre', privateRecord.price && privateRecord.acres ? money(Math.round(privateRecord.price / privateRecord.acres)) : '—']);
+    rows.push(['Status', privateRecord.status || '—']);
+    rows.push(['Listed', privateRecord.listingDate || '—']);
+  }
+  if (publicRecord) {
+    rows.push(['Auction', publicRecord.source || 'County tax sale']);
+    rows.push(['Minimum bid', publicRecord.minimumBid || '—']);
+    rows.push(['Status', publicRecord.status || '—']);
+    rows.push(['Auction ends', publicRecord.auctionEnd || '—']);
+  }
+  return `<div class="parcel-tooltip"><strong>${escapeHtml(p.APN)}</strong>${rows.map(([label, value]) => `<span><b>${escapeHtml(label)}</b>${escapeHtml(value)}</span>`).join('')}</div>`;
 }
 function recordCard(record) {
   if (record.kind === 'private') return `<article class="record private"><strong>Private listing</strong><p>${escapeHtml(record.title)}</p><p>${money(record.price)} · ${escapeHtml(record.acres || '—')} acres · ${escapeHtml(record.status)}</p><a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open listing ↗</a></article>`;
