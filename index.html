@@ -22,17 +22,18 @@
     <aside class="panel" aria-label="Map controls">
       <section>
         <h2>Show parcels</h2>
-        <div class="segmented" role="group" aria-label="Listing type">
-          <button class="filter active" data-filter="both">Both</button>
-          <button class="filter" data-filter="private">Private</button>
-          <button class="filter" data-filter="public">Public</button>
+        <div class="toggles" role="group" aria-label="Parcel categories">
+          <label><input class="filter" type="checkbox" value="private-land" checked><i class="swatch private-land"></i>Private land</label>
+          <label><input class="filter" type="checkbox" value="private-home" checked><i class="swatch private-home"></i>Private homes</label>
+          <label><input class="filter" type="checkbox" value="public-land" checked><i class="swatch public-land"></i>Public land</label>
+          <label><input class="filter" type="checkbox" value="public-home" checked><i class="swatch public-home"></i>Public homes</label>
         </div>
       </section>
 
       <section class="stats" aria-live="polite">
         <div><strong id="visible-count">—</strong><span>visible parcels</span></div>
-        <div><strong id="private-count">—</strong><span>private</span></div>
-        <div><strong id="public-count">—</strong><span>public</span></div>
+        <div><strong id="private-count">—</strong><span>private listings</span></div>
+        <div><strong id="public-count">—</strong><span>public auctions</span></div>
       </section>
 
       <section>
@@ -45,9 +46,10 @@
 
       <section class="legend">
         <h2>Legend</h2>
-        <p><i class="swatch private"></i> Private listing</p>
-        <p><i class="swatch public"></i> Public auction record</p>
-        <p><i class="swatch both"></i> Appears in both</p>
+        <p><i class="swatch private-land"></i> Private land</p>
+        <p><i class="swatch private-home"></i> Private home</p>
+        <p><i class="swatch public-land"></i> Public land auction</p>
+        <p><i class="swatch public-home"></i> Public home auction</p>
       </section>
 
       <section class="details" id="details">
