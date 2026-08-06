@@ -1,0 +1,18 @@
+{
+  "name": "shasta-land-map",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive Siskiyou County public auction and private land map",
+  "scripts": {
+    "start": "node scripts/start.js",
+    "refresh": "node scripts/refresh-data.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js",
+    "release": "npm run refresh && npm run test && npm run build && npm run deploy && rm -rf build",
+    "deploy": "gh-pages --dotfiles -d build"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "pdfjs-dist": "^5.4.149"
+  }
+}
