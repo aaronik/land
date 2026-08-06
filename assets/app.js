@@ -27,6 +27,14 @@ function style(feature) {
   const color = COLORS[category(feature)];
   return { color, weight: 3, opacity: .95, fillColor: color, fillOpacity: .2 };
 }
+function parcelDestination(feature) {
+  const records = feature.properties.records || [];
+  const privateRecord = records.find(record => record.kind === 'private' && record.url);
+  if (privateRecord) return privateRecord.url;
+  // GovAuctions' public search is the best available listing-details search
+  // when the county PDF does not expose a per-parcel auction URL.
+  return `https://govauctions.app/feed?q=${encodeURIComponent(feature.properties.APN)}&category=real-estate`;
+}
 function summary(feature) {
   const records = feature.properties.records || [];
   const privateRecord = records.find(record => record.kind === 'private');
@@ -56,7 +64,14 @@ function draw() {
     layer.on({
       mouseover: event => { event.target.setStyle({ weight: 5, fillOpacity: .35 }); if (!selectedLayer) showDetails(feature); },
       mouseout: event => { if (event.target !== selectedLayer) event.target.setStyle(style(feature)); },
-      click: event => { if (selectedLayer) selectedLayer.setStyle(style(selectedLayer.feature)); selectedLayer = event.target; selectedLayer.feature = feature; selectedLayer.setStyle({ weight: 6, fillOpacity: .4 }); showDetails(feature); map.fitBounds(selectedLayer.getBounds(), { padding: [70, 70], maxZoom: 18 }); }
+      click: event => {
+        if (selectedLayer) selectedLayer.setStyle(style(selectedLayer.feature));
+        selectedLayer = event.target;
+        selectedLayer.feature = feature;
+        selectedLayer.setStyle({ weight: 6, fillOpacity: .4 });
+        showDetails(feature);
+        window.open(parcelDestination(feature), '_blank', 'noopener');
+      }
     });
     layer.feature = feature;
     layers.set(String(feature.properties.APN).toLowerCase(), layer);
