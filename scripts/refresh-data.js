@@ -7,7 +7,8 @@ let pdfjs;
 
 const root = path.resolve(__dirname, '..');
 const outFile = path.join(root, 'data', 'parcels.json');
-const MLS_API = 'https://www.mountshastarealty.com/-/AjaxSearch/idx_search';
+const MLS_API = 'https://www.realtymtshasta.com/-/AjaxSearch/idx_search';
+const MLS_SITE = 'https://www.realtymtshasta.com';
 const TAX_PAGE = 'https://www.siskiyoucounty.gov/treasurer-taxcollector/page/tax-sale-auction';
 const GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query';
 const UA = 'Mozilla/5.0 shasta-land-map/1.0';
@@ -31,7 +32,7 @@ async function fetchMlsPage(page, perPage = 100) {
   const body = new URLSearchParams({ listingType: 'homes-for-sale', page, itemsPerPage: perPage, sort: 'new', locationType: 'county', location: 'Siskiyou County, CA', lotSizeMin: 0 });
   const response = await fetchOk(MLS_API, {
     method: 'POST', body,
-    headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest', Origin: 'https://www.mountshastarealty.com', Referer: 'https://www.mountshastarealty.com/' }
+    headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest', Origin: MLS_SITE, Referer: `${MLS_SITE}/` }
   });
   return response.json();
 }
@@ -74,7 +75,7 @@ async function privateRecords(items) {
         propertyType: item.propertyType || '', propertySubType: item.propertySubType || '',
         beds: Number(item.beds) || 0, baths: Number(item.bathsTotal) || 0,
         sqft: Number(item.sqft) || 0, yearBuilt: Number(item.yearBuilt) || 0,
-        url: `https://www.mountshastarealty.com/idx/listing/${item.mlsId}/${item.mlsNo}/${slug}`,
+        url: `${MLS_SITE}/idx/listing/${item.mlsId}/${item.mlsNo}/${slug}`,
         mlsNumber: item.mlsNo
       });
     });
