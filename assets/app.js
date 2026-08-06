@@ -3,6 +3,28 @@
 const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
 const map = L.map('map', { zoomControl: false }).setView([41.45, -122.45], 9);
 L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+const GoogleMapsControl = L.Control.extend({
+  options: { position: 'topright' },
+  onAdd() {
+    const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control google-maps-control');
+    const button = L.DomUtil.create('button', 'google-maps-button', container);
+    button.type = 'button';
+    button.setAttribute('aria-label', 'Open this view in Google Maps satellite');
+    button.title = 'Open this view in Google Maps satellite';
+    button.innerHTML = '<span aria-hidden="true">↗</span><span>Google Maps</span>';
+    L.DomEvent.disableClickPropagation(container);
+    L.DomEvent.on(button, 'click', () => {
+      const center = map.getCenter();
+      const zoom = map.getZoom();
+      const url = `https://www.google.com/maps/@${center.lat.toFixed(6)},${center.lng.toFixed(6)},${zoom}z/data=!3m1!1e3`;
+      window.open(url, '_blank', 'noopener');
+    });
+    return container;
+  }
+});
+new GoogleMapsControl().addTo(map);
+
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
   attribution: 'Imagery © Esri · Parcel data © Siskiyou County', maxNativeZoom: 19, maxZoom: 22
 }).addTo(map);
