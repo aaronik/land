@@ -20,14 +20,6 @@
 
   <main>
     <aside class="panel" aria-label="Map controls">
-      <section class="legend">
-        <h2>Legend</h2>
-        <label><input class="filter" type="checkbox" value="private-land" checked><i class="swatch private-land"></i>Private land</label>
-        <label><input class="filter" type="checkbox" value="private-home" checked><i class="swatch private-home"></i>Private homes</label>
-        <label><input class="filter" type="checkbox" value="public-land" checked><i class="swatch public-land"></i>Public land auction</label>
-        <label><input class="filter" type="checkbox" value="public-home" checked><i class="swatch public-home"></i>Public home auction</label>
-      </section>
-
       <section class="stats" aria-live="polite">
         <div><strong id="visible-count">—</strong><span>visible parcels</span></div>
         <div><strong id="private-count">—</strong><span>private listings</span></div>
@@ -40,6 +32,14 @@
           <input id="search" type="search" placeholder="021-232-030" autocomplete="off">
           <button id="search-button">Find</button>
         </div>
+      </section>
+
+      <section class="legend">
+        <h2>Legend</h2>
+        <label><input class="filter" type="checkbox" value="private-land" checked><i class="swatch private-land"></i>Private land</label>
+        <label><input class="filter" type="checkbox" value="private-home" checked><i class="swatch private-home"></i>Private homes</label>
+        <label><input class="filter" type="checkbox" value="public-land" checked><i class="swatch public-land"></i>Public land auction</label>
+        <label><input class="filter" type="checkbox" value="public-home" checked><i class="swatch public-home"></i>Public home auction</label>
       </section>
 
       <section class="details" id="details">
