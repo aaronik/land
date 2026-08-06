@@ -132,7 +132,10 @@ async function fetchAuctions() {
       if (!old || score(record) > score(old)) byApn.set(record.APN, record);
     }
   }
-  return [...byApn.values()];
+  // The map is an inventory tool: retain only listings still advertised as live.
+  // Historical PDF rows (expired, redeemed, removed, sold, etc.) should not
+  // create orange parcels with no current auction destination.
+  return [...byApn.values()].filter(record => record.status === 'ACTIVE');
 }
 
 async function parcelFeatures(apns) {
