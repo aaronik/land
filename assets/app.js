@@ -1,6 +1,6 @@
 'use strict';
 
-const COLORS = { private: '#42d7a6', public: '#ff9d4d', both: '#d77cff' };
+const COLORS = { 'private-land': '#42d7a6', 'private-home': '#137b5a', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
 const map = L.map('map', { zoomControl: false }).setView([41.45, -122.45], 9);
 L.control.zoom({ position: 'bottomright' }).addTo(map);
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -8,8 +8,8 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/
 }).addTo(map);
 
 let data;
-let activeFilter = 'both';
 let selectedLayer = null;
+let enabledCategories = new Set(['private-land', 'private-home', 'public-land', 'public-home']);
 const layers = new Map();
 const parcelGroup = L.featureGroup().addTo(map);
 
@@ -17,14 +17,14 @@ function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
 }
 function money(value) { return value ? `$${Number(value).toLocaleString()}` : ''; }
-function kinds(feature) { return new Set((feature.properties.records || []).map(record => record.kind)); }
+function categories(feature) { return new Set((feature.properties.records || []).map(record => record.category)); }
 function category(feature) {
-  const set = kinds(feature);
-  return set.size > 1 ? 'both' : (set.has('private') ? 'private' : 'public');
+  const available = [...categories(feature)].filter(value => enabledCategories.has(value));
+  return available[0] || [...categories(feature)][0];
 }
-function visible(feature) { return activeFilter === 'both' || kinds(feature).has(activeFilter); }
+function visible(feature) { return [...categories(feature)].some(value => enabledCategories.has(value)); }
 function style(feature) {
-  const color = COLORS[category(feature)];
+  const color = COLORS[category(feature)] || '#42d7a6';
   return { color, weight: 3, opacity: .95, fillColor: color, fillOpacity: .2 };
 }
 function parcelDestination(feature) {
@@ -51,6 +51,11 @@ function summary(feature) {
     rows.push(['Listing', privateRecord.title || 'Private land listing']);
     rows.push(['Price', money(privateRecord.price) || '—']);
     rows.push(['Listing acres', privateRecord.acres || '—']);
+    if (privateRecord.category === 'private-home') {
+      rows.push(['Home', [privateRecord.beds && `${privateRecord.beds} bd`, privateRecord.baths && `${privateRecord.baths} ba`].filter(Boolean).join(' · ') || '—']);
+      rows.push(['Interior', privateRecord.sqft ? `${Number(privateRecord.sqft).toLocaleString()} sq ft` : '—']);
+      rows.push(['Built', privateRecord.yearBuilt || '—']);
+    }
     rows.push(['Price / acre', privateRecord.price && privateRecord.acres ? money(Math.round(privateRecord.price / privateRecord.acres)) : '—']);
     rows.push(['Status', privateRecord.status || '—']);
     rows.push(['Listed', privateRecord.listingDate || '—']);
@@ -64,7 +69,11 @@ function summary(feature) {
   return `<div class="parcel-tooltip"><strong>${escapeHtml(p.APN)}</strong>${rows.map(([label, value]) => `<span><b>${escapeHtml(label)}</b>${escapeHtml(value)}</span>`).join('')}</div>`;
 }
 function recordCard(record) {
-  if (record.kind === 'private') return `<article class="record private"><strong>Private listing</strong><p>${escapeHtml(record.title)}</p><p>${money(record.price)} · ${escapeHtml(record.acres || '—')} acres · ${escapeHtml(record.status)}</p><a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open listing ↗</a></article>`;
+  if (record.kind === 'private') {
+    const home = record.category === 'private-home';
+    const homeDetails = home ? ` · ${[record.beds && `${record.beds} bd`, record.baths && `${record.baths} ba`, record.sqft && `${Number(record.sqft).toLocaleString()} sq ft`, record.yearBuilt && `built ${record.yearBuilt}`].filter(Boolean).join(' · ')}` : '';
+    return `<article class="record ${home ? 'home' : ''}"><strong>${home ? 'Private home' : 'Private land'}</strong><p>${escapeHtml(record.title)}</p><p>${money(record.price)} · ${escapeHtml(record.acres || '—')} acres${escapeHtml(homeDetails)} · ${escapeHtml(record.status)}</p><a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open listing ↗</a></article>`;
+  }
   const bid = record.minimumBid || 'No parsed minimum';
   return `<article class="record public"><strong>Public auction record</strong><p>${escapeHtml(bid)} · ${escapeHtml(record.status || 'Unknown status')}${record.auctionEnd ? ` · ended ${escapeHtml(record.auctionEnd)}` : ''}</p><p>${escapeHtml(record.source || '')}</p><a href="${escapeHtml(record.sourceUrl)}" target="_blank" rel="noopener">Source PDF ↗</a></article>`;
 }
@@ -76,9 +85,9 @@ function draw() {
   parcelGroup.clearLayers();
   let privateCount = 0, publicCount = 0, visibleCount = 0;
   for (const feature of data.features) {
-    const set = kinds(feature);
-    if (set.has('private')) privateCount++;
-    if (set.has('public')) publicCount++;
+    const set = categories(feature);
+    if ([...set].some(value => value.startsWith('private-'))) privateCount++;
+    if ([...set].some(value => value.startsWith('public-'))) publicCount++;
     if (!visible(feature)) continue;
     visibleCount++;
     const layer = L.geoJSON(feature, { style }).getLayers()[0];
@@ -112,9 +121,8 @@ function findParcel() {
   layer.fire('click');
 }
 
-document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
-  activeFilter = button.dataset.filter;
-  document.querySelectorAll('.filter').forEach(item => item.classList.toggle('active', item === button));
+document.querySelectorAll('.filter').forEach(input => input.addEventListener('change', () => {
+  enabledCategories = new Set([...document.querySelectorAll('.filter:checked')].map(item => item.value));
   selectedLayer = null;
   layers.clear();
   draw();

@@ -47,7 +47,7 @@ async function fetchMls() {
     if (!(data.listings || []).length) break;
   }
   if (items.length !== total) throw new Error(`Incomplete MLS data: ${items.length}/${total}`);
-  return items.filter(item => ['land', 'farm'].includes(item.propertyType));
+  return items.filter(item => ['land', 'farm', 'house', 'multi', 'condo', 'mobile'].includes(item.propertyType));
 }
 
 async function apnAtPoint(latLng) {
@@ -71,6 +71,9 @@ async function privateRecords(items) {
       records.push({
         APN: apn, kind: 'private', title, price: Number(item.price) || null, acres: Number(item.lotSize) || null,
         status: item.displayStatus || '', listingDate: item.listingDate || '',
+        propertyType: item.propertyType || '', propertySubType: item.propertySubType || '',
+        beds: Number(item.beds) || 0, baths: Number(item.bathsTotal) || 0,
+        sqft: Number(item.sqft) || 0, yearBuilt: Number(item.yearBuilt) || 0,
         url: `https://www.mountshastarealty.com/idx/listing/${item.mlsId}/${item.mlsNo}/${slug}`,
         mlsNumber: item.mlsNo
       });
@@ -162,7 +165,16 @@ async function main() {
     if (!recordsByApn.has(record.APN)) recordsByApn.set(record.APN, []);
     recordsByApn.get(record.APN).push(record);
   }
-  for (const feature of features) feature.properties.records = recordsByApn.get(normalizeApn(feature.properties.APN)) || [];
+  for (const feature of features) {
+    const recordsForParcel = recordsByApn.get(normalizeApn(feature.properties.APN)) || [];
+    const hasHomeLandUse = /^1\d{2}/.test(String(feature.properties.LandUse1 || ''));
+    for (const record of recordsForParcel) {
+      record.category = record.kind === 'private'
+        ? (['land', 'farm'].includes(record.propertyType) ? 'private-land' : 'private-home')
+        : (hasHomeLandUse ? 'public-home' : 'public-land');
+    }
+    feature.properties.records = recordsForParcel;
+  }
   const output = {
     generatedAt: new Date().toISOString(), sources: { mls: MLS_API, auctions: TAX_PAGE, parcels: GIS },
     counts: { mlsLandListings: mls.length, privateMapped: privateRows.length, publicRecords: auctions.length, mappedParcels: features.length },
