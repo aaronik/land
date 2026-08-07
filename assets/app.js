@@ -34,6 +34,7 @@ let selectedLayer = null;
 let enabledCategories = new Set(['private-land', 'private-home', 'public-land', 'public-home']);
 const layers = new Map();
 const parcelGroup = L.featureGroup().addTo(map);
+const unmappedGroup = L.featureGroup().addTo(map);
 
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
@@ -103,8 +104,12 @@ function showDetails(feature) {
   const p = feature.properties;
   document.querySelector('#details').innerHTML = `<h3>${escapeHtml(p.APN)}</h3><p class="meta">${escapeHtml(p.Acres || '—')} GIS acres · Land use ${escapeHtml(p.LandUse1 || '—')} · ${escapeHtml(p.Township || '')} ${escapeHtml(p.Range || '')}</p>${(p.records || []).map(recordCard).join('')}`;
 }
+function unmappedSummary(record) {
+  return `<div class="parcel-tooltip"><strong>Unmapped listing</strong><span><b>Listing</b>${escapeHtml(record.title)}</span><span><b>Price</b>${escapeHtml(money(record.price) || '—')}</span><span><b>Listing acres</b>${escapeHtml(record.acres || '—')}</span><span><b>Status</b>${escapeHtml(record.status || '—')}</span><span><b>Note</b>MLS location only — parcel boundary not verified</span></div>`;
+}
 function draw() {
   parcelGroup.clearLayers();
+  unmappedGroup.clearLayers();
   let privateCount = 0, publicCount = 0, visibleCount = 0;
   for (const feature of data.features) {
     const set = categories(feature);
@@ -130,6 +135,17 @@ function draw() {
     layers.set(String(feature.properties.APN).toLowerCase(), layer);
     parcelGroup.addLayer(layer);
   }
+  for (const record of data.unmappedListings || []) {
+    if (!enabledCategories.has(record.category)) continue;
+    privateCount++;
+    visibleCount++;
+    const color = COLORS[record.category] || '#42d7a6';
+    const marker = L.circleMarker(record.latLng, { radius: 8, color: '#fff', weight: 2, fillColor: color, fillOpacity: 1, className: 'unmapped-marker' });
+    marker.bindTooltip(unmappedSummary(record), { sticky: true });
+    marker.on('click', () => { document.querySelector('#details').innerHTML = `<h3>Unmapped listing</h3><p class="meta">MLS location only — no verified county parcel boundary.</p>${recordCard(record)}`; window.open(record.url, '_blank', 'noopener'); });
+    layers.set(`listing-${record.mlsNumber}`.toLowerCase(), marker);
+    unmappedGroup.addLayer(marker);
+  }
   document.querySelector('#visible-count').textContent = visibleCount;
   document.querySelector('#private-count').textContent = privateCount;
   document.querySelector('#public-count').textContent = publicCount;
@@ -148,7 +164,7 @@ document.querySelectorAll('.filter').forEach(input => input.addEventListener('ch
   selectedLayer = null;
   layers.clear();
   draw();
-  if (parcelGroup.getLayers().length) map.fitBounds(parcelGroup.getBounds(), { padding: [25, 25] });
+  if (parcelGroup.getLayers().length || unmappedGroup.getLayers().length) map.fitBounds(L.featureGroup([parcelGroup, unmappedGroup]).getBounds(), { padding: [25, 25] });
 }));
 document.querySelector('#search-button').addEventListener('click', findParcel);
 document.querySelector('#search').addEventListener('keydown', event => { if (event.key === 'Enter') findParcel(); });
@@ -159,7 +175,7 @@ fetch('data/parcels.json').then(response => {
 }).then(result => {
   data = result;
   draw();
-  if (parcelGroup.getLayers().length) map.fitBounds(parcelGroup.getBounds(), { padding: [25, 25] });
+  if (parcelGroup.getLayers().length || unmappedGroup.getLayers().length) map.fitBounds(L.featureGroup([parcelGroup, unmappedGroup]).getBounds(), { padding: [25, 25] });
   document.querySelector('#updated').textContent = `Data refreshed ${new Date(data.generatedAt).toLocaleString()}`;
 }).catch(error => {
   document.querySelector('#updated').textContent = `Could not load parcel data: ${error.message}`;
