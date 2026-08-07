@@ -72,6 +72,23 @@ async function fetchMls() {
   return [...unique.values()];
 }
 
+function explicitApn(item) {
+  const values = [];
+  const visit = value => {
+    if (typeof value === 'string') values.push(value);
+    else if (Array.isArray(value)) value.forEach(visit);
+    else if (value && typeof value === 'object') Object.values(value).forEach(visit);
+  };
+  visit(item);
+  for (const value of values) {
+    // Siskiyou sometimes publishes a trailing assessment suffix; parcel GIS
+    // uses the first three numeric groups (for example 031-020-260-000).
+    const match = value.match(/(?:\bAPN\s*(?:#|NO\.?|ONLY)?\s*[:#-]?\s*)?\b(\d{3})[-\s](\d{3})[-\s](\d{3})(?:[-\s]\d{3})?\b/i);
+    if (match) return `${match[1]}-${match[2]}-${match[3]}`;
+  }
+  return '';
+}
+
 function addressParts(item) {
   const address = String(item.streetAddress || '').trim();
   const match = address.match(/^(\d+)\s+(.+?)\s*$/);
@@ -118,8 +135,9 @@ async function privateRecords(items) {
     const matches = await Promise.all(batch.map((item, index) => apnAtPoint(addressPoints[index] || item.latLng).catch(() => null)));
     batch.forEach((item, index) => {
       const match = matches[index];
+      const listedApn = explicitApn(item);
       const verifiedAddress = Boolean(addressPoints[index]);
-      const apn = verifiedAddress && usableParcel(match) ? match.apn : '';
+      const apn = listedApn || (verifiedAddress && usableParcel(match) ? match.apn : '');
       const title = [item.streetAddress, item.city, item.state, item.zip].filter(Boolean).join(', ').replace(', CA,', ', CA');
       const slug = title.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
       const record = {
@@ -130,6 +148,7 @@ async function privateRecords(items) {
         sqft: Number(item.sqft) || 0, yearBuilt: Number(item.yearBuilt) || 0,
         url: `${item.source.site}/idx/listing/${item.mlsId}/${item.mlsNo}/${slug}`,
         listingSource: item.source.name,
+        parcelMatchSource: listedApn ? 'listing APN' : 'county address point',
         mlsNumber: item.mlsNo
       };
       if (apn) records.push(record);
