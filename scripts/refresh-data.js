@@ -72,20 +72,28 @@ async function fetchMls() {
 }
 
 async function apnAtPoint(latLng) {
-  if (!Array.isArray(latLng) || latLng.length < 2) return '';
+  if (!Array.isArray(latLng) || latLng.length < 2) return null;
   const [lat, lon] = latLng.map(Number);
-  const params = new URLSearchParams({ f: 'json', where: '1=1', outFields: 'APN', returnGeometry: 'false', geometry: `${lon},${lat}`, geometryType: 'esriGeometryPoint', inSR: 4326, spatialRel: 'esriSpatialRelIntersects', resultRecordCount: 1 });
-  const data = await (await fetchOk(`${GIS}?${params}`)).json();
-  return normalizeApn(data.features?.[0]?.attributes?.APN);
+  const params = new URLSearchParams({ f: 'json', where: '1=1', outFields: 'APN,LandUse1', returnGeometry: 'false', geometry: `${lon},${lat}`, geometryType: 'esriGeometryPoint', inSR: 4326, spatialRel: 'esriSpatialRelIntersects', resultRecordCount: 1 });
+  const attrs = (await (await fetchOk(`${GIS}?${params}`)).json()).features?.[0]?.attributes;
+  if (!attrs) return null;
+  return { apn: normalizeApn(attrs.APN), landUse: String(attrs.LandUse1 || '') };
+}
+
+// County right-of-way features can contain an MLS road-centerline pin.  They
+// are not sale parcels, so retain these listings as unverified point markers.
+function usableParcel(match) {
+  return match?.apn && !['004', '005', '008'].includes(match.landUse);
 }
 
 async function privateRecords(items) {
   const records = [], unmapped = [];
   for (let i = 0; i < items.length; i += 12) {
     const batch = items.slice(i, i + 12);
-    const apns = await Promise.all(batch.map(item => apnAtPoint(item.latLng).catch(() => '')));
+    const matches = await Promise.all(batch.map(item => apnAtPoint(item.latLng).catch(() => null)));
     batch.forEach((item, index) => {
-      const apn = apns[index];
+      const match = matches[index];
+      const apn = usableParcel(match) ? match.apn : '';
       const title = [item.streetAddress, item.city, item.state, item.zip].filter(Boolean).join(', ').replace(', CA,', ', CA');
       const slug = title.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
       const record = {
