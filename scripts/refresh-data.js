@@ -7,6 +7,9 @@ let pdfjs;
 
 const root = path.resolve(__dirname, '..');
 const outFile = path.join(root, 'data', 'parcels.json');
+const overridesFile = path.join(root, 'data', 'parcel-overrides.json');
+const reviewFile = path.join(root, 'data', 'lot-review.json');
+const PARCEL_OVERRIDES = fs.existsSync(overridesFile) ? JSON.parse(fs.readFileSync(overridesFile, 'utf8')) : {};
 const MLS_SOURCES = [
   // When the same property appears in both feeds, retain this listing's URL.
   { name: 'Mt. Shasta Realty', api: 'https://www.mountshastarealty.com/-/AjaxSearch/idx_search', site: 'https://www.mountshastarealty.com', priority: 0 },
@@ -175,9 +178,11 @@ async function privateRecords(items) {
     const matches = await Promise.all(batch.map((item, index) => apnAtPoint(addressPoints[index] || item.latLng).catch(() => null)));
     batch.forEach((item, index) => {
       const match = matches[index];
+      const override = PARCEL_OVERRIDES[String(item.mlsNo || '')];
+      const overrideApns = (override?.apns || []).map(normalizeApn).filter(Boolean);
       const listedApn = explicitApn(item);
       const verifiedAddress = Boolean(addressPoints[index]);
-      const apn = listedApn || (verifiedAddress && usableParcel(match) ? match.apn : '');
+      const apn = overrideApns[0] || listedApn || (verifiedAddress && usableParcel(match) ? match.apn : '');
       const title = [item.streetAddress, item.city, item.state, item.zip].filter(Boolean).join(', ').replace(', CA,', ', CA');
       const slug = title.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
       const record = {
@@ -188,10 +193,14 @@ async function privateRecords(items) {
         sqft: Number(item.sqft) || 0, yearBuilt: Number(item.yearBuilt) || 0,
         url: `${item.source.site}/idx/listing/${item.mlsId}/${item.mlsNo}/${slug}`,
         listingSource: item.source.name,
-        parcelMatchSource: listedApn ? 'listing APN' : 'county address point',
+        parcelMatchSource: overrideApns.length ? override.source : (listedApn ? 'listing APN' : 'county address point'),
+        parcelMatchConfidence: override?.confidence || '',
         mlsNumber: item.mlsNo
       };
-      if (apn) records.push(record);
+      if (apn) {
+        const apns = overrideApns.length ? overrideApns : [apn];
+        apns.forEach(value => records.push({ ...record, APN: value }));
+      }
       else if (Array.isArray(addressPoints[index] || item.latLng) && (addressPoints[index] || item.latLng).length === 2 && (addressPoints[index] || item.latLng).every(Number.isFinite)) {
         record.latLng = addressPoints[index] || item.latLng;
         record.locationSource = verifiedAddress ? 'county address point (parcel rejected)' : 'MLS location only';
@@ -305,7 +314,14 @@ async function main() {
   };
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, JSON.stringify(output));
-  console.log(`Wrote ${features.length} mapped parcels (${privateRows.length} private, ${auctions.length} public records) to data/parcels.json`);
+  const lotReview = privateData.unmapped.filter(record => /\b(?:LOT|BLOCK)\s*[#-]?\s*\d+/i.test(record.title)).map(record => ({
+    mlsNumber: record.mlsNumber, title: record.title, acres: record.acres, latLng: record.latLng,
+    listingUrl: record.url,
+    assessorSearch: 'https://assr.parcelquest.com/impl/SISASSR',
+    status: 'needs assessor-map confirmation'
+  }));
+  fs.writeFileSync(reviewFile, JSON.stringify({ generatedAt: output.generatedAt, count: lotReview.length, listings: lotReview }, null, 2));
+  console.log(`Wrote ${features.length} mapped parcels (${privateRows.length} private, ${auctions.length} public records) and ${lotReview.length} lot-review items`);
 }
 
 main().catch(error => { console.error(error.stack || error); process.exit(1); });
