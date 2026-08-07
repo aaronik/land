@@ -7,8 +7,11 @@ let pdfjs;
 
 const root = path.resolve(__dirname, '..');
 const outFile = path.join(root, 'data', 'parcels.json');
-const MLS_API = 'https://www.realtymtshasta.com/-/AjaxSearch/idx_search';
-const MLS_SITE = 'https://www.realtymtshasta.com';
+const MLS_SOURCES = [
+  // When the same property appears in both feeds, retain this listing's URL.
+  { name: 'Mt. Shasta Realty', api: 'https://www.mountshastarealty.com/-/AjaxSearch/idx_search', site: 'https://www.mountshastarealty.com', priority: 0 },
+  { name: 'Coldwell Banker Mountain Gate', api: 'https://www.realtymtshasta.com/-/AjaxSearch/idx_search', site: 'https://www.realtymtshasta.com', priority: 1 }
+];
 const TAX_PAGE = 'https://www.siskiyoucounty.gov/treasurer-taxcollector/page/tax-sale-auction';
 const GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query';
 const UA = 'Mozilla/5.0 shasta-land-map/1.0';
@@ -28,27 +31,44 @@ function normalizeApn(value) {
   return match ? `${match[1]}-${match[2]}-${match[3]}` : '';
 }
 
-async function fetchMlsPage(page, perPage = 100) {
+async function fetchMlsPage(source, page, perPage = 100) {
   const body = new URLSearchParams({ listingType: 'homes-for-sale', page, itemsPerPage: perPage, sort: 'new', locationType: 'county', location: 'Siskiyou County, CA', lotSizeMin: 0 });
-  const response = await fetchOk(MLS_API, {
+  const response = await fetchOk(source.api, {
     method: 'POST', body,
-    headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest', Origin: MLS_SITE, Referer: `${MLS_SITE}/` }
+    headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest', Origin: source.site, Referer: `${source.site}/` }
   });
   return response.json();
 }
 
-async function fetchMls() {
+async function fetchMlsSource(source) {
   const items = [];
   let page = 1, total = null;
   while (total === null || items.length < total) {
-    const data = await fetchMlsPage(page++);
-    if (!data.success) throw new Error(data.message || 'MLS API failed');
+    const data = await fetchMlsPage(source, page++);
+    if (!data.success) throw new Error(`${source.name}: ${data.message || 'MLS API failed'}`);
     total = Number(data.total || 0);
-    items.push(...(data.listings || []));
+    items.push(...(data.listings || []).map(item => ({ ...item, source })));
     if (!(data.listings || []).length) break;
   }
-  if (items.length !== total) throw new Error(`Incomplete MLS data: ${items.length}/${total}`);
+  if (items.length !== total) throw new Error(`${source.name}: incomplete MLS data: ${items.length}/${total}`);
   return items.filter(item => ['land', 'farm', 'house', 'multi', 'condo', 'mobile'].includes(item.propertyType));
+}
+
+function listingKey(item) {
+  return [item.streetAddress, item.city, item.state, item.zip]
+    .map(value => String(value || '').toUpperCase().replace(/[^A-Z0-9]/g, ''))
+    .join('|');
+}
+
+async function fetchMls() {
+  const feeds = await Promise.all(MLS_SOURCES.map(fetchMlsSource));
+  const unique = new Map();
+  for (const item of feeds.flat().sort((a, b) => a.source.priority - b.source.priority)) {
+    const key = listingKey(item);
+    // Mt. Shasta Realty has priority for an address match, so its listing URL wins.
+    if (!unique.has(key)) unique.set(key, item);
+  }
+  return [...unique.values()];
 }
 
 async function apnAtPoint(latLng) {
@@ -60,27 +80,33 @@ async function apnAtPoint(latLng) {
 }
 
 async function privateRecords(items) {
-  const records = [];
+  const records = [], unmapped = [];
   for (let i = 0; i < items.length; i += 12) {
     const batch = items.slice(i, i + 12);
     const apns = await Promise.all(batch.map(item => apnAtPoint(item.latLng).catch(() => '')));
     batch.forEach((item, index) => {
       const apn = apns[index];
-      if (!apn) return;
       const title = [item.streetAddress, item.city, item.state, item.zip].filter(Boolean).join(', ').replace(', CA,', ', CA');
       const slug = title.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
-      records.push({
+      const record = {
         APN: apn, kind: 'private', title, price: Number(item.price) || null, acres: Number(item.lotSize) || null,
         status: item.displayStatus || '', listingDate: item.listingDate || '',
         propertyType: item.propertyType || '', propertySubType: item.propertySubType || '',
         beds: Number(item.beds) || 0, baths: Number(item.bathsTotal) || 0,
         sqft: Number(item.sqft) || 0, yearBuilt: Number(item.yearBuilt) || 0,
-        url: `${MLS_SITE}/idx/listing/${item.mlsId}/${item.mlsNo}/${slug}`,
+        url: `${item.source.site}/idx/listing/${item.mlsId}/${item.mlsNo}/${slug}`,
+        listingSource: item.source.name,
         mlsNumber: item.mlsNo
-      });
+      };
+      if (apn) records.push(record);
+      else if (Array.isArray(item.latLng) && item.latLng.length === 2 && item.latLng.every(Number.isFinite)) {
+        record.latLng = item.latLng;
+        record.category = ['land', 'farm'].includes(record.propertyType) ? 'private-land' : 'private-home';
+        unmapped.push(record);
+      }
     });
   }
-  return records;
+  return { records, unmapped };
 }
 
 async function pdfText(url) {
@@ -158,7 +184,8 @@ async function main() {
   pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
   console.log('Fetching MLS and county auction sources…');
   const [mls, auctions] = await Promise.all([fetchMls(), fetchAuctions()]);
-  const privateRows = await privateRecords(mls);
+  const privateData = await privateRecords(mls);
+  const privateRows = privateData.records;
   const records = [...privateRows, ...auctions];
   const features = await parcelFeatures([...new Set(records.map(row => row.APN))]);
   const recordsByApn = new Map();
@@ -177,8 +204,9 @@ async function main() {
     feature.properties.records = recordsForParcel;
   }
   const output = {
-    generatedAt: new Date().toISOString(), sources: { mls: MLS_API, auctions: TAX_PAGE, parcels: GIS },
-    counts: { mlsLandListings: mls.length, privateMapped: privateRows.length, publicRecords: auctions.length, mappedParcels: features.length },
+    generatedAt: new Date().toISOString(), sources: { mls: MLS_SOURCES.map(source => ({ name: source.name, api: source.api })), auctions: TAX_PAGE, parcels: GIS },
+    counts: { mlsLandListings: mls.length, privateMapped: privateRows.length, privateUnmapped: privateData.unmapped.length, publicRecords: auctions.length, mappedParcels: features.length },
+    unmappedListings: privateData.unmapped,
     type: 'FeatureCollection', features
   };
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
