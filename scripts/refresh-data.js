@@ -89,6 +89,40 @@ function explicitApn(item) {
   return '';
 }
 
+function normalizeStreet(value) {
+  return String(value || '').toUpperCase()
+    .replace(/^\d+[A-Z-]*\s+/, '')
+    .replace(/(?:\s+|^)#\s*\w+.*$/, '')
+    .replace(/\s+(?:APT|UNIT|STE|SUITE|SP|SPACE)\s+[A-Z0-9-]+.*$/, '')
+    .replace(/\bMOUNT\b/g, 'MT')
+    .replace(/\bCOURT\b/g, 'CT').replace(/\bAVENUE\b/g, 'AVE')
+    .replace(/\bSTREET\b/g, 'ST').replace(/\bROAD\b/g, 'RD')
+    .replace(/\bDRIVE\b/g, 'DR').replace(/\bLANE\b/g, 'LN')
+    .replace(/\bHIGHWAY\b/g, 'HWY').replace(/\bBOULEVARD\b/g, 'BLVD')
+    .replace(/\bCIRCLE\b/g, 'CIR').replace(/\bPLACE\b/g, 'PL')
+    .replace(/[^A-Z0-9]+/g, ' ').trim();
+}
+
+function editDistance(a, b) {
+  const row = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    let previous = row[0]; row[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const old = row[j];
+      row[j] = Math.min(row[j] + 1, row[j - 1] + 1, previous + (a[i - 1] === b[j - 1] ? 0 : 1));
+      previous = old;
+    }
+  }
+  return row[b.length];
+}
+
+function streetSimilarity(a, b) {
+  const left = normalizeStreet(a), right = normalizeStreet(b);
+  if (!left || !right) return 0;
+  if (left === right) return 1;
+  return 1 - editDistance(left, right) / Math.max(left.length, right.length);
+}
+
 function addressParts(item) {
   const address = String(item.streetAddress || '').trim();
   const match = address.match(/^(\d+)\s+(.+?)\s*$/);
@@ -104,12 +138,18 @@ function addressParts(item) {
 async function countyAddressPoint(item) {
   const address = addressParts(item);
   if (!address) return null;
-  const clauses = [`AddNumber = '${address.number.replace(/'/g, "''")}'`, `UPPER(St_Name) = '${address.street.replace(/'/g, "''")}'`];
+  const clauses = [`AddNumber = '${address.number.replace(/'/g, "''")}'`];
   if (/^\d{5}$/.test(address.zip)) clauses.push(`Post_Code = '${address.zip}'`);
-  const params = new URLSearchParams({ f: 'json', where: clauses.join(' AND '), outFields: 'FullSt_Add,MSAGComm,Post_Code', returnGeometry: 'true', outSR: 4326, resultRecordCount: 2 });
+  const params = new URLSearchParams({ f: 'json', where: clauses.join(' AND '), outFields: 'FullSt_Add,MSAGComm,Post_Code', returnGeometry: 'true', outSR: 4326, resultRecordCount: 50 });
   const data = await (await fetchOk(`${ADDRESS_GIS}?${params}`)).json();
-  const point = data.features?.length === 1 ? data.features[0].geometry : null;
-  return point?.x != null && point?.y != null ? [point.y, point.x] : null;
+  const candidates = (data.features || []).map(feature => ({
+    score: streetSimilarity(item.streetAddress, feature.attributes?.FullSt_Add),
+    point: feature.geometry?.x != null && feature.geometry?.y != null ? [feature.geometry.y, feature.geometry.x] : null
+  })).filter(candidate => candidate.point).sort((a, b) => b.score - a.score);
+  // Require a strong street match and a decisive lead over the runner-up.
+  if (!candidates.length || candidates[0].score < 0.82) return null;
+  if (candidates[1] && candidates[0].score - candidates[1].score < 0.08) return null;
+  return candidates[0].point;
 }
 
 async function apnAtPoint(latLng) {
