@@ -98,6 +98,9 @@ function normalizeStreet(value) {
     .replace(/(?:\s+|^)#\s*\w+.*$/, '')
     .replace(/\s+(?:APT|UNIT|STE|SUITE|SP|SPACE)\s+[A-Z0-9-]+.*$/, '')
     .replace(/\bMOUNT\b/g, 'MT')
+    .replace(/\bNORTH\b/g, 'N').replace(/\bSOUTH\b/g, 'S')
+    .replace(/\bEAST\b/g, 'E').replace(/\bWEST\b/g, 'W')
+    .replace(/\bSTATE ROUTE\b/g, 'HWY').replace(/\bSTATE HIGHWAY\b/g, 'HWY')
     .replace(/\bCOURT\b/g, 'CT').replace(/\bAVENUE\b/g, 'AVE')
     .replace(/\bSTREET\b/g, 'ST').replace(/\bROAD\b/g, 'RD')
     .replace(/\bDRIVE\b/g, 'DR').replace(/\bLANE\b/g, 'LN')
@@ -149,10 +152,16 @@ async function countyAddressPoint(item) {
     score: streetSimilarity(item.streetAddress, feature.attributes?.FullSt_Add),
     point: feature.geometry?.x != null && feature.geometry?.y != null ? [feature.geometry.y, feature.geometry.x] : null
   })).filter(candidate => candidate.point).sort((a, b) => b.score - a.score);
+  // Duplicate county points for the same situs are not ambiguity. Collapse
+  // coordinates within roughly one metre before comparing the runner-up.
+  const unique = [];
+  for (const candidate of candidates) {
+    if (!unique.some(old => Math.abs(old.point[0] - candidate.point[0]) < 0.00001 && Math.abs(old.point[1] - candidate.point[1]) < 0.00001)) unique.push(candidate);
+  }
   // Require a strong street match and a decisive lead over the runner-up.
-  if (!candidates.length || candidates[0].score < 0.82) return null;
-  if (candidates[1] && candidates[0].score - candidates[1].score < 0.08) return null;
-  return candidates[0].point;
+  if (!unique.length || unique[0].score < 0.82) return null;
+  if (unique[1] && unique[0].score - unique[1].score < 0.08) return null;
+  return unique[0].point;
 }
 
 async function apnAtPoint(latLng) {
