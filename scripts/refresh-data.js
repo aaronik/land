@@ -14,6 +14,7 @@ const MLS_SOURCES = [
 ];
 const TAX_PAGE = 'https://www.siskiyoucounty.gov/treasurer-taxcollector/page/tax-sale-auction';
 const GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query';
+const ADDRESS_GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/AddressPointNew/FeatureServer/9/query';
 const UA = 'Mozilla/5.0 shasta-land-map/1.0';
 const APN_RE = /\b(\d{3})[-\s]?(\d{3})[-\s]?(\d{3})[-\s]?(\d{3})\b/g;
 const MONEY_RE = /\$\s*\d[\d,]*\.\d{2}/g;
@@ -71,6 +72,29 @@ async function fetchMls() {
   return [...unique.values()];
 }
 
+function addressParts(item) {
+  const address = String(item.streetAddress || '').trim();
+  const match = address.match(/^(\d+)\s+(.+?)\s*$/);
+  if (!match) return null; // Lot-only listings do not have a situs address.
+  const number = match[1];
+  const words = match[2].toUpperCase().replace(/\b(COURT|CT)\b/g, 'CT').replace(/\b(AVENUE|AVE)\b/g, 'AVE').replace(/\b(STREET|ST)\b/g, 'ST').split(/\s+/);
+  // The county stores the base street name separately from its suffix.
+  const suffixes = new Set(['CT', 'AVE', 'ST', 'RD', 'DR', 'LN', 'WAY', 'HWY', 'PL', 'BLVD', 'CIR']);
+  if (suffixes.has(words.at(-1))) words.pop();
+  return words.length ? { number, street: words.join(' '), zip: String(item.zip || '') } : null;
+}
+
+async function countyAddressPoint(item) {
+  const address = addressParts(item);
+  if (!address) return null;
+  const clauses = [`AddNumber = '${address.number.replace(/'/g, "''")}'`, `UPPER(St_Name) = '${address.street.replace(/'/g, "''")}'`];
+  if (/^\d{5}$/.test(address.zip)) clauses.push(`Post_Code = '${address.zip}'`);
+  const params = new URLSearchParams({ f: 'json', where: clauses.join(' AND '), outFields: 'FullSt_Add,MSAGComm,Post_Code', returnGeometry: 'true', outSR: 4326, resultRecordCount: 2 });
+  const data = await (await fetchOk(`${ADDRESS_GIS}?${params}`)).json();
+  const point = data.features?.length === 1 ? data.features[0].geometry : null;
+  return point?.x != null && point?.y != null ? [point.y, point.x] : null;
+}
+
 async function apnAtPoint(latLng) {
   if (!Array.isArray(latLng) || latLng.length < 2) return null;
   const [lat, lon] = latLng.map(Number);
@@ -90,10 +114,12 @@ async function privateRecords(items) {
   const records = [], unmapped = [];
   for (let i = 0; i < items.length; i += 12) {
     const batch = items.slice(i, i + 12);
-    const matches = await Promise.all(batch.map(item => apnAtPoint(item.latLng).catch(() => null)));
+    const addressPoints = await Promise.all(batch.map(item => countyAddressPoint(item).catch(() => null)));
+    const matches = await Promise.all(batch.map((item, index) => apnAtPoint(addressPoints[index] || item.latLng).catch(() => null)));
     batch.forEach((item, index) => {
       const match = matches[index];
-      const apn = usableParcel(match) ? match.apn : '';
+      const verifiedAddress = Boolean(addressPoints[index]);
+      const apn = verifiedAddress && usableParcel(match) ? match.apn : '';
       const title = [item.streetAddress, item.city, item.state, item.zip].filter(Boolean).join(', ').replace(', CA,', ', CA');
       const slug = title.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
       const record = {
@@ -107,8 +133,9 @@ async function privateRecords(items) {
         mlsNumber: item.mlsNo
       };
       if (apn) records.push(record);
-      else if (Array.isArray(item.latLng) && item.latLng.length === 2 && item.latLng.every(Number.isFinite)) {
-        record.latLng = item.latLng;
+      else if (Array.isArray(addressPoints[index] || item.latLng) && (addressPoints[index] || item.latLng).length === 2 && (addressPoints[index] || item.latLng).every(Number.isFinite)) {
+        record.latLng = addressPoints[index] || item.latLng;
+        record.locationSource = verifiedAddress ? 'county address point (parcel rejected)' : 'MLS location only';
         record.category = ['land', 'farm'].includes(record.propertyType) ? 'private-land' : 'private-home';
         unmapped.push(record);
       }
