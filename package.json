@@ -9,7 +9,7 @@
     "refresh": "node scripts/refresh-data.js",
     "build": "vite build",
     "test": "node scripts/test.js",
-    "release": "npm run refresh && git add data && git commit -m \"refresh data $(date)\" && npm run test && npm run deploy",
+    "release": "npm run test && npm run deploy",
     "deploy": "npm run build && gh-pages --dotfiles -d build"
   },
   "devDependencies": {

@@ -31,10 +31,20 @@ GitHub Pages cannot run server code and the upstream sites do not consistently a
 
 Private listings without MLS coordinates cannot be assigned an APN automatically and are omitted from the parcel map. Public records remain visible as historical records and are marked `EXPIRED` once their advertised closing date passes.
 
+## Data refresh
+
+Run the sales-data refresh independently when needed:
+
+```sh
+npm run refresh
+```
+
+The `Refresh sales data` GitHub Actions workflow also runs daily at 12:00 UTC (4 AM PST / 5 AM PDT) and can be started manually from the Actions tab. It commits updated files under `data/` to the default branch when the refresh produces changes.
+
 ## Deployment
 
 ```sh
 npm run release
 ```
 
-This refreshes data, validates it, builds `build/`, and publishes through `gh-pages`. Configure the repository's Pages deployment to use the `gh-pages` branch.
+This validates the existing data, builds `build/`, and publishes through `gh-pages`; it does not refresh or commit sales data. Configure the repository's Pages deployment to use the `gh-pages` branch.
