@@ -122,11 +122,16 @@ function bindResearchControls(apn) {
   });
 }
 function matchingSale(apn) { return saleData?.features.find(feature => feature.properties.APN === apn); }
+function displayAddress(records) {
+  const title = records.find(record => record.kind === 'private')?.title || '';
+  return title.replace(/,\s*(?:CA|California)(?:\s+\d{5}(?:-\d{4})?)?\s*$/i, '').trim();
+}
 function showParcelDetails(properties, saleFeature = matchingSale(properties.APN)) {
   const p = { ...(saleFeature?.properties || {}), ...properties };
   const records = saleFeature?.properties.records || p.records || [];
   const acres = p.Acres ?? apnIndex[p.APN]?.acres;
-  document.querySelector('#details').innerHTML = `<h3>${escapeHtml(p.APN || 'Parcel')}</h3><p class="meta">${escapeHtml(acres || '—')} GIS acres${p.LandUse1 ? ` · Land use ${escapeHtml(p.LandUse1)}` : ''}${p.Township ? ` · ${escapeHtml(p.Township)} ${escapeHtml(p.Range || '')}` : ''}</p>${records.map(recordCard).join('') || '<p class="muted">Official county parcel. No current listing or auction record is attached.</p>'}${researchControls(p.APN)}`;
+  const address = displayAddress(records);
+  document.querySelector('#details').innerHTML = `<h3>${escapeHtml(address || 'Parcel')}</h3><p class="meta">${escapeHtml(acres || '—')} GIS acres${p.LandUse1 ? ` · Land use ${escapeHtml(p.LandUse1)}` : ''}${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${records.map(recordCard).join('') || '<p class="muted">Official county parcel. No current listing or auction record is attached.</p>'}${researchControls(p.APN)}`;
   bindResearchControls(p.APN);
 }
 function setSelectedApn(apn, geometry = null) {
@@ -211,7 +216,10 @@ function initializeMobileSheet() {
   let currentOffset = 0;
   let dragged = false;
 
-  const collapsedOffset = () => Math.max(0, panel.offsetHeight - 76);
+  const collapsedOffset = () => {
+    const peek = parseFloat(getComputedStyle(panel).getPropertyValue('--mobile-sheet-peek')) || 132;
+    return Math.max(0, panel.offsetHeight - peek);
+  };
   const setOpen = open => {
     panel.classList.toggle('sheet-open', open);
     panel.classList.remove('sheet-dragging');

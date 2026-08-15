@@ -23,10 +23,9 @@
       <button class="sheet-handle" type="button" aria-expanded="false" aria-label="Expand map information">
         <span aria-hidden="true"></span><b>Map information</b>
       </button>
-      <section class="stats" aria-live="polite">
-        <div><strong id="visible-count">—</strong><span>visible parcels</span></div>
-        <div><strong id="private-count">—</strong><span>private listings</span></div>
-        <div><strong id="public-count">—</strong><span>public auctions</span></div>
+      <section class="details" id="details">
+        <h3>No parcel selected</h3>
+        <p class="meta">Hover over a parcel for a quick summary. Click it to keep the details here.</p>
       </section>
 
       <section>
@@ -58,8 +57,10 @@
         <p class="unmapped-key"><i></i>Circle marker: MLS location only; boundary unverified</p>
       </section>
 
-      <section class="details" id="details">
-        <p class="muted">Hover over a parcel for a quick summary. Click it to keep the details here.</p>
+      <section class="stats" aria-live="polite">
+        <div><strong id="visible-count">—</strong><span>visible parcels</span></div>
+        <div><strong id="private-count">—</strong><span>private listings</span></div>
+        <div><strong id="public-count">—</strong><span>public auctions</span></div>
       </section>
 
       <footer>
