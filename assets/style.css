@@ -46,10 +46,13 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .swatch.public-land { background: #ff9d4d; } .swatch.public-home { background: #b94b18; }
 .swatch.public-overlay { background: #4e9f54; } .swatch.zoning-overlay { background: #64c7ff; }
 .swatch.fire-overlay { background: #d73027; } .swatch.roads-overlay { background: #f8d37c; }
-.terrain-toggle { width: 100%; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 11px; border: 1px solid #b8bdb8; border-radius: 8px; color: var(--ink); background: white; font-weight: 800; cursor: pointer; }
-.terrain-toggle span:first-child { font-size: 20px; line-height: 1; }
-.terrain-toggle:hover, .terrain-toggle:focus-visible { border-color: #126246; outline: 2px solid rgba(18,98,70,.18); }
-.terrain-toggle.active { color: white; background: #126246; border-color: #126246; }
+.maplibregl-ctrl-terrain-toggle span { display: block; font-size: 12px; font-weight: 850; line-height: 29px; }
+#terrain-toggle,
+.maplibregl-ctrl button#terrain-toggle:not(:disabled):hover,
+.maplibregl-ctrl button#terrain-toggle:not(:disabled):active { background-color: white; }
+#terrain-toggle.active,
+.maplibregl-ctrl button#terrain-toggle.active:not(:disabled):hover,
+.maplibregl-ctrl button#terrain-toggle.active:not(:disabled):active { color: white; background-color: #126246; }
 .sale-pin { width: 18px; height: 18px; padding: 0; border: 3px solid white; border-radius: 50% 50% 50% 0; background: #42d7a6; box-shadow: 0 2px 7px rgba(0,0,0,.75); transform: rotate(-45deg); cursor: pointer; }
 .sale-pin:hover, .sale-pin:focus-visible { width: 23px; height: 23px; outline: 3px solid rgba(255,255,255,.6); z-index: 2; }
 .sale-pin.private-home { background: #7653b5; }

@@ -50,7 +50,17 @@ window.__landMap = map;
 window.__landErrors = [];
 map.on('error', event => { window.__landErrors.push(event.error?.message || String(event.error)); console.error(event.error); });
 
-map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'bottom-right');
+const navigationControl = new maplibregl.NavigationControl({ showCompass: false });
+map.addControl(navigationControl, 'bottom-right');
+const terrainButton = document.createElement('button');
+terrainButton.id = 'terrain-toggle';
+terrainButton.className = 'maplibregl-ctrl-terrain-toggle';
+terrainButton.type = 'button';
+terrainButton.setAttribute('aria-label', 'Enable 3D terrain');
+terrainButton.setAttribute('aria-pressed', 'false');
+terrainButton.title = 'Enable 3D terrain';
+terrainButton.innerHTML = '<span aria-hidden="true">3D</span>';
+navigationControl._container.appendChild(terrainButton);
 const geolocateControl = new maplibregl.GeolocateControl({
   positionOptions: {
     enableHighAccuracy: true,
@@ -200,7 +210,10 @@ function applyTerrain(enabled) {
   const button = document.querySelector('#terrain-toggle');
   button.classList.toggle('active', enabled);
   button.setAttribute('aria-pressed', String(enabled));
-  button.querySelector('span:last-child').textContent = enabled ? '2D map' : '3D terrain';
+  const label = enabled ? 'Disable 3D terrain' : 'Enable 3D terrain';
+  button.setAttribute('aria-label', label);
+  button.title = label;
+  button.querySelector('span').textContent = '3D';
 }
 function toggleTerrain(force) {
   const enabled = force ?? !terrainEnabled;
