@@ -1,12 +1,22 @@
 'use strict';
 
 import * as maplibregl from './vendor/maplibre/maplibre-gl.mjs';
+import mlcontour from 'maplibre-contour';
 import { Protocol } from './vendor/pmtiles/pmtiles.js';
 
 const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
 const PARCELQUEST_URL = 'https://assr.parcelquest.com/impl/SISASSR';
 const protocol = new Protocol();
 maplibregl.addProtocol('pmtiles', protocol.tile.bind(protocol));
+const contourDemSource = new mlcontour.DemSource({
+  url: 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
+  encoding: 'terrarium',
+  maxzoom: 13,
+  worker: true,
+  cacheSize: 80,
+  timeoutMs: 10000
+});
+contourDemSource.setupMaplibre(maplibregl);
 const assetUrl = path => new URL(path, window.location.href).href;
 
 let saleData;
@@ -27,6 +37,7 @@ const map = new maplibregl.Map({
   attributionControl: false,
   style: {
     version: 8,
+    glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
     sources: {
       satellite: {
         type: 'raster', tileSize: 256, maxzoom: 19,
@@ -200,7 +211,8 @@ function updateSales() {
 }
 function addPmtilesSource(id) { map.addSource(id, { type: 'vector', url: `pmtiles://${assetUrl(`data/generated/${id}.pmtiles`)}` }); }
 function toggleLayer(id, visibleValue) {
-  if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibleValue ? 'visible' : 'none');
+  const layerIds = id === 'topographic-contours' ? ['topographic-contours', 'topographic-contour-labels'] : [id];
+  for (const layerId of layerIds) if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibleValue ? 'visible' : 'none');
 }
 function applyTerrain(enabled) {
   terrainEnabled = enabled;
@@ -287,7 +299,56 @@ function initializeMapLayers() {
   map.addSource('sale-points', { type: 'geojson', data: salePointGeoJson() });
   map.addSource('unmapped', { type: 'geojson', data: unmappedGeoJson() });
   map.addSource('selection', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+  map.addSource('topographic-contours', {
+    type: 'vector',
+    tiles: [contourDemSource.contourProtocolUrl({
+      multiplier: 3.28084,
+      thresholds: { 8: [1000, 5000], 10: [500, 2500], 12: [200, 1000], 14: [100, 500], 15: [50, 250] },
+      contourLayer: 'contours',
+      elevationKey: 'ele',
+      levelKey: 'level'
+    })],
+    maxzoom: 15
+  });
 
+  map.addLayer({
+    id: 'topographic-contours',
+    type: 'line',
+    source: 'topographic-contours',
+    'source-layer': 'contours',
+    minzoom: 8,
+    paint: {
+      'line-color': '#d9c79c',
+      'line-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.18, 12, 0.28, 16, 0.34],
+      'line-width': ['match', ['get', 'level'], 1, 0.85, 0.45]
+    }
+  });
+  map.addLayer({
+    id: 'topographic-contour-labels',
+    type: 'symbol',
+    source: 'topographic-contours',
+    'source-layer': 'contours',
+    minzoom: 10,
+    filter: ['>', ['get', 'level'], 0],
+    layout: {
+      'symbol-placement': 'line',
+      'symbol-spacing': 350,
+      'text-field': ['concat', ['number-format', ['get', 'ele'], { 'max-fraction-digits': 0 }], ' ft'],
+      'text-font': ['Noto Sans Bold'],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 10, 10, 14, 12],
+      'text-letter-spacing': 0.04,
+      'text-padding': 5,
+      'text-keep-upright': true,
+      'text-allow-overlap': true,
+      'text-ignore-placement': true
+    },
+    paint: {
+      'text-color': '#fff4d2',
+      'text-halo-color': 'rgba(32, 35, 28, 0.92)',
+      'text-halo-width': 2,
+      'text-halo-blur': 0.4
+    }
+  });
   map.addLayer({ id: 'public-land', type: 'fill', source: 'public_land', 'source-layer': 'public_land', paint: { 'fill-color': '#4e9f54', 'fill-opacity': 0.38 } });
   map.addLayer({ id: 'fire-hazard', type: 'fill', source: 'fire_hazard', 'source-layer': 'fire_hazard', layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'HAZ_CLASS'], 'Very High', '#d73027', 'High', '#fc8d59', 'Moderate', '#fee08b', '#f5a623'], 'fill-opacity': 0.3 } });
   map.addLayer({ id: 'zoning', type: 'line', source: 'zoning', 'source-layer': 'zoning', layout: { visibility: 'none' }, paint: { 'line-color': '#64c7ff', 'line-width': 1.4, 'line-opacity': 0.8 } });
