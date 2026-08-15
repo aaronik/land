@@ -20,6 +20,9 @@
 
   <main>
     <aside class="panel" aria-label="Map controls">
+      <button class="sheet-handle" type="button" aria-expanded="false" aria-label="Expand map information">
+        <span aria-hidden="true"></span><b>Map information</b>
+      </button>
       <section class="stats" aria-live="polite">
         <div><strong id="visible-count">—</strong><span>visible parcels</span></div>
         <div><strong id="private-count">—</strong><span>private listings</span></div>
@@ -43,7 +46,7 @@
         <label><input type="checkbox" data-map-layer="public-land" checked><i class="swatch public-overlay"></i>Federal public land</label>
         <label><input type="checkbox" data-map-layer="zoning"><i class="swatch zoning-overlay"></i>Zoning boundaries</label>
         <label><input type="checkbox" data-map-layer="fire-hazard"><i class="swatch fire-overlay"></i>Fire hazard</label>
-        <label><input type="checkbox" data-map-layer="roads"><i class="swatch roads-overlay"></i>County roads</label>
+        <label><input type="checkbox" data-map-layer="roads" checked><i class="swatch roads-overlay"></i>County roads</label>
       </section>
 
       <section class="legend">
