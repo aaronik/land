@@ -9,7 +9,7 @@
     "build:app": "node -e \"console.log('Browser modules are served directly from assets/')\"",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "release": "npm run refresh && npm run test && npm run build && npm run deploy && rm -rf build",
+    "release": "npm run refresh && git add data && git commit -m \"refresh data $(date)\" && npm run test && npm run build && npm run deploy && rm -rf build",
     "deploy": "gh-pages --dotfiles -d build"
   },
   "devDependencies": {

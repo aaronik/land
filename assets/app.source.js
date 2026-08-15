@@ -202,6 +202,56 @@ function toggleTerrain(force) {
   applyTerrain(enabled);
 }
 
+function initializeMobileSheet() {
+  const panel = document.querySelector('.panel');
+  const handle = document.querySelector('.sheet-handle');
+  const mobile = window.matchMedia('(max-width: 760px)');
+  let startY = 0;
+  let startOffset = 0;
+  let currentOffset = 0;
+  let dragged = false;
+
+  const collapsedOffset = () => Math.max(0, panel.offsetHeight - 76);
+  const setOpen = open => {
+    panel.classList.toggle('sheet-open', open);
+    panel.classList.remove('sheet-dragging');
+    panel.style.transform = '';
+    handle.setAttribute('aria-expanded', String(open));
+    handle.setAttribute('aria-label', `${open ? 'Collapse' : 'Expand'} map information`);
+  };
+
+  handle.addEventListener('click', () => {
+    if (!dragged && mobile.matches) setOpen(!panel.classList.contains('sheet-open'));
+    dragged = false;
+  });
+  handle.addEventListener('pointerdown', event => {
+    if (!mobile.matches) return;
+    startY = event.clientY;
+    startOffset = panel.classList.contains('sheet-open') ? 0 : collapsedOffset();
+    currentOffset = startOffset;
+    dragged = false;
+    panel.classList.add('sheet-dragging');
+    handle.setPointerCapture(event.pointerId);
+  });
+  handle.addEventListener('pointermove', event => {
+    if (!handle.hasPointerCapture(event.pointerId)) return;
+    const delta = event.clientY - startY;
+    dragged ||= Math.abs(delta) > 5;
+    currentOffset = Math.max(0, Math.min(collapsedOffset(), startOffset + delta));
+    panel.style.transform = `translateY(${currentOffset}px)`;
+  });
+  const finishDrag = event => {
+    if (!handle.hasPointerCapture(event.pointerId)) return;
+    handle.releasePointerCapture(event.pointerId);
+    setOpen(currentOffset < collapsedOffset() / 2);
+    requestAnimationFrame(() => { dragged = false; });
+  };
+  handle.addEventListener('pointerup', finishDrag);
+  handle.addEventListener('pointercancel', finishDrag);
+  mobile.addEventListener('change', () => setOpen(false));
+}
+initializeMobileSheet();
+
 let layersInitialized = false;
 function initializeMapLayers() {
   if (layersInitialized || !map.getStyle()) return;
@@ -222,7 +272,7 @@ function initializeMapLayers() {
   map.addLayer({ id: 'zoning', type: 'line', source: 'zoning', 'source-layer': 'zoning', layout: { visibility: 'none' }, paint: { 'line-color': '#64c7ff', 'line-width': 1.4, 'line-opacity': 0.8 } });
   map.addLayer({ id: 'parcel-fill', type: 'fill', source: 'parcels', 'source-layer': 'parcels', minzoom: 8, paint: { 'fill-color': '#fff', 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.01, 13, 0.045] } });
   map.addLayer({ id: 'parcel-lines', type: 'line', source: 'parcels', 'source-layer': 'parcels', minzoom: 8, paint: { 'line-color': '#aeb4b7', 'line-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 13, 0.85], 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 15, 1.8] } });
-  map.addLayer({ id: 'roads', type: 'line', source: 'roads', 'source-layer': 'roads', minzoom: 9, layout: { visibility: 'none' }, paint: { 'line-color': '#f8d37c', 'line-width': ['interpolate', ['linear'], ['zoom'], 9, 0.7, 15, 3], 'line-opacity': 0.9 } });
+  map.addLayer({ id: 'roads', type: 'line', source: 'roads', 'source-layer': 'roads', minzoom: 9, paint: { 'line-color': '#f8d37c', 'line-width': ['interpolate', ['linear'], ['zoom'], 9, 0.7, 15, 3], 'line-opacity': 0.9 } });
   map.addLayer({ id: 'sale-fill', type: 'fill', source: 'sales', paint: { 'fill-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'fill-opacity': 0.42 } });
   map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });
   map.addLayer({ id: 'sale-markers', type: 'circle', source: 'sale-points', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.95, 'circle-pitch-alignment': 'map' } });
