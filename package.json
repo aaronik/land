@@ -6,13 +6,19 @@
   "scripts": {
     "start": "node scripts/start.js",
     "refresh": "node scripts/refresh-data.js",
+    "build:app": "node -e \"console.log('Browser modules are served directly from assets/')\"",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "release": "npm run refresh && npm run test && npm run build && npm run deploy && rm -rf build",
     "deploy": "gh-pages --dotfiles -d build"
   },
   "devDependencies": {
+    "esbuild": "^0.28.2",
     "gh-pages": "^6.3.0",
     "pdfjs-dist": "^5.4.149"
+  },
+  "dependencies": {
+    "maplibre-gl": "^6.3.0",
+    "pmtiles": "^4.5.0"
   }
 }

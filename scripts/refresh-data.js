@@ -9,6 +9,8 @@ const root = path.resolve(__dirname, '..');
 const outFile = path.join(root, 'data', 'parcels.json');
 const overridesFile = path.join(root, 'data', 'parcel-overrides.json');
 const reviewFile = path.join(root, 'data', 'lot-review.json');
+const externalListingsFile = path.join(root, 'data', 'external-listings.json');
+const EXTERNAL_LISTINGS = fs.existsSync(externalListingsFile) ? JSON.parse(fs.readFileSync(externalListingsFile, 'utf8')) : [];
 const PARCEL_OVERRIDES = fs.existsSync(overridesFile) ? JSON.parse(fs.readFileSync(overridesFile, 'utf8')) : {};
 const MLS_SOURCES = [
   // When the same property appears in both feeds, retain this listing's URL.
@@ -263,6 +265,20 @@ async function privateRecords(items) {
   return { records, unmapped };
 }
 
+function externalRecords() {
+  return EXTERNAL_LISTINGS.flatMap(item => (item.apns || []).map(value => ({
+    APN: normalizeApn(value), kind: 'private', title: item.title || `Land listing ${value}`,
+    price: Number(item.price) || null, acres: Number(item.acres) || null,
+    status: item.status || 'For Sale', listingDate: item.listingDate || '',
+    propertyType: item.propertyType || 'land', propertySubType: item.propertySubType || 'Bare Land',
+    beds: 0, baths: 0, sqft: 0, yearBuilt: 0,
+    url: item.url, listingSource: item.listingSource || 'External listing',
+    parcelMatchSource: item.parcelMatchSource || 'listing APN',
+    parcelMatchConfidence: item.parcelMatchConfidence || 'provided',
+    mlsNumber: item.id || value, notes: item.notes || ''
+  }))).filter(record => record.APN && record.url);
+}
+
 async function pdfText(url) {
   const bytes = new Uint8Array(await (await fetchOk(url)).arrayBuffer());
   const pdf = await pdfjs.getDocument({ data: bytes, useWorkerFetch: false, isEvalSupported: false, useSystemFonts: true }).promise;
@@ -340,7 +356,8 @@ async function main() {
   const [mls, auctions] = await Promise.all([fetchMls(), fetchAuctions()]);
   const privateData = await privateRecords(mls);
   const privateRows = privateData.records;
-  const records = [...privateRows, ...auctions];
+  const externalRows = externalRecords();
+  const records = [...privateRows, ...externalRows, ...auctions];
   const features = await parcelFeatures([...new Set(records.map(row => row.APN))]);
   const recordsByApn = new Map();
   for (const record of records) {
@@ -358,8 +375,8 @@ async function main() {
     feature.properties.records = recordsForParcel;
   }
   const output = {
-    generatedAt: new Date().toISOString(), sources: { mls: MLS_SOURCES.map(source => ({ name: source.name, api: source.api })), auctions: TAX_PAGE, parcels: GIS },
-    counts: { mlsLandListings: mls.length, privateMapped: privateRows.length, privateUnmapped: privateData.unmapped.length, publicRecords: auctions.length, mappedParcels: features.length },
+    generatedAt: new Date().toISOString(), sources: { mls: MLS_SOURCES.map(source => ({ name: source.name, api: source.api })), externalListings: EXTERNAL_LISTINGS.map(item => item.url), auctions: TAX_PAGE, parcels: GIS },
+    counts: { mlsLandListings: mls.length, privateMapped: privateRows.length + externalRows.length, externalListings: externalRows.length, privateUnmapped: privateData.unmapped.length, publicRecords: auctions.length, mappedParcels: features.length },
     unmappedListings: privateData.unmapped,
     type: 'FeatureCollection', features
   };
@@ -372,7 +389,7 @@ async function main() {
     status: 'needs assessor-map confirmation'
   }));
   fs.writeFileSync(reviewFile, JSON.stringify({ generatedAt: output.generatedAt, count: lotReview.length, listings: lotReview }, null, 2));
-  console.log(`Wrote ${features.length} mapped parcels (${privateRows.length} private, ${auctions.length} public records) and ${lotReview.length} lot-review items`);
+  console.log(`Wrote ${features.length} mapped parcels (${privateRows.length} MLS private, ${externalRows.length} external, ${auctions.length} public records) and ${lotReview.length} lot-review items`);
 }
 
 main().catch(error => { console.error(error.stack || error); process.exit(1); });

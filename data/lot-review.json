@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-07T20:33:06.153Z",
-  "count": 69,
+  "generatedAt": "2026-08-15T01:54:17.207Z",
+  "count": 68,
   "listings": [
     {
       "mlsNumber": "SC26055721",
@@ -27,6 +27,18 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20260208",
+      "title": "Lot 231 Pine Ct., Hornbrook, CA 96044",
+      "acres": 2.04,
+      "latLng": [
+        41.894987,
+        -122.505611
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260208/Lot-231-Pine-Ct-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20260993",
       "title": "Lot 181 Lakeview Rd, Hornbrook, CA 96044",
       "acres": 4.2,
@@ -35,18 +47,6 @@
         -122.412485
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260993/Lot-181-Lakeview-Rd-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260258",
-      "title": "Lot 768 Ruff Way, Hornbrook, CA 96044",
-      "acres": 2.9,
-      "latLng": [
-        41.90784,
-        -122.55814
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260258/Lot-768-Ruff-Way-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -743,18 +743,6 @@
         -122.289053
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251006/Lot-3-Andrew-Ct-Mt-Shasta-CA-96067",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250978",
-      "title": "Lot 45 Palomino Rd, Weed, CA 96094",
-      "acres": 0.28,
-      "latLng": [
-        41.551213,
-        -122.387885
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250978/Lot-45-Palomino-Rd-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },

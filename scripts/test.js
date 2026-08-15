@@ -8,6 +8,12 @@ if (!failures.length) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'data/parcels.json')));
   if (data.type !== 'FeatureCollection') failures.push('data/parcels.json is not GeoJSON');
   if (!Array.isArray(data.features) || !data.features.length) failures.push('data/parcels.json has no parcel features');
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const app = fs.readFileSync(path.join(root, 'assets/app.js'), 'utf8');
+  if (!html.includes('parcelquest-warning')) failures.push('ParcelQuest warning dialog is missing');
+  if (!app.includes('Research in ParcelQuest Lite')) failures.push('ParcelQuest parcel action is missing');
+  if (!app.includes('localStorage')) failures.push('browser-local research cache is missing');
+  if (app.includes('/api/parcelquest')) failures.push('ParcelQuest must not be proxied');
   for (const feature of data.features || []) {
     if (!/^\d{3}-\d{3}-\d{3}$/.test(feature.properties?.APN || '')) failures.push(`invalid APN ${feature.properties?.APN}`);
     if (!Array.isArray(feature.properties?.records) || !feature.properties.records.length) failures.push(`missing records for ${feature.properties?.APN}`);

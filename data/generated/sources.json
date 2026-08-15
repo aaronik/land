@@ -1,0 +1,68 @@
+{
+  "generatedAt": "2026-08-14T05:03:22.709Z",
+  "layers": {
+    "parcels": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
+      "featureCount": 53720,
+      "fields": [
+        "OBJECTID",
+        "APN",
+        "Asmt",
+        "Acres",
+        "LandUse1",
+        "FeeParcel",
+        "TRA",
+        "NeighborhoodCode",
+        "Section",
+        "Township",
+        "Range",
+        "TimberPreserve",
+        "AgPreserve"
+      ]
+    },
+    "zoning": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/CDD_Zoning_Districts_Public/FeatureServer/0",
+      "featureCount": 3391,
+      "fields": [
+        "OBJECTID",
+        "zoning",
+        "zoneclass"
+      ]
+    },
+    "roads": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Roads_Public/FeatureServer/0",
+      "featureCount": 4498,
+      "fields": [
+        "FID",
+        "ROADNAME",
+        "NUM_LANES",
+        "SUR_TYPE",
+        "Label_Cate"
+      ]
+    },
+    "fire_hazard": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/FireHazardSeverity_Public/FeatureServer/0",
+      "featureCount": 3821,
+      "fields": [
+        "FID",
+        "HAZ_CODE",
+        "HAZ_CLASS",
+        "RESP"
+      ]
+    },
+    "public_land": {
+      "source": "https://services.arcgis.com/v01gqwM5QqNysAAi/arcgis/rest/services/Federal_Fee_Managers_Authoritative_PADUS/FeatureServer/0",
+      "featureCount": 44,
+      "fields": [
+        "OBJECTID",
+        "Own_Name",
+        "Own_Type",
+        "Mang_Name",
+        "Mang_Type",
+        "Unit_Nm",
+        "Pub_Access",
+        "GIS_Acres"
+      ]
+    }
+  }
+}
