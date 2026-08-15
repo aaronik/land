@@ -7,8 +7,8 @@
   <title>Shasta Land Atlas</title>
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.3.0/dist/maplibre-gl.css">
-  <script type="module" crossorigin src="/assets/index-Bkv27znC.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BGbHCAt7.css">
+  <script type="module" crossorigin src="/assets/index-DaDPEEv8.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BjHaCssF.css">
 </head>
 <body>
   <header class="masthead">
@@ -24,10 +24,9 @@
       <button class="sheet-handle" type="button" aria-expanded="false" aria-label="Expand map information">
         <span aria-hidden="true"></span><b>Map information</b>
       </button>
-      <section class="stats" aria-live="polite">
-        <div><strong id="visible-count">—</strong><span>visible parcels</span></div>
-        <div><strong id="private-count">—</strong><span>private listings</span></div>
-        <div><strong id="public-count">—</strong><span>public auctions</span></div>
+      <section class="details" id="details">
+        <h3>No parcel selected</h3>
+        <p class="meta">Hover over a parcel for a quick summary. Click it to keep the details here.</p>
       </section>
 
       <section>
@@ -59,8 +58,10 @@
         <p class="unmapped-key"><i></i>Circle marker: MLS location only; boundary unverified</p>
       </section>
 
-      <section class="details" id="details">
-        <p class="muted">Hover over a parcel for a quick summary. Click it to keep the details here.</p>
+      <section class="stats" aria-live="polite">
+        <div><strong id="visible-count">—</strong><span>visible parcels</span></div>
+        <div><strong id="private-count">—</strong><span>private listings</span></div>
+        <div><strong id="public-count">—</strong><span>public auctions</span></div>
       </section>
 
       <footer>
