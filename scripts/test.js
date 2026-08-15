@@ -2,14 +2,14 @@
 const fs = require('fs');
 const path = require('path');
 const root = path.resolve(__dirname, '..');
-const required = ['index.html', 'assets/style.css', 'assets/app.js', 'data/parcels.json', 'scripts/refresh-data.js'];
+const required = ['index.html', 'assets/style.css', 'assets/app.source.js', 'data/parcels.json', 'scripts/refresh-data.js'];
 const failures = required.filter(file => !fs.existsSync(path.join(root, file)));
 if (!failures.length) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'data/parcels.json')));
   if (data.type !== 'FeatureCollection') failures.push('data/parcels.json is not GeoJSON');
   if (!Array.isArray(data.features) || !data.features.length) failures.push('data/parcels.json has no parcel features');
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  const app = fs.readFileSync(path.join(root, 'assets/app.js'), 'utf8');
+  const app = fs.readFileSync(path.join(root, 'assets/app.source.js'), 'utf8');
   if (!html.includes('parcelquest-warning')) failures.push('ParcelQuest warning dialog is missing');
   if (!app.includes('Research in ParcelQuest Lite')) failures.push('ParcelQuest parcel action is missing');
   if (!app.includes('localStorage')) failures.push('browser-local research cache is missing');

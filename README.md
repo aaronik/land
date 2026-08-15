@@ -12,10 +12,18 @@ Static GitHub Pages map combining the two `~/suite/bin/shasta_*land*` workflows:
 ```sh
 npm install
 npm run refresh
+npm run dev
+```
+
+`npm run dev` starts Vite at `http://127.0.0.1:3100` with hot reload.
+For a production build and local preview:
+
+```sh
+npm run build
 npm start
 ```
 
-Set `BROWSER=none npm start` to run without opening a browser.
+Vite writes the production site to `build/`.
 
 ## Data model
 

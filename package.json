@@ -4,18 +4,19 @@
   "private": true,
   "description": "Interactive Siskiyou County public auction and private land map",
   "scripts": {
-    "start": "node scripts/start.js",
+    "dev": "vite",
+    "start": "vite preview",
     "refresh": "node scripts/refresh-data.js",
-    "build:app": "node -e \"console.log('Browser modules are served directly from assets/')\"",
-    "build": "node scripts/build.js",
+    "build": "vite build",
     "test": "node scripts/test.js",
-    "release": "npm run refresh && git add data && git commit -m \"refresh data $(date)\" && npm run test && npm run build && npm run deploy && rm -rf build",
-    "deploy": "gh-pages --dotfiles -d build"
+    "release": "npm run refresh && git add data && git commit -m \"refresh data $(date)\" && npm run test && npm run deploy",
+    "deploy": "npm run build && gh-pages --dotfiles -d build"
   },
   "devDependencies": {
-    "esbuild": "^0.28.2",
     "gh-pages": "^6.3.0",
-    "pdfjs-dist": "^5.4.149"
+    "pdfjs-dist": "^5.4.149",
+    "vite": "^8.2.1",
+    "vite-plugin-static-copy": "^4.1.1"
   },
   "dependencies": {
     "maplibre-gl": "^6.3.0",
