@@ -44,6 +44,17 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .swatch { display: inline-block; width: 12px; height: 12px; margin-right: 7px; border-radius: 3px; vertical-align: -1px; }
 .swatch.private-land { background: #42d7a6; } .swatch.private-home { background: #7653b5; }
 .swatch.public-land { background: #ff9d4d; } .swatch.public-home { background: #b94b18; }
+.swatch.public-overlay { background: #4e9f54; } .swatch.zoning-overlay { background: #64c7ff; }
+.swatch.fire-overlay { background: #d73027; } .swatch.roads-overlay { background: #f8d37c; }
+.terrain-toggle { width: 100%; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 11px; border: 1px solid #b8bdb8; border-radius: 8px; color: var(--ink); background: white; font-weight: 800; cursor: pointer; }
+.terrain-toggle span:first-child { font-size: 20px; line-height: 1; }
+.terrain-toggle:hover, .terrain-toggle:focus-visible { border-color: #126246; outline: 2px solid rgba(18,98,70,.18); }
+.terrain-toggle.active { color: white; background: #126246; border-color: #126246; }
+.sale-pin { width: 18px; height: 18px; padding: 0; border: 3px solid white; border-radius: 50% 50% 50% 0; background: #42d7a6; box-shadow: 0 2px 7px rgba(0,0,0,.75); transform: rotate(-45deg); cursor: pointer; }
+.sale-pin:hover, .sale-pin:focus-visible { width: 23px; height: 23px; outline: 3px solid rgba(255,255,255,.6); z-index: 2; }
+.sale-pin.private-home { background: #7653b5; }
+.sale-pin.public-land { background: #ff9d4d; }
+.sale-pin.public-home { background: #b94b18; }
 .details h3 { margin: 0 0 4px; font: 500 23px Georgia, serif; }
 .details .meta { margin: 0 0 14px; color: #687169; font-size: 12px; }
 .record { margin-top: 11px; padding: 11px; background: white; border: 1px solid var(--line); border-left: 4px solid #42d7a6; border-radius: 6px; font-size: 12px; }
@@ -52,10 +63,36 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .record.public.home { border-left-color: #b94b18; }
 .record strong { font-size: 13px; }
 .record p { margin: 4px 0; }
+.research { margin-top: 14px; padding: 12px; background: #eef2e9; border: 1px solid var(--line); border-radius: 7px; }
+.research h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; }
+.research-actions { display: grid; gap: 6px; }
+.research button, .dialog-actions button { border: 0; border-radius: 6px; padding: 8px; color: white; background: var(--ink); cursor: pointer; font-weight: 700; }
+.research textarea { width: 100%; margin: 8px 0 6px; padding: 7px; border: 1px solid #b8bdb8; border-radius: 6px; resize: vertical; font: inherit; }
+.research p { margin: 7px 0 0; color: #667067; font-size: 10px; line-height: 1.4; }
+dialog { width: min(460px, 90vw); border: 0; border-radius: 10px; color: var(--ink); background: var(--paper); box-shadow: 0 20px 70px rgba(0,0,0,.45); }
+dialog::backdrop { background: rgba(12, 25, 19, .72); }
+dialog h2 { font-size: 15px; }
+dialog p { font-size: 13px; line-height: 1.5; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 7px; }
 a { color: #126246; font-weight: 700; }
 .muted, footer { color: #667067; font-size: 11px; line-height: 1.5; }
 footer p:first-child { color: var(--ink); font-weight: 700; }
 #map { width: 100%; height: 100%; background: #1c2921; }
+/* Keep the precise live location legible over satellite imagery and 3D terrain. */
+.maplibregl-user-location-dot,
+.maplibregl-user-location-accuracy-circle { z-index: 2; }
+.maplibregl-user-location-dot { box-shadow: 0 0 0 3px white, 0 2px 9px rgba(0,0,0,.7); }
+.maplibregl-user-location-accuracy-circle { background-color: rgba(51, 136, 255, .18); }
+.cardinal-compass { margin: 12px !important; }
+.cardinal-compass button { width: 66px; height: 66px; padding: 0; border: 1px solid rgba(22,35,29,.25); border-radius: 50%; background: rgba(250,248,241,.94); box-shadow: 0 2px 10px rgba(0,0,0,.4); cursor: pointer; }
+.compass-dial { position: relative; display: block; width: 58px; height: 58px; margin: 3px; border: 1px solid rgba(22,35,29,.2); border-radius: 50%; transition: transform .08s linear; }
+.compass-dial b { position: absolute; color: #55605a; font-size: 9px; line-height: 1; }
+.compass-dial .north { top: 4px; left: 50%; color: #b9362d; font-size: 12px; transform: translateX(-50%); }
+.compass-dial .south { bottom: 4px; left: 50%; transform: translateX(-50%); }
+.compass-dial .east { top: 50%; right: 5px; transform: translateY(-50%); }
+.compass-dial .west { top: 50%; left: 5px; transform: translateY(-50%); }
+.compass-dial i { position: absolute; top: 16px; left: 50%; width: 0; height: 0; border-right: 5px solid transparent; border-bottom: 18px solid #b9362d; border-left: 5px solid transparent; transform: translateX(-50%); }
+.cardinal-compass button:hover, .cardinal-compass button:focus-visible { outline: 3px solid rgba(255,255,255,.65); }
 .google-maps-control { border: 0 !important; box-shadow: 0 1px 5px rgba(0,0,0,.4) !important; }
 .google-maps-button { display: flex; align-items: center; gap: 5px; height: 30px; padding: 0 9px; border: 0; border-radius: 2px; color: #16231d; background: white; font-size: 12px; font-weight: 700; cursor: pointer; }
 .google-maps-button:hover, .google-maps-button:focus-visible { background: #f4f1e8; outline: 2px solid #126246; outline-offset: -2px; }

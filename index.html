@@ -6,7 +6,7 @@
   <meta name="description" content="Interactive Siskiyou County public auction and private land parcel map">
   <title>Shasta Land Atlas</title>
   <link rel="preconnect" href="https://unpkg.com">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.3.0/dist/maplibre-gl.css">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -34,8 +34,20 @@
         </div>
       </section>
 
+      <section>
+        <button id="terrain-toggle" class="terrain-toggle" type="button" aria-pressed="false"><span aria-hidden="true">◭</span><span>3D terrain</span></button>
+      </section>
+
       <section class="legend">
-        <h2>Legend</h2>
+        <h2>Official map layers</h2>
+        <label><input type="checkbox" data-map-layer="public-land" checked><i class="swatch public-overlay"></i>Federal public land</label>
+        <label><input type="checkbox" data-map-layer="zoning"><i class="swatch zoning-overlay"></i>Zoning boundaries</label>
+        <label><input type="checkbox" data-map-layer="fire-hazard"><i class="swatch fire-overlay"></i>Fire hazard</label>
+        <label><input type="checkbox" data-map-layer="roads"><i class="swatch roads-overlay"></i>County roads</label>
+      </section>
+
+      <section class="legend">
+        <h2>Listings &amp; auctions</h2>
         <label><input class="filter" type="checkbox" value="private-land" checked><i class="swatch private-land"></i>Private land</label>
         <label><input class="filter" type="checkbox" value="private-home" checked><i class="swatch private-home"></i>Private homes</label>
         <label><input class="filter" type="checkbox" value="public-land" checked><i class="swatch public-land"></i>Public land auction</label>
@@ -56,7 +68,16 @@
     <div id="map" aria-label="Satellite parcel map"></div>
   </main>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="assets/app.js"></script>
+  <dialog id="parcelquest-warning">
+    <h2>ParcelQuest Lite is separate</h2>
+    <p>ParcelQuest is a third-party service with limited monthly searches and parcel maps. Its information is not part of this map and may not be republished.</p>
+    <p>The APN will be copied, ParcelQuest will open in a new tab, and only an estimated open count will be stored in this browser.</p>
+    <div class="dialog-actions">
+      <button id="cancel-parcelquest" type="button">Cancel</button>
+      <button id="continue-parcelquest" type="button">Continue</button>
+    </div>
+  </dialog>
+
+  <script type="module" src="assets/app.source.js"></script>
 </body>
 </html>
