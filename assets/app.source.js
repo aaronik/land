@@ -32,6 +32,7 @@ const map = new maplibregl.Map({
   center: [-122.45, 41.45],
   zoom: 8.25,
   maxZoom: 18,
+  maxPitch: 90,
   pitch: 0,
   hash: true,
   attributionControl: false,
