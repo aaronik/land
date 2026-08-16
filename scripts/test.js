@@ -13,6 +13,8 @@ if (!failures.length) {
   if (!html.includes('parcelquest-warning')) failures.push('ParcelQuest warning dialog is missing');
   if (!app.includes('Research in ParcelQuest Lite')) failures.push('ParcelQuest parcel action is missing');
   if (!app.includes('localStorage')) failures.push('browser-local research cache is missing');
+  if (!app.includes('if (layersInitialized || !saleData || !map.getStyle()) return;')) failures.push('map layers must wait for sales data');
+  if (!app.includes('initializeMapLayers();\n  updateSales();')) failures.push('sales data load must initialize map layers');
   if (app.includes('/api/parcelquest')) failures.push('ParcelQuest must not be proxied');
   for (const feature of data.features || []) {
     if (!/^\d{3}-\d{3}-\d{3}$/.test(feature.properties?.APN || '')) failures.push(`invalid APN ${feature.properties?.APN}`);
