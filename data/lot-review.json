@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-16T12:24:05.505Z",
-  "count": 67,
+  "generatedAt": "2026-08-15T17:56:53.606Z",
+  "count": 68,
   "listings": [
     {
       "mlsNumber": "SC26055721",
@@ -443,6 +443,18 @@
         -122.365721
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260302/Lot-177-Fox-Ct-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260282",
+      "title": "Lot 34 White Drive, Montague, CA 96064",
+      "acres": 2.8,
+      "latLng": [
+        41.552665,
+        -122.265603
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260282/Lot-34-White-Drive-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
