@@ -343,7 +343,11 @@ initializeMobileSheet();
 
 let layersInitialized = false;
 function initializeMapLayers() {
-  if (layersInitialized || !saleData || !map.getStyle()) return;
+  if (layersInitialized) return;
+  if (!map.getStyle()) {
+    setTimeout(initializeMapLayers, 50);
+    return;
+  }
   layersInitialized = true;
   try {
     addPmtilesSource('public_land');
@@ -420,6 +424,7 @@ function initializeMapLayers() {
   }
 }
 map.once('style.load', initializeMapLayers);
+initializeMapLayers();
 
 function findParcel() {
   const query = document.querySelector('#search').value.trim().toUpperCase();
@@ -444,13 +449,17 @@ document.querySelector('#continue-parcelquest').addEventListener('click', async 
   window.open(PARCELQUEST_URL, '_blank', 'noopener,noreferrer');
 });
 
-Promise.all([
-  fetch('data/parcels.json').then(response => { if (!response.ok) throw new Error(`sale data returned ${response.status}`); return response.json(); }),
-  fetch('data/generated/apn-index.json').then(response => { if (!response.ok) throw new Error(`parcel index returned ${response.status}`); return response.json(); })
-]).then(([sales, index]) => {
-  saleData = sales;
-  apnIndex = index;
-  initializeMapLayers();
-  updateSales();
-  document.querySelector('#updated').textContent = `Data refreshed ${new Date(sales.generatedAt).toLocaleString()}`;
-}).catch(error => { document.querySelector('#updated').textContent = `Could not load map data: ${error.message}`; });
+fetch('data/parcels.json')
+  .then(response => { if (!response.ok) throw new Error(`sale data returned ${response.status}`); return response.json(); })
+  .then(sales => {
+    saleData = sales;
+    initializeMapLayers();
+    updateSales();
+    document.querySelector('#updated').textContent = `Data refreshed ${new Date(sales.generatedAt).toLocaleString()}`;
+  })
+  .catch(error => { document.querySelector('#updated').textContent = `Could not load sales data: ${error.message}`; });
+
+fetch('data/generated/apn-index.json')
+  .then(response => { if (!response.ok) throw new Error(`parcel index returned ${response.status}`); return response.json(); })
+  .then(index => { apnIndex = index; })
+  .catch(error => { console.error(`Could not load parcel search index: ${error.message}`); });

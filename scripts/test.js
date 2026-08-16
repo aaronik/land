@@ -13,8 +13,9 @@ if (!failures.length) {
   if (!html.includes('parcelquest-warning')) failures.push('ParcelQuest warning dialog is missing');
   if (!app.includes('Research in ParcelQuest Lite')) failures.push('ParcelQuest parcel action is missing');
   if (!app.includes('localStorage')) failures.push('browser-local research cache is missing');
-  if (!app.includes('if (layersInitialized || !saleData || !map.getStyle()) return;')) failures.push('map layers must wait for sales data');
-  if (!app.includes('initializeMapLayers();\n  updateSales();')) failures.push('sales data load must initialize map layers');
+  if (!app.includes('if (!map.getStyle()) {') || !app.includes('setTimeout(initializeMapLayers, 50);')) failures.push('official map layers need a style readiness retry');
+  if (app.includes('Promise.all([')) failures.push('sales data must not wait for the parcel search index');
+  if (!app.includes("fetch('data/parcels.json')") || !app.includes("fetch('data/generated/apn-index.json')")) failures.push('map data startup fetches are missing');
   if (app.includes('/api/parcelquest')) failures.push('ParcelQuest must not be proxied');
   for (const feature of data.features || []) {
     if (!/^\d{3}-\d{3}-\d{3}$/.test(feature.properties?.APN || '')) failures.push(`invalid APN ${feature.properties?.APN}`);
