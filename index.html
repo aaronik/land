@@ -7,8 +7,8 @@
   <title>Shasta Land Atlas</title>
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.3.0/dist/maplibre-gl.css">
-  <script type="module" crossorigin src="/assets/index-BLU824D0.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-A73xGg-9.css">
+  <script type="module" crossorigin src="/assets/index-D9CnU6Ay.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DVhs2LOg.css">
 </head>
 <body>
   <header class="masthead">
@@ -43,7 +43,19 @@
         <label><input type="checkbox" data-map-layer="public-land" checked><i class="swatch public-overlay"></i>Federal public land</label>
         <label><input type="checkbox" data-map-layer="zoning"><i class="swatch zoning-overlay"></i>Zoning boundaries</label>
         <label><input type="checkbox" data-map-layer="fire-hazard"><i class="swatch fire-overlay"></i>Fire hazard</label>
+        <div class="layer-key" data-layer-key="fire-hazard" aria-label="Fire hazard legend">
+          <span><i style="--key-color:#d73027"></i>Very High</span><span><i style="--key-color:#fc8d59"></i>High</span><span><i style="--key-color:#fee08b"></i>Moderate</span><span><i style="--key-color:#f5a623"></i>Other / unclassified</span>
+        </div>
+        <label><input type="checkbox" data-map-layer="flood"><i class="swatch flood-overlay"></i>FEMA flood zones</label>
+        <div class="layer-key" data-layer-key="flood" aria-label="FEMA flood zone legend">
+          <span><i style="--key-color:#00c5ff"></i>Special Flood Hazard Area (1% annual chance)</span><span><i style="--key-color:#75d5ec"></i>0.2% annual chance</span><span><i style="--key-color:#e8d15c"></i>Undetermined hazard (Zone D)</span><span><i style="--key-color:#3db7de"></i>Other mapped flood zone</span>
+        </div>
+        <label><input type="checkbox" data-map-layer="soils"><i class="swatch soils-overlay"></i>USDA soils</label>
+        <div class="layer-key" data-layer-key="soils" aria-label="USDA soil drainage legend">
+          <strong>Dominant drainage class</strong><span><i style="--key-color:#4f78a8"></i>Very poorly drained</span><span><i style="--key-color:#6b94b7"></i>Poorly drained</span><span><i style="--key-color:#87adbf"></i>Somewhat poorly drained</span><span><i style="--key-color:#b9a46b"></i>Moderately well drained</span><span><i style="--key-color:#a97a45"></i>Well drained</span><span><i style="--key-color:#c48d54"></i>Somewhat excessively drained</span><span><i style="--key-color:#d5a767"></i>Excessively drained</span><span><i style="--key-color:#9b8064"></i>Other / not rated</span>
+        </div>
         <label><input type="checkbox" data-map-layer="roads" checked><i class="swatch roads-overlay"></i>County roads</label>
+        <p class="layer-note">Environmental layers are screening data—not surveys, engineering, buildability, or insurance determinations.</p>
       </section>
 
       <section class="legend">

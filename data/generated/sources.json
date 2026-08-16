@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T05:03:22.709Z",
+  "generatedAt": "2026-08-16T19:05:41.573Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -62,6 +62,37 @@
         "Unit_Nm",
         "Pub_Access",
         "GIS_Acres"
+      ]
+    },
+    "soils": {
+      "source": "https://SDMDataAccess.sc.egov.usda.gov/Spatial/SDMWGS84Geographic.wfs",
+      "featureCount": 1514,
+      "fields": [
+        "areasymbol",
+        "musym",
+        "nationalmusym",
+        "mukey",
+        "muname",
+        "slopegraddcp",
+        "brockdepmin",
+        "wtdepannmin",
+        "flodfreqdcd",
+        "drclassdcd",
+        "hydgrpdcd",
+        "engdwobdcd"
+      ]
+    },
+    "flood": {
+      "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28",
+      "featureCount": 9423,
+      "fields": [
+        "OBJECTID",
+        "FLD_ZONE",
+        "ZONE_SUBTY",
+        "SFHA_TF",
+        "STATIC_BFE",
+        "DEPTH",
+        "VELOCITY"
       ]
     }
   }
