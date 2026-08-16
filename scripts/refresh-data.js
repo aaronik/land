@@ -27,9 +27,22 @@ const STATUS_RE = /\b(REDEEMED|REMOVED|SOLD|WITHDRAWN)\b/i;
 const DATE_RANGE_RE = /\b((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}\s*(?:-|–|to)\s*(?:(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+)?\d{1,2},?\s+\d{4})\b/i;
 
 async function fetchOk(url, options = {}) {
-  const response = await fetch(url, { ...options, headers: { 'User-Agent': UA, ...(options.headers || {}) } });
-  if (!response.ok) throw new Error(`${response.status} ${response.statusText}: ${url}`);
-  return response;
+  const attempts = 4;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      const response = await fetch(url, {
+        ...options,
+        signal: options.signal || AbortSignal.timeout(30000),
+        headers: { 'User-Agent': UA, ...(options.headers || {}) }
+      });
+      if (response.ok) return response;
+      if (response.status < 500 && response.status !== 429) throw new Error(`${response.status} ${response.statusText}: ${url}`);
+      if (attempt === attempts) throw new Error(`${response.status} ${response.statusText}: ${url}`);
+    } catch (error) {
+      if (attempt === attempts) throw new Error(`Fetch failed after ${attempts} attempts: ${url}`, { cause: error });
+    }
+    await new Promise(resolve => setTimeout(resolve, attempt * 2000));
+  }
 }
 
 function normalizeApn(value) {
