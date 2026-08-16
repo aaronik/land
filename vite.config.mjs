@@ -2,19 +2,16 @@ import { defineConfig } from 'vite';
 import { readFileSync } from 'node:fs';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
-const maplibreWorker = {
-  name: 'maplibre-worker',
+const maplibreWorkers = {
+  name: 'maplibre-workers',
   generateBundle() {
-    this.emitFile({
-      type: 'asset',
-      fileName: 'assets/maplibre-gl-worker.mjs',
-      source: readFileSync('assets/vendor/maplibre/maplibre-gl-worker.mjs')
-    });
-    this.emitFile({
-      type: 'asset',
-      fileName: 'assets/maplibre-gl-shared.mjs',
-      source: readFileSync('assets/vendor/maplibre/maplibre-gl-shared.mjs')
-    });
+    for (const name of ['maplibre-gl-worker.mjs', 'maplibre-gl-shared.mjs']) {
+      this.emitFile({
+        type: 'asset',
+        fileName: `assets/${name}`,
+        source: readFileSync(`assets/vendor/maplibre/${name}`)
+      });
+    }
   }
 };
 
@@ -31,7 +28,7 @@ export default defineConfig({
     outDir: 'build'
   },
   plugins: [
-    maplibreWorker,
+    maplibreWorkers,
     viteStaticCopy({
       targets: [{ src: 'data', dest: '.' }]
     })

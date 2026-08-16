@@ -27,22 +27,9 @@ const STATUS_RE = /\b(REDEEMED|REMOVED|SOLD|WITHDRAWN)\b/i;
 const DATE_RANGE_RE = /\b((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}\s*(?:-|–|to)\s*(?:(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+)?\d{1,2},?\s+\d{4})\b/i;
 
 async function fetchOk(url, options = {}) {
-  const attempts = 4;
-  for (let attempt = 1; attempt <= attempts; attempt++) {
-    try {
-      const response = await fetch(url, {
-        ...options,
-        signal: options.signal || AbortSignal.timeout(30000),
-        headers: { 'User-Agent': UA, ...(options.headers || {}) }
-      });
-      if (response.ok) return response;
-      if (response.status < 500 && response.status !== 429) throw new Error(`${response.status} ${response.statusText}: ${url}`);
-      if (attempt === attempts) throw new Error(`${response.status} ${response.statusText}: ${url}`);
-    } catch (error) {
-      if (attempt === attempts) throw new Error(`Fetch failed after ${attempts} attempts: ${url}`, { cause: error });
-    }
-    await new Promise(resolve => setTimeout(resolve, attempt * 2000));
-  }
+  const response = await fetch(url, { ...options, headers: { 'User-Agent': UA, ...(options.headers || {}) } });
+  if (!response.ok) throw new Error(`${response.status} ${response.statusText}: ${url}`);
+  return response;
 }
 
 function normalizeApn(value) {
@@ -405,12 +392,4 @@ async function main() {
   console.log(`Wrote ${features.length} mapped parcels (${privateRows.length} MLS private, ${externalRows.length} external, ${auctions.length} public records) and ${lotReview.length} lot-review items`);
 }
 
-main().catch(error => {
-  console.error(error.stack || error);
-  if (process.env.GITHUB_ACTIONS && fs.existsSync(outFile)) {
-    console.warn('::warning::Data refresh failed; preserving and deploying the last validated parcel data.');
-    process.exitCode = 0;
-    return;
-  }
-  process.exit(1);
-});
+main().catch(error => { console.error(error.stack || error); process.exit(1); });

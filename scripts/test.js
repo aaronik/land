@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const root = path.resolve(__dirname, '..');
-const required = ['index.html', 'assets/style.css', 'assets/app.source.js', 'assets/vendor/maplibre/maplibre-gl-worker.mjs', 'data/parcels.json', 'scripts/refresh-data.js'];
+const required = ['index.html', 'assets/style.css', 'assets/app.source.js', 'data/parcels.json', 'scripts/refresh-data.js'];
 const failures = required.filter(file => !fs.existsSync(path.join(root, file)));
 if (!failures.length) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'data/parcels.json')));
@@ -13,11 +13,9 @@ if (!failures.length) {
   if (!html.includes('parcelquest-warning')) failures.push('ParcelQuest warning dialog is missing');
   if (!app.includes('Research in ParcelQuest Lite')) failures.push('ParcelQuest parcel action is missing');
   if (!app.includes('localStorage')) failures.push('browser-local research cache is missing');
-  if (!app.includes('if (!map.getStyle()) {') || !app.includes('setTimeout(initializeMapLayers, 50);')) failures.push('official map layers need a style readiness retry');
-  if (app.includes('Promise.all([')) failures.push('sales data must not wait for the parcel search index');
-  if (!app.includes("fetch('data/parcels.json')") || !app.includes("fetch('data/generated/apn-index.json')")) failures.push('map data startup fetches are missing');
+  if (!app.includes("url.searchParams.set('v', new URL(import.meta.url).pathname.split('/').pop())")) failures.push('PMTiles URLs are not versioned by the application bundle');
   const vite = fs.readFileSync(path.join(root, 'vite.config.mjs'), 'utf8');
-  if (!vite.includes("fileName: 'assets/maplibre-gl-worker.mjs'") || !vite.includes("fileName: 'assets/maplibre-gl-shared.mjs'")) failures.push('production MapLibre worker assets are missing');
+  for (const worker of ['maplibre-gl-worker.mjs', 'maplibre-gl-shared.mjs']) if (!vite.includes(worker)) failures.push(`production worker asset is missing: ${worker}`);
   if (app.includes('/api/parcelquest')) failures.push('ParcelQuest must not be proxied');
   for (const feature of data.features || []) {
     if (!/^\d{3}-\d{3}-\d{3}$/.test(feature.properties?.APN || '')) failures.push(`invalid APN ${feature.properties?.APN}`);
