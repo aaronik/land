@@ -1,6 +1,8 @@
 'use strict';
 
 const SISKIYOU_BBOX = '-123.73,40.98,-121.43,42.02';
+const SOIL_WFS = 'https://SDMDataAccess.sc.egov.usda.gov/Spatial/SDMWGS84Geographic.wfs';
+const SOIL_FIELDS = ['areasymbol', 'musym', 'nationalmusym', 'mukey', 'muname', 'slopegraddcp', 'brockdepmin', 'wtdepannmin', 'flodfreqdcd', 'drclassdcd', 'hydgrpdcd', 'engdwobdcd'];
 
 function normalizeApn(value) {
   const match = String(value || '').match(/(\d{3})\D?(\d{3})\D?([A-Z0-9]{3,})/i);
@@ -40,7 +42,7 @@ async function fetchArcGISLayer(config, request = params => defaultRequest(confi
     const data = await request({
       f: 'geojson', where: config.where || '1=1', outFields: config.fields.join(','), returnGeometry: 'true',
       outSR: '4326', orderByFields: `${config.objectId || 'OBJECTID'} ASC`, resultOffset: features.length,
-      resultRecordCount: pageSize, ...spatial
+      resultRecordCount: pageSize, ...(config.maxAllowableOffset ? { maxAllowableOffset: config.maxAllowableOffset, geometryPrecision: config.geometryPrecision || 6 } : {}), ...spatial
     });
     const batch = data.features || [];
     features.push(...batch);
@@ -48,6 +50,54 @@ async function fetchArcGISLayer(config, request = params => defaultRequest(confi
   }
   if (features.length !== expected) throw new Error(`${config.name || 'layer'} incomplete: collected ${features.length} of ${expected}`);
   return { type: 'FeatureCollection', features };
+}
+
+function decodeXml(value) {
+  return String(value || '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&amp;/g, '&');
+}
+
+function parseSoilGml(xml, fields = SOIL_FIELDS) {
+  const features = [];
+  for (const member of xml.matchAll(/<gml:featureMember>([\s\S]*?)<\/gml:featureMember>/g)) {
+    const body = member[1];
+    const fid = body.match(/\bfid="([^"]+)"/)?.[1] || '';
+    const polygons = [];
+    for (const polygonMatch of body.matchAll(/<gml:Polygon>([\s\S]*?)<\/gml:Polygon>/g)) {
+      const rings = [];
+      for (const ringMatch of polygonMatch[1].matchAll(/<gml:(?:outer|inner)BoundaryIs>[\s\S]*?<gml:coordinates>([\s\S]*?)<\/gml:coordinates>[\s\S]*?<\/gml:(?:outer|inner)BoundaryIs>/g)) {
+        // This NRCS WFS advertises EPSG:4326 axis order and emits latitude,longitude.
+        const ring = ringMatch[1].trim().split(/\s+/).map(pair => pair.split(',').map(Number)).filter(pair => pair.length >= 2 && pair.every(Number.isFinite)).map(([lat, lon]) => [lon, lat]);
+        if (ring.length >= 4) rings.push(ring);
+      }
+      if (rings.length) polygons.push(rings);
+    }
+    if (!polygons.length) continue;
+    const properties = {};
+    for (const field of fields) properties[field] = decodeXml(body.match(new RegExp(`<ms:${field}>([\\s\\S]*?)<\\/ms:${field}>`))?.[1]?.trim() || '');
+    properties.fid = fid;
+    features.push({
+      type: 'Feature', properties,
+      geometry: polygons.length === 1 ? { type: 'Polygon', coordinates: polygons[0] } : { type: 'MultiPolygon', coordinates: polygons }
+    });
+  }
+  return features;
+}
+
+async function fetchSoilLayer(config, request = fetch) {
+  const [west, south, east, north] = config.bbox.split(',').map(Number);
+  const step = 0.25;
+  const features = new Map();
+  for (let y = south; y < north; y += step) for (let x = west; x < east; x += step) {
+    const params = new URLSearchParams({
+      service: 'WFS', version: '1.1.0', request: 'GetFeature', typeName: config.typeName,
+      bbox: `${x},${y},${Math.min(x + step, east)},${Math.min(y + step, north)}`
+    });
+    const response = await request(`${config.url}?${params}`);
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}: ${config.name}`);
+    const batch = parseSoilGml(await response.text(), config.fields);
+    for (const feature of batch) features.set(feature.properties.fid || feature.properties.mupolygonkey, feature);
+  }
+  return { type: 'FeatureCollection', features: [...features.values()] };
 }
 
 const LAYERS = {
@@ -81,7 +131,18 @@ const LAYERS = {
     name: 'FEMA NFHL flood hazard zones',
     url: 'https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28',
     bbox: SISKIYOU_BBOX,
+    pageSize: 500,
+    maxAllowableOffset: 0.00005,
+    geometryPrecision: 6,
     fields: ['OBJECTID', 'FLD_ZONE', 'ZONE_SUBTY', 'SFHA_TF', 'STATIC_BFE', 'DEPTH', 'VELOCITY']
+  },
+  soils: {
+    name: 'USDA NRCS SSURGO soil map units',
+    type: 'wfs-gml',
+    url: SOIL_WFS,
+    bbox: SISKIYOU_BBOX,
+    typeName: 'mapunitpolyextended',
+    fields: SOIL_FIELDS
   },
   wetlands: {
     name: 'USFWS National Wetlands Inventory',
@@ -91,4 +152,4 @@ const LAYERS = {
   }
 };
 
-module.exports = { fetchArcGISLayer, LAYERS, listingConfidence, normalizeApn };
+module.exports = { fetchArcGISLayer, fetchSoilLayer, parseSoilGml, LAYERS, listingConfidence, normalizeApn };

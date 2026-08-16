@@ -15,6 +15,7 @@ const configs = {
   fire_hazard: { min: 7, max: 14, fields: LAYERS.fire_hazard.fields.filter(field => field !== 'FID') },
   public_land: { min: 6, max: 13, fields: LAYERS.public_land.fields.filter(field => field !== 'OBJECTID') },
   flood: { min: 8, max: 14, fields: LAYERS.flood.fields.filter(field => field !== 'OBJECTID') },
+  soils: { min: 9, max: 14, fields: LAYERS.soils.fields },
   wetlands: { min: 9, max: 14, fields: LAYERS.wetlands.fields.filter(field => field !== 'OBJECTID') }
 };
 

@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const root = path.resolve(__dirname, '..');
-const required = ['index.html', 'assets/style.css', 'assets/app.source.js', 'data/parcels.json', 'scripts/refresh-data.js'];
+const required = ['index.html', 'assets/style.css', 'assets/app.source.js', 'data/parcels.json', 'data/generated/flood.pmtiles', 'data/generated/soils.pmtiles', 'scripts/refresh-data.js'];
 const failures = required.filter(file => !fs.existsSync(path.join(root, file)));
 if (!failures.length) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'data/parcels.json')));

@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { fetchArcGISLayer, LAYERS, normalizeApn } = require('./layers');
+const { fetchArcGISLayer, fetchSoilLayer, LAYERS, normalizeApn } = require('./layers');
 
 const root = path.resolve(__dirname, '..');
 const raw = path.join(root, 'data', 'raw');
@@ -35,18 +35,20 @@ function parcelIndex(features) {
 async function main() {
   const requested = process.argv.slice(2);
   const names = requested.length ? requested : Object.keys(LAYERS);
-  const manifest = { generatedAt: new Date().toISOString(), layers: {} };
+  const manifestPath = path.join(generated, 'sources.json');
+  const previous = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, 'utf8')) : { layers: {} };
+  const manifest = { generatedAt: new Date().toISOString(), layers: requested.length ? { ...previous.layers } : {} };
   for (const name of names) {
     const config = LAYERS[name];
     if (!config) throw new Error(`Unknown layer: ${name}`);
     console.log(`Downloading ${config.name}…`);
-    const data = await fetchArcGISLayer(config);
+    const data = config.type === 'wfs-gml' ? await fetchSoilLayer(config) : await fetchArcGISLayer(config);
     fs.writeFileSync(path.join(raw, `${name}.geojson`), JSON.stringify(data));
     manifest.layers[name] = { source: config.url, featureCount: data.features.length, fields: config.fields };
     if (name === 'parcels') fs.writeFileSync(path.join(generated, 'apn-index.json'), JSON.stringify(parcelIndex(data.features)));
     console.log(`  ${data.features.length.toLocaleString()} features`);
   }
-  fs.writeFileSync(path.join(generated, 'sources.json'), JSON.stringify(manifest, null, 2));
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 }
 
 main().catch(error => { console.error(error); process.exit(1); });

@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const { fetchArcGISLayer, normalizeApn, listingConfidence } = require('./layers');
+const { fetchArcGISLayer, parseSoilGml, normalizeApn, listingConfidence } = require('./layers');
 
 async function testPaginationCompleteness() {
   const calls = [];
@@ -26,6 +26,14 @@ async function testIncompleteDownloadFails() {
   await assert.rejects(() => fetchArcGISLayer({ url: 'https://example.test/0', fields: ['APN'] }, request), /collected 0 of 2/);
 }
 
+function testSoilGmlParsing() {
+  const xml = '<gml:featureMember><ms:mapunitpolyextended fid="soil.1"><ms:multiPolygon><gml:MultiPolygon><gml:polygonMember><gml:Polygon><gml:outerBoundaryIs><gml:LinearRing><gml:coordinates>41,-122 41,-121 42,-121 41,-122</gml:coordinates></gml:LinearRing></gml:outerBoundaryIs></gml:Polygon></gml:polygonMember></gml:MultiPolygon></ms:multiPolygon><ms:mukey>123</ms:mukey><ms:muname>Test &amp; soil</ms:muname><ms:drclassdcd>Well drained</ms:drclassdcd></ms:mapunitpolyextended></gml:featureMember>';
+  const features = parseSoilGml(xml, ['mukey', 'muname', 'drclassdcd']);
+  assert.equal(features.length, 1);
+  assert.deepEqual(features[0].geometry.coordinates[0][0], [-122, 41]);
+  assert.equal(features[0].properties.muname, 'Test & soil');
+}
+
 function testMatchingConfidence() {
   assert.equal(normalizeApn('001002003'), '001-002-003');
   assert.equal(listingConfidence({ source: 'listing APN', listedAcres: 40, gisAcres: 40 }), 'provided');
@@ -38,6 +46,7 @@ function testMatchingConfidence() {
 (async () => {
   await testPaginationCompleteness();
   await testIncompleteDownloadFails();
+  testSoilGmlParsing();
   testMatchingConfidence();
   console.log('Passed: ArcGIS pagination and listing confidence tests.');
 })().catch(error => { console.error(error); process.exit(1); });

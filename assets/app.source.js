@@ -213,11 +213,17 @@ function updateSales() {
 function addPmtilesSource(id) {
   const url = new URL(`data/generated/${id}.pmtiles`, window.location.href);
   url.searchParams.set('v', new URL(import.meta.url).pathname.split('/').pop());
-  map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}` });
+  const attributions = {
+    flood: '<a href="https://www.fema.gov/flood-maps/national-flood-hazard-layer" target="_blank">FEMA NFHL</a>',
+    soils: '<a href="https://sdmdataaccess.nrcs.usda.gov/" target="_blank">USDA NRCS SSURGO</a>',
+    fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>'
+  };
+  map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id] });
 }
 function toggleLayer(id, visibleValue) {
   const layerIds = id === 'topographic-contours' ? ['topographic-contours', 'topographic-contour-labels'] : [id];
   for (const layerId of layerIds) if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibleValue ? 'visible' : 'none');
+  document.querySelector(`[data-layer-key="${id}"]`)?.classList.toggle('visible', visibleValue);
 }
 function applyTerrain(enabled) {
   terrainEnabled = enabled;
@@ -297,6 +303,8 @@ function initializeMapLayers() {
   try {
     addPmtilesSource('public_land');
   addPmtilesSource('fire_hazard');
+  addPmtilesSource('flood');
+  addPmtilesSource('soils');
   addPmtilesSource('zoning');
   addPmtilesSource('parcels');
   addPmtilesSource('roads');
@@ -355,6 +363,8 @@ function initializeMapLayers() {
     }
   });
   map.addLayer({ id: 'public-land', type: 'fill', source: 'public_land', 'source-layer': 'public_land', paint: { 'fill-color': '#4e9f54', 'fill-opacity': 0.38 } });
+  map.addLayer({ id: 'soils', type: 'fill', source: 'soils', 'source-layer': 'soils', minzoom: 9, layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'drclassdcd'], 'Very poorly drained', '#4f78a8', 'Poorly drained', '#6b94b7', 'Somewhat poorly drained', '#87adbf', 'Moderately well drained', '#b9a46b', 'Well drained', '#a97a45', 'Somewhat excessively drained', '#c48d54', 'Excessively drained', '#d5a767', '#9b8064'], 'fill-opacity': 0.34, 'fill-outline-color': 'rgba(69, 45, 25, 0.7)' } });
+  map.addLayer({ id: 'flood', type: 'fill', source: 'flood', 'source-layer': 'flood', layout: { visibility: 'none' }, paint: { 'fill-color': ['case', ['==', ['get', 'SFHA_TF'], 'T'], '#00c5ff', ['all', ['==', ['get', 'FLD_ZONE'], 'X'], ['match', ['get', 'ZONE_SUBTY'], '0.2 PCT ANNUAL CHANCE FLOOD HAZARD', true, '0.2 PERCENT ANNUAL CHANCE FLOOD HAZARD', true, false]], '#75d5ec', ['==', ['get', 'FLD_ZONE'], 'D'], '#e8d15c', '#3db7de'], 'fill-opacity': 0.38, 'fill-outline-color': 'rgba(0, 104, 160, 0.8)' } });
   map.addLayer({ id: 'fire-hazard', type: 'fill', source: 'fire_hazard', 'source-layer': 'fire_hazard', layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'HAZ_CLASS'], 'Very High', '#d73027', 'High', '#fc8d59', 'Moderate', '#fee08b', '#f5a623'], 'fill-opacity': 0.3 } });
   map.addLayer({ id: 'zoning', type: 'line', source: 'zoning', 'source-layer': 'zoning', layout: { visibility: 'none' }, paint: { 'line-color': '#64c7ff', 'line-width': 1.4, 'line-opacity': 0.8 } });
   map.addLayer({ id: 'parcel-fill', type: 'fill', source: 'parcels', 'source-layer': 'parcels', minzoom: 8, paint: { 'fill-color': '#fff', 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.01, 13, 0.045] } });
