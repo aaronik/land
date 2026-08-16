@@ -405,4 +405,12 @@ async function main() {
   console.log(`Wrote ${features.length} mapped parcels (${privateRows.length} MLS private, ${externalRows.length} external, ${auctions.length} public records) and ${lotReview.length} lot-review items`);
 }
 
-main().catch(error => { console.error(error.stack || error); process.exit(1); });
+main().catch(error => {
+  console.error(error.stack || error);
+  if (process.env.GITHUB_ACTIONS && fs.existsSync(outFile)) {
+    console.warn('::warning::Data refresh failed; preserving and deploying the last validated parcel data.');
+    process.exitCode = 0;
+    return;
+  }
+  process.exit(1);
+});
