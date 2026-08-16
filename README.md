@@ -39,7 +39,7 @@ Run the sales-data refresh independently when needed:
 npm run refresh
 ```
 
-The `Refresh sales data` GitHub Actions workflow also runs daily at 12:00 UTC (4 AM PST / 5 AM PDT) and can be started manually from the Actions tab. It commits updated files under `data/` to the default branch when the refresh produces changes.
+The `Refresh sales data` GitHub Actions workflow also runs daily at 12:00 UTC (4 AM PST / 5 AM PDT) and can be started manually from the Actions tab. It commits updated files under `data/` to the default branch, then builds and deploys the refreshed site to `gh-pages`.
 
 ## Deployment
 
