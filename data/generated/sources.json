@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T08:07:05.233Z",
+  "generatedAt": "2026-08-17T14:58:04.351Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -111,6 +111,34 @@
         "PASSNGR",
         "TRACKS",
         "NET"
+      ]
+    },
+    "huc12": {
+      "source": "https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer/6",
+      "featureCount": 293,
+      "fields": [
+        "objectid",
+        "huc12",
+        "name",
+        "hutype",
+        "humod",
+        "tohuc",
+        "areaacres",
+        "areasqkm",
+        "states"
+      ]
+    },
+    "waterways": {
+      "source": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/6",
+      "featureCount": 100796,
+      "fields": [
+        "OBJECTID",
+        "permanent_identifier",
+        "gnis_name",
+        "lengthkm",
+        "reachcode",
+        "fcode",
+        "visibilityfilter"
       ]
     }
   }
