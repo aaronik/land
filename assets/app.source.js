@@ -129,10 +129,54 @@ class GoogleStreetViewControl {
     this.map = undefined;
   }
 }
+class MilesScaleControl {
+  constructor({ maxWidth = 120 } = {}) {
+    this.maxWidth = maxWidth;
+  }
+  onAdd(controlMap) {
+    this.map = controlMap;
+    this.container = document.createElement('div');
+    this.container.className = 'maplibregl-ctrl maplibregl-ctrl-scale miles-scale-control';
+    this.container.setAttribute('role', 'img');
+    this.container.setAttribute('aria-label', 'Map distance scale in miles');
+    this.update = () => {
+      const canvas = this.map.getCanvas();
+      const y = canvas.clientHeight / 2;
+      const x = canvas.clientWidth / 2;
+      let left;
+      let right;
+      try {
+        left = this.map.unproject([x - this.maxWidth / 2, y]);
+        right = this.map.unproject([x + this.maxWidth / 2, y]);
+      } catch {
+        return;
+      }
+      if (!left || !right) return;
+      const maxMiles = left.distanceTo(right) / 1609.344;
+      if (!Number.isFinite(maxMiles) || maxMiles <= 0) return;
+      const magnitude = 10 ** Math.floor(Math.log10(maxMiles));
+      const normalized = maxMiles / magnitude;
+      const niceMiles = (normalized >= 5 ? 5 : normalized >= 2 ? 2 : 1) * magnitude;
+      this.container.style.width = `${this.maxWidth * niceMiles / maxMiles}px`;
+      this.container.textContent = `${Number(niceMiles.toPrecision(3))} mi`;
+      this.container.title = `${niceMiles} miles`;
+    };
+    this.map.on('move', this.update);
+    this.map.on('resize', this.update);
+    this.update();
+    return this.container;
+  }
+  onRemove() {
+    this.map.off('move', this.update);
+    this.map.off('resize', this.update);
+    this.container.remove();
+    this.map = undefined;
+  }
+}
 map.addControl(new GoogleStreetViewControl(), 'top-left');
 map.addControl(new CardinalCompassControl(), 'top-right');
 map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left');
-map.addControl(new maplibregl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
+map.addControl(new MilesScaleControl(), 'bottom-left');
 
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);

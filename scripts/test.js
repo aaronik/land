@@ -21,6 +21,7 @@ if (!failures.length) {
   if (!app.includes("'line-color': '#e53935'") || !app.includes("'text-field': ['get', 'NAME']")) failures.push('Railroad styling or labels are missing');
   if (!app.includes("const TERRAIN_URL_PARAM = 'terrain'") || !app.includes("url.searchParams.set(TERRAIN_URL_PARAM, '1')") || !app.includes("applyTerrain(true, { updateUrl: false, animate: false })")) failures.push('3D terrain mode is not persisted in the URL');
   if (!app.includes("url.searchParams.set('v', new URL(import.meta.url).pathname.split('/').pop())")) failures.push('PMTiles URLs are not versioned by the application bundle');
+  if (!app.includes('class MilesScaleControl') || !app.includes("this.container.textContent = `${Number(niceMiles.toPrecision(3))} mi`")) failures.push('Miles-only map distance scale is missing');
   const vite = fs.readFileSync(path.join(root, 'vite.config.mjs'), 'utf8');
   for (const worker of ['maplibre-gl-worker.mjs', 'maplibre-gl-shared.mjs']) if (!vite.includes(worker)) failures.push(`production worker asset is missing: ${worker}`);
   if (!app.includes("...(id === 'parcels' ? { promoteId: 'APN' } : {})")) failures.push('Parcel APNs are not promoted to feature IDs');
