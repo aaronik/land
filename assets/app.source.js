@@ -324,7 +324,7 @@ function addPmtilesSource(id) {
     flood: '<a href="https://www.fema.gov/flood-maps/national-flood-hazard-layer" target="_blank">FEMA NFHL</a>',
     soils: '<a href="https://sdmdataaccess.nrcs.usda.gov/" target="_blank">USDA NRCS SSURGO</a>',
     fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>',
-    railroads: '<a href="https://tigerweb.geo.census.gov/" target="_blank">U.S. Census Bureau TIGER/Line</a>'
+    railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>'
   };
   map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id], ...(id === 'parcels' ? { promoteId: 'APN' } : {}) });
 }
@@ -532,9 +532,10 @@ function initializeMapLayers() {
   });
   map.addLayer({
     id: 'railroad-labels', type: 'symbol', source: 'railroads', 'source-layer': 'railroads', minzoom: 10,
-    filter: ['all', ['has', 'NAME'], ['!=', ['get', 'NAME'], '']],
+    filter: ['any', ['has', 'SUBDIV'], ['has', 'BRANCH'], ['has', 'RROWNER1']],
     layout: {
-      'symbol-placement': 'line', 'symbol-spacing': 500, 'text-field': ['get', 'NAME'],
+      'symbol-placement': 'line', 'symbol-spacing': 500,
+      'text-field': ['coalesce', ['get', 'SUBDIV'], ['get', 'BRANCH'], ['get', 'RROWNER1']],
       'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 10, 10, 14, 12],
       'text-letter-spacing': 0.04, 'text-offset': [0, 1.1], 'text-padding': 4, 'text-keep-upright': true
     },

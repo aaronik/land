@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const { fetchArcGISLayer, parseSoilGml, normalizeApn, listingConfidence } = require('./layers');
+const { fetchArcGISLayer, parseSoilGml, normalizeApn, listingConfidence, LAYERS } = require('./layers');
 
 async function testPaginationCompleteness() {
   const calls = [];
@@ -43,10 +43,19 @@ function testMatchingConfidence() {
   assert.equal(listingConfidence({ source: '', listedAcres: 20, gisAcres: null }), 'unmatched');
 }
 
+function testActiveRailroadSource() {
+  const railroads = LAYERS.railroads;
+  assert.match(railroads.url, /NTAD_North_American_Rail_Network_Lines/);
+  assert.equal(railroads.where, "NET IN ('M','I','O','S','Y','Z') OR (NET = 'X' AND RROWNER1 = 'MCR')");
+  assert(railroads.fields.includes('NET'));
+  assert(railroads.fields.includes('RROWNER1'));
+}
+
 (async () => {
   await testPaginationCompleteness();
   await testIncompleteDownloadFails();
   testSoilGmlParsing();
   testMatchingConfidence();
-  console.log('Passed: ArcGIS pagination and listing confidence tests.');
+  testActiveRailroadSource();
+  console.log('Passed: ArcGIS pagination, active rail, and listing confidence tests.');
 })().catch(error => { console.error(error); process.exit(1); });

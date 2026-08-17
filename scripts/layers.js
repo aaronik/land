@@ -117,10 +117,14 @@ const LAYERS = {
     objectId: 'FID', fields: ['FID', 'ROADNAME', 'NUM_LANES', 'SUR_TYPE', 'Label_Cate']
   },
   railroads: {
-    name: 'U.S. Census Bureau railroads',
-    url: 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Transportation/MapServer/9',
+    name: 'USDOT/FRA active rail network',
+    url: 'https://services.arcgis.com/xOi1kZaI0eWDREZv/ArcGIS/rest/services/NTAD_North_American_Rail_Network_Lines/FeatureServer/0',
     bbox: SISKIYOU_BBOX,
-    fields: ['OBJECTID', 'NAME', 'BASENAME', 'MTFCC']
+    // NARN NET codes A/R/T/X are normally abandoned, removed, trail, or out of
+    // service. FRA still marks the reactivated McCloud Railway (MCR) as X, so
+    // retain that known-active corridor; F is a ferry connection rather than track.
+    where: "NET IN ('M','I','O','S','Y','Z') OR (NET = 'X' AND RROWNER1 = 'MCR')",
+    fields: ['OBJECTID', 'FRAARCID', 'RROWNER1', 'RROWNER2', 'RROWNER3', 'DIVISION', 'SUBDIV', 'BRANCH', 'YARDNAME', 'PASSNGR', 'TRACKS', 'NET']
   },
   fire_hazard: {
     name: 'Siskiyou County fire hazard severity',
