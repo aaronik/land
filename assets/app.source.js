@@ -24,6 +24,8 @@ let apnIndex = {};
 let selectedResearchApn = '';
 let selectedApn = '';
 let terrainEnabled = false;
+const TERRAIN_URL_PARAM = 'terrain';
+const initialTerrainEnabled = new URL(window.location.href).searchParams.get(TERRAIN_URL_PARAM) === '1';
 let enabledCategories = new Set(Object.keys(COLORS));
 
 const map = new maplibregl.Map({
@@ -292,11 +294,18 @@ function toggleLayer(id, visibleValue) {
   for (const layerId of layerIds) if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibleValue ? 'visible' : 'none');
   document.querySelector(`[data-layer-key="${id}"]`)?.classList.toggle('visible', visibleValue);
 }
-function applyTerrain(enabled) {
+function updateTerrainUrl(enabled) {
+  const url = new URL(window.location.href);
+  if (enabled) url.searchParams.set(TERRAIN_URL_PARAM, '1');
+  else url.searchParams.delete(TERRAIN_URL_PARAM);
+  window.history.replaceState(window.history.state, '', url);
+}
+function applyTerrain(enabled, { updateUrl = true, animate = true } = {}) {
   terrainEnabled = enabled;
   map.setTerrain(enabled ? { source: 'terrain', exaggeration: 1.5 } : null);
   if (map.getLayer('terrain-relief')) map.setLayoutProperty('terrain-relief', 'visibility', enabled ? 'visible' : 'none');
-  map.easeTo({ pitch: enabled ? 60 : 0, bearing: enabled ? -12 : 0, duration: 700 });
+  if (animate) map.easeTo({ pitch: enabled ? 60 : 0, bearing: enabled ? -12 : 0, duration: 700 });
+  if (updateUrl) updateTerrainUrl(enabled);
   const button = document.querySelector('#terrain-toggle');
   button.classList.toggle('active', enabled);
   button.setAttribute('aria-pressed', String(enabled));
@@ -546,7 +555,10 @@ function initializeMapLayers() {
     console.error(error);
   }
 }
-map.once('style.load', initializeMapLayers);
+map.once('style.load', () => {
+  initializeMapLayers();
+  if (initialTerrainEnabled) applyTerrain(true, { updateUrl: false, animate: false });
+});
 
 function findParcel() {
   const query = document.querySelector('#search').value.trim().toUpperCase();
