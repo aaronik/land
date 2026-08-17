@@ -325,6 +325,7 @@ function addPmtilesSource(id) {
     soils: '<a href="https://sdmdataaccess.nrcs.usda.gov/" target="_blank">USDA NRCS SSURGO</a>',
     fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>',
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
+    waterways: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
     huc12: '<a href="https://www.usgs.gov/national-hydrography/watershed-boundary-dataset" target="_blank">USGS Watershed Boundary Dataset</a>'
   };
   map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id], ...(id === 'parcels' ? { promoteId: 'APN' } : {}) });
@@ -334,6 +335,7 @@ function toggleLayer(id, visibleValue) {
     'topographic-contours': ['topographic-contours', 'topographic-contour-labels'],
     roads: ['roads', 'road-labels'],
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
+    waterways: ['waterways-casing', 'waterways', 'waterway-labels'],
     huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels']
   };
   const layerIds = groupedLayers[id] || [id];
@@ -432,6 +434,7 @@ function initializeMapLayers() {
   addPmtilesSource('parcels');
   addPmtilesSource('roads');
   addPmtilesSource('railroads');
+  addPmtilesSource('waterways');
   map.addSource('sales', { type: 'geojson', data: saleGeoJson() });
   map.addSource('sale-points', { type: 'geojson', data: salePointGeoJson() });
   map.addSource('unmapped', { type: 'geojson', data: unmappedGeoJson() });
@@ -499,6 +502,29 @@ function initializeMapLayers() {
   map.addLayer({ id: 'zoning', type: 'line', source: 'zoning', 'source-layer': 'zoning', layout: { visibility: 'none' }, paint: { 'line-color': '#64c7ff', 'line-width': 1.4, 'line-opacity': 0.8 } });
   map.addLayer({ id: 'parcel-fill', type: 'fill', source: 'parcels', 'source-layer': 'parcels', minzoom: 8, paint: { 'fill-color': '#fff', 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.01, 13, 0.045] } });
   map.addLayer({ id: 'parcel-lines', type: 'line', source: 'parcels', 'source-layer': 'parcels', minzoom: 8, paint: { 'line-color': '#aeb4b7', 'line-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 13, 0.85], 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 15, 1.8] } });
+  map.addLayer({
+    id: 'waterways-casing', type: 'line', source: 'waterways', 'source-layer': 'waterways', minzoom: 7,
+    paint: { 'line-color': 'rgba(6, 31, 58, 0.78)', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 2.3, 14, 5.2], 'line-opacity': 0.85 }
+  });
+  map.addLayer({
+    id: 'waterways', type: 'line', source: 'waterways', 'source-layer': 'waterways', minzoom: 7,
+    paint: {
+      'line-color': '#38a8ff',
+      'line-width': ['interpolate', ['linear'], ['zoom'], 7, ['match', ['get', 'fcode'], 46006, 1.4, 0.8], 14, ['match', ['get', 'fcode'], 46006, 3.2, 1.8]],
+      'line-opacity': ['match', ['get', 'fcode'], 46007, 0.6, 0.95],
+      'line-dasharray': ['match', ['get', 'fcode'], 46003, ['literal', [3, 2]], 46007, ['literal', [1.5, 2]], ['literal', [1, 0]]]
+    }
+  });
+  map.addLayer({
+    id: 'waterway-labels', type: 'symbol', source: 'waterways', 'source-layer': 'waterways', minzoom: 10,
+    filter: ['all', ['has', 'gnis_name'], ['!=', ['get', 'gnis_name'], '']],
+    layout: {
+      'symbol-placement': 'line', 'symbol-spacing': 400, 'text-field': ['get', 'gnis_name'],
+      'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 10, 10, 14, 12],
+      'text-letter-spacing': 0.03, 'text-offset': [0, 1], 'text-padding': 4, 'text-keep-upright': true
+    },
+    paint: { 'text-color': '#78c6ff', 'text-halo-color': 'rgba(6, 24, 43, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
+  });
   map.addLayer({ id: 'roads', type: 'line', source: 'roads', 'source-layer': 'roads', minzoom: 9, paint: { 'line-color': '#f8d37c', 'line-width': ['interpolate', ['linear'], ['zoom'], 9, 0.7, 15, 3], 'line-opacity': 0.9 } });
   map.addLayer({
     id: 'road-labels',

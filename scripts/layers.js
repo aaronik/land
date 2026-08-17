@@ -126,6 +126,15 @@ const LAYERS = {
     where: "NET IN ('M','I','O','S','Y','Z') OR (NET = 'X' AND RROWNER1 = 'MCR')",
     fields: ['OBJECTID', 'FRAARCID', 'RROWNER1', 'RROWNER2', 'RROWNER3', 'DIVISION', 'SUBDIV', 'BRANCH', 'YARDNAME', 'PASSNGR', 'TRACKS', 'NET']
   },
+  waterways: {
+    name: 'USGS NHD rivers and streams',
+    url: 'https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/6',
+    bbox: SISKIYOU_BBOX,
+    where: 'ftype = 460',
+    maxAllowableOffset: 0.00001,
+    geometryPrecision: 6,
+    fields: ['OBJECTID', 'permanent_identifier', 'gnis_name', 'lengthkm', 'reachcode', 'fcode', 'visibilityfilter']
+  },
   fire_hazard: {
     name: 'Siskiyou County fire hazard severity',
     url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/FireHazardSeverity_Public/FeatureServer/0',

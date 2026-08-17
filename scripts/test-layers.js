@@ -51,11 +51,20 @@ function testActiveRailroadSource() {
   assert(railroads.fields.includes('RROWNER1'));
 }
 
+function testWaterwaysSource() {
+  const waterways = LAYERS.waterways;
+  assert.match(waterways.url, /hydro\.nationalmap\.gov.*\/nhd\/MapServer\/6/);
+  assert.equal(waterways.where, 'ftype = 460');
+  assert(waterways.fields.includes('gnis_name'));
+  assert(waterways.fields.includes('fcode'));
+}
+
 (async () => {
   await testPaginationCompleteness();
   await testIncompleteDownloadFails();
   testSoilGmlParsing();
   testMatchingConfidence();
   testActiveRailroadSource();
-  console.log('Passed: ArcGIS pagination, active rail, and listing confidence tests.');
+  testWaterwaysSource();
+  console.log('Passed: ArcGIS pagination, transportation, waterways, and listing confidence tests.');
 })().catch(error => { console.error(error); process.exit(1); });

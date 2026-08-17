@@ -47,7 +47,7 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .swatch.public-overlay { background: #4e9f54; } .swatch.zoning-overlay { background: #64c7ff; }
 .swatch.watershed-overlay { border: 2px solid #44d7e8; background: rgba(68,215,232,.22); }
 .swatch.topo-overlay { border: 1px solid rgba(22,35,29,.16); background: repeating-linear-gradient(165deg, transparent 0 3px, #9d8b63 3px 4px); }
-.swatch.fire-overlay { background: #d73027; } .swatch.roads-overlay { background: #f8d37c; } .swatch.railroads-overlay { background: #e53935; }
+.swatch.fire-overlay { background: #d73027; } .swatch.roads-overlay { background: #f8d37c; } .swatch.railroads-overlay { background: #e53935; } .swatch.waterways-overlay { background: #38a8ff; }
 .swatch.flood-overlay { background: #26bce8; }
 .swatch.soils-overlay { background: repeating-linear-gradient(135deg, #9a6b3b 0 3px, #d6b06b 3px 6px); }
 .layer-note { margin: 10px 0 0; color: #687169; font-size: 10px; line-height: 1.4; }

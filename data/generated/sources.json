@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T14:49:46.845Z",
+  "generatedAt": "2026-08-17T14:58:04.351Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -126,6 +126,19 @@
         "areaacres",
         "areasqkm",
         "states"
+      ]
+    },
+    "waterways": {
+      "source": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/6",
+      "featureCount": 100796,
+      "fields": [
+        "OBJECTID",
+        "permanent_identifier",
+        "gnis_name",
+        "lengthkm",
+        "reachcode",
+        "fcode",
+        "visibilityfilter"
       ]
     }
   }
