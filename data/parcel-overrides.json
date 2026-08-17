@@ -4,5 +4,11 @@
     "source": "listing boundary exhibit compared with Siskiyou County GIS",
     "confidence": "manually verified; seller/title confirmation pending",
     "notes": "MLS advertises 64 acres; county GIS parcels total 66 acres"
+  },
+  "20261019": {
+    "apns": ["021-280-320"],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "3812 Dale Creek Rd, Weed, CA 96094"
   }
 }
