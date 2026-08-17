@@ -105,6 +105,29 @@ class CardinalCompassControl {
     this.container.remove();
   }
 }
+class GoogleStreetViewControl {
+  onAdd(controlMap) {
+    this.map = controlMap;
+    this.container = document.createElement('div');
+    this.container.className = 'maplibregl-ctrl google-maps-control';
+    this.container.innerHTML = '<button class="google-maps-button" type="button" aria-label="Open Google Street View at the map center" title="Open Google Street View at the map center"><span aria-hidden="true">◉</span><span>Street View</span></button>';
+    this.container.querySelector('button').addEventListener('click', () => {
+      const center = this.map.getCenter();
+      const url = new URL('https://www.google.com/maps/@');
+      url.searchParams.set('api', '1');
+      url.searchParams.set('map_action', 'pano');
+      url.searchParams.set('viewpoint', `${center.lat.toFixed(6)},${center.lng.toFixed(6)}`);
+      url.searchParams.set('heading', String((this.map.getBearing() + 360) % 360));
+      window.open(url.href, '_blank', 'noopener,noreferrer');
+    });
+    return this.container;
+  }
+  onRemove() {
+    this.container.remove();
+    this.map = undefined;
+  }
+}
+map.addControl(new GoogleStreetViewControl(), 'top-left');
 map.addControl(new CardinalCompassControl(), 'top-right');
 map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left');
 map.addControl(new maplibregl.ScaleControl({ unit: 'imperial' }), 'bottom-left');

@@ -107,7 +107,8 @@ footer p:first-child { color: var(--ink); font-weight: 700; }
 .cardinal-compass button:hover, .cardinal-compass button:focus-visible { outline: 3px solid rgba(255,255,255,.65); }
 .google-maps-control { border: 0 !important; box-shadow: 0 1px 5px rgba(0,0,0,.4) !important; }
 .google-maps-button { display: flex; align-items: center; gap: 5px; height: 30px; padding: 0 9px; border: 0; border-radius: 2px; color: #16231d; background: white; font-size: 12px; font-weight: 700; cursor: pointer; }
-.google-maps-button:hover, .google-maps-button:focus-visible { background: #f4f1e8; outline: 2px solid #126246; outline-offset: -2px; }
+.google-maps-button:hover { background-color: rgba(0, 0, 0, .05) !important; }
+.google-maps-button:focus-visible { background-color: rgba(0, 0, 0, .05) !important; outline: 2px solid #126246; outline-offset: -2px; }
 .google-maps-button span:first-child { font-size: 16px; line-height: 1; }
 .leaflet-tooltip { border: 0; box-shadow: 0 2px 12px rgba(0,0,0,.35); font-weight: 800; }
 .parcel-tooltip { min-width: 245px; max-width: 360px; padding: 2px; font: 12px/1.3 Inter, ui-sans-serif, system-ui, sans-serif; font-weight: 400; }
