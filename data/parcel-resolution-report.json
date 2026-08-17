@@ -1,0 +1,229 @@
+{
+  "generatedAt": "2026-08-17T06:51:59.728Z",
+  "resolver": "subdivision-lot-sequence-v1",
+  "evaluatedGroups": 13,
+  "mappedListings": 6,
+  "groups": [
+    {
+      "latLng": [
+        41.464464,
+        -122.619416
+      ],
+      "mlsNumbers": [
+        "20260057",
+        "20260219"
+      ],
+      "status": "unresolved",
+      "reason": "no unique corroborated APN prefix",
+      "assignments": []
+    },
+    {
+      "latLng": [
+        41.513297,
+        -122.377096
+      ],
+      "mlsNumbers": [
+        "20260968",
+        "20260373"
+      ],
+      "status": "unresolved",
+      "reason": "no unique corroborated APN prefix",
+      "assignments": []
+    },
+    {
+      "latLng": [
+        41.31519,
+        -122.289195
+      ],
+      "mlsNumbers": [
+        "20260426",
+        "20260425",
+        "20260424",
+        "20260423"
+      ],
+      "status": "unresolved",
+      "reason": "no unique corroborated APN prefix",
+      "assignments": []
+    },
+    {
+      "latLng": [
+        41.409346,
+        -122.376183
+      ],
+      "mlsNumbers": [
+        "20250336",
+        "20250335",
+        "20250331",
+        "20250320",
+        "20250319"
+      ],
+      "status": "auto_mapped",
+      "reason": "corroborated lot/APN sequence and exact acreage",
+      "assignments": [
+        {
+          "mlsNumber": "20250320",
+          "lotNumber": 9,
+          "apn": "021-750-090",
+          "listedAcres": 2.52,
+          "gisAcres": 2.52
+        },
+        {
+          "mlsNumber": "20250319",
+          "lotNumber": 3,
+          "apn": "021-750-030",
+          "listedAcres": 2.51,
+          "gisAcres": 2.51
+        }
+      ]
+    },
+    {
+      "latLng": [
+        41.407414,
+        -122.369337
+      ],
+      "mlsNumbers": [
+        "20250332",
+        "20250927"
+      ],
+      "status": "unresolved",
+      "reason": "no unique corroborated APN prefix",
+      "assignments": []
+    },
+    {
+      "latLng": [
+        41.408293,
+        -122.371921
+      ],
+      "mlsNumbers": [
+        "20250330",
+        "20250329",
+        "20250328",
+        "20250327"
+      ],
+      "status": "unresolved",
+      "reason": "no unique corroborated APN prefix",
+      "assignments": []
+    },
+    {
+      "latLng": [
+        41.413778,
+        -122.372076
+      ],
+      "mlsNumbers": [
+        "20250321",
+        "20250318"
+      ],
+      "status": "auto_mapped",
+      "reason": "corroborated lot/APN sequence and exact acreage",
+      "assignments": [
+        {
+          "mlsNumber": "20250321",
+          "lotNumber": 26,
+          "apn": "021-750-260",
+          "listedAcres": 4.15,
+          "gisAcres": 4.15
+        },
+        {
+          "mlsNumber": "20250318",
+          "lotNumber": 25,
+          "apn": "021-750-250",
+          "listedAcres": 14.19,
+          "gisAcres": 14.19
+        }
+      ]
+    },
+    {
+      "latLng": [
+        41.90784,
+        -122.55814
+      ],
+      "mlsNumbers": [
+        "20260356",
+        "20250928"
+      ],
+      "status": "unresolved",
+      "reason": "no unique corroborated APN prefix",
+      "assignments": []
+    },
+    {
+      "latLng": [
+        41.53687,
+        -122.385647
+      ],
+      "mlsNumbers": [
+        "20260309",
+        "20260308"
+      ],
+      "status": "unresolved",
+      "reason": "no unique corroborated APN prefix",
+      "assignments": []
+    },
+    {
+      "latLng": [
+        41.307429,
+        -122.300276
+      ],
+      "mlsNumbers": [
+        "20260268",
+        "20260160"
+      ],
+      "status": "unresolved",
+      "reason": "no unique corroborated APN prefix",
+      "assignments": []
+    },
+    {
+      "latLng": [
+        41.285002,
+        -122.289053
+      ],
+      "mlsNumbers": [
+        "20260199",
+        "20251006"
+      ],
+      "status": "unresolved",
+      "reason": "no unique corroborated APN prefix",
+      "assignments": []
+    },
+    {
+      "latLng": [
+        41.646509,
+        -122.377382
+      ],
+      "mlsNumbers": [
+        "20260093",
+        "20260092"
+      ],
+      "status": "auto_mapped",
+      "reason": "corroborated lot/APN sequence and exact acreage",
+      "assignments": [
+        {
+          "mlsNumber": "20260093",
+          "lotNumber": 3,
+          "apn": "039-310-030",
+          "listedAcres": 20,
+          "gisAcres": 20
+        },
+        {
+          "mlsNumber": "20260092",
+          "lotNumber": 2,
+          "apn": "039-310-020",
+          "listedAcres": 20,
+          "gisAcres": 20
+        }
+      ]
+    },
+    {
+      "latLng": [
+        41.541831,
+        -122.367731
+      ],
+      "mlsNumbers": [
+        "20250116",
+        "20250115"
+      ],
+      "status": "unresolved",
+      "reason": "no unique corroborated APN prefix",
+      "assignments": []
+    }
+  ]
+}

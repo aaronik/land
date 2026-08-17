@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { resolveUnmappedParcels } = require('./parcel-resolver');
 
 let pdfjs;
 
@@ -9,6 +10,7 @@ const root = path.resolve(__dirname, '..');
 const outFile = path.join(root, 'data', 'parcels.json');
 const overridesFile = path.join(root, 'data', 'parcel-overrides.json');
 const reviewFile = path.join(root, 'data', 'lot-review.json');
+const resolverReportFile = path.join(root, 'data', 'parcel-resolution-report.json');
 const externalListingsFile = path.join(root, 'data', 'external-listings.json');
 const EXTERNAL_LISTINGS = fs.existsSync(externalListingsFile) ? JSON.parse(fs.readFileSync(externalListingsFile, 'utf8')) : [];
 const PARCEL_OVERRIDES = fs.existsSync(overridesFile) ? JSON.parse(fs.readFileSync(overridesFile, 'utf8')) : {};
@@ -192,6 +194,21 @@ async function parcelsNearPoint(latLng, distance = 0) {
   }));
 }
 
+async function resolverParcelCandidates(latLng, distance = 750) {
+  if (!Array.isArray(latLng) || latLng.length !== 2) return [];
+  const [lat, lon] = latLng.map(Number);
+  const params = new URLSearchParams({
+    f: 'json', where: '1=1', outFields: 'APN,Acres', returnGeometry: 'false', outSR: 4326,
+    geometry: `${lon},${lat}`, geometryType: 'esriGeometryPoint', inSR: 4326,
+    spatialRel: 'esriSpatialRelIntersects', distance: String(distance), units: 'esriSRUnit_Meter', resultRecordCount: 2000
+  });
+  const data = await (await fetchOk(`${GIS}?${params}`)).json();
+  return (data.features || []).map(feature => ({
+    apn: normalizeApn(feature.attributes?.APN),
+    acres: Number(feature.attributes?.Acres) || null
+  })).filter(parcel => parcel.apn && parcel.acres);
+}
+
 async function apnAtPoint(latLng) {
   return (await parcelsNearPoint(latLng))[0] || null;
 }
@@ -354,7 +371,13 @@ async function main() {
   pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
   console.log('Fetching MLS and county auction sources…');
   const [mls, auctions] = await Promise.all([fetchMls(), fetchAuctions()]);
-  const privateData = await privateRecords(mls);
+  const firstPass = await privateRecords(mls);
+  const resolverEnabled = process.env.SECONDARY_PARCEL_RESOLVER !== '0';
+  if (resolverEnabled) console.log('Running conservative secondary parcel resolver…');
+  const secondary = resolverEnabled
+    ? await resolveUnmappedParcels(firstPass.unmapped, resolverParcelCandidates)
+    : { resolved: [], unmapped: firstPass.unmapped, report: { resolver: 'subdivision-lot-sequence-v1', disabled: true, evaluatedGroups: 0, mappedListings: 0, groups: [] } };
+  const privateData = { records: [...firstPass.records, ...secondary.resolved], unmapped: secondary.unmapped };
   const privateRows = privateData.records;
   const externalRows = externalRecords();
   const records = [...privateRows, ...externalRows, ...auctions];
@@ -389,7 +412,8 @@ async function main() {
     status: 'needs assessor-map confirmation'
   }));
   fs.writeFileSync(reviewFile, JSON.stringify({ generatedAt: output.generatedAt, count: lotReview.length, listings: lotReview }, null, 2));
-  console.log(`Wrote ${features.length} mapped parcels (${privateRows.length} MLS private, ${externalRows.length} external, ${auctions.length} public records) and ${lotReview.length} lot-review items`);
+  fs.writeFileSync(resolverReportFile, JSON.stringify({ generatedAt: output.generatedAt, ...secondary.report }, null, 2));
+  console.log(`Wrote ${features.length} mapped parcels (${privateRows.length} MLS private, ${externalRows.length} external, ${auctions.length} public records), ${lotReview.length} lot-review items, and ${secondary.resolved.length} secondary mappings`);
 }
 
 main().catch(error => { console.error(error.stack || error); process.exit(1); });
