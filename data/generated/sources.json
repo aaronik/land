@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T05:34:47.473Z",
+  "generatedAt": "2026-08-17T08:07:05.233Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -96,13 +96,21 @@
       ]
     },
     "railroads": {
-      "source": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Transportation/MapServer/9",
-      "featureCount": 114,
+      "source": "https://services.arcgis.com/xOi1kZaI0eWDREZv/ArcGIS/rest/services/NTAD_North_American_Rail_Network_Lines/FeatureServer/0",
+      "featureCount": 193,
       "fields": [
         "OBJECTID",
-        "NAME",
-        "BASENAME",
-        "MTFCC"
+        "FRAARCID",
+        "RROWNER1",
+        "RROWNER2",
+        "RROWNER3",
+        "DIVISION",
+        "SUBDIV",
+        "BRANCH",
+        "YARDNAME",
+        "PASSNGR",
+        "TRACKS",
+        "NET"
       ]
     }
   }
