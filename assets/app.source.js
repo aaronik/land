@@ -27,6 +27,7 @@ let terrainEnabled = false;
 const TERRAIN_URL_PARAM = 'terrain';
 const initialTerrainEnabled = new URL(window.location.href).searchParams.get(TERRAIN_URL_PARAM) === '1';
 let enabledCategories = new Set(Object.keys(COLORS));
+let searchQuery = '';
 
 const map = new maplibregl.Map({
   container: 'map',
@@ -197,6 +198,18 @@ function markerLabel(properties) {
   return abbreviatedPrice && acres ? `${abbreviatedPrice}/${acres}` : '';
 }
 function categories(feature) { return new Set((feature.properties.records || []).map(record => record.category)); }
+function normalizeSearch(value) { return String(value || '').toUpperCase().replace(/[^A-Z0-9]+/g, ' ').trim(); }
+function recordMatchesSearch(record, query = searchQuery) {
+  if (!query) return true;
+  const searchable = [record.title, record.APN, record.mlsNumber, record.item, record.listingSource];
+  return normalizeSearch(searchable.filter(Boolean).join(' ')).includes(query);
+}
+function searchableFeature(feature) {
+  if (!searchQuery) return feature;
+  const apnMatches = normalizeSearch(feature.properties.APN).includes(searchQuery);
+  const records = (feature.properties.records || []).filter(record => apnMatches || recordMatchesSearch(record));
+  return records.length ? { ...feature, properties: { ...feature.properties, records } } : null;
+}
 function visible(feature) { return [...categories(feature)].some(value => enabledCategories.has(value)); }
 function firstCategory(feature) { return [...categories(feature)].find(value => enabledCategories.has(value)) || [...categories(feature)][0]; }
 function researchKey(apn) { return `shasta-land-research:${apn}`; }
@@ -253,10 +266,16 @@ function selectParcel(properties) {
   setSelectedApn(properties.APN);
   showParcelDetails(properties);
 }
+function filteredMappedListings() {
+  return (saleData?.features || []).map(searchableFeature).filter(feature => feature && visible(feature));
+}
+function filteredUnmappedListings() {
+  return (saleData?.unmappedListings || []).filter(record => enabledCategories.has(record.category) && recordMatchesSearch(record));
+}
 function saleGeoJson() {
   return {
     type: 'FeatureCollection',
-    features: (saleData?.features || []).filter(visible).map(feature => ({ ...feature, properties: { ...feature.properties, displayCategory: firstCategory(feature) } }))
+    features: filteredMappedListings().map(feature => ({ ...feature, properties: { ...feature.properties, displayCategory: firstCategory(feature) } }))
   };
 }
 function featureCenter(feature) {
@@ -273,12 +292,12 @@ function featureCenter(feature) {
 function salePointGeoJson() {
   return {
     type: 'FeatureCollection',
-    features: (saleData?.features || []).filter(visible).map(feature => ({ type: 'Feature', geometry: { type: 'Point', coordinates: featureCenter(feature) }, properties: { ...feature.properties, displayCategory: firstCategory(feature), markerLabel: markerLabel(feature.properties) } })).filter(feature => feature.geometry.coordinates)
+    features: filteredMappedListings().map(feature => ({ type: 'Feature', geometry: { type: 'Point', coordinates: featureCenter(feature) }, properties: { ...feature.properties, displayCategory: firstCategory(feature), markerLabel: markerLabel(feature.properties) } })).filter(feature => feature.geometry.coordinates)
   };
 }
 function separatedUnmappedListings() {
   const groups = new Map();
-  for (const record of (saleData?.unmappedListings || []).filter(record => enabledCategories.has(record.category))) {
+  for (const record of filteredUnmappedListings()) {
     const key = record.latLng.map(value => Number(value).toFixed(6)).join(',');
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(record);
@@ -312,10 +331,11 @@ function updateSales() {
   map.getSource('sales')?.setData(saleGeoJson());
   map.getSource('sale-points')?.setData(salePointGeoJson());
   map.getSource('unmapped')?.setData(unmappedGeoJson());
-  const shown = (saleData?.features || []).filter(visible);
-  document.querySelector('#visible-count').textContent = shown.length + (saleData?.unmappedListings || []).filter(record => enabledCategories.has(record.category)).length;
-  document.querySelector('#private-count').textContent = shown.filter(f => [...categories(f)].some(c => c.startsWith('private-'))).length;
-  document.querySelector('#public-count').textContent = shown.filter(f => [...categories(f)].some(c => c.startsWith('public-'))).length;
+  const shown = filteredMappedListings();
+  const unmapped = filteredUnmappedListings();
+  document.querySelector('#visible-count').textContent = shown.length + unmapped.length;
+  document.querySelector('#private-count').textContent = shown.filter(f => [...categories(f)].some(c => c.startsWith('private-'))).length + unmapped.filter(r => r.category.startsWith('private-')).length;
+  document.querySelector('#public-count').textContent = shown.filter(f => [...categories(f)].some(c => c.startsWith('public-'))).length + unmapped.filter(r => r.category.startsWith('public-')).length;
 }
 function addPmtilesSource(id) {
   const url = new URL(`data/generated/${id}.pmtiles`, window.location.href);
@@ -641,19 +661,53 @@ map.once('style.load', () => {
   if (initialTerrainEnabled) applyTerrain(true, { updateUrl: false, animate: false });
 });
 
-function findParcel() {
-  const query = document.querySelector('#search').value.trim().toUpperCase();
-  const apn = Object.keys(apnIndex).find(key => key === query || key.replaceAll('-', '') === query.replaceAll('-', ''));
-  if (!apn) { document.querySelector('#details').innerHTML = '<p class="muted">No county parcel matched that APN.</p>'; return; }
-  const item = apnIndex[apn];
-  setSelectedApn(apn);
-  map.fitBounds([[item.bbox[0], item.bbox[1]], [item.bbox[2], item.bbox[3]]], { padding: 90, maxZoom: 16 });
-  showParcelDetails({ APN: apn, Acres: item.acres });
+function fitSearchResults(mapped, unmapped) {
+  const points = [
+    ...mapped.map(featureCenter),
+    ...unmapped.map(record => [record.latLng?.[1], record.latLng?.[0]])
+  ].filter(point => point?.every(Number.isFinite));
+  if (!points.length) return;
+  if (points.length === 1) {
+    map.easeTo({ center: points[0], zoom: 15 });
+    return;
+  }
+  const bounds = points.reduce((value, point) => value.extend(point), new maplibregl.LngLatBounds(points[0], points[0]));
+  map.fitBounds(bounds, { padding: 90, maxZoom: 15 });
+}
+function findListings() {
+  const input = document.querySelector('#search').value.trim();
+  const normalized = normalizeSearch(input);
+  const compact = normalized.replaceAll(' ', '');
+  const apn = Object.keys(apnIndex).find(key => normalizeSearch(key).replaceAll(' ', '') === compact);
+  if (input && apn) {
+    searchQuery = '';
+    updateSales();
+    const item = apnIndex[apn];
+    setSelectedApn(apn);
+    map.fitBounds([[item.bbox[0], item.bbox[1]], [item.bbox[2], item.bbox[3]]], { padding: 90, maxZoom: 16 });
+    showParcelDetails({ APN: apn, Acres: item.acres });
+    return;
+  }
+
+  searchQuery = normalized;
+  updateSales();
+  const mapped = filteredMappedListings();
+  const unmapped = filteredUnmappedListings();
+  const count = mapped.length + unmapped.length;
+  if (!input) {
+    document.querySelector('#details').innerHTML = '<h3>No parcel selected</h3><p class="meta">Showing all listings and auctions.</p>';
+  } else if (!count) {
+    document.querySelector('#details').innerHTML = `<p class="muted">No listing matched “${escapeHtml(input)}”.</p>`;
+  } else {
+    document.querySelector('#details').innerHTML = `<h3>${count} matching ${count === 1 ? 'listing' : 'listings'}</h3><p class="meta">Showing results containing “${escapeHtml(input)}”. Clear the search to show everything.</p>`;
+    fitSearchResults(mapped, unmapped);
+  }
 }
 
 document.querySelector('#terrain-toggle').addEventListener('click', () => toggleTerrain());
-document.querySelector('#search-button').addEventListener('click', findParcel);
-document.querySelector('#search').addEventListener('keydown', event => { if (event.key === 'Enter') findParcel(); });
+document.querySelector('#search-button').addEventListener('click', findListings);
+document.querySelector('#search').addEventListener('keydown', event => { if (event.key === 'Enter') findListings(); });
+document.querySelector('#search').addEventListener('search', findListings);
 document.querySelectorAll('.filter').forEach(input => input.addEventListener('change', () => { enabledCategories = new Set([...document.querySelectorAll('.filter:checked')].map(item => item.value)); updateSales(); }));
 document.querySelectorAll('[data-map-layer]').forEach(input => input.addEventListener('change', () => toggleLayer(input.dataset.mapLayer, input.checked)));
 document.querySelector('#cancel-parcelquest').addEventListener('click', () => document.querySelector('#parcelquest-warning').close());
