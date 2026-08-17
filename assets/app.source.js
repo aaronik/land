@@ -5,6 +5,32 @@ import mlcontour from 'maplibre-contour';
 import { Protocol } from './vendor/pmtiles/pmtiles.js';
 
 const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
+// Colors follow the unique-value renderer saved on Siskiyou County's official
+// zoning layer. MapLibre cannot reproduce every ArcGIS hatch, so buffered
+// variants retain their official zoning-family color.
+const ZONING_FILL_COLOR = ['match', ['get', 'zoning'],
+  ['AG-1', 'AG-1-B-40', 'AG-1-B-80'], '#38a800',
+  ['AG-2', 'AG-2-B-20', 'AG-2-B-40', 'AG-2-B-80'], '#b4d79e',
+  'C-C', '#ff0000', 'C-C-B-10', '#e60000', 'C-C-B-2.5', '#ff9b9b',
+  'C-H', '#ffa77f', ['C-R', 'C-U'], '#ff7f7f',
+  ['C-R-B-10', 'C-U-B-2.5'], '#e60000', 'C-R-B-80', '#e64c00',
+  ['M-L', 'M-L-B-40'], '#e8beff',
+  ['M-M', 'M-M-B-2.5', 'M-M-B-5', 'M-M-B-10'], '#aa66cd',
+  'M-H', '#8400a8', 'O', '#7af5ca',
+  'PD', '#d0d0d0', 'PD (C-U)', '#ff7f7f', 'PD (M-M)', '#df73ff',
+  'PD (Ski Park)', '#73b2ff', 'PD (Chalets)', '#ffaa00', 'PD (MH)', '#c500ff',
+  'PD (R-R)', '#ffffbe', 'PD (R-R-B-1)', '#ffff32',
+  ['PD (RES-1)', 'PD (RES-1-B-5)'], '#fff000',
+  'PD (RES-3)', '#ffc800', 'PD (RES-4)', '#ff9600', 'PD (Sw Ponds)', '#bee8ff',
+  ['R-R', 'R-R-B-1', 'R-R-B-2.5', 'R-R-B-10', 'R-R-B-20', 'R-R-B-40', 'R-R-B-80', 'R-R-B-160'], '#ffff8c',
+  'R-R-B-5', '#ffffbe',
+  ['R-R-MH', 'R-R-MH-B-1', 'R-R-MH-B-2.5', 'R-R-MH-B-5', 'R-R-MH-B-10', 'R-R-MH-B-20', 'R-R-MH-B-40'], '#cdaa66',
+  'RES-1', '#fff000', 'RES-2', '#ffdc00',
+  ['RES-3', 'RES-3-B-2.5', 'RES-3-B-5', 'RES-3-B-20'], '#ffc800',
+  ['RES-4', 'RES-4-B-2.5'], '#ff9600',
+  ['TP', 'TP-B-80'], '#267300', ['Incorporated', 'Incorporated ROW'], '#e1e1e1',
+  'WETLANDS', '#4065eb', 'transparent'
+];
 const PARCELQUEST_URL = 'https://assr.parcelquest.com/impl/SISASSR';
 const protocol = new Protocol();
 maplibregl.addProtocol('pmtiles', protocol.tile.bind(protocol));
@@ -26,6 +52,8 @@ let selectedApn = '';
 let terrainEnabled = false;
 const TERRAIN_URL_PARAM = 'terrain';
 const PARCEL_URL_PARAM = 'parcel';
+const MAX_SAFE_TERRAIN_PITCH = 85;
+const TERRAIN_RECOVERY_PITCH = 78;
 const initialUrl = new URL(window.location.href);
 const initialTerrainEnabled = initialUrl.searchParams.get(TERRAIN_URL_PARAM) === '1';
 const initialSelectedApn = initialUrl.searchParams.get(PARCEL_URL_PARAM) || '';
@@ -365,7 +393,8 @@ function addPmtilesSource(id) {
     fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>',
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
     waterways: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
-    huc12: '<a href="https://www.usgs.gov/national-hydrography/watershed-boundary-dataset" target="_blank">USGS Watershed Boundary Dataset</a>'
+    huc12: '<a href="https://www.usgs.gov/national-hydrography/watershed-boundary-dataset" target="_blank">USGS Watershed Boundary Dataset</a>',
+    zoning: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>'
   };
   map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id], ...(id === 'parcels' ? { promoteId: 'APN' } : {}) });
 }
@@ -375,7 +404,8 @@ function toggleLayer(id, visibleValue) {
     roads: ['roads', 'road-labels'],
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
     waterways: ['waterways-casing', 'waterways', 'waterway-labels'],
-    huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels']
+    huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels'],
+    zoning: ['zoning-fill', 'zoning-lines']
   };
   const layerIds = groupedLayers[id] || [id];
   for (const layerId of layerIds) if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibleValue ? 'visible' : 'none');
@@ -405,6 +435,16 @@ function toggleTerrain(force) {
   const enabled = force ?? !terrainEnabled;
   applyTerrain(enabled);
 }
+
+// Near 90°, the camera can cross steep terrain while zooming or panning. Once
+// an interaction settles, ease back to a useful above-ground viewing angle.
+let recoveringTerrainCamera = false;
+map.on('moveend', () => {
+  if (!terrainEnabled || recoveringTerrainCamera || map.getPitch() <= MAX_SAFE_TERRAIN_PITCH) return;
+  recoveringTerrainCamera = true;
+  map.easeTo({ pitch: TERRAIN_RECOVERY_PITCH, duration: 350 });
+  map.once('moveend', () => { recoveringTerrainCamera = false; });
+});
 
 function initializeMobileSheet() {
   const panel = document.querySelector('.panel');
@@ -538,7 +578,8 @@ function initializeMapLayers() {
   map.addLayer({ id: 'soils', type: 'fill', source: 'soils', 'source-layer': 'soils', minzoom: 9, layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'drclassdcd'], 'Very poorly drained', '#4f78a8', 'Poorly drained', '#6b94b7', 'Somewhat poorly drained', '#87adbf', 'Moderately well drained', '#b9a46b', 'Well drained', '#a97a45', 'Somewhat excessively drained', '#c48d54', 'Excessively drained', '#d5a767', '#9b8064'], 'fill-opacity': 0.34, 'fill-outline-color': 'rgba(69, 45, 25, 0.7)' } });
   map.addLayer({ id: 'flood', type: 'fill', source: 'flood', 'source-layer': 'flood', layout: { visibility: 'none' }, paint: { 'fill-color': ['case', ['==', ['get', 'SFHA_TF'], 'T'], '#00c5ff', ['all', ['==', ['get', 'FLD_ZONE'], 'X'], ['match', ['get', 'ZONE_SUBTY'], '0.2 PCT ANNUAL CHANCE FLOOD HAZARD', true, '0.2 PERCENT ANNUAL CHANCE FLOOD HAZARD', true, false]], '#75d5ec', ['==', ['get', 'FLD_ZONE'], 'D'], '#e8d15c', '#3db7de'], 'fill-opacity': 0.38, 'fill-outline-color': 'rgba(0, 104, 160, 0.8)' } });
   map.addLayer({ id: 'fire-hazard', type: 'fill', source: 'fire_hazard', 'source-layer': 'fire_hazard', layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'HAZ_CLASS'], 'Very High', '#d73027', 'High', '#fc8d59', 'Moderate', '#fee08b', '#f5a623'], 'fill-opacity': 0.3 } });
-  map.addLayer({ id: 'zoning', type: 'line', source: 'zoning', 'source-layer': 'zoning', layout: { visibility: 'none' }, paint: { 'line-color': '#64c7ff', 'line-width': 1.4, 'line-opacity': 0.8 } });
+  map.addLayer({ id: 'zoning-fill', type: 'fill', source: 'zoning', 'source-layer': 'zoning', minzoom: 10.5, layout: { visibility: 'none' }, paint: { 'fill-color': ZONING_FILL_COLOR, 'fill-opacity': 0.65 } });
+  map.addLayer({ id: 'zoning-lines', type: 'line', source: 'zoning', 'source-layer': 'zoning', minzoom: 10.5, layout: { visibility: 'none' }, paint: { 'line-color': '#6e6e6e', 'line-width': ['interpolate', ['linear'], ['zoom'], 10.5, 0.5, 15, 1.2], 'line-opacity': 0.8 } });
   map.addLayer({ id: 'parcel-fill', type: 'fill', source: 'parcels', 'source-layer': 'parcels', minzoom: 8, paint: { 'fill-color': '#fff', 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.01, 13, 0.045] } });
   map.addLayer({ id: 'parcel-lines', type: 'line', source: 'parcels', 'source-layer': 'parcels', minzoom: 8, paint: { 'line-color': '#aeb4b7', 'line-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 13, 0.85], 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 15, 1.8] } });
   map.addLayer({
