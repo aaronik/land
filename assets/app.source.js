@@ -23,7 +23,6 @@ let saleData;
 let apnIndex = {};
 let selectedResearchApn = '';
 let selectedApn = '';
-let selectedGeometry = null;
 let terrainEnabled = false;
 let enabledCategories = new Set(Object.keys(COLORS));
 
@@ -156,20 +155,13 @@ function showParcelDetails(properties, saleFeature = matchingSale(properties.APN
   document.querySelector('#details').innerHTML = `<h3>${escapeHtml(address || 'Parcel')}</h3><p class="meta">${escapeHtml(acres || '—')} GIS acres${p.LandUse1 ? ` · Land use ${escapeHtml(p.LandUse1)}` : ''}${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${records.map(recordCard).join('') || '<p class="muted">Official county parcel. No current listing or auction record is attached.</p>'}${researchControls(p.APN)}`;
   bindResearchControls(p.APN);
 }
-function setSelectedApn(apn, geometry = null) {
+function setSelectedApn(apn) {
   selectedApn = apn || '';
-  selectedGeometry = geometry;
-  const source = map.getSource('selection');
-  if (source) source.setData({
-    type: 'FeatureCollection',
-    features: selectedGeometry ? [{ type: 'Feature', properties: { APN: selectedApn }, geometry: selectedGeometry }] : []
-  });
+  if (map.getLayer('parcel-selected')) map.setFilter('parcel-selected', ['==', ['get', 'APN'], selectedApn]);
 }
-function selectParcel(properties, geometry = null) {
+function selectParcel(properties) {
   if (!properties?.APN) return;
-  const saleGeometry = matchingSale(properties.APN)?.geometry;
-  const outlineGeometry = geometry?.type === 'Point' ? saleGeometry : (geometry || saleGeometry);
-  setSelectedApn(properties.APN, outlineGeometry || null);
+  setSelectedApn(properties.APN);
   showParcelDetails(properties);
 }
 function saleGeoJson() {
@@ -311,7 +303,6 @@ function initializeMapLayers() {
   map.addSource('sales', { type: 'geojson', data: saleGeoJson() });
   map.addSource('sale-points', { type: 'geojson', data: salePointGeoJson() });
   map.addSource('unmapped', { type: 'geojson', data: unmappedGeoJson() });
-  map.addSource('selection', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('topographic-contours', {
     type: 'vector',
     tiles: [contourDemSource.contourProtocolUrl({
@@ -373,7 +364,7 @@ function initializeMapLayers() {
   map.addLayer({ id: 'sale-fill', type: 'fill', source: 'sales', paint: { 'fill-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'fill-opacity': 0.42 } });
   map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });
   map.addLayer({ id: 'sale-markers', type: 'circle', source: 'sale-points', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.95, 'circle-pitch-alignment': 'map' } });
-  map.addLayer({ id: 'parcel-selected', type: 'line', source: 'selection', paint: { 'line-color': '#fff', 'line-width': 5, 'line-blur': 0.3 } });
+  map.addLayer({ id: 'parcel-selected', type: 'line', source: 'parcels', 'source-layer': 'parcels', filter: ['==', ['get', 'APN'], selectedApn], paint: { 'line-color': '#fff', 'line-width': 5, 'line-blur': 0.3 } });
   map.addLayer({ id: 'unmapped-markers', type: 'circle', source: 'unmapped', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'category'], 'private-home', COLORS['private-home'], COLORS['private-land']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.9, 'circle-pitch-alignment': 'map' } });
 
   map.on('click', event => {
@@ -395,10 +386,10 @@ function initializeMapLayers() {
       if (typeof records === 'string') {
         try { records = JSON.parse(records); } catch { records = []; }
       }
-      selectParcel({ ...props, records }, feature.geometry);
+      selectParcel({ ...props, records });
       return;
     }
-    selectParcel(props, feature.geometry);
+    selectParcel(props);
   });
   for (const id of ['parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
