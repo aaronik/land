@@ -10,5 +10,11 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "3812 Dale Creek Rd, Weed, CA 96094"
+  },
+  "20260182": {
+    "apns": ["021-520-380"],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Poplar Court, Weed, CA 96094"
   }
 }
