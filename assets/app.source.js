@@ -230,10 +230,32 @@ function salePointGeoJson() {
     features: (saleData?.features || []).filter(visible).map(feature => ({ type: 'Feature', geometry: { type: 'Point', coordinates: featureCenter(feature) }, properties: { ...feature.properties, displayCategory: firstCategory(feature), markerLabel: markerLabel(feature.properties) } })).filter(feature => feature.geometry.coordinates)
   };
 }
+function separatedUnmappedListings() {
+  const groups = new Map();
+  for (const record of (saleData?.unmappedListings || []).filter(record => enabledCategories.has(record.category))) {
+    const key = record.latLng.map(value => Number(value).toFixed(6)).join(',');
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(record);
+  }
+  return [...groups.values()].flatMap(records => records
+    .sort((a, b) => String(a.mlsNumber).localeCompare(String(b.mlsNumber)))
+    .map((record, index) => ({ record, index, count: records.length })));
+}
+function separatedCoordinate(latLng, index, count) {
+  if (count === 1) return [latLng[1], latLng[0]];
+  const center = map.project([latLng[1], latLng[0]]);
+  const angle = -Math.PI / 2 + index * Math.PI * 2 / count;
+  const radius = count === 2 ? 11 : count <= 4 ? 16 : 24;
+  return map.unproject([center.x + Math.cos(angle) * radius, center.y + Math.sin(angle) * radius]).toArray();
+}
 function unmappedGeoJson() {
   return {
     type: 'FeatureCollection',
-    features: (saleData?.unmappedListings || []).filter(record => enabledCategories.has(record.category)).map(record => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [record.latLng[1], record.latLng[0]] }, properties: { ...record, markerLabel: markerLabel(record) } }))
+    features: separatedUnmappedListings().map(({ record, index, count }) => ({
+      type: 'Feature',
+      geometry: { type: 'Point', coordinates: separatedCoordinate(record.latLng, index, count) },
+      properties: { ...record, sharedLocationCount: count, markerLabel: markerLabel(record) }
+    }))
   };
 }
 function updateSales() {
@@ -521,6 +543,8 @@ function initializeMapLayers() {
   }
 }
 map.once('style.load', initializeMapLayers);
+map.on('zoomend', () => map.getSource('unmapped')?.setData(unmappedGeoJson()));
+map.on('rotateend', () => map.getSource('unmapped')?.setData(unmappedGeoJson()));
 
 function findParcel() {
   const query = document.querySelector('#search').value.trim().toUpperCase();
