@@ -136,6 +136,20 @@ function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
 }
 function money(value) { return value ? `$${Number(value).toLocaleString()}` : ''; }
+function compactNumber(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number) || number <= 0) return '';
+  return new Intl.NumberFormat('en-US', { maximumSignificantDigits: 3, useGrouping: false }).format(number).toLowerCase();
+}
+function markerLabel(properties) {
+  const records = Array.isArray(properties.records) ? properties.records : [properties];
+  const record = records.find(item => item.kind === 'private' && enabledCategories.has(item.category));
+  if (!record) return '';
+  const price = Number(record.price);
+  const abbreviatedPrice = price >= 1e6 ? `${compactNumber(price / 1e6)}m` : price >= 1e3 ? `${compactNumber(price / 1e3)}k` : compactNumber(price);
+  const acres = compactNumber(record.acres);
+  return abbreviatedPrice && acres ? `${abbreviatedPrice}/${acres}` : '';
+}
 function categories(feature) { return new Set((feature.properties.records || []).map(record => record.category)); }
 function visible(feature) { return [...categories(feature)].some(value => enabledCategories.has(value)); }
 function firstCategory(feature) { return [...categories(feature)].find(value => enabledCategories.has(value)) || [...categories(feature)][0]; }
@@ -207,13 +221,13 @@ function featureCenter(feature) {
 function salePointGeoJson() {
   return {
     type: 'FeatureCollection',
-    features: (saleData?.features || []).filter(visible).map(feature => ({ type: 'Feature', geometry: { type: 'Point', coordinates: featureCenter(feature) }, properties: { ...feature.properties, displayCategory: firstCategory(feature) } })).filter(feature => feature.geometry.coordinates)
+    features: (saleData?.features || []).filter(visible).map(feature => ({ type: 'Feature', geometry: { type: 'Point', coordinates: featureCenter(feature) }, properties: { ...feature.properties, displayCategory: firstCategory(feature), markerLabel: markerLabel(feature.properties) } })).filter(feature => feature.geometry.coordinates)
   };
 }
 function unmappedGeoJson() {
   return {
     type: 'FeatureCollection',
-    features: (saleData?.unmappedListings || []).filter(record => enabledCategories.has(record.category)).map(record => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [record.latLng[1], record.latLng[0]] }, properties: { ...record } }))
+    features: (saleData?.unmappedListings || []).filter(record => enabledCategories.has(record.category)).map(record => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [record.latLng[1], record.latLng[0]] }, properties: { ...record, markerLabel: markerLabel(record) } }))
   };
 }
 function updateSales() {
@@ -444,8 +458,10 @@ function initializeMapLayers() {
   map.addLayer({ id: 'sale-fill', type: 'fill', source: 'sales', paint: { 'fill-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'fill-opacity': 0.42 } });
   map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });
   map.addLayer({ id: 'sale-markers', type: 'circle', source: 'sale-points', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.95, 'circle-pitch-alignment': 'map' } });
+  map.addLayer({ id: 'sale-marker-labels', type: 'symbol', source: 'sale-points', filter: ['!=', ['get', 'markerLabel'], ''], layout: { 'text-field': ['get', 'markerLabel'], 'text-font': ['Noto Sans Bold'], 'text-size': 12, 'text-offset': [0, -1.35], 'text-anchor': 'bottom', 'text-padding': 3, 'text-pitch-alignment': 'viewport' }, paint: { 'text-color': '#fff', 'text-halo-color': 'rgba(20, 25, 22, 0.9)', 'text-halo-width': 2, 'text-halo-blur': 0.4 } });
   map.addLayer({ id: 'parcel-selected', type: 'line', source: 'parcels', 'source-layer': 'parcels', filter: ['==', ['get', 'APN'], selectedApn], paint: { 'line-color': '#fff', 'line-width': 5, 'line-blur': 0.3 } });
   map.addLayer({ id: 'unmapped-markers', type: 'circle', source: 'unmapped', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'category'], 'private-home', COLORS['private-home'], COLORS['private-land']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.9, 'circle-pitch-alignment': 'map' } });
+  map.addLayer({ id: 'unmapped-marker-labels', type: 'symbol', source: 'unmapped', filter: ['!=', ['get', 'markerLabel'], ''], layout: { 'text-field': ['get', 'markerLabel'], 'text-font': ['Noto Sans Bold'], 'text-size': 12, 'text-offset': [0, -1.35], 'text-anchor': 'bottom', 'text-padding': 3, 'text-pitch-alignment': 'viewport' }, paint: { 'text-color': '#fff', 'text-halo-color': 'rgba(20, 25, 22, 0.9)', 'text-halo-width': 2, 'text-halo-blur': 0.4 } });
 
   map.on('click', event => {
     const radius = 9;
