@@ -1,5 +1,12 @@
 # Shasta Land Atlas
 
+## License
+
+Copyright 2026 Aaron Sullivan. This project is licensed under the
+[PolyForm Noncommercial License 1.0.0](LICENSE.md). Commercial use is not
+permitted. This is source-available software, not Open Source Initiative
+(OSI)-approved open-source software.
+
 Static GitHub Pages map combining the two `~/suite/bin/shasta_*land*` workflows:
 
 - Siskiyou MLS private land/farm listings

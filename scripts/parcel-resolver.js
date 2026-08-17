@@ -1,6 +1,6 @@
 'use strict';
 
-const DEFAULT_OPTIONS = { acreageTolerance: 0.02, minimumCorroboratingLots: 2 };
+const DEFAULT_OPTIONS = { acreageTolerance: 0.005, minimumCorroboratingLots: 2 };
 
 function lotNumber(record) {
   const match = String(record.title || '').match(/^\s*LOT\s*[#-]?\s*(\d+)\b/i);
@@ -12,11 +12,22 @@ function apnParts(apn) {
   return match ? { prefix: `${match[1]}-${match[2]}`, suffix: Number(match[3]) } : null;
 }
 
-function candidateMatches(record, parcel, tolerance) {
+function acreageMatches(record, parcel, tolerance) {
+  const listedAcres = Number(record.acres), gisAcres = Number(parcel.acres);
+  return listedAcres > 0 && gisAcres > 0 && Math.abs(listedAcres - gisAcres) <= tolerance;
+}
+
+function candidateModel(record, parcel, tolerance) {
   const lot = lotNumber(record);
   const parts = apnParts(parcel.apn);
-  const listedAcres = Number(record.acres), gisAcres = Number(parcel.acres);
-  return lot !== null && parts && parts.suffix === lot * 10 && listedAcres > 0 && gisAcres > 0 && Math.abs(listedAcres - gisAcres) <= tolerance;
+  if (lot === null || !parts || parts.suffix % 10 !== 0 || !acreageMatches(record, parcel, tolerance)) return null;
+  const lotOffset = parts.suffix / 10 - lot;
+  return { prefix: parts.prefix, lotOffset, key: `${parts.prefix}|${lotOffset}` };
+}
+
+function candidateMatches(record, parcel, tolerance, model = { lotOffset: 0 }) {
+  const candidate = candidateModel(record, parcel, tolerance);
+  return Boolean(candidate && candidate.lotOffset === model.lotOffset && (!model.prefix || candidate.prefix === model.prefix));
 }
 
 function groupByLocation(records) {
@@ -32,50 +43,52 @@ function groupByLocation(records) {
 
 function resolveGroup(group, parcels, options = {}) {
   const settings = { ...DEFAULT_OPTIONS, ...options };
-  const matches = [];
-  for (const record of group.records) {
-    const candidates = parcels.filter(parcel => candidateMatches(record, parcel, settings.acreageTolerance));
-    if (candidates.length === 1) matches.push({ record, parcel: candidates[0], lot: lotNumber(record), prefix: apnParts(candidates[0].apn).prefix });
+  const byModel = new Map();
+  for (const record of group.records) for (const parcel of parcels) {
+    const model = candidateModel(record, parcel, settings.acreageTolerance);
+    if (!model) continue;
+    if (!byModel.has(model.key)) byModel.set(model.key, { ...model, matches: [] });
+    byModel.get(model.key).matches.push({ record, parcel, lot: lotNumber(record), prefix: model.prefix, lotOffset: model.lotOffset });
   }
-  const byPrefix = new Map();
-  for (const match of matches) {
-    if (!byPrefix.has(match.prefix)) byPrefix.set(match.prefix, []);
-    byPrefix.get(match.prefix).push(match);
-  }
-  const corroborated = [...byPrefix.entries()]
-    .map(([prefix, prefixMatches]) => ({ prefix, matches: prefixMatches, distinctLots: new Set(prefixMatches.map(match => match.lot)).size }))
-    .filter(result => result.distinctLots >= settings.minimumCorroboratingLots)
+  const models = [...byModel.values()].map(model => ({
+    ...model,
+    distinctLots: new Set(model.matches.map(match => match.lot)).size
+  })).filter(model => model.distinctLots >= (model.lotOffset === 0 ? settings.minimumCorroboratingLots : Math.max(3, settings.minimumCorroboratingLots)))
     .sort((a, b) => b.distinctLots - a.distinctLots);
-  if (!corroborated.length || corroborated[1]?.distinctLots === corroborated[0].distinctLots) return { resolved: [], reason: 'no unique corroborated APN prefix' };
-  const winner = corroborated[0];
+  if (!models.length || models[1]?.distinctLots === models[0].distinctLots) return { resolved: [], model: null, reason: 'no unique corroborated APN sequence' };
+  const winner = models[0];
+  const resolved = [];
   const usedApns = new Set();
-  const resolved = winner.matches.filter(match => {
-    if (usedApns.has(match.parcel.apn)) return false;
-    usedApns.add(match.parcel.apn);
-    return true;
-  });
-  return { resolved, reason: resolved.length ? 'corroborated lot/APN sequence and exact acreage' : 'no unique parcel assignments' };
+  for (const record of group.records) {
+    const candidates = winner.matches.filter(match => match.record === record && !usedApns.has(match.parcel.apn));
+    if (candidates.length !== 1) continue;
+    usedApns.add(candidates[0].parcel.apn);
+    resolved.push(candidates[0]);
+  }
+  return {
+    resolved,
+    model: { prefix: winner.prefix, lotOffset: winner.lotOffset, key: winner.key },
+    reason: resolved.length ? 'corroborated APN prefix, lot-number offset, and exact acreage' : 'no unique parcel assignments'
+  };
 }
 
-function resolveSingleton(record, parcels, establishedPrefixes, options = {}) {
+function resolveSingleton(record, parcels, establishedModels, options = {}) {
   const settings = { ...DEFAULT_OPTIONS, ...options };
-  const candidates = parcels.filter(parcel => {
-    if (!candidateMatches(record, parcel, settings.acreageTolerance)) return false;
-    return establishedPrefixes.has(apnParts(parcel.apn).prefix);
-  });
-  if (candidates.length !== 1) return { resolved: [], reason: candidates.length ? 'ambiguous established-prefix candidates' : 'no candidate in an established APN prefix' };
-  const parcel = candidates[0];
-  return {
-    resolved: [{ record, parcel, lot: lotNumber(record), prefix: apnParts(parcel.apn).prefix }],
-    reason: 'established APN prefix, lot/APN sequence, exact acreage, and bounded proximity'
-  };
+  const candidates = [];
+  for (const parcel of parcels) {
+    const model = candidateModel(record, parcel, settings.acreageTolerance);
+    if (model && establishedModels.has(model.key)) candidates.push({ record, parcel, lot: lotNumber(record), prefix: model.prefix, lotOffset: model.lotOffset });
+  }
+  if (candidates.length !== 1) return { resolved: [], reason: candidates.length ? 'ambiguous established-sequence candidates' : 'no candidate in an established APN sequence' };
+  return { resolved: candidates, reason: 'established APN sequence, exact acreage, and bounded proximity' };
 }
 
 function resolvedRecord(match, corroboratingMlsNumbers, method) {
   const evidence = {
-    resolver: 'subdivision-lot-sequence-v2',
+    resolver: 'subdivision-lot-sequence-v3',
     method,
     lotNumber: match.lot,
+    lotOffset: match.lotOffset,
     listedAcres: Number(match.record.acres),
     gisAcres: Number(match.parcel.acres),
     apnPrefix: match.prefix,
@@ -97,7 +110,7 @@ function resolvedRecord(match, corroboratingMlsNumbers, method) {
 async function resolveUnmappedParcels(records, queryNearbyParcels, options = {}) {
   const remaining = new Set(records);
   const resolvedRecords = [];
-  const establishedPrefixes = new Map();
+  const establishedModels = new Map();
   const groups = [];
   const candidateCache = new Map();
   const candidatesAt = async latLng => {
@@ -109,8 +122,9 @@ async function resolveUnmappedParcels(records, queryNearbyParcels, options = {})
     const resolved = resolvedRecord(match, corroboratingMlsNumbers, method);
     remaining.delete(match.record);
     resolvedRecords.push(resolved);
-    if (!establishedPrefixes.has(match.prefix)) establishedPrefixes.set(match.prefix, new Set());
-    corroboratingMlsNumbers.forEach(number => establishedPrefixes.get(match.prefix).add(number));
+    const key = `${match.prefix}|${match.lotOffset}`;
+    if (!establishedModels.has(key)) establishedModels.set(key, new Set());
+    corroboratingMlsNumbers.forEach(number => establishedModels.get(key).add(number));
   };
   for (const group of groupByLocation(records)) {
     let parcels = [];
@@ -122,13 +136,14 @@ async function resolveUnmappedParcels(records, queryNearbyParcels, options = {})
     }
     const result = resolveGroup(group, parcels, options);
     const corroboratingMlsNumbers = result.resolved.map(item => item.record.mlsNumber);
-    for (const match of result.resolved) addMatch(match, corroboratingMlsNumbers, 'shared-pin lot/APN sequence + exact acreage');
+    for (const match of result.resolved) addMatch(match, corroboratingMlsNumbers, 'corroborated APN sequence + exact acreage');
     groups.push({
       latLng: group.latLng,
       mlsNumbers: group.records.map(record => record.mlsNumber),
       status: result.resolved.length ? 'auto_mapped' : 'unresolved',
       reason: result.reason,
-      assignments: result.resolved.map(match => ({ mlsNumber: match.record.mlsNumber, lotNumber: match.lot, apn: match.parcel.apn, listedAcres: match.record.acres, gisAcres: match.parcel.acres }))
+      model: result.model,
+      assignments: result.resolved.map(match => ({ mlsNumber: match.record.mlsNumber, lotNumber: match.lot, lotOffset: match.lotOffset, apn: match.parcel.apn, listedAcres: match.record.acres, gisAcres: match.parcel.acres }))
     });
   }
   for (const record of records.filter(record => remaining.has(record) && lotNumber(record) !== null && Array.isArray(record.latLng))) {
@@ -139,20 +154,24 @@ async function resolveUnmappedParcels(records, queryNearbyParcels, options = {})
       groups.push({ latLng: record.latLng, mlsNumbers: [record.mlsNumber], status: 'query_failed', reason: error.message });
       continue;
     }
-    const result = resolveSingleton(record, parcels, new Set(establishedPrefixes.keys()), options);
+    const result = resolveSingleton(record, parcels, new Set(establishedModels.keys()), options);
     for (const match of result.resolved) {
-      const corroborating = [...(establishedPrefixes.get(match.prefix) || [])];
-      addMatch(match, corroborating, 'established APN prefix + lot/APN sequence + exact acreage');
+      const corroborating = [...(establishedModels.get(`${match.prefix}|${match.lotOffset}`) || [])];
+      addMatch(match, corroborating, 'established APN sequence + exact acreage');
     }
     groups.push({
       latLng: record.latLng,
       mlsNumbers: [record.mlsNumber],
       status: result.resolved.length ? 'auto_mapped_singleton' : 'unresolved_singleton',
       reason: result.reason,
-      assignments: result.resolved.map(match => ({ mlsNumber: match.record.mlsNumber, lotNumber: match.lot, apn: match.parcel.apn, listedAcres: match.record.acres, gisAcres: match.parcel.acres }))
+      assignments: result.resolved.map(match => ({ mlsNumber: match.record.mlsNumber, lotNumber: match.lot, lotOffset: match.lotOffset, apn: match.parcel.apn, listedAcres: match.record.acres, gisAcres: match.parcel.acres }))
     });
   }
-  return { resolved: resolvedRecords, unmapped: records.filter(record => remaining.has(record)), report: { resolver: 'subdivision-lot-sequence-v2', evaluatedGroups: groups.length, mappedListings: resolvedRecords.length, establishedPrefixes: [...establishedPrefixes.keys()], groups } };
+  return {
+    resolved: resolvedRecords,
+    unmapped: records.filter(record => remaining.has(record)),
+    report: { resolver: 'subdivision-lot-sequence-v3', evaluatedGroups: groups.length, mappedListings: resolvedRecords.length, establishedModels: [...establishedModels.keys()], groups }
+  };
 }
 
-module.exports = { apnParts, candidateMatches, groupByLocation, lotNumber, resolveGroup, resolveSingleton, resolveUnmappedParcels };
+module.exports = { apnParts, candidateMatches, candidateModel, groupByLocation, lotNumber, resolveGroup, resolveSingleton, resolveUnmappedParcels };

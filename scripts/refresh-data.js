@@ -376,7 +376,7 @@ async function main() {
   if (resolverEnabled) console.log('Running conservative secondary parcel resolver…');
   const secondary = resolverEnabled
     ? await resolveUnmappedParcels(firstPass.unmapped, resolverParcelCandidates)
-    : { resolved: [], unmapped: firstPass.unmapped, report: { resolver: 'subdivision-lot-sequence-v2', disabled: true, evaluatedGroups: 0, mappedListings: 0, groups: [] } };
+    : { resolved: [], unmapped: firstPass.unmapped, report: { resolver: 'subdivision-lot-sequence-v3', disabled: true, evaluatedGroups: 0, mappedListings: 0, groups: [] } };
   const privateData = { records: [...firstPass.records, ...secondary.resolved], unmapped: secondary.unmapped };
   const privateRows = privateData.records;
   const externalRows = externalRecords();

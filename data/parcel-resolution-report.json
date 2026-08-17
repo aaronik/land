@@ -1,11 +1,12 @@
 {
-  "generatedAt": "2026-08-17T07:06:19.604Z",
-  "resolver": "subdivision-lot-sequence-v2",
-  "evaluatedGroups": 69,
-  "mappedListings": 7,
-  "establishedPrefixes": [
-    "021-750",
-    "039-310"
+  "generatedAt": "2026-08-17T07:26:25.543Z",
+  "resolver": "subdivision-lot-sequence-v3",
+  "evaluatedGroups": 65,
+  "mappedListings": 16,
+  "establishedModels": [
+    "021-750|0",
+    "021-760|-35",
+    "039-310|0"
   ],
   "groups": [
     {
@@ -18,7 +19,8 @@
         "20260219"
       ],
       "status": "unresolved",
-      "reason": "no unique corroborated APN prefix",
+      "reason": "no unique corroborated APN sequence",
+      "model": null,
       "assignments": []
     },
     {
@@ -31,7 +33,8 @@
         "20260373"
       ],
       "status": "unresolved",
-      "reason": "no unique corroborated APN prefix",
+      "reason": "no unique corroborated APN sequence",
+      "model": null,
       "assignments": []
     },
     {
@@ -46,7 +49,8 @@
         "20260423"
       ],
       "status": "unresolved",
-      "reason": "no unique corroborated APN prefix",
+      "reason": "no unique corroborated APN sequence",
+      "model": null,
       "assignments": []
     },
     {
@@ -62,11 +66,17 @@
         "20250319"
       ],
       "status": "auto_mapped",
-      "reason": "corroborated lot/APN sequence and exact acreage",
+      "reason": "corroborated APN prefix, lot-number offset, and exact acreage",
+      "model": {
+        "prefix": "021-750",
+        "lotOffset": 0,
+        "key": "021-750|0"
+      },
       "assignments": [
         {
           "mlsNumber": "20250320",
           "lotNumber": 9,
+          "lotOffset": 0,
           "apn": "021-750-090",
           "listedAcres": 2.52,
           "gisAcres": 2.52
@@ -74,6 +84,7 @@
         {
           "mlsNumber": "20250319",
           "lotNumber": 3,
+          "lotOffset": 0,
           "apn": "021-750-030",
           "listedAcres": 2.51,
           "gisAcres": 2.51
@@ -90,7 +101,8 @@
         "20250927"
       ],
       "status": "unresolved",
-      "reason": "no unique corroborated APN prefix",
+      "reason": "no unique corroborated APN sequence",
+      "model": null,
       "assignments": []
     },
     {
@@ -104,9 +116,47 @@
         "20250328",
         "20250327"
       ],
-      "status": "unresolved",
-      "reason": "no unique corroborated APN prefix",
-      "assignments": []
+      "status": "auto_mapped",
+      "reason": "corroborated APN prefix, lot-number offset, and exact acreage",
+      "model": {
+        "prefix": "021-760",
+        "lotOffset": -35,
+        "key": "021-760|-35"
+      },
+      "assignments": [
+        {
+          "mlsNumber": "20250330",
+          "lotNumber": 46,
+          "lotOffset": -35,
+          "apn": "021-760-110",
+          "listedAcres": 2.5,
+          "gisAcres": 2.5
+        },
+        {
+          "mlsNumber": "20250329",
+          "lotNumber": 40,
+          "lotOffset": -35,
+          "apn": "021-760-050",
+          "listedAcres": 10.06,
+          "gisAcres": 10.06
+        },
+        {
+          "mlsNumber": "20250328",
+          "lotNumber": 38,
+          "lotOffset": -35,
+          "apn": "021-760-030",
+          "listedAcres": 2.51,
+          "gisAcres": 2.51
+        },
+        {
+          "mlsNumber": "20250327",
+          "lotNumber": 37,
+          "lotOffset": -35,
+          "apn": "021-760-020",
+          "listedAcres": 2.53,
+          "gisAcres": 2.53
+        }
+      ]
     },
     {
       "latLng": [
@@ -118,11 +168,17 @@
         "20250318"
       ],
       "status": "auto_mapped",
-      "reason": "corroborated lot/APN sequence and exact acreage",
+      "reason": "corroborated APN prefix, lot-number offset, and exact acreage",
+      "model": {
+        "prefix": "021-750",
+        "lotOffset": 0,
+        "key": "021-750|0"
+      },
       "assignments": [
         {
           "mlsNumber": "20250321",
           "lotNumber": 26,
+          "lotOffset": 0,
           "apn": "021-750-260",
           "listedAcres": 4.15,
           "gisAcres": 4.15
@@ -130,6 +186,7 @@
         {
           "mlsNumber": "20250318",
           "lotNumber": 25,
+          "lotOffset": 0,
           "apn": "021-750-250",
           "listedAcres": 14.19,
           "gisAcres": 14.19
@@ -146,7 +203,8 @@
         "20250928"
       ],
       "status": "unresolved",
-      "reason": "no unique corroborated APN prefix",
+      "reason": "no unique corroborated APN sequence",
+      "model": null,
       "assignments": []
     },
     {
@@ -159,7 +217,8 @@
         "20260308"
       ],
       "status": "unresolved",
-      "reason": "no unique corroborated APN prefix",
+      "reason": "no unique corroborated APN sequence",
+      "model": null,
       "assignments": []
     },
     {
@@ -172,7 +231,8 @@
         "20260160"
       ],
       "status": "unresolved",
-      "reason": "no unique corroborated APN prefix",
+      "reason": "no unique corroborated APN sequence",
+      "model": null,
       "assignments": []
     },
     {
@@ -185,7 +245,8 @@
         "20251006"
       ],
       "status": "unresolved",
-      "reason": "no unique corroborated APN prefix",
+      "reason": "no unique corroborated APN sequence",
+      "model": null,
       "assignments": []
     },
     {
@@ -198,11 +259,17 @@
         "20260092"
       ],
       "status": "auto_mapped",
-      "reason": "corroborated lot/APN sequence and exact acreage",
+      "reason": "corroborated APN prefix, lot-number offset, and exact acreage",
+      "model": {
+        "prefix": "039-310",
+        "lotOffset": 0,
+        "key": "039-310|0"
+      },
       "assignments": [
         {
           "mlsNumber": "20260093",
           "lotNumber": 3,
+          "lotOffset": 0,
           "apn": "039-310-030",
           "listedAcres": 20,
           "gisAcres": 20
@@ -210,6 +277,7 @@
         {
           "mlsNumber": "20260092",
           "lotNumber": 2,
+          "lotOffset": 0,
           "apn": "039-310-020",
           "listedAcres": 20,
           "gisAcres": 20
@@ -226,7 +294,8 @@
         "20250115"
       ],
       "status": "unresolved",
-      "reason": "no unique corroborated APN prefix",
+      "reason": "no unique corroborated APN sequence",
+      "model": null,
       "assignments": []
     },
     {
@@ -238,7 +307,7 @@
         "20260208"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -250,7 +319,7 @@
         "20260993"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -262,7 +331,7 @@
         "20260057"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -274,7 +343,7 @@
         "20260968"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -286,7 +355,7 @@
         "20250778"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -298,7 +367,7 @@
         "20250848"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -310,7 +379,7 @@
         "20240227"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -322,7 +391,7 @@
         "20260710"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -334,7 +403,7 @@
         "20260636"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -346,7 +415,7 @@
         "20250025"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -358,7 +427,7 @@
         "20260426"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -370,7 +439,7 @@
         "20260425"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -382,7 +451,7 @@
         "20260424"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -394,7 +463,7 @@
         "20260423"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -405,9 +474,18 @@
       "mlsNumbers": [
         "20250336"
       ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
-      "assignments": []
+      "status": "auto_mapped_singleton",
+      "reason": "established APN sequence, exact acreage, and bounded proximity",
+      "assignments": [
+        {
+          "mlsNumber": "20250336",
+          "lotNumber": 63,
+          "lotOffset": -35,
+          "apn": "021-760-280",
+          "listedAcres": 2.5,
+          "gisAcres": 2.5
+        }
+      ]
     },
     {
       "latLng": [
@@ -417,9 +495,18 @@
       "mlsNumbers": [
         "20250335"
       ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
-      "assignments": []
+      "status": "auto_mapped_singleton",
+      "reason": "established APN sequence, exact acreage, and bounded proximity",
+      "assignments": [
+        {
+          "mlsNumber": "20250335",
+          "lotNumber": 62,
+          "lotOffset": -35,
+          "apn": "021-760-270",
+          "listedAcres": 2.5,
+          "gisAcres": 2.5
+        }
+      ]
     },
     {
       "latLng": [
@@ -429,9 +516,18 @@
       "mlsNumbers": [
         "20250333"
       ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
-      "assignments": []
+      "status": "auto_mapped_singleton",
+      "reason": "established APN sequence, exact acreage, and bounded proximity",
+      "assignments": [
+        {
+          "mlsNumber": "20250333",
+          "lotNumber": 58,
+          "lotOffset": -35,
+          "apn": "021-760-230",
+          "listedAcres": 2.5,
+          "gisAcres": 2.5
+        }
+      ]
     },
     {
       "latLng": [
@@ -441,9 +537,18 @@
       "mlsNumbers": [
         "20250332"
       ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
-      "assignments": []
+      "status": "auto_mapped_singleton",
+      "reason": "established APN sequence, exact acreage, and bounded proximity",
+      "assignments": [
+        {
+          "mlsNumber": "20250332",
+          "lotNumber": 55,
+          "lotOffset": -35,
+          "apn": "021-760-200",
+          "listedAcres": 2.5,
+          "gisAcres": 2.5
+        }
+      ]
     },
     {
       "latLng": [
@@ -454,55 +559,7 @@
         "20250331"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.408293,
-        -122.371921
-      ],
-      "mlsNumbers": [
-        "20250330"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.408293,
-        -122.371921
-      ],
-      "mlsNumbers": [
-        "20250329"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.408293,
-        -122.371921
-      ],
-      "mlsNumbers": [
-        "20250328"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.408293,
-        -122.371921
-      ],
-      "mlsNumbers": [
-        "20250327"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -514,11 +571,12 @@
         "20250322"
       ],
       "status": "auto_mapped_singleton",
-      "reason": "established APN prefix, lot/APN sequence, exact acreage, and bounded proximity",
+      "reason": "established APN sequence, exact acreage, and bounded proximity",
       "assignments": [
         {
           "mlsNumber": "20250322",
           "lotNumber": 27,
+          "lotOffset": 0,
           "apn": "021-750-270",
           "listedAcres": 4.83,
           "gisAcres": 4.83
@@ -534,7 +592,7 @@
         "20260373"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -546,7 +604,7 @@
         "20260356"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -558,7 +616,7 @@
         "20260333"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -570,7 +628,7 @@
         "20260309"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -582,7 +640,7 @@
         "20260308"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -594,7 +652,7 @@
         "20260302"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -606,7 +664,7 @@
         "20250686"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -618,7 +676,7 @@
         "20260268"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -630,7 +688,7 @@
         "20260262"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -642,7 +700,7 @@
         "20260260"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -654,7 +712,7 @@
         "20260249"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -666,7 +724,7 @@
         "20260241"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -678,7 +736,7 @@
         "20260236"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -690,7 +748,7 @@
         "20260219"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -702,7 +760,7 @@
         "20260214"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -714,7 +772,7 @@
         "20260199"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -726,7 +784,7 @@
         "20260160"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -738,7 +796,7 @@
         "20260119"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -750,7 +808,7 @@
         "20260091"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -762,7 +820,7 @@
         "20260083"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -774,7 +832,7 @@
         "20260048"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -786,7 +844,7 @@
         "20250116"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -798,7 +856,7 @@
         "20251306"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -810,7 +868,7 @@
         "20251102"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -822,7 +880,7 @@
         "20221105"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -834,7 +892,7 @@
         "20251006"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -846,7 +904,7 @@
         "20250928"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -857,9 +915,18 @@
       "mlsNumbers": [
         "20250927"
       ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
-      "assignments": []
+      "status": "auto_mapped_singleton",
+      "reason": "established APN sequence, exact acreage, and bounded proximity",
+      "assignments": [
+        {
+          "mlsNumber": "20250927",
+          "lotNumber": 52,
+          "lotOffset": -35,
+          "apn": "021-760-170",
+          "listedAcres": 5,
+          "gisAcres": 5
+        }
+      ]
     },
     {
       "latLng": [
@@ -870,7 +937,7 @@
         "20250390"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -882,7 +949,7 @@
         "20250389"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -894,7 +961,7 @@
         "20250115"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -906,7 +973,7 @@
         "20250113"
       ],
       "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN prefix",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-17T07:06:19.604Z",
-  "count": 60,
+  "generatedAt": "2026-08-17T07:26:25.543Z",
+  "count": 51,
   "listings": [
     {
       "mlsNumber": "SC26055721",
@@ -195,54 +195,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20250336",
-      "title": "Lot 63 Heather Pl, Weed, CA 96094",
-      "acres": 2.5,
-      "latLng": [
-        41.409346,
-        -122.376183
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250336/Lot-63-Heather-Pl-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250335",
-      "title": "Lot 62 Heather Pl, Weed, CA 96094",
-      "acres": 2.5,
-      "latLng": [
-        41.409346,
-        -122.376183
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250335/Lot-62-Heather-Pl-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250333",
-      "title": "Lot 58 Heather Pl, Weed, CA 96094",
-      "acres": 2.5,
-      "latLng": [
-        41.410071,
-        -122.367818
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250333/Lot-58-Heather-Pl-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250332",
-      "title": "Lot 55 Hidden Meadow Dr, Weed, CA 96094",
-      "acres": 2.5,
-      "latLng": [
-        41.407414,
-        -122.369337
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250332/Lot-55-Hidden-Meadow-Dr-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20250331",
       "title": "Lot 50 Hidden Meadow Dr, Weed, CA 96094",
       "acres": 5.02,
@@ -251,54 +203,6 @@
         -122.376183
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250331/Lot-50-Hidden-Meadow-Dr-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250330",
-      "title": "Lot 46 Hidden Meadow Dr, Weed, CA 96094",
-      "acres": 2.5,
-      "latLng": [
-        41.408293,
-        -122.371921
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250330/Lot-46-Hidden-Meadow-Dr-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250329",
-      "title": "Lot 40 Hidden Meadow Dr, Weed, CA 96094",
-      "acres": 10.06,
-      "latLng": [
-        41.408293,
-        -122.371921
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250329/Lot-40-Hidden-Meadow-Dr-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250328",
-      "title": "Lot 38 Hidden Meadow Dr, Weed, CA 96094",
-      "acres": 2.51,
-      "latLng": [
-        41.408293,
-        -122.371921
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250328/Lot-38-Hidden-Meadow-Dr-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250327",
-      "title": "Lot 37 Hidden Meadow Dr, Weed, CA 96094",
-      "acres": 2.53,
-      "latLng": [
-        41.408293,
-        -122.371921
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250327/Lot-37-Hidden-Meadow-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -659,18 +563,6 @@
         -122.55814
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250928/Lot-708-Unit-4-Clark-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250927",
-      "title": "Lot 52 Hidden Meadow Dr., Weed, CA 96094",
-      "acres": 5,
-      "latLng": [
-        41.407414,
-        -122.369337
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250927/Lot-52-Hidden-Meadow-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },

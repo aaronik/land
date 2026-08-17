@@ -2,6 +2,7 @@
   "name": "shasta-land-map",
   "version": "1.0.0",
   "private": true,
+  "license": "PolyForm-Noncommercial-1.0.0",
   "description": "Interactive Siskiyou County public auction and private land map",
   "scripts": {
     "dev": "vite",
