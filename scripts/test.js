@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const root = path.resolve(__dirname, '..');
-const required = ['index.html', 'assets/style.css', 'assets/app.source.js', 'data/parcels.json', 'data/generated/flood.pmtiles', 'data/generated/soils.pmtiles', 'data/generated/railroads.pmtiles', 'scripts/refresh-data.js'];
+const required = ['index.html', 'assets/style.css', 'assets/app.source.js', 'data/parcels.json', 'data/generated/flood.pmtiles', 'data/generated/soils.pmtiles', 'data/generated/huc12.pmtiles', 'data/generated/railroads.pmtiles', 'scripts/refresh-data.js'];
 const failures = required.filter(file => !fs.existsSync(path.join(root, file)));
 if (!failures.length) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'data/parcels.json')));
@@ -18,6 +18,8 @@ if (!failures.length) {
   if (!app.includes("roads: ['roads', 'road-labels']")) failures.push('Road toggle does not control road labels');
   if (!html.includes('data-map-layer="railroads"')) failures.push('Railroad toggle is missing');
   if (!app.includes("railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels']")) failures.push('Railroad toggle does not control all railroad layers');
+  if (!html.includes('data-map-layer="huc12"')) failures.push('HUC-12 watershed toggle is missing');
+  if (!app.includes("huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels']") || !app.includes("'source-layer': 'huc12'")) failures.push('HUC-12 watershed layers are missing');
   if (!app.includes("'line-color': '#e53935'") || !app.includes("['get', 'SUBDIV']")) failures.push('Railroad styling or labels are missing');
   if (!app.includes("const TERRAIN_URL_PARAM = 'terrain'") || !app.includes("url.searchParams.set(TERRAIN_URL_PARAM, '1')") || !app.includes("applyTerrain(true, { updateUrl: false, animate: false })")) failures.push('3D terrain mode is not persisted in the URL');
   if (!app.includes("url.searchParams.set('v', new URL(import.meta.url).pathname.split('/').pop())")) failures.push('PMTiles URLs are not versioned by the application bundle');

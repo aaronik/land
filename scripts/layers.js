@@ -154,6 +154,15 @@ const LAYERS = {
     typeName: 'mapunitpolyextended',
     fields: SOIL_FIELDS
   },
+  huc12: {
+    name: 'USGS HUC-12 subwatersheds',
+    url: 'https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer/6',
+    bbox: SISKIYOU_BBOX,
+    objectId: 'objectid',
+    maxAllowableOffset: 0.00002,
+    geometryPrecision: 6,
+    fields: ['objectid', 'huc12', 'name', 'hutype', 'humod', 'tohuc', 'areaacres', 'areasqkm', 'states']
+  },
   wetlands: {
     name: 'USFWS National Wetlands Inventory',
     url: 'https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0',
