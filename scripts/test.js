@@ -13,6 +13,8 @@ if (!failures.length) {
   if (!html.includes('parcelquest-warning')) failures.push('ParcelQuest warning dialog is missing');
   if (!app.includes('Research in ParcelQuest Lite')) failures.push('ParcelQuest parcel action is missing');
   if (!app.includes('localStorage')) failures.push('browser-local research cache is missing');
+  if (!app.includes("id: 'road-labels'") || !app.includes("['get', 'ROADNAME']")) failures.push('County road name labels are missing');
+  if (!app.includes("roads: ['roads', 'road-labels']")) failures.push('Road toggle does not control road labels');
   if (!app.includes("url.searchParams.set('v', new URL(import.meta.url).pathname.split('/').pop())")) failures.push('PMTiles URLs are not versioned by the application bundle');
   const vite = fs.readFileSync(path.join(root, 'vite.config.mjs'), 'utf8');
   for (const worker of ['maplibre-gl-worker.mjs', 'maplibre-gl-shared.mjs']) if (!vite.includes(worker)) failures.push(`production worker asset is missing: ${worker}`);

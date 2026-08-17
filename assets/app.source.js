@@ -236,7 +236,11 @@ function addPmtilesSource(id) {
   map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id] });
 }
 function toggleLayer(id, visibleValue) {
-  const layerIds = id === 'topographic-contours' ? ['topographic-contours', 'topographic-contour-labels'] : [id];
+  const groupedLayers = {
+    'topographic-contours': ['topographic-contours', 'topographic-contour-labels'],
+    roads: ['roads', 'road-labels']
+  };
+  const layerIds = groupedLayers[id] || [id];
   for (const layerId of layerIds) if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibleValue ? 'visible' : 'none');
   document.querySelector(`[data-layer-key="${id}"]`)?.classList.toggle('visible', visibleValue);
 }
@@ -384,6 +388,31 @@ function initializeMapLayers() {
   map.addLayer({ id: 'parcel-fill', type: 'fill', source: 'parcels', 'source-layer': 'parcels', minzoom: 8, paint: { 'fill-color': '#fff', 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.01, 13, 0.045] } });
   map.addLayer({ id: 'parcel-lines', type: 'line', source: 'parcels', 'source-layer': 'parcels', minzoom: 8, paint: { 'line-color': '#aeb4b7', 'line-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 13, 0.85], 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 15, 1.8] } });
   map.addLayer({ id: 'roads', type: 'line', source: 'roads', 'source-layer': 'roads', minzoom: 9, paint: { 'line-color': '#f8d37c', 'line-width': ['interpolate', ['linear'], ['zoom'], 9, 0.7, 15, 3], 'line-opacity': 0.9 } });
+  map.addLayer({
+    id: 'road-labels',
+    type: 'symbol',
+    source: 'roads',
+    'source-layer': 'roads',
+    minzoom: 11,
+    filter: ['all', ['has', 'ROADNAME'], ['!=', ['get', 'ROADNAME'], '']],
+    layout: {
+      'symbol-placement': 'line',
+      'symbol-spacing': 300,
+      'text-field': ['get', 'ROADNAME'],
+      'text-font': ['Noto Sans Bold'],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 11, 10, 15, 13],
+      'text-letter-spacing': 0.02,
+      'text-max-angle': 35,
+      'text-padding': 3,
+      'text-keep-upright': true
+    },
+    paint: {
+      'text-color': '#fff7dc',
+      'text-halo-color': 'rgba(35, 31, 21, 0.92)',
+      'text-halo-width': 2,
+      'text-halo-blur': 0.4
+    }
+  });
   map.addLayer({ id: 'sale-fill', type: 'fill', source: 'sales', paint: { 'fill-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'fill-opacity': 0.42 } });
   map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });
   map.addLayer({ id: 'sale-markers', type: 'circle', source: 'sale-points', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.95, 'circle-pitch-alignment': 'map' } });
