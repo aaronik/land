@@ -25,7 +25,10 @@ let selectedResearchApn = '';
 let selectedApn = '';
 let terrainEnabled = false;
 const TERRAIN_URL_PARAM = 'terrain';
-const initialTerrainEnabled = new URL(window.location.href).searchParams.get(TERRAIN_URL_PARAM) === '1';
+const PARCEL_URL_PARAM = 'parcel';
+const initialUrl = new URL(window.location.href);
+const initialTerrainEnabled = initialUrl.searchParams.get(TERRAIN_URL_PARAM) === '1';
+const initialSelectedApn = initialUrl.searchParams.get(PARCEL_URL_PARAM) || '';
 let enabledCategories = new Set(Object.keys(COLORS));
 let searchQuery = '';
 
@@ -251,7 +254,13 @@ function showParcelDetails(properties, saleFeature = matchingSale(properties.APN
   document.querySelector('#details').innerHTML = `<h3>${escapeHtml(address || 'Parcel')}</h3><p class="meta">${escapeHtml(acres || '—')} GIS acres${p.LandUse1 ? ` · Land use ${escapeHtml(p.LandUse1)}` : ''}${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${records.map(recordCard).join('') || '<p class="muted">Official county parcel. No current listing or auction record is attached.</p>'}${researchControls(p.APN)}`;
   bindResearchControls(p.APN);
 }
-function setSelectedApn(apn) {
+function updateSelectedParcelUrl(apn) {
+  const url = new URL(window.location.href);
+  if (apn) url.searchParams.set(PARCEL_URL_PARAM, apn);
+  else url.searchParams.delete(PARCEL_URL_PARAM);
+  window.history.replaceState(window.history.state, '', url);
+}
+function setSelectedApn(apn, { updateUrl = true } = {}) {
   const nextApn = apn || '';
   if (selectedApn && map.getSource('parcels')) {
     map.removeFeatureState({ source: 'parcels', sourceLayer: 'parcels', id: selectedApn }, 'selected');
@@ -260,11 +269,21 @@ function setSelectedApn(apn) {
   if (selectedApn && map.getSource('parcels')) {
     map.setFeatureState({ source: 'parcels', sourceLayer: 'parcels', id: selectedApn }, { selected: true });
   }
+  if (updateUrl) updateSelectedParcelUrl(selectedApn);
 }
 function selectParcel(properties) {
   if (!properties?.APN) return;
   setSelectedApn(properties.APN);
   showParcelDetails(properties);
+}
+let initialParcelRestored = false;
+function restoreInitialSelectedParcel() {
+  if (initialParcelRestored || !initialSelectedApn || !map.getSource('parcels')) return;
+  const item = apnIndex[initialSelectedApn];
+  if (!item) return;
+  initialParcelRestored = true;
+  setSelectedApn(initialSelectedApn, { updateUrl: false });
+  showParcelDetails({ APN: initialSelectedApn, Acres: item.acres });
 }
 function filteredMappedListings() {
   return (saleData?.features || []).map(searchableFeature).filter(feature => feature && visible(feature));
@@ -649,6 +668,7 @@ function initializeMapLayers() {
     }, 140);
   });
   updateSales();
+  restoreInitialSelectedParcel();
   document.body.classList.add('map-ready');
   } catch (error) {
     layersInitialized = false;
@@ -725,5 +745,6 @@ Promise.all([
   saleData = sales;
   apnIndex = index;
   updateSales();
+  restoreInitialSelectedParcel();
   document.querySelector('#updated').textContent = `Data refreshed ${new Date(sales.generatedAt).toLocaleString()}`;
 }).catch(error => { document.querySelector('#updated').textContent = `Could not load map data: ${error.message}`; });
