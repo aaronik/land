@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-17T06:51:59.728Z",
-  "count": 61,
+  "generatedAt": "2026-08-17T07:06:19.604Z",
+  "count": 60,
   "listings": [
     {
       "mlsNumber": "SC26055721",
@@ -299,18 +299,6 @@
         -122.371921
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250327/Lot-37-Hidden-Meadow-Dr-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250322",
-      "title": "Lot 27 Hidden Meadow Dr, Weed, CA 96094",
-      "acres": 4.83,
-      "latLng": [
-        41.408765,
-        -122.375345
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250322/Lot-27-Hidden-Meadow-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },

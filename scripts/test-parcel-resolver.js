@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const { lotNumber, resolveGroup, resolveUnmappedParcels } = require('./parcel-resolver');
+const { lotNumber, resolveGroup, resolveSingleton, resolveUnmappedParcels } = require('./parcel-resolver');
 
 function lot(mlsNumber, number, acres, latLng = [41.413778, -122.372076]) {
   return { mlsNumber, title: `Lot ${number} Meadow Ln, Weed, CA 96094`, acres, latLng, category: 'private-land' };
@@ -38,6 +38,16 @@ function testAmbiguousCandidateDoesNotResolve() {
   assert.equal(resolveGroup(group, parcels).resolved.length, 0);
 }
 
+function testSingletonWithEstablishedPrefix() {
+  const record = lot('20250322', 27, 4.83, [41.408765, -122.375345]);
+  const result = resolveSingleton(record, [
+    { apn: '021-750-270', acres: 4.83 },
+    { apn: '999-999-270', acres: 4.83 }
+  ], new Set(['021-750']));
+  assert.equal(result.resolved[0].parcel.apn, '021-750-270');
+  assert.equal(resolveSingleton(record, [{ apn: '999-999-270', acres: 4.83 }], new Set(['021-750'])).resolved.length, 0);
+}
+
 async function testResolutionOutput() {
   const records = [lot('20250318', 25, 14.19), lot('20250321', 26, 4.15), { ...lot('3', 8, 5), latLng: [40, -120] }];
   const result = await resolveUnmappedParcels(records, async latLng => latLng[0] > 41 ? [
@@ -46,7 +56,7 @@ async function testResolutionOutput() {
   assert.equal(result.resolved.length, 2);
   assert.equal(result.unmapped.length, 1);
   assert.equal(result.report.mappedListings, 2);
-  assert.equal(result.resolved[0].parcelMatchEvidence.resolver, 'subdivision-lot-sequence-v1');
+  assert.equal(result.resolved[0].parcelMatchEvidence.resolver, 'subdivision-lot-sequence-v2');
 }
 
 (async () => {
@@ -54,6 +64,7 @@ async function testResolutionOutput() {
   testCorroboratedSequence();
   testSingleMatchDoesNotResolve();
   testAmbiguousCandidateDoesNotResolve();
+  testSingletonWithEstablishedPrefix();
   await testResolutionOutput();
   console.log('Passed: conservative secondary parcel resolver tests.');
 })().catch(error => { console.error(error); process.exit(1); });

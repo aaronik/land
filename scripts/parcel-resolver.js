@@ -57,41 +57,72 @@ function resolveGroup(group, parcels, options = {}) {
   return { resolved, reason: resolved.length ? 'corroborated lot/APN sequence and exact acreage' : 'no unique parcel assignments' };
 }
 
+function resolveSingleton(record, parcels, establishedPrefixes, options = {}) {
+  const settings = { ...DEFAULT_OPTIONS, ...options };
+  const candidates = parcels.filter(parcel => {
+    if (!candidateMatches(record, parcel, settings.acreageTolerance)) return false;
+    return establishedPrefixes.has(apnParts(parcel.apn).prefix);
+  });
+  if (candidates.length !== 1) return { resolved: [], reason: candidates.length ? 'ambiguous established-prefix candidates' : 'no candidate in an established APN prefix' };
+  const parcel = candidates[0];
+  return {
+    resolved: [{ record, parcel, lot: lotNumber(record), prefix: apnParts(parcel.apn).prefix }],
+    reason: 'established APN prefix, lot/APN sequence, exact acreage, and bounded proximity'
+  };
+}
+
+function resolvedRecord(match, corroboratingMlsNumbers, method) {
+  const evidence = {
+    resolver: 'subdivision-lot-sequence-v2',
+    method,
+    lotNumber: match.lot,
+    listedAcres: Number(match.record.acres),
+    gisAcres: Number(match.parcel.acres),
+    apnPrefix: match.prefix,
+    corroboratingMlsNumbers
+  };
+  const resolved = {
+    ...match.record,
+    APN: match.parcel.apn,
+    parcelMatchSource: `deterministic secondary resolver: ${method}`,
+    parcelMatchConfidence: 'high; assessor/title confirmation pending',
+    parcelMatchEvidence: evidence
+  };
+  delete resolved.latLng;
+  delete resolved.locationSource;
+  delete resolved.category;
+  return resolved;
+}
+
 async function resolveUnmappedParcels(records, queryNearbyParcels, options = {}) {
   const remaining = new Set(records);
   const resolvedRecords = [];
+  const establishedPrefixes = new Map();
   const groups = [];
+  const candidateCache = new Map();
+  const candidatesAt = async latLng => {
+    const key = latLng.map(value => Number(value).toFixed(6)).join(',');
+    if (!candidateCache.has(key)) candidateCache.set(key, Promise.resolve().then(() => queryNearbyParcels(latLng)));
+    return candidateCache.get(key);
+  };
+  const addMatch = (match, corroboratingMlsNumbers, method) => {
+    const resolved = resolvedRecord(match, corroboratingMlsNumbers, method);
+    remaining.delete(match.record);
+    resolvedRecords.push(resolved);
+    if (!establishedPrefixes.has(match.prefix)) establishedPrefixes.set(match.prefix, new Set());
+    corroboratingMlsNumbers.forEach(number => establishedPrefixes.get(match.prefix).add(number));
+  };
   for (const group of groupByLocation(records)) {
     let parcels = [];
     try {
-      parcels = await queryNearbyParcels(group.latLng);
+      parcels = await candidatesAt(group.latLng);
     } catch (error) {
       groups.push({ latLng: group.latLng, mlsNumbers: group.records.map(record => record.mlsNumber), status: 'query_failed', reason: error.message });
       continue;
     }
     const result = resolveGroup(group, parcels, options);
-    for (const match of result.resolved) {
-      const evidence = {
-        resolver: 'subdivision-lot-sequence-v1',
-        lotNumber: match.lot,
-        listedAcres: Number(match.record.acres),
-        gisAcres: Number(match.parcel.acres),
-        apnPrefix: match.prefix,
-        corroboratingMlsNumbers: result.resolved.map(item => item.record.mlsNumber)
-      };
-      const resolved = {
-        ...match.record,
-        APN: match.parcel.apn,
-        parcelMatchSource: 'deterministic secondary resolver: lot/APN sequence + exact acreage',
-        parcelMatchConfidence: 'high; assessor/title confirmation pending',
-        parcelMatchEvidence: evidence
-      };
-      delete resolved.latLng;
-      delete resolved.locationSource;
-      delete resolved.category;
-      remaining.delete(match.record);
-      resolvedRecords.push(resolved);
-    }
+    const corroboratingMlsNumbers = result.resolved.map(item => item.record.mlsNumber);
+    for (const match of result.resolved) addMatch(match, corroboratingMlsNumbers, 'shared-pin lot/APN sequence + exact acreage');
     groups.push({
       latLng: group.latLng,
       mlsNumbers: group.records.map(record => record.mlsNumber),
@@ -100,7 +131,28 @@ async function resolveUnmappedParcels(records, queryNearbyParcels, options = {})
       assignments: result.resolved.map(match => ({ mlsNumber: match.record.mlsNumber, lotNumber: match.lot, apn: match.parcel.apn, listedAcres: match.record.acres, gisAcres: match.parcel.acres }))
     });
   }
-  return { resolved: resolvedRecords, unmapped: records.filter(record => remaining.has(record)), report: { resolver: 'subdivision-lot-sequence-v1', evaluatedGroups: groups.length, mappedListings: resolvedRecords.length, groups } };
+  for (const record of records.filter(record => remaining.has(record) && lotNumber(record) !== null && Array.isArray(record.latLng))) {
+    let parcels = [];
+    try {
+      parcels = await candidatesAt(record.latLng);
+    } catch (error) {
+      groups.push({ latLng: record.latLng, mlsNumbers: [record.mlsNumber], status: 'query_failed', reason: error.message });
+      continue;
+    }
+    const result = resolveSingleton(record, parcels, new Set(establishedPrefixes.keys()), options);
+    for (const match of result.resolved) {
+      const corroborating = [...(establishedPrefixes.get(match.prefix) || [])];
+      addMatch(match, corroborating, 'established APN prefix + lot/APN sequence + exact acreage');
+    }
+    groups.push({
+      latLng: record.latLng,
+      mlsNumbers: [record.mlsNumber],
+      status: result.resolved.length ? 'auto_mapped_singleton' : 'unresolved_singleton',
+      reason: result.reason,
+      assignments: result.resolved.map(match => ({ mlsNumber: match.record.mlsNumber, lotNumber: match.lot, apn: match.parcel.apn, listedAcres: match.record.acres, gisAcres: match.parcel.acres }))
+    });
+  }
+  return { resolved: resolvedRecords, unmapped: records.filter(record => remaining.has(record)), report: { resolver: 'subdivision-lot-sequence-v2', evaluatedGroups: groups.length, mappedListings: resolvedRecords.length, establishedPrefixes: [...establishedPrefixes.keys()], groups } };
 }
 
-module.exports = { apnParts, candidateMatches, groupByLocation, lotNumber, resolveGroup, resolveUnmappedParcels };
+module.exports = { apnParts, candidateMatches, groupByLocation, lotNumber, resolveGroup, resolveSingleton, resolveUnmappedParcels };
