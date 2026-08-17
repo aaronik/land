@@ -56,6 +56,8 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .layer-key strong { margin-bottom: 2px; font-size: 9px; letter-spacing: .06em; text-transform: uppercase; }
 .layer-key span { display: flex; align-items: center; gap: 6px; }
 .layer-key span i { width: 11px; height: 11px; flex: 0 0 11px; border: 1px solid rgba(22,35,29,.2); border-radius: 2px; background: var(--key-color); }
+.layer-key.zoning-key { max-height: 250px; overflow-y: auto; }
+.layer-key span i.key-transparent { background: transparent; border-color: #6e6e6e; }
 .maplibregl-ctrl-terrain-toggle span { display: block; font-size: 12px; font-weight: 850; line-height: 29px; }
 #terrain-toggle,
 .maplibregl-ctrl button#terrain-toggle:not(:disabled):hover,
