@@ -231,14 +231,16 @@ function addPmtilesSource(id) {
   const attributions = {
     flood: '<a href="https://www.fema.gov/flood-maps/national-flood-hazard-layer" target="_blank">FEMA NFHL</a>',
     soils: '<a href="https://sdmdataaccess.nrcs.usda.gov/" target="_blank">USDA NRCS SSURGO</a>',
-    fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>'
+    fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>',
+    railroads: '<a href="https://tigerweb.geo.census.gov/" target="_blank">U.S. Census Bureau TIGER/Line</a>'
   };
   map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id] });
 }
 function toggleLayer(id, visibleValue) {
   const groupedLayers = {
     'topographic-contours': ['topographic-contours', 'topographic-contour-labels'],
-    roads: ['roads', 'road-labels']
+    roads: ['roads', 'road-labels'],
+    railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels']
   };
   const layerIds = groupedLayers[id] || [id];
   for (const layerId of layerIds) if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibleValue ? 'visible' : 'none');
@@ -327,6 +329,7 @@ function initializeMapLayers() {
   addPmtilesSource('zoning');
   addPmtilesSource('parcels');
   addPmtilesSource('roads');
+  addPmtilesSource('railroads');
   map.addSource('sales', { type: 'geojson', data: saleGeoJson() });
   map.addSource('sale-points', { type: 'geojson', data: salePointGeoJson() });
   map.addSource('unmapped', { type: 'geojson', data: unmappedGeoJson() });
@@ -412,6 +415,31 @@ function initializeMapLayers() {
       'text-halo-width': 2,
       'text-halo-blur': 0.4
     }
+  });
+  map.addLayer({
+    id: 'railroad-casing', type: 'line', source: 'railroads', 'source-layer': 'railroads', minzoom: 7,
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': 'rgba(255, 255, 255, 0.9)', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 2.8, 14, 6.5] }
+  });
+  map.addLayer({
+    id: 'railroads', type: 'line', source: 'railroads', 'source-layer': 'railroads', minzoom: 7,
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': '#e53935', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.5, 14, 3.5] }
+  });
+  map.addLayer({
+    id: 'railroad-ties', type: 'line', source: 'railroads', 'source-layer': 'railroads', minzoom: 10,
+    layout: { 'line-cap': 'butt', 'line-join': 'round' },
+    paint: { 'line-color': '#681616', 'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1.4, 14, 2.2], 'line-dasharray': [0.5, 2.5] }
+  });
+  map.addLayer({
+    id: 'railroad-labels', type: 'symbol', source: 'railroads', 'source-layer': 'railroads', minzoom: 10,
+    filter: ['all', ['has', 'NAME'], ['!=', ['get', 'NAME'], '']],
+    layout: {
+      'symbol-placement': 'line', 'symbol-spacing': 500, 'text-field': ['get', 'NAME'],
+      'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 10, 10, 14, 12],
+      'text-letter-spacing': 0.04, 'text-offset': [0, 1.1], 'text-padding': 4, 'text-keep-upright': true
+    },
+    paint: { 'text-color': '#ff6b67', 'text-halo-color': 'rgba(25, 16, 16, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
   });
   map.addLayer({ id: 'sale-fill', type: 'fill', source: 'sales', paint: { 'fill-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'fill-opacity': 0.42 } });
   map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });

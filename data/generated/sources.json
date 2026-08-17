@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T19:05:41.573Z",
+  "generatedAt": "2026-08-17T05:34:47.473Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -93,6 +93,16 @@
         "STATIC_BFE",
         "DEPTH",
         "VELOCITY"
+      ]
+    },
+    "railroads": {
+      "source": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Transportation/MapServer/9",
+      "featureCount": 114,
+      "fields": [
+        "OBJECTID",
+        "NAME",
+        "BASENAME",
+        "MTFCC"
       ]
     }
   }

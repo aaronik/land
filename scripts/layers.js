@@ -116,6 +116,12 @@ const LAYERS = {
     url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Roads_Public/FeatureServer/0',
     objectId: 'FID', fields: ['FID', 'ROADNAME', 'NUM_LANES', 'SUR_TYPE', 'Label_Cate']
   },
+  railroads: {
+    name: 'U.S. Census Bureau railroads',
+    url: 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Transportation/MapServer/9',
+    bbox: SISKIYOU_BBOX,
+    fields: ['OBJECTID', 'NAME', 'BASENAME', 'MTFCC']
+  },
   fire_hazard: {
     name: 'Siskiyou County fire hazard severity',
     url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/FireHazardSeverity_Public/FeatureServer/0',
