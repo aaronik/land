@@ -10,7 +10,7 @@ if (!failures.length) {
   if (!Array.isArray(data.features) || !data.features.length) failures.push('data/parcels.json has no parcel features');
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const app = fs.readFileSync(path.join(root, 'assets/app.source.js'), 'utf8');
-  if (!app.includes('function separatedUnmappedListings()') || !app.includes('function separatedCoordinate(latLng, index, count)')) failures.push('Coincident unmapped MLS dots are not separated');
+  if (!app.includes('function separatedUnmappedListings()') || !app.includes('function separatedCoordinate(latLng, index, count)') || !app.includes('const radiusFeet = 100')) failures.push('Coincident unmapped MLS dots are not separated by a fixed geographic distance');
   if (!html.includes('parcelquest-warning')) failures.push('ParcelQuest warning dialog is missing');
   if (!app.includes('Research in ParcelQuest Lite')) failures.push('ParcelQuest parcel action is missing');
   if (!app.includes('localStorage')) failures.push('browser-local research cache is missing');

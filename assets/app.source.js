@@ -243,10 +243,14 @@ function separatedUnmappedListings() {
 }
 function separatedCoordinate(latLng, index, count) {
   if (count === 1) return [latLng[1], latLng[0]];
-  const center = map.project([latLng[1], latLng[0]]);
   const angle = -Math.PI / 2 + index * Math.PI * 2 / count;
-  const radius = count === 2 ? 11 : count <= 4 ? 16 : 24;
-  return map.unproject([center.x + Math.cos(angle) * radius, center.y + Math.sin(angle) * radius]).toArray();
+  const radiusFeet = 100;
+  const latitudeFeetPerDegree = 364000;
+  const longitudeFeetPerDegree = latitudeFeetPerDegree * Math.cos(latLng[0] * Math.PI / 180);
+  return [
+    latLng[1] + Math.cos(angle) * radiusFeet / longitudeFeetPerDegree,
+    latLng[0] + Math.sin(angle) * radiusFeet / latitudeFeetPerDegree
+  ];
 }
 function unmappedGeoJson() {
   return {
@@ -543,8 +547,6 @@ function initializeMapLayers() {
   }
 }
 map.once('style.load', initializeMapLayers);
-map.on('zoomend', () => map.getSource('unmapped')?.setData(unmappedGeoJson()));
-map.on('rotateend', () => map.getSource('unmapped')?.setData(unmappedGeoJson()));
 
 function findParcel() {
   const query = document.querySelector('#search').value.trim().toUpperCase();
