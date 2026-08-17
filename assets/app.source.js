@@ -193,8 +193,14 @@ function showParcelDetails(properties, saleFeature = matchingSale(properties.APN
   bindResearchControls(p.APN);
 }
 function setSelectedApn(apn) {
-  selectedApn = apn || '';
-  if (map.getLayer('parcel-selected')) map.setFilter('parcel-selected', ['==', ['get', 'APN'], selectedApn]);
+  const nextApn = apn || '';
+  if (selectedApn && map.getSource('parcels')) {
+    map.removeFeatureState({ source: 'parcels', sourceLayer: 'parcels', id: selectedApn }, 'selected');
+  }
+  selectedApn = nextApn;
+  if (selectedApn && map.getSource('parcels')) {
+    map.setFeatureState({ source: 'parcels', sourceLayer: 'parcels', id: selectedApn }, { selected: true });
+  }
 }
 function selectParcel(properties) {
   if (!properties?.APN) return;
@@ -248,7 +254,7 @@ function addPmtilesSource(id) {
     fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>',
     railroads: '<a href="https://tigerweb.geo.census.gov/" target="_blank">U.S. Census Bureau TIGER/Line</a>'
   };
-  map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id] });
+  map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id], ...(id === 'parcels' ? { promoteId: 'APN' } : {}) });
 }
 function toggleLayer(id, visibleValue) {
   const groupedLayers = {
@@ -459,7 +465,7 @@ function initializeMapLayers() {
   map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });
   map.addLayer({ id: 'sale-markers', type: 'circle', source: 'sale-points', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.95, 'circle-pitch-alignment': 'map' } });
   map.addLayer({ id: 'sale-marker-labels', type: 'symbol', source: 'sale-points', filter: ['!=', ['get', 'markerLabel'], ''], layout: { 'text-field': ['get', 'markerLabel'], 'text-font': ['Noto Sans Bold'], 'text-size': 12, 'text-offset': [0, -1.35], 'text-anchor': 'bottom', 'text-padding': 3, 'text-pitch-alignment': 'viewport' }, paint: { 'text-color': '#fff', 'text-halo-color': 'rgba(20, 25, 22, 0.9)', 'text-halo-width': 2, 'text-halo-blur': 0.4 } });
-  map.addLayer({ id: 'parcel-selected', type: 'line', source: 'parcels', 'source-layer': 'parcels', filter: ['==', ['get', 'APN'], selectedApn], paint: { 'line-color': '#fff', 'line-width': 5, 'line-blur': 0.3 } });
+  map.addLayer({ id: 'parcel-selected', type: 'line', source: 'parcels', 'source-layer': 'parcels', paint: { 'line-color': '#fff', 'line-width': 5, 'line-blur': 0.3, 'line-opacity': ['case', ['boolean', ['feature-state', 'selected'], false], 1, 0] } });
   map.addLayer({ id: 'unmapped-markers', type: 'circle', source: 'unmapped', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'category'], 'private-home', COLORS['private-home'], COLORS['private-land']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.9, 'circle-pitch-alignment': 'map' } });
   map.addLayer({ id: 'unmapped-marker-labels', type: 'symbol', source: 'unmapped', filter: ['!=', ['get', 'markerLabel'], ''], layout: { 'text-field': ['get', 'markerLabel'], 'text-font': ['Noto Sans Bold'], 'text-size': 12, 'text-offset': [0, -1.35], 'text-anchor': 'bottom', 'text-padding': 3, 'text-pitch-alignment': 'viewport' }, paint: { 'text-color': '#fff', 'text-halo-color': 'rgba(20, 25, 22, 0.9)', 'text-halo-width': 2, 'text-halo-blur': 0.4 } });
 

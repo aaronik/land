@@ -21,6 +21,9 @@ if (!failures.length) {
   if (!app.includes("url.searchParams.set('v', new URL(import.meta.url).pathname.split('/').pop())")) failures.push('PMTiles URLs are not versioned by the application bundle');
   const vite = fs.readFileSync(path.join(root, 'vite.config.mjs'), 'utf8');
   for (const worker of ['maplibre-gl-worker.mjs', 'maplibre-gl-shared.mjs']) if (!vite.includes(worker)) failures.push(`production worker asset is missing: ${worker}`);
+  if (!app.includes("...(id === 'parcels' ? { promoteId: 'APN' } : {})")) failures.push('Parcel APNs are not promoted to feature IDs');
+  if (!app.includes("['feature-state', 'selected']") || !app.includes("map.setFeatureState({ source: 'parcels', sourceLayer: 'parcels', id: selectedApn }")) failures.push('Parcel selection does not use feature state');
+  if (app.includes("map.setFilter('parcel-selected'")) failures.push('Parcel selection still rebuilds the selected-layer filter');
   if (app.includes('/api/parcelquest')) failures.push('ParcelQuest must not be proxied');
   for (const feature of data.features || []) {
     if (!/^\d{3}-\d{3}-\d{3}$/.test(feature.properties?.APN || '')) failures.push(`invalid APN ${feature.properties?.APN}`);
