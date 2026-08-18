@@ -48,6 +48,22 @@ npm run refresh
 
 The `Refresh sales data` GitHub Actions workflow also runs daily at 12:00 UTC (4 AM PST / 5 AM PDT) and can be started manually from the Actions tab. It commits updated files under `data/` to the default branch, then builds and deploys the refreshed site to `gh-pages`.
 
+### Manual parcel overrides
+
+After identifying a listing's parcel on the map, copy its APN and run:
+
+```sh
+npm run override
+```
+
+The interactive helper asks for the listing/MLS number (or the full listing URL), APN(s), and notes/address. It accepts identifiers such as `MC26015313`, validates APNs against the county GIS, and safely updates `data/parcel-overrides.json`. For a one-line command:
+
+```sh
+npm run override -- add 20261234 021-520-380 --notes "Poplar Court, Weed, CA 96094"
+```
+
+Multiple parcels can be comma-separated. Run `npm run refresh` afterward to regenerate map data. Use `npm run override -- help` for list, show, remove, and replacement commands.
+
 ## Deployment
 
 ```sh

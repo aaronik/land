@@ -1,26 +1,43 @@
 {
   "20250510": {
-    "apns": ["021-280-250", "021-280-330"],
+    "apns": [
+      "021-280-250",
+      "021-280-330"
+    ],
     "source": "listing boundary exhibit compared with Siskiyou County GIS",
     "confidence": "manually verified; seller/title confirmation pending",
     "notes": "MLS advertises 64 acres; county GIS parcels total 66 acres"
   },
-  "20261019": {
-    "apns": ["021-280-320"],
+  "20250617": {
+    "apns": [
+      "021-680-010"
+    ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "notes": "3812 Dale Creek Rd, Weed, CA 96094"
+    "notes": "Dogwood Dr, Weed, CA 96094; listing imagery outlines this 5.8-acre parcel. Existing improvements may reflect an encroachment."
   },
   "20260182": {
-    "apns": ["021-520-380"],
+    "apns": [
+      "021-520-380"
+    ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "Poplar Court, Weed, CA 96094"
   },
-  "20250617": {
-    "apns": ["021-680-010"],
+  "20261019": {
+    "apns": [
+      "021-280-320"
+    ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "notes": "Dogwood Dr, Weed, CA 96094; listing imagery outlines this 5.8-acre parcel. Existing improvements may reflect an encroachment."
+    "notes": "3812 Dale Creek Rd, Weed, CA 96094"
+  },
+  "MC26015313": {
+    "apns": [
+      "020-170-090"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Very far from MLS coords"
   }
 }

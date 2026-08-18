@@ -8,6 +8,7 @@
     "dev": "vite",
     "start": "vite preview",
     "refresh": "node scripts/refresh-data.js",
+    "override": "node scripts/parcel-override.js",
     "layers:download": "node scripts/download-layers.js",
     "layers:build": "node scripts/make-pmtiles.js",
     "build": "vite build",
