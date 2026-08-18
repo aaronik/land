@@ -1,4 +1,12 @@
 {
+  "20240671": {
+    "apns": [
+      "057-072-100"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "pics"
+  },
   "20240890": {
     "apns": [
       "021-242-100"
@@ -48,6 +56,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "Zen mountain"
+  },
+  "20250768": {
+    "apns": [
+      "057-631-070"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "pics"
   },
   "20250848": {
     "apns": [
@@ -105,6 +121,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "best guess based on size"
+  },
+  "20260367": {
+    "apns": [
+      "037-100-310"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "pics"
   },
   "20260396": {
     "apns": [
