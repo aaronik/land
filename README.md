@@ -62,7 +62,7 @@ The interactive helper asks for the listing/MLS number (or the full listing URL)
 npm run override -- add 20261234 021-520-380 --notes "Poplar Court, Weed, CA 96094"
 ```
 
-Multiple parcels can be comma-separated. Run `npm run refresh` afterward to regenerate map data. Use `npm run override -- help` for list, show, remove, and replacement commands.
+Multiple parcels can be comma-separated. The helper immediately patches `data/parcels.json` using only the selected county parcel geometry, so a full `npm run refresh` is not required; reload an already-open map to see it. A later refresh will reproduce the same mapping from `data/parcel-overrides.json`. Use `--no-map-patch` to save only the override, or `npm run override -- help` for list, show, remove, and replacement commands.
 
 ## Deployment
 

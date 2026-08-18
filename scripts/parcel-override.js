@@ -6,6 +6,7 @@ const readline = require('readline/promises');
 
 const root = path.resolve(__dirname, '..');
 const defaultFile = path.join(root, 'data', 'parcel-overrides.json');
+const defaultMapFile = path.join(root, 'data', 'parcels.json');
 const GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query';
 const DEFAULT_SOURCE = 'manual override: user-verified listing APN';
 const DEFAULT_CONFIDENCE = 'manually verified';
@@ -53,6 +54,93 @@ async function verifyApns(apns) {
   return apns.map(apn => ({ apn, acres: Number(found.get(apn).Acres) || null, landUse: found.get(apn).LandUse1 || '' }));
 }
 
+async function fetchParcelFeatures(apns) {
+  const where = `APN IN (${apns.map(apn => `'${apn.replace(/'/g, "''")}'`).join(',')})`;
+  const query = new URLSearchParams({
+    f: 'geojson', where,
+    outFields: 'APN,Acres,Zoning1,LandUse1,Section,Township,Range',
+    returnGeometry: 'true', outSR: 4326, resultRecordCount: 2000
+  });
+  const response = await fetch(`${GIS}?${query}`);
+  if (!response.ok) throw new Error(`County GIS returned ${response.status}`);
+  const data = await response.json();
+  if (data.error) throw new Error(`County GIS: ${data.error.message || 'parcel query failed'}`);
+  return data.features || [];
+}
+
+function patchMapData(data, mls, override, parcelFeatures) {
+  if (!data || data.type !== 'FeatureCollection' || !Array.isArray(data.features)) throw new Error('Map data is not a GeoJSON FeatureCollection');
+  const matchesMls = record => normalizeListingNumber(record?.mlsNumber) === mls;
+  const existingRecords = data.features.flatMap(feature => feature.properties?.records || []).filter(matchesMls);
+  const unmappedRecords = (data.unmappedListings || []).filter(matchesMls);
+  const original = existingRecords[0] || unmappedRecords[0];
+  if (!original) throw new Error(`MLS ${mls} is not in current map data; run \`npm run refresh\` once`);
+
+  const targetApns = (override.apns || []).map(normalizeApn).filter(Boolean);
+  const fetchedByApn = new Map(parcelFeatures.map(feature => [normalizeApn(feature.properties?.APN), feature]));
+  const missing = targetApns.filter(apn => !fetchedByApn.has(apn));
+  if (missing.length) throw new Error(`County GIS returned no geometry for APN: ${missing.join(', ')}`);
+
+  const retainedFeatures = [];
+  const existingByApn = new Map();
+  for (const feature of data.features) {
+    const records = (feature.properties?.records || []).filter(record => !matchesMls(record));
+    if (!records.length) continue;
+    const retained = { ...feature, properties: { ...feature.properties, records } };
+    retainedFeatures.push(retained);
+    existingByApn.set(normalizeApn(retained.properties.APN), retained);
+  }
+
+  for (const apn of targetApns) {
+    const record = {
+      ...original, APN: apn,
+      category: ['land', 'farm'].includes(original.propertyType) ? 'private-land' : 'private-home',
+      parcelMatchSource: override.source,
+      parcelMatchConfidence: override.confidence || ''
+    };
+    delete record.latLng;
+    delete record.locationSource;
+    const existing = existingByApn.get(apn);
+    if (existing) existing.properties.records.push(record);
+    else {
+      const county = fetchedByApn.get(apn);
+      const feature = { ...county, properties: { ...county.properties, APN: apn, records: [record] } };
+      retainedFeatures.push(feature);
+      existingByApn.set(apn, feature);
+    }
+  }
+
+  const unmappedListings = (data.unmappedListings || []).filter(record => !matchesMls(record));
+  const mappedRecords = retainedFeatures.flatMap(feature => feature.properties?.records || []);
+  return {
+    ...data,
+    overridePatchedAt: new Date().toISOString(),
+    counts: {
+      ...(data.counts || {}),
+      privateMapped: mappedRecords.filter(record => record.kind === 'private').length,
+      privateUnmapped: unmappedListings.length,
+      publicRecords: mappedRecords.filter(record => record.kind === 'public').length,
+      mappedParcels: retainedFeatures.length
+    },
+    unmappedListings,
+    features: retainedFeatures
+  };
+}
+
+function saveJson(file, value, pretty = false) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  const temporary = `${file}.${process.pid}.tmp`;
+  fs.writeFileSync(temporary, `${JSON.stringify(value, null, pretty ? 2 : 0)}\n`);
+  fs.renameSync(temporary, file);
+}
+
+async function prepareMapPatch(file, mls, override) {
+  if (!fs.existsSync(file)) throw new Error(`Map data not found: ${path.relative(root, file)}`);
+  const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const features = await fetchParcelFeatures(override.apns);
+  return patchMapData(data, mls, override, features);
+}
+
 function usage() {
   console.log(`Parcel override helper
 
@@ -67,8 +155,10 @@ Options:
   --source <text>       Evidence/source description
   --confidence <text>   Confidence description
   --no-verify           Skip county GIS APN verification
+  --no-map-patch        Save only the override (requires a later refresh)
   --force               Replace an existing MLS override
-  --file <path>         Use another override file (mainly for tests)`);
+  --file <path>         Use another override file (mainly for tests)
+  --map-file <path>     Patch another parcels.json file (mainly for tests)`);
 }
 
 function parseArgs(argv) {
@@ -76,7 +166,7 @@ function parseArgs(argv) {
   const options = {};
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    if (arg === '--no-verify' || arg === '--force' || arg === '--help') options[arg.slice(2)] = true;
+    if (arg === '--no-verify' || arg === '--no-map-patch' || arg === '--force' || arg === '--help') options[arg.slice(2)] = true;
     else if (arg.startsWith('--')) {
       if (argv[i + 1] === undefined) throw new Error(`${arg} requires a value`);
       options[arg.slice(2)] = argv[++i];
@@ -140,17 +230,22 @@ async function main(argv = process.argv.slice(2)) {
     for (const parcel of parcels) console.log(`Verified ${parcel.apn}${parcel.acres ? ` · ${parcel.acres} acres` : ''}${parcel.landUse ? ` · land use ${parcel.landUse}` : ''}`);
   }
 
-  overrides[mls] = {
+  const override = {
     apns,
     source: options.source || DEFAULT_SOURCE,
     confidence: options.confidence || DEFAULT_CONFIDENCE,
     ...(notes ? { notes } : {})
   };
+  const mapFile = path.resolve(options['map-file'] || process.env.PARCELS_FILE || defaultMapFile);
+  const patchedMap = options['no-map-patch'] ? null : await prepareMapPatch(mapFile, mls, override);
+  overrides[mls] = override;
   saveOverrides(file, overrides);
+  if (patchedMap) saveJson(mapFile, patchedMap);
   console.log(`Saved MLS ${mls} → ${apns.join(', ')} in ${path.relative(root, file)}`);
-  console.log('Run `npm run refresh` when you want to regenerate the map data.');
+  if (patchedMap) console.log(`Updated ${path.relative(root, mapFile)}; reload an open map to see the override.`);
+  else console.log('Map data was not patched; run `npm run refresh` to apply the override.');
 }
 
 if (require.main === module) main().catch(error => { console.error(`Error: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { loadOverrides, normalizeApn, normalizeListingNumber, parseApns, saveOverrides };
+module.exports = { loadOverrides, normalizeApn, normalizeListingNumber, parseApns, patchMapData, saveOverrides };

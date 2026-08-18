@@ -65,6 +65,15 @@
     "confidence": "manually verified",
     "notes": "from picture"
   },
+  "20251260": {
+    "apns": [
+      "028-020-220",
+      "028-020-210"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "from pics"
+  },
   "20260160": {
     "apns": [
       "037-200-130"
@@ -96,6 +105,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "best guess based on size"
+  },
+  "20260396": {
+    "apns": [
+      "036-531-061"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "pics"
   },
   "20260528": {
     "apns": [
