@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { resolveUnmappedParcels } = require('./parcel-resolver');
+const { emptyQueue, loadJson, mergeQueue, saveJson } = require('./apn-research');
 
 let pdfjs;
 
@@ -11,6 +12,7 @@ const outFile = path.join(root, 'data', 'parcels.json');
 const overridesFile = path.join(root, 'data', 'parcel-overrides.json');
 const reviewFile = path.join(root, 'data', 'lot-review.json');
 const resolverReportFile = path.join(root, 'data', 'parcel-resolution-report.json');
+const researchFile = path.join(root, 'data', 'apn-research.json');
 const externalListingsFile = path.join(root, 'data', 'external-listings.json');
 const EXTERNAL_LISTINGS = fs.existsSync(externalListingsFile) ? JSON.parse(fs.readFileSync(externalListingsFile, 'utf8')) : [];
 const PARCEL_OVERRIDES = fs.existsSync(overridesFile) ? JSON.parse(fs.readFileSync(overridesFile, 'utf8')) : {};
@@ -593,7 +595,8 @@ async function main() {
   }));
   fs.writeFileSync(reviewFile, JSON.stringify({ generatedAt: output.generatedAt, count: lotReview.length, listings: lotReview }, null, 2));
   fs.writeFileSync(resolverReportFile, JSON.stringify({ generatedAt: output.generatedAt, ...secondary.report }, null, 2));
-  console.log(`Wrote ${features.length} mapped parcels (${privateRows.length} MLS private, ${externalRows.length} external, ${auctions.length} public records), ${lotReview.length} lot-review items, and ${secondary.resolved.length} secondary mappings`);
+  saveJson(researchFile, mergeQueue(loadJson(researchFile, emptyQueue()), privateData.unmapped, output.generatedAt));
+  console.log(`Wrote ${features.length} mapped parcels (${privateRows.length} MLS private, ${externalRows.length} external, ${auctions.length} public records), ${lotReview.length} lot-review items, ${secondary.resolved.length} secondary mappings, and synchronized the APN research queue`);
 }
 
 main().catch(error => { console.error(error.stack || error); process.exit(1); });

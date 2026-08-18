@@ -48,6 +48,19 @@ npm run refresh
 
 The `Refresh sales data` GitHub Actions workflow also runs daily at 12:00 UTC (4 AM PST / 5 AM PDT) and can be started manually from the Actions tab. It commits updated files under `data/` to the default branch, then builds and deploys the refreshed site to `gh-pages`.
 
+### Evidence-backed APN research
+
+Use the persistent research queue for unresolved land listings:
+
+```sh
+npm run research -- sync
+npm run research -- list
+npm run research -- candidates <MLS>
+npm run research -- show <MLS>
+```
+
+Candidate generation uses the MLS point only to create a review set; it never maps a listing. Add source-linked evidence with `research evidence`, select a candidate, explicitly rule out competing candidates, then run `research assess`. `research resolve` is blocked unless every APN is verified in county GIS and the independent-evidence and ambiguity gates pass. Run `npm run research -- help` for all commands. Research state is stored in `data/apn-research.json` and survives later syncs.
+
 ### Manual parcel overrides
 
 After identifying a listing's parcel on the map, copy its APN and run:

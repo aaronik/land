@@ -89,6 +89,17 @@ Before reporting an APN:
 - **Acreage is rounded:** treat acreage as supporting evidence, not proof.
 - **APN format varies:** preserve the county display format (e.g. `036-550-011`), while the assessment number may appear without dashes (e.g. `036550011000`).
 
+## Machine-enforced confidence policy
+
+The `npm run research` queue treats generated GIS candidates as leads, never matches. A resolution requires:
+
+- every selected APN verified against county GIS;
+- either an explicit APN / boundary image, or at least three corroborating signals from two sources;
+- a location, road, or landmark signal plus acreage, lot, or subdivision support;
+- every materially plausible competing candidate explicitly ruled out with evidence.
+
+If these gates cannot be met, the correct result is `needs_evidence`, not a lower-confidence map association.
+
 ## Minimal checklist
 
 ```text
