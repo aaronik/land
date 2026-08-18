@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-17T16:25:15.282Z",
-  "count": 51,
+  "generatedAt": "2026-08-18T04:06:32.105Z",
+  "count": 52,
   "listings": [
     {
       "mlsNumber": "SC26055721",
@@ -23,6 +23,18 @@
         -122.437692
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-MRMLS/SN26070678/Unit-5-Lot-121-Raven-Ct-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261033",
+      "title": "Unit 9-2 Lot 85 Mountain Wood Drive, Weed, CA 96097",
+      "acres": 0.21,
+      "latLng": [
+        41.681931,
+        -122.641698
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261033/Unit-9-2-Lot-85-Mountain-Wood-Drive-Weed-CA-96097",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },

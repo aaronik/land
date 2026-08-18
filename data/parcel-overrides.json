@@ -16,5 +16,11 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "Poplar Court, Weed, CA 96094"
+  },
+  "20250617": {
+    "apns": ["021-680-010"],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Dogwood Dr, Weed, CA 96094; listing imagery outlines this 5.8-acre parcel. Existing improvements may reflect an encroachment."
   }
 }
