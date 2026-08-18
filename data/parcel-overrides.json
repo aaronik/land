@@ -1,20 +1,133 @@
 {
+  "20240890": {
+    "apns": [
+      "021-242-100"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "From imagery / position of black butte / acreage"
+  },
   "20250510": {
-    "apns": ["021-280-250", "021-280-330"],
+    "apns": [
+      "021-280-250",
+      "021-280-330"
+    ],
     "source": "listing boundary exhibit compared with Siskiyou County GIS",
     "confidence": "manually verified; seller/title confirmation pending",
     "notes": "MLS advertises 64 acres; county GIS parcels total 66 acres"
   },
+  "20250617": {
+    "apns": [
+      "021-680-010"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Dogwood Dr, Weed, CA 96094; listing imagery outlines this 5.8-acre parcel. Existing improvements may reflect an encroachment."
+  },
+  "20250745": {
+    "apns": [
+      "020-071-550"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Zen mountain"
+  },
+  "20250848": {
+    "apns": [
+      "036-550-011"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "manually triangulated, pretty sure"
+  },
+  "20251006": {
+    "apns": [
+      "037-400-370"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "from picture"
+  },
+  "20260160": {
+    "apns": [
+      "037-200-130"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Best guess based on size"
+  },
+  "20260182": {
+    "apns": [
+      "021-520-380"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Poplar Court, Weed, CA 96094"
+  },
+  "20260199": {
+    "apns": [
+      "037-400-180"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "from picture"
+  },
+  "20260268": {
+    "apns": [
+      "037-190-330"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "best guess based on size"
+  },
+  "20260571": {
+    "apns": [
+      "057-594-460",
+      "057-594-450",
+      "057-594-440"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "pictures"
+  },
+  "20260710": {
+    "apns": [
+      "036-360-170"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "MLS location was across the map"
+  },
+  "20260981": {
+    "apns": [
+      "021-262-370"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "4509 N Old Stage, Mt Shasta, CA 96067"
+  },
+  "20261010": {
+    "apns": [
+      "057-771-280"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "size / pictures / things on land"
+  },
   "20261019": {
-    "apns": ["021-280-320"],
+    "apns": [
+      "021-280-320"
+    ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "3812 Dale Creek Rd, Weed, CA 96094"
   },
-  "20260182": {
-    "apns": ["021-520-380"],
+  "MC26015313": {
+    "apns": [
+      "020-170-090"
+    ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "notes": "Poplar Court, Weed, CA 96094"
+    "notes": "Very far from MLS coords"
   }
 }
