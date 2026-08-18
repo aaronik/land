@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-18T05:56:19.669Z",
-  "count": 46,
+  "generatedAt": "2026-08-18T16:47:28.189Z",
+  "count": 283,
   "listings": [
     {
       "mlsNumber": "SC26055721",
@@ -27,6 +27,30 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20261036",
+      "title": "Lot 184 Iron Gate Rd, Hornbrook, CA 96044",
+      "acres": 2.5,
+      "latLng": [
+        41.906887599384326,
+        -122.51472420665009
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261036/Lot-184-Iron-Gate-Rd-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261035",
+      "title": "Lot 156 Iron Gate Rd, Hornbrook, CA 96044",
+      "acres": 2.5,
+      "latLng": [
+        41.906887599384326,
+        -122.51472420665009
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261035/Lot-156-Iron-Gate-Rd-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20261033",
       "title": "Unit 9-2 Lot 85 Mountain Wood Drive, Weed, CA 96097",
       "acres": 0.21,
@@ -35,6 +59,30 @@
         -122.641698
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261033/Unit-9-2-Lot-85-Mountain-Wood-Drive-Weed-CA-96097",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261032",
+      "title": "9-2 Lot 260 Stone Crest, Weed, CA 96094",
+      "acres": 0.26,
+      "latLng": [
+        41.537640074728046,
+        -122.38284917563793
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261032/9-2-Lot-260-Stone-Crest-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261018",
+      "title": "Lots 69-72 Juniper Valley Dr, Weed, CA 96094",
+      "acres": 80,
+      "latLng": [
+        41.535656309000785,
+        -122.34823646700154
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261018/Lots-69-72-Juniper-Valley-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -75,6 +123,42 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20260978",
+      "title": "Lot 83 Unit 7-2 Black Bear Rd., Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260978/Lot-83-Unit-7-2-Black-Bear-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260977",
+      "title": "Lot 84 Unit 7-2 Black Bear Rd., Weed, CA 96094",
+      "acres": 0.33,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260977/Lot-84-Unit-7-2-Black-Bear-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260975",
+      "title": "Unit 5 Lot #103 Greenfinch Way, Montague, CA 96064",
+      "acres": 5,
+      "latLng": [
+        41.882840261500775,
+        -122.43578054800157
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260975/Unit-5-Lot-103-Greenfinch-Way-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20260968",
       "title": "Lot 40 Lake Shore Drive, Weed, CA 96094",
       "acres": 0.24,
@@ -83,6 +167,234 @@
         -122.377096
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260968/Lot-40-Lake-Shore-Drive-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260967",
+      "title": "Unit 8-2 Lot 80 Lake Shastina, Archer Rd, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.53399145017726,
+        -122.36097841629568
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260967/Unit-8-2-Lot-80-Lake-Shastina-Archer-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260964",
+      "title": "9-2 Lot 97 Shoreline Dr, Weed, CA 96094",
+      "acres": 0.18,
+      "latLng": [
+        41.53485505975078,
+        -122.38194416700158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260964/9-2-Lot-97-Shoreline-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260963",
+      "title": "9-2 Lot 131 Elkridge Rd, Weed, CA 96094",
+      "acres": 0.27,
+      "latLng": [
+        41.53070309215461,
+        -122.38619462692465
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260963/9-2-Lot-131-Elkridge-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260410",
+      "title": "Unt 5-3 Lot 187 Hogan Dr, Weed, CA 96094",
+      "acres": 0.27,
+      "latLng": [
+        41.50317416173989,
+        -122.370521946219
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260410/Unt-5-3-Lot-187-Hogan-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260953",
+      "title": "9-2 Lot 227 Stone Crest Dr, Weed, CA 96094",
+      "acres": 0.28,
+      "latLng": [
+        41.537640074728046,
+        -122.38284917563793
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260953/9-2-Lot-227-Stone-Crest-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260952",
+      "title": "Unit 5-4 Lot 31 Tennis Rd, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.50695916150077,
+        -122.38165249900159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260952/Unit-5-4-Lot-31-Tennis-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251244",
+      "title": "Unit 8-2 Lot 145- Sherwood Rd, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.536049684087736,
+        -122.36099637104508
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251244/Unit-8-2-Lot-145-Sherwood-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251243",
+      "title": "Unit 8-2 Lot 172 Sherwood Rd, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.536049684087736,
+        -122.36099637104508
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251243/Unit-8-2-Lot-172-Sherwood-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250881",
+      "title": "Unit 7-2 Lot 92 Puma Dr, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.49696615011189,
+        -122.3641669511127
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250881/Unit-7-2-Lot-92-Puma-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260951",
+      "title": "5-4 Lot 164 Mt Blanch, Weed, CA 96094",
+      "acres": 0.28,
+      "latLng": [
+        41.502587866417436,
+        -122.38792113333493
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260951/5-4-Lot-164-Mt-Blanch-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260950",
+      "title": "Unit 7-2 Lot 69 Rock Chuck Circle, Weed, CA 96094",
+      "acres": 0.25,
+      "latLng": [
+        41.49592890100075,
+        -122.36346172850159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260950/Unit-7-2-Lot-69-Rock-Chuck-Circle-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260949",
+      "title": "7-1 Lot 110 Grizzly Ct, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.49834663014364,
+        -122.36980390828728
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260949/7-1-Lot-110-Grizzly-Ct-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20241108",
+      "title": "Unit 4 Lot 63 Whitepine Rd., Hornbrook, CA 96044",
+      "acres": 2.5,
+      "latLng": [
+        41.88269085533409,
+        -122.4590924637349
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20241108/Unit-4-Lot-63-Whitepine-Rd-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260936",
+      "title": "U-5 Lot 36 Desavado, Montague, CA 96064",
+      "acres": 1,
+      "latLng": [
+        41.89257429412576,
+        -122.42582827100156
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260936/U-5-Lot-36-Desavado-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260925",
+      "title": "8-1 Lot 234 Lakeside Dr, Weed, CA 96094",
+      "acres": 0.26,
+      "latLng": [
+        41.535013054534105,
+        -122.35930789820158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260925/8-1-Lot-234-Lakeside-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260924",
+      "title": "Unit 4 Lot 711 Clark Rd, Hornbrook, CA 96044",
+      "acres": 2.9,
+      "latLng": [
+        41.883725717750764,
+        -122.4554628427516
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260924/Unit-4-Lot-711-Clark-Rd-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260919",
+      "title": "Unit 9-2 Lot 95 Lake Shastina, Mountainwood Dr., Weed, CA 96094",
+      "acres": 0.19,
+      "latLng": [
+        41.525169566233316,
+        -122.37377923853647
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260919/Unit-9-2-Lot-95-Lake-Shastina-Mountainwood-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260893",
+      "title": "U 9-2 Lot 258 Quail Ridge, Weed, CA 96094",
+      "acres": 0.26,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260893/U-9-2-Lot-258-Quail-Ridge-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260892",
+      "title": "U 9-1 Lot 235 Stone Crest Drive, Weed, CA 96094",
+      "acres": 0.34,
+      "latLng": [
+        41.537640074728046,
+        -122.38284917563793
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260892/U-9-1-Lot-235-Stone-Crest-Drive-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -99,6 +411,54 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20260879",
+      "title": "Unit 5-4 Lot 138 Ls, Mt Blanch Dr., Weed, CA 96094",
+      "acres": 0.39,
+      "latLng": [
+        41.50218983877855,
+        -122.38779542933493
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260879/Unit-5-4-Lot-138-Ls-Mt-Blanch-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260861",
+      "title": "Blk 15 Lot 5 S California St, Dorris, CA 96023",
+      "acres": 0.13,
+      "latLng": [
+        41.964321731163565,
+        -121.91960383930392
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260861/Blk-15-Lot-5-S-California-St-Dorris-CA-96023",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250575",
+      "title": "Unit 4 Lot 575 Krce Hare St., Montague, CA 96044",
+      "acres": 4.6,
+      "latLng": [
+        41.891814757000795,
+        -122.43008328200155
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250575/Unit-4-Lot-575-Krce-Hare-St-Montague-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260404",
+      "title": "Unit 4 Lot 471 Erick Lane, Montague, CA 96064",
+      "acres": 4.8,
+      "latLng": [
+        41.90084325600075,
+        -122.44563178400155
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260404/Unit-4-Lot-471-Erick-Lane-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20240227",
       "title": "Lot 45 Desavado Rd, Montague, CA 96064",
       "acres": 1,
@@ -111,6 +471,798 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20250985",
+      "title": "Lot 175 Shasta Ln, Hornbrook, CA 96044",
+      "acres": 2.7,
+      "latLng": [
+        41.945958095000776,
+        -122.38565648250157
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250985/Lot-175-Shasta-Ln-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260820",
+      "title": "Lot #42 Pinnacle, Weed, CA 96094",
+      "acres": 0.9,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260820/Lot-42-Pinnacle-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260502",
+      "title": "Lots 4 & 5 Berry St, Mt Shasta, CA 96067",
+      "acres": 0.18,
+      "latLng": [
+        41.308924219040776,
+        -122.31357107928159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260502/Lots-4-5-Berry-St-Mt-Shasta-CA-96067",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260768",
+      "title": "Lot 3 Twin Hills Ct, Mt Shasta, CA 96067",
+      "acres": 2.62,
+      "latLng": [
+        41.37709055135976,
+        -122.37892038296145
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260768/Lot-3-Twin-Hills-Ct-Mt-Shasta-CA-96067",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260760",
+      "title": "Unit 9-1 Lot 18 Shadyridge Dr., Weed, CA 96094",
+      "acres": 0.28,
+      "latLng": [
+        41.54662155650077,
+        -122.38171752650157
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260760/Unit-9-1-Lot-18-Shadyridge-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240113",
+      "title": "7-3 Lot 186 Cougar Ct., Weed, CA 96094",
+      "acres": 0.25,
+      "latLng": [
+        41.497688976500775,
+        -122.3732443347516
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240113/7-3-Lot-186-Cougar-Ct-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260737",
+      "title": "Unit 7-3 Lot 35 Lake Shastina, Possum Way, Weed, CA 96094",
+      "acres": 0.26,
+      "latLng": [
+        41.49917723750077,
+        -122.38001111033492
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260737/Unit-7-3-Lot-35-Lake-Shastina-Possum-Way-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260731",
+      "title": "Lot 87 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260731/Lot-87-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260730",
+      "title": "Lot 86 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260730/Lot-86-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260729",
+      "title": "Lot 85 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260729/Lot-85-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260728",
+      "title": "Lot 84 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260728/Lot-84-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260727",
+      "title": "Lot 83 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260727/Lot-83-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260726",
+      "title": "Lot 82 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.48,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260726/Lot-82-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260725",
+      "title": "Lot 81 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.21,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260725/Lot-81-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260724",
+      "title": "Lot 80 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260724/Lot-80-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260723",
+      "title": "Lot 79 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260723/Lot-79-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260722",
+      "title": "Lot 78 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260722/Lot-78-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260721",
+      "title": "Lot 77 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260721/Lot-77-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260720",
+      "title": "Lot 76 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260720/Lot-76-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260719",
+      "title": "Lot 75 Mill House, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260719/Lot-75-Mill-House-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260718",
+      "title": "Lot 74 Old Mill Dr, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.24858175325078,
+        -122.14266950675163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260718/Lot-74-Old-Mill-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260717",
+      "title": "Lot 73 Old Mill Dr, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.24858175325078,
+        -122.14266950675163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260717/Lot-73-Old-Mill-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260716",
+      "title": "Lot 72 Old Mill Dr, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.24858175325078,
+        -122.14266950675163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260716/Lot-72-Old-Mill-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260715",
+      "title": "Lot 71 Old Mill Dr, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.24858175325078,
+        -122.14266950675163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260715/Lot-71-Old-Mill-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260714",
+      "title": "Lot 70 Old Mill Dr, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.24858175325078,
+        -122.14266950675163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260714/Lot-70-Old-Mill-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260713",
+      "title": "Lot 69 Old Mill Dr, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.24858175325078,
+        -122.14266950675163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260713/Lot-69-Old-Mill-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260712",
+      "title": "Lot 68 Old Mill Dr, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.24858175325078,
+        -122.14266950675163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260712/Lot-68-Old-Mill-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260706",
+      "title": "Lot 67 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260706/Lot-67-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260705",
+      "title": "Lot 66 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260705/Lot-66-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260704",
+      "title": "Lot 65 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260704/Lot-65-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260703",
+      "title": "Lot 64 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260703/Lot-64-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260686",
+      "title": "Lot 63 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260686/Lot-63-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260685",
+      "title": "Lot 62 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260685/Lot-62-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260684",
+      "title": "Lot 61 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260684/Lot-61-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260683",
+      "title": "Lot 60 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260683/Lot-60-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260682",
+      "title": "Lot 59 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260682/Lot-59-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260681",
+      "title": "Lot 58 Old Mill, McCloud, CA 96057",
+      "acres": 0.23,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260681/Lot-58-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260680",
+      "title": "Lot 52 Old Mill, McCloud, CA 96057",
+      "acres": 0.3,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260680/Lot-52-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260679",
+      "title": "Lot 51 Old Mill, McCloud, CA 96057",
+      "acres": 0.29,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260679/Lot-51-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260678",
+      "title": "Lot 50 Old Mill, McCloud, CA 96057",
+      "acres": 0.24,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260678/Lot-50-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260677",
+      "title": "Lot 49 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260677/Lot-49-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260676",
+      "title": "Lot 48 Old Mill, McCloud, CA 96057",
+      "acres": 0.39,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260676/Lot-48-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260675",
+      "title": "Lot 47 Panther Ct, McCloud, CA 96057",
+      "acres": 0.31,
+      "latLng": [
+        41.264773207160765,
+        -122.11460654389602
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260675/Lot-47-Panther-Ct-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260674",
+      "title": "Lot 46 Panther Ct, McCloud, CA 96057",
+      "acres": 0.39,
+      "latLng": [
+        41.264773207160765,
+        -122.11460654389602
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260674/Lot-46-Panther-Ct-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260664",
+      "title": "Lot #28 Linda Dr, Hornbrook, CA 96044",
+      "acres": 2.5,
+      "latLng": [
+        41.23561112357035,
+        -122.27197447965679
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260664/Lot-28-Linda-Dr-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250546",
+      "title": "Unit 1 Lot 104 Lake Shastina Dr, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.525169566233316,
+        -122.37377923853647
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250546/Unit-1-Lot-104-Lake-Shastina-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260661",
+      "title": "Lot 45 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.33,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260661/Lot-45-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260660",
+      "title": "Lot 44 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.31,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260660/Lot-44-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260659",
+      "title": "Lot 43 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.25,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260659/Lot-43-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260658",
+      "title": "Lot 42 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.28,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260658/Lot-42-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260657",
+      "title": "Lot 41 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.25,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260657/Lot-41-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260656",
+      "title": "Lot 40 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.29,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260656/Lot-40-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260655",
+      "title": "Lot 39 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.2,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260655/Lot-39-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260654",
+      "title": "Lot 38 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.21,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260654/Lot-38-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260653",
+      "title": "Lot 37 Panther Meadow, McCloud, CA 96057",
+      "acres": 0.21,
+      "latLng": [
+        41.24999835600078,
+        -122.14316579000162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260653/Lot-37-Panther-Meadow-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260652",
+      "title": "Lot 36 Mill House, McCloud, CA 96057",
+      "acres": 0.2,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260652/Lot-36-Mill-House-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260651",
+      "title": "Lot 35 Mill House, McCloud, CA 96057",
+      "acres": 0.23,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260651/Lot-35-Mill-House-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260650",
+      "title": "Lot 34 Mill House, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260650/Lot-34-Mill-House-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260649",
+      "title": "Lot 32 Old Mill, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260649/Lot-32-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260648",
+      "title": "Unit 3- Lot 13 Scott River Rd, Scott Bar, CA 96085",
+      "acres": 1.2,
+      "latLng": [
+        41.71418248726389,
+        -123.03561885952786
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260648/Unit-3-Lot-13-Scott-River-Rd-Scott-Bar-CA-96085",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260646",
+      "title": "Unit 3 Lot 6 Lakeshore, Weed, CA 96094",
+      "acres": 0.51,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260646/Unit-3-Lot-6-Lakeshore-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260641",
+      "title": "Unit 5-4 Lot 13 Lake Shastina, Mt Blanch Dr., Weed, CA 96094",
+      "acres": 0.39,
+      "latLng": [
+        41.50218983877855,
+        -122.38779542933493
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260641/Unit-5-4-Lot-13-Lake-Shastina-Mt-Blanch-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260640",
+      "title": "Lot 82 Spearpoint Rd, Weed, CA 96094",
+      "acres": 0.05,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260640/Lot-82-Spearpoint-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260639",
+      "title": "Lot 81 Spearpoint Rd, Weed, CA 96094",
+      "acres": 0.05,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260639/Lot-81-Spearpoint-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260638",
+      "title": "Lot 80 Spearpoint Rd, Weed, CA 96094",
+      "acres": 0.05,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260638/Lot-80-Spearpoint-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260637",
+      "title": "Lot 79 Spearpoint Drive, Weed, CA 96094",
+      "acres": 0.05,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260637/Lot-79-Spearpoint-Drive-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20260636",
       "title": "Lot 126 Dennis Ln., Hornbrook, CA 96044",
       "acres": 1.16,
@@ -119,6 +1271,318 @@
         -122.489965
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260636/Lot-126-Dennis-Ln-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260630",
+      "title": "Unit 5 Lot147 Iron Gate Lake, Fawn Rd, Hornbrook, CA 96044",
+      "acres": 3,
+      "latLng": [
+        41.23008385272009,
+        -122.27315463166387
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260630/Unit-5-Lot147-Iron-Gate-Lake-Fawn-Rd-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260629",
+      "title": "Unit 9-1 Lot 14 Lake Shastina, Wildhorse Pl., Weed, CA 96094",
+      "acres": 0.32,
+      "latLng": [
+        41.55121429600078,
+        -122.38584241500158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260629/Unit-9-1-Lot-14-Lake-Shastina-Wildhorse-Pl-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260626",
+      "title": "Lot 31 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260626/Lot-31-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260624",
+      "title": "Lot 30 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260624/Lot-30-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260623",
+      "title": "Lot 24 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260623/Lot-24-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260621",
+      "title": "Lot 23 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260621/Lot-23-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260620",
+      "title": "Lot 22 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260620/Lot-22-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260619",
+      "title": "Lot 17 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260619/Lot-17-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260618",
+      "title": "Lot 16 Old Mill, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.25643496338541,
+        -122.12949090746314
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260618/Lot-16-Old-Mill-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250587",
+      "title": "Lot 150-180 Ridge View Dr, Hornbrook, CA 96044",
+      "acres": 5.3,
+      "latLng": [
+        41.93499687800076,
+        -122.38892773500159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250587/Lot-150-180-Ridge-View-Dr-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260582",
+      "title": "Lot 10 Old Mill Dr, McCloud, CA 96057",
+      "acres": 0.22,
+      "latLng": [
+        41.24858175325078,
+        -122.14266950675163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260582/Lot-10-Old-Mill-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260578",
+      "title": "Lot 6 Old Mill Dr, McCloud, CA 96057",
+      "acres": 0.4,
+      "latLng": [
+        41.24858175325078,
+        -122.14266950675163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260578/Lot-6-Old-Mill-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260577",
+      "title": "Lot 3 Old Mill Dr, McCloud, CA 96057",
+      "acres": 0.29,
+      "latLng": [
+        41.24858175325078,
+        -122.14266950675163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260577/Lot-3-Old-Mill-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260576",
+      "title": "Lot 2 Old Mill Dr, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.24858175325078,
+        -122.14266950675163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260576/Lot-2-Old-Mill-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260558",
+      "title": "Unit 4 Lot 59 Tee Place, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.51698544887577,
+        -122.36752253162659
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260558/Unit-4-Lot-59-Tee-Place-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260557",
+      "title": "Unit 4 Lot 720 Whitepine St, Hornbrook, CA 96044",
+      "acres": 1,
+      "latLng": [
+        41.88189972058409,
+        -122.45603904141824
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260557/Unit-4-Lot-720-Whitepine-St-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260556",
+      "title": "Unit 4 Lot 719 Whitepine St, Hornbrook, CA 96044",
+      "acres": 1,
+      "latLng": [
+        41.88189972058409,
+        -122.45603904141824
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260556/Unit-4-Lot-719-Whitepine-St-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260555",
+      "title": "Unit 4 Lot 69 Whitepine, Montague, CA 96064",
+      "acres": 1,
+      "latLng": [
+        41.889156756000745,
+        -122.43076178100156
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260555/Unit-4-Lot-69-Whitepine-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260546",
+      "title": "Unit 8-1 Lot 26 Lake Shastina, Rockwood Rd, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.53181188677856,
+        -122.36058089477939
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260546/Unit-8-1-Lot-26-Lake-Shastina-Rockwood-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260533",
+      "title": "Unit 8-2 Lot 22 Lake Shastina, Gleenwood Dr., Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.525169566233316,
+        -122.37377923853647
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260533/Unit-8-2-Lot-22-Lake-Shastina-Gleenwood-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260524",
+      "title": "Unit 7-3 Lot225 Lake Shastina, Fisher Rd., Weed, CA 96094",
+      "acres": 0.25,
+      "latLng": [
+        41.49585254480847,
+        -122.3739068468862
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260524/Unit-7-3-Lot225-Lake-Shastina-Fisher-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260518",
+      "title": "Unit 2 Lot 36 Lake Shastina, Lake Shore Dr., Weed, CA 96094",
+      "acres": 0.25,
+      "latLng": [
+        41.51783501888007,
+        -122.37568799450162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260518/Unit-2-Lot-36-Lake-Shastina-Lake-Shore-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20230230",
+      "title": "U 2 Lot 136 Mountain St, Hornbrook, CA 96044",
+      "acres": 3.04,
+      "latLng": [
+        41.894216653750775,
+        -122.47459635975157
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20230230/U-2-Lot-136-Mountain-St-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260462",
+      "title": "Unit 4 Lot 213 Rainbow Dr, Weed, CA 96094",
+      "acres": 0.34,
+      "latLng": [
+        41.512246583842874,
+        -122.38200017689633
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260462/Unit-4-Lot-213-Rainbow-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260310",
+      "title": "Lot 3-G-12 Elk Springs Dr, McCloud, CA 96057",
+      "acres": 2.5,
+      "latLng": [
+        41.33012713360078,
+        -122.0796093172016
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260310/Lot-3-G-12-Elk-Springs-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20221438",
+      "title": "Lot 661 Clark, Hornbrook, CA 96044",
+      "acres": 2.9,
+      "latLng": [
+        41.883725717750764,
+        -122.4554628427516
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20221438/Lot-661-Clark-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -183,6 +1647,90 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20260411",
+      "title": "Unt 5-2 Lot 151 Hill Drive, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.51090610778648,
+        -122.3808878962873
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260411/Unt-5-2-Lot-151-Hill-Drive-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260408",
+      "title": "Unt 9-1 Lot 201 Hidden Valley Rd, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.54471121600078,
+        -122.38133804000155
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260408/Unt-9-1-Lot-201-Hidden-Valley-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260407",
+      "title": "Unt 9-2 Lot 268 Golden Hill Dr, Weed, CA 96094",
+      "acres": 0.36,
+      "latLng": [
+        41.538574971000784,
+        -122.38705024500159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260407/Unt-9-2-Lot-268-Golden-Hill-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260406",
+      "title": "Unit 2 Lot 51 Driftwood Ln, Weed, CA 96094",
+      "acres": 0.25,
+      "latLng": [
+        41.536917481091685,
+        -122.37136651281976
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260406/Unit-2-Lot-51-Driftwood-Ln-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260403",
+      "title": "Unit 1 Lot25 Lake Shastina, Lake Shastina Dr., Weed, CA 96094",
+      "acres": 0.25,
+      "latLng": [
+        41.525169566233316,
+        -122.37377923853647
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260403/Unit-1-Lot25-Lake-Shastina-Lake-Shastina-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260396",
+      "title": "Unit 2 Lot 6 Siskiyou Lake Blvd, Mt Shasta, CA 96067",
+      "acres": 1.25,
+      "latLng": [
+        41.289690560471364,
+        -122.31683760788395
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260396/Unit-2-Lot-6-Siskiyou-Lake-Blvd-Mt-Shasta-CA-96067",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260389",
+      "title": "Lot 523 Blue Gill Dr, Hornbrook, CA 96044",
+      "acres": 2.6,
+      "latLng": [
+        41.906887599384326,
+        -122.51472420665009
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260389/Lot-523-Blue-Gill-Dr-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20250331",
       "title": "Lot 50 Hidden Meadow Dr, Weed, CA 96094",
       "acres": 5.02,
@@ -191,6 +1739,18 @@
         -122.376183
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250331/Lot-50-Hidden-Meadow-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240956",
+      "title": "Unit 9-2 Lot 89 Mountain Wood Dr, Weed, CA 96094",
+      "acres": 0.26,
+      "latLng": [
+        41.53999741033411,
+        -122.38250289783488
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240956/Unit-9-2-Lot-89-Mountain-Wood-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -207,6 +1767,18 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20260378",
+      "title": "Unit 2 Lot 154 Dwinnell Rd, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.53694465550076,
+        -122.36617488450159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260378/Unit-2-Lot-154-Dwinnell-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20260373",
       "title": "Lot 11 Lake Shore Drive, Weed, CA 96094",
       "acres": 0.24,
@@ -215,6 +1787,30 @@
         -122.377096
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260373/Lot-11-Lake-Shore-Drive-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260367",
+      "title": "Lot 36 North Ridge Ct, Mt Shasta, CA 96067",
+      "acres": 2.65,
+      "latLng": [
+        41.318831701629314,
+        -122.32363978346991
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260367/Lot-36-North-Ridge-Ct-Mt-Shasta-CA-96067",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240201",
+      "title": "Lot 273 Sherwood, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.535657744067436,
+        -122.35950887716825
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240201/Lot-273-Sherwood-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -279,6 +1875,66 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20260294",
+      "title": "Lot 104 Prairie Dog, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.494755480250774,
+        -122.36503974975157
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260294/Lot-104-Prairie-Dog-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260293",
+      "title": "Lot 295 Mountain Wood, Weed, CA 96094",
+      "acres": 0.4,
+      "latLng": [
+        41.53999741033411,
+        -122.38250289783488
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260293/Lot-295-Mountain-Wood-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260292",
+      "title": "Lot 192 Rockwood, Weed, CA 96094",
+      "acres": 0.3,
+      "latLng": [
+        41.53213571207221,
+        -122.35931850464442
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260292/Lot-192-Rockwood-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250861",
+      "title": "Lot 10 Lakeshore Dr., McCloud, CA 96057",
+      "acres": 0.21,
+      "latLng": [
+        41.264773207160765,
+        -122.11460654389602
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250861/Lot-10-Lakeshore-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260280",
+      "title": "Unit 5 Lot 59 Rodriquez Pl, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.50902711066745,
+        -122.37076544683492
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260280/Unit-5-Lot-59-Rodriquez-Pl-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20250686",
       "title": "Lot 3 Quail Hill Subdivision, Mt Shasta, CA 96067",
       "acres": 2.5,
@@ -303,6 +1959,18 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20260261",
+      "title": "Lot 27 Sherwood, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.535657744067436,
+        -122.35950887716825
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260261/Lot-27-Sherwood-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20260260",
       "title": "Lot 85 Archer Rd, Weed, CA 96094",
       "acres": 0.23,
@@ -311,6 +1979,66 @@
         -122.361469
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260260/Lot-85-Archer-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260256",
+      "title": "Unit 5-2 Lot 97 Rainbow Drice, Weed, CA 96094",
+      "acres": 0.34,
+      "latLng": [
+        41.507137245609464,
+        -122.38013945189289
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260256/Unit-5-2-Lot-97-Rainbow-Drice-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260255",
+      "title": "Unit 9-2 Lot 83 Mountain Wood, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.53999741033411,
+        -122.38250289783488
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260255/Unit-9-2-Lot-83-Mountain-Wood-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260254",
+      "title": "Unit 9-2 Lot 82 Mountain Wood Drive, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.53999741033411,
+        -122.38250289783488
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260254/Unit-9-2-Lot-82-Mountain-Wood-Drive-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260253",
+      "title": "Unit 3 Lot 103 Juniper Peak, Weed, CA 96094",
+      "acres": 0.6,
+      "latLng": [
+        41.53549589585791,
+        -122.36973897278729
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260253/Unit-3-Lot-103-Juniper-Peak-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260251",
+      "title": "Blk 62 Lot 3 Carnes, Montague, CA 96064",
+      "acres": 2,
+      "latLng": [
+        41.580000618000746,
+        -122.30570605800158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260251/Blk-62-Lot-3-Carnes-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -339,6 +2067,30 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20260239",
+      "title": "Unit 4 Lot 202 Rainbow Dr, Weed, CA 96094",
+      "acres": 0.49,
+      "latLng": [
+        41.512246583842874,
+        -122.38200017689633
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260239/Unit-4-Lot-202-Rainbow-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260238",
+      "title": "Unit 4 Lot 201 Rainbow Dr, Weed, CA 96094",
+      "acres": 1.03,
+      "latLng": [
+        41.512246583842874,
+        -122.38200017689633
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260238/Unit-4-Lot-201-Rainbow-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20260236",
       "title": "Lot 70 Jade Ave, Montague, CA 96064",
       "acres": 2.5,
@@ -347,6 +2099,30 @@
         -122.388661
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260236/Lot-70-Jade-Ave-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260235",
+      "title": "Unit 2 Lot 168 Pleasant Valley Highlands, Dorris, CA 96023",
+      "acres": 2.5,
+      "latLng": [
+        41.961841280532475,
+        -121.92833430129481
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260235/Unit-2-Lot-168-Pleasant-Valley-Highlands-Dorris-CA-96023",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260232",
+      "title": "Lot 71 & 30 Highway 96, Horse Creek, CA 96050",
+      "acres": 23.23,
+      "latLng": [
+        41.74632849206293,
+        -123.17160613233587
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260232/Lot-71-30-Highway-96-Horse-Creek-CA-96050",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -375,14 +2151,122 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20260119",
-      "title": "Lot 263 Stag St, Weed, CA 96094",
-      "acres": 0.44,
+      "mlsNumber": "20260203",
+      "title": "Lot 137 Antelope, Weed, CA 96094",
+      "acres": 0.31,
       "latLng": [
-        41.516465,
-        -122.381636
+        41.49562005600077,
+        -122.37064605861448
       ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260119/Lot-263-Stag-St-Weed-CA-96094",
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260203/Lot-137-Antelope-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260181",
+      "title": "Unit 4 Lot 428 Fairway Dr, Weed, CA 96094",
+      "acres": 0.47,
+      "latLng": [
+        41.51899467485792,
+        -122.36822493114445
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260181/Unit-4-Lot-428-Fairway-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260180",
+      "title": "Unit 4 Lot 67 Whitepine, Montague, CA 96064",
+      "acres": 1,
+      "latLng": [
+        41.889156756000745,
+        -122.43076178100156
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260180/Unit-4-Lot-67-Whitepine-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260179",
+      "title": "Blk 2 Lot 28 Quarry Road, Weed, CA 96094",
+      "acres": 20.3,
+      "latLng": [
+        41.503063260000744,
+        -122.34984851600157
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260179/Blk-2-Lot-28-Quarry-Road-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260175",
+      "title": "Unit 2 Lot 637 Wildgoose Rd, Dorris, CA 96023",
+      "acres": 2.5,
+      "latLng": [
+        41.972144540250795,
+        -121.96018035075161
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260175/Unit-2-Lot-637-Wildgoose-Rd-Dorris-CA-96023",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260166",
+      "title": "Unit 4 Lot 5 Lakeview Dr., McCloud, CA 96057",
+      "acres": 2.7,
+      "latLng": [
+        41.264773207160765,
+        -122.11460654389602
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260166/Unit-4-Lot-5-Lakeview-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260149",
+      "title": "Unit 5-3 Lot 7 Wood Ct, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.503858945000765,
+        -122.37430663380158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260149/Unit-5-3-Lot-7-Wood-Ct-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260148",
+      "title": "Unit 4 Lot 185 Antler Way, Weed, CA 96094",
+      "acres": 0.43,
+      "latLng": [
+        41.51254266566744,
+        -122.38179071211272
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260148/Unit-4-Lot-185-Antler-Way-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260110",
+      "title": "Unit 2 Lot 592 Lazo Ln, Dorris, CA 96023",
+      "acres": 2.6,
+      "latLng": [
+        41.961841280532475,
+        -121.92833430129481
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260110/Unit-2-Lot-592-Lazo-Ln-Dorris-CA-96023",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260096",
+      "title": "9-2 Lot 266 Golden Hill, Weed, CA 96094",
+      "acres": 0.27,
+      "latLng": [
+        41.538574971000784,
+        -122.38705024500159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260096/9-2-Lot-266-Golden-Hill-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -411,6 +2295,42 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20260065",
+      "title": "Lot 254 Quail Ridge, Weed, CA 96094",
+      "acres": 0.64,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260065/Lot-254-Quail-Ridge-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260063",
+      "title": "Lot 441 & 442 Sea Horse Ln, Montague, CA 96064",
+      "acres": 8.4,
+      "latLng": [
+        41.90203864000078,
+        -122.44444109500157
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260063/Lot-441-442-Sea-Horse-Ln-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250017",
+      "title": "Lot 116 Buffalo, Weed, CA 96094",
+      "acres": 0.26,
+      "latLng": [
+        41.496603347000764,
+        -122.37773433120158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250017/Lot-116-Buffalo-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20260048",
       "title": "Lot 630 Whitepine St, Hornbrook, CA 96044",
       "acres": 1,
@@ -419,6 +2339,66 @@
         -122.472112
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260048/Lot-630-Whitepine-St-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260047",
+      "title": "Lot 527 Blue Gill Dr, Hornbrook, CA 96044",
+      "acres": 2.9,
+      "latLng": [
+        41.906887599384326,
+        -122.51472420665009
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260047/Lot-527-Blue-Gill-Dr-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260046",
+      "title": "Lot 185 Iron Gate Rd, Hornbrook, CA 96044",
+      "acres": 2.5,
+      "latLng": [
+        41.906887599384326,
+        -122.51472420665009
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260046/Lot-185-Iron-Gate-Rd-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240065",
+      "title": "Blk 1 Lot 8 Jackson Ranch Road, Weed, CA 96094",
+      "acres": 10,
+      "latLng": [
+        41.49091957637578,
+        -122.37400805387657
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240065/Blk-1-Lot-8-Jackson-Ranch-Road-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260039",
+      "title": "Unit 1 Lot 69 Brook Lane, Weed, CA 96094",
+      "acres": 0.33,
+      "latLng": [
+        41.52717502350079,
+        -122.37210021980158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260039/Unit-1-Lot-69-Brook-Lane-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250838",
+      "title": "Blk 22 Lot 33 Thrush Road, Montague, CA 96064",
+      "acres": 2.8,
+      "latLng": [
+        41.55780024700078,
+        -122.27986170500161
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250838/Blk-22-Lot-33-Thrush-Road-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -447,6 +2427,102 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20251302",
+      "title": "Unit 4 Lot 434 Kristen Pl., Montague, CA 96064",
+      "acres": 3.6,
+      "latLng": [
+        41.726852558525,
+        -122.44620948487768
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251302/Unit-4-Lot-434-Kristen-Pl-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251298",
+      "title": "Unit 4 Lot 162 Oak View Rd., Hornbrook, CA 96044",
+      "acres": 2.7,
+      "latLng": [
+        41.68266233182546,
+        -122.63730254478159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251298/Unit-4-Lot-162-Oak-View-Rd-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251297",
+      "title": "Unit 5 Lot 48 Lake Side Ln., Hornbrook, CA 96044",
+      "acres": 3,
+      "latLng": [
+        41.95451405720077,
+        -122.40375511860157
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251297/Unit-5-Lot-48-Lake-Side-Ln-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251295",
+      "title": "Unit 5 Lot 21 Lookout Rd., Hornbrook, CA 96044",
+      "acres": 3.1,
+      "latLng": [
+        41.906887599384326,
+        -122.51472420665009
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251295/Unit-5-Lot-21-Lookout-Rd-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251294",
+      "title": "Unit 4 Lot 446 Sea Horse Ln., Hornbrook, CA 96044",
+      "acres": 2.5,
+      "latLng": [
+        41.90254679900074,
+        -122.44509358400151
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251294/Unit-4-Lot-446-Sea-Horse-Ln-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250841",
+      "title": "Lot 130 Quartz Road, Montague, CA 96064",
+      "acres": 2.5,
+      "latLng": [
+        41.64956313026163,
+        -122.38725054769723
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250841/Lot-130-Quartz-Road-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251246",
+      "title": "Unit 1 Lot 16 Lake Shore Dr., Weed, CA 96094",
+      "acres": 0.26,
+      "latLng": [
+        41.51783501888007,
+        -122.37568799450162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251246/Unit-1-Lot-16-Lake-Shore-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251194",
+      "title": "Lot 164 Shasta Lane, Hornbrook, CA 96044",
+      "acres": 2.5,
+      "latLng": [
+        41.945958095000776,
+        -122.38565648250157
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251194/Lot-164-Shasta-Lane-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20251159",
       "title": "Unit 5-4 Lot 60 Tennis Ct, Weed, CA 96094",
       "acres": 0.78,
@@ -471,6 +2547,42 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20251094",
+      "title": "9-2 Lot 202 Mountain Wood, Weed, CA 96094",
+      "acres": 0.31,
+      "latLng": [
+        41.53999741033411,
+        -122.38250289783488
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251094/9-2-Lot-202-Mountain-Wood-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251093",
+      "title": "9-1 Lot 174 Riverside Dr, Weed, CA 96094",
+      "acres": 0.27,
+      "latLng": [
+        41.54743193833412,
+        -122.38298051000159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251093/9-1-Lot-174-Riverside-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240959",
+      "title": "Unit 5-2 Lot 48 Browndeer Rd., Weed, CA 96094",
+      "acres": 0.26,
+      "latLng": [
+        41.513725573000784,
+        -122.3782393955016
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240959/Unit-5-2-Lot-48-Browndeer-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20251056",
       "title": "Barber Ct. Lot 39, Weed, CA 96094",
       "acres": 0.25,
@@ -479,6 +2591,42 @@
         -122.373145
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251056/Barber-Ct-Lot-39-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251052",
+      "title": "Unit 3 Lot 23 Whitepine St., Hornbrook, CA 96044",
+      "acres": 1.08,
+      "latLng": [
+        41.88189972058409,
+        -122.45603904141824
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251052/Unit-3-Lot-23-Whitepine-St-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251051",
+      "title": "Lots 55 & 56 Tennis Ct., Weed, CA 96094",
+      "acres": 0.48,
+      "latLng": [
+        41.50743206350076,
+        -122.37915613250158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251051/Lots-55-56-Tennis-Ct-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251039",
+      "title": "Unit 3 Lot 169 Whitepine, Hornbrook, CA 96044",
+      "acres": 1,
+      "latLng": [
+        41.88269085533409,
+        -122.4590924637349
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251039/Unit-3-Lot-169-Whitepine-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -495,6 +2643,78 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20251011",
+      "title": "Blk 72 Lot 23 Nemeth Dr, Montague, CA 96064",
+      "acres": 2.4,
+      "latLng": [
+        41.56845271800074,
+        -122.33631107700157
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251011/Blk-72-Lot-23-Nemeth-Dr-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250981",
+      "title": "Unit 4 Lot 131 Desavado Road, Montague, CA 96064",
+      "acres": 1.1,
+      "latLng": [
+        41.89257429412576,
+        -122.42582827100156
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250981/Unit-4-Lot-131-Desavado-Road-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250972",
+      "title": "Lots 185/186 Hogan Dr, Weed, CA 96094",
+      "acres": 0.5,
+      "latLng": [
+        41.50317416173989,
+        -122.370521946219
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250972/Lots-185-186-Hogan-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250956",
+      "title": "Unit 9-1 Lot 32 Palomino Rd, Weed, CA 96094",
+      "acres": 0.34,
+      "latLng": [
+        41.55113859066744,
+        -122.3879167790016
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250956/Unit-9-1-Lot-32-Palomino-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250954",
+      "title": "5-2 Lot 115 Antler Way, Weed, CA 96094",
+      "acres": 0.43,
+      "latLng": [
+        41.51254266566744,
+        -122.38179071211272
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250954/5-2-Lot-115-Antler-Way-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250945",
+      "title": "Unit 5 Lot 190 Venturi Ct, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.515481095167424,
+        -122.37055074633491
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250945/Unit-5-Lot-190-Venturi-Ct-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20250928",
       "title": "Lot 708 Unit 4 Clark, Hornbrook, CA 96044",
       "acres": 2.6,
@@ -503,6 +2723,102 @@
         -122.55814
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250928/Lot-708-Unit-4-Clark-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250901",
+      "title": "Unit 3 Lot 204 Whitepine, Hornbrook, CA 96044",
+      "acres": 1,
+      "latLng": [
+        41.88269085533409,
+        -122.4590924637349
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250901/Unit-3-Lot-204-Whitepine-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250837",
+      "title": "Unit 9-2 Lot 39 Blackhawk Dr, Weed, CA 96094",
+      "acres": 0.53,
+      "latLng": [
+        41.53985947066743,
+        -122.38378085033493
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250837/Unit-9-2-Lot-39-Blackhawk-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250836",
+      "title": "Unit 9-2 Lot 23 Mountain Wood Dr, Weed, CA 96094",
+      "acres": 0.28,
+      "latLng": [
+        41.53999741033411,
+        -122.38250289783488
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250836/Unit-9-2-Lot-23-Mountain-Wood-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250835",
+      "title": "Unit 8-2 Lot 30 Lakeside Ct, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.534153443000775,
+        -122.35665815566824
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250835/Unit-8-2-Lot-30-Lakeside-Ct-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250834",
+      "title": "Unit 3 Lot 161 Lake Shore Dr, Weed, CA 96094",
+      "acres": 0.33,
+      "latLng": [
+        41.51783501888007,
+        -122.37568799450162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250834/Unit-3-Lot-161-Lake-Shore-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250833",
+      "title": "Unit 3 Lot 124 Juniper Peak, Weed, CA 96094",
+      "acres": 0.28,
+      "latLng": [
+        41.53549589585791,
+        -122.36973897278729
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250833/Unit-3-Lot-124-Juniper-Peak-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250831",
+      "title": "Unit 5-4 Lot 20 Lake Shore Dr, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.51783501888007,
+        -122.37568799450162
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250831/Unit-5-4-Lot-20-Lake-Shore-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250820",
+      "title": "Unit 5 Lot 97 Lunn Ct, Weed, CA 96094",
+      "acres": 0.25,
+      "latLng": [
+        41.51264013700079,
+        -122.37543073600156
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250820/Unit-5-Lot-97-Lunn-Ct-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -519,6 +2835,114 @@
       "status": "needs assessor-map confirmation"
     },
     {
+      "mlsNumber": "20241273",
+      "title": "Lots 137 & 138 Tree Lane, Hornbrook, CA 96044",
+      "acres": 5,
+      "latLng": [
+        41.906887599384326,
+        -122.51472420665009
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20241273/Lots-137-138-Tree-Lane-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250755",
+      "title": "U-3 Lot 86 Whidgeon Pl, Hornbrook, CA 96044",
+      "acres": 2.5,
+      "latLng": [
+        41.87440193900079,
+        -122.45337118400157
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250755/U-3-Lot-86-Whidgeon-Pl-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250753",
+      "title": "U-3 Lot 61 Whitepine St, Hornbrook, CA 96044",
+      "acres": 1.09,
+      "latLng": [
+        41.88189972058409,
+        -122.45603904141824
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250753/U-3-Lot-61-Whitepine-St-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240676",
+      "title": "Lot 36 Oak View Rd, Hornbrook, CA 96044",
+      "acres": 3.7,
+      "latLng": [
+        41.68266233182546,
+        -122.63730254478159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240676/Lot-36-Oak-View-Rd-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240688",
+      "title": "Lot 98 Mescal Dr, Hornbrook, CA 96044",
+      "acres": 2.6,
+      "latLng": [
+        41.906887599384326,
+        -122.51472420665009
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240688/Lot-98-Mescal-Dr-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250645",
+      "title": "9-2 Lot 312 Mountain Wood Dr, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.53999741033411,
+        -122.38250289783488
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250645/9-2-Lot-312-Mountain-Wood-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250644",
+      "title": "9-1 Lot 114 Wildhorse Pl, Weed, CA 96094",
+      "acres": 0.28,
+      "latLng": [
+        41.55121429600078,
+        -122.38584241500158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250644/9-1-Lot-114-Wildhorse-Pl-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250642",
+      "title": "Unit 1 Lot 91 Harborview Dr, Weed, CA 96094",
+      "acres": 0.27,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250642/Unit-1-Lot-91-Harborview-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250576",
+      "title": "Unit 9-1 Lot 53 Palomino Rd, Weed, CA 96094",
+      "acres": 0.28,
+      "latLng": [
+        41.55113859066744,
+        -122.3879167790016
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250576/Unit-9-1-Lot-53-Palomino-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
       "mlsNumber": "20250389",
       "title": "Lot 55 Patricia Ave, Montague, CA 96064",
       "acres": 0.55,
@@ -527,6 +2951,66 @@
         -122.306343
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250389/Lot-55-Patricia-Ave-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20231312",
+      "title": "Lot 98 Moore Dr., Hornbrook, CA 96044",
+      "acres": 2.5,
+      "latLng": [
+        41.87481461600079,
+        -122.45472341000155
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20231312/Lot-98-Moore-Dr-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250302",
+      "title": "9-2 Lot 187 Pawnee Rock, Weed, CA 96094",
+      "acres": 0.26,
+      "latLng": [
+        41.53308146000076,
+        -122.38562575050159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250302/9-2-Lot-187-Pawnee-Rock-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250141",
+      "title": "Unit 4 Lot 334 Cod Drive, Montague, CA 96064",
+      "acres": 2.5,
+      "latLng": [
+        41.90141571100076,
+        -122.43665345900155
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250141/Unit-4-Lot-334-Cod-Drive-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250132",
+      "title": "Unit 5 Lot 40 Desavado, Montague, CA 96064",
+      "acres": 1.4,
+      "latLng": [
+        41.89257429412576,
+        -122.42582827100156
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250132/Unit-5-Lot-40-Desavado-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250119",
+      "title": "Lot 8 Richard Rd, Montague, CA 96064",
+      "acres": 2.3,
+      "latLng": [
+        41.726852558525,
+        -122.44620948487768
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250119/Lot-8-Richard-Rd-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -551,6 +3035,366 @@
         -122.374156
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250113/Lot-131-Fisher-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250103",
+      "title": "Unit 5 Lot 12 Palmer Dr, Weed, CA 96094",
+      "acres": 0.43,
+      "latLng": [
+        41.50515142771817,
+        -122.37628469771894
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250103/Unit-5-Lot-12-Palmer-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250102",
+      "title": "Unit 5 Lot 235 Sifford Court, Weed, CA 96094",
+      "acres": 0.25,
+      "latLng": [
+        41.513178418000756,
+        -122.37632033000155
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250102/Unit-5-Lot-235-Sifford-Court-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250066",
+      "title": "Unit 8-1 Lot 60 Pine Ln, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.52924462400079,
+        -122.35451286325159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250066/Unit-8-1-Lot-60-Pine-Ln-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250018",
+      "title": "Unt 8-1 Lot 162 Woodside Road, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.530659489091676,
+        -122.3594186251834
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250018/Unt-8-1-Lot-162-Woodside-Road-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250009",
+      "title": "Unit 4 Lot 405 Condor, Weed, CA 96094",
+      "acres": 0.4,
+      "latLng": [
+        41.52108936240076,
+        -122.37001672840161
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250009/Unit-4-Lot-405-Condor-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250008",
+      "title": "U 8-1 Lot 205 Rockwood, Weed, CA 96094",
+      "acres": 0.25,
+      "latLng": [
+        41.53213571207221,
+        -122.35931850464442
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250008/U-8-1-Lot-205-Rockwood-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250006",
+      "title": "Unit 4 Lot 199 Rainbow Dr, Weed, CA 96094",
+      "acres": 0.5,
+      "latLng": [
+        41.512246583842874,
+        -122.38200017689633
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250006/Unit-4-Lot-199-Rainbow-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250005",
+      "title": "Unit 4 Lot 133 Desavado, Montague, CA 96064",
+      "acres": 1.08,
+      "latLng": [
+        41.89257429412576,
+        -122.42582827100156
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250005/Unit-4-Lot-133-Desavado-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250004",
+      "title": "Blk 8 Lot 8 Perla Drive, Montague, CA 96064",
+      "acres": 2.6,
+      "latLng": [
+        41.571003890750774,
+        -122.25455442975158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250004/Blk-8-Lot-8-Perla-Drive-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240761",
+      "title": "Unit 1/Lot 99 Lake Shastina Drive, Weed, CA 96094",
+      "acres": 0.27,
+      "latLng": [
+        41.525169566233316,
+        -122.37377923853647
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240761/Unit-1-Lot-99-Lake-Shastina-Drive-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20241274",
+      "title": "Lot 155 Fir Court, Hornbrook, CA 96097",
+      "acres": 1.03,
+      "latLng": [
+        41.89271476262852,
+        -122.49233639279088
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20241274/Lot-155-Fir-Court-Hornbrook-CA-96097",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20241241",
+      "title": "Unit 4 Lot 313 Indian Island, Weed, CA 96094",
+      "acres": 0.32,
+      "latLng": [
+        41.520807491060765,
+        -122.37916666966163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20241241/Unit-4-Lot-313-Indian-Island-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20241232",
+      "title": "7-2 Lot 207 Otter Court, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.499403459000774,
+        -122.36490338350157
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20241232/7-2-Lot-207-Otter-Court-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20241231",
+      "title": "Unit 5-3 Lot 46 Brown Ct, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.502379978715055,
+        -122.37645590643017
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20241231/Unit-5-3-Lot-46-Brown-Ct-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20241230",
+      "title": "Unit 4 Lot 327 Indian Island, Weed, CA 96094",
+      "acres": 0.27,
+      "latLng": [
+        41.520807491060765,
+        -122.37916666966163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20241230/Unit-4-Lot-327-Indian-Island-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20241229",
+      "title": "Unit 5 Lot 63 Desavado Road, Montague, CA 96064",
+      "acres": 3.65,
+      "latLng": [
+        41.89257429412576,
+        -122.42582827100156
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20241229/Unit-5-Lot-63-Desavado-Road-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240967",
+      "title": "Unit 3 Lot 157 Dwinnell, Weed, CA 96094",
+      "acres": 0.44,
+      "latLng": [
+        41.53694465550076,
+        -122.36617488450159
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240967/Unit-3-Lot-157-Dwinnell-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240920",
+      "title": "9-2 Lot 96 Shoreline Drive, Weed, CA 96094",
+      "acres": 0.18,
+      "latLng": [
+        41.53485505975078,
+        -122.38194416700158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240920/9-2-Lot-96-Shoreline-Drive-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240481",
+      "title": "8-2 Lot 103 Archer Rd, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.53399145017726,
+        -122.36097841629568
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240481/8-2-Lot-103-Archer-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240422",
+      "title": "Unit 4/Lot 275 Stag Str, Weed, CA 96094",
+      "acres": 0.55,
+      "latLng": [
+        41.51664835366743,
+        -122.38024151166825
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240422/Unit-4-Lot-275-Stag-Str-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20210299",
+      "title": "Unit 4 Lot 279 Barracuda Drive, Montague, CA 96064",
+      "acres": 2.6,
+      "latLng": [
+        41.726852558525,
+        -122.44620948487768
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20210299/Unit-4-Lot-279-Barracuda-Drive-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240311",
+      "title": "5-3 Lot 162 Hogan Dr, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.50317416173989,
+        -122.370521946219
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240311/5-3-Lot-162-Hogan-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240297",
+      "title": "Lot 20 Shamrock Acres, Yreka, CA 96097",
+      "acres": 79.58,
+      "latLng": [
+        41.66632988339207,
+        -122.60462068247983
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240297/Lot-20-Shamrock-Acres-Yreka-CA-96097",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240290",
+      "title": "9-1 Lot 144 Brookside Rd, Weed, CA 96094",
+      "acres": 0.41,
+      "latLng": [
+        41.549027237250776,
+        -122.38277070375158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240290/9-1-Lot-144-Brookside-Rd-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240289",
+      "title": "5-3 Lot 141 Hogan Drive, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.50317416173989,
+        -122.370521946219
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240289/5-3-Lot-141-Hogan-Drive-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240186",
+      "title": "Unit 4 Lot 119 Desavado Road, Montague, CA 96064",
+      "acres": 3.38,
+      "latLng": [
+        41.89257429412576,
+        -122.42582827100156
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240186/Unit-4-Lot-119-Desavado-Road-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240126",
+      "title": "9-1 Lot 145 Brookside Road, Weed, CA 96094",
+      "acres": 0.35,
+      "latLng": [
+        41.549027237250776,
+        -122.38277070375158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240126/9-1-Lot-145-Brookside-Road-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240122",
+      "title": "Unit 5-2 Lot 20 Rainbow Dr, Weed, CA 96094",
+      "acres": 0.25,
+      "latLng": [
+        41.512246583842874,
+        -122.38200017689633
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240122/Unit-5-2-Lot-20-Rainbow-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240116",
+      "title": "9-1 Lot 76 Saddlehorn, Weed, CA 96094",
+      "acres": 0.28,
+      "latLng": [
+        41.55043128000077,
+        -122.3888227128349
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240116/9-1-Lot-76-Saddlehorn-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20240112",
+      "title": "7-2 Lot 146 Puma Dr, Weed, CA 96094",
+      "acres": 0.23,
+      "latLng": [
+        41.49696615011189,
+        -122.3641669511127
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240112/7-2-Lot-146-Puma-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     }
