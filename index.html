@@ -74,6 +74,11 @@
         <label><input class="filter" type="checkbox" value="private-home" checked><i class="swatch private-home"></i>Private homes</label>
         <label><input class="filter" type="checkbox" value="public-land" checked><i class="swatch public-land"></i>Public land auction</label>
         <label><input class="filter" type="checkbox" value="public-home" checked><i class="swatch public-home"></i>Public home auction</label>
+        <div class="acreage-filter">
+          <label for="minimum-acreage">Minimum acreage <output id="minimum-acreage-value" for="minimum-acreage">Any size</output></label>
+          <input id="minimum-acreage" type="range" min="0" max="100" step="1" value="0" aria-valuetext="Any size">
+          <div class="acreage-scale" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100 acres</span></div>
+        </div>
         <p class="unmapped-key"><i></i>Circle marker: MLS location only; boundary unverified</p>
       </section>
 

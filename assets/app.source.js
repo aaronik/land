@@ -59,6 +59,7 @@ const initialTerrainEnabled = initialUrl.searchParams.get(TERRAIN_URL_PARAM) ===
 const initialSelectedApn = initialUrl.searchParams.get(PARCEL_URL_PARAM) || '';
 let enabledCategories = new Set(Object.keys(COLORS));
 let searchQuery = '';
+let minimumAcreage = 0;
 
 const map = new maplibregl.Map({
   container: 'map',
@@ -235,10 +236,17 @@ function recordMatchesSearch(record, query = searchQuery) {
   const searchable = [record.title, record.APN, record.mlsNumber, record.item, record.listingSource];
   return normalizeSearch(searchable.filter(Boolean).join(' ')).includes(query);
 }
+function recordAcreage(record) {
+  const acres = Number(String(record.acres ?? '').replace(/,/g, ''));
+  return Number.isFinite(acres) ? acres : null;
+}
+function recordIsVisible(record, fallbackAcres) {
+  const acres = recordAcreage(record) ?? recordAcreage({ acres: fallbackAcres });
+  return enabledCategories.has(record.category) && recordMatchesSearch(record) && (!minimumAcreage || (acres !== null && acres >= minimumAcreage));
+}
 function searchableFeature(feature) {
-  if (!searchQuery) return feature;
-  const apnMatches = normalizeSearch(feature.properties.APN).includes(searchQuery);
-  const records = (feature.properties.records || []).filter(record => apnMatches || recordMatchesSearch(record));
+  const apnMatches = searchQuery && normalizeSearch(feature.properties.APN).includes(searchQuery);
+  const records = (feature.properties.records || []).filter(record => enabledCategories.has(record.category) && (apnMatches || recordMatchesSearch(record)) && (!minimumAcreage || (recordAcreage(record) ?? recordAcreage({ acres: feature.properties.Acres })) >= minimumAcreage));
   return records.length ? { ...feature, properties: { ...feature.properties, records } } : null;
 }
 function visible(feature) { return [...categories(feature)].some(value => enabledCategories.has(value)); }
@@ -314,10 +322,10 @@ function restoreInitialSelectedParcel() {
   showParcelDetails({ APN: initialSelectedApn, Acres: item.acres });
 }
 function filteredMappedListings() {
-  return (saleData?.features || []).map(searchableFeature).filter(feature => feature && visible(feature));
+  return (saleData?.features || []).map(searchableFeature).filter(Boolean);
 }
 function filteredUnmappedListings() {
-  return (saleData?.unmappedListings || []).filter(record => enabledCategories.has(record.category) && recordMatchesSearch(record));
+  return (saleData?.unmappedListings || []).filter(record => recordIsVisible(record));
 }
 function saleGeoJson() {
   return {
@@ -770,6 +778,14 @@ document.querySelector('#search-button').addEventListener('click', findListings)
 document.querySelector('#search').addEventListener('keydown', event => { if (event.key === 'Enter') findListings(); });
 document.querySelector('#search').addEventListener('search', findListings);
 document.querySelectorAll('.filter').forEach(input => input.addEventListener('change', () => { enabledCategories = new Set([...document.querySelectorAll('.filter:checked')].map(item => item.value)); updateSales(); }));
+const minimumAcreageInput = document.querySelector('#minimum-acreage');
+minimumAcreageInput.addEventListener('input', () => {
+  minimumAcreage = Number(minimumAcreageInput.value) || 0;
+  const label = minimumAcreage ? `${minimumAcreage.toLocaleString()}+ acres` : 'Any size';
+  document.querySelector('#minimum-acreage-value').textContent = label;
+  minimumAcreageInput.setAttribute('aria-valuetext', label);
+  updateSales();
+});
 document.querySelectorAll('[data-map-layer]').forEach(input => input.addEventListener('change', () => toggleLayer(input.dataset.mapLayer, input.checked)));
 document.querySelector('#cancel-parcelquest').addEventListener('click', () => document.querySelector('#parcelquest-warning').close());
 document.querySelector('#continue-parcelquest').addEventListener('click', async () => {
