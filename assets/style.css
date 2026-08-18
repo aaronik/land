@@ -77,6 +77,7 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .sale-pin.public-home { background: #b94b18; }
 .details h3 { margin: 0 0 4px; font: 500 23px Georgia, serif; }
 .details .meta { margin: 0 0 14px; color: #687169; font-size: 12px; }
+.directions-link { display: block; margin-top: 3px; }
 .record { margin-top: 11px; padding: 11px; background: white; border: 1px solid var(--line); border-left: 4px solid #42d7a6; border-radius: 6px; font-size: 12px; }
 .record.public { border-left-color: #ff9d4d; }
 .record.home { border-left-color: #7653b5; }

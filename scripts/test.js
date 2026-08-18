@@ -11,10 +11,18 @@ if (!failures.length) {
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const app = fs.readFileSync(path.join(root, 'assets/app.source.js'), 'utf8');
   if (!app.includes('function separatedUnmappedListings()') || !app.includes('function separatedCoordinate(latLng, index, count)') || !app.includes('const radiusFeet = 100')) failures.push('Coincident unmapped MLS dots are not separated by a fixed geographic distance');
+  const refresh = fs.readFileSync(path.join(root, 'scripts/refresh-data.js'), 'utf8');
+  if (!refresh.includes('const UNRESOLVED_LISTING_FALLBACK = [41.328436, -122.326324]') || !refresh.includes("locationSource: 'City Park fallback (listing location unresolved)'") || !refresh.includes("record.category = ['land', 'farm'].includes(record.propertyType)") || !refresh.includes('unmapped.push(record);')) failures.push('Locationless MLS listings are not retained at the City Park fallback');
+  if (!refresh.includes('async function countyStreetPoint(item)') || !refresh.includes('async function countyRoadPoint(item)') || !refresh.includes("'county road centerline (approximate)'") || !refresh.includes('addressPoints[index] || mlsLatLng || streetPlacement?.point')) failures.push('Locationless street listings are not placed using county streets or roads');
+  if (!refresh.includes("UPPER(MSAGComm) = '${city}'") || !refresh.includes('If the ZIP finds nothing')) failures.push('Exact addresses with mistyped ZIPs do not fall back to their town');
+  if (!refresh.includes('async function countyRegionPlacement(item, cache)') || !refresh.includes("'county ZIP/town street match (approximate)'") || !refresh.includes("'ZIP code centroid (approximate)'") || !refresh.includes('const regionCache = new Map()')) failures.push('Right-to-left ZIP, town, and street placement is missing');
+  if (!refresh.includes('/^\\s*(?:PAR(?:CEL)?|PRCL)\\.?\\s*#?\\s*[\\dA-Z-]+\\s+/')) failures.push('Parcel-number street prefixes such as Par. 3 are not stripped');
+  if (!refresh.includes('/\\b(?:LOTS?|BLOCKS?)\\s*[#-]?\\s*\\d+/i')) failures.push('Plural Lots listings are missing from the parcel review queue');
   if (!html.includes('Find an APN, address, or listing') || !app.includes('function recordMatchesSearch(') || !app.includes('function filteredMappedListings()') || !app.includes('function filteredUnmappedListings()') || !app.includes("addEventListener('search', findListings)")) failures.push('Expanded address and listing search is missing');
   if (!html.includes('id="minimum-acreage"') || !html.includes('max="100" step="1"') || !app.includes('minimumAcreage = Number(minimumAcreageInput.value)') || !app.includes("minimumAcreageInput.addEventListener('input'") || !app.includes('function recordIsVisible(')) failures.push('Granular 0–100 minimum acreage filter is missing');
   if (!html.includes('parcelquest-warning')) failures.push('ParcelQuest warning dialog is missing');
   if (!app.includes('Research in ParcelQuest Lite')) failures.push('ParcelQuest parcel action is missing');
+  if (!app.includes("const DIRECTIONS_ORIGIN = 'Mt. Shasta City Park") || !app.includes("new URL('https://www.google.com/maps/dir/')") || !app.includes('destination: `${point[1]},${point[0]}`') || !app.includes('Directions from Mt. Shasta City Park')) failures.push('Parcel directions from Mt. Shasta City Park are missing');
   if (!app.includes('localStorage')) failures.push('browser-local research cache is missing');
   if (!app.includes("id: 'road-labels'") || !app.includes("['get', 'ROADNAME']")) failures.push('County road name labels are missing');
   if (!app.includes("roads: ['roads', 'road-labels']")) failures.push('Road toggle does not control road labels');

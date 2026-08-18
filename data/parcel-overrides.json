@@ -7,6 +7,15 @@
     "confidence": "manually verified",
     "notes": "From imagery / position of black butte / acreage"
   },
+  "20241124": {
+    "apns": [
+      "036-550-091",
+      "036-550-101"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "No coords, got from pictures"
+  },
   "20250510": {
     "apns": [
       "021-280-250",
@@ -15,6 +24,14 @@
     "source": "listing boundary exhibit compared with Siskiyou County GIS",
     "confidence": "manually verified; seller/title confirmation pending",
     "notes": "MLS advertises 64 acres; county GIS parcels total 66 acres"
+  },
+  "20250559": {
+    "apns": [
+      "027-350-060"
+    ],
+    "source": "prior MLS syndication APN corroborated by Siskiyou County GIS",
+    "confidence": "high; assessor/title confirmation pending",
+    "notes": "Same 2125 Lava property was advertised under MLS 24-2577 with APN 027-350-060; county GIS reports exactly 160 acres."
   },
   "20250617": {
     "apns": [
@@ -79,6 +96,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "best guess based on size"
+  },
+  "20260528": {
+    "apns": [
+      "037-100-460"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "from pics"
   },
   "20260571": {
     "apns": [

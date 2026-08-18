@@ -32,6 +32,7 @@ const ZONING_FILL_COLOR = ['match', ['get', 'zoning'],
   'WETLANDS', '#4065eb', 'transparent'
 ];
 const PARCELQUEST_URL = 'https://assr.parcelquest.com/impl/SISASSR';
+const DIRECTIONS_ORIGIN = 'Mt. Shasta City Park, 1315 Nixon Road, Mount Shasta, CA 96067';
 const protocol = new Protocol();
 maplibregl.addProtocol('pmtiles', protocol.tile.bind(protocol));
 const contourDemSource = new mlcontour.DemSource({
@@ -254,13 +255,13 @@ function firstCategory(feature) { return [...categories(feature)].find(value => 
 function researchKey(apn) { return `shasta-land-research:${apn}`; }
 function parcelQuestUsageKey() { return `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`; }
 
-function recordCard(record) {
+function recordCard(record, extraLink = '') {
   if (record.kind === 'private') {
     const home = record.category === 'private-home';
     const homeDetails = home ? [record.beds && `${record.beds} bd`, record.baths && `${record.baths} ba`, record.sqft && `${Number(record.sqft).toLocaleString()} sq ft`].filter(Boolean).join(' · ') : '';
-    return `<article class="record ${home ? 'home' : ''}"><strong>${home ? 'Private home' : 'Private land'}</strong><p>${escapeHtml(record.title || '')}</p><p>${money(record.price)} · ${escapeHtml(record.acres || '—')} acres${homeDetails ? ` · ${escapeHtml(homeDetails)}` : ''} · ${escapeHtml(record.status || '')}</p>${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open listing ↗</a>` : ''}</article>`;
+    return `<article class="record ${home ? 'home' : ''}"><strong>${home ? 'Private home' : 'Private land'}</strong><p>${escapeHtml(record.title || '')}</p><p>${money(record.price)} · ${escapeHtml(record.acres || '—')} acres${homeDetails ? ` · ${escapeHtml(homeDetails)}` : ''} · ${escapeHtml(record.status || '')}</p>${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open listing ↗</a>` : ''}${extraLink}</article>`;
   }
-  return `<article class="record public"><strong>Public auction record</strong><p>${escapeHtml(record.minimumBid || 'No parsed minimum')} · ${escapeHtml(record.status || 'Unknown status')}</p><p>${escapeHtml(record.source || '')}</p>${record.sourceUrl ? `<a href="${escapeHtml(record.sourceUrl)}" target="_blank" rel="noopener">Source PDF ↗</a>` : ''}</article>`;
+  return `<article class="record public"><strong>Public auction record</strong><p>${escapeHtml(record.minimumBid || 'No parsed minimum')} · ${escapeHtml(record.status || 'Unknown status')}</p><p>${escapeHtml(record.source || '')}</p>${record.sourceUrl ? `<a href="${escapeHtml(record.sourceUrl)}" target="_blank" rel="noopener">Source PDF ↗</a>` : ''}${extraLink}</article>`;
 }
 function researchControls(apn) {
   if (!apn) return '';
@@ -321,12 +322,23 @@ async function updateParcelZoning(apn) {
     console.warn(error);
   }
 }
+function parcelDirectionsLink(apn) {
+  const point = parcelQueryPoint(apn);
+  if (!point) return '';
+  const url = new URL('https://www.google.com/maps/dir/');
+  url.search = new URLSearchParams({
+    api: '1', origin: DIRECTIONS_ORIGIN, destination: `${point[1]},${point[0]}`, travelmode: 'driving'
+  });
+  return `<a class="directions-link" href="${escapeHtml(url.href)}" target="_blank" rel="noopener noreferrer">Directions from Mt. Shasta City Park ↗</a>`;
+}
 function showParcelDetails(properties, saleFeature = matchingSale(properties.APN)) {
   const p = { ...(saleFeature?.properties || {}), ...properties };
   const records = saleFeature?.properties.records || p.records || [];
   const acres = p.Acres ?? apnIndex[p.APN]?.acres;
   const address = displayAddress(records);
-  document.querySelector('#details').innerHTML = `<h3>${escapeHtml(address || 'Parcel')}</h3><p class="meta">${escapeHtml(acres || '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${records.map(recordCard).join('') || '<p class="muted">Official county parcel. No current listing or auction record is attached.</p>'}${researchControls(p.APN)}`;
+  const directions = parcelDirectionsLink(p.APN);
+  const recordCards = records.map((record, index) => recordCard(record, index === 0 ? directions : '')).join('');
+  document.querySelector('#details').innerHTML = `<h3>${escapeHtml(address || 'Parcel')}</h3><p class="meta">${escapeHtml(acres || '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${recordCards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${researchControls(p.APN)}`;
   updateParcelZoning(p.APN);
   bindResearchControls(p.APN);
 }
