@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-18T04:22:27.792Z",
-  "count": 52,
+  "generatedAt": "2026-08-18T04:53:46.652Z",
+  "count": 48,
   "listings": [
     {
       "mlsNumber": "SC26055721",
@@ -315,18 +315,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20260268",
-      "title": "Lot 15 Quail Hill Drive, Mt Shasta, CA 96067",
-      "acres": 2.65,
-      "latLng": [
-        41.307429,
-        -122.300276
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260268/Lot-15-Quail-Hill-Drive-Mt-Shasta-CA-96067",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20260262",
       "title": "Lot 10 Prairie Dog Ct, Weed, CA 96094",
       "acres": 0.26,
@@ -407,30 +395,6 @@
         -122.290801
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260214/Lot-16-Matthew-Ct-Mt-Shasta-CA-96067",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260199",
-      "title": "Lot 7 Andrew Ct, Mt Shasta, CA 96067",
-      "acres": 1.08,
-      "latLng": [
-        41.285002,
-        -122.289053
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260199/Lot-7-Andrew-Ct-Mt-Shasta-CA-96067",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260160",
-      "title": "Lot 16 Quail Hill Dr, Mt Shasta, CA 96067",
-      "acres": 2.51,
-      "latLng": [
-        41.307429,
-        -122.300276
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260160/Lot-16-Quail-Hill-Dr-Mt-Shasta-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -551,18 +515,6 @@
         -122.311013
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20221105/Lot-7-Ream-Ave-Mt-Shasta-CA-96067",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20251006",
-      "title": "Lot 3 Andrew Ct, Mt Shasta, CA 96067",
-      "acres": 2.7,
-      "latLng": [
-        41.285002,
-        -122.289053
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251006/Lot-3-Andrew-Ct-Mt-Shasta-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
