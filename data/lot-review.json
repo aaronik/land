@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-18T16:47:28.189Z",
-  "count": 283,
+  "generatedAt": "2026-08-18T18:26:42.129Z",
+  "count": 280,
   "listings": [
     {
       "mlsNumber": "SC26055721",
@@ -55,8 +55,8 @@
       "title": "Unit 9-2 Lot 85 Mountain Wood Drive, Weed, CA 96097",
       "acres": 0.21,
       "latLng": [
-        41.681931,
-        -122.641698
+        41.53999741033411,
+        -122.38250289783488
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261033/Unit-9-2-Lot-85-Mountain-Wood-Drive-Weed-CA-96097",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -103,8 +103,8 @@
       "title": "Lot 181 Lakeview Rd, Hornbrook, CA 96044",
       "acres": 4.2,
       "latLng": [
-        41.944571,
-        -122.412485
+        41.906887599384326,
+        -122.51472420665009
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260993/Lot-181-Lakeview-Rd-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -115,8 +115,8 @@
       "title": "Lot 1 Swallow Circle, Yreka, CA 96034",
       "acres": 0.19,
       "latLng": [
-        41.464464,
-        -122.619416
+        41.70707095766741,
+        -122.61788010050157
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260057/Lot-1-Swallow-Circle-Yreka-CA-96034",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -487,8 +487,8 @@
       "title": "Lot #42 Pinnacle, Weed, CA 96094",
       "acres": 0.9,
       "latLng": [
-        41.46268891844234,
-        -122.38240783539575
+        41.395145670000744,
+        -122.39077441700161
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260820/Lot-42-Pinnacle-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -503,18 +503,6 @@
         -122.31357107928159
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260502/Lots-4-5-Berry-St-Mt-Shasta-CA-96067",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260768",
-      "title": "Lot 3 Twin Hills Ct, Mt Shasta, CA 96067",
-      "acres": 2.62,
-      "latLng": [
-        41.37709055135976,
-        -122.37892038296145
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260768/Lot-3-Twin-Hills-Ct-Mt-Shasta-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -1003,8 +991,8 @@
       "title": "Lot #28 Linda Dr, Hornbrook, CA 96044",
       "acres": 2.5,
       "latLng": [
-        41.23561112357035,
-        -122.27197447965679
+        41.906887599384326,
+        -122.51472420665009
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260664/Lot-28-Linda-Dr-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1219,8 +1207,8 @@
       "title": "Lot 82 Spearpoint Rd, Weed, CA 96094",
       "acres": 0.05,
       "latLng": [
-        41.46268891844234,
-        -122.38240783539575
+        41.52620749857974,
+        -122.38049579763317
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260640/Lot-82-Spearpoint-Rd-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1231,8 +1219,8 @@
       "title": "Lot 81 Spearpoint Rd, Weed, CA 96094",
       "acres": 0.05,
       "latLng": [
-        41.46268891844234,
-        -122.38240783539575
+        41.52620749857974,
+        -122.38049579763317
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260639/Lot-81-Spearpoint-Rd-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1243,8 +1231,8 @@
       "title": "Lot 80 Spearpoint Rd, Weed, CA 96094",
       "acres": 0.05,
       "latLng": [
-        41.46268891844234,
-        -122.38240783539575
+        41.52620749857974,
+        -122.38049579763317
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260638/Lot-80-Spearpoint-Rd-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1255,8 +1243,8 @@
       "title": "Lot 79 Spearpoint Drive, Weed, CA 96094",
       "acres": 0.05,
       "latLng": [
-        41.46268891844234,
-        -122.38240783539575
+        41.52620749857974,
+        -122.38049579763317
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260637/Lot-79-Spearpoint-Drive-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1279,8 +1267,8 @@
       "title": "Unit 5 Lot147 Iron Gate Lake, Fawn Rd, Hornbrook, CA 96044",
       "acres": 3,
       "latLng": [
-        41.23008385272009,
-        -122.27315463166387
+        41.906887599384326,
+        -122.51472420665009
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260630/Unit-5-Lot147-Iron-Gate-Lake-Fawn-Rd-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1603,8 +1591,8 @@
       "title": "Lot 53 Spearpoint Rd, Weed, CA 96067",
       "acres": 0.05,
       "latLng": [
-        41.31519,
-        -122.289195
+        41.52620749857974,
+        -122.38049579763317
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260426/Lot-53-Spearpoint-Rd-Weed-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1615,8 +1603,8 @@
       "title": "Lot 52 Spearpoint Rd, Weed, CA 96067",
       "acres": 0.05,
       "latLng": [
-        41.31519,
-        -122.289195
+        41.52620749857974,
+        -122.38049579763317
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260425/Lot-52-Spearpoint-Rd-Weed-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1627,8 +1615,8 @@
       "title": "Lot 54 Spearpoint Rd, Weed, CA 96067",
       "acres": 0.05,
       "latLng": [
-        41.31519,
-        -122.289195
+        41.52620749857974,
+        -122.38049579763317
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260424/Lot-54-Spearpoint-Rd-Weed-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1639,8 +1627,8 @@
       "title": "Lot 51 Spearpoint Dr, Weed, CA 96067",
       "acres": 0.05,
       "latLng": [
-        41.31519,
-        -122.289195
+        41.52620749857974,
+        -122.38049579763317
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260423/Lot-51-Spearpoint-Dr-Weed-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1707,38 +1695,50 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20260396",
-      "title": "Unit 2 Lot 6 Siskiyou Lake Blvd, Mt Shasta, CA 96067",
-      "acres": 1.25,
-      "latLng": [
-        41.289690560471364,
-        -122.31683760788395
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260396/Unit-2-Lot-6-Siskiyou-Lake-Blvd-Mt-Shasta-CA-96067",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20260389",
       "title": "Lot 523 Blue Gill Dr, Hornbrook, CA 96044",
       "acres": 2.6,
       "latLng": [
-        41.906887599384326,
-        -122.51472420665009
+        41.896192410000744,
+        -122.43266197833488
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260389/Lot-523-Blue-Gill-Dr-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20250331",
-      "title": "Lot 50 Hidden Meadow Dr, Weed, CA 96094",
-      "acres": 5.02,
+      "mlsNumber": "20250326",
+      "title": "Lot 34 Glenhaven Ct, Weed, CA 96094",
+      "acres": 5.16,
       "latLng": [
-        41.409346,
-        -122.376183
+        41.46268891844234,
+        -122.38240783539575
       ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250331/Lot-50-Hidden-Meadow-Dr-Weed-CA-96094",
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250326/Lot-34-Glenhaven-Ct-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250325",
+      "title": "Lot 33 Glenhaven Ct, Weed, CA 96094",
+      "acres": 7.98,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250325/Lot-33-Glenhaven-Ct-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20250324",
+      "title": "Lot 32 Glenhaven Ct, Weed, CA 96094",
+      "acres": 3.7,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250324/Lot-32-Glenhaven-Ct-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -1759,8 +1759,8 @@
       "title": "Unit 4 Lot 170 Lake Shastina, N Browndeer Rd, Weed, CA 96094",
       "acres": 0.39,
       "latLng": [
-        41.427577,
-        -122.384869
+        41.513725573000784,
+        -122.3782393955016
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260381/Unit-4-Lot-170-Lake-Shastina-N-Browndeer-Rd-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1791,18 +1791,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20260367",
-      "title": "Lot 36 North Ridge Ct, Mt Shasta, CA 96067",
-      "acres": 2.65,
-      "latLng": [
-        41.318831701629314,
-        -122.32363978346991
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260367/Lot-36-North-Ridge-Ct-Mt-Shasta-CA-96067",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20240201",
       "title": "Lot 273 Sherwood, Weed, CA 96094",
       "acres": 0.24,
@@ -1819,8 +1807,8 @@
       "title": "Lot 301 Eel Unit 4, Hornbrook, CA 96044",
       "acres": 2.5,
       "latLng": [
-        41.90784,
-        -122.55814
+        41.900848203000784,
+        -122.43566973200154
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260356/Lot-301-Eel-Unit-4-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1843,8 +1831,8 @@
       "title": "Lot 242 Eagle Rest Ct., Weed, CA 96094",
       "acres": 0.49,
       "latLng": [
-        41.53687,
-        -122.385647
+        41.46268891844234,
+        -122.38240783539575
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260309/Lot-242-Eagle-Rest-Ct-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -1855,8 +1843,8 @@
       "title": "Lot 243 Eagle Rest Ct., Weed, CA 96094",
       "acres": 0.36,
       "latLng": [
-        41.53687,
-        -122.385647
+        41.46268891844234,
+        -122.38240783539575
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260308/Lot-243-Eagle-Rest-Ct-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -2043,18 +2031,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20260249",
-      "title": "Lot 22 Woodside Ct, Mt Shasta, CA 96067",
-      "acres": 1.59,
-      "latLng": [
-        41.363983,
-        -122.395351
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260249/Lot-22-Woodside-Ct-Mt-Shasta-CA-96067",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20260241",
       "title": "Lot 120 Willit Way, Montague, CA 96064",
       "acres": 8.6,
@@ -2119,8 +2095,8 @@
       "title": "Lot 71 & 30 Highway 96, Horse Creek, CA 96050",
       "acres": 23.23,
       "latLng": [
-        41.74632849206293,
-        -123.17160613233587
+        41.84137923585552,
+        -122.89912098985212
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260232/Lot-71-30-Highway-96-Horse-Creek-CA-96050",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -2131,8 +2107,8 @@
       "title": "Lot 2 Swallow Circle, Yreka, CA 96034",
       "acres": 0.19,
       "latLng": [
-        41.464464,
-        -122.619416
+        41.70707095766741,
+        -122.61788010050157
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260219/Lot-2-Swallow-Circle-Yreka-CA-96034",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -2275,8 +2251,8 @@
       "title": "Lot 38 Big Springs Rd, Montague, CA 96064",
       "acres": 10,
       "latLng": [
-        41.699399,
-        -122.43766
+        41.616768245815585,
+        -122.3990163952608
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260091/Lot-38-Big-Springs-Rd-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -2347,8 +2323,8 @@
       "title": "Lot 527 Blue Gill Dr, Hornbrook, CA 96044",
       "acres": 2.9,
       "latLng": [
-        41.906887599384326,
-        -122.51472420665009
+        41.896192410000744,
+        -122.43266197833488
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260047/Lot-527-Blue-Gill-Dr-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -2443,8 +2419,8 @@
       "title": "Unit 4 Lot 162 Oak View Rd., Hornbrook, CA 96044",
       "acres": 2.7,
       "latLng": [
-        41.68266233182546,
-        -122.63730254478159
+        41.906887599384326,
+        -122.51472420665009
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251298/Unit-4-Lot-162-Oak-View-Rd-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -2627,18 +2603,6 @@
         -122.4590924637349
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251039/Unit-3-Lot-169-Whitepine-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20221105",
-      "title": "Lot 7 Ream Ave, Mt Shasta, CA 96067",
-      "acres": 1.1,
-      "latLng": [
-        41.305895,
-        -122.311013
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20221105/Lot-7-Ream-Ave-Mt-Shasta-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -2875,8 +2839,8 @@
       "title": "Lot 36 Oak View Rd, Hornbrook, CA 96044",
       "acres": 3.7,
       "latLng": [
-        41.68266233182546,
-        -122.63730254478159
+        41.906887599384326,
+        -122.51472420665009
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240676/Lot-36-Oak-View-Rd-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
@@ -3163,8 +3127,8 @@
       "title": "Lot 155 Fir Court, Hornbrook, CA 96097",
       "acres": 1.03,
       "latLng": [
-        41.89271476262852,
-        -122.49233639279088
+        41.89218613610076,
+        -122.49255371850158
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20241274/Lot-155-Fir-Court-Hornbrook-CA-96097",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",

@@ -162,6 +162,14 @@
     "confidence": "manually verified",
     "notes": "best guess based on size"
   },
+  "20260307": {
+    "apns": [
+      "057-141-060"
+    ],
+    "source": "Siskiyou County unique exact normalized address point intersected with county parcel GIS",
+    "confidence": "high; exact county address point",
+    "notes": "612 N Mt. Shasta Blvd; exact county address point intersects APN 057-141-060. Matcher fixed to accept one unique exact normalized address despite same-number South address."
+  },
   "20260367": {
     "apns": [
       "037-100-310"
@@ -194,6 +202,14 @@
     "confidence": "manually verified",
     "notes": "from pics"
   },
+  "20260560": {
+    "apns": [
+      "101-121-210"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
   "20260571": {
     "apns": [
       "057-594-460",
@@ -204,6 +220,14 @@
     "confidence": "manually verified",
     "notes": "pictures"
   },
+  "20260613": {
+    "apns": [
+      "057-173-060"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
   "20260710": {
     "apns": [
       "036-360-170"
@@ -211,6 +235,16 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "MLS location was across the map"
+  },
+  "20260748": {
+    "apns": [
+      "036-160-510",
+      "036-160-340",
+      "036-160-330"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "rough - acreage is off by +10, not sure if these are right, based on rough pics"
   },
   "20260768": {
     "apns": [
@@ -220,6 +254,14 @@
     "confidence": "manually verified",
     "notes": "pics / visited"
   },
+  "20260788": {
+    "apns": [
+      "021-520-530"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map in pics"
+  },
   "20260851": {
     "apns": [
       "028-510-330"
@@ -227,6 +269,14 @@
     "source": "Siskiyou County exact address point intersected with county parcel GIS",
     "confidence": "high; exact county address point and acreage match",
     "notes": "532 Shasta Pines Drive; county address point lies inside APN 028-510-330; listing and GIS both 2.5 acres"
+  },
+  "20260884": {
+    "apns": [
+      "057-595-540"
+    ],
+    "source": "Siskiyou County unique canonical address point intersected with county parcel GIS",
+    "confidence": "high; unique address and exact acreage match",
+    "notes": "537 N Adams Dr; county stores 537 Adams Drive without directional; exact address point intersects APN 057-595-540; listing and GIS both 0.78 acres"
   },
   "20260981": {
     "apns": [
