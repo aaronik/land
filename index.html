@@ -68,12 +68,13 @@
         <p class="layer-note">Environmental layers are screening data—not surveys, engineering, buildability, or insurance determinations.</p>
       </section>
 
-      <section class="legend">
+      <section class="legend listings-legend">
         <h2>Listings &amp; auctions</h2>
-        <label><input class="filter" type="checkbox" value="private-land" checked><i class="swatch private-land"></i>Private land</label>
-        <label><input class="filter" type="checkbox" value="private-home" checked><i class="swatch private-home"></i>Private homes</label>
-        <label><input class="filter" type="checkbox" value="public-land" checked><i class="swatch public-land"></i>Public land auction</label>
-        <label><input class="filter" type="checkbox" value="public-home" checked><i class="swatch public-home"></i>Public home auction</label>
+        <p id="selected-color-key" class="selected-color-key" aria-live="polite" hidden><i class="swatch"></i><span></span></p>
+        <label data-category="private-land"><input class="filter" type="checkbox" value="private-land" checked><i class="swatch private-land"></i>Private land</label>
+        <label data-category="private-home"><input class="filter" type="checkbox" value="private-home" checked><i class="swatch private-home"></i>Private homes</label>
+        <label data-category="public-land"><input class="filter" type="checkbox" value="public-land" checked><i class="swatch public-land"></i>Public land auction</label>
+        <label data-category="public-home"><input class="filter" type="checkbox" value="public-home" checked><i class="swatch public-home"></i>Public home auction</label>
         <div class="acreage-filter">
           <label for="minimum-acreage">Minimum acreage <output id="minimum-acreage-value" for="minimum-acreage">Any size</output></label>
           <input id="minimum-acreage" type="range" min="0" max="100" step="1" value="0" aria-valuetext="Any size">

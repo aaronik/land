@@ -5,6 +5,7 @@ import mlcontour from 'maplibre-contour';
 import { Protocol } from './vendor/pmtiles/pmtiles.js';
 
 const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
+const CATEGORY_LABELS = { 'private-land': 'Private land', 'private-home': 'Private home', 'public-land': 'Public land auction', 'public-home': 'Public home auction' };
 // Colors follow the unique-value renderer saved on Siskiyou County's official
 // zoning layer. MapLibre cannot reproduce every ArcGIS hatch, so buffered
 // variants retain their official zoning-family color.
@@ -282,12 +283,33 @@ function displayAddress(records) {
   const title = records.find(record => record.kind === 'private')?.title || '';
   return title.replace(/,\s*(?:CA|California)(?:\s+\d{5}(?:-\d{4})?)?\s*$/i, '').trim();
 }
+function selectedParcelCategory(properties, saleFeature = matchingSale(properties?.APN)) {
+  if (COLORS[properties?.displayCategory]) return properties.displayCategory;
+  if (saleFeature) return firstCategory(saleFeature);
+  const records = properties?.records || [];
+  return records.map(record => record.category).find(category => COLORS[category]) || properties?.category || '';
+}
+function updateSelectedColorKey(properties) {
+  const key = document.querySelector('#selected-color-key');
+  if (!key) return;
+  document.querySelectorAll('.listings-legend [data-category]').forEach(label => label.classList.remove('selected-category'));
+  const category = selectedParcelCategory(properties);
+  if (!COLORS[category]) {
+    key.hidden = true;
+    return;
+  }
+  key.querySelector('.swatch').style.backgroundColor = COLORS[category];
+  key.querySelector('span').textContent = `Selected parcel: ${CATEGORY_LABELS[category]}`;
+  key.hidden = false;
+  document.querySelector(`.listings-legend [data-category="${category}"]`)?.classList.add('selected-category');
+}
 function showParcelDetails(properties, saleFeature = matchingSale(properties.APN)) {
   const p = { ...(saleFeature?.properties || {}), ...properties };
   const records = saleFeature?.properties.records || p.records || [];
   const acres = p.Acres ?? apnIndex[p.APN]?.acres;
   const address = displayAddress(records);
   document.querySelector('#details').innerHTML = `<h3>${escapeHtml(address || 'Parcel')}</h3><p class="meta">${escapeHtml(acres || '—')} GIS acres${p.LandUse1 ? ` · Land use ${escapeHtml(p.LandUse1)}` : ''}${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${records.map(recordCard).join('') || '<p class="muted">Official county parcel. No current listing or auction record is attached.</p>'}${researchControls(p.APN)}`;
+  updateSelectedColorKey(p);
   bindResearchControls(p.APN);
 }
 function updateSelectedParcelUrl(apn) {

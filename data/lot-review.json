@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-18T04:53:46.652Z",
-  "count": 48,
+  "generatedAt": "2026-08-18T05:56:19.669Z",
+  "count": 46,
   "listings": [
     {
       "mlsNumber": "SC26055721",
@@ -99,18 +99,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20250848",
-      "title": "Lot 1 S Old Stage Rd, Mt Shasta, CA 96067",
-      "acres": 2.51,
-      "latLng": [
-        41.301146,
-        -122.320164
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250848/Lot-1-S-Old-Stage-Rd-Mt-Shasta-CA-96067",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20240227",
       "title": "Lot 45 Desavado Rd, Montague, CA 96064",
       "acres": 1,
@@ -119,18 +107,6 @@
         -122.424702
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20240227/Lot-45-Desavado-Rd-Montague-CA-96064",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260710",
-      "title": "Lot 9 Audubon, Mt Shasta, CA 96067",
-      "acres": 1.9,
-      "latLng": [
-        41.313173,
-        -122.306891
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260710/Lot-9-Audubon-Mt-Shasta-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
