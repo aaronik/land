@@ -251,32 +251,54 @@ async function countyRoadPoint(item) {
   ];
 }
 
+function streetCandidatesForCity(candidates, city) {
+  const cityMatches = candidates.filter(candidate => candidate.cityMatch);
+  return city ? cityMatches : candidates;
+}
+
 async function countyStreetPoint(item) {
   const address = streetParts(item);
   if (!address || address.street.length < 3) return null;
-  const searchWord = address.street.split(/\s+/).sort((a, b) => b.length - a.length)[0];
-  if (!searchWord || searchWord.length < 3) return null;
-  const clauses = [`UPPER(St_Name) LIKE '%${searchWord.replace(/'/g, "''")}%'`];
-  if (/^\d{5}$/.test(address.zip)) clauses.push(`Post_Code = '${address.zip}'`);
-  const params = new URLSearchParams({
-    f: 'json', where: clauses.join(' AND '), outFields: 'St_Name,St_PosTyp,MSAGComm,Post_Code',
-    returnGeometry: 'true', outSR: 4326, resultRecordCount: 2000
-  });
-  const data = await (await fetchOk(`${ADDRESS_GIS}?${params}`)).json();
-  const city = address.city.toUpperCase().replace(/\bMOUNT\b/g, 'MT');
-  const candidates = (data.features || []).map(feature => {
+  const streetAliases = [...new Set([address.street, address.street.replace(/(POINT)$/i, ' $1')].map(value => value.trim()))];
+  const searchWords = [...new Set(streetAliases.flatMap(value => value.split(/\s+/)).filter(word => word.length >= 3).sort((a, b) => b.length - a.length))];
+  if (!searchWords.length) return null;
+  // County data stores some compound names as name + street type, e.g.
+  // MLS "Spearpoint Rd" versus county St_Name "Spear", St_PosTyp "Point".
+  const primary = searchWords[0].replace(/POINT$/i, '') || searchWords[0];
+  const query = async clauses => {
+    const params = new URLSearchParams({
+      f: 'json', where: clauses.join(' AND '), outFields: 'St_Name,St_PosTyp,MSAGComm,Post_Code',
+      returnGeometry: 'true', outSR: 4326, resultRecordCount: 2000
+    });
+    return (await (await fetchOk(`${ADDRESS_GIS}?${params}`)).json()).features || [];
+  };
+  const nameClause = `UPPER(St_Name) LIKE '%${primary.replace(/'/g, "''")}%'`;
+  const city = address.city.toUpperCase().replace(/\bMT\b/g, 'MOUNT').replace(/'/g, "''");
+  const tiers = [];
+  if (/^\d{5}$/.test(address.zip)) tiers.push([nameClause, `Post_Code = '${address.zip}'`]);
+  if (city) tiers.push([nameClause, `UPPER(MSAGComm) = '${city}'`]);
+  tiers.push([nameClause]);
+  const scored = features => features.map(feature => {
     const attributes = feature.attributes || {};
-    const countyStreet = String(attributes.St_Name || '');
-    const candidateCity = String(attributes.MSAGComm || '').toUpperCase().replace(/\bMOUNT\b/g, 'MT');
+    const countyStreet = [attributes.St_Name, attributes.St_PosTyp].filter(Boolean).join(' ');
+    const candidateCity = String(attributes.MSAGComm || '').toUpperCase().replace(/\bMT\b/g, 'MOUNT');
+    const compactListing = normalizeStreet(address.street).replace(/\s+/g, '');
+    const compactCounty = normalizeStreet(countyStreet).replace(/\s+/g, '');
     return {
-      score: streetSimilarity(address.street, countyStreet),
+      score: compactListing === compactCounty ? 1 : Math.max(streetSimilarity(address.street, countyStreet), streetSimilarity(address.street, attributes.St_Name)),
       cityMatch: !city || !candidateCity || city === candidateCity,
       point: feature.geometry?.x != null && feature.geometry?.y != null ? [feature.geometry.y, feature.geometry.x] : null
     };
   }).filter(candidate => candidate.point && candidate.score >= 0.82);
-  const cityMatches = candidates.filter(candidate => candidate.cityMatch);
-  const matches = cityMatches.length ? cityMatches : candidates;
+  let matches = [];
+  for (const clauses of tiers) {
+    matches = streetCandidatesForCity(scored(await query(clauses)), city);
+    // A query returning rows is not success unless one actually matches the
+    // requested street and city; bad ZIPs often contain unrelated "Gulch" roads.
+    if (matches.length) break;
+  }
   if (!matches.length) {
+    if (city) return null;
     const roadPoint = await countyRoadPoint(item);
     return roadPoint ? { point: roadPoint, source: 'county road centerline (approximate)' } : null;
   }
@@ -291,6 +313,40 @@ async function countyStreetPoint(item) {
   };
 }
 
+function addressStreetParts(value) {
+  const normalized = normalizeStreet(value);
+  const suffixMatch = normalized.match(/^(.*)\s+(AVE|BLVD|CIR|CT|DR|HWY|LN|LOOP|PL|RD|ST|TER|TRL|WAY)$/i);
+  const withoutSuffix = (suffixMatch?.[1] || normalized).trim();
+  const directionMatch = withoutSuffix.match(/^(N|S|E|W|NE|NW|SE|SW)\s+(.+)$/i);
+  return { base: (directionMatch?.[2] || withoutSuffix).trim(), direction: (directionMatch?.[1] || '').toUpperCase(), suffix: (suffixMatch?.[2] || '').toUpperCase() };
+}
+
+function addressStreetKey(value) {
+  const part = addressStreetParts(value);
+  return `${part.direction} ${part.base}`.trim();
+}
+function addressStreetsEquivalent(left, right) {
+  const a = addressStreetParts(left), b = addressStreetParts(right);
+  const directionMatches = !a.direction || !b.direction || a.direction === b.direction;
+  return Boolean(a.base && a.base === b.base && directionMatches && (!a.suffix || !b.suffix || a.suffix === b.suffix));
+}
+
+function selectCountyAddressCandidate(candidates) {
+  const unique = [];
+  for (const candidate of candidates.sort((a, b) => b.score - a.score)) {
+    if (!unique.some(old => Math.abs(old.point[0] - candidate.point[0]) < 0.00001 && Math.abs(old.point[1] - candidate.point[1]) < 0.00001)) unique.push(candidate);
+  }
+  if (!unique.length || unique[0].score < 0.82) return null;
+  const canonical = unique.filter(candidate => candidate.exactStreet);
+  if (canonical.length === 1) return canonical[0].point;
+  if (canonical.length > 1) return null;
+  // A unique exact normalized street match is decisive even when a similarly
+  // named address (for example, South vs North) has the same number and ZIP.
+  if (unique[0].score >= 0.999 && (!unique[1] || unique[1].score < 0.999)) return unique[0].point;
+  if (unique[1] && unique[0].score - unique[1].score < 0.08) return null;
+  return unique[0].point;
+}
+
 async function countyAddressPoint(item) {
   const address = addressParts(item);
   if (!address) return null;
@@ -299,28 +355,26 @@ async function countyAddressPoint(item) {
     return (await (await fetchOk(`${ADDRESS_GIS}?${params}`)).json()).features || [];
   };
   const numberClause = `AddNumber = '${address.number.replace(/'/g, "''")}'`;
-  let features = /^\d{5}$/.test(address.zip) ? await query([numberClause, `Post_Code = '${address.zip}'`]) : [];
-  // MLS ZIPs are occasionally mistyped. If the ZIP finds nothing, constrain
-  // the same house number by the advertised town before trying county-wide.
-  if (!features.length && item.city) {
+  const choose = features => selectCountyAddressCandidate(features.map(feature => {
+    const countyAddress = feature.attributes?.FullSt_Add;
+    const exactStreet = addressStreetsEquivalent(item.streetAddress, countyAddress);
+    return {
+      score: exactStreet ? 1 : streetSimilarity(item.streetAddress, countyAddress), exactStreet,
+      point: feature.geometry?.x != null && feature.geometry?.y != null ? [feature.geometry.y, feature.geometry.x] : null
+    };
+  }).filter(candidate => candidate.point));
+  if (/^\d{5}$/.test(address.zip)) {
+    const point = choose(await query([numberClause, `Post_Code = '${address.zip}'`]));
+    if (point) return point;
+  }
+  // MLS ZIPs are occasionally mistyped. Retry by advertised town whenever
+  // the ZIP tier has no acceptable street match, not only when it has no rows.
+  if (item.city) {
     const city = String(item.city).toUpperCase().replace(/\bMT\b/g, 'MOUNT').replace(/'/g, "''");
-    features = await query([numberClause, `UPPER(MSAGComm) = '${city}'`]);
+    const point = choose(await query([numberClause, `UPPER(MSAGComm) = '${city}'`]));
+    if (point) return point;
   }
-  if (!features.length) features = await query([numberClause]);
-  const candidates = features.map(feature => ({
-    score: streetSimilarity(item.streetAddress, feature.attributes?.FullSt_Add),
-    point: feature.geometry?.x != null && feature.geometry?.y != null ? [feature.geometry.y, feature.geometry.x] : null
-  })).filter(candidate => candidate.point).sort((a, b) => b.score - a.score);
-  // Duplicate county points for the same situs are not ambiguity. Collapse
-  // coordinates within roughly one metre before comparing the runner-up.
-  const unique = [];
-  for (const candidate of candidates) {
-    if (!unique.some(old => Math.abs(old.point[0] - candidate.point[0]) < 0.00001 && Math.abs(old.point[1] - candidate.point[1]) < 0.00001)) unique.push(candidate);
-  }
-  // Require a strong street match and a decisive lead over the runner-up.
-  if (!unique.length || unique[0].score < 0.82) return null;
-  if (unique[1] && unique[0].score - unique[1].score < 0.08) return null;
-  return unique[0].point;
+  return choose(await query([numberClause]));
 }
 
 async function parcelsNearPoint(latLng, distance = 0) {
@@ -391,6 +445,21 @@ function uniqueNearbyParcel(item, candidates) {
   return usable[0];
 }
 
+function pointDistanceMeters(a, b) {
+  if (!Array.isArray(a) || !Array.isArray(b)) return Infinity;
+  const radians = Math.PI / 180, dLat = (b[0] - a[0]) * radians, dLon = (b[1] - a[1]) * radians;
+  const value = Math.sin(dLat / 2) ** 2 + Math.cos(a[0] * radians) * Math.cos(b[0] * radians) * Math.sin(dLon / 2) ** 2;
+  return 6371000 * 2 * Math.asin(Math.sqrt(value));
+}
+
+function preferredUnmappedLocation(item, mlsPoint, streetPlacement) {
+  const lotOnly = /\b(?:LOTS?|BLOCKS?)\s*[#-]?\s*\d+/i.test(String(item.streetAddress || ''));
+  if (lotOnly && mlsPoint && streetPlacement?.point && pointDistanceMeters(mlsPoint, streetPlacement.point) > 5000) {
+    return { point: streetPlacement.point, source: `${streetPlacement.source}; MLS pin rejected as inconsistent` };
+  }
+  return mlsPoint ? { point: mlsPoint, source: 'MLS location only' } : streetPlacement;
+}
+
 async function privateRecords(items) {
   const records = [], unmapped = [];
   const streetPointCache = new Map();
@@ -400,7 +469,8 @@ async function privateRecords(items) {
     const addressPoints = await Promise.all(batch.map(item => countyAddressPoint(item).catch(() => null)));
     const streetPoints = await Promise.all(batch.map((item, index) => {
       const mlsLocation = Array.isArray(item.latLng) && item.latLng.length === 2 && item.latLng.every(Number.isFinite);
-      if (addressPoints[index] || mlsLocation) return null;
+      const lotOnly = /\b(?:LOTS?|BLOCKS?)\s*[#-]?\s*\d+/i.test(String(item.streetAddress || ''));
+      if (addressPoints[index] || (mlsLocation && !lotOnly)) return null;
       const key = `${normalizeStreet(item.streetAddress)}|${item.zip}|${item.city}`;
       if (!streetPointCache.has(key)) streetPointCache.set(key, (async () => {
         const regionPlacement = await countyRegionPlacement(item, regionCache);
@@ -443,15 +513,14 @@ async function privateRecords(items) {
         apns.forEach(value => records.push({ ...record, APN: value }));
       }
       else {
-        const streetPlacement = streetPoints[index];
         const mlsLatLng = Array.isArray(item.latLng) && item.latLng.length === 2 && item.latLng.every(Number.isFinite) ? item.latLng : null;
-        const sourceLatLng = addressPoints[index] || mlsLatLng || streetPlacement?.point;
+        const placement = addressPoints[index] ? { point: addressPoints[index], source: 'county address point (parcel rejected)' }
+          : preferredUnmappedLocation(item, mlsLatLng, streetPoints[index]);
+        const sourceLatLng = placement?.point;
         const hasSourceLocation = Array.isArray(sourceLatLng) && sourceLatLng.length === 2 && sourceLatLng.every(Number.isFinite);
         if (hasSourceLocation) {
           record.latLng = sourceLatLng;
-          record.locationSource = verifiedAddress
-            ? 'county address point (parcel rejected)'
-            : (streetPlacement?.source || 'MLS location only');
+          record.locationSource = placement.source;
         }
         record.category = ['land', 'farm'].includes(record.propertyType) ? 'private-land' : 'private-home';
         unmapped.push(record);
@@ -599,4 +668,5 @@ async function main() {
   console.log(`Wrote ${features.length} mapped parcels (${privateRows.length} MLS private, ${externalRows.length} external, ${auctions.length} public records), ${lotReview.length} lot-review items, ${secondary.resolved.length} secondary mappings, and synchronized the APN research queue`);
 }
 
-main().catch(error => { console.error(error.stack || error); process.exit(1); });
+if (require.main === module) main().catch(error => { console.error(error.stack || error); process.exit(1); });
+module.exports = { addressStreetKey, addressStreetsEquivalent, countyStreetPoint, normalizeStreet, pointDistanceMeters, preferredUnmappedLocation, selectCountyAddressCandidate, streetCandidatesForCity, streetSimilarity };

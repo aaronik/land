@@ -13,7 +13,7 @@
     "layers:download": "node scripts/download-layers.js",
     "layers:build": "node scripts/make-pmtiles.js",
     "build": "vite build",
-    "test": "node scripts/test.js && node scripts/test-parcel-resolver.js && node scripts/test-parcel-override.js && node scripts/test-apn-research.js",
+    "test": "node scripts/test.js && node scripts/test-parcel-resolver.js && node scripts/test-parcel-override.js && node scripts/test-apn-research.js && node scripts/test-address-matcher.js",
     "release": "npm run test && npm run deploy",
     "deploy": "npm run build && node scripts/deploy.js"
   },
