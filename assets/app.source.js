@@ -5,7 +5,6 @@ import mlcontour from 'maplibre-contour';
 import { Protocol } from './vendor/pmtiles/pmtiles.js';
 
 const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
-const CATEGORY_LABELS = { 'private-land': 'Private land', 'private-home': 'Private home', 'public-land': 'Public land auction', 'public-home': 'Public home auction' };
 // Colors follow the unique-value renderer saved on Siskiyou County's official
 // zoning layer. MapLibre cannot reproduce every ArcGIS hatch, so buffered
 // variants retain their official zoning-family color.
@@ -283,33 +282,52 @@ function displayAddress(records) {
   const title = records.find(record => record.kind === 'private')?.title || '';
   return title.replace(/,\s*(?:CA|California)(?:\s+\d{5}(?:-\d{4})?)?\s*$/i, '').trim();
 }
-function selectedParcelCategory(properties, saleFeature = matchingSale(properties?.APN)) {
-  if (COLORS[properties?.displayCategory]) return properties.displayCategory;
-  if (saleFeature) return firstCategory(saleFeature);
-  const records = properties?.records || [];
-  return records.map(record => record.category).find(category => COLORS[category]) || properties?.category || '';
+const ZONING_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/CDD_Zoning_Districts_Public/FeatureServer/0/query';
+const zoningByApn = new Map();
+let zoningRequestId = 0;
+function parcelQueryPoint(apn) {
+  const feature = matchingSale(apn);
+  if (feature) return featureCenter(feature);
+  const bbox = apnIndex[apn]?.bbox;
+  return bbox ? [(bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2] : null;
 }
-function updateSelectedColorKey(properties) {
-  const key = document.querySelector('#selected-color-key');
-  if (!key) return;
-  document.querySelectorAll('.listings-legend [data-category]').forEach(label => label.classList.remove('selected-category'));
-  const category = selectedParcelCategory(properties);
-  if (!COLORS[category]) {
-    key.hidden = true;
-    return;
+async function zoningForParcel(apn) {
+  if (zoningByApn.has(apn)) return zoningByApn.get(apn);
+  const point = parcelQueryPoint(apn);
+  if (!point) return '';
+  const url = new URL(ZONING_QUERY_URL);
+  url.search = new URLSearchParams({
+    f: 'json', geometry: point.join(','), geometryType: 'esriGeometryPoint', inSR: '4326',
+    spatialRel: 'esriSpatialRelIntersects', outFields: 'zoning,zoneclass', returnGeometry: 'false'
+  });
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`zoning query returned ${response.status}`);
+  const data = await response.json();
+  if (data.error) throw new Error(data.error.message || 'zoning query failed');
+  const zones = [...new Set((data.features || []).map(feature => feature.attributes?.zoning || feature.attributes?.zoneclass).filter(Boolean))];
+  const zoning = zones.join(' / ');
+  zoningByApn.set(apn, zoning);
+  return zoning;
+}
+async function updateParcelZoning(apn) {
+  const requestId = ++zoningRequestId;
+  const target = document.querySelector('[data-selected-zoning]');
+  if (!target || !apn) return;
+  try {
+    const zoning = await zoningForParcel(apn);
+    if (requestId === zoningRequestId && target.isConnected) target.textContent = ` · ${zoning || 'Not available'}`;
+  } catch (error) {
+    if (requestId === zoningRequestId && target.isConnected) target.textContent = ' · Unavailable';
+    console.warn(error);
   }
-  key.querySelector('.swatch').style.backgroundColor = COLORS[category];
-  key.querySelector('span').textContent = `Selected parcel: ${CATEGORY_LABELS[category]}`;
-  key.hidden = false;
-  document.querySelector(`.listings-legend [data-category="${category}"]`)?.classList.add('selected-category');
 }
 function showParcelDetails(properties, saleFeature = matchingSale(properties.APN)) {
   const p = { ...(saleFeature?.properties || {}), ...properties };
   const records = saleFeature?.properties.records || p.records || [];
   const acres = p.Acres ?? apnIndex[p.APN]?.acres;
   const address = displayAddress(records);
-  document.querySelector('#details').innerHTML = `<h3>${escapeHtml(address || 'Parcel')}</h3><p class="meta">${escapeHtml(acres || '—')} GIS acres${p.LandUse1 ? ` · Land use ${escapeHtml(p.LandUse1)}` : ''}${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${records.map(recordCard).join('') || '<p class="muted">Official county parcel. No current listing or auction record is attached.</p>'}${researchControls(p.APN)}`;
-  updateSelectedColorKey(p);
+  document.querySelector('#details').innerHTML = `<h3>${escapeHtml(address || 'Parcel')}</h3><p class="meta">${escapeHtml(acres || '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${records.map(recordCard).join('') || '<p class="muted">Official county parcel. No current listing or auction record is attached.</p>'}${researchControls(p.APN)}`;
+  updateParcelZoning(p.APN);
   bindResearchControls(p.APN);
 }
 function updateSelectedParcelUrl(apn) {

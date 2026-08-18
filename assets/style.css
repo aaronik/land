@@ -39,11 +39,6 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .legend label { display: flex; align-items: center; gap: 7px; margin: 7px 0; font-size: 13px; font-weight: 400; line-height: 16px; letter-spacing: 0; text-transform: none; cursor: pointer; }
 .legend input { display: block; width: 14px; height: 14px; flex: 0 0 14px; accent-color: var(--ink); margin: 0; }
 .legend .swatch { flex: 0 0 12px; margin: 0; }
-.selected-color-key { display: flex; align-items: center; gap: 8px; margin: 8px 0 10px; padding: 8px 9px; border: 1px solid rgba(22,35,29,.26); border-radius: 6px; background: white; font-size: 12px; font-weight: 750; }
-.selected-color-key[hidden] { display: none; }
-.selected-color-key .swatch { width: 18px; height: 18px; flex-basis: 18px; border: 2px solid white; box-shadow: 0 0 0 2px var(--ink); }
-.listings-legend label.selected-category { margin-left: -5px; padding: 4px 5px; border-radius: 5px; background: rgba(22,35,29,.1); font-weight: 750; }
-.listings-legend label.selected-category::after { content: 'Selected'; margin-left: auto; color: #526058; font-size: 9px; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
 .acreage-filter { margin-top: 15px; padding-top: 12px; border-top: 1px solid var(--line); }
 .acreage-filter label { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 5px; cursor: default; }
 .acreage-filter output { color: #126246; font-weight: 850; letter-spacing: 0; text-transform: none; }
