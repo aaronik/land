@@ -40,6 +40,30 @@
     "confidence": "manually verified",
     "notes": "No coords, got from pictures"
   },
+  "20250324": {
+    "apns": [
+      "021-750-320"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
+  "20250325": {
+    "apns": [
+      "021-750-330"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
+  "20250326": {
+    "apns": [
+      "021-750-340"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
   "20250331": {
     "apns": [
       "021-760-150"
@@ -145,6 +169,15 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "from picture"
+  },
+  "20260246": {
+    "apns": [
+      "020-170-270",
+      "020-170-250"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
   },
   "20260249": {
     "apns": [
