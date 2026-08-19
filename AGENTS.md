@@ -23,4 +23,6 @@ rg PATTERN . \
 
 For file discovery, prefer scoped source paths such as `assets/`, `scripts/`, and top-level configuration files. Metadata-only operations such as `ls`, `du`, `stat`, file counts, and filenames are safe for data directories.
 
-Do not run unrestricted recursive `grep`, `cat`, `sed`, `head`, `tail`, `git diff`, or similar content-reading commands from the repository root unless the large-data paths above are explicitly excluded.
+## IMPORTANT
+
+Do not run unrestricted recursive `grep`, `cat`, `sed`, `head`, `tail`, `git diff`, or similar content-reading commands from the repository root unless the large-data paths above are explicitly excluded. Pulling in large asset data will blow up the context, it must be avoided.
