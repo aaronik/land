@@ -10,7 +10,7 @@ const DEFAULT_QUEUE = path.join(root, 'data', 'apn-research.json');
 const DEFAULT_PARCELS = path.join(root, 'data', 'parcels.json');
 const GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query';
 const SIGNALS = new Set(['explicit_apn', 'boundary_image', 'location', 'road', 'landmark', 'acreage', 'lot', 'subdivision', 'parcel_count']);
-const STATUSES = new Set(['open', 'candidate', 'needs_evidence', 'ready', 'resolved', 'rejected']);
+const STATUSES = new Set(['open', 'candidate', 'needs_evidence', 'ready', 'resolved', 'inconclusive', 'rejected']);
 
 function emptyQueue() { return { schemaVersion: 1, updatedAt: new Date().toISOString(), items: {} }; }
 function loadJson(file, fallback) { return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : fallback; }
@@ -87,6 +87,16 @@ function centroid(geometry) {
   const points = (geometry?.rings || []).flat();
   return points.length ? [points.reduce((sum, point) => sum + point[1], 0) / points.length, points.reduce((sum, point) => sum + point[0], 0) / points.length] : null;
 }
+function pointInRing(point, ring) {
+  const [x, y] = [point[1], point[0]];
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i], [xj, yj] = ring[j];
+    if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
+function containsPoint(geometry, point) { return (geometry?.rings || []).some(ring => pointInRing(point, ring)); }
 function distanceMeters(a, b) {
   const radians = Math.PI / 180, dLat = (b[0] - a[0]) * radians, dLon = (b[1] - a[1]) * radians;
   const value = Math.sin(dLat / 2) ** 2 + Math.cos(a[0] * radians) * Math.cos(b[0] * radians) * Math.sin(dLon / 2) ** 2;
@@ -104,16 +114,44 @@ async function candidateParcels(item, radius = 3000) {
   if (data.error) throw new Error(data.error.message || 'County GIS query failed');
   const tolerance = listed > 0 ? Math.max(listed < 1 ? 0.15 : 0.5, listed * 0.05) : Infinity;
   return (data.features || []).map(feature => {
-    const center = centroid(feature.geometry), attributes = feature.attributes || {};
+    const center = centroid(feature.geometry), attributes = feature.attributes || {}, pointMatch = containsPoint(feature.geometry, point);
     return { apn: normalizeApn(attributes.APN), gisAcres: Number(attributes.Acres) || null,
       acreDelta: listed > 0 ? Math.round(Math.abs(Number(attributes.Acres) - listed) * 1000) / 1000 : null,
       distanceMeters: center ? Math.round(distanceMeters(point, center)) : null,
-      section: attributes.Section || '', township: attributes.Township || '', range: attributes.Range || '', selected: false };
-  }).filter(parcel => parcel.apn && (parcel.acreDelta === null || parcel.acreDelta <= tolerance))
-    .sort((a, b) => (a.acreDelta ?? Infinity) - (b.acreDelta ?? Infinity) || (a.distanceMeters ?? Infinity) - (b.distanceMeters ?? Infinity));
+      section: attributes.Section || '', township: attributes.Township || '', range: attributes.Range || '', pointMatch, selected: false };
+  }).filter(parcel => parcel.apn && (parcel.pointMatch || parcel.acreDelta === null || parcel.acreDelta <= tolerance))
+    .sort((a, b) => Number(b.pointMatch) - Number(a.pointMatch) || (a.acreDelta ?? Infinity) - (b.acreDelta ?? Infinity) || (a.distanceMeters ?? Infinity) - (b.distanceMeters ?? Infinity));
+}
+async function namedParcels(apns) {
+  const normalized = [...new Set(String(apns || '').split(',').map(normalizeApn).filter(Boolean))];
+  if (!normalized.length) return [];
+  const where = normalized.map(apn => `APN = '${apn}'`).join(' OR ');
+  const params = new URLSearchParams({ f: 'json', where, outFields: 'APN,Acres,LandUse1,Section,Township,Range', returnGeometry: 'false' });
+  const response = await fetch(`${GIS}?${params}`);
+  if (!response.ok) throw new Error(`County GIS returned ${response.status}`);
+  const data = await response.json(); if (data.error) throw new Error(data.error.message || 'County GIS query failed');
+  const found = (data.features || []).map(feature => {
+    const a = feature.attributes || {}; return { apn: normalizeApn(a.APN), gisAcres: Number(a.Acres) || null, acreDelta: null, distanceMeters: null,
+      section: a.Section || '', township: a.Township || '', range: a.Range || '', pointMatch: false, selected: false };
+  }).filter(x => x.apn);
+  if (found.length !== normalized.length) throw new Error(`County GIS did not return: ${normalized.filter(apn => !found.some(x => x.apn === apn)).join(', ')}`);
+  return found;
 }
 function option(args, name, fallback = '') { const index = args.indexOf(`--${name}`); return index >= 0 ? args[index + 1] : fallback; }
-function usage() { console.log(`APN evidence research\n\n  npm run research -- sync\n  npm run research -- list [--status open]\n  npm run research -- show <MLS>\n  npm run research -- candidates <MLS> [--radius 3000]\n  npm run research -- select <MLS> <APN[,APN]>\n  npm run research -- rule-out <MLS> <APN[,APN]> --evidence <id>\n  npm run research -- evidence <MLS> --type listing|county_gis|photo|assessor --signals acreage,location --url URL --apns APN --note TEXT\n  npm run research -- assess <MLS>\n  npm run research -- resolve <MLS>\n  npm run research -- validate`); }
+function usage() { console.log(`APN evidence research
+
+  npm run research -- sync
+  npm run research -- list [--status open]
+  npm run research -- show <MLS>
+  npm run research -- candidates <MLS> [--radius 3000]
+  npm run research -- add-candidate <MLS> <APN[,APN]>
+  npm run research -- select <MLS> <APN[,APN]>
+  npm run research -- rule-out <MLS> <APN[,APN]> --evidence <id>
+  npm run research -- evidence <MLS> --type listing|county_gis|photo|assessor --signals acreage,location --url URL --apns APN --note TEXT
+  npm run research -- assess <MLS>
+  npm run research -- inconclusive <MLS> --note TEXT
+  npm run research -- resolve <MLS>
+  npm run research -- validate`); }
 async function main(args = process.argv.slice(2)) {
   const file = path.resolve(option(args, 'file', DEFAULT_QUEUE));
   const parcelsFile = path.resolve(option(args, 'parcels-file', DEFAULT_PARCELS));
@@ -135,6 +173,13 @@ async function main(args = process.argv.slice(2)) {
     item.status = item.candidates.length ? 'candidate' : 'needs_evidence'; item.updatedAt = new Date().toISOString(); saveJson(file, queue);
     console.log(JSON.stringify(item.candidates, null, 2)); return;
   }
+  if (command === 'add-candidate') {
+    const added = await namedParcels(args[2]);
+    const existing = new Map((item.candidates || []).map(candidate => [normalizeApn(candidate.apn), candidate]));
+    for (const candidate of added) if (!existing.has(candidate.apn)) existing.set(candidate.apn, candidate);
+    item.candidates = [...existing.values()]; item.status = 'candidate'; item.updatedAt = new Date().toISOString(); saveJson(file, queue);
+    console.log(JSON.stringify(added, null, 2)); return;
+  }
   if (command === 'select' || command === 'rule-out') {
     const apns = String(args[2] || '').split(',').map(normalizeApn).filter(Boolean); if (!apns.length) throw new Error('Provide APN(s)');
     if (command === 'select') item.candidates = (item.candidates || []).map(x => ({ ...x, selected: apns.includes(normalizeApn(x.apn)) }));
@@ -154,6 +199,11 @@ async function main(args = process.argv.slice(2)) {
     item.evidence.push(evidence); const result = assess(item); item.status = result.ready ? 'ready' : 'needs_evidence'; item.updatedAt = evidence.retrievedAt; saveJson(file, queue); console.log(JSON.stringify(result, null, 2)); return;
   }
   if (command === 'assess') { const result = assess(item); item.status = result.ready ? 'ready' : 'needs_evidence'; saveJson(file, queue); console.log(JSON.stringify(result, null, 2)); return; }
+  if (command === 'inconclusive') {
+    const note = String(option(args, 'note')).trim(); if (!note) throw new Error('inconclusive requires --note TEXT');
+    item.status = 'inconclusive'; item.notes = [item.notes, `Inconclusive: ${note}`].filter(Boolean).join('\n');
+    item.reviewedAt = new Date().toISOString(); item.updatedAt = item.reviewedAt; saveJson(file, queue); console.log(`Marked MLS ${id} inconclusive`); return;
+  }
   if (command === 'resolve') {
     const result = assess(item); if (!result.ready) throw new Error(`Confidence gates failed: ${result.reasons.join('; ')}`);
     const evidenceIds = item.evidence.map(x => x.id).join(', '), source = `evidence-backed APN research (${evidenceIds})`;

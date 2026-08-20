@@ -1,6 +1,6 @@
 'use strict';
 const assert = require('assert/strict');
-const { assess, mergeQueue, validate } = require('./apn-research');
+const { assess, candidateParcels, mergeQueue, validate } = require('./apn-research');
 
 const listing = { mlsNumber: 'TEST100', title: 'Lot 4 Sample Rd, Weed, CA', acres: 5, price: 10000, url: 'https://example.com/listing', latLng: [41, -122], locationSource: 'MLS', propertyType: 'land' };
 const old = { schemaVersion: 1, items: { TEST100: { listingId: 'TEST100', status: 'needs_evidence', evidence: [{ id: 'e001', type: 'listing', signals: ['road'], url: 'https://example.com', apns: [] }], candidates: [], ruledOutApns: [], createdAt: 'old' } } };
@@ -25,4 +25,6 @@ assert.equal(assess(item).ready, false, 'boundary evidence does not replace GIS 
 assert.deepEqual(validate({ schemaVersion: 1, items: { TEST100: item } }), []);
 item.status = 'ready';
 assert.match(validate({ schemaVersion: 1, items: { TEST100: item } }).join(' '), /confidence gates fail/);
+item.status = 'inconclusive';
+assert.deepEqual(validate({ schemaVersion: 1, items: { TEST100: item } }), [], 'reviewed inconclusive state is valid');
 console.log('Passed: evidence-backed APN research queue and confidence gates.');
