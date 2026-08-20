@@ -43,8 +43,8 @@ function normalizeApn(value) {
   return match ? `${match[1]}-${match[2]}-${match[3]}` : '';
 }
 
-async function fetchMlsPage(source, page, perPage = 100) {
-  const body = new URLSearchParams({ listingType: 'homes-for-sale', page, itemsPerPage: perPage, sort: 'new', locationType: 'county', location: 'Siskiyou County, CA', lotSizeMin: 0 });
+async function fetchMlsPage(source, page, perPage = 100, listingType = 'homes-for-sale') {
+  const body = new URLSearchParams({ listingType, page, itemsPerPage: perPage, sort: 'new', locationType: 'county', location: 'Siskiyou County, CA', lotSizeMin: 0 });
   const response = await fetchOk(source.api, {
     method: 'POST', body,
     headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest', Origin: source.site, Referer: `${source.site}/` }
@@ -52,11 +52,11 @@ async function fetchMlsPage(source, page, perPage = 100) {
   return response.json();
 }
 
-async function fetchMlsSource(source) {
+async function fetchMlsSource(source, listingType = 'homes-for-sale') {
   const items = [];
   let page = 1, total = null;
   while (total === null || items.length < total) {
-    const data = await fetchMlsPage(source, page++);
+    const data = await fetchMlsPage(source, page++, 100, listingType);
     if (!data.success) throw new Error(`${source.name}: ${data.message || 'MLS API failed'}`);
     total = Number(data.total || 0);
     items.push(...(data.listings || []).map(item => ({ ...item, source })));
@@ -72,12 +72,12 @@ function listingKey(item) {
     .join('|');
 }
 
-async function fetchMls() {
-  const feeds = await Promise.all(MLS_SOURCES.map(fetchMlsSource));
+async function fetchMls(listingType = 'homes-for-sale') {
+  const feeds = await Promise.all(MLS_SOURCES.map(source => fetchMlsSource(source, listingType)));
   const unique = new Map();
   for (const item of feeds.flat().sort((a, b) => a.source.priority - b.source.priority)) {
-    const key = listingKey(item);
-    // Mt. Shasta Realty has priority for an address match, so its listing URL wins.
+    const key = listingType === 'homes-sold' ? String(item.mlsNo || item.id) : listingKey(item);
+    // Mt. Shasta Realty has priority for a duplicate MLS/address match.
     if (!unique.has(key)) unique.set(key, item);
   }
   return [...unique.values()];
@@ -530,6 +530,19 @@ async function privateRecords(items) {
   return { records, unmapped };
 }
 
+async function soldHistory(items) {
+  const matched = await privateRecords(items);
+  const itemsByMls = new Map(items.map(item => [String(item.mlsNo), item]));
+  return matched.records.map(record => {
+    const item = itemsByMls.get(String(record.mlsNumber)) || {};
+    return { ...record, kind: 'sale-history', soldPrice: Number(item.soldPrice) || null, soldDate: item.soldDate || '', listPrice: Number(item.price) || null, status: 'Sold' };
+  }).filter(record => {
+    const unitAddress = /(?:^|\s)(?:#|APT|UNIT|SPACE|SP)\s*[A-Z0-9-]+/i.test(record.title || '');
+    const independentlyMatched = record.parcelMatchSource === 'listing APN' || Boolean(record.parcelMatchConfidence);
+    return record.APN && record.soldPrice && record.soldDate && (!unitAddress || independentlyMatched);
+  });
+}
+
 function externalRecords() {
   return EXTERNAL_LISTINGS.flatMap(item => (item.apns || []).map(value => ({
     APN: normalizeApn(value), kind: 'private', title: item.title || `Land listing ${value}`,
@@ -617,8 +630,8 @@ async function parcelFeatures(apns) {
 
 async function main() {
   pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
-  console.log('Fetching MLS and county auction sources…');
-  const [mls, auctions] = await Promise.all([fetchMls(), fetchAuctions()]);
+  console.log('Fetching MLS, sold history, and county auction sources…');
+  const [mls, soldItems, auctions] = await Promise.all([fetchMls(), fetchMls('homes-sold'), fetchAuctions()]);
   const firstPass = await privateRecords(mls);
   const resolverEnabled = process.env.SECONDARY_PARCEL_RESOLVER !== '0';
   if (resolverEnabled) console.log('Running conservative secondary parcel resolver…');
@@ -630,16 +643,25 @@ async function main() {
     : { ...record, latLng: [...UNRESOLVED_LISTING_FALLBACK], locationSource: 'City Park fallback (listing location unresolved)' });
   const privateData = { records: [...firstPass.records, ...secondary.resolved], unmapped: fallbackUnmapped };
   const privateRows = privateData.records;
+  const historyRows = await soldHistory(soldItems);
   const externalRows = externalRecords();
   const records = [...privateRows, ...externalRows, ...auctions];
-  const features = await parcelFeatures([...new Set(records.map(row => row.APN))]);
+  const allMappedRows = [...records, ...historyRows];
+  const features = await parcelFeatures([...new Set(allMappedRows.map(row => row.APN))]);
   const recordsByApn = new Map();
+  const historyByApn = new Map();
   for (const record of records) {
     if (!recordsByApn.has(record.APN)) recordsByApn.set(record.APN, []);
     recordsByApn.get(record.APN).push(record);
   }
+  for (const record of historyRows) {
+    if (!historyByApn.has(record.APN)) historyByApn.set(record.APN, []);
+    historyByApn.get(record.APN).push(record);
+  }
   for (const feature of features) {
-    const recordsForParcel = recordsByApn.get(normalizeApn(feature.properties.APN)) || [];
+    const apn = normalizeApn(feature.properties.APN);
+    const recordsForParcel = recordsByApn.get(apn) || [];
+    const salesHistory = (historyByApn.get(apn) || []).sort((a, b) => String(b.soldDate).localeCompare(String(a.soldDate)));
     const hasHomeLandUse = /^1\d{2}/.test(String(feature.properties.LandUse1 || ''));
     for (const record of recordsForParcel) {
       record.category = record.kind === 'private'
@@ -647,10 +669,11 @@ async function main() {
         : (hasHomeLandUse ? 'public-home' : 'public-land');
     }
     feature.properties.records = recordsForParcel;
+    feature.properties.salesHistory = salesHistory;
   }
   const output = {
     generatedAt: new Date().toISOString(), sources: { mls: MLS_SOURCES.map(source => ({ name: source.name, api: source.api })), externalListings: EXTERNAL_LISTINGS.map(item => item.url), auctions: TAX_PAGE, parcels: GIS },
-    counts: { mlsLandListings: mls.length, privateMapped: privateRows.length + externalRows.length, externalListings: externalRows.length, privateUnmapped: privateData.unmapped.length, publicRecords: auctions.length, mappedParcels: features.length },
+    counts: { mlsLandListings: mls.length, soldHistoryRecords: historyRows.length, privateMapped: privateRows.length + externalRows.length, externalListings: externalRows.length, privateUnmapped: privateData.unmapped.length, publicRecords: auctions.length, mappedParcels: features.length },
     unmappedListings: privateData.unmapped,
     type: 'FeatureCollection', features
   };

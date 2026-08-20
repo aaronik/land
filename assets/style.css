@@ -84,6 +84,14 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .record.public.home { border-left-color: #b94b18; }
 .record strong { font-size: 13px; }
 .record p { margin: 4px 0; }
+.sales-history { margin-top: 14px; padding: 12px; background: #f7f2df; border: 1px solid var(--line); border-left: 4px solid #c28a2c; border-radius: 7px; }
+.sales-history h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; }
+.sales-history article { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 11px; }
+.sales-history article:first-of-type { border-top: 0; }
+.sales-history article strong { font: 600 18px Georgia, serif; }
+.sales-history article span { color: #59635d; }
+.sales-history article small { grid-column: 1 / -1; color: #667067; line-height: 1.35; }
+.sales-history .source-note { margin: 7px 0 0; color: #667067; font-size: 10px; line-height: 1.4; }
 .research { margin-top: 14px; padding: 12px; background: #eef2e9; border: 1px solid var(--line); border-radius: 7px; }
 .research h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; }
 .research-actions { display: grid; gap: 6px; }

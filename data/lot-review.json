@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T12:34:06.781Z",
+  "generatedAt": "2026-08-20T15:57:39.459Z",
   "count": 278,
   "listings": [
     {
@@ -695,18 +695,6 @@
         -122.12949090746314
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260719/Lot-75-Mill-House-McCloud-CA-96057",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260718",
-      "title": "Lot 74 Old Mill Dr, McCloud, CA 96057",
-      "acres": 0.27,
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260718/Lot-74-Old-Mill-Dr-McCloud-CA-96057",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -3335,6 +3323,18 @@
         -122.3641669511127
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20240112/7-2-Lot-146-Puma-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260718",
+      "title": "Lot 74 Old Mill Dr, McCloud, CA 96057",
+      "acres": 0.27,
+      "latLng": [
+        41.24858175325078,
+        -122.14266950675163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260718/Lot-74-Old-Mill-Dr-McCloud-CA-96057",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     }

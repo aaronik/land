@@ -263,6 +263,11 @@ function recordCard(record, extraLink = '') {
   }
   return `<article class="record public"><strong>Public auction record</strong><p>${escapeHtml(record.minimumBid || 'No parsed minimum')} · ${escapeHtml(record.status || 'Unknown status')}</p><p>${escapeHtml(record.source || '')}</p>${record.sourceUrl ? `<a href="${escapeHtml(record.sourceUrl)}" target="_blank" rel="noopener">Source PDF ↗</a>` : ''}${extraLink}</article>`;
 }
+function salesHistorySection(records) {
+  if (!records.length) return `<section class="sales-history"><h4>Sales history</h4><p class="muted">No matched public sold-listing history was found for this APN.</p></section>`;
+  const rows = records.map(record => `<article><strong>${money(record.soldPrice)}</strong><span>${escapeHtml(new Date(`${record.soldDate}T12:00:00`).toLocaleDateString())}</span>${record.listPrice ? `<small>Listed at ${money(record.listPrice)}</small>` : ''}<small>${escapeHtml(record.title || '')} · MLS ${escapeHtml(record.mlsNumber || '—')}</small></article>`).join('');
+  return `<section class="sales-history"><h4>Sales history</h4>${rows}<p class="source-note">Public IDX sold-listing data matched to the county parcel by APN or exact county address. This is not a complete deed history.</p></section>`;
+}
 function researchControls(apn) {
   if (!apn) return '';
   const saved = JSON.parse(localStorage.getItem(researchKey(apn)) || '{}');
@@ -334,11 +339,12 @@ function parcelDirectionsLink(apn) {
 function showParcelDetails(properties, saleFeature = matchingSale(properties.APN)) {
   const p = { ...(saleFeature?.properties || {}), ...properties };
   const records = saleFeature?.properties.records || p.records || [];
+  const salesHistory = saleFeature?.properties.salesHistory || p.salesHistory || [];
   const acres = p.Acres ?? apnIndex[p.APN]?.acres;
   const address = displayAddress(records);
   const directions = parcelDirectionsLink(p.APN);
   const recordCards = records.map((record, index) => recordCard(record, index === 0 ? directions : '')).join('');
-  document.querySelector('#details').innerHTML = `<h3>${escapeHtml(address || 'Parcel')}</h3><p class="meta">${escapeHtml(acres || '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${recordCards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${researchControls(p.APN)}`;
+  document.querySelector('#details').innerHTML = `<h3>${escapeHtml(address || 'Parcel')}</h3><p class="meta">${escapeHtml(acres || '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${recordCards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${salesHistorySection(salesHistory)}${researchControls(p.APN)}`;
   updateParcelZoning(p.APN);
   bindResearchControls(p.APN);
 }

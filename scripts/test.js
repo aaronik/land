@@ -22,6 +22,8 @@ if (!failures.length) {
   if (!html.includes('id="minimum-acreage"') || !html.includes('max="100" step="1"') || !app.includes('minimumAcreage = Number(minimumAcreageInput.value)') || !app.includes("minimumAcreageInput.addEventListener('input'") || !app.includes('function recordIsVisible(')) failures.push('Granular 0–100 minimum acreage filter is missing');
   if (!html.includes('parcelquest-warning')) failures.push('ParcelQuest warning dialog is missing');
   if (!app.includes('Research in ParcelQuest Lite')) failures.push('ParcelQuest parcel action is missing');
+  if (!app.includes('function salesHistorySection(') || !app.includes('No matched public sold-listing history')) failures.push('Clicked parcels do not display sales history');
+  if (!refresh.includes("fetchMls('homes-sold')") || !refresh.includes("kind: 'sale-history'") || !refresh.includes('feature.properties.salesHistory = salesHistory')) failures.push('Sold MLS history is not ingested by APN');
   if (!app.includes("const DIRECTIONS_ORIGIN = 'Mt. Shasta City Park") || !app.includes("new URL('https://www.google.com/maps/dir/')") || !app.includes('destination: `${point[1]},${point[0]}`') || !app.includes('Directions from Mt. Shasta City Park')) failures.push('Parcel directions from Mt. Shasta City Park are missing');
   if (!app.includes('localStorage')) failures.push('browser-local research cache is missing');
   if (!app.includes("id: 'road-labels'") || !app.includes("['get', 'ROADNAME']")) failures.push('County road name labels are missing');
@@ -44,7 +46,7 @@ if (!failures.length) {
   if (app.includes('/api/parcelquest')) failures.push('ParcelQuest must not be proxied');
   for (const feature of data.features || []) {
     if (!/^\d{3}-\d{3}-\d{3}$/.test(feature.properties?.APN || '')) failures.push(`invalid APN ${feature.properties?.APN}`);
-    if (!Array.isArray(feature.properties?.records) || !feature.properties.records.length) failures.push(`missing records for ${feature.properties?.APN}`);
+    if ((!Array.isArray(feature.properties?.records) || !feature.properties.records.length) && (!Array.isArray(feature.properties?.salesHistory) || !feature.properties.salesHistory.length)) failures.push(`missing records for ${feature.properties?.APN}`);
   }
 }
 if (failures.length) { console.error(failures.map(item => `- ${item}`).join('\n')); process.exit(1); }
