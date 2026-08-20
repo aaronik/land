@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-20T12:34:06.781Z",
-  "count": 278,
+  "generatedAt": "2026-08-20T19:21:00.558Z",
+  "count": 275,
   "listings": [
     {
       "mlsNumber": "20261038",
@@ -1391,42 +1391,6 @@
         -122.14266950675163
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260582/Lot-10-Old-Mill-Dr-McCloud-CA-96057",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260578",
-      "title": "Lot 6 Old Mill Dr, McCloud, CA 96057",
-      "acres": 0.4,
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260578/Lot-6-Old-Mill-Dr-McCloud-CA-96057",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260577",
-      "title": "Lot 3 Old Mill Dr, McCloud, CA 96057",
-      "acres": 0.29,
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260577/Lot-3-Old-Mill-Dr-McCloud-CA-96057",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260576",
-      "title": "Lot 2 Old Mill Dr, McCloud, CA 96057",
-      "acres": 0.27,
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260576/Lot-2-Old-Mill-Dr-McCloud-CA-96057",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
