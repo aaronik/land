@@ -23,6 +23,14 @@
     "confidence": "manually verified",
     "notes": "pics"
   },
+  "20240760": {
+    "apns": [
+      "061-021-260"
+    ],
+    "source": "evidence-backed APN research (e001, e002)",
+    "confidence": "high; evidence reviewed",
+    "notes": "Research evidence: e001, e002"
+  },
   "20240890": {
     "apns": [
       "021-242-100"
@@ -137,6 +145,14 @@
     "confidence": "manually verified",
     "notes": "pics"
   },
+  "20251228": {
+    "apns": [
+      "009-330-030"
+    ],
+    "source": "evidence-backed APN research (e001, e002)",
+    "confidence": "high; evidence reviewed",
+    "notes": "Research evidence: e001, e002"
+  },
   "20251260": {
     "apns": [
       "028-020-220",
@@ -145,6 +161,22 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "from pics"
+  },
+  "20260108": {
+    "apns": [
+      "061-131-250"
+    ],
+    "source": "evidence-backed APN research (e001, e002)",
+    "confidence": "high; evidence reviewed",
+    "notes": "Research evidence: e001, e002"
+  },
+  "20260142": {
+    "apns": [
+      "007-120-200"
+    ],
+    "source": "evidence-backed APN research (e001, e002)",
+    "confidence": "high; evidence reviewed",
+    "notes": "Research evidence: e001, e002"
   },
   "20260160": {
     "apns": [
@@ -169,6 +201,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "from picture"
+  },
+  "20260230": {
+    "apns": [
+      "061-131-180"
+    ],
+    "source": "evidence-backed APN research (e001, e002)",
+    "confidence": "high; evidence reviewed",
+    "notes": "Research evidence: e001, e002"
   },
   "20260246": {
     "apns": [
