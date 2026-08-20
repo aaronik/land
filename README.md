@@ -77,6 +77,10 @@ npm run override -- add 20261234 021-520-380 --notes "Poplar Court, Weed, CA 960
 
 Multiple parcels can be comma-separated. The helper immediately patches `data/parcels.json` using only the selected county parcel geometry, so a full `npm run refresh` is not required; reload an already-open map to see it. A later refresh will reproduce the same mapping from `data/parcel-overrides.json`. Use `--no-map-patch` to save only the override, or `npm run override -- help` for list, show, remove, and replacement commands.
 
+### Persistent MLS parcel links
+
+Each refresh writes trusted programmatic and manual MLS-to-APN matches to `data/mls-apn-links.json`. Active and sold MLS feeds join through the MLS number, with precedence given to manual overrides, then explicit listing APNs, then the persisted linkage. This lets sold history reuse previously established parcel matches instead of repeating or weakening the match.
+
 ## Deployment
 
 ```sh

@@ -10,12 +10,14 @@ let pdfjs;
 const root = path.resolve(__dirname, '..');
 const outFile = path.join(root, 'data', 'parcels.json');
 const overridesFile = path.join(root, 'data', 'parcel-overrides.json');
+const mlsLinksFile = path.join(root, 'data', 'mls-apn-links.json');
 const reviewFile = path.join(root, 'data', 'lot-review.json');
 const resolverReportFile = path.join(root, 'data', 'parcel-resolution-report.json');
 const researchFile = path.join(root, 'data', 'apn-research.json');
 const externalListingsFile = path.join(root, 'data', 'external-listings.json');
 const EXTERNAL_LISTINGS = fs.existsSync(externalListingsFile) ? JSON.parse(fs.readFileSync(externalListingsFile, 'utf8')) : [];
 const PARCEL_OVERRIDES = fs.existsSync(overridesFile) ? JSON.parse(fs.readFileSync(overridesFile, 'utf8')) : {};
+const MLS_APN_LINKS = fs.existsSync(mlsLinksFile) ? JSON.parse(fs.readFileSync(mlsLinksFile, 'utf8')) : {};
 const UNRESOLVED_LISTING_FALLBACK = [41.328436, -122.326324];
 const MLS_SOURCES = [
   // When the same property appears in both feeds, retain this listing's URL.
@@ -41,6 +43,36 @@ async function fetchOk(url, options = {}) {
 function normalizeApn(value) {
   const match = String(value || '').match(/(\d{3})\D?(\d{3})\D?(\d{3})/);
   return match ? `${match[1]}-${match[2]}-${match[3]}` : '';
+}
+
+function normalizeMls(value) { return String(value || '').trim().toUpperCase(); }
+function linkedApns(mls) {
+  return (MLS_APN_LINKS[normalizeMls(mls)]?.apns || []).map(normalizeApn).filter(Boolean);
+}
+function saveMlsLinks(file, records, generatedAt) {
+  const next = { ...MLS_APN_LINKS };
+  const grouped = new Map();
+  for (const record of records) {
+    const mls = normalizeMls(record.mlsNumber);
+    if (!mls || !record.APN || record.parcelMatchSource === 'unresolved') continue;
+    if (!grouped.has(mls)) grouped.set(mls, []);
+    grouped.get(mls).push(record);
+  }
+  for (const [mls, matches] of grouped) {
+    const apns = [...new Set(matches.map(item => normalizeApn(item.APN)).filter(Boolean))];
+    if (!apns.length) continue;
+    const record = matches[0];
+    const reused = String(record.parcelMatchSource).startsWith('persisted MLS linkage:') && next[mls];
+    next[mls] = {
+      apns,
+      source: reused ? next[mls].source : record.parcelMatchSource,
+      confidence: reused ? next[mls].confidence : (record.parcelMatchConfidence || 'programmatic'),
+      updatedAt: generatedAt
+    };
+  }
+  const sorted = Object.fromEntries(Object.entries(next).sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true })));
+  fs.writeFileSync(file, `${JSON.stringify(sorted, null, 2)}\n`);
+  return sorted;
 }
 
 async function fetchMlsPage(source, page, perPage = 100, listingType = 'homes-for-sale') {
@@ -489,11 +521,14 @@ async function privateRecords(items) {
       const directMatch = containing[index];
       const nearbyMatch = uniqueNearbyParcel(item, nearby[index]);
       const match = usableParcel(directMatch) ? directMatch : nearbyMatch;
-      const override = PARCEL_OVERRIDES[String(item.mlsNo || '')];
+      const mls = normalizeMls(item.mlsNo);
+      const override = PARCEL_OVERRIDES[mls];
       const overrideApns = (override?.apns || []).map(normalizeApn).filter(Boolean);
       const listedApn = explicitApn(item);
+      const persistedLink = MLS_APN_LINKS[mls];
+      const persistedApns = overrideApns.length || listedApn ? [] : linkedApns(mls);
       const verifiedAddress = Boolean(addressPoints[index]);
-      const apn = overrideApns[0] || listedApn || (verifiedAddress && usableParcel(match) ? match.apn : '');
+      const apn = overrideApns[0] || listedApn || persistedApns[0] || (verifiedAddress && usableParcel(match) ? match.apn : '');
       const title = [item.streetAddress, item.city, item.state, item.zip].filter(Boolean).join(', ').replace(', CA,', ', CA');
       const slug = title.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
       const record = {
@@ -504,12 +539,12 @@ async function privateRecords(items) {
         sqft: Number(item.sqft) || 0, yearBuilt: Number(item.yearBuilt) || 0,
         url: `${item.source.site}/idx/listing/${item.mlsId}/${item.mlsNo}/${slug}`,
         listingSource: item.source.name,
-        parcelMatchSource: overrideApns.length ? override.source : (listedApn ? 'listing APN' : (nearbyMatch ? 'county address point + nearest parcel (15m)' : (verifiedAddress ? 'county address point' : 'unresolved'))),
-        parcelMatchConfidence: override?.confidence || '',
+        parcelMatchSource: overrideApns.length ? override.source : (persistedApns.length ? `persisted MLS linkage: ${persistedLink.source}` : (listedApn ? 'listing APN' : (nearbyMatch ? 'county address point + nearest parcel (15m)' : (verifiedAddress ? 'county address point' : 'unresolved')))),
+        parcelMatchConfidence: override?.confidence || (persistedApns.length ? persistedLink.confidence : ''),
         mlsNumber: item.mlsNo
       };
       if (apn) {
-        const apns = overrideApns.length ? overrideApns : [apn];
+        const apns = overrideApns.length ? overrideApns : (persistedApns.length ? persistedApns : [apn]);
         apns.forEach(value => records.push({ ...record, APN: value }));
       }
       else {
@@ -643,7 +678,10 @@ async function main() {
     : { ...record, latLng: [...UNRESOLVED_LISTING_FALLBACK], locationSource: 'City Park fallback (listing location unresolved)' });
   const privateData = { records: [...firstPass.records, ...secondary.resolved], unmapped: fallbackUnmapped };
   const privateRows = privateData.records;
+  const generatedAt = new Date().toISOString();
+  Object.assign(MLS_APN_LINKS, saveMlsLinks(mlsLinksFile, privateRows, generatedAt));
   const historyRows = await soldHistory(soldItems);
+  Object.assign(MLS_APN_LINKS, saveMlsLinks(mlsLinksFile, [...privateRows, ...historyRows], generatedAt));
   const externalRows = externalRecords();
   const records = [...privateRows, ...externalRows, ...auctions];
   const allMappedRows = [...records, ...historyRows];
@@ -672,7 +710,7 @@ async function main() {
     feature.properties.salesHistory = salesHistory;
   }
   const output = {
-    generatedAt: new Date().toISOString(), sources: { mls: MLS_SOURCES.map(source => ({ name: source.name, api: source.api })), externalListings: EXTERNAL_LISTINGS.map(item => item.url), auctions: TAX_PAGE, parcels: GIS },
+    generatedAt, sources: { mls: MLS_SOURCES.map(source => ({ name: source.name, api: source.api })), externalListings: EXTERNAL_LISTINGS.map(item => item.url), auctions: TAX_PAGE, parcels: GIS },
     counts: { mlsLandListings: mls.length, soldHistoryRecords: historyRows.length, privateMapped: privateRows.length + externalRows.length, externalListings: externalRows.length, privateUnmapped: privateData.unmapped.length, publicRecords: auctions.length, mappedParcels: features.length },
     unmappedListings: privateData.unmapped,
     type: 'FeatureCollection', features
