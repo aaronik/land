@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-19T12:32:55.476Z",
-  "count": 281,
+  "generatedAt": "2026-08-20T12:34:06.781Z",
+  "count": 278,
   "listings": [
     {
       "mlsNumber": "20261038",
@@ -1703,42 +1703,6 @@
         -122.43266197833488
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260389/Lot-523-Blue-Gill-Dr-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250326",
-      "title": "Lot 34 Glenhaven Ct, Weed, CA 96094",
-      "acres": 5.16,
-      "latLng": [
-        41.46268891844234,
-        -122.38240783539575
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250326/Lot-34-Glenhaven-Ct-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250325",
-      "title": "Lot 33 Glenhaven Ct, Weed, CA 96094",
-      "acres": 7.98,
-      "latLng": [
-        41.46268891844234,
-        -122.38240783539575
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250325/Lot-33-Glenhaven-Ct-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250324",
-      "title": "Lot 32 Glenhaven Ct, Weed, CA 96094",
-      "acres": 3.7,
-      "latLng": [
-        41.46268891844234,
-        -122.38240783539575
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250324/Lot-32-Glenhaven-Ct-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
