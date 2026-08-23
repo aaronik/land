@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-08-20T21:14:21.107Z",
+  "generatedAt": "2026-08-23T12:26:28.744Z",
   "count": 275,
   "listings": [
+    {
+      "mlsNumber": "20261056",
+      "title": "Unit 4 Lot 198 Trout Court, Montague, CA 96064",
+      "acres": 2.5,
+      "latLng": [
+        41.726852558525,
+        -122.44620948487768
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261056/Unit-4-Lot-198-Trout-Court-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261038",
       "title": "Lot 580 Owens Way, Hornbrook, CA 96044",
@@ -2543,18 +2555,6 @@
         -122.4590924637349
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251039/Unit-3-Lot-169-Whitepine-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20251011",
-      "title": "Blk 72 Lot 23 Nemeth Dr, Montague, CA 96064",
-      "acres": 2.4,
-      "latLng": [
-        41.56845271800074,
-        -122.33631107700157
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251011/Blk-72-Lot-23-Nemeth-Dr-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },

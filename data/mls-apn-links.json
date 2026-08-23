@@ -5,7 +5,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20211339": {
     "apns": [
@@ -13,7 +13,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20220557": {
     "apns": [
@@ -21,7 +21,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20220737": {
     "apns": [
@@ -29,7 +29,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20220798": {
     "apns": [
@@ -37,7 +37,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20220883": {
     "apns": [
@@ -45,7 +45,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20221105": {
     "apns": [
@@ -53,7 +53,7 @@
     ],
     "source": "Siskiyou Association of Realtors listing tax/property ID, verified in county parcel GIS",
     "confidence": "verified; explicit MLS tax ID and exact acreage match",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20221188": {
     "apns": [
@@ -61,7 +61,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20221216": {
     "apns": [
@@ -69,7 +69,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20221407": {
     "apns": [
@@ -77,7 +77,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230262": {
     "apns": [
@@ -85,7 +85,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230295": {
     "apns": [
@@ -93,7 +93,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230324": {
     "apns": [
@@ -109,7 +109,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230410": {
     "apns": [
@@ -117,7 +117,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230421": {
     "apns": [
@@ -125,7 +125,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230475": {
     "apns": [
@@ -133,7 +133,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230479": {
     "apns": [
@@ -141,7 +141,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230522": {
     "apns": [
@@ -149,7 +149,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230531": {
     "apns": [
@@ -157,7 +157,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230534": {
     "apns": [
@@ -165,7 +165,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230538": {
     "apns": [
@@ -173,7 +173,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230554": {
     "apns": [
@@ -181,7 +181,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230641": {
     "apns": [
@@ -189,7 +189,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230642": {
     "apns": [
@@ -197,7 +197,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230655": {
     "apns": [
@@ -205,7 +205,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230666": {
     "apns": [
@@ -213,7 +213,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230678": {
     "apns": [
@@ -229,7 +229,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230691": {
     "apns": [
@@ -237,7 +237,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230695": {
     "apns": [
@@ -245,7 +245,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230722": {
     "apns": [
@@ -253,7 +253,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230730": {
     "apns": [
@@ -261,7 +261,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230745": {
     "apns": [
@@ -269,7 +269,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230783": {
     "apns": [
@@ -277,7 +277,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230800": {
     "apns": [
@@ -285,7 +285,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230803": {
     "apns": [
@@ -293,7 +293,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230815": {
     "apns": [
@@ -301,7 +301,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230823": {
     "apns": [
@@ -309,7 +309,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230839": {
     "apns": [
@@ -317,7 +317,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230876": {
     "apns": [
@@ -325,7 +325,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230900": {
     "apns": [
@@ -333,7 +333,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230903": {
     "apns": [
@@ -341,7 +341,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230942": {
     "apns": [
@@ -349,7 +349,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230954": {
     "apns": [
@@ -357,7 +357,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20230998": {
     "apns": [
@@ -365,7 +365,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231018": {
     "apns": [
@@ -373,7 +373,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231025": {
     "apns": [
@@ -381,7 +381,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231031": {
     "apns": [
@@ -389,7 +389,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231047": {
     "apns": [
@@ -397,7 +397,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231051": {
     "apns": [
@@ -405,7 +405,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231056": {
     "apns": [
@@ -413,7 +413,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231064": {
     "apns": [
@@ -421,7 +421,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231068": {
     "apns": [
@@ -429,7 +429,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231072": {
     "apns": [
@@ -437,7 +437,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231073": {
     "apns": [
@@ -445,7 +445,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231092": {
     "apns": [
@@ -453,7 +453,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231095": {
     "apns": [
@@ -461,7 +461,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231111": {
     "apns": [
@@ -469,7 +469,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231124": {
     "apns": [
@@ -477,7 +477,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231136": {
     "apns": [
@@ -485,7 +485,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231149": {
     "apns": [
@@ -493,7 +493,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231151": {
     "apns": [
@@ -501,7 +501,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231156": {
     "apns": [
@@ -509,7 +509,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231157": {
     "apns": [
@@ -517,7 +517,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231173": {
     "apns": [
@@ -525,7 +525,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231179": {
     "apns": [
@@ -533,7 +533,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231180": {
     "apns": [
@@ -541,7 +541,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231191": {
     "apns": [
@@ -549,7 +549,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231233": {
     "apns": [
@@ -557,7 +557,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231238": {
     "apns": [
@@ -565,7 +565,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231245": {
     "apns": [
@@ -573,7 +573,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231255": {
     "apns": [
@@ -581,7 +581,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231257": {
     "apns": [
@@ -589,7 +589,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231270": {
     "apns": [
@@ -597,7 +597,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231317": {
     "apns": [
@@ -605,7 +605,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20231318": {
     "apns": [
@@ -613,7 +613,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240013": {
     "apns": [
@@ -621,7 +621,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240017": {
     "apns": [
@@ -629,7 +629,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240021": {
     "apns": [
@@ -637,7 +637,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240057": {
     "apns": [
@@ -645,7 +645,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240077": {
     "apns": [
@@ -653,7 +653,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240087": {
     "apns": [
@@ -661,7 +661,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240106": {
     "apns": [
@@ -669,7 +669,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240110": {
     "apns": [
@@ -677,7 +677,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240149": {
     "apns": [
@@ -685,7 +685,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240155": {
     "apns": [
@@ -693,7 +693,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240167": {
     "apns": [
@@ -701,7 +701,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240171": {
     "apns": [
@@ -709,7 +709,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240192": {
     "apns": [
@@ -717,7 +717,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240203": {
     "apns": [
@@ -725,7 +725,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240209": {
     "apns": [
@@ -733,7 +733,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240210": {
     "apns": [
@@ -741,7 +741,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240211": {
     "apns": [
@@ -749,7 +749,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240212": {
     "apns": [
@@ -757,7 +757,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240225": {
     "apns": [
@@ -765,7 +765,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240228": {
     "apns": [
@@ -773,7 +773,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240243": {
     "apns": [
@@ -781,7 +781,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240269": {
     "apns": [
@@ -789,7 +789,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240270": {
     "apns": [
@@ -797,7 +797,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240285": {
     "apns": [
@@ -805,7 +805,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240328": {
     "apns": [
@@ -813,7 +813,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240341": {
     "apns": [
@@ -821,7 +821,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240345": {
     "apns": [
@@ -829,7 +829,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240395": {
     "apns": [
@@ -837,7 +837,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240399": {
     "apns": [
@@ -845,7 +845,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240418": {
     "apns": [
@@ -853,7 +853,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240423": {
     "apns": [
@@ -861,7 +861,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240436": {
     "apns": [
@@ -869,7 +869,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240449": {
     "apns": [
@@ -877,7 +877,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240459": {
     "apns": [
@@ -885,7 +885,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240501": {
     "apns": [
@@ -893,7 +893,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240506": {
     "apns": [
@@ -901,7 +901,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240522": {
     "apns": [
@@ -909,7 +909,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240547": {
     "apns": [
@@ -917,7 +917,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240575": {
     "apns": [
@@ -925,7 +925,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240580": {
     "apns": [
@@ -933,7 +933,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240591": {
     "apns": [
@@ -941,7 +941,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240611": {
     "apns": [
@@ -949,7 +949,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240617": {
     "apns": [
@@ -957,7 +957,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240657": {
     "apns": [
@@ -965,7 +965,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240661": {
     "apns": [
@@ -973,7 +973,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240671": {
     "apns": [
@@ -981,7 +981,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240674": {
     "apns": [
@@ -989,7 +989,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240696": {
     "apns": [
@@ -997,7 +997,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240701": {
     "apns": [
@@ -1005,7 +1005,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240707": {
     "apns": [
@@ -1013,7 +1013,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240732": {
     "apns": [
@@ -1021,7 +1021,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240738": {
     "apns": [
@@ -1029,7 +1029,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240751": {
     "apns": [
@@ -1037,7 +1037,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240760": {
     "apns": [
@@ -1045,7 +1045,7 @@
     ],
     "source": "evidence-backed APN research (e001, e002)",
     "confidence": "high; evidence reviewed",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240787": {
     "apns": [
@@ -1053,7 +1053,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240837": {
     "apns": [
@@ -1061,7 +1061,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240842": {
     "apns": [
@@ -1069,7 +1069,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240851": {
     "apns": [
@@ -1077,7 +1077,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240876": {
     "apns": [
@@ -1085,7 +1085,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240890": {
     "apns": [
@@ -1093,7 +1093,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20240996": {
     "apns": [
@@ -1101,7 +1101,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241002": {
     "apns": [
@@ -1109,7 +1109,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241004": {
     "apns": [
@@ -1117,7 +1117,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241026": {
     "apns": [
@@ -1125,7 +1125,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241038": {
     "apns": [
@@ -1133,7 +1133,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241047": {
     "apns": [
@@ -1141,7 +1141,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241058": {
     "apns": [
@@ -1149,7 +1149,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241081": {
     "apns": [
@@ -1157,7 +1157,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241091": {
     "apns": [
@@ -1165,7 +1165,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241115": {
     "apns": [
@@ -1173,7 +1173,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241124": {
     "apns": [
@@ -1182,7 +1182,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241165": {
     "apns": [
@@ -1190,7 +1190,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241170": {
     "apns": [
@@ -1198,7 +1198,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241172": {
     "apns": [
@@ -1206,7 +1206,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241182": {
     "apns": [
@@ -1214,7 +1214,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241194": {
     "apns": [
@@ -1222,7 +1222,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241196": {
     "apns": [
@@ -1230,7 +1230,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241217": {
     "apns": [
@@ -1238,7 +1238,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241227": {
     "apns": [
@@ -1246,7 +1246,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241234": {
     "apns": [
@@ -1254,7 +1254,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241246": {
     "apns": [
@@ -1262,7 +1262,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241250": {
     "apns": [
@@ -1270,7 +1270,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241258": {
     "apns": [
@@ -1278,7 +1278,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241262": {
     "apns": [
@@ -1286,7 +1286,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241292": {
     "apns": [
@@ -1294,7 +1294,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241304": {
     "apns": [
@@ -1302,7 +1302,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241325": {
     "apns": [
@@ -1310,7 +1310,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241346": {
     "apns": [
@@ -1318,7 +1318,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241351": {
     "apns": [
@@ -1326,7 +1326,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241385": {
     "apns": [
@@ -1334,7 +1334,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241387": {
     "apns": [
@@ -1342,7 +1342,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241389": {
     "apns": [
@@ -1350,7 +1350,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241394": {
     "apns": [
@@ -1358,7 +1358,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20241395": {
     "apns": [
@@ -1366,7 +1366,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250023": {
     "apns": [
@@ -1374,7 +1374,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250026": {
     "apns": [
@@ -1382,7 +1382,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250081": {
     "apns": [
@@ -1390,7 +1390,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250123": {
     "apns": [
@@ -1398,7 +1398,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250125": {
     "apns": [
@@ -1406,7 +1406,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250131": {
     "apns": [
@@ -1414,7 +1414,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250161": {
     "apns": [
@@ -1422,7 +1422,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250171": {
     "apns": [
@@ -1430,7 +1430,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250174": {
     "apns": [
@@ -1438,7 +1438,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250175": {
     "apns": [
@@ -1446,7 +1446,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250176": {
     "apns": [
@@ -1454,7 +1454,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250192": {
     "apns": [
@@ -1462,7 +1462,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250194": {
     "apns": [
@@ -1470,7 +1470,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250204": {
     "apns": [
@@ -1478,7 +1478,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250213": {
     "apns": [
@@ -1486,7 +1486,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250232": {
     "apns": [
@@ -1494,7 +1494,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250234": {
     "apns": [
@@ -1502,7 +1502,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250246": {
     "apns": [
@@ -1510,7 +1510,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250261": {
     "apns": [
@@ -1518,7 +1518,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250262": {
     "apns": [
@@ -1526,7 +1526,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250263": {
     "apns": [
@@ -1534,7 +1534,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250268": {
     "apns": [
@@ -1542,7 +1542,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250269": {
     "apns": [
@@ -1550,7 +1550,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250271": {
     "apns": [
@@ -1558,7 +1558,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250273": {
     "apns": [
@@ -1566,7 +1566,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250285": {
     "apns": [
@@ -1574,7 +1574,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250318": {
     "apns": [
@@ -1582,7 +1582,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250319": {
     "apns": [
@@ -1590,7 +1590,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250320": {
     "apns": [
@@ -1598,7 +1598,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250321": {
     "apns": [
@@ -1606,7 +1606,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250322": {
     "apns": [
@@ -1614,7 +1614,7 @@
     ],
     "source": "deterministic secondary resolver: established APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250324": {
     "apns": [
@@ -1622,7 +1622,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250325": {
     "apns": [
@@ -1630,7 +1630,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250326": {
     "apns": [
@@ -1638,7 +1638,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250327": {
     "apns": [
@@ -1646,7 +1646,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250328": {
     "apns": [
@@ -1654,7 +1654,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250329": {
     "apns": [
@@ -1662,7 +1662,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250330": {
     "apns": [
@@ -1670,7 +1670,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250331": {
     "apns": [
@@ -1678,7 +1678,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250332": {
     "apns": [
@@ -1686,7 +1686,7 @@
     ],
     "source": "deterministic secondary resolver: established APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250333": {
     "apns": [
@@ -1694,7 +1694,7 @@
     ],
     "source": "deterministic secondary resolver: established APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250334": {
     "apns": [
@@ -1702,7 +1702,7 @@
     ],
     "source": "deterministic secondary resolver: established APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250335": {
     "apns": [
@@ -1710,7 +1710,7 @@
     ],
     "source": "deterministic secondary resolver: established APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250336": {
     "apns": [
@@ -1718,7 +1718,7 @@
     ],
     "source": "deterministic secondary resolver: established APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250354": {
     "apns": [
@@ -1726,7 +1726,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250358": {
     "apns": [
@@ -1734,7 +1734,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250359": {
     "apns": [
@@ -1742,7 +1742,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250361": {
     "apns": [
@@ -1750,7 +1750,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250362": {
     "apns": [
@@ -1758,7 +1758,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250379": {
     "apns": [
@@ -1766,7 +1766,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250382": {
     "apns": [
@@ -1774,7 +1774,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250399": {
     "apns": [
@@ -1782,7 +1782,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250405": {
     "apns": [
@@ -1790,7 +1790,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250420": {
     "apns": [
@@ -1798,7 +1798,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250424": {
     "apns": [
@@ -1806,7 +1806,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250451": {
     "apns": [
@@ -1814,7 +1814,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250471": {
     "apns": [
@@ -1822,7 +1822,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250474": {
     "apns": [
@@ -1830,7 +1830,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250484": {
     "apns": [
@@ -1838,7 +1838,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250497": {
     "apns": [
@@ -1846,7 +1846,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250510": {
     "apns": [
@@ -1855,7 +1855,7 @@
     ],
     "source": "listing boundary exhibit compared with Siskiyou County GIS",
     "confidence": "manually verified; seller/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250514": {
     "apns": [
@@ -1863,7 +1863,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250517": {
     "apns": [
@@ -1871,7 +1871,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250521": {
     "apns": [
@@ -1879,7 +1879,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250530": {
     "apns": [
@@ -1887,7 +1887,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250538": {
     "apns": [
@@ -1895,7 +1895,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250553": {
     "apns": [
@@ -1903,7 +1903,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250559": {
     "apns": [
@@ -1911,7 +1911,7 @@
     ],
     "source": "prior MLS syndication APN corroborated by Siskiyou County GIS",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250560": {
     "apns": [
@@ -1919,7 +1919,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250566": {
     "apns": [
@@ -1927,7 +1927,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250580": {
     "apns": [
@@ -1935,7 +1935,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250602": {
     "apns": [
@@ -1943,7 +1943,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250607": {
     "apns": [
@@ -1951,7 +1951,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250611": {
     "apns": [
@@ -1959,7 +1959,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250614": {
     "apns": [
@@ -1967,7 +1967,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250617": {
     "apns": [
@@ -1975,7 +1975,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250619": {
     "apns": [
@@ -1983,7 +1983,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250623": {
     "apns": [
@@ -1991,7 +1991,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250626": {
     "apns": [
@@ -1999,7 +1999,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250629": {
     "apns": [
@@ -2007,7 +2007,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250637": {
     "apns": [
@@ -2015,7 +2015,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250662": {
     "apns": [
@@ -2023,7 +2023,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250674": {
     "apns": [
@@ -2031,7 +2031,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250692": {
     "apns": [
@@ -2039,7 +2039,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250693": {
     "apns": [
@@ -2047,7 +2047,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250702": {
     "apns": [
@@ -2055,7 +2055,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250704": {
     "apns": [
@@ -2063,7 +2063,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250708": {
     "apns": [
@@ -2071,7 +2071,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250733": {
     "apns": [
@@ -2079,7 +2079,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250745": {
     "apns": [
@@ -2087,7 +2087,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250754": {
     "apns": [
@@ -2095,7 +2095,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250768": {
     "apns": [
@@ -2103,7 +2103,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250782": {
     "apns": [
@@ -2111,7 +2111,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250783": {
     "apns": [
@@ -2119,7 +2119,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250803": {
     "apns": [
@@ -2127,7 +2127,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250813": {
     "apns": [
@@ -2135,7 +2135,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250846": {
     "apns": [
@@ -2143,7 +2143,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250863": {
     "apns": [
@@ -2151,7 +2151,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250877": {
     "apns": [
@@ -2159,7 +2159,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250882": {
     "apns": [
@@ -2167,7 +2167,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250889": {
     "apns": [
@@ -2175,7 +2175,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250913": {
     "apns": [
@@ -2183,7 +2183,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250927": {
     "apns": [
@@ -2191,7 +2191,7 @@
     ],
     "source": "deterministic secondary resolver: established APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250933": {
     "apns": [
@@ -2199,7 +2199,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250944": {
     "apns": [
@@ -2207,7 +2207,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250984": {
     "apns": [
@@ -2215,7 +2215,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250991": {
     "apns": [
@@ -2223,7 +2223,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250995": {
     "apns": [
@@ -2231,7 +2231,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20250997": {
     "apns": [
@@ -2239,7 +2239,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251006": {
     "apns": [
@@ -2247,7 +2247,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251021": {
     "apns": [
@@ -2255,7 +2255,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251023": {
     "apns": [
@@ -2263,7 +2263,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251025": {
     "apns": [
@@ -2271,7 +2271,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251031": {
     "apns": [
@@ -2279,7 +2279,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251034": {
     "apns": [
@@ -2287,7 +2287,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251045": {
     "apns": [
@@ -2295,7 +2295,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251050": {
     "apns": [
@@ -2303,7 +2303,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251058": {
     "apns": [
@@ -2311,7 +2311,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251059": {
     "apns": [
@@ -2319,7 +2319,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251061": {
     "apns": [
@@ -2327,7 +2327,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251065": {
     "apns": [
@@ -2335,7 +2335,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251079": {
     "apns": [
@@ -2343,7 +2343,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251080": {
     "apns": [
@@ -2351,7 +2351,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251083": {
     "apns": [
@@ -2359,7 +2359,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251085": {
     "apns": [
@@ -2367,7 +2367,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251095": {
     "apns": [
@@ -2375,7 +2375,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251097": {
     "apns": [
@@ -2383,7 +2383,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251100": {
     "apns": [
@@ -2391,7 +2391,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251112": {
     "apns": [
@@ -2399,7 +2399,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251118": {
     "apns": [
@@ -2407,7 +2407,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251119": {
     "apns": [
@@ -2415,7 +2415,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251124": {
     "apns": [
@@ -2423,7 +2423,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251127": {
     "apns": [
@@ -2431,7 +2431,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251133": {
     "apns": [
@@ -2439,7 +2439,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251136": {
     "apns": [
@@ -2447,7 +2447,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251138": {
     "apns": [
@@ -2455,7 +2455,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251142": {
     "apns": [
@@ -2463,7 +2463,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251144": {
     "apns": [
@@ -2471,7 +2471,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251145": {
     "apns": [
@@ -2479,7 +2479,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251147": {
     "apns": [
@@ -2487,7 +2487,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251148": {
     "apns": [
@@ -2495,7 +2495,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251167": {
     "apns": [
@@ -2503,7 +2503,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251177": {
     "apns": [
@@ -2511,7 +2511,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251190": {
     "apns": [
@@ -2519,7 +2519,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251193": {
     "apns": [
@@ -2535,7 +2535,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251201": {
     "apns": [
@@ -2543,7 +2543,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251206": {
     "apns": [
@@ -2551,7 +2551,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251214": {
     "apns": [
@@ -2559,7 +2559,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251216": {
     "apns": [
@@ -2567,7 +2567,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251222": {
     "apns": [
@@ -2575,7 +2575,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251228": {
     "apns": [
@@ -2583,7 +2583,7 @@
     ],
     "source": "evidence-backed APN research (e001, e002)",
     "confidence": "high; evidence reviewed",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251238": {
     "apns": [
@@ -2591,7 +2591,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251242": {
     "apns": [
@@ -2599,7 +2599,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251247": {
     "apns": [
@@ -2607,7 +2607,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251251": {
     "apns": [
@@ -2615,7 +2615,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251253": {
     "apns": [
@@ -2623,7 +2623,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251257": {
     "apns": [
@@ -2631,7 +2631,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251260": {
     "apns": [
@@ -2640,7 +2640,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251261": {
     "apns": [
@@ -2648,7 +2648,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251267": {
     "apns": [
@@ -2656,7 +2656,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251270": {
     "apns": [
@@ -2664,7 +2664,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251281": {
     "apns": [
@@ -2672,7 +2672,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251286": {
     "apns": [
@@ -2680,7 +2680,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251292": {
     "apns": [
@@ -2688,7 +2688,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251293": {
     "apns": [
@@ -2696,7 +2696,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251304": {
     "apns": [
@@ -2704,7 +2704,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251314": {
     "apns": [
@@ -2712,7 +2712,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251317": {
     "apns": [
@@ -2720,7 +2720,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251323": {
     "apns": [
@@ -2728,7 +2728,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251325": {
     "apns": [
@@ -2736,7 +2736,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251326": {
     "apns": [
@@ -2744,7 +2744,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20251336": {
     "apns": [
@@ -2752,7 +2752,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260002": {
     "apns": [
@@ -2760,7 +2760,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260006": {
     "apns": [
@@ -2768,7 +2768,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260013": {
     "apns": [
@@ -2776,7 +2776,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260031": {
     "apns": [
@@ -2784,7 +2784,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260033": {
     "apns": [
@@ -2792,7 +2792,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260040": {
     "apns": [
@@ -2800,7 +2800,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260062": {
     "apns": [
@@ -2808,7 +2808,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260066": {
     "apns": [
@@ -2816,7 +2816,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260092": {
     "apns": [
@@ -2824,7 +2824,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260093": {
     "apns": [
@@ -2832,7 +2832,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260097": {
     "apns": [
@@ -2840,7 +2840,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260105": {
     "apns": [
@@ -2848,7 +2848,15 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
+  },
+  "20260108": {
+    "apns": [
+      "061-131-250"
+    ],
+    "source": "evidence-backed APN research (e001, e002)",
+    "confidence": "high; evidence reviewed",
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260115": {
     "apns": [
@@ -2856,7 +2864,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260117": {
     "apns": [
@@ -2864,7 +2872,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260118": {
     "apns": [
@@ -2872,7 +2880,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260126": {
     "apns": [
@@ -2880,7 +2888,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260131": {
     "apns": [
@@ -2888,7 +2896,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260133": {
     "apns": [
@@ -2896,7 +2904,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260135": {
     "apns": [
@@ -2904,7 +2912,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260141": {
     "apns": [
@@ -2912,7 +2920,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260142": {
     "apns": [
@@ -2920,7 +2928,7 @@
     ],
     "source": "evidence-backed APN research (e001, e002)",
     "confidence": "high; evidence reviewed",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260143": {
     "apns": [
@@ -2936,7 +2944,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260153": {
     "apns": [
@@ -2944,7 +2952,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260156": {
     "apns": [
@@ -2952,7 +2960,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260157": {
     "apns": [
@@ -2960,7 +2968,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260160": {
     "apns": [
@@ -2968,7 +2976,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260164": {
     "apns": [
@@ -2976,7 +2984,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260165": {
     "apns": [
@@ -2984,7 +2992,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260174": {
     "apns": [
@@ -2992,7 +3000,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260182": {
     "apns": [
@@ -3000,7 +3008,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260187": {
     "apns": [
@@ -3008,7 +3016,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260190": {
     "apns": [
@@ -3024,7 +3032,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260198": {
     "apns": [
@@ -3032,7 +3040,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260199": {
     "apns": [
@@ -3040,7 +3048,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260221": {
     "apns": [
@@ -3048,7 +3056,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260224": {
     "apns": [
@@ -3056,7 +3064,15 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
+  },
+  "20260230": {
+    "apns": [
+      "061-131-180"
+    ],
+    "source": "evidence-backed APN research (e001, e002)",
+    "confidence": "high; evidence reviewed",
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260231": {
     "apns": [
@@ -3064,7 +3080,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260243": {
     "apns": [
@@ -3072,7 +3088,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260244": {
     "apns": [
@@ -3080,7 +3096,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260246": {
     "apns": [
@@ -3089,7 +3105,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260249": {
     "apns": [
@@ -3097,7 +3113,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260259": {
     "apns": [
@@ -3105,7 +3121,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260265": {
     "apns": [
@@ -3113,7 +3129,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260268": {
     "apns": [
@@ -3121,7 +3137,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260273": {
     "apns": [
@@ -3129,7 +3145,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260281": {
     "apns": [
@@ -3137,7 +3153,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260283": {
     "apns": [
@@ -3145,7 +3161,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260289": {
     "apns": [
@@ -3153,7 +3169,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260303": {
     "apns": [
@@ -3161,7 +3177,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260304": {
     "apns": [
@@ -3169,7 +3185,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260307": {
     "apns": [
@@ -3177,7 +3193,7 @@
     ],
     "source": "Siskiyou County unique exact normalized address point intersected with county parcel GIS",
     "confidence": "high; exact county address point",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260314": {
     "apns": [
@@ -3185,7 +3201,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260315": {
     "apns": [
@@ -3193,7 +3209,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260320": {
     "apns": [
@@ -3201,7 +3217,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260330": {
     "apns": [
@@ -3209,7 +3225,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260332": {
     "apns": [
@@ -3217,7 +3233,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260334": {
     "apns": [
@@ -3225,7 +3241,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260340": {
     "apns": [
@@ -3233,7 +3249,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260341": {
     "apns": [
@@ -3241,7 +3257,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260344": {
     "apns": [
@@ -3249,7 +3265,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260348": {
     "apns": [
@@ -3257,7 +3273,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260350": {
     "apns": [
@@ -3265,7 +3281,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260353": {
     "apns": [
@@ -3273,7 +3289,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260354": {
     "apns": [
@@ -3281,7 +3297,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260355": {
     "apns": [
@@ -3289,7 +3305,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260357": {
     "apns": [
@@ -3297,7 +3313,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260367": {
     "apns": [
@@ -3305,7 +3321,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260369": {
     "apns": [
@@ -3313,7 +3329,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260375": {
     "apns": [
@@ -3321,7 +3337,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260376": {
     "apns": [
@@ -3329,7 +3345,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260384": {
     "apns": [
@@ -3337,7 +3353,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260396": {
     "apns": [
@@ -3345,7 +3361,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260398": {
     "apns": [
@@ -3353,7 +3369,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260399": {
     "apns": [
@@ -3361,7 +3377,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260400": {
     "apns": [
@@ -3369,7 +3385,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260401": {
     "apns": [
@@ -3377,7 +3393,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260405": {
     "apns": [
@@ -3385,7 +3401,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260409": {
     "apns": [
@@ -3393,7 +3409,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260414": {
     "apns": [
@@ -3401,7 +3417,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260415": {
     "apns": [
@@ -3409,7 +3425,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260416": {
     "apns": [
@@ -3417,7 +3433,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260420": {
     "apns": [
@@ -3425,7 +3441,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260422": {
     "apns": [
@@ -3433,7 +3449,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260429": {
     "apns": [
@@ -3441,7 +3457,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260430": {
     "apns": [
@@ -3449,7 +3465,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260431": {
     "apns": [
@@ -3457,7 +3473,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260435": {
     "apns": [
@@ -3473,7 +3489,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260448": {
     "apns": [
@@ -3481,7 +3497,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260452": {
     "apns": [
@@ -3489,7 +3505,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260460": {
     "apns": [
@@ -3497,7 +3513,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260461": {
     "apns": [
@@ -3505,7 +3521,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260463": {
     "apns": [
@@ -3513,7 +3529,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260466": {
     "apns": [
@@ -3521,7 +3537,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260472": {
     "apns": [
@@ -3529,7 +3545,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260477": {
     "apns": [
@@ -3537,7 +3553,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260478": {
     "apns": [
@@ -3545,7 +3561,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260480": {
     "apns": [
@@ -3553,7 +3569,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260481": {
     "apns": [
@@ -3561,7 +3577,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260482": {
     "apns": [
@@ -3569,7 +3585,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260483": {
     "apns": [
@@ -3577,7 +3593,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260484": {
     "apns": [
@@ -3585,7 +3601,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260485": {
     "apns": [
@@ -3593,7 +3609,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260487": {
     "apns": [
@@ -3601,7 +3617,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260490": {
     "apns": [
@@ -3609,7 +3625,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260493": {
     "apns": [
@@ -3617,7 +3633,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260498": {
     "apns": [
@@ -3625,7 +3641,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260501": {
     "apns": [
@@ -3633,7 +3649,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260506": {
     "apns": [
@@ -3641,7 +3657,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260508": {
     "apns": [
@@ -3649,7 +3665,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260510": {
     "apns": [
@@ -3657,7 +3673,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260512": {
     "apns": [
@@ -3665,7 +3681,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260514": {
     "apns": [
@@ -3673,7 +3689,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260517": {
     "apns": [
@@ -3681,7 +3697,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260527": {
     "apns": [
@@ -3689,7 +3705,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260528": {
     "apns": [
@@ -3697,7 +3713,15 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
+  },
+  "20260530": {
+    "apns": [
+      "058-082-090"
+    ],
+    "source": "county address point",
+    "confidence": "programmatic",
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260531": {
     "apns": [
@@ -3705,7 +3729,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260535": {
     "apns": [
@@ -3713,7 +3737,7 @@
     ],
     "source": "county address point + nearest parcel (15m)",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260537": {
     "apns": [
@@ -3721,7 +3745,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260538": {
     "apns": [
@@ -3729,7 +3753,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260539": {
     "apns": [
@@ -3737,7 +3761,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260541": {
     "apns": [
@@ -3745,7 +3769,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260544": {
     "apns": [
@@ -3753,7 +3777,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260548": {
     "apns": [
@@ -3761,7 +3785,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260550": {
     "apns": [
@@ -3769,7 +3793,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260553": {
     "apns": [
@@ -3777,7 +3801,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260554": {
     "apns": [
@@ -3785,7 +3809,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260560": {
     "apns": [
@@ -3793,7 +3817,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260562": {
     "apns": [
@@ -3801,7 +3825,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260565": {
     "apns": [
@@ -3809,7 +3833,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260566": {
     "apns": [
@@ -3817,7 +3841,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260571": {
     "apns": [
@@ -3827,7 +3851,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260576": {
     "apns": [
@@ -3835,7 +3859,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260577": {
     "apns": [
@@ -3843,7 +3867,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260578": {
     "apns": [
@@ -3851,7 +3875,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260579": {
     "apns": [
@@ -3859,7 +3883,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260580": {
     "apns": [
@@ -3867,7 +3891,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260581": {
     "apns": [
@@ -3875,7 +3899,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260589": {
     "apns": [
@@ -3883,7 +3907,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260590": {
     "apns": [
@@ -3891,7 +3915,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260592": {
     "apns": [
@@ -3899,7 +3923,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260593": {
     "apns": [
@@ -3907,7 +3931,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260594": {
     "apns": [
@@ -3915,7 +3939,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260597": {
     "apns": [
@@ -3923,7 +3947,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260598": {
     "apns": [
@@ -3931,7 +3955,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260599": {
     "apns": [
@@ -3939,7 +3963,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260600": {
     "apns": [
@@ -3947,7 +3971,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260606": {
     "apns": [
@@ -3955,7 +3979,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260609": {
     "apns": [
@@ -3963,7 +3987,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260610": {
     "apns": [
@@ -3971,7 +3995,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260611": {
     "apns": [
@@ -3979,7 +4003,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260613": {
     "apns": [
@@ -3987,7 +4011,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260615": {
     "apns": [
@@ -3995,7 +4019,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260616": {
     "apns": [
@@ -4003,7 +4027,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260617": {
     "apns": [
@@ -4011,7 +4035,7 @@
     ],
     "source": "deterministic secondary resolver: corroborated APN sequence + exact acreage",
     "confidence": "high; assessor/title confirmation pending",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260631": {
     "apns": [
@@ -4019,7 +4043,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260644": {
     "apns": [
@@ -4027,7 +4051,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260645": {
     "apns": [
@@ -4035,7 +4059,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260662": {
     "apns": [
@@ -4043,7 +4067,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260663": {
     "apns": [
@@ -4051,7 +4075,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260668": {
     "apns": [
@@ -4059,7 +4083,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260673": {
     "apns": [
@@ -4067,7 +4091,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260688": {
     "apns": [
@@ -4075,7 +4099,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260690": {
     "apns": [
@@ -4083,7 +4107,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260691": {
     "apns": [
@@ -4091,7 +4115,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260692": {
     "apns": [
@@ -4099,7 +4123,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260693": {
     "apns": [
@@ -4107,7 +4131,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260694": {
     "apns": [
@@ -4115,7 +4139,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260695": {
     "apns": [
@@ -4123,7 +4147,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260696": {
     "apns": [
@@ -4131,7 +4155,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260698": {
     "apns": [
@@ -4139,7 +4163,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260707": {
     "apns": [
@@ -4147,7 +4171,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260708": {
     "apns": [
@@ -4155,7 +4179,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260709": {
     "apns": [
@@ -4163,7 +4187,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260710": {
     "apns": [
@@ -4171,7 +4195,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260736": {
     "apns": [
@@ -4179,7 +4203,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260738": {
     "apns": [
@@ -4187,7 +4211,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260741": {
     "apns": [
@@ -4195,7 +4219,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260748": {
     "apns": [
@@ -4205,7 +4229,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260749": {
     "apns": [
@@ -4213,7 +4237,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260751": {
     "apns": [
@@ -4221,7 +4245,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260753": {
     "apns": [
@@ -4229,7 +4253,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260755": {
     "apns": [
@@ -4237,7 +4261,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260757": {
     "apns": [
@@ -4245,7 +4269,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260764": {
     "apns": [
@@ -4253,7 +4277,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260765": {
     "apns": [
@@ -4261,7 +4285,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260766": {
     "apns": [
@@ -4269,7 +4293,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260767": {
     "apns": [
@@ -4277,7 +4301,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260768": {
     "apns": [
@@ -4285,7 +4309,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260771": {
     "apns": [
@@ -4293,7 +4317,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260775": {
     "apns": [
@@ -4301,7 +4325,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260780": {
     "apns": [
@@ -4309,7 +4333,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260786": {
     "apns": [
@@ -4317,7 +4341,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260788": {
     "apns": [
@@ -4325,7 +4349,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260791": {
     "apns": [
@@ -4333,7 +4357,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260793": {
     "apns": [
@@ -4341,7 +4365,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260797": {
     "apns": [
@@ -4349,7 +4373,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260803": {
     "apns": [
@@ -4357,7 +4381,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260804": {
     "apns": [
@@ -4365,7 +4389,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260805": {
     "apns": [
@@ -4373,7 +4397,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260806": {
     "apns": [
@@ -4389,7 +4413,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260808": {
     "apns": [
@@ -4397,7 +4421,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260812": {
     "apns": [
@@ -4405,7 +4429,15 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
+  },
+  "20260815": {
+    "apns": [
+      "056-073-010"
+    ],
+    "source": "county address point",
+    "confidence": "programmatic",
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260821": {
     "apns": [
@@ -4413,7 +4445,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260823": {
     "apns": [
@@ -4421,7 +4453,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260825": {
     "apns": [
@@ -4429,7 +4461,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260828": {
     "apns": [
@@ -4437,7 +4469,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260833": {
     "apns": [
@@ -4445,7 +4477,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260837": {
     "apns": [
@@ -4453,7 +4485,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260838": {
     "apns": [
@@ -4461,7 +4493,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260840": {
     "apns": [
@@ -4469,7 +4501,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260841": {
     "apns": [
@@ -4477,7 +4509,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260845": {
     "apns": [
@@ -4485,7 +4517,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260849": {
     "apns": [
@@ -4493,7 +4525,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260851": {
     "apns": [
@@ -4501,7 +4533,7 @@
     ],
     "source": "Siskiyou County exact address point intersected with county parcel GIS",
     "confidence": "high; exact county address point and acreage match",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260852": {
     "apns": [
@@ -4509,7 +4541,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260853": {
     "apns": [
@@ -4517,7 +4549,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260855": {
     "apns": [
@@ -4525,7 +4557,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260859": {
     "apns": [
@@ -4533,7 +4565,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260863": {
     "apns": [
@@ -4541,7 +4573,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260865": {
     "apns": [
@@ -4549,7 +4581,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260866": {
     "apns": [
@@ -4557,7 +4589,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260869": {
     "apns": [
@@ -4573,7 +4605,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260878": {
     "apns": [
@@ -4581,7 +4613,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260880": {
     "apns": [
@@ -4589,7 +4621,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260884": {
     "apns": [
@@ -4597,7 +4629,7 @@
     ],
     "source": "Siskiyou County unique canonical address point intersected with county parcel GIS",
     "confidence": "high; unique address and exact acreage match",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260885": {
     "apns": [
@@ -4605,7 +4637,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260886": {
     "apns": [
@@ -4613,7 +4645,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260889": {
     "apns": [
@@ -4621,7 +4653,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260891": {
     "apns": [
@@ -4629,7 +4661,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260897": {
     "apns": [
@@ -4637,7 +4669,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260900": {
     "apns": [
@@ -4645,7 +4677,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260901": {
     "apns": [
@@ -4653,7 +4685,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260902": {
     "apns": [
@@ -4661,7 +4693,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260903": {
     "apns": [
@@ -4669,7 +4701,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260904": {
     "apns": [
@@ -4677,7 +4709,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260906": {
     "apns": [
@@ -4685,7 +4717,7 @@
     ],
     "source": "listing APN",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260908": {
     "apns": [
@@ -4693,7 +4725,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260911": {
     "apns": [
@@ -4701,7 +4733,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260913": {
     "apns": [
@@ -4709,7 +4741,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260914": {
     "apns": [
@@ -4717,7 +4749,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260918": {
     "apns": [
@@ -4725,7 +4757,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260920": {
     "apns": [
@@ -4733,7 +4765,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260923": {
     "apns": [
@@ -4741,7 +4773,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260926": {
     "apns": [
@@ -4749,7 +4781,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260928": {
     "apns": [
@@ -4757,7 +4789,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260930": {
     "apns": [
@@ -4765,7 +4797,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260932": {
     "apns": [
@@ -4773,7 +4805,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260934": {
     "apns": [
@@ -4781,7 +4813,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260937": {
     "apns": [
@@ -4797,7 +4829,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260940": {
     "apns": [
@@ -4805,7 +4837,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260942": {
     "apns": [
@@ -4813,7 +4845,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260944": {
     "apns": [
@@ -4821,7 +4853,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260945": {
     "apns": [
@@ -4829,7 +4861,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260946": {
     "apns": [
@@ -4837,7 +4869,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260948": {
     "apns": [
@@ -4845,7 +4877,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260958": {
     "apns": [
@@ -4853,7 +4885,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260961": {
     "apns": [
@@ -4861,7 +4893,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260962": {
     "apns": [
@@ -4869,7 +4901,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260965": {
     "apns": [
@@ -4877,7 +4909,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260969": {
     "apns": [
@@ -4885,7 +4917,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260979": {
     "apns": [
@@ -4893,7 +4925,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260980": {
     "apns": [
@@ -4901,7 +4933,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260981": {
     "apns": [
@@ -4909,7 +4941,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260982": {
     "apns": [
@@ -4917,7 +4949,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260983": {
     "apns": [
@@ -4925,7 +4957,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260984": {
     "apns": [
@@ -4941,7 +4973,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260987": {
     "apns": [
@@ -4949,7 +4981,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260992": {
     "apns": [
@@ -4957,7 +4989,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260995": {
     "apns": [
@@ -4965,7 +4997,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260996": {
     "apns": [
@@ -4973,7 +5005,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260997": {
     "apns": [
@@ -4981,7 +5013,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20260999": {
     "apns": [
@@ -4989,7 +5021,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261000": {
     "apns": [
@@ -4997,7 +5029,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261003": {
     "apns": [
@@ -5005,7 +5037,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261005": {
     "apns": [
@@ -5013,7 +5045,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261008": {
     "apns": [
@@ -5021,7 +5053,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261010": {
     "apns": [
@@ -5029,7 +5061,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261011": {
     "apns": [
@@ -5037,7 +5069,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261014": {
     "apns": [
@@ -5045,7 +5077,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261016": {
     "apns": [
@@ -5053,7 +5085,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261019": {
     "apns": [
@@ -5061,7 +5093,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261020": {
     "apns": [
@@ -5069,7 +5101,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261023": {
     "apns": [
@@ -5085,7 +5117,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261025": {
     "apns": [
@@ -5093,7 +5125,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261026": {
     "apns": [
@@ -5101,7 +5133,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261029": {
     "apns": [
@@ -5109,7 +5141,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261030": {
     "apns": [
@@ -5117,7 +5149,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261031": {
     "apns": [
@@ -5125,7 +5157,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261034": {
     "apns": [
@@ -5133,7 +5165,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261041": {
     "apns": [
@@ -5141,7 +5173,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261044": {
     "apns": [
@@ -5149,7 +5181,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "20261045": {
     "apns": [
@@ -5157,7 +5189,55 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
+  },
+  "20261048": {
+    "apns": [
+      "058-102-250"
+    ],
+    "source": "county address point",
+    "confidence": "programmatic",
+    "updatedAt": "2026-08-23T12:26:28.744Z"
+  },
+  "20261049": {
+    "apns": [
+      "062-122-570"
+    ],
+    "source": "county address point",
+    "confidence": "programmatic",
+    "updatedAt": "2026-08-23T12:26:28.744Z"
+  },
+  "20261051": {
+    "apns": [
+      "107-340-040"
+    ],
+    "source": "county address point",
+    "confidence": "programmatic",
+    "updatedAt": "2026-08-23T12:26:28.744Z"
+  },
+  "20261052": {
+    "apns": [
+      "021-170-370"
+    ],
+    "source": "listing APN",
+    "confidence": "programmatic",
+    "updatedAt": "2026-08-23T12:26:28.744Z"
+  },
+  "20261053": {
+    "apns": [
+      "056-021-200"
+    ],
+    "source": "county address point",
+    "confidence": "programmatic",
+    "updatedAt": "2026-08-23T12:26:28.744Z"
+  },
+  "20261054": {
+    "apns": [
+      "058-013-100"
+    ],
+    "source": "county address point",
+    "confidence": "programmatic",
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "25494215": {
     "apns": [
@@ -5165,7 +5245,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "25571481": {
     "apns": [
@@ -5173,7 +5253,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "26817285": {
     "apns": [
@@ -5181,7 +5261,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "26869659": {
     "apns": [
@@ -5189,7 +5269,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "26869661": {
     "apns": [
@@ -5197,7 +5277,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "41055536": {
     "apns": [
@@ -5205,7 +5285,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "41055539": {
     "apns": [
@@ -5213,7 +5293,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "41056738": {
     "apns": [
@@ -5221,7 +5301,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "41064944": {
     "apns": [
@@ -5229,7 +5309,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "FR26028794": {
     "apns": [
@@ -5237,7 +5317,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "MC26015313": {
     "apns": [
@@ -5245,7 +5325,7 @@
     ],
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "ML81948529": {
     "apns": [
@@ -5253,7 +5333,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "NP20015816": {
     "apns": [
@@ -5261,7 +5341,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "NS26131808": {
     "apns": [
@@ -5269,7 +5349,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "OC25051264": {
     "apns": [
@@ -5277,7 +5357,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "OC25171808": {
     "apns": [
@@ -5285,7 +5365,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "OC25254396": {
     "apns": [
@@ -5293,7 +5373,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "OC26027370": {
     "apns": [
@@ -5301,7 +5381,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "OC26176689": {
     "apns": [
@@ -5309,7 +5389,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "OR26110239": {
     "apns": [
@@ -5317,7 +5397,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "OR26169191": {
     "apns": [
@@ -5325,7 +5405,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "OR26169240": {
     "apns": [
@@ -5333,7 +5413,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "PTP2305192": {
     "apns": [
@@ -5341,7 +5421,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "PW24244396": {
     "apns": [
@@ -5349,7 +5429,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23034464": {
     "apns": [
@@ -5357,7 +5437,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23035879": {
     "apns": [
@@ -5365,7 +5445,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23047987": {
     "apns": [
@@ -5373,7 +5453,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23064108": {
     "apns": [
@@ -5381,7 +5461,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23072514": {
     "apns": [
@@ -5389,7 +5469,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23080641": {
     "apns": [
@@ -5397,7 +5477,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23083451": {
     "apns": [
@@ -5405,7 +5485,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23116689": {
     "apns": [
@@ -5413,7 +5493,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23123123": {
     "apns": [
@@ -5421,7 +5501,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23123608": {
     "apns": [
@@ -5429,7 +5509,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23156015": {
     "apns": [
@@ -5437,7 +5517,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23161221": {
     "apns": [
@@ -5445,7 +5525,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23180180": {
     "apns": [
@@ -5453,7 +5533,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23210135": {
     "apns": [
@@ -5461,7 +5541,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23214276": {
     "apns": [
@@ -5469,7 +5549,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23217272": {
     "apns": [
@@ -5477,7 +5557,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23228385": {
     "apns": [
@@ -5485,7 +5565,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN23230276": {
     "apns": [
@@ -5493,7 +5573,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN24026853": {
     "apns": [
@@ -5501,7 +5581,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN24067040": {
     "apns": [
@@ -5509,7 +5589,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN24072945": {
     "apns": [
@@ -5517,7 +5597,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN24074189": {
     "apns": [
@@ -5525,7 +5605,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN24092784": {
     "apns": [
@@ -5533,7 +5613,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN24107943": {
     "apns": [
@@ -5541,7 +5621,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN24133577": {
     "apns": [
@@ -5549,7 +5629,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN24147125": {
     "apns": [
@@ -5557,7 +5637,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN24188321": {
     "apns": [
@@ -5565,7 +5645,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN24214975": {
     "apns": [
@@ -5573,7 +5653,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN24247187": {
     "apns": [
@@ -5581,7 +5661,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25064249": {
     "apns": [
@@ -5589,7 +5669,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25066519": {
     "apns": [
@@ -5597,7 +5677,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25066533": {
     "apns": [
@@ -5605,7 +5685,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25067716": {
     "apns": [
@@ -5613,7 +5693,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25067915": {
     "apns": [
@@ -5621,7 +5701,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25086363": {
     "apns": [
@@ -5629,7 +5709,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25090435": {
     "apns": [
@@ -5637,7 +5717,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25090453": {
     "apns": [
@@ -5645,7 +5725,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25111789": {
     "apns": [
@@ -5653,7 +5733,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25120080": {
     "apns": [
@@ -5661,7 +5741,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25129368": {
     "apns": [
@@ -5669,7 +5749,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25144768": {
     "apns": [
@@ -5677,7 +5757,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25147551": {
     "apns": [
@@ -5685,7 +5765,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25147661": {
     "apns": [
@@ -5693,7 +5773,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25178685": {
     "apns": [
@@ -5701,7 +5781,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25192728": {
     "apns": [
@@ -5709,7 +5789,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25192800": {
     "apns": [
@@ -5717,7 +5797,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25198879": {
     "apns": [
@@ -5725,7 +5805,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25217899": {
     "apns": [
@@ -5733,7 +5813,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25224181": {
     "apns": [
@@ -5741,7 +5821,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25229551": {
     "apns": [
@@ -5749,7 +5829,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25238875": {
     "apns": [
@@ -5757,7 +5837,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN25251902": {
     "apns": [
@@ -5765,7 +5845,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26022834": {
     "apns": [
@@ -5773,7 +5853,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26039015": {
     "apns": [
@@ -5781,7 +5861,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26039272": {
     "apns": [
@@ -5789,7 +5869,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26053074": {
     "apns": [
@@ -5797,7 +5877,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26060686": {
     "apns": [
@@ -5805,7 +5885,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26064177": {
     "apns": [
@@ -5813,7 +5893,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26075421": {
     "apns": [
@@ -5821,7 +5901,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26084465": {
     "apns": [
@@ -5829,7 +5909,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26084933": {
     "apns": [
@@ -5837,7 +5917,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26085560": {
     "apns": [
@@ -5845,7 +5925,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26086617": {
     "apns": [
@@ -5853,7 +5933,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26090861": {
     "apns": [
@@ -5861,7 +5941,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26103223": {
     "apns": [
@@ -5869,7 +5949,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26106061": {
     "apns": [
@@ -5877,7 +5957,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26110993": {
     "apns": [
@@ -5885,7 +5965,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26138585": {
     "apns": [
@@ -5893,7 +5973,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26142845": {
     "apns": [
@@ -5901,7 +5981,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26158692": {
     "apns": [
@@ -5909,7 +5989,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SN26163769": {
     "apns": [
@@ -5917,7 +5997,7 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   },
   "SR26123183": {
     "apns": [
@@ -5925,6 +6005,6 @@
     ],
     "source": "county address point",
     "confidence": "programmatic",
-    "updatedAt": "2026-08-20T21:14:21.107Z"
+    "updatedAt": "2026-08-23T12:26:28.744Z"
   }
 }
