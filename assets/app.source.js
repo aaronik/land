@@ -463,6 +463,7 @@ function addPmtilesSource(id) {
     fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>',
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
     waterways: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
+    springs: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
     huc12: '<a href="https://www.usgs.gov/national-hydrography/watershed-boundary-dataset" target="_blank">USGS Watershed Boundary Dataset</a>',
     groundwater_basins: '<a href="https://data.cnra.ca.gov/dataset/i08-b118-ca-groundwaterbasins" target="_blank">CA DWR Bulletin 118 groundwater basins</a>',
     groundwater_wells: '<a href="https://data.cnra.ca.gov/dataset/well-completion-reports" target="_blank">CA DWR Well Completion Reports</a>',
@@ -475,7 +476,7 @@ function toggleLayer(id, visibleValue) {
     'topographic-contours': ['topographic-contours', 'topographic-contour-labels'],
     roads: ['roads', 'road-labels'],
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
-    waterways: ['waterways-casing', 'waterways', 'waterway-labels'],
+    waterways: ['waterways-casing', 'waterways', 'waterway-labels', 'springs'],
     huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels'],
     'groundwater-basins': ['groundwater-basins-fill', 'groundwater-basins-lines', 'groundwater-basins-labels'],
     zoning: ['zoning-fill', 'zoning-lines']
@@ -589,6 +590,7 @@ function initializeMapLayers() {
   addPmtilesSource('roads');
   addPmtilesSource('railroads');
   addPmtilesSource('waterways');
+  addPmtilesSource('springs');
   map.addSource('sales', { type: 'geojson', data: saleGeoJson() });
   map.addSource('sale-points', { type: 'geojson', data: salePointGeoJson() });
   map.addSource('unmapped', { type: 'geojson', data: unmappedGeoJson() });
@@ -676,16 +678,20 @@ function initializeMapLayers() {
   map.addLayer({ id: 'parcel-lines', type: 'line', source: 'parcels', 'source-layer': 'parcels', minzoom: 8, paint: { 'line-color': '#aeb4b7', 'line-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 13, 0.85], 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 15, 1.8] } });
   map.addLayer({
     id: 'waterways-casing', type: 'line', source: 'waterways', 'source-layer': 'waterways', minzoom: 7,
-    paint: { 'line-color': 'rgba(6, 31, 58, 0.78)', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 2.3, 14, 5.2], 'line-opacity': 0.85 }
+    paint: { 'line-color': 'rgba(6, 31, 58, 0.78)', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 2.3, 14, 5.2], 'line-opacity': ['match', ['get', 'fcode'], 46000, 0.9, 46006, 0.9, 0.5] }
   });
   map.addLayer({
     id: 'waterways', type: 'line', source: 'waterways', 'source-layer': 'waterways', minzoom: 7,
     paint: {
-      'line-color': '#38a8ff',
-      'line-width': ['interpolate', ['linear'], ['zoom'], 7, ['match', ['get', 'fcode'], 46006, 1.4, 0.8], 14, ['match', ['get', 'fcode'], 46006, 3.2, 1.8]],
-      'line-opacity': ['match', ['get', 'fcode'], 46007, 0.6, 0.95],
-      'line-dasharray': ['match', ['get', 'fcode'], 46003, ['literal', [3, 2]], 46007, ['literal', [1.5, 2]], ['literal', [1, 0]]]
+      'line-color': ['match', ['get', 'fcode'], 46000, '#38a8ff', 46006, '#38a8ff', '#6ca8cf'],
+      'line-width': ['interpolate', ['linear'], ['zoom'], 7, ['match', ['get', 'fcode'], 46006, 1.4, 46000, 1.4, 0.7], 14, ['match', ['get', 'fcode'], 46006, 3.2, 46000, 3.2, 1.35]],
+      'line-opacity': ['match', ['get', 'fcode'], 46000, 0.95, 46006, 0.95, 0.7],
+      'line-dasharray': ['match', ['get', 'fcode'], 46003, ['literal', [2.5, 2]], 46007, ['literal', [1, 2]], ['literal', [1, 0]]]
     }
+  });
+  map.addLayer({
+    id: 'springs', type: 'circle', source: 'springs', 'source-layer': 'springs', minzoom: 9,
+    layout: { visibility: 'visible' }, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 9, 2.5, 14, 5], 'circle-color': '#9cf4ff', 'circle-stroke-color': '#07536b', 'circle-stroke-width': 1.1, 'circle-opacity': 0.9 }
   });
   map.addLayer({
     id: 'waterway-labels', type: 'symbol', source: 'waterways', 'source-layer': 'waterways', minzoom: 10,
@@ -762,11 +768,17 @@ function initializeMapLayers() {
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
-    ], { layers: ['groundwater-wells', 'unmapped-markers', 'sale-markers'] });
+    ], { layers: ['springs', 'groundwater-wells', 'unmapped-markers', 'sale-markers'] });
     const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill'] });
     const feature = markerHits[0] || polygonHits[0];
     if (!feature) return;
     const props = feature.properties || {};
+    if (feature.layer.id === 'springs') {
+      const [longitude, latitude] = feature.geometry?.coordinates || [];
+      const coordinates = Number.isFinite(longitude) && Number.isFinite(latitude) ? ` (${longitude.toFixed(5)}, ${latitude.toFixed(5)})` : '';
+      document.querySelector('#details').innerHTML = `<h3>Mapped spring</h3><p class="meta">${escapeHtml(props.GNIS_NAME || 'Unnamed NHD spring')}${coordinates}</p><p class="source-note">USGS National Hydrography Dataset mapped spring location. This does not establish current flow, water quality, public access, or water rights.</p>`;
+      return;
+    }
     if (feature.layer.id === 'groundwater-wells') {
       const value = value => value === null || value === undefined || value === '' ? 'Not reported' : escapeHtml(value);
       const completedDepth = props.TotalCompletedDepth || props.TotalDrillDepth;
@@ -790,7 +802,7 @@ function initializeMapLayers() {
     }
     selectParcel(props);
   });
-  for (const id of ['groundwater-wells', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['springs', 'groundwater-wells', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }

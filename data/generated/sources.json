@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T19:41:03.747Z",
+  "generatedAt": "2026-08-24T19:48:48.094Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -184,6 +184,17 @@
         "NearbyYieldMinGpm",
         "NearbyYieldMaxGpm",
         "NearbyNewestDate"
+      ]
+    },
+    "springs": {
+      "source": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/0",
+      "featureCount": 2384,
+      "fields": [
+        "OBJECTID",
+        "PERMANENT_IDENTIFIER",
+        "GNIS_NAME",
+        "FTYPE",
+        "FCODE"
       ]
     }
   }

@@ -135,6 +135,13 @@ const LAYERS = {
     geometryPrecision: 6,
     fields: ['OBJECTID', 'permanent_identifier', 'gnis_name', 'lengthkm', 'reachcode', 'fcode', 'visibilityfilter']
   },
+  springs: {
+    name: 'USGS NHD springs',
+    url: 'https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/0',
+    bbox: SISKIYOU_BBOX,
+    where: 'FTYPE = 458',
+    fields: ['OBJECTID', 'PERMANENT_IDENTIFIER', 'GNIS_NAME', 'FTYPE', 'FCODE']
+  },
   fire_hazard: {
     name: 'Siskiyou County fire hazard severity',
     url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/FireHazardSeverity_Public/FeatureServer/0',
