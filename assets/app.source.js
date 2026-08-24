@@ -472,6 +472,24 @@ function addPmtilesSource(id) {
   };
   map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id], ...(id === 'parcels' ? { promoteId: 'APN' } : {}) });
 }
+const MAP_LAYER_STORAGE_KEY = 'shasta-land-atlas.map-layer-visibility.v1';
+const mapLayerInputs = [...document.querySelectorAll('[data-map-layer]')];
+const defaultMapLayerVisibility = Object.fromEntries(mapLayerInputs.map(input => [input.dataset.mapLayer, input.defaultChecked]));
+function loadMapLayerVisibility() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(MAP_LAYER_STORAGE_KEY));
+    if (!saved || typeof saved !== 'object') return;
+    for (const input of mapLayerInputs) if (typeof saved[input.dataset.mapLayer] === 'boolean') input.checked = saved[input.dataset.mapLayer];
+  } catch { /* Use markup defaults when storage is unavailable or malformed. */ }
+}
+function saveMapLayerVisibility() {
+  try { localStorage.setItem(MAP_LAYER_STORAGE_KEY, JSON.stringify(Object.fromEntries(mapLayerInputs.map(input => [input.dataset.mapLayer, input.checked])))); } catch { /* Storage may be disabled. */ }
+}
+function applyMapLayerVisibility() {
+  for (const input of mapLayerInputs) toggleLayer(input.dataset.mapLayer, input.checked);
+}
+loadMapLayerVisibility();
+
 function toggleLayer(id, visibleValue) {
   const groupedLayers = {
     'topographic-contours': ['topographic-contours', 'topographic-contour-labels'],
@@ -832,6 +850,7 @@ function initializeMapLayers() {
       rotationVisibility = null;
     }, 140);
   });
+  applyMapLayerVisibility();
   updateSales();
   restoreInitialSelectedParcel();
   document.body.classList.add('map-ready');
@@ -907,7 +926,15 @@ listedSinceInput.addEventListener('change', () => {
   listedSince = listedSinceInput.value;
   updateSales();
 });
-document.querySelectorAll('[data-map-layer]').forEach(input => input.addEventListener('change', () => toggleLayer(input.dataset.mapLayer, input.checked)));
+mapLayerInputs.forEach(input => input.addEventListener('change', () => {
+  toggleLayer(input.dataset.mapLayer, input.checked);
+  saveMapLayerVisibility();
+}));
+document.querySelector('#reset-map-layers').addEventListener('click', () => {
+  for (const input of mapLayerInputs) input.checked = defaultMapLayerVisibility[input.dataset.mapLayer];
+  try { localStorage.removeItem(MAP_LAYER_STORAGE_KEY); } catch { /* Storage may be disabled. */ }
+  applyMapLayerVisibility();
+});
 document.querySelector('#cancel-parcelquest').addEventListener('click', () => document.querySelector('#parcelquest-warning').close());
 document.querySelector('#continue-parcelquest').addEventListener('click', async () => {
   await navigator.clipboard.writeText(selectedResearchApn).catch(() => {});
