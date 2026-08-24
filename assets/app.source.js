@@ -213,6 +213,101 @@ map.addControl(new CardinalCompassControl(), 'top-right');
 map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left');
 map.addControl(new MilesScaleControl(), 'bottom-left');
 
+class DistanceMeasureControl {
+  constructor() {
+    this.start = null;
+    this.end = null;
+    this.active = false;
+    this.preview = null;
+  }
+  onAdd(controlMap) {
+    this.map = controlMap;
+    this.container = document.createElement('div');
+    this.container.className = 'maplibregl-ctrl distance-measure-control';
+    this.container.innerHTML = '<button type="button" class="distance-measure-toggle" aria-pressed="false" aria-label="Measure a distance" title="Measure a distance"><span aria-hidden="true">↔</span><b>Measure</b></button><button type="button" class="distance-measure-clear" aria-label="Clear measurement" title="Clear measurement" hidden>×</button><output aria-live="polite" hidden></output>';
+    this.toggleButton = this.container.querySelector('.distance-measure-toggle');
+    this.clearButton = this.container.querySelector('.distance-measure-clear');
+    this.output = this.container.querySelector('output');
+    this.toggleButton.addEventListener('click', () => this.toggle());
+    this.clearButton.addEventListener('click', () => this.clear());
+    this.onMapClick = event => this.handleClick(event);
+    this.onMouseMove = event => this.handleMove(event);
+    this.map.on('click', this.onMapClick);
+    this.map.on('mousemove', this.onMouseMove);
+    return this.container;
+  }
+  onRemove() {
+    this.map.off('click', this.onMapClick);
+    this.map.off('mousemove', this.onMouseMove);
+    this.container.remove();
+    this.map = undefined;
+  }
+  isActive() { return this.active; }
+  toggle() {
+    if (this.active) this.clear();
+    else {
+      this.active = true;
+      this.map.doubleClickZoom.disable();
+      this.updateUi('Click the map to place the first point.');
+      this.map.getCanvas().style.cursor = 'crosshair';
+    }
+  }
+  clear() {
+    this.start = null;
+    this.end = null;
+    this.preview = null;
+    this.active = false;
+    this.map.doubleClickZoom.enable();
+    this.map.getCanvas().style.cursor = '';
+    this.updateData();
+    this.updateUi();
+  }
+  handleClick(event) {
+    if (!this.active) return;
+    if (!this.start || this.end) {
+      this.start = event.lngLat;
+      this.end = null;
+      this.preview = null;
+      this.updateData();
+      this.updateUi('Move the pointer and click to place the second point.');
+      return;
+    }
+    this.end = event.lngLat;
+    this.preview = null;
+    this.updateData();
+    this.updateUi(this.formatDistance(this.start.distanceTo(this.end)));
+  }
+  handleMove(event) {
+    if (!this.active || !this.start || this.end) return;
+    this.preview = event.lngLat;
+    this.updateData();
+    this.updateUi(this.formatDistance(this.start.distanceTo(this.preview)));
+  }
+  formatDistance(meters) {
+    const feet = meters * 3.280839895;
+    const miles = meters / 1609.344;
+    return `${Math.round(feet).toLocaleString()} ft (${miles.toFixed(miles < 10 ? 3 : 2)} mi)`;
+  }
+  updateUi(message = '') {
+    const measuring = this.active;
+    this.toggleButton.classList.toggle('active', measuring);
+    this.toggleButton.setAttribute('aria-pressed', String(measuring));
+    this.toggleButton.title = measuring ? 'Stop measuring' : 'Measure a distance';
+    this.toggleButton.setAttribute('aria-label', this.toggleButton.title);
+    this.clearButton.hidden = !this.start;
+    this.output.hidden = !message;
+    this.output.textContent = message;
+  }
+  updateData() {
+    const end = this.end || this.preview;
+    const features = this.start && end ? [{ type: 'Feature', geometry: { type: 'LineString', coordinates: [[this.start.lng, this.start.lat], [end.lng, end.lat]] }, properties: {} }] : [];
+    const points = [this.start, end].filter(Boolean).map(point => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [point.lng, point.lat] }, properties: {} }));
+    this.map.getSource('distance-measurement')?.setData({ type: 'FeatureCollection', features: [...features, ...points] });
+  }
+}
+const distanceMeasureControl = new DistanceMeasureControl();
+map.addControl(distanceMeasureControl, 'top-left');
+
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
 }
@@ -614,6 +709,7 @@ function initializeMapLayers() {
   map.addSource('sales', { type: 'geojson', data: saleGeoJson() });
   map.addSource('sale-points', { type: 'geojson', data: salePointGeoJson() });
   map.addSource('unmapped', { type: 'geojson', data: unmappedGeoJson() });
+  map.addSource('distance-measurement', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('topographic-contours', {
     type: 'vector',
     tiles: [contourDemSource.contourProtocolUrl({
@@ -783,11 +879,15 @@ function initializeMapLayers() {
   map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });
   map.addLayer({ id: 'sale-markers', type: 'circle', source: 'sale-points', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.95, 'circle-pitch-alignment': 'map' } });
   map.addLayer({ id: 'sale-marker-labels', type: 'symbol', source: 'sale-points', filter: ['!=', ['get', 'markerLabel'], ''], layout: { 'text-field': ['get', 'markerLabel'], 'text-font': ['Noto Sans Bold'], 'text-size': 12, 'text-offset': [0, -1.35], 'text-anchor': 'bottom', 'text-padding': 3, 'text-pitch-alignment': 'viewport' }, paint: { 'text-color': '#fff', 'text-halo-color': 'rgba(20, 25, 22, 0.9)', 'text-halo-width': 2, 'text-halo-blur': 0.4 } });
+  map.addLayer({ id: 'distance-measurement-line-outline', type: 'line', source: 'distance-measurement', filter: ['==', ['geometry-type'], 'LineString'], paint: { 'line-color': 'rgba(255,255,255,.95)', 'line-width': 6, 'line-opacity': .95 } });
+  map.addLayer({ id: 'distance-measurement-line', type: 'line', source: 'distance-measurement', filter: ['==', ['geometry-type'], 'LineString'], paint: { 'line-color': '#126246', 'line-width': 3, 'line-dasharray': [1.5, 1.2] } });
+  map.addLayer({ id: 'distance-measurement-points', type: 'circle', source: 'distance-measurement', filter: ['==', ['geometry-type'], 'Point'], paint: { 'circle-radius': 6, 'circle-color': '#126246', 'circle-stroke-color': '#fff', 'circle-stroke-width': 2 } });
   map.addLayer({ id: 'parcel-selected', type: 'line', source: 'parcels', 'source-layer': 'parcels', paint: { 'line-color': '#fff', 'line-width': 5, 'line-blur': 0.3, 'line-opacity': ['case', ['boolean', ['feature-state', 'selected'], false], 1, 0] } });
   map.addLayer({ id: 'unmapped-markers', type: 'circle', source: 'unmapped', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'category'], 'private-home', COLORS['private-home'], COLORS['private-land']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.9, 'circle-pitch-alignment': 'map' } });
   map.addLayer({ id: 'unmapped-marker-labels', type: 'symbol', source: 'unmapped', filter: ['!=', ['get', 'markerLabel'], ''], layout: { 'text-field': ['get', 'markerLabel'], 'text-font': ['Noto Sans Bold'], 'text-size': 12, 'text-offset': [0, -1.35], 'text-anchor': 'bottom', 'text-padding': 3, 'text-pitch-alignment': 'viewport' }, paint: { 'text-color': '#fff', 'text-halo-color': 'rgba(20, 25, 22, 0.9)', 'text-halo-width': 2, 'text-halo-blur': 0.4 } });
 
   map.on('click', event => {
+    if (distanceMeasureControl.isActive()) return;
     const radius = 9;
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
