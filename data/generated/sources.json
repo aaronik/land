@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T19:48:48.094Z",
+  "generatedAt": "2026-08-24T20:44:25.011Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -195,6 +195,21 @@
         "GNIS_NAME",
         "FTYPE",
         "FCODE"
+      ]
+    },
+    "geology": {
+      "source": "https://mrdata.usgs.gov/services/wfs/sgmc2",
+      "featureCount": 65,
+      "fields": [
+        "state",
+        "orig_label",
+        "sgmc_label",
+        "unit_link",
+        "material_class",
+        "unit_name",
+        "unit_age",
+        "unit_description",
+        "lithology"
       ]
     }
   }

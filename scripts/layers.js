@@ -142,6 +142,13 @@ const LAYERS = {
     where: 'FTYPE = 458',
     fields: ['OBJECTID', 'PERMANENT_IDENTIFIER', 'GNIS_NAME', 'FTYPE', 'FCODE']
   },
+  geology: {
+    name: 'USGS State Geologic Map Compilation surface geology',
+    type: 'usgs-geology-wfs',
+    url: 'https://mrdata.usgs.gov/services/wfs/sgmc2',
+    bbox: SISKIYOU_BBOX,
+    fields: ['state', 'orig_label', 'sgmc_label', 'unit_link', 'material_class', 'unit_name', 'unit_age', 'unit_description', 'lithology']
+  },
   fire_hazard: {
     name: 'Siskiyou County fire hazard severity',
     url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/FireHazardSeverity_Public/FeatureServer/0',

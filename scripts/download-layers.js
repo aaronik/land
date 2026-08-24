@@ -2,6 +2,8 @@
 
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
+const { execFileSync } = require('child_process');
 const { fetchArcGISLayer, fetchSoilLayer, LAYERS, normalizeApn } = require('./layers');
 
 const root = path.resolve(__dirname, '..');
@@ -9,6 +11,75 @@ const raw = path.join(root, 'data', 'raw');
 const generated = path.join(root, 'data', 'generated');
 fs.mkdirSync(raw, { recursive: true });
 fs.mkdirSync(generated, { recursive: true });
+
+function decodeXml(value) {
+  return String(value || '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&amp;/g, '&');
+}
+
+function classifyGeology(label) {
+  const value = String(label || '').toLowerCase().replace(/[^a-z]/g, '');
+  if (/^(qv|tv|trpv|tob|tub|trb|qba)/.test(value) || /basalt|andesite|rhyolite|volcan|tuff/.test(value)) return 'Volcanic rock';
+  if (/^(q|qal|qoa|qpc|qs|qrv|qhv)/.test(value) || /alluv|colluv|glacial|sand|gravel|sediment/.test(value)) return 'Unconsolidated deposits';
+  if (/^(gr|gb|g[dr]|dior|gabb)/.test(value) || /granite|granodiorite|diorite|gabbro|pluton/.test(value)) return 'Intrusive igneous rock';
+  if (/^(sch|m|mv|pz|trpz|um)/.test(value) || /schist|gneiss|marble|quartzite|metamorph/.test(value)) return 'Metamorphic rock';
+  if (/^(jss|kjfs|ku|so|c|j|ts|tu|jm)/.test(value) || /shale|sandstone|limestone|conglomerate|sedimentary/.test(value)) return 'Sedimentary rock';
+  return 'Other mapped geologic unit';
+}
+
+function parseUsgsGeologyGml(xml) {
+  const features = [];
+  for (const member of xml.matchAll(/<gml:featureMember>([\s\S]*?)<\/gml:featureMember>/g)) {
+    const body = member[1];
+    const property = field => decodeXml(body.match(new RegExp(`<ms:${field}>([\\s\\S]*?)<\\/ms:${field}>`))?.[1]?.trim() || '');
+    const polygons = [];
+    for (const polygon of body.matchAll(/<gml:Polygon>[\s\S]*?<gml:posList[^>]*>([\s\S]*?)<\/gml:posList>[\s\S]*?<\/gml:Polygon>/g)) {
+      const values = polygon[1].trim().split(/\s+/).map(Number);
+      const ring = [];
+      for (let index = 0; index + 1 < values.length; index += 2) if (Number.isFinite(values[index]) && Number.isFinite(values[index + 1])) ring.push([values[index + 1], values[index]]);
+      if (ring.length >= 4) polygons.push([ring]);
+    }
+    if (!polygons.length) continue;
+    const sgmcLabel = property('sgmc_label');
+    features.push({ type: 'Feature', geometry: polygons.length === 1 ? { type: 'Polygon', coordinates: polygons[0] } : { type: 'MultiPolygon', coordinates: polygons }, properties: { state: property('state'), orig_label: property('orig_label'), sgmc_label: sgmcLabel, unit_link: property('unit_link'), material_class: classifyGeology(sgmcLabel) } });
+  }
+  return { type: 'FeatureCollection', features };
+}
+
+async function fetchUsgsGeology(config) {
+  const [west, south, east, north] = config.bbox.split(',').map(Number);
+  const params = new URLSearchParams({ service: 'WFS', version: '1.1.0', request: 'GetFeature', typeName: 'Lithology', bbox: `${south},${west},${north},${east},EPSG:4326`, CQL_FILTER: "state='CA'" });
+  const response = await fetch(`${config.url}?${params}`);
+  if (!response.ok) throw new Error(`${response.status} ${response.statusText}: ${config.name}`);
+  const data = parseUsgsGeologyGml(await response.text());
+  const tablesDirectory = path.join(os.tmpdir(), 'shasta-land-sgmc-tables');
+  const unitsPath = path.join(tablesDirectory, 'SGMC_Units.csv');
+  const lithologyPath = path.join(tablesDirectory, 'SGMC_Lithology.csv');
+  if (!fs.existsSync(unitsPath) || !fs.existsSync(lithologyPath)) {
+    const archive = path.join(os.tmpdir(), 'shasta-land-sgmc-tables.zip');
+    const tablesResponse = await fetch('https://www.sciencebase.gov/catalog/file/get/5888bf4fe4b05ccb964bab9d?name=USGS_SGMC_Tables_CSV.zip');
+    if (!tablesResponse.ok) throw new Error('Unable to download USGS SGMC companion tables');
+    fs.writeFileSync(archive, Buffer.from(await tablesResponse.arrayBuffer()));
+    fs.mkdirSync(tablesDirectory, { recursive: true });
+    execFileSync('unzip', ['-jo', archive, 'USGS_SGMC_Tables_CSV/SGMC_Units.csv', 'USGS_SGMC_Tables_CSV/SGMC_Lithology.csv', '-d', tablesDirectory]);
+  }
+  const parseCsv = file => {
+    const [header, ...rows] = fs.readFileSync(file, 'utf8').trim().split(/\r?\n/);
+    const fields = header.split(',');
+    return rows.map(row => {
+      const values = []; let value = '', quoted = false;
+      for (let index = 0; index < row.length; index++) { const char = row[index]; if (char === '"') { if (quoted && row[index + 1] === '"') { value += char; index++; } else quoted = !quoted; } else if (char === ',' && !quoted) { values.push(value); value = ''; } else value += char; }
+      values.push(value); return Object.fromEntries(fields.map((field, index) => [field, values[index] || '']));
+    });
+  };
+  const units = new Map(parseCsv(unitsPath).map(unit => [unit.UNIT_LINK, unit]));
+  const lithology = new Map();
+  for (const record of parseCsv(lithologyPath)) if (record.LITH_RANK === 'Major' && !lithology.has(record.UNIT_LINK)) lithology.set(record.UNIT_LINK, record.LOW_LITH || record.TOTAL_LITH);
+  for (const feature of data.features) {
+    const unit = units.get(feature.properties.unit_link) || {};
+    Object.assign(feature.properties, { unit_name: unit.UNIT_NAME || '', unit_age: unit.UNIT_AGE || '', unit_description: unit.UNITDESC || '', lithology: lithology.get(feature.properties.unit_link) || '' });
+  }
+  return data;
+}
 
 function milesBetween([lon1, lat1], [lon2, lat2]) {
   const radians = Math.PI / 180;
@@ -100,7 +171,7 @@ async function main() {
     if (!config) throw new Error(`Unknown layer: ${name}`);
     console.log(`Downloading ${config.name}…`);
     const sourceConfig = name === 'groundwater_wells' ? { ...config, fields: config.fields.filter(field => !field.startsWith('Nearby')) } : config;
-    const data = sourceConfig.type === 'wfs-gml' ? await fetchSoilLayer(sourceConfig) : await fetchArcGISLayer(sourceConfig);
+    const data = sourceConfig.type === 'wfs-gml' ? await fetchSoilLayer(sourceConfig) : sourceConfig.type === 'usgs-geology-wfs' ? await fetchUsgsGeology(sourceConfig) : await fetchArcGISLayer(sourceConfig);
     if (name === 'groundwater_wells') addNearbyWellSummaries(data);
     fs.writeFileSync(path.join(raw, `${name}.geojson`), JSON.stringify(data));
     manifest.layers[name] = { source: config.url, featureCount: data.features.length, fields: config.fields };

@@ -464,6 +464,7 @@ function addPmtilesSource(id) {
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
     waterways: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
     springs: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
+    geology: '<a href="https://mrdata.usgs.gov/geology/state/" target="_blank">USGS State Geologic Map Compilation</a>',
     huc12: '<a href="https://www.usgs.gov/national-hydrography/watershed-boundary-dataset" target="_blank">USGS Watershed Boundary Dataset</a>',
     groundwater_basins: '<a href="https://data.cnra.ca.gov/dataset/i08-b118-ca-groundwaterbasins" target="_blank">CA DWR Bulletin 118 groundwater basins</a>',
     groundwater_wells: '<a href="https://data.cnra.ca.gov/dataset/well-completion-reports" target="_blank">CA DWR Well Completion Reports</a>',
@@ -585,6 +586,7 @@ function initializeMapLayers() {
   addPmtilesSource('huc12');
   addPmtilesSource('groundwater_basins');
   addPmtilesSource('groundwater_wells');
+  addPmtilesSource('geology');
   addPmtilesSource('zoning');
   addPmtilesSource('parcels');
   addPmtilesSource('roads');
@@ -668,6 +670,10 @@ function initializeMapLayers() {
   map.addLayer({
     id: 'groundwater-wells', type: 'circle', source: 'groundwater_wells', 'source-layer': 'groundwater_wells', minzoom: 7,
     layout: { visibility: 'none' }, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 2.5, 12, 5], 'circle-color': ['step', ['coalesce', ['get', 'TotalCompletedDepth'], ['get', 'TotalDrillDepth'], 0], '#70e4ef', 100, '#4ac4e6', 250, '#4384de', 500, '#7651c7'], 'circle-stroke-color': '#f3fbff', 'circle-stroke-width': 0.8, 'circle-opacity': 0.78 }
+  });
+  map.addLayer({
+    id: 'geology', type: 'fill', source: 'geology', 'source-layer': 'geology', minzoom: 7,
+    layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'material_class'], 'Unconsolidated deposits', '#e7d28a', 'Volcanic rock', '#bd7c61', 'Intrusive igneous rock', '#ad8bd0', 'Metamorphic rock', '#729f83', 'Sedimentary rock', '#be9d62', '#9a9a9a'], 'fill-opacity': 0.38, 'fill-outline-color': 'rgba(45, 38, 30, 0.68)' }
   });
   map.addLayer({ id: 'soils', type: 'fill', source: 'soils', 'source-layer': 'soils', minzoom: 9, layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'drclassdcd'], 'Very poorly drained', '#4f78a8', 'Poorly drained', '#6b94b7', 'Somewhat poorly drained', '#87adbf', 'Moderately well drained', '#b9a46b', 'Well drained', '#a97a45', 'Somewhat excessively drained', '#c48d54', 'Excessively drained', '#d5a767', '#9b8064'], 'fill-opacity': 0.34, 'fill-outline-color': 'rgba(69, 45, 25, 0.7)' } });
   map.addLayer({ id: 'flood', type: 'fill', source: 'flood', 'source-layer': 'flood', layout: { visibility: 'none' }, paint: { 'fill-color': ['case', ['==', ['get', 'SFHA_TF'], 'T'], '#00c5ff', ['all', ['==', ['get', 'FLD_ZONE'], 'X'], ['match', ['get', 'ZONE_SUBTY'], '0.2 PCT ANNUAL CHANCE FLOOD HAZARD', true, '0.2 PERCENT ANNUAL CHANCE FLOOD HAZARD', true, false]], '#75d5ec', ['==', ['get', 'FLD_ZONE'], 'D'], '#e8d15c', '#3db7de'], 'fill-opacity': 0.38, 'fill-outline-color': 'rgba(0, 104, 160, 0.8)' } });
@@ -769,10 +775,15 @@ function initializeMapLayers() {
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
     ], { layers: ['springs', 'groundwater-wells', 'unmapped-markers', 'sale-markers'] });
-    const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill'] });
+    const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill', 'geology'] });
     const feature = markerHits[0] || polygonHits[0];
     if (!feature) return;
     const props = feature.properties || {};
+    if (feature.layer.id === 'geology') {
+      const detail = value => value ? `<p>${escapeHtml(value)}</p>` : '';
+      document.querySelector('#details').innerHTML = `<h3>Surface geology</h3><p class="meta">${escapeHtml(props.material_class || 'Mapped geologic unit')}</p><p><strong>${escapeHtml(props.unit_name || props.sgmc_label || props.orig_label || 'Not labeled')}</strong>${props.unit_age ? `<br>${escapeHtml(props.unit_age)}` : ''}${props.lithology ? `<br>Major lithology: ${escapeHtml(props.lithology)}` : ''}</p>${detail(props.unit_description)}<p class="source-note">Generalized statewide geologic mapping for context only. It does not establish groundwater depth, yield, quality, fractures, or drilling conditions at this site.</p>`;
+      return;
+    }
     if (feature.layer.id === 'springs') {
       const [longitude, latitude] = feature.geometry?.coordinates || [];
       const coordinates = Number.isFinite(longitude) && Number.isFinite(latitude) ? ` (${longitude.toFixed(5)}, ${latitude.toFixed(5)})` : '';
@@ -802,7 +813,7 @@ function initializeMapLayers() {
     }
     selectParcel(props);
   });
-  for (const id of ['springs', 'groundwater-wells', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['geology', 'springs', 'groundwater-wells', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }
