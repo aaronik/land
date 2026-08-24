@@ -19,7 +19,9 @@ const configs = {
   flood: { min: 8, max: 14, fields: LAYERS.flood.fields.filter(field => field !== 'OBJECTID') },
   soils: { min: 9, max: 14, fields: LAYERS.soils.fields },
   huc12: { min: 7, max: 14, fields: LAYERS.huc12.fields.filter(field => field !== 'objectid') },
-  wetlands: { min: 9, max: 14, fields: LAYERS.wetlands.fields.filter(field => field !== 'OBJECTID') }
+  wetlands: { min: 9, max: 14, fields: LAYERS.wetlands.fields.filter(field => field !== 'OBJECTID') },
+  groundwater_basins: { min: 7, max: 14, fields: LAYERS.groundwater_basins.fields.filter(field => field !== 'OBJECTID') },
+  groundwater_wells: { min: 7, max: 14, fields: LAYERS.groundwater_wells.fields }
 };
 
 function run(command, args) {

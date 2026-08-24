@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T14:58:04.351Z",
+  "generatedAt": "2026-08-24T19:41:03.747Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -139,6 +139,51 @@
         "reachcode",
         "fcode",
         "visibilityfilter"
+      ]
+    },
+    "groundwater_basins": {
+      "source": "https://utility.arcgis.com/usrsvcs/servers/49807a1fbc584631bdf88d9ca71dd083/rest/services/Geoscientific/i08_B118_CA_GroundwaterBasins/MapServer/0",
+      "featureCount": 16,
+      "fields": [
+        "OBJECTID",
+        "Basin_Number",
+        "Basin_Subbasin_Number",
+        "Basin_Name",
+        "Basin_Subbasin_Name",
+        "Region_Office",
+        "Date_Data_Applies_To",
+        "Area_Acres",
+        "Area_SqMiles"
+      ]
+    },
+    "groundwater_wells": {
+      "source": "https://utility.arcgis.com/usrsvcs/servers/c074ca40fd684e41babd776eebefd009/rest/services/Environment/i07_WellCompletionReports/MapServer/0",
+      "featureCount": 10816,
+      "fields": [
+        "OBJECTID",
+        "WCRNumber",
+        "CountyName",
+        "PlannedUseFormerUse",
+        "RecordType",
+        "PermitDate",
+        "DateWorkEnded",
+        "TotalDrillDepth",
+        "TotalCompletedDepth",
+        "StaticWaterLevel",
+        "WellYield",
+        "WellYieldUnitofMeasure",
+        "TestType",
+        "PumpTestLength",
+        "MethodofDeterminationLL",
+        "LLAccuracy",
+        "WCRLinks",
+        "NearbyReportCount",
+        "NearbyMedianDepthFt",
+        "NearbyStaticLevelMinFt",
+        "NearbyStaticLevelMaxFt",
+        "NearbyYieldMinGpm",
+        "NearbyYieldMaxGpm",
+        "NearbyNewestDate"
       ]
     }
   }

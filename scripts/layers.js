@@ -177,6 +177,19 @@ const LAYERS = {
     url: 'https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0',
     bbox: SISKIYOU_BBOX,
     objectId: 'OBJECTID', fields: ['OBJECTID', 'ATTRIBUTE', 'WETLAND_TYPE', 'ACRES']
+  },
+  groundwater_basins: {
+    name: 'DWR Bulletin 118 groundwater basins',
+    url: 'https://utility.arcgis.com/usrsvcs/servers/49807a1fbc584631bdf88d9ca71dd083/rest/services/Geoscientific/i08_B118_CA_GroundwaterBasins/MapServer/0',
+    bbox: SISKIYOU_BBOX,
+    fields: ['OBJECTID', 'Basin_Number', 'Basin_Subbasin_Number', 'Basin_Name', 'Basin_Subbasin_Name', 'Region_Office', 'Date_Data_Applies_To', 'Area_Acres', 'Area_SqMiles']
+  },
+  groundwater_wells: {
+    name: 'DWR well completion reports',
+    url: 'https://utility.arcgis.com/usrsvcs/servers/c074ca40fd684e41babd776eebefd009/rest/services/Environment/i07_WellCompletionReports/MapServer/0',
+    where: "CountyName = 'Siskiyou'",
+    pageSize: 1000,
+    fields: ['OBJECTID', 'WCRNumber', 'CountyName', 'PlannedUseFormerUse', 'RecordType', 'PermitDate', 'DateWorkEnded', 'TotalDrillDepth', 'TotalCompletedDepth', 'StaticWaterLevel', 'WellYield', 'WellYieldUnitofMeasure', 'TestType', 'PumpTestLength', 'MethodofDeterminationLL', 'LLAccuracy', 'WCRLinks', 'NearbyReportCount', 'NearbyMedianDepthFt', 'NearbyStaticLevelMinFt', 'NearbyStaticLevelMaxFt', 'NearbyYieldMinGpm', 'NearbyYieldMaxGpm', 'NearbyNewestDate']
   }
 };
 

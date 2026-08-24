@@ -464,6 +464,8 @@ function addPmtilesSource(id) {
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
     waterways: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
     huc12: '<a href="https://www.usgs.gov/national-hydrography/watershed-boundary-dataset" target="_blank">USGS Watershed Boundary Dataset</a>',
+    groundwater_basins: '<a href="https://data.cnra.ca.gov/dataset/i08-b118-ca-groundwaterbasins" target="_blank">CA DWR Bulletin 118 groundwater basins</a>',
+    groundwater_wells: '<a href="https://data.cnra.ca.gov/dataset/well-completion-reports" target="_blank">CA DWR Well Completion Reports</a>',
     zoning: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>'
   };
   map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id], ...(id === 'parcels' ? { promoteId: 'APN' } : {}) });
@@ -475,6 +477,7 @@ function toggleLayer(id, visibleValue) {
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
     waterways: ['waterways-casing', 'waterways', 'waterway-labels'],
     huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels'],
+    'groundwater-basins': ['groundwater-basins-fill', 'groundwater-basins-lines', 'groundwater-basins-labels'],
     zoning: ['zoning-fill', 'zoning-lines']
   };
   const layerIds = groupedLayers[id] || [id];
@@ -579,6 +582,8 @@ function initializeMapLayers() {
   addPmtilesSource('flood');
   addPmtilesSource('soils');
   addPmtilesSource('huc12');
+  addPmtilesSource('groundwater_basins');
+  addPmtilesSource('groundwater_wells');
   addPmtilesSource('zoning');
   addPmtilesSource('parcels');
   addPmtilesSource('roads');
@@ -644,6 +649,23 @@ function initializeMapLayers() {
     id: 'huc12-labels', type: 'symbol', source: 'huc12', 'source-layer': 'huc12', minzoom: 9,
     layout: { visibility: 'none', 'text-field': ['concat', ['coalesce', ['get', 'name'], 'Unnamed subwatershed'], '\nHUC ', ['get', 'huc12']], 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 9, 10, 13, 12], 'text-max-width': 16, 'text-padding': 8 },
     paint: { 'text-color': '#d9fbff', 'text-halo-color': 'rgba(15, 37, 39, 0.92)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
+  });
+  map.addLayer({
+    id: 'groundwater-basins-fill', type: 'fill', source: 'groundwater_basins', 'source-layer': 'groundwater_basins', minzoom: 7,
+    layout: { visibility: 'none' }, paint: { 'fill-color': '#9e6eea', 'fill-opacity': 0.12 }
+  });
+  map.addLayer({
+    id: 'groundwater-basins-lines', type: 'line', source: 'groundwater_basins', 'source-layer': 'groundwater_basins', minzoom: 7,
+    layout: { visibility: 'none' }, paint: { 'line-color': '#b98cff', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.2, 13, 2.5], 'line-dasharray': [2, 1.5], 'line-opacity': 0.9 }
+  });
+  map.addLayer({
+    id: 'groundwater-basins-labels', type: 'symbol', source: 'groundwater_basins', 'source-layer': 'groundwater_basins', minzoom: 9,
+    layout: { visibility: 'none', 'text-field': ['coalesce', ['get', 'Basin_Subbasin_Name'], ['get', 'Basin_Name']], 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 9, 10, 13, 13], 'text-max-width': 14, 'text-padding': 8 },
+    paint: { 'text-color': '#dfc6ff', 'text-halo-color': 'rgba(35, 19, 58, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
+  });
+  map.addLayer({
+    id: 'groundwater-wells', type: 'circle', source: 'groundwater_wells', 'source-layer': 'groundwater_wells', minzoom: 7,
+    layout: { visibility: 'none' }, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 2.5, 12, 5], 'circle-color': ['step', ['coalesce', ['get', 'TotalCompletedDepth'], ['get', 'TotalDrillDepth'], 0], '#70e4ef', 100, '#4ac4e6', 250, '#4384de', 500, '#7651c7'], 'circle-stroke-color': '#f3fbff', 'circle-stroke-width': 0.8, 'circle-opacity': 0.78 }
   });
   map.addLayer({ id: 'soils', type: 'fill', source: 'soils', 'source-layer': 'soils', minzoom: 9, layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'drclassdcd'], 'Very poorly drained', '#4f78a8', 'Poorly drained', '#6b94b7', 'Somewhat poorly drained', '#87adbf', 'Moderately well drained', '#b9a46b', 'Well drained', '#a97a45', 'Somewhat excessively drained', '#c48d54', 'Excessively drained', '#d5a767', '#9b8064'], 'fill-opacity': 0.34, 'fill-outline-color': 'rgba(69, 45, 25, 0.7)' } });
   map.addLayer({ id: 'flood', type: 'fill', source: 'flood', 'source-layer': 'flood', layout: { visibility: 'none' }, paint: { 'fill-color': ['case', ['==', ['get', 'SFHA_TF'], 'T'], '#00c5ff', ['all', ['==', ['get', 'FLD_ZONE'], 'X'], ['match', ['get', 'ZONE_SUBTY'], '0.2 PCT ANNUAL CHANCE FLOOD HAZARD', true, '0.2 PERCENT ANNUAL CHANCE FLOOD HAZARD', true, false]], '#75d5ec', ['==', ['get', 'FLD_ZONE'], 'D'], '#e8d15c', '#3db7de'], 'fill-opacity': 0.38, 'fill-outline-color': 'rgba(0, 104, 160, 0.8)' } });
@@ -740,11 +762,20 @@ function initializeMapLayers() {
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
-    ], { layers: ['unmapped-markers', 'sale-markers'] });
+    ], { layers: ['groundwater-wells', 'unmapped-markers', 'sale-markers'] });
     const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill'] });
     const feature = markerHits[0] || polygonHits[0];
     if (!feature) return;
     const props = feature.properties || {};
+    if (feature.layer.id === 'groundwater-wells') {
+      const value = value => value === null || value === undefined || value === '' ? 'Not reported' : escapeHtml(value);
+      const completedDepth = props.TotalCompletedDepth || props.TotalDrillDepth;
+      const originalRecord = props.WCRLinks ? `<p><a href="${escapeHtml(props.WCRLinks)}" target="_blank" rel="noopener">View original DWR report ↗</a></p>` : '';
+      const range = (low, high, unit) => low === null || low === undefined ? 'Not reported' : `${value(low)}${low === high ? '' : `–${value(high)}`} ${unit}`;
+      const nearby = `<section class="sales-history"><h4>Approximate 1-mile report summary</h4><p>${value(props.NearbyReportCount)} mapped reports · median completed depth ${range(props.NearbyMedianDepthFt, props.NearbyMedianDepthFt, 'ft')}</p><p>Reported static level: ${range(props.NearbyStaticLevelMinFt, props.NearbyStaticLevelMaxFt, 'ft')}<br>Reported yield: ${range(props.NearbyYieldMinGpm, props.NearbyYieldMaxGpm, 'GPM')}<br>Newest completed report: ${value(props.NearbyNewestDate)}</p></section>`;
+      document.querySelector('#details').innerHTML = `<h3>Reported well completion</h3><p class="meta">DWR report ${value(props.WCRNumber)} · ${value(props.RecordType)}</p><p><strong>Completed depth: ${value(completedDepth)} ft</strong><br>Static water level: ${value(props.StaticWaterLevel)} ft<br>Reported yield: ${value(props.WellYield)}${props.WellYield ? ` ${value(props.WellYieldUnitofMeasure)}` : ''}<br>Use: ${value(props.PlannedUseFormerUse)}</p>${nearby}<p class="source-note">Reported completion data, not a current water-level reading or a parcel-specific prediction. DWR notes that most locations are mapped to the center of a one-mile PLSS section; verify the original report.</p>${originalRecord}`;
+      return;
+    }
     if (feature.layer.id === 'unmapped-markers') {
       document.querySelector('#details').innerHTML = `<h3>Unmapped listing</h3><p class="meta">MLS point only — boundary unverified.</p>${recordCard(props)}`;
       return;
@@ -759,7 +790,7 @@ function initializeMapLayers() {
     }
     selectParcel(props);
   });
-  for (const id of ['parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['groundwater-wells', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }
