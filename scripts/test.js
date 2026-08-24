@@ -20,6 +20,7 @@ if (!failures.length) {
   if (!refresh.includes('/\\b(?:LOTS?|BLOCKS?)\\s*[#-]?\\s*\\d+/i')) failures.push('Plural Lots listings are missing from the parcel review queue');
   if (!html.includes('Find an APN, address, or listing') || !app.includes('function recordMatchesSearch(') || !app.includes('function filteredMappedListings()') || !app.includes('function filteredUnmappedListings()') || !app.includes("addEventListener('search', findListings)")) failures.push('Expanded address and listing search is missing');
   if (!html.includes('id="minimum-acreage"') || !html.includes('max="100" step="1"') || !app.includes('minimumAcreage = Number(minimumAcreageInput.value)') || !app.includes("minimumAcreageInput.addEventListener('input'") || !app.includes('function recordIsVisible(')) failures.push('Granular 0–100 minimum acreage filter is missing');
+  if (!html.includes('id="listed-since" type="date"') || !app.includes('function recordMatchesListingDate(') || !app.includes("listedSinceInput.addEventListener('change'")) failures.push('Listed-since date filter is missing');
   if (!html.includes('parcelquest-warning')) failures.push('ParcelQuest warning dialog is missing');
   if (!app.includes('Research in ParcelQuest Lite')) failures.push('ParcelQuest parcel action is missing');
   if (!app.includes('function salesHistorySection(') || !app.includes('No matched public sold-listing history')) failures.push('Clicked parcels do not display sales history');

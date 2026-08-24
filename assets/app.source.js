@@ -61,6 +61,7 @@ const initialSelectedApn = initialUrl.searchParams.get(PARCEL_URL_PARAM) || '';
 let enabledCategories = new Set(Object.keys(COLORS));
 let searchQuery = '';
 let minimumAcreage = 0;
+let listedSince = '';
 
 const map = new maplibregl.Map({
   container: 'map',
@@ -241,13 +242,16 @@ function recordAcreage(record) {
   const acres = Number(String(record.acres ?? '').replace(/,/g, ''));
   return Number.isFinite(acres) ? acres : null;
 }
+function recordMatchesListingDate(record) {
+  return !listedSince || (typeof record.listingDate === 'string' && record.listingDate >= listedSince);
+}
 function recordIsVisible(record, fallbackAcres) {
   const acres = recordAcreage(record) ?? recordAcreage({ acres: fallbackAcres });
-  return enabledCategories.has(record.category) && recordMatchesSearch(record) && (!minimumAcreage || (acres !== null && acres >= minimumAcreage));
+  return enabledCategories.has(record.category) && recordMatchesSearch(record) && recordMatchesListingDate(record) && (!minimumAcreage || (acres !== null && acres >= minimumAcreage));
 }
 function searchableFeature(feature) {
   const apnMatches = searchQuery && normalizeSearch(feature.properties.APN).includes(searchQuery);
-  const records = (feature.properties.records || []).filter(record => enabledCategories.has(record.category) && (apnMatches || recordMatchesSearch(record)) && (!minimumAcreage || (recordAcreage(record) ?? recordAcreage({ acres: feature.properties.Acres })) >= minimumAcreage));
+  const records = (feature.properties.records || []).filter(record => enabledCategories.has(record.category) && (apnMatches || recordMatchesSearch(record)) && recordMatchesListingDate(record) && (!minimumAcreage || (recordAcreage(record) ?? recordAcreage({ acres: feature.properties.Acres })) >= minimumAcreage));
   return records.length ? { ...feature, properties: { ...feature.properties, records } } : null;
 }
 function visible(feature) { return [...categories(feature)].some(value => enabledCategories.has(value)); }
@@ -842,6 +846,11 @@ minimumAcreageInput.addEventListener('input', () => {
   const label = minimumAcreage ? `${minimumAcreage.toLocaleString()}+ acres` : 'Any size';
   document.querySelector('#minimum-acreage-value').textContent = label;
   minimumAcreageInput.setAttribute('aria-valuetext', label);
+  updateSales();
+});
+const listedSinceInput = document.querySelector('#listed-since');
+listedSinceInput.addEventListener('change', () => {
+  listedSince = listedSinceInput.value;
   updateSales();
 });
 document.querySelectorAll('[data-map-layer]').forEach(input => input.addEventListener('change', () => toggleLayer(input.dataset.mapLayer, input.checked)));

@@ -70,6 +70,7 @@
 
       <section class="legend">
         <h2>Listings &amp; auctions</h2>
+        <p class="unmapped-key"><i></i>Circle marker: MLS location only; boundary unverified</p>
         <label><input class="filter" type="checkbox" value="private-land" checked><i class="swatch private-land"></i>Private land</label>
         <label><input class="filter" type="checkbox" value="private-home" checked><i class="swatch private-home"></i>Private homes</label>
         <label><input class="filter" type="checkbox" value="public-land" checked><i class="swatch public-land"></i>Public land auction</label>
@@ -79,7 +80,10 @@
           <input id="minimum-acreage" type="range" min="0" max="100" step="1" value="0" aria-valuetext="Any size">
           <div class="acreage-scale" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100 acres</span></div>
         </div>
-        <p class="unmapped-key"><i></i>Circle marker: MLS location only; boundary unverified</p>
+        <div class="date-filter">
+          <label for="listed-since">Listed since</label>
+          <input id="listed-since" type="date">
+        </div>
       </section>
 
       <section class="stats" aria-live="polite">

@@ -375,6 +375,17 @@
     "confidence": "manually verified",
     "notes": "3812 Dale Creek Rd, Weed, CA 96094"
   },
+  "20261050": {
+    "apns": [
+      "059-070-300",
+      "059-070-310",
+      "059-070-320",
+      "059-070-330"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
