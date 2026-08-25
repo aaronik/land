@@ -67,6 +67,7 @@ const initialSelectedApn = initialUrl.searchParams.get(PARCEL_URL_PARAM) || '';
 let enabledCategories = new Set(Object.keys(COLORS));
 let searchQuery = '';
 let minimumAcreage = 0;
+let maximumAcreage = 0;
 let listedSince = '';
 
 const map = new maplibregl.Map({
@@ -207,7 +208,7 @@ function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
 }
 function money(value) { return value ? `$${Number(value).toLocaleString()}` : ''; }
-const listingData = createListingData(() => ({ saleData, enabledCategories, searchQuery, minimumAcreage, listedSince }));
+const listingData = createListingData(() => ({ saleData, enabledCategories, searchQuery, minimumAcreage, maximumAcreage, listedSince }));
 const { categories, featureCenter, filteredMappedListings, filteredUnmappedListings, normalizeSearch, saleGeoJson, salePointGeoJson, unmappedGeoJson } = listingData;
 
 function parcelQuestUsageKey() { return `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`; }
@@ -438,13 +439,28 @@ document.querySelector('#search').addEventListener('keydown', event => { if (eve
 document.querySelector('#search').addEventListener('search', findListings);
 document.querySelectorAll('.filter').forEach(input => input.addEventListener('change', () => { enabledCategories = new Set([...document.querySelectorAll('.filter:checked')].map(item => item.value)); updateSales(); }));
 const minimumAcreageInput = document.querySelector('#minimum-acreage');
-minimumAcreageInput.addEventListener('input', () => {
+const maximumAcreageInput = document.querySelector('#maximum-acreage');
+function updateAcreageFilter() {
   minimumAcreage = Number(minimumAcreageInput.value) || 0;
-  const label = minimumAcreage ? `${minimumAcreage.toLocaleString()}+ acres` : 'Any size';
-  document.querySelector('#minimum-acreage-value').textContent = label;
-  minimumAcreageInput.setAttribute('aria-valuetext', label);
+  const maximumValue = Number(maximumAcreageInput.value) || 0;
+  maximumAcreage = maximumValue === Number(maximumAcreageInput.max) ? 0 : maximumValue;
+  if (maximumAcreage && minimumAcreage > maximumAcreage) {
+    if (document.activeElement === minimumAcreageInput) maximumAcreageInput.value = minimumAcreage;
+    else minimumAcreageInput.value = maximumAcreage;
+    minimumAcreage = Number(minimumAcreageInput.value) || 0;
+    const adjustedMaximum = Number(maximumAcreageInput.value) || 0;
+    maximumAcreage = adjustedMaximum === Number(maximumAcreageInput.max) ? 0 : adjustedMaximum;
+  }
+  const minimumLabel = minimumAcreage ? `${minimumAcreage.toLocaleString()}+ acres` : 'Any size';
+  const maximumLabel = maximumAcreage && maximumAcreage < Number(maximumAcreageInput.max) ? `${maximumAcreage.toLocaleString()} acres` : 'Any size';
+  document.querySelector('#minimum-acreage-value').textContent = minimumLabel;
+  document.querySelector('#maximum-acreage-value').textContent = maximumLabel;
+  minimumAcreageInput.setAttribute('aria-valuetext', minimumLabel);
+  maximumAcreageInput.setAttribute('aria-valuetext', maximumLabel);
   updateSales();
-});
+}
+minimumAcreageInput.addEventListener('input', updateAcreageFilter);
+maximumAcreageInput.addEventListener('input', updateAcreageFilter);
 const listedSinceInput = document.querySelector('#listed-since');
 listedSinceInput.addEventListener('change', () => {
   listedSince = listedSinceInput.value;

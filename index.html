@@ -82,9 +82,16 @@
         <label><input class="filter" type="checkbox" value="private-home" checked><i class="swatch private-home"></i>Private homes</label>
         <label><input class="filter" type="checkbox" value="public-land" checked><i class="swatch public-land"></i>Public land auction</label>
         <label><input class="filter" type="checkbox" value="public-home" checked><i class="swatch public-home"></i>Public home auction</label>
-        <div class="acreage-filter">
-          <label for="minimum-acreage">Minimum acreage <output id="minimum-acreage-value" for="minimum-acreage">Any size</output></label>
-          <input id="minimum-acreage" type="range" min="0" max="100" step="1" value="0" aria-valuetext="Any size">
+        <div class="acreage-filter" role="group" aria-labelledby="acreage-filter-heading">
+          <h3 id="acreage-filter-heading">Acreage</h3>
+          <div class="acreage-control">
+            <label for="minimum-acreage">Minimum <output id="minimum-acreage-value" for="minimum-acreage">Any size</output></label>
+            <input id="minimum-acreage" type="range" min="0" max="100" step="1" value="0" aria-valuetext="Any size">
+          </div>
+          <div class="acreage-control">
+            <label for="maximum-acreage">Maximum <output id="maximum-acreage-value" for="maximum-acreage">Any size</output></label>
+            <input id="maximum-acreage" type="range" min="0" max="100" step="1" value="100" aria-valuetext="Any size">
+          </div>
           <div class="acreage-scale" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100 acres</span></div>
         </div>
         <div class="date-filter">
