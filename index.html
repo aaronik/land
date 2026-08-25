@@ -7,8 +7,8 @@
   <title>Shasta Land Atlas</title>
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.3.0/dist/maplibre-gl.css">
-  <script type="module" crossorigin src="/assets/index-B-0IcJuu.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CEgoCN3Y.css">
+  <script type="module" crossorigin src="/assets/index-MGCUazk0.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Ckg5y7Nv.css">
 </head>
 <body>
   <header class="masthead">
@@ -39,8 +39,12 @@
 
       <section class="legend">
         <div class="layer-heading"><h2>Official map layers</h2><button id="reset-map-layers" type="button">Reset to default</button></div>
+        <label><input type="checkbox" data-map-layer="roads" checked><i class="swatch roads-overlay"></i>County roads</label>
+        <label><input type="checkbox" data-map-layer="waterways" checked><i class="swatch waterways-overlay"></i>Rivers, streams, &amp; springs</label>
+        <div class="layer-key" data-layer-key="waterways" aria-label="Rivers, streams, and springs legend"><span><i style="--key-color:#38a8ff"></i>Perennial</span><span><i style="--key-color:#6ca8cf"></i>Intermittent / ephemeral</span><span><i style="--key-color:#9cf4ff"></i>Mapped spring</span></div>
+        <label><input type="checkbox" data-map-layer="railroads" checked><i class="swatch railroads-overlay"></i>Railroad tracks</label>
         <label><input type="checkbox" data-map-layer="topographic-contours" checked><i class="swatch topo-overlay"></i>Topographic lines</label>
-        <label><input type="checkbox" data-map-layer="public-land" checked><i class="swatch public-overlay"></i>Federal public land</label>
+        <label><input type="checkbox" data-map-layer="public-land"><i class="swatch public-overlay"></i>Federal public land</label>
         <label><input type="checkbox" data-map-layer="huc12"><i class="swatch watershed-overlay"></i>HUC-12 subwatersheds</label>
         <label><input type="checkbox" data-map-layer="zoning"><i class="swatch zoning-overlay"></i>Zoning districts</label>
         <div class="layer-key zoning-key" data-layer-key="zoning" aria-label="Zoning district legend">
@@ -69,10 +73,6 @@
         <div class="layer-key" data-layer-key="soils" aria-label="USDA soil drainage legend">
           <strong>Dominant drainage class</strong><span><i style="--key-color:#4f78a8"></i>Very poorly drained</span><span><i style="--key-color:#6b94b7"></i>Poorly drained</span><span><i style="--key-color:#87adbf"></i>Somewhat poorly drained</span><span><i style="--key-color:#b9a46b"></i>Moderately well drained</span><span><i style="--key-color:#a97a45"></i>Well drained</span><span><i style="--key-color:#c48d54"></i>Somewhat excessively drained</span><span><i style="--key-color:#d5a767"></i>Excessively drained</span><span><i style="--key-color:#9b8064"></i>Other / not rated</span>
         </div>
-        <label><input type="checkbox" data-map-layer="roads" checked><i class="swatch roads-overlay"></i>County roads</label>
-        <label><input type="checkbox" data-map-layer="railroads" checked><i class="swatch railroads-overlay"></i>Railroad tracks</label>
-        <label><input type="checkbox" data-map-layer="waterways" checked><i class="swatch waterways-overlay"></i>Rivers &amp; streams</label>
-        <div class="layer-key" data-layer-key="waterways" aria-label="Rivers, streams, and springs legend"><span><i style="--key-color:#38a8ff"></i>Perennial</span><span><i style="--key-color:#6ca8cf"></i>Intermittent / ephemeral</span><span><i style="--key-color:#9cf4ff"></i>Mapped spring</span></div>
         <p class="layer-note">Environmental layers are screening data—not surveys, engineering, buildability, or insurance determinations.</p>
       </section>
 
@@ -83,14 +83,28 @@
         <label><input class="filter" type="checkbox" value="private-home" checked><i class="swatch private-home"></i>Private homes</label>
         <label><input class="filter" type="checkbox" value="public-land" checked><i class="swatch public-land"></i>Public land auction</label>
         <label><input class="filter" type="checkbox" value="public-home" checked><i class="swatch public-home"></i>Public home auction</label>
-        <div class="acreage-filter">
-          <label for="minimum-acreage">Minimum acreage <output id="minimum-acreage-value" for="minimum-acreage">Any size</output></label>
-          <input id="minimum-acreage" type="range" min="0" max="100" step="1" value="0" aria-valuetext="Any size">
+        <div class="acreage-filter" role="group" aria-labelledby="acreage-filter-heading">
+          <h3 id="acreage-filter-heading">Acreage</h3>
+          <div class="acreage-control">
+            <label for="minimum-acreage">Minimum <output id="minimum-acreage-value" for="minimum-acreage">Any size</output></label>
+            <input id="minimum-acreage" type="range" min="0" max="100" step="1" value="0" aria-valuetext="Any size">
+          </div>
+          <div class="acreage-control">
+            <label for="maximum-acreage">Maximum <output id="maximum-acreage-value" for="maximum-acreage">Any size</output></label>
+            <input id="maximum-acreage" type="range" min="0" max="100" step="1" value="100" aria-valuetext="Any size">
+          </div>
           <div class="acreage-scale" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100 acres</span></div>
         </div>
-        <div class="date-filter">
-          <label for="listed-since">Listed since</label>
-          <input id="listed-since" type="date">
+        <div class="date-filter" role="group" aria-labelledby="date-filter-heading">
+          <h3 id="date-filter-heading">Listing date</h3>
+          <div class="date-control">
+            <label for="listed-since">Listed since</label>
+            <input id="listed-since" type="date">
+          </div>
+          <div class="date-control">
+            <label for="listed-before">Listed before</label>
+            <input id="listed-before" type="date">
+          </div>
         </div>
       </section>
 
@@ -109,10 +123,38 @@
     <div id="map" aria-label="Satellite parcel map"></div>
   </main>
 
+  <dialog id="map-controls-help" class="map-help-dialog" aria-labelledby="map-controls-help-title">
+    <button class="dialog-close" type="button" aria-label="Close map controls help">×</button>
+    <h2 id="map-controls-help-title">How to use the map</h2>
+    <div class="map-help-instructions">
+      <section>
+        <h3>Computer</h3>
+        <ul>
+          <li><b>Move:</b> click and drag</li>
+          <li><b>Zoom:</b> use the mouse wheel, trackpad, or + / − buttons</li>
+          <li><b>Rotate:</b> right-click and drag, or hold <kbd>Ctrl</kbd> while dragging</li>
+          <li><b>Tilt:</b> right-click and drag up or down</li>
+          <li><b>Inspect:</b> click a parcel, listing, spring, well, or geology area</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Phone or tablet</h3>
+        <ul>
+          <li><b>Move:</b> drag with one finger</li>
+          <li><b>Zoom:</b> pinch with two fingers</li>
+          <li><b>Rotate:</b> twist with two fingers</li>
+          <li><b>Tilt:</b> drag up or down with two fingers</li>
+          <li><b>Your location:</b> press the location button and allow permission</li>
+        </ul>
+      </section>
+    </div>
+    <p class="map-help-note">Use the <b>3D</b> button for terrain, or the ruler button to measure distance. Press the compass to return north-up.</p>
+  </dialog>
+
   <dialog id="parcelquest-warning">
-    <h2>ParcelQuest Lite is separate</h2>
-    <p>ParcelQuest is a third-party service with limited monthly searches and parcel maps. Its information is not part of this map and may not be republished.</p>
-    <p>The APN will be copied, ParcelQuest will open in a new tab, and only an estimated open count will be stored in this browser.</p>
+    <h2>County owner &amp; assessment lookup</h2>
+    <p>Siskiyou County directs public parcel, value, and map lookups to ParcelQuest Lite. It is an external service; information shown there is not copied into this map.</p>
+    <p>The APN will be copied and the County’s lookup will open in a new tab.</p>
     <div class="dialog-actions">
       <button id="cancel-parcelquest" type="button">Cancel</button>
       <button id="continue-parcelquest" type="button">Continue</button>
