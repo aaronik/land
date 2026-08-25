@@ -25,12 +25,12 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
   };
   const salesHistorySection = records => !records.length ? '<section class="sales-history"><h4>Sales history</h4><p class="muted">No matched public sold-listing history was found for this APN.</p></section>' : `<section class="sales-history"><h4>Sales history</h4>${records.map(record => `<article><strong>${money(record.soldPrice)}</strong><span>${escapeHtml(new Date(`${record.soldDate}T12:00:00`).toLocaleDateString())}</span>${record.listPrice ? `<small>Listed at ${money(record.listPrice)}</small>` : ''}<small>${escapeHtml(record.title || '')} · MLS ${escapeHtml(record.mlsNumber || '—')}</small></article>`).join('')}<p class="source-note">Public IDX sold-listing data matched to the county parcel by APN or exact county address. This is not a complete deed history.</p></section>`;
   const researchKey = apn => `shasta-land-research:${apn}`;
-  const parcelQuestUsageKey = () => `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`;
+  const parcelQuestUsageKey = () => `siskiyou-county-lookup:${new Date().toISOString().slice(0, 7)}`;
   const researchControls = apn => {
     if (!apn) return '';
     const saved = JSON.parse(localStorage.getItem(researchKey(apn)) || '{}');
     const opens = Number(localStorage.getItem(parcelQuestUsageKey()) || 0);
-    return `<section class="research"><h4>Private research</h4><div class="research-actions"><button type="button" data-copy-apn>Copy APN</button><button type="button" data-parcelquest>Research in ParcelQuest Lite</button></div><textarea data-research-notes rows="4" placeholder="Notes stored only in this browser">${escapeHtml(saved.notes || '')}</textarea><button type="button" data-save-research>Save private notes</button><p>${saved.updated ? `Saved ${escapeHtml(new Date(saved.updated).toLocaleString())}. ` : ''}Estimated ParcelQuest opens this month: ${opens} / 50.</p></section>`;
+    return `<section class="research"><h4>Parcel research</h4><div class="research-actions"><button type="button" data-copy-apn>Copy APN</button><button type="button" data-parcelquest>Look up owner & assessment</button></div><textarea data-research-notes rows="4" placeholder="Notes stored only in this browser">${escapeHtml(saved.notes || '')}</textarea><button type="button" data-save-research>Save private notes</button><p>Opens Siskiyou County Assessor’s official ParcelQuest Lite lookup with this APN. ${opens} lookup${opens === 1 ? '' : 's'} opened from this browser this month.</p></section>`;
   };
   const zoningForParcel = async apn => {
     if (zoningByApn.has(apn)) return zoningByApn.get(apn);
