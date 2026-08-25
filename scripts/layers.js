@@ -144,6 +144,13 @@ const LAYERS = {
     geometryPrecision: 6,
     fields: ['OBJECTID', 'PERMANENT_IDENTIFIER', 'GNIS_NAME', 'AREASQKM', 'REACHCODE', 'FTYPE', 'FCODE', 'VISIBILITYFILTER']
   },
+  summits: {
+    name: 'USGS GNIS mountains and summits',
+    url: 'https://carto.nationalmap.gov/arcgis/rest/services/geonames/MapServer/5',
+    bbox: SISKIYOU_BBOX,
+    where: "gaz_featureclass = 'Summit'",
+    fields: ['OBJECTID', 'gaz_id', 'gaz_name', 'gaz_featureclass', 'fcode', 'state_alpha', 'county_name']
+  },
   springs: {
     name: 'USGS NHD springs',
     url: 'https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/0',

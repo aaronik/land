@@ -326,6 +326,7 @@ function toggleLayer(id, visibleValue) {
     roads: ['roads', 'road-labels'],
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
     waterways: ['waterways-casing', 'waterways', 'waterway-labels', 'springs'],
+    'place-names': ['waterbodies', 'waterbody-labels', 'summits'],
     huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels'],
     'groundwater-basins': ['groundwater-basins-fill', 'groundwater-basins-lines', 'groundwater-basins-labels'],
     zoning: ['zoning-fill', 'zoning-lines']

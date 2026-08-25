@@ -15,6 +15,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('railroads');
   addPmtilesSource('waterways');
   addPmtilesSource('waterbodies');
+  addPmtilesSource('summits');
   addPmtilesSource('springs');
   map.addSource('sales', { type: 'geojson', data: saleGeoJson() });
   map.addSource('sale-points', { type: 'geojson', data: salePointGeoJson() });
@@ -132,6 +133,16 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
       'text-padding': 5
     },
     paint: { 'text-color': '#b9e4ff', 'text-halo-color': 'rgba(6, 24, 43, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
+  });
+  map.addLayer({
+    id: 'summits', type: 'symbol', source: 'summits', 'source-layer': 'summits', minzoom: 8,
+    layout: {
+      'text-field': ['concat', '▲ ', ['get', 'gaz_name']], 'text-font': ['Noto Sans Bold'],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 8, 10, 14, 13],
+      'symbol-sort-key': ['case', ['==', ['get', 'gaz_name'], 'Mount Shasta'], 0, 1],
+      'text-offset': [0, 0.2], 'text-anchor': 'bottom', 'text-padding': 5
+    },
+    paint: { 'text-color': '#f4dc9d', 'text-halo-color': 'rgba(39, 31, 19, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
   });
   map.addLayer({
     id: 'springs', type: 'circle', source: 'springs', 'source-layer': 'springs', minzoom: 9,

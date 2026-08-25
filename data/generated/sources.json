@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T20:58:25.327Z",
+  "generatedAt": "2026-08-25T21:00:37.721Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -224,6 +224,19 @@
         "FTYPE",
         "FCODE",
         "VISIBILITYFILTER"
+      ]
+    },
+    "summits": {
+      "source": "https://carto.nationalmap.gov/arcgis/rest/services/geonames/MapServer/5",
+      "featureCount": 502,
+      "fields": [
+        "OBJECTID",
+        "gaz_id",
+        "gaz_name",
+        "gaz_featureclass",
+        "fcode",
+        "state_alpha",
+        "county_name"
       ]
     }
   }
