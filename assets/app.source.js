@@ -133,6 +133,25 @@ const geolocateControl = new maplibregl.GeolocateControl({
 map.addControl(geolocateControl, 'bottom-right');
 window.__landGeolocateControl = geolocateControl;
 
+const mapHelpDialog = document.querySelector('#map-controls-help');
+const mapHelpControl = {
+  onAdd() {
+    const container = document.createElement('div');
+    container.className = 'maplibregl-ctrl maplibregl-ctrl-group map-help-control';
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.setAttribute('aria-label', 'How to control the map');
+    button.title = 'How to control the map';
+    button.textContent = '?';
+    button.addEventListener('click', () => mapHelpDialog.showModal());
+    container.appendChild(button);
+    return container;
+  },
+  onRemove() {}
+};
+map.addControl(mapHelpControl, 'bottom-right');
+document.querySelector('#map-controls-help .dialog-close').addEventListener('click', () => mapHelpDialog.close());
+
 // MapLibre's built-in control tracks position but does not render a compass
 // heading. Add a cone behind its location dot when the device exposes one.
 const headingElement = document.createElement('div');

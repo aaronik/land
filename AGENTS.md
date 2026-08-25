@@ -23,6 +23,16 @@ rg PATTERN . \
 
 For file discovery, prefer scoped source paths such as `assets/`, `scripts/`, and top-level configuration files. Metadata-only operations such as `ls`, `du`, `stat`, file counts, and filenames are safe for data directories.
 
+## Map control interaction styles
+
+All interactive MapLibre map controls—including custom controls—must inherit the shared default in `assets/style.css`:
+
+```css
+.maplibregl-ctrl button:not(:disabled):not(.active):hover { background-color: #f2f2f2; }
+```
+
+Use `.active` only for persistent selected states. Do not add a custom hover treatment unless the control has a documented visual-state exception.
+
 ## IMPORTANT
 
 Do not run unrestricted recursive `grep`, `cat`, `sed`, `head`, `tail`, `git diff`, or similar content-reading commands from the repository root unless the large-data paths above are explicitly excluded. Pulling in large asset data will blow up the context, it must be avoided.
