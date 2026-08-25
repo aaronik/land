@@ -130,6 +130,77 @@ const geolocateControl = new maplibregl.GeolocateControl({
 // live location dot on the 3D surface instead of on the flat map plane.
 map.addControl(geolocateControl, 'bottom-right');
 window.__landGeolocateControl = geolocateControl;
+
+// MapLibre's built-in control tracks position but does not render a compass
+// heading. Add a cone behind its location dot when the device exposes one.
+const headingElement = document.createElement('div');
+headingElement.className = 'user-heading-cone';
+headingElement.setAttribute('aria-hidden', 'true');
+const headingMarker = new maplibregl.Marker({
+  element: headingElement,
+  anchor: 'center',
+  rotationAlignment: 'viewport'
+});
+let userLocation;
+let deviceHeading;
+
+function normalizeHeading(heading) {
+  return Number.isFinite(heading) ? (heading % 360 + 360) % 360 : null;
+}
+
+function updateUserHeading() {
+  if (!userLocation || !Number.isFinite(deviceHeading)) return;
+  headingMarker
+    .setLngLat(userLocation)
+    // Device heading is relative to north; the map may be rotated.
+    .setRotation(deviceHeading - map.getBearing())
+    .addTo(map);
+}
+
+geolocateControl.on('geolocate', position => {
+  userLocation = [position.coords.longitude, position.coords.latitude];
+  // GPS heading is especially useful while moving and needs no motion-sensor
+  // permission. A compass reading, when available, takes precedence below.
+  const gpsHeading = normalizeHeading(position.coords.heading);
+  if (gpsHeading !== null) deviceHeading = gpsHeading;
+  updateUserHeading();
+});
+
+function deviceCompassHeading(event) {
+  // iOS provides a magnetic-north compass value directly. Other browsers
+  // expose alpha as a clockwise device rotation, so invert it to get heading.
+  if (Number.isFinite(event.webkitCompassHeading)) return event.webkitCompassHeading;
+  if (!Number.isFinite(event.alpha)) return null;
+  const screenAngle = screen.orientation?.angle ?? window.orientation ?? 0;
+  return (360 - event.alpha + screenAngle) % 360;
+}
+
+function startDeviceHeading() {
+  if (startDeviceHeading.started || typeof window.DeviceOrientationEvent === 'undefined') return;
+  startDeviceHeading.started = true;
+  window.addEventListener('deviceorientationabsolute', onDeviceOrientation, true);
+  window.addEventListener('deviceorientation', onDeviceOrientation, true);
+}
+
+function onDeviceOrientation(event) {
+  const heading = deviceCompassHeading(event);
+  if (heading === null) return;
+  deviceHeading = heading;
+  updateUserHeading();
+}
+
+// iOS requires this permission request to happen in the location-button tap.
+const geolocateButton = geolocateControl._geolocateButton;
+geolocateButton?.addEventListener('click', () => {
+  const requestPermission = window.DeviceOrientationEvent?.requestPermission;
+  if (typeof requestPermission === 'function') {
+    requestPermission.call(window.DeviceOrientationEvent)
+      .then(permission => { if (permission === 'granted') startDeviceHeading(); })
+      .catch(() => {});
+  } else {
+    startDeviceHeading();
+  }
+});
 const distanceMeasureControl = installMapControls(map, maplibregl);
 
 function escapeHtml(value) {
