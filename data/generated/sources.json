@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T20:44:25.011Z",
+  "generatedAt": "2026-08-25T21:00:37.721Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -210,6 +210,33 @@
         "unit_age",
         "unit_description",
         "lithology"
+      ]
+    },
+    "waterbodies": {
+      "source": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/12",
+      "featureCount": 2972,
+      "fields": [
+        "OBJECTID",
+        "PERMANENT_IDENTIFIER",
+        "GNIS_NAME",
+        "AREASQKM",
+        "REACHCODE",
+        "FTYPE",
+        "FCODE",
+        "VISIBILITYFILTER"
+      ]
+    },
+    "summits": {
+      "source": "https://carto.nationalmap.gov/arcgis/rest/services/geonames/MapServer/5",
+      "featureCount": 502,
+      "fields": [
+        "OBJECTID",
+        "gaz_id",
+        "gaz_name",
+        "gaz_featureclass",
+        "fcode",
+        "state_alpha",
+        "county_name"
       ]
     }
   }
