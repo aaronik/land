@@ -740,7 +740,7 @@ function initializeMapLayers() {
     source: 'topographic-contours',
     'source-layer': 'contours',
     minzoom: 10,
-    filter: ['>', ['get', 'level'], 0],
+    filter: ['>=', ['get', 'level'], 0],
     layout: {
       'symbol-placement': 'line',
       'symbol-spacing': 350,
