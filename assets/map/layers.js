@@ -14,6 +14,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('roads');
   addPmtilesSource('railroads');
   addPmtilesSource('waterways');
+  addPmtilesSource('waterbodies');
   addPmtilesSource('springs');
   map.addSource('sales', { type: 'geojson', data: saleGeoJson() });
   map.addSource('sale-points', { type: 'geojson', data: salePointGeoJson() });
@@ -117,6 +118,20 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
       'line-opacity': ['match', ['get', 'fcode'], 46000, 0.95, 46006, 0.95, 0.7],
       'line-dasharray': ['match', ['get', 'fcode'], 46003, ['literal', [2.5, 2]], 46007, ['literal', [1, 2]], ['literal', [1, 0]]]
     }
+  });
+  map.addLayer({
+    id: 'waterbodies', type: 'fill', source: 'waterbodies', 'source-layer': 'waterbodies', minzoom: 7,
+    paint: { 'fill-color': '#4aafff', 'fill-opacity': 0.58, 'fill-outline-color': '#167cc2' }
+  });
+  map.addLayer({
+    id: 'waterbody-labels', type: 'symbol', source: 'waterbodies', 'source-layer': 'waterbodies', minzoom: 9,
+    filter: ['all', ['has', 'GNIS_NAME'], ['!=', ['get', 'GNIS_NAME'], '']],
+    layout: {
+      'text-field': ['get', 'GNIS_NAME'], 'text-font': ['Noto Sans Bold'],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 9, 10, 14, 13], 'text-max-width': 12,
+      'text-padding': 5
+    },
+    paint: { 'text-color': '#b9e4ff', 'text-halo-color': 'rgba(6, 24, 43, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
   });
   map.addLayer({
     id: 'springs', type: 'circle', source: 'springs', 'source-layer': 'springs', minzoom: 9,

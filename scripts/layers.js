@@ -135,6 +135,15 @@ const LAYERS = {
     geometryPrecision: 6,
     fields: ['OBJECTID', 'permanent_identifier', 'gnis_name', 'lengthkm', 'reachcode', 'fcode', 'visibilityfilter']
   },
+  waterbodies: {
+    name: 'USGS NHD lakes and reservoirs',
+    url: 'https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/12',
+    bbox: SISKIYOU_BBOX,
+    where: 'FTYPE IN (390, 436)',
+    maxAllowableOffset: 0.00001,
+    geometryPrecision: 6,
+    fields: ['OBJECTID', 'PERMANENT_IDENTIFIER', 'GNIS_NAME', 'AREASQKM', 'REACHCODE', 'FTYPE', 'FCODE', 'VISIBILITYFILTER']
+  },
   springs: {
     name: 'USGS NHD springs',
     url: 'https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/0',
