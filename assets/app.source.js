@@ -147,17 +147,85 @@ class GoogleStreetViewControl {
     this.map = controlMap;
     this.container = document.createElement('div');
     this.container.className = 'maplibregl-ctrl google-maps-control';
-    this.container.innerHTML = '<button class="google-maps-button" type="button" aria-label="Open Google Street View at the map center" title="Open Google Street View at the map center"><span aria-hidden="true">◉</span><span>Street View</span></button>';
-    this.container.querySelector('button').addEventListener('click', () => {
-      const center = this.map.getCenter();
-      const url = new URL('https://www.google.com/maps/@');
-      url.searchParams.set('api', '1');
-      url.searchParams.set('map_action', 'pano');
-      url.searchParams.set('viewpoint', `${center.lat.toFixed(6)},${center.lng.toFixed(6)}`);
-      url.searchParams.set('heading', String((this.map.getBearing() + 360) % 360));
-      window.open(url.href, '_blank', 'noopener,noreferrer');
+    this.container.innerHTML = '<button class="google-maps-button street-view-drag-handle" type="button" aria-label="Drag Street View to a road, or open it at the map center" title="Drag Street View to a road"><span class="street-view-pegman" aria-hidden="true"></span><span>Street View</span></button>';
+    this.button = this.container.querySelector('button');
+    this.button.addEventListener('click', () => {
+      if (!this.ignoreClick) this.openAt(this.map.getCenter());
+      this.ignoreClick = false;
     });
+    this.button.addEventListener('pointerdown', event => this.startDrag(event));
     return this.container;
+  }
+  startDrag(event) {
+    if (event.button !== 0) return;
+    event.preventDefault();
+    this.dragStart = { x: event.clientX, y: event.clientY };
+    this.dragged = false;
+    this.button.setPointerCapture(event.pointerId);
+    this.map.dragPan.disable();
+    this.proxy = document.createElement('span');
+    this.proxy.className = 'street-view-drag-proxy';
+    document.body.appendChild(this.proxy);
+    this.moveDrag(event);
+    const move = moveEvent => this.moveDrag(moveEvent);
+    const finish = finishEvent => {
+      this.button.removeEventListener('pointermove', move);
+      this.button.removeEventListener('pointerup', finish);
+      this.button.removeEventListener('pointercancel', finish);
+      this.proxy.remove();
+      this.proxy = null;
+      this.map.dragPan.enable();
+      if (finishEvent.type === 'pointerup') {
+        const fallback = this.dragged ? this.map.unproject(this.mapPoint(finishEvent)) : this.map.getCenter();
+        this.openAt(this.nearestRoadPoint(fallback, ...this.mapPoint(finishEvent)) || fallback);
+        // A pointer release also emits click; do not open a second tab for it.
+        this.ignoreClick = true;
+        setTimeout(() => { this.ignoreClick = false; }, 0);
+      }
+    };
+    this.button.addEventListener('pointermove', move);
+    this.button.addEventListener('pointerup', finish);
+    this.button.addEventListener('pointercancel', finish);
+  }
+  mapPoint(event) {
+    const rect = this.map.getCanvas().getBoundingClientRect();
+    return [event.clientX - rect.left, event.clientY - rect.top];
+  }
+  moveDrag(event) {
+    if (!this.proxy) return;
+    this.dragged ||= Math.hypot(event.clientX - this.dragStart.x, event.clientY - this.dragStart.y) > 4;
+    this.proxy.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
+    const [x, y] = this.mapPoint(event);
+    const point = this.nearestRoadPoint(this.map.unproject([x, y]), x, y);
+    this.proxy.classList.toggle('over-road', Boolean(point));
+  }
+  nearestRoadPoint(fallback, x, y) {
+    if (!this.map.getLayer('roads')) return null;
+    const radius = 40;
+    let features = [];
+    try { features = this.map.queryRenderedFeatures([[x - radius, y - radius], [x + radius, y + radius]], { layers: ['roads'] }); } catch { /* The road layer may still be loading. */ }
+    let best = null;
+    for (const feature of features) {
+      const lines = feature.geometry.type === 'LineString' ? [feature.geometry.coordinates] : feature.geometry.type === 'MultiLineString' ? feature.geometry.coordinates : [];
+      for (const line of lines) for (let i = 1; i < line.length; i++) {
+        const a = this.map.project(line[i - 1]), b = this.map.project(line[i]);
+        const dx = b.x - a.x, dy = b.y - a.y, lengthSquared = dx * dx + dy * dy;
+        if (!lengthSquared) continue;
+        const t = Math.max(0, Math.min(1, ((x - a.x) * dx + (y - a.y) * dy) / lengthSquared));
+        const px = a.x + t * dx, py = a.y + t * dy, distance = Math.hypot(x - px, y - py);
+        if (!best || distance < best.distance) best = { distance, point: this.map.unproject([px, py]), heading: Math.atan2(dx, -dy) * 180 / Math.PI };
+      }
+    }
+    return best?.distance <= radius ? best : fallback;
+  }
+  openAt(location) {
+    const point = location.point || location;
+    const url = new URL('https://www.google.com/maps/@');
+    url.searchParams.set('api', '1');
+    url.searchParams.set('map_action', 'pano');
+    url.searchParams.set('viewpoint', `${point.lat.toFixed(6)},${point.lng.toFixed(6)}`);
+    url.searchParams.set('heading', String((location.heading ?? this.map.getBearing() + 360) % 360));
+    window.open(url.href, '_blank', 'noopener,noreferrer');
   }
   onRemove() {
     this.container.remove();

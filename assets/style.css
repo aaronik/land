@@ -136,10 +136,11 @@ footer p:first-child { color: var(--ink); font-weight: 700; }
 .compass-dial i { position: absolute; top: 16px; left: 50%; width: 0; height: 0; border-right: 5px solid transparent; border-bottom: 18px solid #b9362d; border-left: 5px solid transparent; transform: translateX(-50%); }
 .cardinal-compass button:hover, .cardinal-compass button:focus-visible { outline: 3px solid rgba(255,255,255,.65); }
 .google-maps-control { border: 0 !important; box-shadow: 0 1px 5px rgba(0,0,0,.4) !important; }
-.google-maps-button { display: flex; align-items: center; gap: 5px; height: 30px; padding: 0 9px; border: 0; border-radius: 2px; color: #16231d; background: white; font-size: 12px; font-weight: 700; cursor: pointer; }
-.google-maps-button:hover { background-color: rgba(0, 0, 0, .05) !important; }
-.google-maps-button:focus-visible { background-color: rgba(0, 0, 0, .05) !important; outline: 2px solid #126246; outline-offset: -2px; }
-.google-maps-button span:first-child { font-size: 16px; line-height: 1; }
+.google-maps-button { display: flex; align-items: center; gap: 5px; height: 30px; padding: 0 9px; border: 0; border-radius: 2px; color: #16231d; background: white; font-size: 12px; font-weight: 700; cursor: grab; touch-action: none; }
+.google-maps-button:active { cursor: grabbing; }
+.street-view-pegman, .street-view-drag-proxy::before { content: ''; display: inline-block; width: 12px; height: 16px; background: #f5bf00; clip-path: polygon(35% 0, 65% 0, 82% 17%, 72% 35%, 100% 57%, 83% 70%, 65% 55%, 65% 100%, 35% 100%, 35% 55%, 17% 70%, 0 57%, 28% 35%, 18% 17%); }
+.street-view-drag-proxy { position: fixed; top: 0; left: 0; z-index: 9999; width: 30px; height: 30px; margin: -15px; display: grid; place-items: center; border: 2px solid white; border-radius: 50%; background: rgba(22, 35, 29, .9); box-shadow: 0 2px 8px rgba(0,0,0,.4); pointer-events: none; }
+.street-view-drag-proxy.over-road { background: #126246; transform-origin: center; }
 .distance-measure-control { display: flex; align-items: stretch; min-height: 30px; border: 0 !important; box-shadow: 0 1px 5px rgba(0,0,0,.4) !important; }
 .distance-measure-toggle, .distance-measure-clear { border: 0; color: var(--ink); background: white; cursor: pointer; font-size: 12px; font-weight: 700; }
 .distance-measure-toggle { display: flex; align-items: center; gap: 5px; height: 30px; padding: 0 9px; border-radius: 2px 0 0 2px; }
