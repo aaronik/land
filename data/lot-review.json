@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-08-23T12:26:28.744Z",
-  "count": 275,
+  "generatedAt": "2026-08-25T12:41:43.229Z",
+  "count": 276,
   "listings": [
+    {
+      "mlsNumber": "20261059",
+      "title": "Unit 1 Lot 47 Butte Creek, Macdoel, CA 96058",
+      "acres": 2.95,
+      "latLng": [
+        41.655692692667465,
+        -121.95547112800159
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261059/Unit-1-Lot-47-Butte-Creek-Macdoel-CA-96058",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261056",
       "title": "Unit 4 Lot 198 Trout Court, Montague, CA 96064",
@@ -268,13 +280,13 @@
     },
     {
       "mlsNumber": "20250881",
-      "title": "Unit 7-2 Lot 92 Puma Dr, Weed, CA 96094",
+      "title": "Unit 7-2 lot 92 Puma Dr, Weed, CA 96094",
       "acres": 0.23,
       "latLng": [
         41.49696615011189,
         -122.3641669511127
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250881/Unit-7-2-Lot-92-Puma-Dr-Weed-CA-96094",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250881/Unit-7-2-lot-92-Puma-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -424,13 +436,13 @@
     },
     {
       "mlsNumber": "20260861",
-      "title": "Blk 15 Lot 5 S California St, Dorris, CA 96023",
+      "title": "Blk 15 Lot 5 S California St S, Dorris, CA 96023",
       "acres": 0.13,
       "latLng": [
         41.964321731163565,
         -121.91960383930392
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260861/Blk-15-Lot-5-S-California-St-Dorris-CA-96023",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260861/Blk-15-Lot-5-S-California-St-S-Dorris-CA-96023",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -508,13 +520,13 @@
     },
     {
       "mlsNumber": "20260502",
-      "title": "Lots 4 & 5 Berry St, Mt Shasta, CA 96067",
+      "title": "Lots 4 & 5 Berry St, Mount Shasta, CA 96067",
       "acres": 0.18,
       "latLng": [
         41.308924219040776,
         -122.31357107928159
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260502/Lots-4-5-Berry-St-Mt-Shasta-CA-96067",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260502/Lots-4-5-Berry-St-Mount-Shasta-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -1288,13 +1300,13 @@
     },
     {
       "mlsNumber": "20260629",
-      "title": "Unit 9-1 Lot 14 Lake Shastina, Wildhorse Pl., Weed, CA 96094",
+      "title": "unit 9-1 Lot 14 Lake Shastina, Wildhorse Pl., Weed, CA 96094",
       "acres": 0.32,
       "latLng": [
         41.55121429600078,
         -122.38584241500158
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260629/Unit-9-1-Lot-14-Lake-Shastina-Wildhorse-Pl-Weed-CA-96094",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260629/unit-9-1-Lot-14-Lake-Shastina-Wildhorse-Pl-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -1876,13 +1888,13 @@
     },
     {
       "mlsNumber": "20250686",
-      "title": "Lot 3 Quail Hill Subdivision, Mt Shasta, CA 96067",
+      "title": "Lot 3 Quail Hill Subdivision, Mount Shasta, CA 96067",
       "acres": 2.5,
       "latLng": [
         41.308244,
         -122.299503
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250686/Lot-3-Quail-Hill-Subdivision-Mt-Shasta-CA-96067",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250686/Lot-3-Quail-Hill-Subdivision-Mount-Shasta-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -1996,25 +2008,25 @@
     },
     {
       "mlsNumber": "20260239",
-      "title": "Unit 4 Lot 202 Rainbow Dr, Weed, CA 96094",
+      "title": "Unit 4 lot 202 Rainbow Dr, Weed, CA 96094",
       "acres": 0.49,
       "latLng": [
         41.512246583842874,
         -122.38200017689633
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260239/Unit-4-Lot-202-Rainbow-Dr-Weed-CA-96094",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260239/Unit-4-lot-202-Rainbow-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
     {
       "mlsNumber": "20260238",
-      "title": "Unit 4 Lot 201 Rainbow Dr, Weed, CA 96094",
+      "title": "Unit 4 lot 201 Rainbow Dr, Weed, CA 96094",
       "acres": 1.03,
       "latLng": [
         41.512246583842874,
         -122.38200017689633
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260238/Unit-4-Lot-201-Rainbow-Dr-Weed-CA-96094",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260238/Unit-4-lot-201-Rainbow-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -2068,13 +2080,13 @@
     },
     {
       "mlsNumber": "20260214",
-      "title": "Lot 16 Matthew Ct, Mt Shasta, CA 96067",
+      "title": "Lot 16 Matthew Ct, Mount Shasta, CA 96067",
       "acres": 1.1,
       "latLng": [
         41.285437,
         -122.290801
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260214/Lot-16-Matthew-Ct-Mt-Shasta-CA-96067",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260214/Lot-16-Matthew-Ct-Mount-Shasta-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -2164,13 +2176,13 @@
     },
     {
       "mlsNumber": "20260148",
-      "title": "Unit 4 Lot 185 Antler Way, Weed, CA 96094",
+      "title": "Unit 4 lot 185 Antler Way, Weed, CA 96094",
       "acres": 0.43,
       "latLng": [
         41.51254266566744,
         -122.38179071211272
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260148/Unit-4-Lot-185-Antler-Way-Weed-CA-96094",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260148/Unit-4-lot-185-Antler-Way-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -2344,37 +2356,37 @@
     },
     {
       "mlsNumber": "20251306",
-      "title": "Lot 44 White Dr., Montague, CA 96064",
+      "title": "lot 44 White Dr., Montague, CA 96064",
       "acres": 2.2,
       "latLng": [
         41.552665,
         -122.265603
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251306/Lot-44-White-Dr-Montague-CA-96064",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251306/lot-44-White-Dr-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
     {
       "mlsNumber": "20251302",
-      "title": "Unit 4 Lot 434 Kristen Pl., Montague, CA 96064",
+      "title": "unit 4 Lot 434 Kristen Pl., Montague, CA 96064",
       "acres": 3.6,
       "latLng": [
         41.726852558525,
         -122.44620948487768
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251302/Unit-4-Lot-434-Kristen-Pl-Montague-CA-96064",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251302/unit-4-Lot-434-Kristen-Pl-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
     {
       "mlsNumber": "20251298",
-      "title": "Unit 4 Lot 162 Oak View Rd., Hornbrook, CA 96044",
+      "title": "unit 4 Lot 162 Oak View Rd., Hornbrook, CA 96044",
       "acres": 2.7,
       "latLng": [
         41.906887599384326,
         -122.51472420665009
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251298/Unit-4-Lot-162-Oak-View-Rd-Hornbrook-CA-96044",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251298/unit-4-Lot-162-Oak-View-Rd-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -2404,13 +2416,13 @@
     },
     {
       "mlsNumber": "20251294",
-      "title": "Unit 4 Lot 446 Sea Horse Ln., Hornbrook, CA 96044",
+      "title": "unit 4 Lot 446 Sea Horse Ln., Hornbrook, CA 96044",
       "acres": 2.5,
       "latLng": [
         41.90254679900074,
         -122.44509358400151
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251294/Unit-4-Lot-446-Sea-Horse-Ln-Hornbrook-CA-96044",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251294/unit-4-Lot-446-Sea-Horse-Ln-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -2620,13 +2632,13 @@
     },
     {
       "mlsNumber": "20250928",
-      "title": "Lot 708 Unit 4 Clark, Hornbrook, CA 96044",
+      "title": "Lot 708 unit 4 Clark, Hornbrook, CA 96044",
       "acres": 2.6,
       "latLng": [
         41.90784,
         -122.55814
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250928/Lot-708-Unit-4-Clark-Hornbrook-CA-96044",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250928/Lot-708-unit-4-Clark-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -3052,7 +3064,7 @@
     },
     {
       "mlsNumber": "20240761",
-      "title": "Unit 1/Lot 99 Lake Shastina Drive, Weed, CA 96094",
+      "title": "Unit 1/ Lot 99 Lake Shastina Drive, Weed, CA 96094",
       "acres": 0.27,
       "latLng": [
         41.525169566233316,
