@@ -232,6 +232,10 @@ const listingData = createListingData(() => ({ saleData, enabledCategories, sear
 const { categories, featureCenter, filteredMappedListings, filteredUnmappedListings, normalizeSearch, saleGeoJson, salePointGeoJson, unmappedGeoJson } = listingData;
 
 function parcelQuestUsageKey() { return `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`; }
+function clearSelectedParcel() {
+  setSelectedApn('');
+  document.querySelector('#details').innerHTML = '<h3>No parcel selected</h3><p class="meta">Hover over a parcel for a quick summary. Click it to keep the details here.</p>';
+}
 const parcelDetails = createParcelDetails({
   detailsElement: document.querySelector('#details'),
   directionsOrigin: DIRECTIONS_ORIGIN,
@@ -239,7 +243,8 @@ const parcelDetails = createParcelDetails({
   getApnIndex: () => apnIndex,
   getSaleData: () => saleData,
   onParcelQuest: apn => { selectedResearchApn = apn; document.querySelector('#parcelquest-warning').showModal(); },
-  onSaveResearch: apn => showParcelDetails({ APN: apn })
+  onSaveResearch: apn => showParcelDetails({ APN: apn }),
+  onClose: clearSelectedParcel
 });
 const { recordCard, showParcelDetails } = parcelDetails;
 
@@ -399,7 +404,8 @@ function initializeMapLayers() {
       return;
     }
     if (feature.layer.id === 'unmapped-markers') {
-      document.querySelector('#details').innerHTML = `<h3>Unmapped listing</h3><p class="meta">MLS point only — boundary unverified.</p>${recordCard(props)}`;
+      document.querySelector('#details').innerHTML = `<div class="details-heading"><h3>Unmapped listing</h3><button class="close-parcel" type="button" data-close-details aria-label="Close selected listing" title="Close selected listing">×</button></div><p class="meta">MLS point only — boundary unverified.</p>${recordCard(props)}`;
+      document.querySelector('[data-close-details]').addEventListener('click', clearSelectedParcel);
       return;
     }
     if (feature.layer.id === 'sale-markers' || feature.layer.id === 'sale-fill') {

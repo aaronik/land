@@ -110,6 +110,10 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .sale-pin.public-land { background: #ff9d4d; }
 .sale-pin.public-home { background: #b94b18; }
 .details h3 { margin: 0 0 4px; font: 500 23px Georgia, serif; }
+.details-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.close-parcel { display: grid; width: 28px; height: 28px; flex: 0 0 28px; place-items: center; margin: 0; padding: 0 0 2px; border: 1px solid var(--line); border-radius: 50%; color: #425048; background: transparent; font-size: 22px; line-height: 1; cursor: pointer; }
+.close-parcel:hover { color: var(--ink); border-color: rgba(22,35,29,.4); }
+.close-parcel:focus-visible { outline: 2px solid #126246; outline-offset: 2px; }
 .details .meta { margin: 0 0 14px; color: #687169; font-size: 12px; }
 .directions-link { display: block; margin-top: 3px; }
 .record { margin-top: 11px; padding: 11px; background: white; border: 1px solid var(--line); border-left: 4px solid #42d7a6; border-radius: 6px; font-size: 12px; }
