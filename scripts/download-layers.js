@@ -160,12 +160,32 @@ function parcelIndex(features) {
   return index;
 }
 
+function placeIndex(features, nameField, type) {
+  const places = [];
+  for (const feature of features) {
+    const name = String(feature.properties?.[nameField] || '').trim();
+    const geometry = feature.geometry;
+    if (!name || !geometry) continue;
+    const points = geometry.type === 'Point' ? [geometry.coordinates] : geometry.type === 'MultiPoint' ? geometry.coordinates : coordinates(geometry);
+    const valid = points.filter(point => point?.length >= 2 && point.every(Number.isFinite));
+    if (!valid.length) continue;
+    const xs = valid.map(point => point[0]), ys = valid.map(point => point[1]);
+    places.push({ name, type, center: [(Math.min(...xs) + Math.max(...xs)) / 2, (Math.min(...ys) + Math.max(...ys)) / 2], bbox: [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)] });
+  }
+  return places;
+}
+
+function mergePlaceIndexes(...indexes) {
+  return indexes.flat().sort((a, b) => a.name.localeCompare(b.name) || a.type.localeCompare(b.type));
+}
+
 async function main() {
   const requested = process.argv.slice(2);
   const names = requested.length ? requested : Object.keys(LAYERS);
   const manifestPath = path.join(generated, 'sources.json');
   const previous = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, 'utf8')) : { layers: {} };
   const manifest = { generatedAt: new Date().toISOString(), layers: requested.length ? { ...previous.layers } : {} };
+  const placeIndexes = [];
   for (const name of names) {
     const config = LAYERS[name];
     if (!config) throw new Error(`Unknown layer: ${name}`);
@@ -173,10 +193,18 @@ async function main() {
     const sourceConfig = name === 'groundwater_wells' ? { ...config, fields: config.fields.filter(field => !field.startsWith('Nearby')) } : config;
     const data = sourceConfig.type === 'wfs-gml' ? await fetchSoilLayer(sourceConfig) : sourceConfig.type === 'usgs-geology-wfs' ? await fetchUsgsGeology(sourceConfig) : await fetchArcGISLayer(sourceConfig);
     if (name === 'groundwater_wells') addNearbyWellSummaries(data);
+    if (name === 'waterbodies') placeIndexes.push(placeIndex(data.features, 'GNIS_NAME', 'lake or reservoir'));
+    if (name === 'summits') placeIndexes.push(placeIndex(data.features, 'gaz_name', 'summit'));
     fs.writeFileSync(path.join(raw, `${name}.geojson`), JSON.stringify(data));
     manifest.layers[name] = { source: config.url, featureCount: data.features.length, fields: config.fields };
     if (name === 'parcels') fs.writeFileSync(path.join(generated, 'apn-index.json'), JSON.stringify(parcelIndex(data.features)));
     console.log(`  ${data.features.length.toLocaleString()} features`);
+  }
+  if (placeIndexes.length) {
+    const indexPath = path.join(generated, 'place-index.json');
+    const replacedTypes = new Set(placeIndexes.flat().map(place => place.type));
+    const existing = fs.existsSync(indexPath) ? JSON.parse(fs.readFileSync(indexPath, 'utf8')) : [];
+    fs.writeFileSync(indexPath, JSON.stringify(mergePlaceIndexes(existing.filter(place => !replacedTypes.has(place.type)), ...placeIndexes)));
   }
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 }

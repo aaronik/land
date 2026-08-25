@@ -54,6 +54,7 @@ const assetUrl = path => new URL(path, window.location.href).href;
 
 let saleData;
 let apnIndex = {};
+let placeIndex = [];
 let selectedResearchApn = '';
 let selectedApn = '';
 let terrainEnabled = false;
@@ -455,7 +456,7 @@ map.once('style.load', () => {
 
 const findListings = createSearchController({
   map, maplibregl, detailsElement: document.querySelector('#details'), featureCenter,
-  filteredMappedListings, filteredUnmappedListings, normalizeSearch, getApnIndex: () => apnIndex,
+  filteredMappedListings, filteredUnmappedListings, normalizeSearch, getApnIndex: () => apnIndex, getPlaceIndex: () => placeIndex,
   setSearchQuery: value => { searchQuery = value; }, updateSales,
   selectApn: apn => setSelectedApn(apn), showParcelDetails
 });
@@ -522,10 +523,12 @@ document.querySelector('#continue-parcelquest').addEventListener('click', async 
 
 Promise.all([
   fetch('data/parcels.json').then(response => { if (!response.ok) throw new Error(`sale data returned ${response.status}`); return response.json(); }),
-  fetch('data/generated/apn-index.json').then(response => { if (!response.ok) throw new Error(`parcel index returned ${response.status}`); return response.json(); })
-]).then(([sales, index]) => {
+  fetch('data/generated/apn-index.json').then(response => { if (!response.ok) throw new Error(`parcel index returned ${response.status}`); return response.json(); }),
+  fetch('data/generated/place-index.json').then(response => { if (!response.ok) throw new Error(`place index returned ${response.status}`); return response.json(); })
+]).then(([sales, index, places]) => {
   saleData = sales;
   apnIndex = index;
+  placeIndex = Array.isArray(places) ? places : [];
   updateSales();
   restoreInitialSelectedParcel();
   document.querySelector('#updated').textContent = `Data refreshed ${new Date(sales.generatedAt).toLocaleString()}`;
