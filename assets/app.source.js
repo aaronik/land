@@ -69,6 +69,7 @@ let searchQuery = '';
 let minimumAcreage = 0;
 let maximumAcreage = 0;
 let listedSince = '';
+let listedBefore = '';
 
 const map = new maplibregl.Map({
   container: 'map',
@@ -208,7 +209,7 @@ function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
 }
 function money(value) { return value ? `$${Number(value).toLocaleString()}` : ''; }
-const listingData = createListingData(() => ({ saleData, enabledCategories, searchQuery, minimumAcreage, maximumAcreage, listedSince }));
+const listingData = createListingData(() => ({ saleData, enabledCategories, searchQuery, minimumAcreage, maximumAcreage, listedSince, listedBefore }));
 const { categories, featureCenter, filteredMappedListings, filteredUnmappedListings, normalizeSearch, saleGeoJson, salePointGeoJson, unmappedGeoJson } = listingData;
 
 function parcelQuestUsageKey() { return `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`; }
@@ -462,10 +463,20 @@ function updateAcreageFilter() {
 minimumAcreageInput.addEventListener('input', updateAcreageFilter);
 maximumAcreageInput.addEventListener('input', updateAcreageFilter);
 const listedSinceInput = document.querySelector('#listed-since');
-listedSinceInput.addEventListener('change', () => {
+const listedBeforeInput = document.querySelector('#listed-before');
+function updateListingDateFilter() {
   listedSince = listedSinceInput.value;
+  listedBefore = listedBeforeInput.value;
+  if (listedSince && listedBefore && listedSince > listedBefore) {
+    if (document.activeElement === listedSinceInput) listedBeforeInput.value = listedSince;
+    else listedSinceInput.value = listedBefore;
+    listedSince = listedSinceInput.value;
+    listedBefore = listedBeforeInput.value;
+  }
   updateSales();
-});
+}
+listedSinceInput.addEventListener('change', updateListingDateFilter);
+listedBeforeInput.addEventListener('change', updateListingDateFilter);
 mapLayerInputs.forEach(input => input.addEventListener('change', () => {
   toggleLayer(input.dataset.mapLayer, input.checked);
   saveMapLayerVisibility();

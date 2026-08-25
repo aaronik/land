@@ -17,7 +17,11 @@ export function createListingData(getState) {
     if (!query) return true;
     return normalizeSearch([record.title, record.APN, record.mlsNumber, record.item, record.listingSource].filter(Boolean).join(' ')).includes(query);
   };
-  const recordMatchesListingDate = record => !state().listedSince || (typeof record.listingDate === 'string' && record.listingDate >= state().listedSince);
+  const recordMatchesListingDate = record => {
+    const { listedSince, listedBefore } = state();
+    if (!listedSince && !listedBefore) return true;
+    return typeof record.listingDate === 'string' && (!listedSince || record.listingDate >= listedSince) && (!listedBefore || record.listingDate <= listedBefore);
+  };
   const acreageMatches = acres => {
     const { minimumAcreage, maximumAcreage } = state();
     return (!minimumAcreage || (acres !== null && acres >= minimumAcreage)) && (!maximumAcreage || (acres !== null && acres <= maximumAcreage));

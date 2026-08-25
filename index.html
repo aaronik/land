@@ -94,9 +94,16 @@
           </div>
           <div class="acreage-scale" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100 acres</span></div>
         </div>
-        <div class="date-filter">
-          <label for="listed-since">Listed since</label>
-          <input id="listed-since" type="date">
+        <div class="date-filter" role="group" aria-labelledby="date-filter-heading">
+          <h3 id="date-filter-heading">Listing date</h3>
+          <div class="date-control">
+            <label for="listed-since">Listed since</label>
+            <input id="listed-since" type="date">
+          </div>
+          <div class="date-control">
+            <label for="listed-before">Listed before</label>
+            <input id="listed-before" type="date">
+          </div>
         </div>
       </section>
 
