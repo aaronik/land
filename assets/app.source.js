@@ -3,6 +3,12 @@
 import * as maplibregl from './vendor/maplibre/maplibre-gl.mjs';
 import mlcontour from 'maplibre-contour';
 import { Protocol } from './vendor/pmtiles/pmtiles.js';
+import { installMapControls } from './map/controls.js';
+import { createListingData } from './data/listings.js';
+import { createParcelDetails } from './ui/parcel-details.js';
+import { installMapSourcesAndLayers } from './map/layers.js';
+import { createSearchController, initializeMobileSheet } from './state/ui.js';
+import { updateUrlParameter } from './state/url.js';
 
 const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
 // Colors follow the unique-value renderer saved on Siskiyou County's official
@@ -124,403 +130,28 @@ const geolocateControl = new maplibregl.GeolocateControl({
 // live location dot on the 3D surface instead of on the flat map plane.
 map.addControl(geolocateControl, 'bottom-right');
 window.__landGeolocateControl = geolocateControl;
-class CardinalCompassControl {
-  onAdd(controlMap) {
-    this.map = controlMap;
-    this.container = document.createElement('div');
-    this.container.className = 'maplibregl-ctrl cardinal-compass';
-    this.container.innerHTML = '<button type="button" aria-label="Reset map to north" title="Reset map to north"><span class="compass-dial"><b class="north">N</b><b class="east">E</b><b class="south">S</b><b class="west">W</b><i></i></span></button>';
-    this.dial = this.container.querySelector('.compass-dial');
-    this.update = () => { this.dial.style.transform = `rotate(${-this.map.getBearing()}deg)`; };
-    this.container.querySelector('button').addEventListener('click', () => this.map.easeTo({ bearing: 0, duration: 500 }));
-    this.map.on('rotate', this.update);
-    this.update();
-    return this.container;
-  }
-  onRemove() {
-    this.map.off('rotate', this.update);
-    this.container.remove();
-  }
-}
-class GoogleStreetViewControl {
-  onAdd(controlMap) {
-    this.map = controlMap;
-    this.container = document.createElement('div');
-    this.container.className = 'maplibregl-ctrl google-maps-control';
-    this.container.innerHTML = '<button class="google-maps-button street-view-drag-handle" type="button" aria-label="Drag Street View to a road, or open it at the map center" title="Drag Street View to a road"><span class="street-view-pegman" aria-hidden="true"></span><span>Street View</span></button>';
-    this.button = this.container.querySelector('button');
-    this.button.addEventListener('click', () => {
-      if (!this.ignoreClick) this.openAt(this.map.getCenter());
-      this.ignoreClick = false;
-    });
-    this.button.addEventListener('pointerdown', event => this.startDrag(event));
-    return this.container;
-  }
-  startDrag(event) {
-    if (event.button !== 0) return;
-    event.preventDefault();
-    this.dragStart = { x: event.clientX, y: event.clientY };
-    this.dragged = false;
-    this.button.setPointerCapture(event.pointerId);
-    this.map.dragPan.disable();
-    this.proxy = document.createElement('span');
-    this.proxy.className = 'street-view-drag-proxy';
-    document.body.appendChild(this.proxy);
-    this.moveDrag(event);
-    const move = moveEvent => this.moveDrag(moveEvent);
-    const finish = finishEvent => {
-      this.button.removeEventListener('pointermove', move);
-      this.button.removeEventListener('pointerup', finish);
-      this.button.removeEventListener('pointercancel', finish);
-      this.proxy.remove();
-      this.proxy = null;
-      this.map.dragPan.enable();
-      if (finishEvent.type === 'pointerup') {
-        const fallback = this.dragged ? this.map.unproject(this.mapPoint(finishEvent)) : this.map.getCenter();
-        this.openAt(this.nearestRoadPoint(fallback, ...this.mapPoint(finishEvent)) || fallback);
-        // A pointer release also emits click; do not open a second tab for it.
-        this.ignoreClick = true;
-        setTimeout(() => { this.ignoreClick = false; }, 0);
-      }
-    };
-    this.button.addEventListener('pointermove', move);
-    this.button.addEventListener('pointerup', finish);
-    this.button.addEventListener('pointercancel', finish);
-  }
-  mapPoint(event) {
-    const rect = this.map.getCanvas().getBoundingClientRect();
-    return [event.clientX - rect.left, event.clientY - rect.top];
-  }
-  moveDrag(event) {
-    if (!this.proxy) return;
-    this.dragged ||= Math.hypot(event.clientX - this.dragStart.x, event.clientY - this.dragStart.y) > 4;
-    this.proxy.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
-    const [x, y] = this.mapPoint(event);
-    const point = this.nearestRoadPoint(this.map.unproject([x, y]), x, y);
-    this.proxy.classList.toggle('over-road', Boolean(point));
-  }
-  nearestRoadPoint(fallback, x, y) {
-    if (!this.map.getLayer('roads')) return null;
-    const radius = 40;
-    let features = [];
-    try { features = this.map.queryRenderedFeatures([[x - radius, y - radius], [x + radius, y + radius]], { layers: ['roads'] }); } catch { /* The road layer may still be loading. */ }
-    let best = null;
-    for (const feature of features) {
-      const lines = feature.geometry.type === 'LineString' ? [feature.geometry.coordinates] : feature.geometry.type === 'MultiLineString' ? feature.geometry.coordinates : [];
-      for (const line of lines) for (let i = 1; i < line.length; i++) {
-        const a = this.map.project(line[i - 1]), b = this.map.project(line[i]);
-        const dx = b.x - a.x, dy = b.y - a.y, lengthSquared = dx * dx + dy * dy;
-        if (!lengthSquared) continue;
-        const t = Math.max(0, Math.min(1, ((x - a.x) * dx + (y - a.y) * dy) / lengthSquared));
-        const px = a.x + t * dx, py = a.y + t * dy, distance = Math.hypot(x - px, y - py);
-        if (!best || distance < best.distance) best = { distance, point: this.map.unproject([px, py]), heading: Math.atan2(dx, -dy) * 180 / Math.PI };
-      }
-    }
-    return best?.distance <= radius ? best : fallback;
-  }
-  openAt(location) {
-    const point = location.point || location;
-    const url = new URL('https://www.google.com/maps/@');
-    url.searchParams.set('api', '1');
-    url.searchParams.set('map_action', 'pano');
-    url.searchParams.set('viewpoint', `${point.lat.toFixed(6)},${point.lng.toFixed(6)}`);
-    url.searchParams.set('heading', String((location.heading ?? this.map.getBearing() + 360) % 360));
-    window.open(url.href, '_blank', 'noopener,noreferrer');
-  }
-  onRemove() {
-    this.container.remove();
-    this.map = undefined;
-  }
-}
-class MilesScaleControl {
-  constructor({ maxWidth = 120 } = {}) {
-    this.maxWidth = maxWidth;
-  }
-  onAdd(controlMap) {
-    this.map = controlMap;
-    this.container = document.createElement('div');
-    this.container.className = 'maplibregl-ctrl maplibregl-ctrl-scale miles-scale-control';
-    this.container.setAttribute('role', 'img');
-    this.container.setAttribute('aria-label', 'Map distance scale in miles');
-    this.update = () => {
-      const canvas = this.map.getCanvas();
-      const y = canvas.clientHeight / 2;
-      const x = canvas.clientWidth / 2;
-      let left;
-      let right;
-      try {
-        left = this.map.unproject([x - this.maxWidth / 2, y]);
-        right = this.map.unproject([x + this.maxWidth / 2, y]);
-      } catch {
-        return;
-      }
-      if (!left || !right) return;
-      const maxMiles = left.distanceTo(right) / 1609.344;
-      if (!Number.isFinite(maxMiles) || maxMiles <= 0) return;
-      const magnitude = 10 ** Math.floor(Math.log10(maxMiles));
-      const normalized = maxMiles / magnitude;
-      const niceMiles = (normalized >= 5 ? 5 : normalized >= 2 ? 2 : 1) * magnitude;
-      this.container.style.width = `${this.maxWidth * niceMiles / maxMiles}px`;
-      this.container.textContent = `${Number(niceMiles.toPrecision(3))} mi`;
-      this.container.title = `${niceMiles} miles`;
-    };
-    this.map.on('move', this.update);
-    this.map.on('resize', this.update);
-    this.update();
-    return this.container;
-  }
-  onRemove() {
-    this.map.off('move', this.update);
-    this.map.off('resize', this.update);
-    this.container.remove();
-    this.map = undefined;
-  }
-}
-map.addControl(new GoogleStreetViewControl(), 'top-left');
-map.addControl(new CardinalCompassControl(), 'top-right');
-map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left');
-map.addControl(new MilesScaleControl(), 'bottom-left');
-
-class DistanceMeasureControl {
-  constructor() {
-    this.start = null;
-    this.end = null;
-    this.active = false;
-    this.preview = null;
-  }
-  onAdd(controlMap) {
-    this.map = controlMap;
-    this.container = document.createElement('div');
-    this.container.className = 'maplibregl-ctrl distance-measure-control';
-    this.container.innerHTML = '<button type="button" class="distance-measure-toggle" aria-pressed="false" aria-label="Measure a distance" title="Measure a distance"><span aria-hidden="true">↔</span><b>Measure</b></button><button type="button" class="distance-measure-clear" aria-label="Clear measurement" title="Clear measurement" hidden>×</button><output aria-live="polite" hidden></output>';
-    this.toggleButton = this.container.querySelector('.distance-measure-toggle');
-    this.clearButton = this.container.querySelector('.distance-measure-clear');
-    this.output = this.container.querySelector('output');
-    this.toggleButton.addEventListener('click', () => this.toggle());
-    this.clearButton.addEventListener('click', () => this.clear());
-    this.onMapClick = event => this.handleClick(event);
-    this.onMouseMove = event => this.handleMove(event);
-    this.map.on('click', this.onMapClick);
-    this.map.on('mousemove', this.onMouseMove);
-    return this.container;
-  }
-  onRemove() {
-    this.map.off('click', this.onMapClick);
-    this.map.off('mousemove', this.onMouseMove);
-    this.container.remove();
-    this.map = undefined;
-  }
-  isActive() { return this.active; }
-  toggle() {
-    if (this.active) this.clear();
-    else {
-      this.active = true;
-      this.map.doubleClickZoom.disable();
-      this.updateUi('Click the map to place the first point.');
-      this.map.getCanvas().style.cursor = 'crosshair';
-    }
-  }
-  clear() {
-    this.start = null;
-    this.end = null;
-    this.preview = null;
-    this.active = false;
-    this.map.doubleClickZoom.enable();
-    this.map.getCanvas().style.cursor = '';
-    this.updateData();
-    this.updateUi();
-  }
-  handleClick(event) {
-    if (!this.active) return;
-    if (!this.start || this.end) {
-      this.start = event.lngLat;
-      this.end = null;
-      this.preview = null;
-      this.updateData();
-      this.updateUi('Move the pointer and click to place the second point.');
-      return;
-    }
-    this.end = event.lngLat;
-    this.preview = null;
-    this.updateData();
-    this.updateUi(this.formatDistance(this.start.distanceTo(this.end)));
-  }
-  handleMove(event) {
-    if (!this.active || !this.start || this.end) return;
-    this.preview = event.lngLat;
-    this.updateData();
-    this.updateUi(this.formatDistance(this.start.distanceTo(this.preview)));
-  }
-  formatDistance(meters) {
-    const feet = meters * 3.280839895;
-    const miles = meters / 1609.344;
-    return `${Math.round(feet).toLocaleString()} ft (${miles.toFixed(miles < 10 ? 3 : 2)} mi)`;
-  }
-  updateUi(message = '') {
-    const measuring = this.active;
-    this.toggleButton.classList.toggle('active', measuring);
-    this.toggleButton.setAttribute('aria-pressed', String(measuring));
-    this.toggleButton.title = measuring ? 'Stop measuring' : 'Measure a distance';
-    this.toggleButton.setAttribute('aria-label', this.toggleButton.title);
-    this.clearButton.hidden = !this.start;
-    this.output.hidden = !message;
-    this.output.textContent = message;
-  }
-  updateData() {
-    const end = this.end || this.preview;
-    const features = this.start && end ? [{ type: 'Feature', geometry: { type: 'LineString', coordinates: [[this.start.lng, this.start.lat], [end.lng, end.lat]] }, properties: {} }] : [];
-    const points = [this.start, end].filter(Boolean).map(point => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [point.lng, point.lat] }, properties: {} }));
-    this.map.getSource('distance-measurement')?.setData({ type: 'FeatureCollection', features: [...features, ...points] });
-  }
-}
-const distanceMeasureControl = new DistanceMeasureControl();
-map.addControl(distanceMeasureControl, 'top-left');
+const distanceMeasureControl = installMapControls(map, maplibregl);
 
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
 }
 function money(value) { return value ? `$${Number(value).toLocaleString()}` : ''; }
-function compactNumber(value) {
-  const number = Number(value);
-  if (!Number.isFinite(number) || number <= 0) return '';
-  return new Intl.NumberFormat('en-US', { maximumSignificantDigits: 3, useGrouping: false }).format(number).toLowerCase();
-}
-function markerLabel(properties) {
-  const records = Array.isArray(properties.records) ? properties.records : [properties];
-  const record = records.find(item => item.kind === 'private' && enabledCategories.has(item.category));
-  if (!record) return '';
-  const price = Number(record.price);
-  const abbreviatedPrice = price >= 1e6 ? `${compactNumber(price / 1e6)}m` : price >= 1e3 ? `${compactNumber(price / 1e3)}k` : compactNumber(price);
-  const acres = compactNumber(record.acres);
-  return abbreviatedPrice && acres ? `${abbreviatedPrice}/${acres}` : '';
-}
-function categories(feature) { return new Set((feature.properties.records || []).map(record => record.category)); }
-function normalizeSearch(value) { return String(value || '').toUpperCase().replace(/[^A-Z0-9]+/g, ' ').trim(); }
-function recordMatchesSearch(record, query = searchQuery) {
-  if (!query) return true;
-  const searchable = [record.title, record.APN, record.mlsNumber, record.item, record.listingSource];
-  return normalizeSearch(searchable.filter(Boolean).join(' ')).includes(query);
-}
-function recordAcreage(record) {
-  const acres = Number(String(record.acres ?? '').replace(/,/g, ''));
-  return Number.isFinite(acres) ? acres : null;
-}
-function recordMatchesListingDate(record) {
-  return !listedSince || (typeof record.listingDate === 'string' && record.listingDate >= listedSince);
-}
-function recordIsVisible(record, fallbackAcres) {
-  const acres = recordAcreage(record) ?? recordAcreage({ acres: fallbackAcres });
-  return enabledCategories.has(record.category) && recordMatchesSearch(record) && recordMatchesListingDate(record) && (!minimumAcreage || (acres !== null && acres >= minimumAcreage));
-}
-function searchableFeature(feature) {
-  const apnMatches = searchQuery && normalizeSearch(feature.properties.APN).includes(searchQuery);
-  const records = (feature.properties.records || []).filter(record => enabledCategories.has(record.category) && (apnMatches || recordMatchesSearch(record)) && recordMatchesListingDate(record) && (!minimumAcreage || (recordAcreage(record) ?? recordAcreage({ acres: feature.properties.Acres })) >= minimumAcreage));
-  return records.length ? { ...feature, properties: { ...feature.properties, records } } : null;
-}
-function visible(feature) { return [...categories(feature)].some(value => enabledCategories.has(value)); }
-function firstCategory(feature) { return [...categories(feature)].find(value => enabledCategories.has(value)) || [...categories(feature)][0]; }
-function researchKey(apn) { return `shasta-land-research:${apn}`; }
-function parcelQuestUsageKey() { return `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`; }
+const listingData = createListingData(() => ({ saleData, enabledCategories, searchQuery, minimumAcreage, listedSince }));
+const { categories, featureCenter, filteredMappedListings, filteredUnmappedListings, normalizeSearch, saleGeoJson, salePointGeoJson, unmappedGeoJson } = listingData;
 
-function recordCard(record, extraLink = '') {
-  if (record.kind === 'private') {
-    const home = record.category === 'private-home';
-    const homeDetails = home ? [record.beds && `${record.beds} bd`, record.baths && `${record.baths} ba`, record.sqft && `${Number(record.sqft).toLocaleString()} sq ft`].filter(Boolean).join(' · ') : '';
-    return `<article class="record ${home ? 'home' : ''}"><strong>${home ? 'Private home' : 'Private land'}</strong><p>${escapeHtml(record.title || '')}</p><p>${money(record.price)} · ${escapeHtml(record.acres || '—')} acres${homeDetails ? ` · ${escapeHtml(homeDetails)}` : ''} · ${escapeHtml(record.status || '')}</p>${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open listing ↗</a>` : ''}${extraLink}</article>`;
-  }
-  return `<article class="record public"><strong>Public auction record</strong><p>${escapeHtml(record.minimumBid || 'No parsed minimum')} · ${escapeHtml(record.status || 'Unknown status')}</p><p>${escapeHtml(record.source || '')}</p>${record.sourceUrl ? `<a href="${escapeHtml(record.sourceUrl)}" target="_blank" rel="noopener">Source PDF ↗</a>` : ''}${extraLink}</article>`;
-}
-function salesHistorySection(records) {
-  if (!records.length) return `<section class="sales-history"><h4>Sales history</h4><p class="muted">No matched public sold-listing history was found for this APN.</p></section>`;
-  const rows = records.map(record => `<article><strong>${money(record.soldPrice)}</strong><span>${escapeHtml(new Date(`${record.soldDate}T12:00:00`).toLocaleDateString())}</span>${record.listPrice ? `<small>Listed at ${money(record.listPrice)}</small>` : ''}<small>${escapeHtml(record.title || '')} · MLS ${escapeHtml(record.mlsNumber || '—')}</small></article>`).join('');
-  return `<section class="sales-history"><h4>Sales history</h4>${rows}<p class="source-note">Public IDX sold-listing data matched to the county parcel by APN or exact county address. This is not a complete deed history.</p></section>`;
-}
-function researchControls(apn) {
-  if (!apn) return '';
-  const saved = JSON.parse(localStorage.getItem(researchKey(apn)) || '{}');
-  const opens = Number(localStorage.getItem(parcelQuestUsageKey()) || 0);
-  return `<section class="research"><h4>Private research</h4><div class="research-actions"><button type="button" data-copy-apn>Copy APN</button><button type="button" data-parcelquest>Research in ParcelQuest Lite</button></div><textarea data-research-notes rows="4" placeholder="Notes stored only in this browser">${escapeHtml(saved.notes || '')}</textarea><button type="button" data-save-research>Save private notes</button><p>${saved.updated ? `Saved ${escapeHtml(new Date(saved.updated).toLocaleString())}. ` : ''}Estimated ParcelQuest opens this month: ${opens} / 50.</p></section>`;
-}
-function bindResearchControls(apn) {
-  document.querySelector('[data-copy-apn]')?.addEventListener('click', () => navigator.clipboard.writeText(apn));
-  document.querySelector('[data-parcelquest]')?.addEventListener('click', () => { selectedResearchApn = apn; document.querySelector('#parcelquest-warning').showModal(); });
-  document.querySelector('[data-save-research]')?.addEventListener('click', () => {
-    const notes = document.querySelector('[data-research-notes]').value;
-    localStorage.setItem(researchKey(apn), JSON.stringify({ notes, updated: new Date().toISOString() }));
-    showParcelDetails({ APN: apn });
-  });
-}
-function matchingSale(apn) { return saleData?.features.find(feature => feature.properties.APN === apn); }
-function displayAddress(records) {
-  const title = records.find(record => record.kind === 'private')?.title || '';
-  return title.replace(/,\s*(?:CA|California)(?:\s+\d{5}(?:-\d{4})?)?\s*$/i, '').trim();
-}
-const ZONING_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/CDD_Zoning_Districts_Public/FeatureServer/0/query';
-const zoningByApn = new Map();
-let zoningRequestId = 0;
-function parcelQueryPoint(apn) {
-  const feature = matchingSale(apn);
-  if (feature) return featureCenter(feature);
-  const bbox = apnIndex[apn]?.bbox;
-  return bbox ? [(bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2] : null;
-}
-async function zoningForParcel(apn) {
-  if (zoningByApn.has(apn)) return zoningByApn.get(apn);
-  const point = parcelQueryPoint(apn);
-  if (!point) return '';
-  const url = new URL(ZONING_QUERY_URL);
-  url.search = new URLSearchParams({
-    f: 'json', geometry: point.join(','), geometryType: 'esriGeometryPoint', inSR: '4326',
-    spatialRel: 'esriSpatialRelIntersects', outFields: 'zoning,zoneclass', returnGeometry: 'false'
-  });
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`zoning query returned ${response.status}`);
-  const data = await response.json();
-  if (data.error) throw new Error(data.error.message || 'zoning query failed');
-  const zones = [...new Set((data.features || []).map(feature => feature.attributes?.zoning || feature.attributes?.zoneclass).filter(Boolean))];
-  const zoning = zones.join(' / ');
-  zoningByApn.set(apn, zoning);
-  return zoning;
-}
-async function updateParcelZoning(apn) {
-  const requestId = ++zoningRequestId;
-  const target = document.querySelector('[data-selected-zoning]');
-  if (!target || !apn) return;
-  try {
-    const zoning = await zoningForParcel(apn);
-    if (requestId === zoningRequestId && target.isConnected) target.textContent = ` · ${zoning || 'Not available'}`;
-  } catch (error) {
-    if (requestId === zoningRequestId && target.isConnected) target.textContent = ' · Unavailable';
-    console.warn(error);
-  }
-}
-function parcelDirectionsLink(apn) {
-  const point = parcelQueryPoint(apn);
-  if (!point) return '';
-  const url = new URL('https://www.google.com/maps/dir/');
-  url.search = new URLSearchParams({
-    api: '1', origin: DIRECTIONS_ORIGIN, destination: `${point[1]},${point[0]}`, travelmode: 'driving'
-  });
-  return `<a class="directions-link" href="${escapeHtml(url.href)}" target="_blank" rel="noopener noreferrer">Directions from Mt. Shasta City Park ↗</a>`;
-}
-function showParcelDetails(properties, saleFeature = matchingSale(properties.APN)) {
-  const p = { ...(saleFeature?.properties || {}), ...properties };
-  const records = saleFeature?.properties.records || p.records || [];
-  const salesHistory = saleFeature?.properties.salesHistory || p.salesHistory || [];
-  const acres = p.Acres ?? apnIndex[p.APN]?.acres;
-  const address = displayAddress(records);
-  const directions = parcelDirectionsLink(p.APN);
-  const recordCards = records.map((record, index) => recordCard(record, index === 0 ? directions : '')).join('');
-  document.querySelector('#details').innerHTML = `<h3>${escapeHtml(address || 'Parcel')}</h3><p class="meta">${escapeHtml(acres || '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${recordCards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${salesHistorySection(salesHistory)}${researchControls(p.APN)}`;
-  updateParcelZoning(p.APN);
-  bindResearchControls(p.APN);
-}
-function updateSelectedParcelUrl(apn) {
-  const url = new URL(window.location.href);
-  if (apn) url.searchParams.set(PARCEL_URL_PARAM, apn);
-  else url.searchParams.delete(PARCEL_URL_PARAM);
-  window.history.replaceState(window.history.state, '', url);
-}
+function parcelQuestUsageKey() { return `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`; }
+const parcelDetails = createParcelDetails({
+  detailsElement: document.querySelector('#details'),
+  directionsOrigin: DIRECTIONS_ORIGIN,
+  featureCenter,
+  getApnIndex: () => apnIndex,
+  getSaleData: () => saleData,
+  onParcelQuest: apn => { selectedResearchApn = apn; document.querySelector('#parcelquest-warning').showModal(); },
+  onSaveResearch: apn => showParcelDetails({ APN: apn })
+});
+const { recordCard, showParcelDetails } = parcelDetails;
+
+function updateSelectedParcelUrl(apn) { updateUrlParameter(PARCEL_URL_PARAM, apn); }
 function setSelectedApn(apn, { updateUrl = true } = {}) {
   const nextApn = apn || '';
   if (selectedApn && map.getSource('parcels')) {
@@ -545,67 +176,6 @@ function restoreInitialSelectedParcel() {
   initialParcelRestored = true;
   setSelectedApn(initialSelectedApn, { updateUrl: false });
   showParcelDetails({ APN: initialSelectedApn, Acres: item.acres });
-}
-function filteredMappedListings() {
-  return (saleData?.features || []).map(searchableFeature).filter(Boolean);
-}
-function filteredUnmappedListings() {
-  return (saleData?.unmappedListings || []).filter(record => recordIsVisible(record));
-}
-function saleGeoJson() {
-  return {
-    type: 'FeatureCollection',
-    features: filteredMappedListings().map(feature => ({ ...feature, properties: { ...feature.properties, displayCategory: firstCategory(feature) } }))
-  };
-}
-function featureCenter(feature) {
-  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-  const collect = value => {
-    if (typeof value?.[0] === 'number') {
-      minX = Math.min(minX, value[0]); maxX = Math.max(maxX, value[0]);
-      minY = Math.min(minY, value[1]); maxY = Math.max(maxY, value[1]);
-    } else value?.forEach(collect);
-  };
-  collect(feature.geometry?.coordinates);
-  return Number.isFinite(minX) ? [(minX + maxX) / 2, (minY + maxY) / 2] : null;
-}
-function salePointGeoJson() {
-  return {
-    type: 'FeatureCollection',
-    features: filteredMappedListings().map(feature => ({ type: 'Feature', geometry: { type: 'Point', coordinates: featureCenter(feature) }, properties: { ...feature.properties, displayCategory: firstCategory(feature), markerLabel: markerLabel(feature.properties) } })).filter(feature => feature.geometry.coordinates)
-  };
-}
-function separatedUnmappedListings() {
-  const groups = new Map();
-  for (const record of filteredUnmappedListings()) {
-    const key = record.latLng.map(value => Number(value).toFixed(6)).join(',');
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key).push(record);
-  }
-  return [...groups.values()].flatMap(records => records
-    .sort((a, b) => String(a.mlsNumber).localeCompare(String(b.mlsNumber)))
-    .map((record, index) => ({ record, index, count: records.length })));
-}
-function separatedCoordinate(latLng, index, count) {
-  if (count === 1) return [latLng[1], latLng[0]];
-  const angle = -Math.PI / 2 + index * Math.PI * 2 / count;
-  const radiusFeet = 100;
-  const latitudeFeetPerDegree = 364000;
-  const longitudeFeetPerDegree = latitudeFeetPerDegree * Math.cos(latLng[0] * Math.PI / 180);
-  return [
-    latLng[1] + Math.cos(angle) * radiusFeet / longitudeFeetPerDegree,
-    latLng[0] + Math.sin(angle) * radiusFeet / latitudeFeetPerDegree
-  ];
-}
-function unmappedGeoJson() {
-  return {
-    type: 'FeatureCollection',
-    features: separatedUnmappedListings().map(({ record, index, count }) => ({
-      type: 'Feature',
-      geometry: { type: 'Point', coordinates: separatedCoordinate(record.latLng, index, count) },
-      properties: { ...record, sharedLocationCount: count, markerLabel: markerLabel(record) }
-    }))
-  };
 }
 function updateSales() {
   map.getSource('sales')?.setData(saleGeoJson());
@@ -667,12 +237,7 @@ function toggleLayer(id, visibleValue) {
   for (const layerId of layerIds) if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibleValue ? 'visible' : 'none');
   document.querySelector(`[data-layer-key="${id}"]`)?.classList.toggle('visible', visibleValue);
 }
-function updateTerrainUrl(enabled) {
-  const url = new URL(window.location.href);
-  if (enabled) url.searchParams.set(TERRAIN_URL_PARAM, '1');
-  else url.searchParams.delete(TERRAIN_URL_PARAM);
-  window.history.replaceState(window.history.state, '', url);
-}
+function updateTerrainUrl(enabled) { updateUrlParameter(TERRAIN_URL_PARAM, enabled ? '1' : ''); }
 function applyTerrain(enabled, { updateUrl = true, animate = true } = {}) {
   terrainEnabled = enabled;
   map.setTerrain(enabled ? { source: 'terrain', exaggeration: 1.5 } : null);
@@ -702,57 +267,6 @@ map.on('moveend', () => {
   map.once('moveend', () => { recoveringTerrainCamera = false; });
 });
 
-function initializeMobileSheet() {
-  const panel = document.querySelector('.panel');
-  const handle = document.querySelector('.sheet-handle');
-  const mobile = window.matchMedia('(max-width: 760px)');
-  let startY = 0;
-  let startOffset = 0;
-  let currentOffset = 0;
-  let dragged = false;
-
-  const collapsedOffset = () => {
-    const peek = parseFloat(getComputedStyle(panel).getPropertyValue('--mobile-sheet-peek')) || 132;
-    return Math.max(0, panel.offsetHeight - peek);
-  };
-  const setOpen = open => {
-    panel.classList.toggle('sheet-open', open);
-    panel.classList.remove('sheet-dragging');
-    panel.style.transform = '';
-    handle.setAttribute('aria-expanded', String(open));
-    handle.setAttribute('aria-label', `${open ? 'Collapse' : 'Expand'} map information`);
-  };
-
-  handle.addEventListener('click', () => {
-    if (!dragged && mobile.matches) setOpen(!panel.classList.contains('sheet-open'));
-    dragged = false;
-  });
-  handle.addEventListener('pointerdown', event => {
-    if (!mobile.matches) return;
-    startY = event.clientY;
-    startOffset = panel.classList.contains('sheet-open') ? 0 : collapsedOffset();
-    currentOffset = startOffset;
-    dragged = false;
-    panel.classList.add('sheet-dragging');
-    handle.setPointerCapture(event.pointerId);
-  });
-  handle.addEventListener('pointermove', event => {
-    if (!handle.hasPointerCapture(event.pointerId)) return;
-    const delta = event.clientY - startY;
-    dragged ||= Math.abs(delta) > 5;
-    currentOffset = Math.max(0, Math.min(collapsedOffset(), startOffset + delta));
-    panel.style.transform = `translateY(${currentOffset}px)`;
-  });
-  const finishDrag = event => {
-    if (!handle.hasPointerCapture(event.pointerId)) return;
-    handle.releasePointerCapture(event.pointerId);
-    setOpen(currentOffset < collapsedOffset() / 2);
-    requestAnimationFrame(() => { dragged = false; });
-  };
-  handle.addEventListener('pointerup', finishDrag);
-  handle.addEventListener('pointercancel', finishDrag);
-  mobile.addEventListener('change', () => setOpen(false));
-}
 initializeMobileSheet();
 
 let layersInitialized = false;
@@ -760,200 +274,7 @@ function initializeMapLayers() {
   if (layersInitialized || !map.getStyle()) return;
   layersInitialized = true;
   try {
-    addPmtilesSource('public_land');
-  addPmtilesSource('fire_hazard');
-  addPmtilesSource('flood');
-  addPmtilesSource('soils');
-  addPmtilesSource('huc12');
-  addPmtilesSource('groundwater_basins');
-  addPmtilesSource('groundwater_wells');
-  addPmtilesSource('geology');
-  addPmtilesSource('zoning');
-  addPmtilesSource('parcels');
-  addPmtilesSource('roads');
-  addPmtilesSource('railroads');
-  addPmtilesSource('waterways');
-  addPmtilesSource('springs');
-  map.addSource('sales', { type: 'geojson', data: saleGeoJson() });
-  map.addSource('sale-points', { type: 'geojson', data: salePointGeoJson() });
-  map.addSource('unmapped', { type: 'geojson', data: unmappedGeoJson() });
-  map.addSource('distance-measurement', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
-  map.addSource('topographic-contours', {
-    type: 'vector',
-    tiles: [contourDemSource.contourProtocolUrl({
-      multiplier: 3.28084,
-      thresholds: { 8: [1000, 5000], 10: [500, 2500], 12: [200, 1000], 14: [100, 500], 15: [50, 250] },
-      contourLayer: 'contours',
-      elevationKey: 'ele',
-      levelKey: 'level'
-    })],
-    maxzoom: 15
-  });
-
-  map.addLayer({
-    id: 'topographic-contours',
-    type: 'line',
-    source: 'topographic-contours',
-    'source-layer': 'contours',
-    minzoom: 8,
-    paint: {
-      'line-color': '#d9c79c',
-      'line-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.18, 12, 0.28, 16, 0.34],
-      'line-width': ['match', ['get', 'level'], 1, 0.85, 0.45]
-    }
-  });
-  map.addLayer({
-    id: 'topographic-contour-labels',
-    type: 'symbol',
-    source: 'topographic-contours',
-    'source-layer': 'contours',
-    minzoom: 10,
-    filter: ['>=', ['get', 'level'], 0],
-    layout: {
-      'symbol-placement': 'line',
-      'symbol-spacing': 350,
-      'text-field': ['concat', ['number-format', ['get', 'ele'], { 'max-fraction-digits': 0 }], ' ft'],
-      'text-font': ['Noto Sans Bold'],
-      'text-size': ['interpolate', ['linear'], ['zoom'], 10, 10, 14, 12],
-      'text-letter-spacing': 0.04,
-      'text-padding': 5,
-      'text-keep-upright': true,
-      'text-allow-overlap': true,
-      'text-ignore-placement': true
-    },
-    paint: {
-      'text-color': '#fff4d2',
-      'text-halo-color': 'rgba(32, 35, 28, 0.92)',
-      'text-halo-width': 2,
-      'text-halo-blur': 0.4
-    }
-  });
-  map.addLayer({ id: 'public-land', type: 'fill', source: 'public_land', 'source-layer': 'public_land', paint: { 'fill-color': '#4e9f54', 'fill-opacity': 0.38 } });
-  map.addLayer({ id: 'huc12-fill', type: 'fill', source: 'huc12', 'source-layer': 'huc12', minzoom: 7, layout: { visibility: 'none' }, paint: { 'fill-color': '#27b8ca', 'fill-opacity': 0.08 } });
-  map.addLayer({ id: 'huc12-lines', type: 'line', source: 'huc12', 'source-layer': 'huc12', minzoom: 7, layout: { visibility: 'none' }, paint: { 'line-color': '#44d7e8', 'line-opacity': 0.9, 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1, 12, 2.2] } });
-  map.addLayer({
-    id: 'huc12-labels', type: 'symbol', source: 'huc12', 'source-layer': 'huc12', minzoom: 9,
-    layout: { visibility: 'none', 'text-field': ['concat', ['coalesce', ['get', 'name'], 'Unnamed subwatershed'], '\nHUC ', ['get', 'huc12']], 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 9, 10, 13, 12], 'text-max-width': 16, 'text-padding': 8 },
-    paint: { 'text-color': '#d9fbff', 'text-halo-color': 'rgba(15, 37, 39, 0.92)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
-  });
-  map.addLayer({
-    id: 'groundwater-basins-fill', type: 'fill', source: 'groundwater_basins', 'source-layer': 'groundwater_basins', minzoom: 7,
-    layout: { visibility: 'none' }, paint: { 'fill-color': '#9e6eea', 'fill-opacity': 0.12 }
-  });
-  map.addLayer({
-    id: 'groundwater-basins-lines', type: 'line', source: 'groundwater_basins', 'source-layer': 'groundwater_basins', minzoom: 7,
-    layout: { visibility: 'none' }, paint: { 'line-color': '#b98cff', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.2, 13, 2.5], 'line-dasharray': [2, 1.5], 'line-opacity': 0.9 }
-  });
-  map.addLayer({
-    id: 'groundwater-basins-labels', type: 'symbol', source: 'groundwater_basins', 'source-layer': 'groundwater_basins', minzoom: 9,
-    layout: { visibility: 'none', 'text-field': ['coalesce', ['get', 'Basin_Subbasin_Name'], ['get', 'Basin_Name']], 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 9, 10, 13, 13], 'text-max-width': 14, 'text-padding': 8 },
-    paint: { 'text-color': '#dfc6ff', 'text-halo-color': 'rgba(35, 19, 58, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
-  });
-  map.addLayer({
-    id: 'groundwater-wells', type: 'circle', source: 'groundwater_wells', 'source-layer': 'groundwater_wells', minzoom: 7,
-    layout: { visibility: 'none' }, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 2.5, 12, 5], 'circle-color': ['step', ['coalesce', ['get', 'TotalCompletedDepth'], ['get', 'TotalDrillDepth'], 0], '#70e4ef', 100, '#4ac4e6', 250, '#4384de', 500, '#7651c7'], 'circle-stroke-color': '#f3fbff', 'circle-stroke-width': 0.8, 'circle-opacity': 0.78 }
-  });
-  map.addLayer({
-    id: 'geology', type: 'fill', source: 'geology', 'source-layer': 'geology', minzoom: 7,
-    layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'material_class'], 'Unconsolidated deposits', '#e7d28a', 'Volcanic rock', '#bd7c61', 'Intrusive igneous rock', '#ad8bd0', 'Metamorphic rock', '#729f83', 'Sedimentary rock', '#be9d62', '#9a9a9a'], 'fill-opacity': 0.38, 'fill-outline-color': 'rgba(45, 38, 30, 0.68)' }
-  });
-  map.addLayer({ id: 'soils', type: 'fill', source: 'soils', 'source-layer': 'soils', minzoom: 9, layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'drclassdcd'], 'Very poorly drained', '#4f78a8', 'Poorly drained', '#6b94b7', 'Somewhat poorly drained', '#87adbf', 'Moderately well drained', '#b9a46b', 'Well drained', '#a97a45', 'Somewhat excessively drained', '#c48d54', 'Excessively drained', '#d5a767', '#9b8064'], 'fill-opacity': 0.34, 'fill-outline-color': 'rgba(69, 45, 25, 0.7)' } });
-  map.addLayer({ id: 'flood', type: 'fill', source: 'flood', 'source-layer': 'flood', layout: { visibility: 'none' }, paint: { 'fill-color': ['case', ['==', ['get', 'SFHA_TF'], 'T'], '#00c5ff', ['all', ['==', ['get', 'FLD_ZONE'], 'X'], ['match', ['get', 'ZONE_SUBTY'], '0.2 PCT ANNUAL CHANCE FLOOD HAZARD', true, '0.2 PERCENT ANNUAL CHANCE FLOOD HAZARD', true, false]], '#75d5ec', ['==', ['get', 'FLD_ZONE'], 'D'], '#e8d15c', '#3db7de'], 'fill-opacity': 0.38, 'fill-outline-color': 'rgba(0, 104, 160, 0.8)' } });
-  map.addLayer({ id: 'fire-hazard', type: 'fill', source: 'fire_hazard', 'source-layer': 'fire_hazard', layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'HAZ_CLASS'], 'Very High', '#d73027', 'High', '#fc8d59', 'Moderate', '#fee08b', '#f5a623'], 'fill-opacity': 0.3 } });
-  map.addLayer({ id: 'zoning-fill', type: 'fill', source: 'zoning', 'source-layer': 'zoning', minzoom: 10.5, layout: { visibility: 'none' }, paint: { 'fill-color': ZONING_FILL_COLOR, 'fill-opacity': 0.65 } });
-  map.addLayer({ id: 'zoning-lines', type: 'line', source: 'zoning', 'source-layer': 'zoning', minzoom: 10.5, layout: { visibility: 'none' }, paint: { 'line-color': '#6e6e6e', 'line-width': ['interpolate', ['linear'], ['zoom'], 10.5, 0.5, 15, 1.2], 'line-opacity': 0.8 } });
-  map.addLayer({ id: 'parcel-fill', type: 'fill', source: 'parcels', 'source-layer': 'parcels', minzoom: 8, paint: { 'fill-color': '#fff', 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.01, 13, 0.045] } });
-  map.addLayer({ id: 'parcel-lines', type: 'line', source: 'parcels', 'source-layer': 'parcels', minzoom: 8, paint: { 'line-color': '#aeb4b7', 'line-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 13, 0.85], 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 15, 1.8] } });
-  map.addLayer({
-    id: 'waterways-casing', type: 'line', source: 'waterways', 'source-layer': 'waterways', minzoom: 7,
-    paint: { 'line-color': 'rgba(6, 31, 58, 0.78)', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 2.3, 14, 5.2], 'line-opacity': ['match', ['get', 'fcode'], 46000, 0.9, 46006, 0.9, 0.5] }
-  });
-  map.addLayer({
-    id: 'waterways', type: 'line', source: 'waterways', 'source-layer': 'waterways', minzoom: 7,
-    paint: {
-      'line-color': ['match', ['get', 'fcode'], 46000, '#38a8ff', 46006, '#38a8ff', '#6ca8cf'],
-      'line-width': ['interpolate', ['linear'], ['zoom'], 7, ['match', ['get', 'fcode'], 46006, 1.4, 46000, 1.4, 0.7], 14, ['match', ['get', 'fcode'], 46006, 3.2, 46000, 3.2, 1.35]],
-      'line-opacity': ['match', ['get', 'fcode'], 46000, 0.95, 46006, 0.95, 0.7],
-      'line-dasharray': ['match', ['get', 'fcode'], 46003, ['literal', [2.5, 2]], 46007, ['literal', [1, 2]], ['literal', [1, 0]]]
-    }
-  });
-  map.addLayer({
-    id: 'springs', type: 'circle', source: 'springs', 'source-layer': 'springs', minzoom: 9,
-    layout: { visibility: 'visible' }, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 9, 2.5, 14, 5], 'circle-color': '#9cf4ff', 'circle-stroke-color': '#07536b', 'circle-stroke-width': 1.1, 'circle-opacity': 0.9 }
-  });
-  map.addLayer({
-    id: 'waterway-labels', type: 'symbol', source: 'waterways', 'source-layer': 'waterways', minzoom: 10,
-    filter: ['all', ['has', 'gnis_name'], ['!=', ['get', 'gnis_name'], '']],
-    layout: {
-      'symbol-placement': 'line', 'symbol-spacing': 400, 'text-field': ['get', 'gnis_name'],
-      'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 10, 10, 14, 12],
-      'text-letter-spacing': 0.03, 'text-offset': [0, 1], 'text-padding': 4, 'text-keep-upright': true
-    },
-    paint: { 'text-color': '#78c6ff', 'text-halo-color': 'rgba(6, 24, 43, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
-  });
-  map.addLayer({ id: 'roads', type: 'line', source: 'roads', 'source-layer': 'roads', minzoom: 9, paint: { 'line-color': '#f8d37c', 'line-width': ['interpolate', ['linear'], ['zoom'], 9, 0.7, 15, 3], 'line-opacity': 0.9 } });
-  map.addLayer({
-    id: 'road-labels',
-    type: 'symbol',
-    source: 'roads',
-    'source-layer': 'roads',
-    minzoom: 11,
-    filter: ['all', ['has', 'ROADNAME'], ['!=', ['get', 'ROADNAME'], '']],
-    layout: {
-      'symbol-placement': 'line',
-      'symbol-spacing': 300,
-      'text-field': ['get', 'ROADNAME'],
-      'text-font': ['Noto Sans Bold'],
-      'text-size': ['interpolate', ['linear'], ['zoom'], 11, 10, 15, 13],
-      'text-letter-spacing': 0.02,
-      'text-max-angle': 35,
-      'text-padding': 3,
-      'text-keep-upright': true
-    },
-    paint: {
-      'text-color': '#fff7dc',
-      'text-halo-color': 'rgba(35, 31, 21, 0.92)',
-      'text-halo-width': 2,
-      'text-halo-blur': 0.4
-    }
-  });
-  map.addLayer({
-    id: 'railroad-casing', type: 'line', source: 'railroads', 'source-layer': 'railroads', minzoom: 7,
-    layout: { 'line-cap': 'round', 'line-join': 'round' },
-    paint: { 'line-color': 'rgba(255, 255, 255, 0.9)', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 2.8, 14, 6.5] }
-  });
-  map.addLayer({
-    id: 'railroads', type: 'line', source: 'railroads', 'source-layer': 'railroads', minzoom: 7,
-    layout: { 'line-cap': 'round', 'line-join': 'round' },
-    paint: { 'line-color': '#e53935', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.5, 14, 3.5] }
-  });
-  map.addLayer({
-    id: 'railroad-ties', type: 'line', source: 'railroads', 'source-layer': 'railroads', minzoom: 10,
-    layout: { 'line-cap': 'butt', 'line-join': 'round' },
-    paint: { 'line-color': '#681616', 'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1.4, 14, 2.2], 'line-dasharray': [0.5, 2.5] }
-  });
-  map.addLayer({
-    id: 'railroad-labels', type: 'symbol', source: 'railroads', 'source-layer': 'railroads', minzoom: 10,
-    filter: ['any', ['has', 'SUBDIV'], ['has', 'BRANCH'], ['has', 'RROWNER1']],
-    layout: {
-      'symbol-placement': 'line', 'symbol-spacing': 500,
-      'text-field': ['coalesce', ['get', 'SUBDIV'], ['get', 'BRANCH'], ['get', 'RROWNER1']],
-      'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 10, 10, 14, 12],
-      'text-letter-spacing': 0.04, 'text-offset': [0, 1.1], 'text-padding': 4, 'text-keep-upright': true
-    },
-    paint: { 'text-color': '#ff6b67', 'text-halo-color': 'rgba(25, 16, 16, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
-  });
-  map.addLayer({ id: 'sale-fill', type: 'fill', source: 'sales', paint: { 'fill-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'fill-opacity': 0.42 } });
-  map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });
-  map.addLayer({ id: 'sale-markers', type: 'circle', source: 'sale-points', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.95, 'circle-pitch-alignment': 'map' } });
-  map.addLayer({ id: 'sale-marker-labels', type: 'symbol', source: 'sale-points', filter: ['!=', ['get', 'markerLabel'], ''], layout: { 'text-field': ['get', 'markerLabel'], 'text-font': ['Noto Sans Bold'], 'text-size': 12, 'text-offset': [0, -1.35], 'text-anchor': 'bottom', 'text-padding': 3, 'text-pitch-alignment': 'viewport' }, paint: { 'text-color': '#fff', 'text-halo-color': 'rgba(20, 25, 22, 0.9)', 'text-halo-width': 2, 'text-halo-blur': 0.4 } });
-  map.addLayer({ id: 'distance-measurement-line-outline', type: 'line', source: 'distance-measurement', filter: ['==', ['geometry-type'], 'LineString'], paint: { 'line-color': 'rgba(255,255,255,.95)', 'line-width': 6, 'line-opacity': .95 } });
-  map.addLayer({ id: 'distance-measurement-line', type: 'line', source: 'distance-measurement', filter: ['==', ['geometry-type'], 'LineString'], paint: { 'line-color': '#126246', 'line-width': 3, 'line-dasharray': [1.5, 1.2] } });
-  map.addLayer({ id: 'distance-measurement-points', type: 'circle', source: 'distance-measurement', filter: ['==', ['geometry-type'], 'Point'], paint: { 'circle-radius': 6, 'circle-color': '#126246', 'circle-stroke-color': '#fff', 'circle-stroke-width': 2 } });
-  map.addLayer({ id: 'parcel-selected', type: 'line', source: 'parcels', 'source-layer': 'parcels', paint: { 'line-color': '#fff', 'line-width': 5, 'line-blur': 0.3, 'line-opacity': ['case', ['boolean', ['feature-state', 'selected'], false], 1, 0] } });
-  map.addLayer({ id: 'unmapped-markers', type: 'circle', source: 'unmapped', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'category'], 'private-home', COLORS['private-home'], COLORS['private-land']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.9, 'circle-pitch-alignment': 'map' } });
-  map.addLayer({ id: 'unmapped-marker-labels', type: 'symbol', source: 'unmapped', filter: ['!=', ['get', 'markerLabel'], ''], layout: { 'text-field': ['get', 'markerLabel'], 'text-font': ['Noto Sans Bold'], 'text-size': 12, 'text-offset': [0, -1.35], 'text-anchor': 'bottom', 'text-padding': 3, 'text-pitch-alignment': 'viewport' }, paint: { 'text-color': '#fff', 'text-halo-color': 'rgba(20, 25, 22, 0.9)', 'text-halo-width': 2, 'text-halo-blur': 0.4 } });
-
+    installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, saleGeoJson, salePointGeoJson, unmappedGeoJson });
   map.on('click', event => {
     if (distanceMeasureControl.isActive()) return;
     const radius = 9;
@@ -1033,48 +354,12 @@ map.once('style.load', () => {
   if (initialTerrainEnabled) applyTerrain(true, { updateUrl: false, animate: false });
 });
 
-function fitSearchResults(mapped, unmapped) {
-  const points = [
-    ...mapped.map(featureCenter),
-    ...unmapped.map(record => [record.latLng?.[1], record.latLng?.[0]])
-  ].filter(point => point?.every(Number.isFinite));
-  if (!points.length) return;
-  if (points.length === 1) {
-    map.easeTo({ center: points[0], zoom: 15 });
-    return;
-  }
-  const bounds = points.reduce((value, point) => value.extend(point), new maplibregl.LngLatBounds(points[0], points[0]));
-  map.fitBounds(bounds, { padding: 90, maxZoom: 15 });
-}
-function findListings() {
-  const input = document.querySelector('#search').value.trim();
-  const normalized = normalizeSearch(input);
-  const compact = normalized.replaceAll(' ', '');
-  const apn = Object.keys(apnIndex).find(key => normalizeSearch(key).replaceAll(' ', '') === compact);
-  if (input && apn) {
-    searchQuery = '';
-    updateSales();
-    const item = apnIndex[apn];
-    setSelectedApn(apn);
-    map.fitBounds([[item.bbox[0], item.bbox[1]], [item.bbox[2], item.bbox[3]]], { padding: 90, maxZoom: 16 });
-    showParcelDetails({ APN: apn, Acres: item.acres });
-    return;
-  }
-
-  searchQuery = normalized;
-  updateSales();
-  const mapped = filteredMappedListings();
-  const unmapped = filteredUnmappedListings();
-  const count = mapped.length + unmapped.length;
-  if (!input) {
-    document.querySelector('#details').innerHTML = '<h3>No parcel selected</h3><p class="meta">Showing all listings and auctions.</p>';
-  } else if (!count) {
-    document.querySelector('#details').innerHTML = `<p class="muted">No listing matched “${escapeHtml(input)}”.</p>`;
-  } else {
-    document.querySelector('#details').innerHTML = `<h3>${count} matching ${count === 1 ? 'listing' : 'listings'}</h3><p class="meta">Showing results containing “${escapeHtml(input)}”. Clear the search to show everything.</p>`;
-    fitSearchResults(mapped, unmapped);
-  }
-}
+const findListings = createSearchController({
+  map, maplibregl, detailsElement: document.querySelector('#details'), featureCenter,
+  filteredMappedListings, filteredUnmappedListings, normalizeSearch, getApnIndex: () => apnIndex,
+  setSearchQuery: value => { searchQuery = value; }, updateSales,
+  selectApn: apn => setSelectedApn(apn), showParcelDetails
+});
 
 document.querySelector('#terrain-toggle').addEventListener('click', () => toggleTerrain());
 document.querySelector('#search-button').addEventListener('click', findListings);

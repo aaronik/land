@@ -1,0 +1,68 @@
+'use strict';
+
+const ZONING_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/CDD_Zoning_Districts_Public/FeatureServer/0/query';
+
+export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, onParcelQuest, onSaveResearch }) {
+  const zoningByApn = new Map();
+  let zoningRequestId = 0;
+  const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
+  const money = value => value ? `$${Number(value).toLocaleString()}` : '';
+  const matchingSale = apn => getSaleData()?.features.find(feature => feature.properties.APN === apn);
+  const parcelQueryPoint = apn => {
+    const feature = matchingSale(apn);
+    if (feature) return featureCenter(feature);
+    const bbox = getApnIndex()[apn]?.bbox;
+    return bbox ? [(bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2] : null;
+  };
+  const displayAddress = records => (records.find(record => record.kind === 'private')?.title || '').replace(/,\s*(?:CA|California)(?:\s+\d{5}(?:-\d{4})?)?\s*$/i, '').trim();
+  const recordCard = (record, extraLink = '') => {
+    if (record.kind === 'private') {
+      const home = record.category === 'private-home';
+      const homeDetails = home ? [record.beds && `${record.beds} bd`, record.baths && `${record.baths} ba`, record.sqft && `${Number(record.sqft).toLocaleString()} sq ft`].filter(Boolean).join(' · ') : '';
+      return `<article class="record ${home ? 'home' : ''}"><strong>${home ? 'Private home' : 'Private land'}</strong><p>${escapeHtml(record.title || '')}</p><p>${money(record.price)} · ${escapeHtml(record.acres || '—')} acres${homeDetails ? ` · ${escapeHtml(homeDetails)}` : ''} · ${escapeHtml(record.status || '')}</p>${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open listing ↗</a>` : ''}${extraLink}</article>`;
+    }
+    return `<article class="record public"><strong>Public auction record</strong><p>${escapeHtml(record.minimumBid || 'No parsed minimum')} · ${escapeHtml(record.status || 'Unknown status')}</p><p>${escapeHtml(record.source || '')}</p>${record.sourceUrl ? `<a href="${escapeHtml(record.sourceUrl)}" target="_blank" rel="noopener">Source PDF ↗</a>` : ''}${extraLink}</article>`;
+  };
+  const salesHistorySection = records => !records.length ? '<section class="sales-history"><h4>Sales history</h4><p class="muted">No matched public sold-listing history was found for this APN.</p></section>' : `<section class="sales-history"><h4>Sales history</h4>${records.map(record => `<article><strong>${money(record.soldPrice)}</strong><span>${escapeHtml(new Date(`${record.soldDate}T12:00:00`).toLocaleDateString())}</span>${record.listPrice ? `<small>Listed at ${money(record.listPrice)}</small>` : ''}<small>${escapeHtml(record.title || '')} · MLS ${escapeHtml(record.mlsNumber || '—')}</small></article>`).join('')}<p class="source-note">Public IDX sold-listing data matched to the county parcel by APN or exact county address. This is not a complete deed history.</p></section>`;
+  const researchKey = apn => `shasta-land-research:${apn}`;
+  const parcelQuestUsageKey = () => `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`;
+  const researchControls = apn => {
+    if (!apn) return '';
+    const saved = JSON.parse(localStorage.getItem(researchKey(apn)) || '{}');
+    const opens = Number(localStorage.getItem(parcelQuestUsageKey()) || 0);
+    return `<section class="research"><h4>Private research</h4><div class="research-actions"><button type="button" data-copy-apn>Copy APN</button><button type="button" data-parcelquest>Research in ParcelQuest Lite</button></div><textarea data-research-notes rows="4" placeholder="Notes stored only in this browser">${escapeHtml(saved.notes || '')}</textarea><button type="button" data-save-research>Save private notes</button><p>${saved.updated ? `Saved ${escapeHtml(new Date(saved.updated).toLocaleString())}. ` : ''}Estimated ParcelQuest opens this month: ${opens} / 50.</p></section>`;
+  };
+  const zoningForParcel = async apn => {
+    if (zoningByApn.has(apn)) return zoningByApn.get(apn);
+    const point = parcelQueryPoint(apn); if (!point) return '';
+    const url = new URL(ZONING_QUERY_URL);
+    url.search = new URLSearchParams({ f: 'json', geometry: point.join(','), geometryType: 'esriGeometryPoint', inSR: '4326', spatialRel: 'esriSpatialRelIntersects', outFields: 'zoning,zoneclass', returnGeometry: 'false' });
+    const response = await fetch(url); if (!response.ok) throw new Error(`zoning query returned ${response.status}`);
+    const data = await response.json(); if (data.error) throw new Error(data.error.message || 'zoning query failed');
+    const zoning = [...new Set((data.features || []).map(feature => feature.attributes?.zoning || feature.attributes?.zoneclass).filter(Boolean))].join(' / ');
+    zoningByApn.set(apn, zoning); return zoning;
+  };
+  const updateParcelZoning = async apn => {
+    const requestId = ++zoningRequestId, target = detailsElement.querySelector('[data-selected-zoning]'); if (!target || !apn) return;
+    try { const zoning = await zoningForParcel(apn); if (requestId === zoningRequestId && target.isConnected) target.textContent = ` · ${zoning || 'Not available'}`; }
+    catch (error) { if (requestId === zoningRequestId && target.isConnected) target.textContent = ' · Unavailable'; console.warn(error); }
+  };
+  const parcelDirectionsLink = apn => {
+    const point = parcelQueryPoint(apn); if (!point) return '';
+    const url = new URL('https://www.google.com/maps/dir/');
+    url.search = new URLSearchParams({ api: '1', origin: directionsOrigin, destination: `${point[1]},${point[0]}`, travelmode: 'driving' });
+    return `<a class="directions-link" href="${escapeHtml(url.href)}" target="_blank" rel="noopener noreferrer">Directions from Mt. Shasta City Park ↗</a>`;
+  };
+  const bindResearchControls = apn => {
+    detailsElement.querySelector('[data-copy-apn]')?.addEventListener('click', () => navigator.clipboard.writeText(apn));
+    detailsElement.querySelector('[data-parcelquest]')?.addEventListener('click', () => onParcelQuest(apn));
+    detailsElement.querySelector('[data-save-research]')?.addEventListener('click', () => { localStorage.setItem(researchKey(apn), JSON.stringify({ notes: detailsElement.querySelector('[data-research-notes]').value, updated: new Date().toISOString() })); onSaveResearch(apn); });
+  };
+  const showParcelDetails = (properties, saleFeature = matchingSale(properties.APN)) => {
+    const p = { ...(saleFeature?.properties || {}), ...properties }, records = saleFeature?.properties.records || p.records || [], salesHistory = saleFeature?.properties.salesHistory || p.salesHistory || [];
+    const directions = parcelDirectionsLink(p.APN), cards = records.map((record, index) => recordCard(record, index === 0 ? directions : '')).join('');
+    detailsElement.innerHTML = `<h3>${escapeHtml(displayAddress(records) || 'Parcel')}</h3><p class="meta">${escapeHtml(p.Acres ?? getApnIndex()[p.APN]?.acres ?? '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${cards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${salesHistorySection(salesHistory)}${researchControls(p.APN)}`;
+    updateParcelZoning(p.APN); bindResearchControls(p.APN);
+  };
+  return { recordCard, showParcelDetails };
+}
