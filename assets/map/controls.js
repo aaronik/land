@@ -254,6 +254,8 @@ class DistanceMeasureControl {
     this.end = null;
     this.active = false;
     this.preview = null;
+    this.endpointDrag = null;
+    this.suppressMapClick = false;
   }
   onAdd(controlMap) {
     this.map = controlMap;
@@ -267,13 +269,38 @@ class DistanceMeasureControl {
     this.clearButton.addEventListener('click', () => this.clear());
     this.onMapClick = event => this.handleClick(event);
     this.onMouseMove = event => this.handleMove(event);
+    this.onEndpointPointerDown = event => this.startEndpointDrag(event);
+    this.onEndpointPointerMove = event => this.moveEndpointDrag(event);
+    this.onEndpointPointerUp = () => this.finishEndpointDrag();
     this.map.on('click', this.onMapClick);
     this.map.on('mousemove', this.onMouseMove);
+    this.map.on('mousedown', this.onEndpointPointerDown);
+    this.map.on('touchstart', this.onEndpointPointerDown);
+    this.map.on('mousemove', this.onEndpointPointerMove);
+    this.map.on('touchmove', this.onEndpointPointerMove);
+    this.map.on('mouseup', this.onEndpointPointerUp);
+    this.map.on('touchend', this.onEndpointPointerUp);
+    this.map.on('touchcancel', this.onEndpointPointerUp);
+    this.onDocumentPointerUp = () => this.finishEndpointDrag();
+    document.addEventListener('mouseup', this.onDocumentPointerUp, true);
+    document.addEventListener('touchend', this.onDocumentPointerUp, true);
+    document.addEventListener('touchcancel', this.onDocumentPointerUp, true);
     return this.container;
   }
   onRemove() {
+    this.finishEndpointDrag();
     this.map.off('click', this.onMapClick);
     this.map.off('mousemove', this.onMouseMove);
+    this.map.off('mousedown', this.onEndpointPointerDown);
+    this.map.off('touchstart', this.onEndpointPointerDown);
+    this.map.off('mousemove', this.onEndpointPointerMove);
+    this.map.off('touchmove', this.onEndpointPointerMove);
+    this.map.off('mouseup', this.onEndpointPointerUp);
+    this.map.off('touchend', this.onEndpointPointerUp);
+    this.map.off('touchcancel', this.onEndpointPointerUp);
+    document.removeEventListener('mouseup', this.onDocumentPointerUp, true);
+    document.removeEventListener('touchend', this.onDocumentPointerUp, true);
+    document.removeEventListener('touchcancel', this.onDocumentPointerUp, true);
     this.container.remove();
     this.map = undefined;
   }
@@ -304,7 +331,42 @@ class DistanceMeasureControl {
     this.updateData();
     this.updateUi();
   }
+  endpointAt(point) {
+    if (!this.map.getLayer('distance-measurement-points')) return null;
+    return this.map.queryRenderedFeatures(point, { layers: ['distance-measurement-points'] })[0] || null;
+  }
+  eventLngLat(event) { return event.lngLat || event.lngLats?.[0] || (event.point && this.map.unproject(event.point)); }
+  startEndpointDrag(event) {
+    if (this.active || !this.start || !this.end || !event.point) return;
+    const endpoint = this.endpointAt(event.point);
+    const index = Number(endpoint?.properties?.endpoint);
+    if (index !== 0 && index !== 1) return;
+    const dragPan = this.map.dragPan;
+    this.endpointDrag = { index, dragPanWasEnabled: dragPan?.isEnabled?.() };
+    dragPan?.disable();
+    event.preventDefault?.();
+    this.map.getCanvas().style.cursor = 'grabbing';
+  }
+  moveEndpointDrag(event) {
+    if (!this.endpointDrag) return;
+    const lngLat = this.eventLngLat(event);
+    if (!lngLat) return;
+    if (this.endpointDrag.index === 0) this.start = lngLat;
+    else this.end = lngLat;
+    this.updateData();
+    event.preventDefault?.();
+  }
+  finishEndpointDrag() {
+    if (!this.endpointDrag) return;
+    const drag = this.endpointDrag;
+    this.endpointDrag = null;
+    if (drag.dragPanWasEnabled) this.map?.dragPan?.enable();
+    this.suppressMapClick = true;
+    setTimeout(() => { this.suppressMapClick = false; }, 0);
+    if (this.map) this.map.getCanvas().style.cursor = 'grab';
+  }
   handleClick(event) {
+    if (this.suppressMapClick) { this.suppressMapClick = false; return; }
     if (!this.active) return;
     if (!this.start || this.end) {
       this.start = event.lngLat;
@@ -316,10 +378,18 @@ class DistanceMeasureControl {
     }
     this.end = event.lngLat;
     this.preview = null;
+    this.active = false;
+    this.map.doubleClickZoom.enable();
+    this.map.getCanvas().style.cursor = '';
     this.updateData();
     this.updateUi(this.formatMeasurement(this.start, this.end));
   }
   handleMove(event) {
+    if (this.endpointDrag) return;
+    if (!this.active && this.start && this.end) {
+      this.map.getCanvas().style.cursor = this.endpointAt(event.point) ? 'grab' : '';
+      return;
+    }
     if (!this.active || !this.start || this.end) return;
     this.preview = event.lngLat;
     this.updateData();
@@ -363,7 +433,7 @@ class DistanceMeasureControl {
       { type: 'Feature', geometry: { type: 'LineString', coordinates: [[this.start.lng, this.start.lat], [end.lng, end.lat]] }, properties: { kind: 'line' } },
       { type: 'Feature', geometry: { type: 'Point', coordinates: [(this.start.lng + end.lng) / 2, (this.start.lat + end.lat) / 2] }, properties: { kind: 'label', label: this.formatMeasurement(this.start, end) } }
     ] : [];
-    const points = [this.start, end].filter(Boolean).map(point => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [point.lng, point.lat] }, properties: { kind: 'point' } }));
+    const points = [this.start, end].filter(Boolean).map((point, endpoint) => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [point.lng, point.lat] }, properties: { kind: 'point', endpoint } }));
     this.map.getSource('distance-measurement')?.setData({ type: 'FeatureCollection', features: [...features, ...points] });
   }
 }
