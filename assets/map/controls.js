@@ -247,7 +247,6 @@ class DistanceMeasureControl {
 export function installMapControls(map, maplibregl) {
   map.addControl(new GoogleStreetViewControl(), 'top-left');
   map.addControl(new CardinalCompassControl(), 'top-right');
-  map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left');
   map.addControl(new MilesScaleControl(), 'bottom-left');
   const distanceMeasureControl = new DistanceMeasureControl();
   map.addControl(distanceMeasureControl, 'top-left');

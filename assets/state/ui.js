@@ -13,6 +13,7 @@ export function initializeMobileSheet({ panel = document.querySelector('.panel')
     handle.setAttribute('aria-expanded', String(open));
     handle.setAttribute('aria-label', `${open ? 'Collapse' : 'Expand'} map information`);
   };
+  setOpen(false);
   const isControl = target => {
     const control = target.closest('input, select, textarea, button, a, label, [role="button"]');
     return control && control !== handle;
