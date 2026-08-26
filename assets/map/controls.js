@@ -354,13 +354,16 @@ class DistanceMeasureControl {
     this.toggleButton.title = measuring ? 'Stop measuring' : 'Measure a distance';
     this.toggleButton.setAttribute('aria-label', this.toggleButton.title);
     this.clearButton.hidden = !this.start;
-    this.output.hidden = !message;
-    this.output.textContent = message;
+    this.output.hidden = true;
+    this.output.textContent = '';
   }
   updateData() {
     const end = this.end || this.preview;
-    const features = this.start && end ? [{ type: 'Feature', geometry: { type: 'LineString', coordinates: [[this.start.lng, this.start.lat], [end.lng, end.lat]] }, properties: {} }] : [];
-    const points = [this.start, end].filter(Boolean).map(point => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [point.lng, point.lat] }, properties: {} }));
+    const features = this.start && end ? [
+      { type: 'Feature', geometry: { type: 'LineString', coordinates: [[this.start.lng, this.start.lat], [end.lng, end.lat]] }, properties: { kind: 'line' } },
+      { type: 'Feature', geometry: { type: 'Point', coordinates: [(this.start.lng + end.lng) / 2, (this.start.lat + end.lat) / 2] }, properties: { kind: 'label', label: this.formatMeasurement(this.start, end) } }
+    ] : [];
+    const points = [this.start, end].filter(Boolean).map(point => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [point.lng, point.lat] }, properties: { kind: 'point' } }));
     this.map.getSource('distance-measurement')?.setData({ type: 'FeatureCollection', features: [...features, ...points] });
   }
 }
