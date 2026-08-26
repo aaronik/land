@@ -45,6 +45,7 @@ if (!failures.length) {
   if (!app.includes("url.searchParams.set('v', new URL(import.meta.url).pathname.split('/').pop())")) failures.push('PMTiles URLs are not versioned by the application bundle');
   const controls = fs.readFileSync(path.join(root, 'assets/map/controls.js'), 'utf8');
   if (!controls.includes('class MilesScaleControl') || !controls.includes("this.container.textContent = `${Number(niceMiles.toPrecision(3))} mi`")) failures.push('Miles-only map distance scale is missing');
+  if (!controls.includes('formatBearing(start, end)') || !controls.includes('${northSouth} ${degrees}°')) failures.push('Measure tool does not display a plat-style bearing');
   const vite = fs.readFileSync(path.join(root, 'vite.config.mjs'), 'utf8');
   for (const worker of ['maplibre-gl-worker.mjs', 'maplibre-gl-shared.mjs']) if (!vite.includes(worker)) failures.push(`production worker asset is missing: ${worker}`);
   if (!app.includes("...(id === 'parcels' ? { promoteId: 'APN' } : {})")) failures.push('Parcel APNs are not promoted to feature IDs');

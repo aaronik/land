@@ -214,13 +214,30 @@ class DistanceMeasureControl {
     this.end = event.lngLat;
     this.preview = null;
     this.updateData();
-    this.updateUi(this.formatDistance(this.start.distanceTo(this.end)));
+    this.updateUi(this.formatMeasurement(this.start, this.end));
   }
   handleMove(event) {
     if (!this.active || !this.start || this.end) return;
     this.preview = event.lngLat;
     this.updateData();
-    this.updateUi(this.formatDistance(this.start.distanceTo(this.preview)));
+    this.updateUi(this.formatMeasurement(this.start, this.preview));
+  }
+  formatMeasurement(start, end) {
+    return `${this.formatDistance(start.distanceTo(end))} · ${this.formatBearing(start, end)}`;
+  }
+  formatBearing(start, end) {
+    const radians = Math.PI / 180;
+    const lat1 = start.lat * radians, lat2 = end.lat * radians;
+    const deltaLng = (end.lng - start.lng) * radians;
+    const bearing = (Math.atan2(Math.sin(deltaLng) * Math.cos(lat2), Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(deltaLng)) / radians + 360) % 360;
+    const northSouth = bearing <= 90 || bearing >= 270 ? 'N' : 'S';
+    const eastWest = bearing <= 180 ? 'E' : 'W';
+    const angle = bearing <= 90 ? bearing : bearing <= 180 ? 180 - bearing : bearing <= 270 ? bearing - 180 : 360 - bearing;
+    const totalSeconds = Math.round(angle * 3600);
+    const degrees = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    return `${northSouth} ${degrees}° ${String(minutes).padStart(2, '0')}′ ${String(seconds).padStart(2, '0')}″ ${eastWest}`;
   }
   formatDistance(meters) {
     const feet = meters * 3.280839895;
