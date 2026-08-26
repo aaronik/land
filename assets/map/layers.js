@@ -23,6 +23,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   map.addSource('distance-measurement', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('coordinate-pin', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('polygon-drawings', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+  map.addSource('parcel-adjustment', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('topographic-contours', {
     type: 'vector',
     tiles: [contourDemSource.contourProtocolUrl({
@@ -221,6 +222,9 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   map.addLayer({ id: 'distance-measurement-line-outline', type: 'line', source: 'distance-measurement', filter: ['==', ['geometry-type'], 'LineString'], paint: { 'line-color': 'rgba(255,255,255,.95)', 'line-width': 6, 'line-opacity': .95 } });
   map.addLayer({ id: 'distance-measurement-line', type: 'line', source: 'distance-measurement', filter: ['==', ['geometry-type'], 'LineString'], paint: { 'line-color': '#126246', 'line-width': 3, 'line-dasharray': [1.5, 1.2] } });
   map.addLayer({ id: 'distance-measurement-points', type: 'circle', source: 'distance-measurement', filter: ['==', ['geometry-type'], 'Point'], paint: { 'circle-radius': 6, 'circle-color': '#126246', 'circle-stroke-color': '#fff', 'circle-stroke-width': 2 } });
+  map.addLayer({ id: 'parcel-adjustment-fill', type: 'fill', source: 'parcel-adjustment', paint: { 'fill-color': '#ffdc57', 'fill-opacity': 0.18 } });
+  map.addLayer({ id: 'parcel-adjustment-line', type: 'line', source: 'parcel-adjustment', paint: { 'line-color': '#ffdc57', 'line-width': 3, 'line-dasharray': [2, 1] } });
+  map.addLayer({ id: 'parcel-adjustment-handle', type: 'circle', source: 'parcel-adjustment', filter: ['==', ['get', 'kind'], 'rotate-handle'], paint: { 'circle-radius': 8, 'circle-color': '#ffdc57', 'circle-stroke-color': '#16231d', 'circle-stroke-width': 2 } });
   map.addLayer({ id: 'polygon-drawings-fill', type: 'fill', source: 'polygon-drawings', filter: ['==', ['get', 'kind'], 'area'], paint: { 'fill-color': '#5fc4e8', 'fill-opacity': ['case', ['get', 'draft'], 0.1, 0.16] } });
   map.addLayer({ id: 'polygon-drawings-edges-outline', type: 'line', source: 'polygon-drawings', filter: ['==', ['get', 'kind'], 'edge'], paint: { 'line-color': '#16231d', 'line-width': 5 } });
   map.addLayer({ id: 'polygon-drawings-edges', type: 'line', source: 'polygon-drawings', filter: ['==', ['get', 'kind'], 'edge'], paint: { 'line-color': '#5fc4e8', 'line-width': 3 } });

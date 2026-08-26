@@ -7,6 +7,7 @@ import { installMapControls } from './map/controls.js';
 import { createListingData } from './data/listings.js';
 import { createParcelDetails } from './ui/parcel-details.js';
 import { installMapSourcesAndLayers } from './map/layers.js';
+import { ParcelAdjustmentControl } from './map/parcel-adjustment.js';
 import { createSearchController, initializeMobileSheet } from './state/ui.js';
 import { updateUrlParameter } from './state/url.js';
 
@@ -245,6 +246,7 @@ geolocateButton?.addEventListener('click', () => {
   }
 });
 const { coordinatePinControl, distanceMeasureControl, polygonDrawControl } = installMapControls(map, maplibregl);
+const parcelAdjustmentControl = new ParcelAdjustmentControl(map);
 
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
@@ -266,6 +268,8 @@ const parcelDetails = createParcelDetails({
   getSaleData: () => saleData,
   onParcelQuest: apn => { selectedResearchApn = apn; document.querySelector('#parcelquest-warning').showModal(); },
   onSaveResearch: apn => showParcelDetails({ APN: apn }),
+  onAdjustParcel: async apn => { try { return await parcelAdjustmentControl.toggle(apn); } catch (error) { console.error(error); alert(error.message); return false; } },
+  isParcelAdjusted: apn => parcelAdjustmentControl.isActive(apn),
   onClose: clearSelectedParcel
 });
 const { recordCard, showParcelDetails } = parcelDetails;

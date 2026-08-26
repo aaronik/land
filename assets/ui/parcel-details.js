@@ -2,7 +2,7 @@
 
 const ZONING_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/CDD_Zoning_Districts_Public/FeatureServer/0/query';
 
-export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, onParcelQuest, onSaveResearch, onClose }) {
+export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, onParcelQuest, onSaveResearch, onAdjustParcel, isParcelAdjusted, onClose }) {
   const zoningByApn = new Map();
   let zoningRequestId = 0;
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
@@ -57,12 +57,13 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     detailsElement.querySelector('[data-copy-apn]')?.addEventListener('click', () => navigator.clipboard.writeText(apn));
     detailsElement.querySelector('[data-parcelquest]')?.addEventListener('click', () => onParcelQuest(apn));
     detailsElement.querySelector('[data-save-research]')?.addEventListener('click', () => { localStorage.setItem(researchKey(apn), JSON.stringify({ notes: detailsElement.querySelector('[data-research-notes]').value, updated: new Date().toISOString() })); onSaveResearch(apn); });
+    detailsElement.querySelector('[data-adjust-parcel]')?.addEventListener('click', async event => { const button = event.currentTarget; const active = await onAdjustParcel?.(apn); button.textContent = active ? 'Hide aligned outline' : 'Show aligned outline'; });
     detailsElement.querySelector('[data-close-parcel]')?.addEventListener('click', onClose);
   };
   const showParcelDetails = (properties, saleFeature = matchingSale(properties.APN)) => {
     const p = { ...(saleFeature?.properties || {}), ...properties }, records = saleFeature?.properties.records || p.records || [], salesHistory = saleFeature?.properties.salesHistory || p.salesHistory || [];
     const directions = parcelDirectionsLink(p.APN), cards = records.map((record, index) => recordCard(record, index === 0 ? directions : '')).join('');
-    detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta">${escapeHtml(p.Acres ?? getApnIndex()[p.APN]?.acres ?? '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${cards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${salesHistorySection(salesHistory)}${researchControls(p.APN)}`;
+    detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta">${escapeHtml(p.Acres ?? getApnIndex()[p.APN]?.acres ?? '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${cards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${salesHistorySection(salesHistory)}${researchControls(p.APN)}<section class="parcel-alignment"><h4>Align parcel outline</h4><p>Use the yellow copy to line up the county outline with field evidence. Drag the outline to move it; drag the yellow handle to rotate it. This alignment is saved in this browser only.</p><button type="button" data-adjust-parcel>${isParcelAdjusted?.(p.APN) ? 'Hide aligned outline' : 'Show aligned outline'}</button></section>`;
     updateParcelZoning(p.APN); bindResearchControls(p.APN);
   };
   return { recordCard, showParcelDetails };

@@ -132,6 +132,12 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .sales-history article small { grid-column: 1 / -1; color: #667067; line-height: 1.35; }
 .sales-history .source-note { margin: 7px 0 0; color: #667067; font-size: 10px; line-height: 1.4; }
 .research { margin-top: 14px; padding: 12px; background: #eef2e9; border: 1px solid var(--line); border-radius: 7px; }
+.parcel-alignment { margin-top: 14px; padding: 12px; border: 1px solid rgba(166, 124, 0, .42); border-radius: 7px; background: rgba(255, 220, 87, .2); }
+.parcel-alignment h4 { margin: 0 0 6px; color: #6d5200; font-size: 12px; text-transform: uppercase; }
+.parcel-alignment p { margin: 0 0 9px; color: #5c501e; font-size: 11px; line-height: 1.4; }
+.parcel-alignment button { padding: 6px 9px; border: 1px solid rgba(109, 82, 0, .5); border-radius: 4px; color: #463500; background: #ffdc57; font-size: 11px; font-weight: 700; cursor: pointer; }
+.parcel-alignment button:hover { background: #f2d04e; }
+
 .research h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; }
 .research-actions { display: grid; gap: 6px; }
 .research button, .dialog-actions button { border: 0; border-radius: 6px; padding: 8px; color: white; background: var(--ink); cursor: pointer; font-weight: 700; }
@@ -182,6 +188,10 @@ footer p:first-child { color: var(--ink); font-weight: 700; }
 .street-view-drag-proxy { position: fixed; top: 0; left: 0; z-index: 9999; width: 30px; height: 30px; margin: -15px; display: grid; place-items: center; border: 2px solid white; border-radius: 50%; background: rgba(22, 35, 29, .9); box-shadow: 0 2px 8px rgba(0,0,0,.4); pointer-events: none; }
 .street-view-drag-proxy.over-road { background: #126246; transform-origin: center; }
 .coordinate-pin-popup { min-width: 190px; font: 12px/1.45 Inter, ui-sans-serif, system-ui, sans-serif; }
+.parcel-adjustment-control { display: grid; grid-template-columns: auto auto; gap: 3px 7px; padding: 7px; border-radius: 3px; color: var(--ink); background: rgba(255,255,255,.96); box-shadow: 0 1px 5px rgba(0,0,0,.4); font-size: 10px; }
+.parcel-adjustment-control strong, .parcel-adjustment-control span { grid-column: 1 / -1; }
+.parcel-adjustment-control span { color: #526058; }
+.parcel-adjustment-control button { min-height: 26px; padding: 3px 7px; border: 1px solid var(--line); border-radius: 3px; color: var(--ink); background: white; font-size: 10px; font-weight: 700; cursor: pointer; }
 .coordinate-pin-popup strong { font-variant-numeric: tabular-nums; }
 .coordinate-pin-popup button { margin: 4px 0 0 4px; padding: 2px 5px; border: 1px solid rgba(22,35,29,.25); border-radius: 3px; color: var(--ink); background: white; font-size: 10px; font-weight: 700; cursor: pointer; }
 .distance-measure-control, .coordinate-pin-control, .polygon-draw-control { display: flex; align-items: stretch; min-height: 30px; border: 0 !important; box-shadow: 0 1px 5px rgba(0,0,0,.4) !important; }
