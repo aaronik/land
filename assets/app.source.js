@@ -107,8 +107,8 @@ window.__landMap = map;
 window.__landErrors = [];
 map.on('error', event => { window.__landErrors.push(event.error?.message || String(event.error)); console.error(event.error); });
 
-const navigationControl = new maplibregl.NavigationControl({ showCompass: false });
-map.addControl(navigationControl, 'bottom-right');
+const terrainControl = document.createElement('div');
+terrainControl.className = 'maplibregl-ctrl maplibregl-ctrl-group';
 const terrainButton = document.createElement('button');
 terrainButton.id = 'terrain-toggle';
 terrainButton.className = 'maplibregl-ctrl-terrain-toggle';
@@ -117,7 +117,8 @@ terrainButton.setAttribute('aria-label', 'Enable 3D terrain');
 terrainButton.setAttribute('aria-pressed', 'false');
 terrainButton.title = 'Enable 3D terrain';
 terrainButton.innerHTML = '<span aria-hidden="true">3D</span>';
-navigationControl._container.appendChild(terrainButton);
+terrainControl.appendChild(terrainButton);
+map.addControl({ onAdd: () => terrainControl, onRemove: () => terrainControl.remove() }, 'bottom-right');
 const geolocateControl = new maplibregl.GeolocateControl({
   positionOptions: {
     enableHighAccuracy: true,
