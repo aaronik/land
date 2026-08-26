@@ -152,8 +152,101 @@ class MilesScaleControl {
     this.map = undefined;
   }
 }
+class CoordinatePinControl {
+  constructor(maplibregl, onActivate = () => {}) {
+    this.maplibregl = maplibregl;
+    this.onActivate = onActivate;
+    this.active = false;
+    this.point = null;
+  }
+  onAdd(controlMap) {
+    this.map = controlMap;
+    this.container = document.createElement('div');
+    this.container.className = 'maplibregl-ctrl coordinate-pin-control';
+    this.container.innerHTML = '<button type="button" class="coordinate-pin-toggle" aria-pressed="false" aria-label="Drop a coordinate pin" title="Drop a coordinate pin"><span aria-hidden="true">●</span><b>Pin</b></button><button type="button" class="coordinate-pin-clear" aria-label="Clear coordinate pin" title="Clear coordinate pin" hidden>×</button><output aria-live="polite" hidden></output>';
+    this.toggleButton = this.container.querySelector('.coordinate-pin-toggle');
+    this.clearButton = this.container.querySelector('.coordinate-pin-clear');
+    this.output = this.container.querySelector('output');
+    this.toggleButton.addEventListener('click', () => this.toggle());
+    this.clearButton.addEventListener('click', () => this.clear());
+    this.output.addEventListener('click', event => this.copyCoordinates(event));
+    this.onMapClick = event => this.handleClick(event);
+    this.map.on('click', this.onMapClick);
+    return this.container;
+  }
+  onRemove() {
+    this.map.off('click', this.onMapClick);
+    this.container.remove();
+    this.map = undefined;
+  }
+  isActive() { return this.active; }
+  deactivate() {
+    this.active = false;
+    this.map.getCanvas().style.cursor = '';
+    this.updateUi();
+  }
+  toggle() {
+    this.active = !this.active;
+    if (this.active) this.onActivate();
+    this.map.getCanvas().style.cursor = this.active ? 'crosshair' : '';
+    this.updateUi();
+  }
+  clear() {
+    this.active = false;
+    this.point = null;
+    this.popup?.remove();
+    this.popup = null;
+    this.map.getCanvas().style.cursor = '';
+    this.updateData();
+    this.updateUi();
+  }
+  handleClick(event) {
+    if (!this.active) return;
+    this.point = event.lngLat;
+    this.active = false;
+    this.map.getCanvas().style.cursor = '';
+    this.updateData();
+    this.showPopup();
+    this.updateUi();
+  }
+  showPopup() {
+    const latitude = this.point.lat.toFixed(6), longitude = this.point.lng.toFixed(6);
+    const googleUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${latitude},${longitude}`)}`;
+    const content = document.createElement('div');
+    content.className = 'coordinate-pin-popup';
+    content.innerHTML = `<strong>${latitude}, ${longitude}</strong><br><a href="${googleUrl}" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a> <button type="button" data-copy-coordinates>Copy coordinates</button>`;
+    content.addEventListener('click', event => this.copyCoordinates(event));
+    this.popup?.remove();
+    this.popup = new this.maplibregl.Popup({ closeButton: true, closeOnClick: false, offset: 14 })
+      .setLngLat(this.point)
+      .setDOMContent(content)
+      .addTo(this.map);
+    this.popup.on('close', () => { this.popup = null; });
+  }
+  async copyCoordinates(event) {
+    if (!event.target.matches('[data-copy-coordinates]') || !this.point) return;
+    await navigator.clipboard?.writeText(`${this.point.lat.toFixed(6)}, ${this.point.lng.toFixed(6)}`).catch(() => {});
+    event.target.textContent = 'Copied';
+    setTimeout(() => { event.target.textContent = 'Copy coordinates'; }, 1200);
+  }
+  updateUi() {
+    this.toggleButton.classList.toggle('active', this.active);
+    this.toggleButton.setAttribute('aria-pressed', String(this.active));
+    this.toggleButton.title = this.active ? 'Click the map to place the pin' : 'Drop a coordinate pin';
+    this.toggleButton.setAttribute('aria-label', this.toggleButton.title);
+    this.clearButton.hidden = !this.point;
+    this.output.hidden = !this.active;
+    this.output.textContent = this.active ? 'Click the map to place a coordinate pin.' : '';
+  }
+  updateData() {
+    const features = this.point ? [{ type: 'Feature', geometry: { type: 'Point', coordinates: [this.point.lng, this.point.lat] }, properties: {} }] : [];
+    this.map.getSource('coordinate-pin')?.setData({ type: 'FeatureCollection', features });
+  }
+}
+
 class DistanceMeasureControl {
-  constructor() {
+  constructor(onActivate = () => {}) {
+    this.onActivate = onActivate;
     this.start = null;
     this.end = null;
     this.active = false;
@@ -182,9 +275,16 @@ class DistanceMeasureControl {
     this.map = undefined;
   }
   isActive() { return this.active; }
+  deactivate() {
+    this.active = false;
+    this.map.doubleClickZoom.enable();
+    this.map.getCanvas().style.cursor = '';
+    this.updateUi(this.start && this.end ? this.formatMeasurement(this.start, this.end) : '');
+  }
   toggle() {
     if (this.active) this.clear();
     else {
+      this.onActivate();
       this.active = true;
       this.map.doubleClickZoom.disable();
       this.updateUi('Click the map to place the first point.');
@@ -265,7 +365,12 @@ export function installMapControls(map, maplibregl) {
   map.addControl(new GoogleStreetViewControl(), 'top-left');
   map.addControl(new CardinalCompassControl(), 'top-right');
   map.addControl(new MilesScaleControl(), 'bottom-left');
-  const distanceMeasureControl = new DistanceMeasureControl();
+  let coordinatePinControl;
+  const distanceMeasureControl = new DistanceMeasureControl(() => coordinatePinControl?.deactivate());
+  coordinatePinControl = new CoordinatePinControl(maplibregl, () => {
+    if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
+  });
+  map.addControl(coordinatePinControl, 'top-left');
   map.addControl(distanceMeasureControl, 'top-left');
-  return distanceMeasureControl;
+  return { coordinatePinControl, distanceMeasureControl };
 }
