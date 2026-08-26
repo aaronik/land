@@ -1,6 +1,7 @@
 'use strict';
 
 import { PolygonDrawControl } from './polygon-draw.js';
+import { RoadTrackerControl } from './road-tracker.js';
 
 class CardinalCompassControl {
   onAdd(controlMap) {
@@ -369,6 +370,12 @@ export function installMapControls(map, maplibregl) {
   map.addControl(new MilesScaleControl(), 'bottom-left');
   let coordinatePinControl;
   let polygonDrawControl;
+  let roadTrackerControl;
+  const deactivateOtherTools = () => {
+    if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
+    coordinatePinControl?.deactivate();
+    polygonDrawControl?.deactivate();
+  };
   const distanceMeasureControl = new DistanceMeasureControl(() => {
     coordinatePinControl?.deactivate();
     polygonDrawControl?.deactivate();
@@ -381,8 +388,10 @@ export function installMapControls(map, maplibregl) {
     if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
     coordinatePinControl?.deactivate();
   });
+  roadTrackerControl = new RoadTrackerControl(deactivateOtherTools);
   map.addControl(coordinatePinControl, 'top-left');
   map.addControl(distanceMeasureControl, 'top-left');
   map.addControl(polygonDrawControl, 'top-left');
-  return { coordinatePinControl, distanceMeasureControl, polygonDrawControl };
+  map.addControl(roadTrackerControl, 'top-left');
+  return { coordinatePinControl, distanceMeasureControl, polygonDrawControl, roadTrackerControl };
 }

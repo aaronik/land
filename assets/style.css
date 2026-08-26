@@ -194,23 +194,37 @@ footer p:first-child { color: var(--ink); font-weight: 700; }
 .parcel-adjustment-control button { min-height: 26px; padding: 3px 7px; border: 1px solid var(--line); border-radius: 3px; color: var(--ink); background: white; font-size: 10px; font-weight: 700; cursor: pointer; }
 .coordinate-pin-popup strong { font-variant-numeric: tabular-nums; }
 .coordinate-pin-popup button { margin: 4px 0 0 4px; padding: 2px 5px; border: 1px solid rgba(22,35,29,.25); border-radius: 3px; color: var(--ink); background: white; font-size: 10px; font-weight: 700; cursor: pointer; }
-.distance-measure-control, .coordinate-pin-control, .polygon-draw-control { display: flex; align-items: stretch; min-height: 30px; border: 0 !important; box-shadow: 0 1px 5px rgba(0,0,0,.4) !important; }
-.distance-measure-toggle, .distance-measure-clear, .coordinate-pin-toggle, .coordinate-pin-clear, .polygon-draw-toggle, .polygon-draw-undo, .polygon-draw-finish, .polygon-draw-open { border: 0; color: var(--ink); background: white; cursor: pointer; font-size: 12px; font-weight: 700; }
-.distance-measure-toggle, .coordinate-pin-toggle, .polygon-draw-toggle { display: flex; align-items: center; gap: 5px; height: 30px; padding: 0 9px; border-radius: 2px 0 0 2px; }
-.distance-measure-toggle span, .coordinate-pin-toggle span, .polygon-draw-toggle span { font-size: 17px; line-height: 1; }
+.distance-measure-control, .coordinate-pin-control, .polygon-draw-control, .road-tracker-control { display: flex; align-items: stretch; min-height: 30px; border: 0 !important; box-shadow: 0 1px 5px rgba(0,0,0,.4) !important; }
+.distance-measure-toggle, .distance-measure-clear, .coordinate-pin-toggle, .coordinate-pin-clear, .polygon-draw-toggle, .polygon-draw-undo, .polygon-draw-finish, .polygon-draw-open, .road-tracker-toggle, .road-tracker-manage { border: 0; color: var(--ink); background: white; cursor: pointer; font-size: 12px; font-weight: 700; }
+.distance-measure-toggle, .coordinate-pin-toggle, .polygon-draw-toggle, .road-tracker-toggle { display: flex; align-items: center; gap: 5px; height: 30px; padding: 0 9px; border-radius: 2px 0 0 2px; }
+.distance-measure-toggle span, .coordinate-pin-toggle span, .polygon-draw-toggle span, .road-tracker-toggle span { font-size: 17px; line-height: 1; }
 .distance-measure-toggle.active { color: white; background: #126246; }
 .coordinate-pin-toggle.active { color: white; background: #b52c2c; }
 .polygon-draw-toggle.active { color: var(--ink); background: #5fc4e8; }
-.distance-measure-clear, .coordinate-pin-clear, .polygon-draw-undo, .polygon-draw-finish, .polygon-draw-open { min-width: 27px; padding: 0 7px; border-left: 1px solid rgba(22,35,29,.15); border-radius: 0; line-height: 1; }
+.road-tracker-toggle.active { color: white; background: #bb4b1d; }
+.distance-measure-clear, .coordinate-pin-clear, .polygon-draw-undo, .polygon-draw-finish, .polygon-draw-open, .road-tracker-manage { min-width: 27px; padding: 0 7px; border-left: 1px solid rgba(22,35,29,.15); border-radius: 0; line-height: 1; }
 .polygon-draw-undo { font-size: 18px; }
-.distance-measure-clear, .coordinate-pin-clear, .polygon-draw-open { font-size: 20px; }
-.polygon-draw-open { border-radius: 0 2px 2px 0; }
+.distance-measure-clear, .coordinate-pin-clear, .polygon-draw-open, .road-tracker-manage { font-size: 20px; }
+.polygon-draw-open, .road-tracker-manage { border-radius: 0 2px 2px 0; }
 .polygon-draw-finish:disabled { color: #7b847e; cursor: default; }
-.distance-measure-control output, .coordinate-pin-control output, .polygon-draw-control output { position: absolute; top: 36px; left: 0; min-width: max-content; max-width: min(260px, 70vw); padding: 7px 9px; border-radius: 3px; color: white; background: rgba(22,35,29,.92); box-shadow: 0 1px 5px rgba(0,0,0,.35); font-size: 12px; font-weight: 700; line-height: 1.3; }
+.distance-measure-control output, .coordinate-pin-control output, .polygon-draw-control output, .road-tracker-control output { position: absolute; top: 36px; left: 0; min-width: max-content; max-width: min(260px, 70vw); padding: 7px 9px; border-radius: 3px; color: white; background: rgba(22,35,29,.92); box-shadow: 0 1px 5px rgba(0,0,0,.35); font-size: 12px; font-weight: 700; line-height: 1.3; }
 .coordinate-pin-control output button { margin: 4px 0 0 4px; padding: 1px 4px; border: 1px solid rgba(255,255,255,.5); border-radius: 3px; color: white; background: transparent; font-size: 10px; font-weight: 700; cursor: pointer; }
 .polygon-manager-dialog { position: relative; width: min(560px, 92vw); max-height: 80vh; padding: 22px; overflow-y: auto; }
 .polygon-manager-dialog h2 { margin: 0 34px 10px 0; font: 500 24px Georgia, serif; letter-spacing: 0; text-transform: none; }
 .polygon-manager-dialog p { margin: 0 0 12px; }
+.road-tracker-dialog { position: relative; width: min(560px, 92vw); max-height: 80vh; padding: 22px; overflow-y: auto; }
+.road-tracker-dialog h2 { margin: 0 34px 10px 0; font: 500 24px Georgia, serif; letter-spacing: 0; text-transform: none; }
+.road-tracker-dialog p { margin: 0 0 12px; }
+.road-tracker-actions { margin: 0 0 8px; }
+.road-tracker-actions button, .saved-road-tracks button { min-height: 28px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: white; font-size: 10px; font-weight: 700; cursor: pointer; }
+.road-tracker-actions button:disabled { color: #7b847e; cursor: default; }
+.saved-road-tracks { margin: 10px 0 0; padding: 0; list-style: none; }
+.saved-road-tracks li { display: flex; align-items: end; gap: 7px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.saved-road-tracks > li > button { color: #7e2424; border-color: rgba(126,36,36,.3); }
+.saved-road-tracks form { display: grid; grid-template-columns: minmax(120px, 1fr) auto; align-items: end; gap: 7px; flex: 1; }
+.saved-road-tracks form label { margin: 0; font-size: 10px; }
+.saved-road-tracks form input { width: 100%; height: 28px; margin-top: 3px; padding: 4px 6px; border: 1px solid #b8bdb8; border-radius: 4px; background: white; }
+.saved-road-tracks form small { grid-column: 1; }
 .polygon-visibility-actions { display: flex; gap: 7px; margin: 0 0 8px; }
 .polygon-visibility-actions button { min-height: 28px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: white; font-size: 10px; font-weight: 700; cursor: pointer; }
 .polygon-visibility-actions button:disabled { color: #7b847e; cursor: default; }

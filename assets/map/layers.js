@@ -22,6 +22,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   map.addSource('unmapped', { type: 'geojson', data: unmappedGeoJson() });
   map.addSource('distance-measurement', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('coordinate-pin', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+  map.addSource('road-tracks', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('polygon-drawings', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('parcel-adjustment', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('topographic-contours', {
@@ -219,6 +220,8 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   map.addLayer({ id: 'sale-marker-labels', type: 'symbol', source: 'sale-points', filter: ['!=', ['get', 'markerLabel'], ''], layout: { 'text-field': ['get', 'markerLabel'], 'text-font': ['Noto Sans Bold'], 'text-size': 12, 'text-offset': [0, -1.35], 'text-anchor': 'bottom', 'text-padding': 3, 'text-pitch-alignment': 'viewport' }, paint: { 'text-color': '#fff', 'text-halo-color': 'rgba(20, 25, 22, 0.9)', 'text-halo-width': 2, 'text-halo-blur': 0.4 } });
   map.addLayer({ id: 'coordinate-pin-halo', type: 'circle', source: 'coordinate-pin', paint: { 'circle-radius': 11, 'circle-color': 'rgba(255,255,255,.9)', 'circle-stroke-color': '#b52c2c', 'circle-stroke-width': 2 } });
   map.addLayer({ id: 'coordinate-pin', type: 'circle', source: 'coordinate-pin', paint: { 'circle-radius': 5, 'circle-color': '#d93636', 'circle-stroke-color': '#fff', 'circle-stroke-width': 1.5 } });
+  map.addLayer({ id: 'road-tracks-outline', type: 'line', source: 'road-tracks', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': 'rgba(20, 28, 24, .95)', 'line-width': 7 } });
+  map.addLayer({ id: 'road-tracks', type: 'line', source: 'road-tracks', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': ['case', ['get', 'recording'], '#ff7a30', '#49dca6'], 'line-width': 4 } });
   map.addLayer({ id: 'distance-measurement-line-outline', type: 'line', source: 'distance-measurement', filter: ['==', ['geometry-type'], 'LineString'], paint: { 'line-color': 'rgba(255,255,255,.95)', 'line-width': 6, 'line-opacity': .95 } });
   map.addLayer({ id: 'distance-measurement-line', type: 'line', source: 'distance-measurement', filter: ['==', ['geometry-type'], 'LineString'], paint: { 'line-color': '#126246', 'line-width': 3, 'line-dasharray': [1.5, 1.2] } });
   map.addLayer({ id: 'distance-measurement-points', type: 'circle', source: 'distance-measurement', filter: ['==', ['geometry-type'], 'Point'], paint: { 'circle-radius': 6, 'circle-color': '#126246', 'circle-stroke-color': '#fff', 'circle-stroke-width': 2 } });

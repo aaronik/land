@@ -245,7 +245,7 @@ geolocateButton?.addEventListener('click', () => {
     startDeviceHeading();
   }
 });
-const { coordinatePinControl, distanceMeasureControl, polygonDrawControl } = installMapControls(map, maplibregl);
+const { coordinatePinControl, distanceMeasureControl, polygonDrawControl, roadTrackerControl } = installMapControls(map, maplibregl);
 const parcelAdjustmentControl = new ParcelAdjustmentControl(map);
 
 function escapeHtml(value) {
@@ -402,7 +402,7 @@ function initializeMapLayers() {
   map.on('click', event => {
     if (polygonDrawControl.consumeMapClickSuppression()) return;
     if (map.queryRenderedFeatures(event.point, { layers: ['polygon-drawings-labels'] }).length) return;
-    if (distanceMeasureControl.isActive() || coordinatePinControl.isActive() || polygonDrawControl.isActive()) return;
+    if (distanceMeasureControl.isActive() || coordinatePinControl.isActive() || polygonDrawControl.isActive() || roadTrackerControl.isActive()) return;
     const radius = 9;
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
@@ -470,6 +470,7 @@ function initializeMapLayers() {
   });
   applyMapLayerVisibility();
   polygonDrawControl.refresh();
+  roadTrackerControl.refresh();
   updateSales();
   restoreInitialSelectedParcel();
   document.body.classList.add('map-ready');
