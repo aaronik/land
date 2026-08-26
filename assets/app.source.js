@@ -244,7 +244,7 @@ geolocateButton?.addEventListener('click', () => {
     startDeviceHeading();
   }
 });
-const { coordinatePinControl, distanceMeasureControl } = installMapControls(map, maplibregl);
+const { coordinatePinControl, distanceMeasureControl, platTraceControl } = installMapControls(map, maplibregl);
 
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
@@ -396,7 +396,7 @@ function initializeMapLayers() {
   try {
     installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, saleGeoJson, salePointGeoJson, unmappedGeoJson });
   map.on('click', event => {
-    if (distanceMeasureControl.isActive() || coordinatePinControl.isActive()) return;
+    if (distanceMeasureControl.isActive() || coordinatePinControl.isActive() || platTraceControl.isActive()) return;
     const radius = 9;
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
@@ -461,6 +461,7 @@ function initializeMapLayers() {
     }, 140);
   });
   applyMapLayerVisibility();
+  platTraceControl.refresh();
   updateSales();
   restoreInitialSelectedParcel();
   document.body.classList.add('map-ready');

@@ -1,5 +1,7 @@
 'use strict';
 
+import { PlatTraceControl } from './plat-trace.js';
+
 class CardinalCompassControl {
   onAdd(controlMap) {
     this.map = controlMap;
@@ -366,11 +368,21 @@ export function installMapControls(map, maplibregl) {
   map.addControl(new CardinalCompassControl(), 'top-right');
   map.addControl(new MilesScaleControl(), 'bottom-left');
   let coordinatePinControl;
-  const distanceMeasureControl = new DistanceMeasureControl(() => coordinatePinControl?.deactivate());
+  let platTraceControl;
+  const distanceMeasureControl = new DistanceMeasureControl(() => {
+    coordinatePinControl?.deactivate();
+    platTraceControl?.deactivate();
+  });
   coordinatePinControl = new CoordinatePinControl(maplibregl, () => {
     if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
+    platTraceControl?.deactivate();
+  });
+  platTraceControl = new PlatTraceControl(() => {
+    if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
+    coordinatePinControl?.deactivate();
   });
   map.addControl(coordinatePinControl, 'top-left');
   map.addControl(distanceMeasureControl, 'top-left');
-  return { coordinatePinControl, distanceMeasureControl };
+  map.addControl(platTraceControl, 'top-left');
+  return { coordinatePinControl, distanceMeasureControl, platTraceControl };
 }
