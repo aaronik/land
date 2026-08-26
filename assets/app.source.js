@@ -166,26 +166,44 @@ const headingMarker = new maplibregl.Marker({
 });
 let userLocation;
 let deviceHeading;
+let displayedHeading;
+let headingAnimationFrame;
+let hasCompassHeading = false;
 
 function normalizeHeading(heading) {
   return Number.isFinite(heading) ? (heading % 360 + 360) % 360 : null;
 }
 
-function updateUserHeading() {
+function headingDifference(from, to) {
+  return ((to - from + 540) % 360) - 180;
+}
+
+function renderUserHeading() {
+  headingAnimationFrame = undefined;
   if (!userLocation || !Number.isFinite(deviceHeading)) return;
+  // Compass readings are inherently noisy. Move partway along the shortest
+  // arc per frame rather than snapping to every sensor update.
+  displayedHeading = displayedHeading === undefined
+    ? deviceHeading
+    : normalizeHeading(displayedHeading + headingDifference(displayedHeading, deviceHeading) * 0.14);
   headingMarker
     .setLngLat(userLocation)
-    // Device heading is relative to north; the map may be rotated.
-    .setRotation(deviceHeading - map.getBearing())
+    .setRotation(displayedHeading - map.getBearing())
     .addTo(map);
+  if (Math.abs(headingDifference(displayedHeading, deviceHeading)) > 0.35) {
+    headingAnimationFrame = requestAnimationFrame(renderUserHeading);
+  }
+}
+
+function updateUserHeading() {
+  if (!headingAnimationFrame) headingAnimationFrame = requestAnimationFrame(renderUserHeading);
 }
 
 geolocateControl.on('geolocate', position => {
   userLocation = [position.coords.longitude, position.coords.latitude];
-  // GPS heading is especially useful while moving and needs no motion-sensor
-  // permission. A compass reading, when available, takes precedence below.
+  // GPS heading is useful while moving when a compass is unavailable.
   const gpsHeading = normalizeHeading(position.coords.heading);
-  if (gpsHeading !== null) deviceHeading = gpsHeading;
+  if (!hasCompassHeading && gpsHeading !== null) deviceHeading = gpsHeading;
   updateUserHeading();
 });
 
@@ -201,13 +219,15 @@ function deviceCompassHeading(event) {
 function startDeviceHeading() {
   if (startDeviceHeading.started || typeof window.DeviceOrientationEvent === 'undefined') return;
   startDeviceHeading.started = true;
-  window.addEventListener('deviceorientationabsolute', onDeviceOrientation, true);
+  // `deviceorientationabsolute` is not consistently emitted across browsers;
+  // use the broadly supported stream only once to avoid duplicate readings.
   window.addEventListener('deviceorientation', onDeviceOrientation, true);
 }
 
 function onDeviceOrientation(event) {
   const heading = deviceCompassHeading(event);
   if (heading === null) return;
+  hasCompassHeading = true;
   deviceHeading = heading;
   updateUserHeading();
 }
