@@ -244,7 +244,7 @@ geolocateButton?.addEventListener('click', () => {
     startDeviceHeading();
   }
 });
-const { coordinatePinControl, distanceMeasureControl, platTraceControl } = installMapControls(map, maplibregl);
+const { coordinatePinControl, distanceMeasureControl, polygonDrawControl } = installMapControls(map, maplibregl);
 
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
@@ -396,7 +396,9 @@ function initializeMapLayers() {
   try {
     installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, saleGeoJson, salePointGeoJson, unmappedGeoJson });
   map.on('click', event => {
-    if (distanceMeasureControl.isActive() || coordinatePinControl.isActive() || platTraceControl.isActive()) return;
+    if (polygonDrawControl.consumeMapClickSuppression()) return;
+    if (map.queryRenderedFeatures(event.point, { layers: ['polygon-drawings-labels'] }).length) return;
+    if (distanceMeasureControl.isActive() || coordinatePinControl.isActive() || polygonDrawControl.isActive()) return;
     const radius = 9;
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
@@ -445,6 +447,8 @@ function initializeMapLayers() {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }
+  map.on('mouseenter', 'polygon-drawings-labels', () => { if (!polygonDrawControl.isActive()) map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', 'polygon-drawings-labels', () => { if (!polygonDrawControl.isActive()) map.getCanvas().style.cursor = ''; });
   const rotationHeavyLayers = ['public-land', 'parcel-fill', 'parcel-lines', 'sale-fill', 'sale-lines'];
   let rotationRestoreTimer;
   let rotationVisibility;
@@ -461,7 +465,7 @@ function initializeMapLayers() {
     }, 140);
   });
   applyMapLayerVisibility();
-  platTraceControl.refresh();
+  polygonDrawControl.refresh();
   updateSales();
   restoreInitialSelectedParcel();
   document.body.classList.add('map-ready');

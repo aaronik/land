@@ -1,6 +1,6 @@
 'use strict';
 
-import { PlatTraceControl } from './plat-trace.js';
+import { PolygonDrawControl } from './polygon-draw.js';
 
 class CardinalCompassControl {
   onAdd(controlMap) {
@@ -368,21 +368,21 @@ export function installMapControls(map, maplibregl) {
   map.addControl(new CardinalCompassControl(), 'top-right');
   map.addControl(new MilesScaleControl(), 'bottom-left');
   let coordinatePinControl;
-  let platTraceControl;
+  let polygonDrawControl;
   const distanceMeasureControl = new DistanceMeasureControl(() => {
     coordinatePinControl?.deactivate();
-    platTraceControl?.deactivate();
+    polygonDrawControl?.deactivate();
   });
   coordinatePinControl = new CoordinatePinControl(maplibregl, () => {
     if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
-    platTraceControl?.deactivate();
+    polygonDrawControl?.deactivate();
   });
-  platTraceControl = new PlatTraceControl(() => {
+  polygonDrawControl = new PolygonDrawControl(maplibregl, () => {
     if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
     coordinatePinControl?.deactivate();
   });
   map.addControl(coordinatePinControl, 'top-left');
   map.addControl(distanceMeasureControl, 'top-left');
-  map.addControl(platTraceControl, 'top-left');
-  return { coordinatePinControl, distanceMeasureControl, platTraceControl };
+  map.addControl(polygonDrawControl, 'top-left');
+  return { coordinatePinControl, distanceMeasureControl, polygonDrawControl };
 }
