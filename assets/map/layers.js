@@ -17,6 +17,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('waterways');
   addPmtilesSource('waterbodies');
   addPmtilesSource('summits');
+  addPmtilesSource('towns');
   addPmtilesSource('springs');
   map.addSource('sales', { type: 'geojson', data: saleGeoJson() });
   map.addSource('sale-points', { type: 'geojson', data: salePointGeoJson() });
@@ -148,6 +149,17 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
       'text-offset': [0, 0.2], 'text-anchor': 'bottom', 'text-padding': 5
     },
     paint: { 'text-color': '#f4dc9d', 'text-halo-color': 'rgba(39, 31, 19, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
+  });
+  map.addLayer({
+    id: 'towns', type: 'symbol', source: 'towns', 'source-layer': 'towns', minzoom: 7,
+    filter: ['all', ['has', 'gaz_name'], ['!=', ['get', 'gaz_name'], '']],
+    layout: {
+      'text-field': ['get', 'gaz_name'], 'text-font': ['Noto Sans Bold'],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 7, 10, 14, 14],
+      'text-transform': 'uppercase', 'text-letter-spacing': 0.08,
+      'text-offset': [0, 0.7], 'text-anchor': 'top', 'text-padding': 8
+    },
+    paint: { 'text-color': '#f4f1df', 'text-halo-color': 'rgba(20, 28, 24, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
   });
   map.addLayer({
     id: 'springs', type: 'circle', source: 'springs', 'source-layer': 'springs', minzoom: 9,

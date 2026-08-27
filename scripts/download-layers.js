@@ -195,6 +195,7 @@ async function main() {
     if (name === 'groundwater_wells') addNearbyWellSummaries(data);
     if (name === 'waterbodies') placeIndexes.push(placeIndex(data.features, 'GNIS_NAME', 'lake or reservoir'));
     if (name === 'summits') placeIndexes.push(placeIndex(data.features, 'gaz_name', 'summit'));
+    if (name === 'towns') placeIndexes.push(placeIndex(data.features, 'gaz_name', 'town'));
     fs.writeFileSync(path.join(raw, `${name}.geojson`), JSON.stringify(data));
     manifest.layers[name] = { source: config.url, featureCount: data.features.length, fields: config.fields };
     if (name === 'parcels') fs.writeFileSync(path.join(generated, 'apn-index.json'), JSON.stringify(parcelIndex(data.features)));

@@ -353,7 +353,7 @@ function toggleLayer(id, visibleValue) {
     roads: ['roads', 'road-labels', 'forest-roads', 'forest-road-labels'],
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
     waterways: ['waterways-casing', 'waterways', 'waterway-labels', 'springs'],
-    'place-names': ['waterbodies', 'waterbody-labels', 'summits'],
+    'place-names': ['waterbodies', 'waterbody-labels', 'summits', 'towns'],
     huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels'],
     'groundwater-basins': ['groundwater-basins-fill', 'groundwater-basins-lines', 'groundwater-basins-labels'],
     zoning: ['zoning-fill', 'zoning-lines']

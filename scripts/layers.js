@@ -161,6 +161,12 @@ const LAYERS = {
     where: "gaz_featureclass = 'Summit'",
     fields: ['OBJECTID', 'gaz_id', 'gaz_name', 'gaz_featureclass', 'fcode', 'state_alpha', 'county_name']
   },
+  towns: {
+    name: 'USGS GNIS populated places',
+    url: 'https://carto.nationalmap.gov/arcgis/rest/services/geonames/MapServer/3',
+    bbox: SISKIYOU_BBOX,
+    fields: ['OBJECTID', 'gaz_id', 'gaz_name', 'gaz_featureclass', 'fcode', 'state_alpha', 'county_name']
+  },
   springs: {
     name: 'USGS NHD springs',
     url: 'https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/0',
