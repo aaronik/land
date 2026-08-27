@@ -335,6 +335,14 @@
     "confidence": "manually verified",
     "notes": "map in pics"
   },
+  "20260820": {
+    "apns": [
+      "060-650-420"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
   "20260851": {
     "apns": [
       "028-510-330"
@@ -374,6 +382,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "3812 Dale Creek Rd, Weed, CA 96094"
+  },
+  "20261046": {
+    "apns": [
+      "011-540-150"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
   },
   "20261050": {
     "apns": [
