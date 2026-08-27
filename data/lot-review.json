@@ -1,16 +1,28 @@
 {
-  "generatedAt": "2026-08-25T12:41:43.229Z",
+  "generatedAt": "2026-08-27T21:33:52.547Z",
   "count": 276,
   "listings": [
     {
-      "mlsNumber": "20261059",
-      "title": "Unit 1 Lot 47 Butte Creek, Macdoel, CA 96058",
-      "acres": 2.95,
+      "mlsNumber": "20261065",
+      "title": "Lot 236 & 237 Stone Crest Dr, Weed, CA 96094",
+      "acres": 0.92,
       "latLng": [
-        41.655692692667465,
-        -121.95547112800159
+        41.538148,
+        -122.381452
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261059/Unit-1-Lot-47-Butte-Creek-Macdoel-CA-96058",
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261065/Lot-236-237-Stone-Crest-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260358",
+      "title": "Lot 127 Willit Way, Montague, CA 96064",
+      "acres": 2.5,
+      "latLng": [
+        41.881768,
+        -122.428111
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260358/Lot-127-Willit-Way-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -491,18 +503,6 @@
         -122.38565648250157
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250985/Lot-175-Shasta-Ln-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260820",
-      "title": "Lot #42 Pinnacle, Weed, CA 96094",
-      "acres": 0.9,
-      "latLng": [
-        41.395145670000744,
-        -122.39077441700161
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260820/Lot-42-Pinnacle-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
