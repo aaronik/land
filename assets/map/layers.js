@@ -12,6 +12,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('zoning');
   addPmtilesSource('parcels');
   addPmtilesSource('roads');
+  addPmtilesSource('forest_roads');
   addPmtilesSource('railroads');
   addPmtilesSource('waterways');
   addPmtilesSource('waterbodies');
@@ -161,6 +162,13 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
       'text-letter-spacing': 0.03, 'text-offset': [0, 1], 'text-padding': 4, 'text-keep-upright': true
     },
     paint: { 'text-color': '#78c6ff', 'text-halo-color': 'rgba(6, 24, 43, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
+  });
+  map.addLayer({ id: 'forest-roads', type: 'line', source: 'forest_roads', 'source-layer': 'forest_roads', minzoom: 9, layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#c7a85b', 'line-width': ['interpolate', ['linear'], ['zoom'], 9, 0.55, 15, 2.2], 'line-opacity': 0.72 } });
+  map.addLayer({
+    id: 'forest-road-labels', type: 'symbol', source: 'forest_roads', 'source-layer': 'forest_roads', minzoom: 11,
+    filter: ['all', ['has', 'field_id'], ['!=', ['get', 'field_id'], '']],
+    layout: { 'symbol-placement': 'line', 'symbol-spacing': 450, 'text-field': ['get', 'field_id'], 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 11, 9, 15, 12], 'text-letter-spacing': 0.02, 'text-max-angle': 35, 'text-padding': 4, 'text-keep-upright': true },
+    paint: { 'text-color': '#e7d08b', 'text-halo-color': 'rgba(35, 31, 21, 0.92)', 'text-halo-width': 1.8, 'text-halo-blur': 0.35 }
   });
   map.addLayer({ id: 'roads', type: 'line', source: 'roads', 'source-layer': 'roads', minzoom: 9, paint: { 'line-color': '#f8d37c', 'line-width': ['interpolate', ['linear'], ['zoom'], 9, 0.7, 15, 3], 'line-opacity': 0.9 } });
   map.addLayer({

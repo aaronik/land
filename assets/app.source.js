@@ -318,6 +318,7 @@ function addPmtilesSource(id) {
     soils: '<a href="https://sdmdataaccess.nrcs.usda.gov/" target="_blank">USDA NRCS SSURGO</a>',
     fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>',
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
+    forest_roads: '<a href="https://data.fs.usda.gov/geodata/edw/datasets.php?xmlKeyword=Motor+vehicle+Use+Map" target="_blank">USFS Motor Vehicle Use Map</a>',
     waterways: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
     springs: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
     geology: '<a href="https://mrdata.usgs.gov/geology/state/" target="_blank">USGS State Geologic Map Compilation</a>',
@@ -349,7 +350,7 @@ loadMapLayerVisibility();
 function toggleLayer(id, visibleValue) {
   const groupedLayers = {
     'topographic-contours': ['topographic-contours', 'topographic-contour-labels'],
-    roads: ['roads', 'road-labels'],
+    roads: ['roads', 'road-labels', 'forest-roads', 'forest-road-labels'],
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
     waterways: ['waterways-casing', 'waterways', 'waterway-labels', 'springs'],
     'place-names': ['waterbodies', 'waterbody-labels', 'summits'],

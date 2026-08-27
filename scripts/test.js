@@ -33,7 +33,7 @@ if (!failures.length) {
   if (!app.includes("const DIRECTIONS_ORIGIN = 'Mt. Shasta City Park") || !parcelDetails.includes("new URL('https://www.google.com/maps/dir/')") || !parcelDetails.includes('destination: `${point[1]},${point[0]}`') || !parcelDetails.includes('Directions from Mt. Shasta City Park')) failures.push('Parcel directions from Mt. Shasta City Park are missing');
   if (!app.includes('localStorage')) failures.push('browser-local research cache is missing');
   if (!mapLayers.includes("id: 'road-labels'") || !mapLayers.includes("['get', 'ROADNAME']")) failures.push('County road name labels are missing');
-  if (!app.includes("roads: ['roads', 'road-labels']")) failures.push('Road toggle does not control road labels');
+  if (!app.includes("roads: ['roads', 'road-labels', 'forest-roads', 'forest-road-labels']")) failures.push('Road toggle does not control county and USFS road layers');
   if (!html.includes('data-map-layer="railroads"')) failures.push('Railroad toggle is missing');
   if (!app.includes("railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels']")) failures.push('Railroad toggle does not control all railroad layers');
   if (!html.includes('data-map-layer="huc12"')) failures.push('HUC-12 watershed toggle is missing');

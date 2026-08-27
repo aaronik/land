@@ -116,6 +116,16 @@ const LAYERS = {
     url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Roads_Public/FeatureServer/0',
     objectId: 'FID', fields: ['FID', 'ROADNAME', 'NUM_LANES', 'SUR_TYPE', 'Label_Cate']
   },
+  forest_roads: {
+    name: 'USFS Motor Vehicle Use Map roads',
+    url: 'https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_MVUM_01/MapServer/1',
+    objectId: 'objectid',
+    bbox: SISKIYOU_BBOX,
+    // These are the Forest Service System-road symbols; the MVUM service also
+    // carries local roads for reference, which belong in the county road layer.
+    where: "symbol IN ('1','2','3','4','11','12')",
+    fields: ['objectid', 'id', 'name', 'field_id', 'symbol', 'mvum_symbol_name', 'jurisdiction', 'operationalmaintlevel', 'surfacetype', 'seasonal', 'passengervehicle', 'highclearancevehicle', 'forestname', 'districtname', 'routestatus']
+  },
   railroads: {
     name: 'USDOT/FRA active rail network',
     url: 'https://services.arcgis.com/xOi1kZaI0eWDREZv/ArcGIS/rest/services/NTAD_North_American_Rail_Network_Lines/FeatureServer/0',

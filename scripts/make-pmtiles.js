@@ -12,6 +12,7 @@ const configs = {
   parcels: { min: 8, max: 15, fields: LAYERS.parcels.fields.filter(field => field !== 'OBJECTID') },
   zoning: { min: 7, max: 14, fields: LAYERS.zoning.fields.filter(field => field !== 'OBJECTID') },
   roads: { min: 8, max: 14, fields: LAYERS.roads.fields.filter(field => field !== 'FID') },
+  forest_roads: { min: 8, max: 14, fields: LAYERS.forest_roads.fields.filter(field => field !== 'objectid') },
   railroads: { min: 7, max: 14, fields: LAYERS.railroads.fields.filter(field => field !== 'OBJECTID') },
   waterways: { min: 7, max: 14, fields: LAYERS.waterways.fields.filter(field => field !== 'OBJECTID') },
   waterbodies: { min: 7, max: 14, fields: LAYERS.waterbodies.fields.filter(field => field !== 'OBJECTID') },
