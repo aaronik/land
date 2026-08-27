@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T21:09:18.768Z",
+  "generatedAt": "2026-08-27T21:25:56.495Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -237,6 +237,27 @@
         "fcode",
         "state_alpha",
         "county_name"
+      ]
+    },
+    "forest_roads": {
+      "source": "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_MVUM_01/MapServer/1",
+      "featureCount": 4467,
+      "fields": [
+        "objectid",
+        "id",
+        "name",
+        "field_id",
+        "symbol",
+        "mvum_symbol_name",
+        "jurisdiction",
+        "operationalmaintlevel",
+        "surfacetype",
+        "seasonal",
+        "passengervehicle",
+        "highclearancevehicle",
+        "forestname",
+        "districtname",
+        "routestatus"
       ]
     }
   }
