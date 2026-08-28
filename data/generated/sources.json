@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T21:25:56.495Z",
+  "generatedAt": "2026-08-28T18:51:02.722Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -258,6 +258,77 @@
         "forestname",
         "districtname",
         "routestatus"
+      ]
+    },
+    "towns": {
+      "source": "https://carto.nationalmap.gov/arcgis/rest/services/geonames/MapServer/3",
+      "featureCount": 131,
+      "fields": [
+        "OBJECTID",
+        "gaz_id",
+        "gaz_name",
+        "gaz_featureclass",
+        "fcode",
+        "state_alpha",
+        "county_name"
+      ]
+    },
+    "cell_att": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/ATT_4G_LTE/FeatureServer/17",
+      "featureCount": 55474,
+      "fields": [
+        "OBJECTID",
+        "brandname",
+        "technology",
+        "mindown",
+        "minup",
+        "minsignal"
+      ]
+    },
+    "cell_tmobile": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/T_Mobile_4G_LTE/FeatureServer/21",
+      "featureCount": 49815,
+      "fields": [
+        "OBJECTID",
+        "brandname",
+        "technology",
+        "mindown",
+        "minup",
+        "minsignal"
+      ]
+    },
+    "cell_verizon": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Verizon_4G_LTE/FeatureServer/22",
+      "featureCount": 74518,
+      "fields": [
+        "OBJECTID",
+        "brandname",
+        "technology",
+        "mindown",
+        "minup",
+        "minsignal"
+      ]
+    },
+    "pct": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Pacific_Crest_Trail/FeatureServer/168",
+      "featureCount": 251,
+      "fields": [
+        "OBJECTID",
+        "OWNERNAME",
+        "OWNERTYPE",
+        "DESIGNATIO",
+        "MANAGEMENT",
+        "REV_DATE"
+      ]
+    },
+    "pct_markers": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Pacific_Crest_Trail_Markers/FeatureServer/225",
+      "featureCount": 604,
+      "fields": [
+        "OBJECTID",
+        "Mile",
+        "Mile_SoBo",
+        "RouteID"
       ]
     }
   }

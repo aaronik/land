@@ -7,8 +7,8 @@
   <title>Shasta Land Atlas</title>
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.3.0/dist/maplibre-gl.css">
-  <script type="module" crossorigin src="/assets/index-RSm4uLXz.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DtqjCu80.css">
+  <script type="module" crossorigin src="/assets/index-BdRJrKyf.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-1p2AbvXD.css">
 </head>
 <body>
   <header class="masthead">
@@ -42,11 +42,17 @@
         <label><input type="checkbox" data-map-layer="roads" checked><i class="swatch roads-overlay"></i>Roads</label>
         <label><input type="checkbox" data-map-layer="waterways" checked><i class="swatch waterways-overlay"></i>Rivers, streams, &amp; springs</label>
         <div class="layer-key" data-layer-key="waterways" aria-label="Rivers, streams, and springs legend"><span><i style="--key-color:#38a8ff"></i>Perennial</span><span><i style="--key-color:#6ca8cf"></i>Intermittent / ephemeral</span><span><i style="--key-color:#9cf4ff"></i>Mapped spring</span></div>
-        <label><input type="checkbox" data-map-layer="place-names" checked><i class="swatch place-names-overlay"></i>Lake &amp; mountain names</label>
+        <label><input type="checkbox" data-map-layer="place-names" checked><i class="swatch place-names-overlay"></i>Lake, mountain, &amp; town names</label>
         <label><input type="checkbox" data-map-layer="railroads" checked><i class="swatch railroads-overlay"></i>Railroad tracks</label>
         <label><input type="checkbox" data-map-layer="topographic-contours" checked><i class="swatch topo-overlay"></i>Topographic lines</label>
+        <label><input type="checkbox" data-map-layer="usgs-3dep-slope"><i class="swatch slope-overlay"></i>Terrain slope</label>
+        <div class="layer-key" data-layer-key="usgs-3dep-slope" aria-label="Terrain slope information"><span>USGS 3DEP bare-earth slope visualization: gray is flatter, yellow is moderate, and red-brown is steeper. General terrain context only—not a survey, geotechnical assessment, or determination of buildability, drainage, access, or solar potential.</span></div>
         <label><input type="checkbox" data-map-layer="public-land"><i class="swatch public-overlay"></i>Federal public land</label>
         <label><input type="checkbox" data-map-layer="huc12"><i class="swatch watershed-overlay"></i>HUC-12 subwatersheds</label>
+        <label><input type="checkbox" data-map-layer="cell-coverage"><i class="swatch cell-coverage-overlay"></i>4G LTE coverage</label>
+        <div class="layer-key" data-layer-key="cell-coverage" aria-label="Cell coverage legend"><span><i style="--key-color:#00c5ff"></i>AT&amp;T</span><span><i style="--key-color:#ff00c5"></i>T-Mobile</span><span><i style="--key-color:#ef3030"></i>Verizon</span><span>County-published coverage as of January 2024. It is modeled coverage, not a guarantee of service, signal strength, data speed, indoor coverage, or emergency calling at a site.</span></div>
+        <label><input type="checkbox" data-map-layer="pct"><i class="swatch pct-overlay"></i>Pacific Crest Trail</label>
+        <div class="layer-key" data-layer-key="pct" aria-label="Pacific Crest Trail information"><span>Includes county-published trail alignment and mile markers (visible from zoom 10). Trail route and access conditions can change; consult the PCTA and local land managers before travel.</span></div>
         <label><input type="checkbox" data-map-layer="zoning"><i class="swatch zoning-overlay"></i>Zoning districts</label>
         <div class="layer-key zoning-key" data-layer-key="zoning" aria-label="Zoning district legend">
           <strong>Agricultural</strong><span><i style="--key-color:#38a800"></i>AG-1 and buffer variants</span><span><i style="--key-color:#b4d79e"></i>AG-2 and buffer variants</span>
@@ -118,7 +124,7 @@
       <footer>
         <p id="updated">Loading parcel data…</p>
         <p>Boundaries are approximate screening data. Verify title, access, acreage, zoning, and sale status with official sources.</p>
-        <p class="map-attribution">Map imagery © <a href="https://www.esri.com/" target="_blank" rel="noopener noreferrer">Esri</a> · Terrain © <a href="https://registry.opendata.aws/terrain-tiles/" target="_blank" rel="noopener noreferrer">AWS Terrain Tiles / Mapzen</a> · Map rendering © <a href="https://maplibre.org/" target="_blank" rel="noopener noreferrer">MapLibre</a></p>
+        <p class="map-attribution">Map imagery © <a href="https://www.esri.com/" target="_blank" rel="noopener noreferrer">Esri</a> · Terrain © <a href="https://registry.opendata.aws/terrain-tiles/" target="_blank" rel="noopener noreferrer">AWS Terrain Tiles / Mapzen</a> · Slope © <a href="https://www.usgs.gov/3d-elevation-program" target="_blank" rel="noopener noreferrer">USGS 3DEP</a> · Map rendering © <a href="https://maplibre.org/" target="_blank" rel="noopener noreferrer">MapLibre</a></p>
       </footer>
     </aside>
 
