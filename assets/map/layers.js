@@ -9,6 +9,8 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('cell_att');
   addPmtilesSource('cell_tmobile');
   addPmtilesSource('cell_verizon');
+  addPmtilesSource('pct');
+  addPmtilesSource('pct_markers');
   addPmtilesSource('groundwater_basins');
   addPmtilesSource('groundwater_wells');
   addPmtilesSource('geology');
@@ -91,6 +93,9 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   map.addLayer({ id: 'cell-att', type: 'fill', source: 'cell_att', 'source-layer': 'cell_att', minzoom: 7, layout: { visibility: 'none' }, paint: { 'fill-color': '#00c5ff', 'fill-opacity': 0.12 } });
   map.addLayer({ id: 'cell-tmobile', type: 'fill', source: 'cell_tmobile', 'source-layer': 'cell_tmobile', minzoom: 7, layout: { visibility: 'none' }, paint: { 'fill-color': '#ff00c5', 'fill-opacity': 0.12 } });
   map.addLayer({ id: 'cell-verizon', type: 'fill', source: 'cell_verizon', 'source-layer': 'cell_verizon', minzoom: 7, layout: { visibility: 'none' }, paint: { 'fill-color': '#ef3030', 'fill-opacity': 0.12 } });
+  map.addLayer({ id: 'pct-casing', type: 'line', source: 'pct', 'source-layer': 'pct', minzoom: 7, layout: { visibility: 'none', 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': 'rgba(37, 25, 8, 0.92)', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 3.2, 14, 7] } });
+  map.addLayer({ id: 'pct', type: 'line', source: 'pct', 'source-layer': 'pct', minzoom: 7, layout: { visibility: 'none', 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#e69800', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.7, 14, 4], 'line-opacity': 0.98 } });
+  map.addLayer({ id: 'pct-markers', type: 'circle', source: 'pct_markers', 'source-layer': 'pct_markers', minzoom: 10, layout: { visibility: 'none' }, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 2.5, 14, 4], 'circle-color': '#1d1609', 'circle-stroke-color': '#e69800', 'circle-stroke-width': 1.5 } });
   map.addLayer({
     id: 'groundwater-basins-fill', type: 'fill', source: 'groundwater_basins', 'source-layer': 'groundwater_basins', minzoom: 7,
     layout: { visibility: 'none' }, paint: { 'fill-color': '#9e6eea', 'fill-opacity': 0.12 }

@@ -29,6 +29,8 @@ const configs = {
   cell_att: { min: 7, max: 13, fields: LAYERS.cell_att.fields.filter(field => field !== 'OBJECTID') },
   cell_tmobile: { min: 7, max: 13, fields: LAYERS.cell_tmobile.fields.filter(field => field !== 'OBJECTID') },
   cell_verizon: { min: 7, max: 13, fields: LAYERS.cell_verizon.fields.filter(field => field !== 'OBJECTID') },
+  pct: { min: 7, max: 14, fields: LAYERS.pct.fields.filter(field => field !== 'OBJECTID') },
+  pct_markers: { min: 8, max: 14, fields: LAYERS.pct_markers.fields.filter(field => field !== 'OBJECTID') },
   groundwater_basins: { min: 7, max: 14, fields: LAYERS.groundwater_basins.fields.filter(field => field !== 'OBJECTID') },
   groundwater_wells: { min: 7, max: 14, fields: LAYERS.groundwater_wells.fields }
 };

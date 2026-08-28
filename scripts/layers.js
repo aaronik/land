@@ -239,6 +239,16 @@ const LAYERS = {
     url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Verizon_4G_LTE/FeatureServer/22',
     fields: ['OBJECTID', 'brandname', 'technology', 'mindown', 'minup', 'minsignal']
   },
+  pct: {
+    name: 'Pacific Crest Trail',
+    url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Pacific_Crest_Trail/FeatureServer/168',
+    fields: ['OBJECTID', 'OWNERNAME', 'OWNERTYPE', 'DESIGNATIO', 'MANAGEMENT', 'REV_DATE']
+  },
+  pct_markers: {
+    name: 'Pacific Crest Trail mile markers',
+    url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Pacific_Crest_Trail_Markers/FeatureServer/225',
+    fields: ['OBJECTID', 'Mile', 'Mile_SoBo', 'RouteID']
+  },
   groundwater_basins: {
     name: 'DWR Bulletin 118 groundwater basins',
     url: 'https://utility.arcgis.com/usrsvcs/servers/49807a1fbc584631bdf88d9ca71dd083/rest/services/Geoscientific/i08_B118_CA_GroundwaterBasins/MapServer/0',

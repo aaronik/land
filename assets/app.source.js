@@ -326,6 +326,8 @@ function addPmtilesSource(id) {
     cell_att: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>',
     cell_tmobile: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>',
     cell_verizon: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>',
+    pct: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>',
+    pct_markers: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>',
     groundwater_basins: '<a href="https://data.cnra.ca.gov/dataset/i08-b118-ca-groundwaterbasins" target="_blank">CA DWR Bulletin 118 groundwater basins</a>',
     groundwater_wells: '<a href="https://data.cnra.ca.gov/dataset/well-completion-reports" target="_blank">CA DWR Well Completion Reports</a>',
     zoning: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>'
@@ -359,6 +361,7 @@ function toggleLayer(id, visibleValue) {
     'place-names': ['waterbodies', 'waterbody-labels', 'summits', 'towns'],
     huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels'],
     'cell-coverage': ['cell-att', 'cell-tmobile', 'cell-verizon'],
+    pct: ['pct-casing', 'pct', 'pct-markers'],
     'groundwater-basins': ['groundwater-basins-fill', 'groundwater-basins-lines', 'groundwater-basins-labels'],
     zoning: ['zoning-fill', 'zoning-lines']
   };
