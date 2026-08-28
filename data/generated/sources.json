@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T21:33:53.568Z",
+  "generatedAt": "2026-08-28T18:44:56.041Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -271,6 +271,42 @@
         "fcode",
         "state_alpha",
         "county_name"
+      ]
+    },
+    "cell_att": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/ATT_4G_LTE/FeatureServer/17",
+      "featureCount": 55474,
+      "fields": [
+        "OBJECTID",
+        "brandname",
+        "technology",
+        "mindown",
+        "minup",
+        "minsignal"
+      ]
+    },
+    "cell_tmobile": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/T_Mobile_4G_LTE/FeatureServer/21",
+      "featureCount": 49815,
+      "fields": [
+        "OBJECTID",
+        "brandname",
+        "technology",
+        "mindown",
+        "minup",
+        "minsignal"
+      ]
+    },
+    "cell_verizon": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Verizon_4G_LTE/FeatureServer/22",
+      "featureCount": 74518,
+      "fields": [
+        "OBJECTID",
+        "brandname",
+        "technology",
+        "mindown",
+        "minup",
+        "minsignal"
       ]
     }
   }

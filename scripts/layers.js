@@ -224,6 +224,21 @@ const LAYERS = {
     bbox: SISKIYOU_BBOX,
     objectId: 'OBJECTID', fields: ['OBJECTID', 'ATTRIBUTE', 'WETLAND_TYPE', 'ACRES']
   },
+  cell_att: {
+    name: 'AT&T 4G LTE coverage',
+    url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/ATT_4G_LTE/FeatureServer/17',
+    fields: ['OBJECTID', 'brandname', 'technology', 'mindown', 'minup', 'minsignal']
+  },
+  cell_tmobile: {
+    name: 'T-Mobile 4G LTE coverage',
+    url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/T_Mobile_4G_LTE/FeatureServer/21',
+    fields: ['OBJECTID', 'brandname', 'technology', 'mindown', 'minup', 'minsignal']
+  },
+  cell_verizon: {
+    name: 'Verizon 4G LTE coverage',
+    url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Verizon_4G_LTE/FeatureServer/22',
+    fields: ['OBJECTID', 'brandname', 'technology', 'mindown', 'minup', 'minsignal']
+  },
   groundwater_basins: {
     name: 'DWR Bulletin 118 groundwater basins',
     url: 'https://utility.arcgis.com/usrsvcs/servers/49807a1fbc584631bdf88d9ca71dd083/rest/services/Geoscientific/i08_B118_CA_GroundwaterBasins/MapServer/0',

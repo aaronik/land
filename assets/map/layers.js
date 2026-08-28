@@ -6,6 +6,9 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('flood');
   addPmtilesSource('soils');
   addPmtilesSource('huc12');
+  addPmtilesSource('cell_att');
+  addPmtilesSource('cell_tmobile');
+  addPmtilesSource('cell_verizon');
   addPmtilesSource('groundwater_basins');
   addPmtilesSource('groundwater_wells');
   addPmtilesSource('geology');
@@ -85,6 +88,9 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     layout: { visibility: 'none', 'text-field': ['concat', ['coalesce', ['get', 'name'], 'Unnamed subwatershed'], '\nHUC ', ['get', 'huc12']], 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 9, 10, 13, 12], 'text-max-width': 16, 'text-padding': 8 },
     paint: { 'text-color': '#d9fbff', 'text-halo-color': 'rgba(15, 37, 39, 0.92)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
   });
+  map.addLayer({ id: 'cell-att', type: 'fill', source: 'cell_att', 'source-layer': 'cell_att', minzoom: 7, layout: { visibility: 'none' }, paint: { 'fill-color': '#00c5ff', 'fill-opacity': 0.12 } });
+  map.addLayer({ id: 'cell-tmobile', type: 'fill', source: 'cell_tmobile', 'source-layer': 'cell_tmobile', minzoom: 7, layout: { visibility: 'none' }, paint: { 'fill-color': '#ff00c5', 'fill-opacity': 0.12 } });
+  map.addLayer({ id: 'cell-verizon', type: 'fill', source: 'cell_verizon', 'source-layer': 'cell_verizon', minzoom: 7, layout: { visibility: 'none' }, paint: { 'fill-color': '#ef3030', 'fill-opacity': 0.12 } });
   map.addLayer({
     id: 'groundwater-basins-fill', type: 'fill', source: 'groundwater_basins', 'source-layer': 'groundwater_basins', minzoom: 7,
     layout: { visibility: 'none' }, paint: { 'fill-color': '#9e6eea', 'fill-opacity': 0.12 }

@@ -26,6 +26,9 @@ const configs = {
   soils: { min: 9, max: 14, fields: LAYERS.soils.fields },
   huc12: { min: 7, max: 14, fields: LAYERS.huc12.fields.filter(field => field !== 'objectid') },
   wetlands: { min: 9, max: 14, fields: LAYERS.wetlands.fields.filter(field => field !== 'OBJECTID') },
+  cell_att: { min: 7, max: 13, fields: LAYERS.cell_att.fields.filter(field => field !== 'OBJECTID') },
+  cell_tmobile: { min: 7, max: 13, fields: LAYERS.cell_tmobile.fields.filter(field => field !== 'OBJECTID') },
+  cell_verizon: { min: 7, max: 13, fields: LAYERS.cell_verizon.fields.filter(field => field !== 'OBJECTID') },
   groundwater_basins: { min: 7, max: 14, fields: LAYERS.groundwater_basins.fields.filter(field => field !== 'OBJECTID') },
   groundwater_wells: { min: 7, max: 14, fields: LAYERS.groundwater_wells.fields }
 };
