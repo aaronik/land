@@ -1,5 +1,49 @@
 'use strict';
 
+function addSpringSymbol(map) {
+  const size = 24;
+  const data = new Uint8Array(size * size * 4);
+  const setPixel = (x, y, color) => {
+    if (x < 0 || x >= size || y < 0 || y >= size) return;
+    const index = (y * size + x) * 4;
+    data.set(color, index);
+  };
+  const stroke = (x1, y1, x2, y2, width, color) => {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const lengthSquared = dx * dx + dy * dy;
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+      const projection = Math.max(0, Math.min(1, ((x - x1) * dx + (y - y1) * dy) / lengthSquared));
+      const px = x1 + projection * dx;
+      const py = y1 + projection * dy;
+      if (Math.hypot(x - px, y - py) <= width / 2) setPixel(x, y, color);
+    }
+  };
+  const centerX = 9;
+  const centerY = 10;
+  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+    const distance = Math.hypot(x - centerX, y - centerY);
+    if (distance <= 5.3) setPixel(x, y, distance >= 3.6 ? [7, 83, 107, 255] : [156, 244, 255, 255]);
+  }
+  // USGS-style spring/seep outlet, extending from the blue source circle.
+  stroke(12, 13, 17, 18, 2.4, [7, 83, 107, 255]);
+  stroke(12, 13, 17, 18, 1, [156, 244, 255, 255]);
+  map.addImage('usgs-spring', { width: size, height: size, data });
+}
+
+function addWellSymbols(map) {
+  const colors = { shallow: [112, 228, 239], medium: [74, 196, 230], deep: [67, 132, 222], veryDeep: [118, 81, 199] };
+  for (const [name, color] of Object.entries(colors)) {
+    const size = 16;
+    const data = new Uint8Array(size * size * 4);
+    for (let y = 2; y < 14; y++) for (let x = 2; x < 14; x++) {
+      const index = (y * size + x) * 4;
+      data.set(x === 2 || x === 13 || y === 2 || y === 13 ? [243, 251, 255, 255] : [...color, 255], index);
+    }
+    map.addImage(`well-${name}`, { width: size, height: size, data });
+  }
+}
+
 export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, saleGeoJson, salePointGeoJson, unmappedGeoJson }) {
     addPmtilesSource('public_land');
   addPmtilesSource('fire_hazard');
@@ -109,9 +153,16 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     layout: { visibility: 'none', 'text-field': ['coalesce', ['get', 'Basin_Subbasin_Name'], ['get', 'Basin_Name']], 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 9, 10, 13, 13], 'text-max-width': 14, 'text-padding': 8 },
     paint: { 'text-color': '#dfc6ff', 'text-halo-color': 'rgba(35, 19, 58, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
   });
+  addWellSymbols(map);
   map.addLayer({
-    id: 'groundwater-wells', type: 'circle', source: 'groundwater_wells', 'source-layer': 'groundwater_wells', minzoom: 7,
-    layout: { visibility: 'none' }, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 2.5, 12, 5], 'circle-color': ['step', ['coalesce', ['get', 'TotalCompletedDepth'], ['get', 'TotalDrillDepth'], 0], '#70e4ef', 100, '#4ac4e6', 250, '#4384de', 500, '#7651c7'], 'circle-stroke-color': '#f3fbff', 'circle-stroke-width': 0.8, 'circle-opacity': 0.78 }
+    id: 'groundwater-wells', type: 'symbol', source: 'groundwater_wells', 'source-layer': 'groundwater_wells', minzoom: 7,
+    layout: {
+      visibility: 'none',
+      'icon-image': ['step', ['coalesce', ['get', 'TotalCompletedDepth'], ['get', 'TotalDrillDepth'], 0], 'well-shallow', 100, 'well-medium', 250, 'well-deep', 500, 'well-veryDeep'],
+      'icon-size': ['interpolate', ['linear'], ['zoom'], 7, 0.45, 12, 0.75],
+      'icon-allow-overlap': true,
+      'icon-ignore-placement': true
+    }
   });
   map.addLayer({
     id: 'geology', type: 'fill', source: 'geology', 'source-layer': 'geology', minzoom: 7,
@@ -172,9 +223,10 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     },
     paint: { 'text-color': '#f4f1df', 'text-halo-color': 'rgba(20, 28, 24, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
   });
+  addSpringSymbol(map);
   map.addLayer({
-    id: 'springs', type: 'circle', source: 'springs', 'source-layer': 'springs', minzoom: 9,
-    layout: { visibility: 'visible' }, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 9, 2.5, 14, 5], 'circle-color': '#9cf4ff', 'circle-stroke-color': '#07536b', 'circle-stroke-width': 1.1, 'circle-opacity': 0.9 }
+    id: 'springs', type: 'symbol', source: 'springs', 'source-layer': 'springs', minzoom: 9,
+    layout: { visibility: 'visible', 'icon-image': 'usgs-spring', 'icon-size': ['interpolate', ['linear'], ['zoom'], 9, 0.7, 14, 1.15], 'icon-allow-overlap': true, 'icon-ignore-placement': true }
   });
   map.addLayer({
     id: 'waterway-labels', type: 'symbol', source: 'waterways', 'source-layer': 'waterways', minzoom: 10,

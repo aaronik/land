@@ -82,6 +82,8 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .layer-key strong { margin-bottom: 2px; font-size: 9px; letter-spacing: .06em; text-transform: uppercase; }
 .layer-key span { display: flex; align-items: center; gap: 6px; }
 .layer-key span i { width: 11px; height: 11px; flex: 0 0 11px; border: 1px solid rgba(22,35,29,.2); border-radius: 2px; background: var(--key-color); }
+.layer-key span i.key-spring { position: relative; width: 12px; height: 12px; flex-basis: 12px; border: 2px solid #07536b; border-radius: 50%; background: #9cf4ff; }
+.layer-key span i.key-spring::after { content: ''; position: absolute; width: 7px; height: 2px; right: -6px; bottom: -3px; border-radius: 2px; background: #07536b; transform: rotate(45deg); transform-origin: left center; }
 .layer-key.zoning-key { max-height: 250px; overflow-y: auto; }
 .layer-key span i.key-transparent { background: transparent; border-color: #6e6e6e; }
 /* Default map-control interaction: native controls' 5% black overlay on white. */
