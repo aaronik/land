@@ -7,8 +7,8 @@
   <title>Shasta Land Atlas</title>
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.3.0/dist/maplibre-gl.css">
-  <script type="module" crossorigin src="/assets/index-BdRJrKyf.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-1p2AbvXD.css">
+  <script type="module" crossorigin src="/assets/index-P0Ue3teV.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BE1udqLf.css">
 </head>
 <body>
   <header class="masthead">
@@ -41,9 +41,10 @@
         <div class="layer-heading"><h2>Official map layers</h2><button id="reset-map-layers" type="button">Reset to default</button></div>
         <label><input type="checkbox" data-map-layer="roads" checked><i class="swatch roads-overlay"></i>Roads</label>
         <label><input type="checkbox" data-map-layer="waterways" checked><i class="swatch waterways-overlay"></i>Rivers, streams, &amp; springs</label>
-        <div class="layer-key" data-layer-key="waterways" aria-label="Rivers, streams, and springs legend"><span><i style="--key-color:#38a8ff"></i>Perennial</span><span><i style="--key-color:#6ca8cf"></i>Intermittent / ephemeral</span><span><i style="--key-color:#9cf4ff"></i>Mapped spring</span></div>
+        <div class="layer-key" data-layer-key="waterways" aria-label="Rivers, streams, and springs legend"><span><i style="--key-color:#38a8ff"></i>Perennial</span><span><i style="--key-color:#6ca8cf"></i>Intermittent / ephemeral</span><span><i class="key-spring"></i>Mapped spring</span></div>
         <label><input type="checkbox" data-map-layer="place-names" checked><i class="swatch place-names-overlay"></i>Lake, mountain, &amp; town names</label>
         <label><input type="checkbox" data-map-layer="railroads" checked><i class="swatch railroads-overlay"></i>Railroad tracks</label>
+        <label><input type="checkbox" data-map-layer="parcel-lines" checked><i class="swatch parcel-lines-overlay"></i>GIS APN parcel lines</label>
         <label><input type="checkbox" data-map-layer="topographic-contours" checked><i class="swatch topo-overlay"></i>Topographic lines</label>
         <label><input type="checkbox" data-map-layer="usgs-3dep-slope"><i class="swatch slope-overlay"></i>Terrain slope</label>
         <div class="layer-key" data-layer-key="usgs-3dep-slope" aria-label="Terrain slope information"><span>USGS 3DEP bare-earth slope visualization: gray is flatter, yellow is moderate, and red-brown is steeper. General terrain context only—not a survey, geotechnical assessment, or determination of buildability, drainage, access, or solar potential.</span></div>
