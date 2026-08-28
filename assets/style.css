@@ -68,6 +68,7 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .swatch.cell-coverage-overlay { background: linear-gradient(135deg, #00c5ff 0 33%, #ff00c5 33% 66%, #ef3030 66%); }
 .swatch.pct-overlay { background: #e69800; border: 1px solid #251908; }
 .swatch.topo-overlay { border: 1px solid rgba(22,35,29,.16); background: repeating-linear-gradient(165deg, transparent 0 3px, #9d8b63 3px 4px); }
+.swatch.slope-overlay { background: linear-gradient(135deg, #7d7d7d 0 30%, #eed75a 50%, #9b3d1e 100%); }
 .swatch.fire-overlay { background: #d73027; } .swatch.roads-overlay { background: #f8d37c; } .swatch.railroads-overlay { background: #e53935; } .swatch.waterways-overlay { background: #38a8ff; }
 .swatch.place-names-overlay { background: linear-gradient(135deg, #b9e4ff 0 50%, #f4dc9d 50%); }
 .swatch.flood-overlay { background: #26bce8; }
