@@ -202,6 +202,14 @@
     "confidence": "manually verified",
     "notes": "from picture"
   },
+  "20260222": {
+    "apns": [
+      "049-021-110"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
   "20260230": {
     "apns": [
       "061-131-180"
@@ -293,6 +301,86 @@
     "confidence": "manually verified",
     "notes": "pictures"
   },
+  "20260576": {
+    "apns": [
+      "049-341-020"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 2 McCloud subdivision"
+  },
+  "20260577": {
+    "apns": [
+      "049-341-030"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 3 McCloud subdivision"
+  },
+  "20260578": {
+    "apns": [
+      "049-341-060"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 6 McCloud subdivision"
+  },
+  "20260579": {
+    "apns": [
+      "049-342-020"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 8 McCloud subdivision"
+  },
+  "20260580": {
+    "apns": [
+      "049-342-010"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 7 McCloud subdivision"
+  },
+  "20260581": {
+    "apns": [
+      "049-342-030"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 9 McCloud subdivision"
+  },
+  "20260582": {
+    "apns": [
+      "049-342-050"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 10 McCloud subdivision"
+  },
+  "20260598": {
+    "apns": [
+      "049-342-070"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 11 McCloud subdivision"
+  },
+  "20260599": {
+    "apns": [
+      "049-342-090"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 12 McCloud subdivision"
+  },
+  "20260600": {
+    "apns": [
+      "049-342-110"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 13 McCloud subdivision"
+  },
   "20260613": {
     "apns": [
       "057-173-060"
@@ -301,6 +389,310 @@
     "confidence": "manually verified",
     "notes": "map pics"
   },
+  "20260617": {
+    "apns": [
+      "049-342-130"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 14 McCloud subdivision"
+  },
+  "20260618": {
+    "apns": [
+      "049-342-150"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 16 McCloud subdivision"
+  },
+  "20260619": {
+    "apns": [
+      "049-342-170"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 17 McCloud subdivision"
+  },
+  "20260620": {
+    "apns": [
+      "049-342-250"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 22 McCloud subdivision"
+  },
+  "20260621": {
+    "apns": [
+      "049-342-260"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 23 McCloud subdivision"
+  },
+  "20260623": {
+    "apns": [
+      "049-342-270"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 24 McCloud subdivision"
+  },
+  "20260624": {
+    "apns": [
+      "049-342-330"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 30 McCloud subdivision"
+  },
+  "20260626": {
+    "apns": [
+      "049-342-340"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 31 McCloud subdivision"
+  },
+  "20260649": {
+    "apns": [
+      "049-342-350"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 32 McCloud subdivision"
+  },
+  "20260650": {
+    "apns": [
+      "049-343-380"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 34 McCloud subdivision"
+  },
+  "20260651": {
+    "apns": [
+      "049-343-360"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 35 McCloud subdivision"
+  },
+  "20260652": {
+    "apns": [
+      "049-343-330"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 36 McCloud subdivision"
+  },
+  "20260653": {
+    "apns": [
+      "049-343-340"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 37 McCloud subdivision"
+  },
+  "20260654": {
+    "apns": [
+      "049-343-180"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 38 McCloud subdivision"
+  },
+  "20260655": {
+    "apns": [
+      "049-343-170"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 39 McCloud subdivision"
+  },
+  "20260656": {
+    "apns": [
+      "049-343-160"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 40 McCloud subdivision"
+  },
+  "20260657": {
+    "apns": [
+      "049-343-150"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 41 McCloud subdivision"
+  },
+  "20260658": {
+    "apns": [
+      "049-343-140"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 42 McCloud subdivision"
+  },
+  "20260659": {
+    "apns": [
+      "049-343-130"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 43 McCloud subdivision"
+  },
+  "20260660": {
+    "apns": [
+      "049-343-100"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 44 McCloud subdivision"
+  },
+  "20260661": {
+    "apns": [
+      "049-343-080"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 45 McCloud subdivision"
+  },
+  "20260674": {
+    "apns": [
+      "049-343-060"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 46 McCloud subdivision"
+  },
+  "20260675": {
+    "apns": [
+      "049-343-040"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 47 McCloud subdivision"
+  },
+  "20260676": {
+    "apns": [
+      "049-343-020"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 48 McCloud subdivision"
+  },
+  "20260677": {
+    "apns": [
+      "049-343-010"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 49 McCloud subdivision"
+  },
+  "20260678": {
+    "apns": [
+      "049-341-140"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 50 McCloud subdivision"
+  },
+  "20260679": {
+    "apns": [
+      "049-341-130"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 51 McCloud subdivision"
+  },
+  "20260680": {
+    "apns": [
+      "049-341-120"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 52 McCloud subdivision"
+  },
+  "20260681": {
+    "apns": [
+      "049-342-040"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 58 McCloud subdivision"
+  },
+  "20260682": {
+    "apns": [
+      "049-342-060"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 59 McCloud subdivision"
+  },
+  "20260683": {
+    "apns": [
+      "049-342-080"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 60 McCloud subdivision"
+  },
+  "20260684": {
+    "apns": [
+      "049-342-100"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 61 McCloud subdivision"
+  },
+  "20260685": {
+    "apns": [
+      "049-342-120"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 62 McCloud subdivision"
+  },
+  "20260686": {
+    "apns": [
+      "049-342-140"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 63 McCloud subdivision"
+  },
+  "20260703": {
+    "apns": [
+      "049-342-160"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 64 McCloud subdivision"
+  },
+  "20260704": {
+    "apns": [
+      "049-342-180"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 65 McCloud subdivision"
+  },
+  "20260705": {
+    "apns": [
+      "049-342-200"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 66 McCloud subdivision"
+  },
+  "20260706": {
+    "apns": [
+      "049-343-250"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 67 McCloud subdivision"
+  },
   "20260710": {
     "apns": [
       "036-360-170"
@@ -308,6 +700,166 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "MLS location was across the map"
+  },
+  "20260712": {
+    "apns": [
+      "049-343-260"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 68 McCloud subdivision"
+  },
+  "20260713": {
+    "apns": [
+      "049-343-270"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 69 McCloud subdivision"
+  },
+  "20260714": {
+    "apns": [
+      "049-343-280"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 70 McCloud subdivision"
+  },
+  "20260715": {
+    "apns": [
+      "049-343-290"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 71 McCloud subdivision"
+  },
+  "20260716": {
+    "apns": [
+      "049-343-300"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 72 McCloud subdivision"
+  },
+  "20260717": {
+    "apns": [
+      "049-343-310"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 73 McCloud subdivision"
+  },
+  "20260718": {
+    "apns": [
+      "049-343-370"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 74 McCloud subdivision"
+  },
+  "20260719": {
+    "apns": [
+      "049-343-350"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 75 McCloud subdivision"
+  },
+  "20260720": {
+    "apns": [
+      "049-343-320"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 76 McCloud subdivision"
+  },
+  "20260721": {
+    "apns": [
+      "049-343-240"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 77 McCloud subdivision"
+  },
+  "20260722": {
+    "apns": [
+      "049-343-230"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 78 McCloud subdivision"
+  },
+  "20260723": {
+    "apns": [
+      "049-343-220"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 79 McCloud subdivision"
+  },
+  "20260724": {
+    "apns": [
+      "049-343-210"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 80 McCloud subdivision"
+  },
+  "20260725": {
+    "apns": [
+      "049-343-200"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 81 McCloud subdivision"
+  },
+  "20260726": {
+    "apns": [
+      "049-343-190"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 82 McCloud subdivision"
+  },
+  "20260727": {
+    "apns": [
+      "049-343-110"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 83 McCloud subdivision"
+  },
+  "20260728": {
+    "apns": [
+      "049-343-090"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 84 McCloud subdivision"
+  },
+  "20260729": {
+    "apns": [
+      "049-343-070"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 85 McCloud subdivision"
+  },
+  "20260730": {
+    "apns": [
+      "049-343-050"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 86 McCloud subdivision"
+  },
+  "20260731": {
+    "apns": [
+      "049-343-030"
+    ],
+    "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
+    "confidence": "manually verified by lot number, parcel topology, and acreage",
+    "notes": "Lot 87 McCloud subdivision"
   },
   "20260748": {
     "apns": [
@@ -358,6 +910,14 @@
     "source": "Siskiyou County unique canonical address point intersected with county parcel GIS",
     "confidence": "high; unique address and exact acreage match",
     "notes": "537 N Adams Dr; county stores 537 Adams Drive without directional; exact address point intersects APN 057-595-540; listing and GIS both 0.78 acres"
+  },
+  "20260890": {
+    "apns": [
+      "028-240-070"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pic"
   },
   "20260981": {
     "apns": [
