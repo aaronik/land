@@ -145,7 +145,8 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 
 .research h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; }
 .research-actions { display: grid; gap: 6px; }
-.research button, .dialog-actions button { border: 0; border-radius: 6px; padding: 8px; color: white; background: var(--ink); cursor: pointer; font-weight: 700; }
+.research button, .research-actions a, .dialog-actions button { border: 0; border-radius: 6px; padding: 8px; color: white; background: var(--ink); cursor: pointer; font-weight: 700; }
+.research-actions a { text-align: center; text-decoration: none; }
 .research textarea { width: 100%; margin: 8px 0 6px; padding: 7px; border: 1px solid #b8bdb8; border-radius: 6px; resize: vertical; font: inherit; }
 .research p { margin: 7px 0 0; color: #667067; font-size: 10px; line-height: 1.4; }
 dialog { width: min(460px, 90vw); border: 0; border-radius: 10px; color: var(--ink); background: var(--paper); box-shadow: 0 20px 70px rgba(0,0,0,.45); }

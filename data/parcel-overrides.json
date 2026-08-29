@@ -911,6 +911,14 @@
     "confidence": "high; unique address and exact acreage match",
     "notes": "537 N Adams Dr; county stores 537 Adams Drive without directional; exact address point intersects APN 057-595-540; listing and GIS both 0.78 acres"
   },
+  "20260890": {
+    "apns": [
+      "028-240-070"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pic"
+  },
   "20260981": {
     "apns": [
       "021-262-370"
