@@ -1,10 +1,24 @@
 {
-  "generatedAt": "2026-08-25T12:41:43.229Z",
+  "generatedAt": "2026-08-29T16:01:19.426Z",
   "resolver": "subdivision-lot-sequence-v3",
-  "evaluatedGroups": 144,
+  "evaluatedGroups": 84,
   "mappedListings": 0,
   "establishedModels": [],
   "groups": [
+    {
+      "latLng": [
+        41.881768,
+        -122.428111
+      ],
+      "mlsNumbers": [
+        "20260358",
+        "20260241"
+      ],
+      "status": "unresolved",
+      "reason": "no unique corroborated APN sequence",
+      "model": null,
+      "assignments": []
+    },
     {
       "latLng": [
         41.906887599384326,
@@ -85,113 +99,6 @@
     },
     {
       "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260731",
-        "20260730",
-        "20260729",
-        "20260728",
-        "20260727",
-        "20260726",
-        "20260725",
-        "20260724",
-        "20260723",
-        "20260722",
-        "20260721",
-        "20260720",
-        "20260661",
-        "20260660",
-        "20260659",
-        "20260658",
-        "20260657",
-        "20260656",
-        "20260655",
-        "20260654",
-        "20260653"
-      ],
-      "status": "unresolved",
-      "reason": "no unique corroborated APN sequence",
-      "model": null,
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260719",
-        "20260706",
-        "20260705",
-        "20260704",
-        "20260703",
-        "20260686",
-        "20260685",
-        "20260684",
-        "20260683",
-        "20260682",
-        "20260681",
-        "20260680",
-        "20260679",
-        "20260678",
-        "20260677",
-        "20260676",
-        "20260652",
-        "20260651",
-        "20260650",
-        "20260649",
-        "20260626",
-        "20260624",
-        "20260623",
-        "20260621",
-        "20260620",
-        "20260619",
-        "20260618"
-      ],
-      "status": "unresolved",
-      "reason": "no unique corroborated APN sequence",
-      "model": null,
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "mlsNumbers": [
-        "20260718",
-        "20260717",
-        "20260716",
-        "20260715",
-        "20260714",
-        "20260713",
-        "20260712",
-        "20260582"
-      ],
-      "status": "unresolved",
-      "reason": "no unique corroborated APN sequence",
-      "model": null,
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.264773207160765,
-        -122.11460654389602
-      ],
-      "mlsNumbers": [
-        "20260675",
-        "20260674",
-        "20250861"
-      ],
-      "status": "unresolved",
-      "reason": "no unique corroborated APN sequence",
-      "model": null,
-      "assignments": []
-    },
-    {
-      "latLng": [
         41.52620749857974,
         -122.38049579763317
       ],
@@ -250,6 +157,30 @@
       "status": "unresolved",
       "reason": "no unique corroborated APN sequence",
       "model": null,
+      "assignments": []
+    },
+    {
+      "latLng": [
+        41.538148,
+        -122.381452
+      ],
+      "mlsNumbers": [
+        "20261065"
+      ],
+      "status": "unresolved_singleton",
+      "reason": "no candidate in an established APN sequence",
+      "assignments": []
+    },
+    {
+      "latLng": [
+        41.881768,
+        -122.428111
+      ],
+      "mlsNumbers": [
+        "20260358"
+      ],
+      "status": "unresolved_singleton",
+      "reason": "no candidate in an established APN sequence",
       "assignments": []
     },
     {
@@ -398,623 +329,11 @@
     },
     {
       "latLng": [
-        41.395145670000744,
-        -122.39077441700161
-      ],
-      "mlsNumbers": [
-        "20260820"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260731"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260730"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260729"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260728"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260727"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260726"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260725"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260724"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260723"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260722"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260721"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260720"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260719"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "mlsNumbers": [
-        "20260718"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "mlsNumbers": [
-        "20260717"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "mlsNumbers": [
-        "20260716"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "mlsNumbers": [
-        "20260715"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "mlsNumbers": [
-        "20260714"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "mlsNumbers": [
-        "20260713"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "mlsNumbers": [
-        "20260712"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260706"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260705"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260704"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260703"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260686"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260685"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260684"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260683"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260682"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260681"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260680"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260679"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260678"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260677"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260676"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.264773207160765,
-        -122.11460654389602
-      ],
-      "mlsNumbers": [
-        "20260675"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.264773207160765,
-        -122.11460654389602
-      ],
-      "mlsNumbers": [
-        "20260674"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
         41.906887599384326,
         -122.51472420665009
       ],
       "mlsNumbers": [
         "20260664"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260661"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260660"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260659"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260658"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260657"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260656"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260655"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260654"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24999835600078,
-        -122.14316579000162
-      ],
-      "mlsNumbers": [
-        "20260653"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260652"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260651"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260650"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260649"
       ],
       "status": "unresolved_singleton",
       "reason": "no candidate in an established APN sequence",
@@ -1082,107 +401,11 @@
     },
     {
       "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260626"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260624"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260623"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260621"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260620"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260619"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.25643496338541,
-        -122.12949090746314
-      ],
-      "mlsNumbers": [
-        "20260618"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
         41.93499687800076,
         -122.38892773500159
       ],
       "mlsNumbers": [
         "20250587"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.24858175325078,
-        -122.14266950675163
-      ],
-      "mlsNumbers": [
-        "20260582"
       ],
       "status": "unresolved_singleton",
       "reason": "no candidate in an established APN sequence",
@@ -1574,8 +797,8 @@
     },
     {
       "latLng": [
-        41.90203864000078,
-        -122.44444109500157
+        41.902263,
+        -122.444259
       ],
       "mlsNumbers": [
         "20260063"
