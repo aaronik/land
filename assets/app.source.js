@@ -322,6 +322,7 @@ function addPmtilesSource(id) {
   const attributions = {
     flood: '<a href="https://www.fema.gov/flood-maps/national-flood-hazard-layer" target="_blank">FEMA NFHL</a>',
     soils: '<a href="https://sdmdataaccess.nrcs.usda.gov/" target="_blank">USDA NRCS SSURGO</a>',
+    farmland: '<a href="https://www.conservation.ca.gov/dlrp/fmmp" target="_blank">California DOC Farmland Mapping and Monitoring Program</a>',
     fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>',
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
     forest_roads: '<a href="https://data.fs.usda.gov/geodata/edw/datasets.php?xmlKeyword=Motor+vehicle+Use+Map" target="_blank">USFS Motor Vehicle Use Map</a>',
@@ -367,6 +368,7 @@ function toggleLayer(id, visibleValue) {
     waterways: ['waterways-casing', 'waterways', 'waterway-labels', 'springs'],
     'place-names': ['waterbodies', 'waterbody-labels', 'summits', 'towns'],
     huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels'],
+    farmland: ['farmland'],
     'cell-coverage': ['cell-att', 'cell-tmobile', 'cell-verizon'],
     pct: ['pct-casing', 'pct', 'pct-markers'],
     'groundwater-basins': ['groundwater-basins-fill', 'groundwater-basins-lines', 'groundwater-basins-labels'],

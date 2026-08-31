@@ -209,6 +209,12 @@ const LAYERS = {
     typeName: 'mapunitpolyextended',
     fields: SOIL_FIELDS
   },
+  farmland: {
+    name: 'California Important Farmland (FMMP)',
+    url: 'https://gis.conservation.ca.gov/server/rest/services/DLRP/CaliforniaImportantFarmland_mostrecent/MapServer/0',
+    bbox: SISKIYOU_BBOX,
+    fields: ['OBJECTID', 'county_nam', 'upd_year', 'polygon_ac', 'polygon_ty']
+  },
   huc12: {
     name: 'USGS HUC-12 subwatersheds',
     url: 'https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer/6',

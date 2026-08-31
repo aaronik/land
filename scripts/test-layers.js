@@ -59,6 +59,13 @@ function testWaterwaysSource() {
   assert(waterways.fields.includes('fcode'));
 }
 
+function testFarmlandSource() {
+  const farmland = LAYERS.farmland;
+  assert.match(farmland.url, /CaliforniaImportantFarmland_mostrecent\/MapServer\/0$/);
+  assert.equal(farmland.bbox, '-123.73,40.98,-121.43,42.02');
+  assert.deepEqual(farmland.fields, ['OBJECTID', 'county_nam', 'upd_year', 'polygon_ac', 'polygon_ty']);
+}
+
 (async () => {
   await testPaginationCompleteness();
   await testIncompleteDownloadFails();
@@ -66,5 +73,6 @@ function testWaterwaysSource() {
   testMatchingConfidence();
   testActiveRailroadSource();
   testWaterwaysSource();
-  console.log('Passed: ArcGIS pagination, transportation, waterways, and listing confidence tests.');
+  testFarmlandSource();
+  console.log('Passed: ArcGIS pagination, transportation, waterways, farmland, and listing confidence tests.');
 })().catch(error => { console.error(error); process.exit(1); });

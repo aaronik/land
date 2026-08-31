@@ -49,6 +49,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('fire_hazard');
   addPmtilesSource('flood');
   addPmtilesSource('soils');
+  addPmtilesSource('farmland');
   addPmtilesSource('huc12');
   addPmtilesSource('cell_att');
   addPmtilesSource('cell_tmobile');
@@ -167,6 +168,14 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   map.addLayer({
     id: 'geology', type: 'fill', source: 'geology', 'source-layer': 'geology', minzoom: 7,
     layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'material_class'], 'Unconsolidated deposits', '#e7d28a', 'Volcanic rock', '#bd7c61', 'Intrusive igneous rock', '#ad8bd0', 'Metamorphic rock', '#729f83', 'Sedimentary rock', '#be9d62', '#9a9a9a'], 'fill-opacity': 0.38, 'fill-outline-color': 'rgba(45, 38, 30, 0.68)' }
+  });
+  map.addLayer({
+    id: 'farmland', type: 'fill', source: 'farmland', 'source-layer': 'farmland', minzoom: 7, layout: { visibility: 'none' },
+    paint: {
+      'fill-color': ['match', ['get', 'polygon_ty'], 'P', '#8db359', 'S', '#bed984', 'U', '#e2f7b0', 'L', '#f9fcde', 'G', '#e3dbc5', 'I', '#acc7a5', 'N', '#f0f0c2', 'Cl', '#b37b59', '#b9b9b9'],
+      'fill-opacity': 0.48,
+      'fill-outline-color': 'rgba(69, 89, 39, 0.72)'
+    }
   });
   map.addLayer({ id: 'soils', type: 'fill', source: 'soils', 'source-layer': 'soils', minzoom: 9, layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'drclassdcd'], 'Very poorly drained', '#4f78a8', 'Poorly drained', '#6b94b7', 'Somewhat poorly drained', '#87adbf', 'Moderately well drained', '#b9a46b', 'Well drained', '#a97a45', 'Somewhat excessively drained', '#c48d54', 'Excessively drained', '#d5a767', '#9b8064'], 'fill-opacity': 0.34, 'fill-outline-color': 'rgba(69, 45, 25, 0.7)' } });
   map.addLayer({ id: 'flood', type: 'fill', source: 'flood', 'source-layer': 'flood', layout: { visibility: 'none' }, paint: { 'fill-color': ['case', ['==', ['get', 'SFHA_TF'], 'T'], '#00c5ff', ['all', ['==', ['get', 'FLD_ZONE'], 'X'], ['match', ['get', 'ZONE_SUBTY'], '0.2 PCT ANNUAL CHANCE FLOOD HAZARD', true, '0.2 PERCENT ANNUAL CHANCE FLOOD HAZARD', true, false]], '#75d5ec', ['==', ['get', 'FLD_ZONE'], 'D'], '#e8d15c', '#3db7de'], 'fill-opacity': 0.38, 'fill-outline-color': 'rgba(0, 104, 160, 0.8)' } });
