@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-28T18:51:02.722Z",
+  "generatedAt": "2026-08-31T18:42:39.715Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -329,6 +329,33 @@
         "Mile",
         "Mile_SoBo",
         "RouteID"
+      ]
+    },
+    "farmland": {
+      "source": "https://gis.conservation.ca.gov/server/rest/services/DLRP/CaliforniaImportantFarmland_mostrecent/MapServer/0",
+      "featureCount": 4026,
+      "fields": [
+        "OBJECTID",
+        "county_nam",
+        "upd_year",
+        "polygon_ac",
+        "polygon_ty"
+      ]
+    },
+    "rcra_sites": {
+      "source": "https://services.arcgis.com/cJ9YHowT8TU7DUyn/ArcGIS/rest/services/RCRA_Handlers/FeatureServer/3",
+      "featureCount": 634,
+      "fields": [
+        "OBJECTID",
+        "HANDLER_ID",
+        "HANDLER_NAME",
+        "LOCATION_ADDRESS",
+        "FEDERAL_GENERATOR_STATUS",
+        "OPERATING_TSDF",
+        "OPERATING_TSDF_DESC",
+        "IS_CA",
+        "PERMITTED_STATUS",
+        "TSDF_YES_NO"
       ]
     }
   }

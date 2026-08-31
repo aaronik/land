@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-31T18:34:46.689Z",
-  "count": 217,
+  "generatedAt": "2026-08-29T16:01:19.426Z",
+  "count": 218,
   "listings": [
     {
       "mlsNumber": "20261065",
@@ -1835,6 +1835,18 @@
         -122.373145
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251056/Barber-Ct-Lot-39-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20251052",
+      "title": "Unit 3 Lot 23 Whitepine St., Hornbrook, CA 96044",
+      "acres": 1.08,
+      "latLng": [
+        41.88189972058409,
+        -122.45603904141824
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251052/Unit-3-Lot-23-Whitepine-St-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
