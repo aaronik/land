@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T18:38:02.137Z",
+  "generatedAt": "2026-08-31T18:42:39.715Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -340,6 +340,22 @@
         "upd_year",
         "polygon_ac",
         "polygon_ty"
+      ]
+    },
+    "rcra_sites": {
+      "source": "https://services.arcgis.com/cJ9YHowT8TU7DUyn/ArcGIS/rest/services/RCRA_Handlers/FeatureServer/3",
+      "featureCount": 634,
+      "fields": [
+        "OBJECTID",
+        "HANDLER_ID",
+        "HANDLER_NAME",
+        "LOCATION_ADDRESS",
+        "FEDERAL_GENERATOR_STATUS",
+        "OPERATING_TSDF",
+        "OPERATING_TSDF_DESC",
+        "IS_CA",
+        "PERMITTED_STATUS",
+        "TSDF_YES_NO"
       ]
     }
   }

@@ -66,6 +66,14 @@ function testFarmlandSource() {
   assert.deepEqual(farmland.fields, ['OBJECTID', 'county_nam', 'upd_year', 'polygon_ac', 'polygon_ty']);
 }
 
+function testRcraSiteSource() {
+  const sites = LAYERS.rcra_sites;
+  assert.match(sites.url, /RCRA_Handlers\/FeatureServer\/3$/);
+  assert.equal(sites.bbox, '-123.73,40.98,-121.43,42.02');
+  assert(sites.fields.includes('HANDLER_NAME'));
+  assert(sites.fields.includes('FEDERAL_GENERATOR_STATUS'));
+}
+
 (async () => {
   await testPaginationCompleteness();
   await testIncompleteDownloadFails();
@@ -74,5 +82,6 @@ function testFarmlandSource() {
   testActiveRailroadSource();
   testWaterwaysSource();
   testFarmlandSource();
-  console.log('Passed: ArcGIS pagination, transportation, waterways, farmland, and listing confidence tests.');
+  testRcraSiteSource();
+  console.log('Passed: ArcGIS pagination, transportation, waterways, farmland, RCRA sites, and listing confidence tests.');
 })().catch(error => { console.error(error); process.exit(1); });

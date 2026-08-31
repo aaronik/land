@@ -74,6 +74,7 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .swatch.flood-overlay { background: #26bce8; }
 .swatch.soils-overlay { background: repeating-linear-gradient(135deg, #9a6b3b 0 3px, #d6b06b 3px 6px); }
 .swatch.farmland-overlay { background: linear-gradient(135deg, #8db359 0 25%, #bed984 25% 50%, #e2f7b0 50% 75%, #e3dbc5 75%); }
+.swatch.rcra-sites-overlay { border-radius: 50%; background: #d73027; border: 1px solid #3b1515; }
 .swatch.groundwater-basin-overlay { border: 2px dashed #9e6eea; background: rgba(158,110,234,.16); }
 .swatch.groundwater-well-overlay { border-radius: 50%; background: #58d7e9; }
 .swatch.geology-overlay { background: linear-gradient(135deg, #e7d28a 0 20%, #bd7c61 20% 40%, #ad8bd0 40% 60%, #729f83 60% 80%, #be9d62 80%); }

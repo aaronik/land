@@ -25,6 +25,7 @@ const configs = {
   flood: { min: 8, max: 14, fields: LAYERS.flood.fields.filter(field => field !== 'OBJECTID') },
   soils: { min: 9, max: 14, fields: LAYERS.soils.fields },
   farmland: { min: 7, max: 14, fields: LAYERS.farmland.fields.filter(field => field !== 'OBJECTID') },
+  rcra_sites: { min: 7, max: 14, fields: LAYERS.rcra_sites.fields.filter(field => field !== 'OBJECTID') },
   huc12: { min: 7, max: 14, fields: LAYERS.huc12.fields.filter(field => field !== 'objectid') },
   wetlands: { min: 9, max: 14, fields: LAYERS.wetlands.fields.filter(field => field !== 'OBJECTID') },
   cell_att: { min: 7, max: 13, fields: LAYERS.cell_att.fields.filter(field => field !== 'OBJECTID') },

@@ -215,6 +215,12 @@ const LAYERS = {
     bbox: SISKIYOU_BBOX,
     fields: ['OBJECTID', 'county_nam', 'upd_year', 'polygon_ac', 'polygon_ty']
   },
+  rcra_sites: {
+    name: 'EPA RCRA hazardous waste handlers',
+    url: 'https://services.arcgis.com/cJ9YHowT8TU7DUyn/ArcGIS/rest/services/RCRA_Handlers/FeatureServer/3',
+    bbox: SISKIYOU_BBOX,
+    fields: ['OBJECTID', 'HANDLER_ID', 'HANDLER_NAME', 'LOCATION_ADDRESS', 'FEDERAL_GENERATOR_STATUS', 'OPERATING_TSDF', 'OPERATING_TSDF_DESC', 'IS_CA', 'PERMITTED_STATUS', 'TSDF_YES_NO']
+  },
   huc12: {
     name: 'USGS HUC-12 subwatersheds',
     url: 'https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer/6',

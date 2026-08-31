@@ -50,6 +50,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('flood');
   addPmtilesSource('soils');
   addPmtilesSource('farmland');
+  addPmtilesSource('rcra_sites');
   addPmtilesSource('huc12');
   addPmtilesSource('cell_att');
   addPmtilesSource('cell_tmobile');
@@ -170,7 +171,16 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'material_class'], 'Unconsolidated deposits', '#e7d28a', 'Volcanic rock', '#bd7c61', 'Intrusive igneous rock', '#ad8bd0', 'Metamorphic rock', '#729f83', 'Sedimentary rock', '#be9d62', '#9a9a9a'], 'fill-opacity': 0.38, 'fill-outline-color': 'rgba(45, 38, 30, 0.68)' }
   });
   map.addLayer({
-    id: 'farmland', type: 'fill', source: 'farmland', 'source-layer': 'farmland', minzoom: 7, layout: { visibility: 'none' },
+    id: 'rcra-sites', type: 'circle', source: 'rcra_sites', 'source-layer': 'rcra_sites', minzoom: 7, layout: { visibility: 'none' },
+    paint: {
+      'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 3.5, 12, 6],
+      'circle-color': ['match', ['get', 'FEDERAL_GENERATOR_STATUS'], 'LQG', '#d73027', 'SQG', '#fc8d59', 'VSG', '#fee08b', '#9b59b6'],
+      'circle-stroke-color': '#3b1515',
+      'circle-stroke-width': 1.2,
+      'circle-opacity': 0.92
+    }
+  });
+  map.addLayer({ id: 'farmland', type: 'fill', source: 'farmland', 'source-layer': 'farmland', minzoom: 7, layout: { visibility: 'none' },
     paint: {
       'fill-color': ['match', ['get', 'polygon_ty'], 'P', '#8db359', 'S', '#bed984', 'U', '#e2f7b0', 'L', '#f9fcde', 'G', '#e3dbc5', 'I', '#acc7a5', 'N', '#f0f0c2', 'Cl', '#b37b59', '#b9b9b9'],
       'fill-opacity': 0.48,

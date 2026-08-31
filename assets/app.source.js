@@ -323,6 +323,7 @@ function addPmtilesSource(id) {
     flood: '<a href="https://www.fema.gov/flood-maps/national-flood-hazard-layer" target="_blank">FEMA NFHL</a>',
     soils: '<a href="https://sdmdataaccess.nrcs.usda.gov/" target="_blank">USDA NRCS SSURGO</a>',
     farmland: '<a href="https://www.conservation.ca.gov/dlrp/fmmp" target="_blank">California DOC Farmland Mapping and Monitoring Program</a>',
+    rcra_sites: '<a href="https://rcrapublic.epa.gov/rcrainfoweb/action/main-menu/view" target="_blank">EPA RCRAInfo hazardous waste handlers</a>',
     fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>',
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
     forest_roads: '<a href="https://data.fs.usda.gov/geodata/edw/datasets.php?xmlKeyword=Motor+vehicle+Use+Map" target="_blank">USFS Motor Vehicle Use Map</a>',
@@ -342,8 +343,11 @@ function addPmtilesSource(id) {
   map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id], ...(id === 'parcels' ? { promoteId: 'APN' } : {}) });
 }
 const MAP_LAYER_STORAGE_KEY = 'shasta-land-atlas.map-layer-visibility.v1';
+const LISTING_TYPE_STORAGE_KEY = 'shasta-land-atlas.listing-type-visibility.v1';
 const mapLayerInputs = [...document.querySelectorAll('[data-map-layer]')];
+const listingTypeInputs = [...document.querySelectorAll('.filter')];
 const defaultMapLayerVisibility = Object.fromEntries(mapLayerInputs.map(input => [input.dataset.mapLayer, input.defaultChecked]));
+const defaultListingTypeVisibility = Object.fromEntries(listingTypeInputs.map(input => [input.value, input.defaultChecked]));
 function loadMapLayerVisibility() {
   try {
     const saved = JSON.parse(localStorage.getItem(MAP_LAYER_STORAGE_KEY));
@@ -354,10 +358,22 @@ function loadMapLayerVisibility() {
 function saveMapLayerVisibility() {
   try { localStorage.setItem(MAP_LAYER_STORAGE_KEY, JSON.stringify(Object.fromEntries(mapLayerInputs.map(input => [input.dataset.mapLayer, input.checked])))); } catch { /* Storage may be disabled. */ }
 }
+function loadListingTypeVisibility() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(LISTING_TYPE_STORAGE_KEY));
+    if (!saved || typeof saved !== 'object') return;
+    for (const input of listingTypeInputs) if (typeof saved[input.value] === 'boolean') input.checked = saved[input.value];
+  } catch { /* Use markup defaults when storage is unavailable or malformed. */ }
+  enabledCategories = new Set(listingTypeInputs.filter(input => input.checked).map(input => input.value));
+}
+function saveListingTypeVisibility() {
+  try { localStorage.setItem(LISTING_TYPE_STORAGE_KEY, JSON.stringify(Object.fromEntries(listingTypeInputs.map(input => [input.value, input.checked])))); } catch { /* Storage may be disabled. */ }
+}
 function applyMapLayerVisibility() {
   for (const input of mapLayerInputs) toggleLayer(input.dataset.mapLayer, input.checked);
 }
 loadMapLayerVisibility();
+loadListingTypeVisibility();
 
 function toggleLayer(id, visibleValue) {
   const groupedLayers = {
@@ -369,6 +385,7 @@ function toggleLayer(id, visibleValue) {
     'place-names': ['waterbodies', 'waterbody-labels', 'summits', 'towns'],
     huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels'],
     farmland: ['farmland'],
+    'rcra-sites': ['rcra-sites'],
     'cell-coverage': ['cell-att', 'cell-tmobile', 'cell-verizon'],
     pct: ['pct-casing', 'pct', 'pct-markers'],
     'groundwater-basins': ['groundwater-basins-fill', 'groundwater-basins-lines', 'groundwater-basins-labels'],
@@ -424,7 +441,7 @@ function initializeMapLayers() {
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
-    ], { layers: ['springs', 'groundwater-wells', 'unmapped-markers', 'sale-markers'] });
+    ], { layers: ['springs', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
     const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill', 'geology'] });
     const feature = markerHits[0] || polygonHits[0];
     if (!feature) return;
@@ -449,6 +466,16 @@ function initializeMapLayers() {
       document.querySelector('#details').innerHTML = `<h3>Reported well completion</h3><p class="meta">DWR report ${value(props.WCRNumber)} · ${value(props.RecordType)}</p><p><strong>Completed depth: ${value(completedDepth)} ft</strong><br>Static water level: ${value(props.StaticWaterLevel)} ft<br>Reported yield: ${value(props.WellYield)}${props.WellYield ? ` ${value(props.WellYieldUnitofMeasure)}` : ''}<br>Use: ${value(props.PlannedUseFormerUse)}</p>${nearby}<p class="source-note">Reported completion data, not a current water-level reading or a parcel-specific prediction. DWR notes that most locations are mapped to the center of a one-mile PLSS section; verify the original report.</p>${originalRecord}`;
       return;
     }
+    if (feature.layer.id === 'rcra-sites') {
+      const value = value => value === null || value === undefined || value === '' ? 'Not reported' : escapeHtml(value);
+      const categories = { LQG: 'Large quantity generator', SQG: 'Small quantity generator', VSG: 'Very small quantity generator', Other: 'Other handler / corrective-action site' };
+      const status = categories[props.FEDERAL_GENERATOR_STATUS] || value(props.FEDERAL_GENERATOR_STATUS);
+      const flags = [props.OPERATING_TSDF === 'Yes' || props.TSDF_YES_NO === 'Yes' ? 'Treatment, storage, or disposal facility' : '', props.IS_CA === 'Yes' ? 'Corrective action' : '', props.PERMITTED_STATUS].filter(Boolean).map(escapeHtml).join(' · ');
+      const siteUrl = `https://rcrapublic.epa.gov/rcra-hwip/search/results/site/${encodeURIComponent(props.HANDLER_ID || '')}`;
+      const recordLink = props.HANDLER_ID ? `<p><a href="${siteUrl}" target="_blank" rel="noopener noreferrer">View EPA RCRAInfo site record ↗</a></p>` : '';
+      document.querySelector('#details').innerHTML = `<h3>RCRA hazardous-waste site</h3><p class="meta">${status}</p><p><strong>${value(props.HANDLER_NAME)}</strong><br>${value(props.LOCATION_ADDRESS)}</p><p>EPA handler ID: ${value(props.HANDLER_ID)}${flags ? `<br>${flags}` : ''}</p>${recordLink}<p class="source-note">EPA RCRAInfo handler location. This record does not by itself establish a contamination boundary, release, cleanup status, or risk at this location. Verify details in EPA RCRAInfo and with relevant regulators.</p>`;
+      return;
+    }
     if (feature.layer.id === 'unmapped-markers') {
       document.querySelector('#details').innerHTML = `<div class="details-heading"><h3>Unmapped listing</h3><button class="close-parcel" type="button" data-close-details aria-label="Close selected listing" title="Close selected listing">×</button></div><p class="meta">MLS point only — boundary unverified.</p>${recordCard(props)}`;
       document.querySelector('[data-close-details]').addEventListener('click', clearSelectedParcel);
@@ -464,7 +491,7 @@ function initializeMapLayers() {
     }
     selectParcel(props);
   });
-  for (const id of ['geology', 'springs', 'groundwater-wells', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['geology', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }
@@ -513,7 +540,11 @@ document.querySelector('#terrain-toggle').addEventListener('click', () => toggle
 document.querySelector('#search-button').addEventListener('click', findListings);
 document.querySelector('#search').addEventListener('keydown', event => { if (event.key === 'Enter') findListings(); });
 document.querySelector('#search').addEventListener('search', findListings);
-document.querySelectorAll('.filter').forEach(input => input.addEventListener('change', () => { enabledCategories = new Set([...document.querySelectorAll('.filter:checked')].map(item => item.value)); updateSales(); }));
+listingTypeInputs.forEach(input => input.addEventListener('change', () => {
+  enabledCategories = new Set(listingTypeInputs.filter(item => item.checked).map(item => item.value));
+  saveListingTypeVisibility();
+  updateSales();
+}));
 const minimumAcreageInput = document.querySelector('#minimum-acreage');
 const maximumAcreageInput = document.querySelector('#maximum-acreage');
 function updateAcreageFilter() {
@@ -558,8 +589,14 @@ mapLayerInputs.forEach(input => input.addEventListener('change', () => {
 }));
 document.querySelector('#reset-map-layers').addEventListener('click', () => {
   for (const input of mapLayerInputs) input.checked = defaultMapLayerVisibility[input.dataset.mapLayer];
-  try { localStorage.removeItem(MAP_LAYER_STORAGE_KEY); } catch { /* Storage may be disabled. */ }
+  for (const input of listingTypeInputs) input.checked = defaultListingTypeVisibility[input.value];
+  enabledCategories = new Set(listingTypeInputs.filter(input => input.checked).map(input => input.value));
+  try {
+    localStorage.removeItem(MAP_LAYER_STORAGE_KEY);
+    localStorage.removeItem(LISTING_TYPE_STORAGE_KEY);
+  } catch { /* Storage may be disabled. */ }
   applyMapLayerVisibility();
+  updateSales();
 });
 document.querySelector('#cancel-parcelquest').addEventListener('click', () => document.querySelector('#parcelquest-warning').close());
 document.querySelector('#continue-parcelquest').addEventListener('click', async () => {
