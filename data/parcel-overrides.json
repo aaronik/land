@@ -962,6 +962,14 @@
     "confidence": "manually verified",
     "notes": "map pics"
   },
+  "20261081": {
+    "apns": [
+      "038-260-040"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "acreage"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"

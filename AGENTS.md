@@ -23,6 +23,10 @@ rg PATTERN . \
 
 For file discovery, prefer scoped source paths such as `assets/`, `scripts/`, and top-level configuration files. Metadata-only operations such as `ls`, `du`, `stat`, file counts, and filenames are safe for data directories.
 
+## Sidebar state
+
+Persist every user-adjustable sidebar control in browser storage and restore it on page load. The “Reset to defaults” action must restore that control’s markup default and clear its saved value. Apply this rule to all future stateful sidebar additions.
+
 ## Map control interaction styles
 
 All interactive MapLibre map controls—including custom controls—must inherit the shared default in `assets/style.css`:

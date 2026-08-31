@@ -344,6 +344,7 @@ function addPmtilesSource(id) {
 }
 const MAP_LAYER_STORAGE_KEY = 'shasta-land-atlas.map-layer-visibility.v1';
 const LISTING_TYPE_STORAGE_KEY = 'shasta-land-atlas.listing-type-visibility.v1';
+const LISTING_FILTER_STORAGE_KEY = 'shasta-land-atlas.listing-filter-state.v1';
 const mapLayerInputs = [...document.querySelectorAll('[data-map-layer]')];
 const listingTypeInputs = [...document.querySelectorAll('.filter')];
 const defaultMapLayerVisibility = Object.fromEntries(mapLayerInputs.map(input => [input.dataset.mapLayer, input.defaultChecked]));
@@ -368,6 +369,24 @@ function loadListingTypeVisibility() {
 }
 function saveListingTypeVisibility() {
   try { localStorage.setItem(LISTING_TYPE_STORAGE_KEY, JSON.stringify(Object.fromEntries(listingTypeInputs.map(input => [input.value, input.checked])))); } catch { /* Storage may be disabled. */ }
+}
+function loadListingFilterState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(LISTING_FILTER_STORAGE_KEY));
+    if (!saved || typeof saved !== 'object') return;
+    const inputs = { minimumAcreage: minimumAcreageInput, maximumAcreage: maximumAcreageInput, listedSince: listedSinceInput, listedBefore: listedBeforeInput };
+    for (const [name, input] of Object.entries(inputs)) if (typeof saved[name] === 'string' && input) input.value = saved[name];
+  } catch { /* Use markup defaults when storage is unavailable or malformed. */ }
+}
+function saveListingFilterState() {
+  try {
+    localStorage.setItem(LISTING_FILTER_STORAGE_KEY, JSON.stringify({
+      minimumAcreage: minimumAcreageInput.value,
+      maximumAcreage: maximumAcreageInput.value,
+      listedSince: listedSinceInput.value,
+      listedBefore: listedBeforeInput.value
+    }));
+  } catch { /* Storage may be disabled. */ }
 }
 function applyMapLayerVisibility() {
   for (const input of mapLayerInputs) toggleLayer(input.dataset.mapLayer, input.checked);
@@ -564,12 +583,15 @@ function updateAcreageFilter() {
   document.querySelector('#maximum-acreage-value').textContent = maximumLabel;
   minimumAcreageInput.setAttribute('aria-valuetext', minimumLabel);
   maximumAcreageInput.setAttribute('aria-valuetext', maximumLabel);
+  saveListingFilterState();
   updateSales();
 }
 minimumAcreageInput.addEventListener('input', updateAcreageFilter);
 maximumAcreageInput.addEventListener('input', updateAcreageFilter);
 const listedSinceInput = document.querySelector('#listed-since');
 const listedBeforeInput = document.querySelector('#listed-before');
+loadListingFilterState();
+updateAcreageFilter();
 function updateListingDateFilter() {
   listedSince = listedSinceInput.value;
   listedBefore = listedBeforeInput.value;
@@ -579,10 +601,12 @@ function updateListingDateFilter() {
     listedSince = listedSinceInput.value;
     listedBefore = listedBeforeInput.value;
   }
+  saveListingFilterState();
   updateSales();
 }
 listedSinceInput.addEventListener('change', updateListingDateFilter);
 listedBeforeInput.addEventListener('change', updateListingDateFilter);
+updateListingDateFilter();
 mapLayerInputs.forEach(input => input.addEventListener('change', () => {
   toggleLayer(input.dataset.mapLayer, input.checked);
   saveMapLayerVisibility();
@@ -590,10 +614,17 @@ mapLayerInputs.forEach(input => input.addEventListener('change', () => {
 document.querySelector('#reset-map-layers').addEventListener('click', () => {
   for (const input of mapLayerInputs) input.checked = defaultMapLayerVisibility[input.dataset.mapLayer];
   for (const input of listingTypeInputs) input.checked = defaultListingTypeVisibility[input.value];
+  minimumAcreageInput.value = minimumAcreageInput.defaultValue;
+  maximumAcreageInput.value = maximumAcreageInput.defaultValue;
+  listedSinceInput.value = listedSinceInput.defaultValue;
+  listedBeforeInput.value = listedBeforeInput.defaultValue;
   enabledCategories = new Set(listingTypeInputs.filter(input => input.checked).map(input => input.value));
+  updateAcreageFilter();
+  updateListingDateFilter();
   try {
     localStorage.removeItem(MAP_LAYER_STORAGE_KEY);
     localStorage.removeItem(LISTING_TYPE_STORAGE_KEY);
+    localStorage.removeItem(LISTING_FILTER_STORAGE_KEY);
   } catch { /* Storage may be disabled. */ }
   applyMapLayerVisibility();
   updateSales();
