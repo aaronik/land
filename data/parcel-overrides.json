@@ -962,6 +962,22 @@
     "confidence": "manually verified",
     "notes": "map pics"
   },
+  "20261064": {
+    "apns": [
+      "028-020-080"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
+  "20261068": {
+    "apns": [
+      "057-831-100"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
   "20261081": {
     "apns": [
       "038-260-040"

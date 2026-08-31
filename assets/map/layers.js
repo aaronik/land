@@ -232,15 +232,16 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     paint: { 'text-color': '#f4dc9d', 'text-halo-color': 'rgba(39, 31, 19, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
   });
   map.addLayer({
-    id: 'towns', type: 'symbol', source: 'towns', 'source-layer': 'towns', minzoom: 7,
+    id: 'towns', type: 'symbol', source: 'towns', 'source-layer': 'towns', minzoom: 6,
     filter: ['all', ['has', 'gaz_name'], ['!=', ['get', 'gaz_name'], '']],
     layout: {
       'text-field': ['get', 'gaz_name'], 'text-font': ['Noto Sans Bold'],
-      'text-size': ['interpolate', ['linear'], ['zoom'], 7, 10, 14, 14],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 6, 12, 8, 13, 14, 14],
       'text-transform': 'uppercase', 'text-letter-spacing': 0.08,
-      'text-offset': [0, 0.7], 'text-anchor': 'top', 'text-padding': 8
+      'text-offset': [0, 0.7], 'text-anchor': 'top', 'text-padding': 6,
+      'text-allow-overlap': true, 'text-ignore-placement': true
     },
-    paint: { 'text-color': '#f4f1df', 'text-halo-color': 'rgba(20, 28, 24, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
+    paint: { 'text-color': '#fffdf0', 'text-halo-color': 'rgba(20, 28, 24, 0.98)', 'text-halo-width': 2.5, 'text-halo-blur': 0.4 }
   });
   addSpringSymbol(map);
   map.addLayer({
