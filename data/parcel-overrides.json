@@ -935,6 +935,15 @@
     "confidence": "manually verified",
     "notes": "map pic"
   },
+  "20260907": {
+    "apns": [
+      "028-240-360",
+      "028-240-370"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
   "20260981": {
     "apns": [
       "021-262-370"
