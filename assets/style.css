@@ -65,6 +65,7 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .swatch.public-land { background: #ff9d4d; } .swatch.public-home { background: #b94b18; }
 .swatch.public-overlay { background: #4e9f54; } .swatch.zoning-overlay { background: linear-gradient(135deg, #38a800 0 25%, #ff7f7f 25% 50%, #aa66cd 50% 75%, #ffff8c 75%); border: 1px solid #6e6e6e; }
 .swatch.watershed-overlay { border: 2px solid #44d7e8; background: rgba(68,215,232,.22); }
+.swatch.wetlands-overlay { border: 1px solid #315b9e; background: #4d7dcc; }
 .swatch.cell-coverage-overlay { background: linear-gradient(135deg, #00c5ff 0 33%, #ff00c5 33% 66%, #ef3030 66%); }
 .swatch.pct-overlay { background: #e69800; border: 1px solid #251908; }
 .swatch.topo-overlay { border: 1px solid rgba(22,35,29,.16); background: repeating-linear-gradient(165deg, transparent 0 3px, #9d8b63 3px 4px); }

@@ -52,6 +52,11 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('farmland');
   addPmtilesSource('rcra_sites');
   addPmtilesSource('huc12');
+  map.addSource('wetlands-wms', {
+    type: 'raster', tileSize: 256, minzoom: 7, maxzoom: 18,
+    tiles: ['https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/services/Wetlands/MapServer/WMSServer?service=WMS&version=1.3.0&request=GetMap&layers=0&styles=&format=image/png&transparent=true&crs=EPSG:3857&width=256&height=256&bbox={bbox-epsg-3857}'],
+    attribution: '<a href="https://www.fws.gov/program/national-wetlands-inventory" target="_blank">USFWS National Wetlands Inventory</a>'
+  });
   addPmtilesSource('cell_att');
   addPmtilesSource('cell_tmobile');
   addPmtilesSource('cell_verizon');
@@ -135,6 +140,10 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     id: 'huc12-labels', type: 'symbol', source: 'huc12', 'source-layer': 'huc12', minzoom: 9,
     layout: { visibility: 'none', 'text-field': ['concat', ['coalesce', ['get', 'name'], 'Unnamed subwatershed'], '\nHUC ', ['get', 'huc12']], 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 9, 10, 13, 12], 'text-max-width': 16, 'text-padding': 8 },
     paint: { 'text-color': '#d9fbff', 'text-halo-color': 'rgba(15, 37, 39, 0.92)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
+  });
+  map.addLayer({
+    id: 'wetlands', type: 'raster', source: 'wetlands-wms', minzoom: 7,
+    layout: { visibility: 'none' }, paint: { 'raster-opacity': 0.62, 'raster-fade-duration': 0 }
   });
   map.addLayer({ id: 'cell-att', type: 'fill', source: 'cell_att', 'source-layer': 'cell_att', minzoom: 7, layout: { visibility: 'none' }, paint: { 'fill-color': '#00c5ff', 'fill-opacity': 0.12 } });
   map.addLayer({ id: 'cell-tmobile', type: 'fill', source: 'cell_tmobile', 'source-layer': 'cell_tmobile', minzoom: 7, layout: { visibility: 'none' }, paint: { 'fill-color': '#ff00c5', 'fill-opacity': 0.12 } });

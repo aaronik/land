@@ -234,7 +234,8 @@ const LAYERS = {
     name: 'USFWS National Wetlands Inventory',
     url: 'https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0',
     bbox: SISKIYOU_BBOX,
-    objectId: 'OBJECTID', fields: ['OBJECTID', 'ATTRIBUTE', 'WETLAND_TYPE', 'ACRES']
+    where: 'Wetlands.OBJECTID > 0',
+    objectId: 'Wetlands.OBJECTID', fields: ['OBJECTID', 'ATTRIBUTE', 'WETLAND_TYPE', 'ACRES']
   },
   cell_att: {
     name: 'AT&T 4G LTE coverage',

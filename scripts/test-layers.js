@@ -74,6 +74,14 @@ function testRcraSiteSource() {
   assert(sites.fields.includes('FEDERAL_GENERATOR_STATUS'));
 }
 
+function testWetlandsSource() {
+  const wetlands = LAYERS.wetlands;
+  assert.match(wetlands.url, /wetlandsmapservice\/rest\/services\/Wetlands\/MapServer\/0$/);
+  assert.equal(wetlands.bbox, '-123.73,40.98,-121.43,42.02');
+  assert.equal(wetlands.where, 'Wetlands.OBJECTID > 0');
+  assert.deepEqual(wetlands.fields, ['OBJECTID', 'ATTRIBUTE', 'WETLAND_TYPE', 'ACRES']);
+}
+
 (async () => {
   await testPaginationCompleteness();
   await testIncompleteDownloadFails();
@@ -83,5 +91,6 @@ function testRcraSiteSource() {
   testWaterwaysSource();
   testFarmlandSource();
   testRcraSiteSource();
-  console.log('Passed: ArcGIS pagination, transportation, waterways, farmland, RCRA sites, and listing confidence tests.');
+  testWetlandsSource();
+  console.log('Passed: ArcGIS pagination, transportation, waterways, farmland, RCRA sites, wetlands, and listing confidence tests.');
 })().catch(error => { console.error(error); process.exit(1); });
