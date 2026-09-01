@@ -97,14 +97,14 @@ const map = new maplibregl.Map({
         attribution: 'Terrain © AWS Terrain Tiles / Mapzen'
       },
       'usgs-3dep-slope': {
-        type: 'raster', tileSize: 256, minzoom: 7, maxzoom: 15,
+        type: 'raster', tileSize: 256, minzoom: 6, maxzoom: 15,
         tiles: ['https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256%2C256&format=png32&transparent=true&renderingRule=%7B%22rasterFunction%22%3A%22Slope%20Map%22%7D&f=image'],
         attribution: 'USGS 3D Elevation Program (3DEP)'
       }
     },
     layers: [
       { id: 'satellite', type: 'raster', source: 'satellite' },
-      { id: 'usgs-3dep-slope', type: 'raster', source: 'usgs-3dep-slope', minzoom: 7, layout: { visibility: 'none' }, paint: { 'raster-opacity': 0.68, 'raster-resampling': 'linear', 'raster-fade-duration': 0 } },
+      { id: 'usgs-3dep-slope', type: 'raster', source: 'usgs-3dep-slope', minzoom: 6, layout: { visibility: 'none' }, paint: { 'raster-opacity': 0.68, 'raster-resampling': 'linear', 'raster-fade-duration': 0 } },
       { id: 'terrain-relief', type: 'hillshade', source: 'terrain', layout: { visibility: 'none' }, paint: { 'hillshade-shadow-color': '#172018', 'hillshade-highlight-color': '#f5f0d0', 'hillshade-exaggeration': 0.35 } }
     ],
     sky: { 'sky-color': '#9bc9e8', 'horizon-color': '#dce8e6', 'fog-color': '#dce8e6', 'sky-horizon-blend': 0.45 }
