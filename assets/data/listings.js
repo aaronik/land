@@ -65,7 +65,31 @@ export function createListingData(getState) {
   const filteredMappedListings = () => (state().saleData?.features || []).map(searchableFeature).filter(Boolean);
   const filteredUnmappedListings = () => (state().saleData?.unmappedListings || []).filter(record => recordIsVisible(record));
   const saleGeoJson = () => ({ type: 'FeatureCollection', features: filteredMappedListings().map(feature => ({ ...feature, properties: { ...feature.properties, displayCategory: firstCategory(feature) } })) });
-  const salePointGeoJson = () => ({ type: 'FeatureCollection', features: filteredMappedListings().map(feature => ({ type: 'Feature', geometry: { type: 'Point', coordinates: featureCenter(feature) }, properties: { ...feature.properties, displayCategory: firstCategory(feature), markerLabel: markerLabel(feature.properties) } })).filter(feature => feature.geometry.coordinates) });
+  const listingMarkerKey = record => {
+    const mls = normalizeSearch(record.mlsNumber);
+    if (mls) return `mls:${mls}`;
+    // Non-MLS private listings can still be linked to multiple parcels.
+    if (record.kind === 'private' && record.url) return `private-url:${record.url}`;
+    return '';
+  };
+  const salePointGeoJson = () => {
+    const markers = new Map();
+    for (const feature of filteredMappedListings()) {
+      const point = featureCenter(feature);
+      if (!point) continue;
+      for (const [index, record] of (feature.properties.records || []).entries()) {
+        // An MLS listing may be associated with several parcel polygons. Keep its
+        // first parcel as the marker's location, but emit only one marker.
+        const key = listingMarkerKey(record) || `parcel:${feature.properties.APN}:${index}`;
+        if (markers.has(key)) continue;
+        markers.set(key, {
+          type: 'Feature', geometry: { type: 'Point', coordinates: point },
+          properties: { ...feature.properties, records: [record], displayCategory: record.category, markerLabel: markerLabel({ records: [record] }) }
+        });
+      }
+    }
+    return { type: 'FeatureCollection', features: [...markers.values()] };
+  };
   const separatedUnmappedListings = () => {
     const groups = new Map();
     for (const record of filteredUnmappedListings()) {
