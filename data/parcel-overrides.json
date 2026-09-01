@@ -267,6 +267,14 @@
     "confidence": "manually verified",
     "notes": "pics"
   },
+  "20260464": {
+    "apns": [
+      "057-482-040"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pic"
+  },
   "20260466": {
     "apns": [
       "060-552-170"
@@ -274,6 +282,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "pics"
+  },
+  "20260502": {
+    "apns": [
+      "057-291-100"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
   },
   "20260528": {
     "apns": [
@@ -962,6 +978,22 @@
     "confidence": "manually verified",
     "notes": "map pics"
   },
+  "20261064": {
+    "apns": [
+      "028-020-080"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
+  "20261068": {
+    "apns": [
+      "057-831-100"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
   "20261081": {
     "apns": [
       "038-260-040"
@@ -977,6 +1009,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "Very far from MLS coords"
+  },
+  "OR26045027": {
+    "apns": [
+      "109-130-030"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
   },
   "SN26121386": {
     "apns": [
