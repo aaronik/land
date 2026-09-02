@@ -70,6 +70,14 @@ let enabledCategories = new Set(Object.keys(COLORS));
 let searchQuery = '';
 let minimumAcreage = 0;
 let maximumAcreage = 0;
+let minimumPrice = 0;
+let maximumPrice = 0;
+let minimumPricePerAcre = 0;
+let maximumPricePerAcre = 0;
+let enabledPropertyTypes = new Set();
+let minimumBeds = 0;
+let minimumBaths = 0;
+let listingKeywords = '';
 let listedSince = '';
 let listedBefore = '';
 
@@ -258,7 +266,7 @@ function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
 }
 function money(value) { return value ? `$${Number(value).toLocaleString()}` : ''; }
-const listingData = createListingData(() => ({ saleData, enabledCategories, searchQuery, minimumAcreage, maximumAcreage, listedSince, listedBefore }));
+const listingData = createListingData(() => ({ saleData, enabledCategories, searchQuery, minimumAcreage, maximumAcreage, minimumPrice, maximumPrice, minimumPricePerAcre, maximumPricePerAcre, enabledPropertyTypes, minimumBeds, minimumBaths, listingKeywords, listedSince, listedBefore }));
 const { categories, featureCenter, filteredMappedListings, filteredUnmappedListings, normalizeSearch, saleGeoJson, salePointGeoJson, unmappedGeoJson } = listingData;
 
 function parcelQuestUsageKey() { return `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`; }
@@ -375,18 +383,18 @@ function loadListingFilterState() {
   try {
     const saved = JSON.parse(localStorage.getItem(LISTING_FILTER_STORAGE_KEY));
     if (!saved || typeof saved !== 'object') return;
-    const inputs = { minimumAcreage: minimumAcreageInput, maximumAcreage: maximumAcreageInput, listedSince: listedSinceInput, listedBefore: listedBeforeInput };
-    for (const [name, input] of Object.entries(inputs)) if (typeof saved[name] === 'string' && input) input.value = saved[name];
+    for (const input of document.querySelectorAll('.acreage-filter input, .date-filter input, .price-filter input, .property-filter input, .details-filter input, .details-filter select')) {
+      const value = saved[input.id || input.value];
+      if (input.type === 'checkbox') { if (typeof value === 'boolean') input.checked = value; }
+      else if (typeof value === 'string') input.value = value;
+    }
   } catch { /* Use markup defaults when storage is unavailable or malformed. */ }
 }
 function saveListingFilterState() {
   try {
-    localStorage.setItem(LISTING_FILTER_STORAGE_KEY, JSON.stringify({
-      minimumAcreage: minimumAcreageInput.value,
-      maximumAcreage: maximumAcreageInput.value,
-      listedSince: listedSinceInput.value,
-      listedBefore: listedBeforeInput.value
-    }));
+    const inputs = [...document.querySelectorAll('.acreage-filter input, .date-filter input, .price-filter input, .property-filter input, .details-filter input, .details-filter select')];
+    const values = Object.fromEntries(inputs.map(input => [input.id || input.value, input.type === 'checkbox' ? input.checked : input.value]));
+    localStorage.setItem(LISTING_FILTER_STORAGE_KEY, JSON.stringify(values));
   } catch { /* Storage may be disabled. */ }
 }
 function applyMapLayerVisibility() {
@@ -608,6 +616,23 @@ function updateListingDateFilter() {
 }
 listedSinceInput.addEventListener('change', updateListingDateFilter);
 listedBeforeInput.addEventListener('change', updateListingDateFilter);
+const discoveryFilterInputs = [...document.querySelectorAll('.price-filter input, .property-filter input, .details-filter input, .details-filter select')];
+const propertyTypeInputs = [...document.querySelectorAll('.property-type-filter')];
+function updateDiscoveryFilters() {
+  const number = id => Math.max(0, Number(document.querySelector(id).value) || 0);
+  minimumPrice = number('#minimum-price');
+  maximumPrice = number('#maximum-price');
+  minimumPricePerAcre = number('#minimum-price-per-acre');
+  maximumPricePerAcre = number('#maximum-price-per-acre');
+  minimumBeds = number('#minimum-beds');
+  minimumBaths = number('#minimum-baths');
+  listingKeywords = normalizeSearch(document.querySelector('#listing-keywords').value);
+  enabledPropertyTypes = new Set(propertyTypeInputs.filter(input => input.checked).map(input => input.value));
+  saveListingFilterState();
+  updateSales();
+}
+discoveryFilterInputs.forEach(input => input.addEventListener(input.type === 'search' ? 'input' : 'change', updateDiscoveryFilters));
+updateDiscoveryFilters();
 updateListingDateFilter();
 mapLayerInputs.forEach(input => input.addEventListener('change', () => {
   toggleLayer(input.dataset.mapLayer, input.checked);
@@ -618,10 +643,15 @@ document.querySelector('#reset-map-layers').addEventListener('click', () => {
   for (const input of listingTypeInputs) input.checked = defaultListingTypeVisibility[input.value];
   minimumAcreageInput.value = minimumAcreageInput.defaultValue;
   maximumAcreageInput.value = maximumAcreageInput.defaultValue;
+  for (const input of discoveryFilterInputs) {
+    if (input.type === 'checkbox') input.checked = input.defaultChecked;
+    else input.value = input.defaultValue;
+  }
   listedSinceInput.value = listedSinceInput.defaultValue;
   listedBeforeInput.value = listedBeforeInput.defaultValue;
   enabledCategories = new Set(listingTypeInputs.filter(input => input.checked).map(input => input.value));
   updateAcreageFilter();
+  updateDiscoveryFilters();
   updateListingDateFilter();
   try {
     localStorage.removeItem(MAP_LAYER_STORAGE_KEY);

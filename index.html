@@ -115,6 +115,37 @@
           </div>
           <div class="acreage-scale" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100 acres</span></div>
         </div>
+        <div class="price-filter" role="group" aria-labelledby="price-filter-heading">
+          <h3 id="price-filter-heading">Price</h3>
+          <div class="filter-pair">
+            <label for="minimum-price">Minimum<input id="minimum-price" type="number" min="0" step="1000" inputmode="numeric" placeholder="Any price"></label>
+            <label for="maximum-price">Maximum<input id="maximum-price" type="number" min="0" step="1000" inputmode="numeric" placeholder="Any price"></label>
+          </div>
+          <h3 class="subheading">Price per acre</h3>
+          <div class="filter-pair">
+            <label for="minimum-price-per-acre">Minimum<input id="minimum-price-per-acre" type="number" min="0" step="100" inputmode="numeric" placeholder="Any"></label>
+            <label for="maximum-price-per-acre">Maximum<input id="maximum-price-per-acre" type="number" min="0" step="100" inputmode="numeric" placeholder="Any"></label>
+          </div>
+        </div>
+        <div class="property-filter" role="group" aria-labelledby="property-filter-heading">
+          <h3 id="property-filter-heading">Property type</h3>
+          <div class="filter-options">
+            <label><input class="property-type-filter" type="checkbox" value="land" checked>Land</label>
+            <label><input class="property-type-filter" type="checkbox" value="farm" checked>Farm</label>
+            <label><input class="property-type-filter" type="checkbox" value="house" checked>House</label>
+            <label><input class="property-type-filter" type="checkbox" value="multi" checked>Multi-family</label>
+            <label><input class="property-type-filter" type="checkbox" value="condo" checked>Condo</label>
+            <label><input class="property-type-filter" type="checkbox" value="mobile" checked>Mobile home</label>
+          </div>
+        </div>
+        <div class="details-filter" role="group" aria-labelledby="details-filter-heading">
+          <h3 id="details-filter-heading">Home &amp; listing details</h3>
+          <div class="filter-pair">
+            <label for="minimum-beds">Beds<select id="minimum-beds"><option value="0">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select></label>
+            <label for="minimum-baths">Baths<select id="minimum-baths"><option value="0">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select></label>
+          </div>
+          <label class="keyword-control" for="listing-keywords">Keywords<input id="listing-keywords" type="search" placeholder="e.g. creek, off-grid"></label>
+        </div>
         <div class="date-filter" role="group" aria-labelledby="date-filter-heading">
           <h3 id="date-filter-heading">Listing date</h3>
           <div class="date-control">

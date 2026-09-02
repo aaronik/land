@@ -22,6 +22,19 @@ export function createListingData(getState) {
     if (!listedSince && !listedBefore) return true;
     return typeof record.listingDate === 'string' && (!listedSince || record.listingDate >= listedSince) && (!listedBefore || record.listingDate <= listedBefore);
   };
+  const recordMatchesDiscoveryFilters = record => {
+    if (record.kind !== 'private') return true;
+    const { minimumPrice = 0, maximumPrice = 0, minimumPricePerAcre = 0, maximumPricePerAcre = 0, enabledPropertyTypes = new Set(), minimumBeds = 0, minimumBaths = 0, listingKeywords = '' } = state();
+    const price = Number(record.price);
+    const acres = recordAcreage(record);
+    const pricePerAcre = Number.isFinite(price) && acres > 0 ? price / acres : null;
+    if ((minimumPrice && (!Number.isFinite(price) || price < minimumPrice)) || (maximumPrice && (!Number.isFinite(price) || price > maximumPrice))) return false;
+    if ((minimumPricePerAcre && (pricePerAcre === null || pricePerAcre < minimumPricePerAcre)) || (maximumPricePerAcre && (pricePerAcre === null || pricePerAcre > maximumPricePerAcre))) return false;
+    if (enabledPropertyTypes.size && !enabledPropertyTypes.has(record.propertyType)) return false;
+    if (minimumBeds && Number(record.beds) < minimumBeds) return false;
+    if (minimumBaths && Number(record.baths) < minimumBaths) return false;
+    return !listingKeywords || normalizeSearch([record.title, record.propertyType, record.propertySubType, record.listingSource].filter(Boolean).join(' ')).includes(listingKeywords);
+  };
   const acreageMatches = acres => {
     const { minimumAcreage, maximumAcreage } = state();
     return (!minimumAcreage || (acres !== null && acres >= minimumAcreage)) && (!maximumAcreage || (acres !== null && acres <= maximumAcreage));
@@ -29,12 +42,12 @@ export function createListingData(getState) {
   const recordIsVisible = (record, fallbackAcres) => {
     const { enabledCategories } = state();
     const acres = recordAcreage(record) ?? recordAcreage({ acres: fallbackAcres });
-    return enabledCategories.has(record.category) && recordMatchesSearch(record) && recordMatchesListingDate(record) && acreageMatches(acres);
+    return enabledCategories.has(record.category) && recordMatchesSearch(record) && recordMatchesListingDate(record) && recordMatchesDiscoveryFilters(record) && acreageMatches(acres);
   };
   const searchableFeature = feature => {
     const { enabledCategories, searchQuery } = state();
     const apnMatches = searchQuery && normalizeSearch(feature.properties.APN).includes(searchQuery);
-    const records = (feature.properties.records || []).filter(record => enabledCategories.has(record.category) && (apnMatches || recordMatchesSearch(record)) && recordMatchesListingDate(record) && acreageMatches(recordAcreage(record) ?? recordAcreage({ acres: feature.properties.Acres })));
+    const records = (feature.properties.records || []).filter(record => enabledCategories.has(record.category) && (apnMatches || recordMatchesSearch(record)) && recordMatchesListingDate(record) && recordMatchesDiscoveryFilters(record) && acreageMatches(recordAcreage(record) ?? recordAcreage({ acres: feature.properties.Acres })));
     return records.length ? { ...feature, properties: { ...feature.properties, records } } : null;
   };
   const firstCategory = feature => {
