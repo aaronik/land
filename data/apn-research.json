@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-29T16:01:19.426Z",
+  "updatedAt": "2026-09-03T15:36:23.590Z",
   "items": {
     "114315": {
       "listingId": "114315",
@@ -23,7 +23,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20210299": {
       "listingId": "20210299",
@@ -97,7 +97,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20211339": {
       "listingId": "20211339",
@@ -854,7 +854,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20220456": {
       "listingId": "20220456",
@@ -2102,7 +2102,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20221105": {
       "listingId": "20221105",
@@ -2148,7 +2148,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20221288": {
       "listingId": "20221288",
@@ -2171,7 +2171,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20221438": {
       "listingId": "20221438",
@@ -7355,7 +7355,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20230230": {
       "listingId": "20230230",
@@ -7689,7 +7689,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20230737": {
       "listingId": "20230737",
@@ -7712,7 +7712,30 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
+    },
+    "20230744": {
+      "listingId": "20230744",
+      "status": "open",
+      "active": true,
+      "listing": {
+        "title": "Blk 1 Lot 10 Big Springs Road, Weed, CA 96094",
+        "acres": 10,
+        "price": 59900,
+        "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20230744/Blk-1-Lot-10-Big-Springs-Road-Weed-CA-96094",
+        "latLng": [
+          41.50664872065077,
+          -122.36450450830156
+        ],
+        "locationSource": "county ZIP/town street match (approximate)",
+        "propertyType": "land"
+      },
+      "candidates": [],
+      "evidence": [],
+      "ruledOutApns": [],
+      "notes": "",
+      "createdAt": "2026-09-03T15:36:23.590Z",
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20230971": {
       "listingId": "20230971",
@@ -7735,7 +7758,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20231084": {
       "listingId": "20231084",
@@ -7781,7 +7804,7 @@
       "ruledOutApns": [],
       "notes": "Inconclusive: Checked LoopNet public record and county GIS. LoopNet explicitly identifies 031-550-010, but county GIS reports 38.61 acres versus MLS 117 acres; possible multi-parcel listing. Next evidence: listing tax IDs or recorded parcel exhibit.",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20231312": {
       "listingId": "20231312",
@@ -8285,7 +8308,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240065": {
       "listingId": "20240065",
@@ -8719,7 +8742,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240112": {
       "listingId": "20240112",
@@ -8742,7 +8765,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240113": {
       "listingId": "20240113",
@@ -8765,7 +8788,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240116": {
       "listingId": "20240116",
@@ -8788,7 +8811,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240122": {
       "listingId": "20240122",
@@ -8811,7 +8834,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240126": {
       "listingId": "20240126",
@@ -8834,7 +8857,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240186": {
       "listingId": "20240186",
@@ -8857,7 +8880,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240201": {
       "listingId": "20240201",
@@ -8880,7 +8903,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240227": {
       "listingId": "20240227",
@@ -8903,7 +8926,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240289": {
       "listingId": "20240289",
@@ -8926,7 +8949,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240290": {
       "listingId": "20240290",
@@ -8949,7 +8972,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240297": {
       "listingId": "20240297",
@@ -8972,7 +8995,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240309": {
       "listingId": "20240309",
@@ -8995,7 +9018,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240311": {
       "listingId": "20240311",
@@ -9018,7 +9041,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240344": {
       "listingId": "20240344",
@@ -9041,7 +9064,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240357": {
       "listingId": "20240357",
@@ -9064,7 +9087,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240422": {
       "listingId": "20240422",
@@ -9087,7 +9110,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240467": {
       "listingId": "20240467",
@@ -9110,7 +9133,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240481": {
       "listingId": "20240481",
@@ -9133,7 +9156,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240676": {
       "listingId": "20240676",
@@ -9156,7 +9179,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240688": {
       "listingId": "20240688",
@@ -9179,7 +9202,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240743": {
       "listingId": "20240743",
@@ -9202,7 +9225,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240759": {
       "listingId": "20240759",
@@ -9314,7 +9337,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240760": {
       "listingId": "20240760",
@@ -9432,7 +9455,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240843": {
       "listingId": "20240843",
@@ -9478,7 +9501,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240920": {
       "listingId": "20240920",
@@ -9501,7 +9524,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240956": {
       "listingId": "20240956",
@@ -9524,7 +9547,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240959": {
       "listingId": "20240959",
@@ -9547,7 +9570,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240967": {
       "listingId": "20240967",
@@ -9570,12 +9593,12 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20240986": {
       "listingId": "20240986",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "3.7 Acre Quase Dr/Steelhead Circle, Hornbrook, CA 96044",
         "acres": 3.72,
@@ -9616,7 +9639,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20241093": {
       "listingId": "20241093",
@@ -10390,7 +10413,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20241096": {
       "listingId": "20241096",
@@ -10436,7 +10459,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20241224": {
       "listingId": "20241224",
@@ -10459,12 +10482,12 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20241229": {
       "listingId": "20241229",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "Unit 5 Lot 63 Desavado Road, Montague, CA 96064",
         "acres": 3.65,
@@ -10505,7 +10528,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20241231": {
       "listingId": "20241231",
@@ -10528,7 +10551,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20241232": {
       "listingId": "20241232",
@@ -10551,7 +10574,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20241240": {
       "listingId": "20241240",
@@ -10597,7 +10620,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20241273": {
       "listingId": "20241273",
@@ -10620,7 +10643,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20241274": {
       "listingId": "20241274",
@@ -10643,7 +10666,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20241328": {
       "listingId": "20241328",
@@ -10666,7 +10689,30 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
+    },
+    "20241331": {
+      "listingId": "20241331",
+      "status": "open",
+      "active": true,
+      "listing": {
+        "title": "East Louie Road, Montague, CA 96064",
+        "acres": 720,
+        "price": 450000,
+        "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20241331/East-Louie-Road-Montague-CA-96064",
+        "latLng": [
+          41.58275,
+          -122.444986
+        ],
+        "locationSource": "MLS location only",
+        "propertyType": "land"
+      },
+      "candidates": [],
+      "evidence": [],
+      "ruledOutApns": [],
+      "notes": "",
+      "createdAt": "2026-09-03T15:36:23.590Z",
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20241373": {
       "listingId": "20241373",
@@ -10689,7 +10735,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250004": {
       "listingId": "20250004",
@@ -15383,7 +15429,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250005": {
       "listingId": "20250005",
@@ -15406,7 +15452,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250006": {
       "listingId": "20250006",
@@ -15429,7 +15475,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250008": {
       "listingId": "20250008",
@@ -15452,7 +15498,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250009": {
       "listingId": "20250009",
@@ -15475,7 +15521,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250017": {
       "listingId": "20250017",
@@ -15498,7 +15544,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250018": {
       "listingId": "20250018",
@@ -15521,7 +15567,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250025": {
       "listingId": "20250025",
@@ -15544,7 +15590,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250066": {
       "listingId": "20250066",
@@ -15567,7 +15613,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250102": {
       "listingId": "20250102",
@@ -15590,7 +15636,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250103": {
       "listingId": "20250103",
@@ -15613,7 +15659,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250104": {
       "listingId": "20250104",
@@ -15636,7 +15682,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250106": {
       "listingId": "20250106",
@@ -15659,7 +15705,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250108": {
       "listingId": "20250108",
@@ -15682,7 +15728,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250111": {
       "listingId": "20250111",
@@ -15705,7 +15751,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250113": {
       "listingId": "20250113",
@@ -15728,7 +15774,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250115": {
       "listingId": "20250115",
@@ -15751,7 +15797,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250116": {
       "listingId": "20250116",
@@ -15774,7 +15820,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250119": {
       "listingId": "20250119",
@@ -15797,7 +15843,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250120": {
       "listingId": "20250120",
@@ -15820,7 +15866,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250132": {
       "listingId": "20250132",
@@ -15843,7 +15889,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250141": {
       "listingId": "20250141",
@@ -15866,7 +15912,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250302": {
       "listingId": "20250302",
@@ -15889,7 +15935,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250304": {
       "listingId": "20250304",
@@ -15912,7 +15958,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250324": {
       "listingId": "20250324",
@@ -16027,7 +16073,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250390": {
       "listingId": "20250390",
@@ -16050,7 +16096,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250403": {
       "listingId": "20250403",
@@ -16073,7 +16119,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250434": {
       "listingId": "20250434",
@@ -16096,7 +16142,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250459": {
       "listingId": "20250459",
@@ -16119,7 +16165,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250478": {
       "listingId": "20250478",
@@ -16142,7 +16188,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250546": {
       "listingId": "20250546",
@@ -16165,7 +16211,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250554": {
       "listingId": "20250554",
@@ -16188,7 +16234,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250575": {
       "listingId": "20250575",
@@ -16211,7 +16257,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250576": {
       "listingId": "20250576",
@@ -16234,7 +16280,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250587": {
       "listingId": "20250587",
@@ -16257,7 +16303,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250620": {
       "listingId": "20250620",
@@ -16280,7 +16326,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250642": {
       "listingId": "20250642",
@@ -16303,7 +16349,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250644": {
       "listingId": "20250644",
@@ -16326,7 +16372,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250645": {
       "listingId": "20250645",
@@ -16349,7 +16395,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250686": {
       "listingId": "20250686",
@@ -16372,7 +16418,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250688": {
       "listingId": "20250688",
@@ -16395,7 +16441,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250721": {
       "listingId": "20250721",
@@ -16418,7 +16464,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250753": {
       "listingId": "20250753",
@@ -16441,7 +16487,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250755": {
       "listingId": "20250755",
@@ -16464,7 +16510,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250761": {
       "listingId": "20250761",
@@ -16487,7 +16533,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250770": {
       "listingId": "20250770",
@@ -16510,7 +16556,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250778": {
       "listingId": "20250778",
@@ -16533,7 +16579,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250820": {
       "listingId": "20250820",
@@ -16556,7 +16602,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250831": {
       "listingId": "20250831",
@@ -16579,7 +16625,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250833": {
       "listingId": "20250833",
@@ -16602,7 +16648,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250834": {
       "listingId": "20250834",
@@ -16625,7 +16671,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250835": {
       "listingId": "20250835",
@@ -16648,7 +16694,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250836": {
       "listingId": "20250836",
@@ -16671,7 +16717,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250837": {
       "listingId": "20250837",
@@ -16694,7 +16740,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250838": {
       "listingId": "20250838",
@@ -22828,7 +22874,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250841": {
       "listingId": "20250841",
@@ -22851,12 +22897,12 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250861": {
       "listingId": "20250861",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "Lot 10 Lakeshore Dr., McCloud, CA 96057",
         "acres": 0.21,
@@ -22897,7 +22943,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250901": {
       "listingId": "20250901",
@@ -22920,7 +22966,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250909": {
       "listingId": "20250909",
@@ -22943,7 +22989,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250928": {
       "listingId": "20250928",
@@ -22966,7 +23012,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250945": {
       "listingId": "20250945",
@@ -22989,7 +23035,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250950": {
       "listingId": "20250950",
@@ -23012,7 +23058,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250954": {
       "listingId": "20250954",
@@ -23035,7 +23081,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250956": {
       "listingId": "20250956",
@@ -23058,12 +23104,12 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250960": {
       "listingId": "20250960",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "Approx 2 acres N Davis Ave, Weed, CA 96094",
         "acres": 1.96,
@@ -23104,7 +23150,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250981": {
       "listingId": "20250981",
@@ -23127,7 +23173,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250985": {
       "listingId": "20250985",
@@ -23150,7 +23196,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250989": {
       "listingId": "20250989",
@@ -23173,7 +23219,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20250999": {
       "listingId": "20250999",
@@ -23196,7 +23242,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251011": {
       "listingId": "20251011",
@@ -23224,12 +23270,12 @@
     "20251015": {
       "listingId": "20251015",
       "status": "open",
-      "active": false,
+      "active": true,
       "listing": {
-        "title": ". 30 Of Acre Indian Creek Road, Happy Camp, CA 96039",
+        "title": ".30 of acre Indian Creek Road, Happy Camp, CA 96039",
         "acres": 0.3,
         "price": 9500,
-        "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251015/30-Of-Acre-Indian-Creek-Road-Happy-Camp-CA-96039",
+        "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251015/30-of-acre-Indian-Creek-Road-Happy-Camp-CA-96039",
         "latLng": [
           41.8320796362322,
           -123.38954127603857
@@ -23242,7 +23288,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-20T21:14:21.107Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251039": {
       "listingId": "20251039",
@@ -23265,12 +23311,12 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251051": {
       "listingId": "20251051",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "Lots 55 & 56 Tennis Ct., Weed, CA 96094",
         "acres": 0.48,
@@ -23293,7 +23339,7 @@
     "20251052": {
       "listingId": "20251052",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "Unit 3 Lot 23 Whitepine St., Hornbrook, CA 96044",
         "acres": 1.08,
@@ -23334,7 +23380,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251059": {
       "listingId": "20251059",
@@ -23380,7 +23426,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251075": {
       "listingId": "20251075",
@@ -23403,7 +23449,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251076": {
       "listingId": "20251076",
@@ -23426,7 +23472,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251093": {
       "listingId": "20251093",
@@ -23449,7 +23495,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251094": {
       "listingId": "20251094",
@@ -23472,7 +23518,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251096": {
       "listingId": "20251096",
@@ -23518,7 +23564,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251102": {
       "listingId": "20251102",
@@ -23541,7 +23587,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251159": {
       "listingId": "20251159",
@@ -23564,7 +23610,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251179": {
       "listingId": "20251179",
@@ -23587,7 +23633,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251188": {
       "listingId": "20251188",
@@ -23610,7 +23656,7 @@
       "ruledOutApns": [],
       "notes": "Inconclusive: Checked syndicated listings. This is a road-only 914-acre listing; no explicit parcel number found. Next evidence: seller parcel list, plat, or title exhibit.",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251191": {
       "listingId": "20251191",
@@ -23633,7 +23679,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251194": {
       "listingId": "20251194",
@@ -23656,7 +23702,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251203": {
       "listingId": "20251203",
@@ -23679,7 +23725,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251205": {
       "listingId": "20251205",
@@ -23702,7 +23748,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251228": {
       "listingId": "20251228",
@@ -23843,7 +23889,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251244": {
       "listingId": "20251244",
@@ -23866,7 +23912,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251246": {
       "listingId": "20251246",
@@ -23889,7 +23935,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251255": {
       "listingId": "20251255",
@@ -23912,7 +23958,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251294": {
       "listingId": "20251294",
@@ -23935,7 +23981,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251295": {
       "listingId": "20251295",
@@ -23958,7 +24004,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251297": {
       "listingId": "20251297",
@@ -23981,7 +24027,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251298": {
       "listingId": "20251298",
@@ -24004,7 +24050,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251302": {
       "listingId": "20251302",
@@ -24027,7 +24073,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251305": {
       "listingId": "20251305",
@@ -24050,7 +24096,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251306": {
       "listingId": "20251306",
@@ -24073,7 +24119,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20251334": {
       "listingId": "20251334",
@@ -24096,7 +24142,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260007": {
       "listingId": "20260007",
@@ -24119,7 +24165,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260012": {
       "listingId": "20260012",
@@ -24142,7 +24188,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260016": {
       "listingId": "20260016",
@@ -24165,7 +24211,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260022": {
       "listingId": "20260022",
@@ -24188,7 +24234,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260028": {
       "listingId": "20260028",
@@ -24211,7 +24257,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260032": {
       "listingId": "20260032",
@@ -24257,7 +24303,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260039": {
       "listingId": "20260039",
@@ -24280,7 +24326,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260046": {
       "listingId": "20260046",
@@ -24303,7 +24349,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260047": {
       "listingId": "20260047",
@@ -24326,7 +24372,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260048": {
       "listingId": "20260048",
@@ -24349,7 +24395,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260057": {
       "listingId": "20260057",
@@ -24505,7 +24551,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260063": {
       "listingId": "20260063",
@@ -24528,7 +24574,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260064": {
       "listingId": "20260064",
@@ -24551,7 +24597,7 @@
       "ruledOutApns": [],
       "notes": "Inconclusive: Checked public syndications. Combined-address listing lacks an explicit APN and may include more than one parcel. Next evidence: tax IDs or a parcel exhibit.",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260065": {
       "listingId": "20260065",
@@ -24574,7 +24620,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260079": {
       "listingId": "20260079",
@@ -24597,7 +24643,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260081": {
       "listingId": "20260081",
@@ -24620,7 +24666,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260083": {
       "listingId": "20260083",
@@ -24643,7 +24689,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260091": {
       "listingId": "20260091",
@@ -24666,7 +24712,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260094": {
       "listingId": "20260094",
@@ -24689,7 +24735,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260096": {
       "listingId": "20260096",
@@ -24712,7 +24758,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260100": {
       "listingId": "20260100",
@@ -24901,7 +24947,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260101": {
       "listingId": "20260101",
@@ -25156,7 +25202,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260108": {
       "listingId": "20260108",
@@ -25417,7 +25463,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260133": {
       "listingId": "20260133",
@@ -25558,7 +25604,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260149": {
       "listingId": "20260149",
@@ -25581,7 +25627,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260162": {
       "listingId": "20260162",
@@ -25627,7 +25673,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260175": {
       "listingId": "20260175",
@@ -25650,7 +25696,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260179": {
       "listingId": "20260179",
@@ -25673,7 +25719,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260180": {
       "listingId": "20260180",
@@ -25696,7 +25742,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260181": {
       "listingId": "20260181",
@@ -25719,7 +25765,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260186": {
       "listingId": "20260186",
@@ -25742,7 +25788,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260191": {
       "listingId": "20260191",
@@ -25765,7 +25811,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260203": {
       "listingId": "20260203",
@@ -25788,7 +25834,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260208": {
       "listingId": "20260208",
@@ -25811,7 +25857,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260210": {
       "listingId": "20260210",
@@ -25834,7 +25880,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260214": {
       "listingId": "20260214",
@@ -25857,7 +25903,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260218": {
       "listingId": "20260218",
@@ -25880,7 +25926,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260219": {
       "listingId": "20260219",
@@ -26036,7 +26082,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260222": {
       "listingId": "20260222",
@@ -26082,7 +26128,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260228": {
       "listingId": "20260228",
@@ -26105,7 +26151,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260229": {
       "listingId": "20260229",
@@ -26128,7 +26174,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260230": {
       "listingId": "20260230",
@@ -26334,7 +26380,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260233": {
       "listingId": "20260233",
@@ -26369,7 +26415,7 @@
       "ruledOutApns": [],
       "notes": "Inconclusive: Checked public syndications for 100 Old Mill Drive. No explicit APN found. Next evidence: public property record or developer plat.",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260235": {
       "listingId": "20260235",
@@ -26392,7 +26438,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260236": {
       "listingId": "20260236",
@@ -26415,7 +26461,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260237": {
       "listingId": "20260237",
@@ -26438,7 +26484,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260238": {
       "listingId": "20260238",
@@ -26461,7 +26507,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260239": {
       "listingId": "20260239",
@@ -26484,7 +26530,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260241": {
       "listingId": "20260241",
@@ -26507,7 +26553,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260246": {
       "listingId": "20260246",
@@ -26576,7 +26622,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260252": {
       "listingId": "20260252",
@@ -26599,7 +26645,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260253": {
       "listingId": "20260253",
@@ -26622,7 +26668,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260254": {
       "listingId": "20260254",
@@ -26645,7 +26691,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260255": {
       "listingId": "20260255",
@@ -26668,7 +26714,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260256": {
       "listingId": "20260256",
@@ -26691,7 +26737,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260260": {
       "listingId": "20260260",
@@ -26714,7 +26760,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260261": {
       "listingId": "20260261",
@@ -26737,7 +26783,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260262": {
       "listingId": "20260262",
@@ -26760,7 +26806,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260263": {
       "listingId": "20260263",
@@ -26783,7 +26829,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260264": {
       "listingId": "20260264",
@@ -26806,7 +26852,7 @@
       "ruledOutApns": [],
       "notes": "Inconclusive: Checked public syndications. This is descriptive road location rather than a situs address; no explicit APN found. Next evidence: parcel exhibit, seller tax ID, or title record.",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260269": {
       "listingId": "20260269",
@@ -26841,7 +26887,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260271": {
       "listingId": "20260271",
@@ -26864,7 +26910,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260280": {
       "listingId": "20260280",
@@ -26887,7 +26933,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260292": {
       "listingId": "20260292",
@@ -26910,7 +26956,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260293": {
       "listingId": "20260293",
@@ -26933,7 +26979,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260294": {
       "listingId": "20260294",
@@ -26956,12 +27002,12 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260300": {
       "listingId": "20260300",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "20 acres out 16n01 Forest Road, Happy Camp, CA 96039",
         "acres": 20,
@@ -27002,7 +27048,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260308": {
       "listingId": "20260308",
@@ -27025,7 +27071,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260309": {
       "listingId": "20260309",
@@ -27048,7 +27094,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260310": {
       "listingId": "20260310",
@@ -27071,7 +27117,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260327": {
       "listingId": "20260327",
@@ -27106,7 +27152,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260333": {
       "listingId": "20260333",
@@ -27129,7 +27175,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260339": {
       "listingId": "20260339",
@@ -27152,7 +27198,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260343": {
       "listingId": "20260343",
@@ -27175,7 +27221,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260352": {
       "listingId": "20260352",
@@ -27198,7 +27244,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260356": {
       "listingId": "20260356",
@@ -27221,7 +27267,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260358": {
       "listingId": "20260358",
@@ -27244,7 +27290,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-29T16:01:19.426Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260372": {
       "listingId": "20260372",
@@ -27267,7 +27313,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260373": {
       "listingId": "20260373",
@@ -27290,7 +27336,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260374": {
       "listingId": "20260374",
@@ -27479,7 +27525,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260378": {
       "listingId": "20260378",
@@ -27502,7 +27548,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260381": {
       "listingId": "20260381",
@@ -27525,7 +27571,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260383": {
       "listingId": "20260383",
@@ -27548,7 +27594,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260388": {
       "listingId": "20260388",
@@ -27571,7 +27617,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260389": {
       "listingId": "20260389",
@@ -27617,7 +27663,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260402": {
       "listingId": "20260402",
@@ -27685,7 +27731,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260403": {
       "listingId": "20260403",
@@ -27708,7 +27754,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260404": {
       "listingId": "20260404",
@@ -27731,7 +27777,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260406": {
       "listingId": "20260406",
@@ -27754,7 +27800,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260407": {
       "listingId": "20260407",
@@ -27777,7 +27823,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260408": {
       "listingId": "20260408",
@@ -27800,7 +27846,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260410": {
       "listingId": "20260410",
@@ -27823,7 +27869,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260411": {
       "listingId": "20260411",
@@ -27846,7 +27892,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260421": {
       "listingId": "20260421",
@@ -27869,7 +27915,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260423": {
       "listingId": "20260423",
@@ -27892,7 +27938,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260424": {
       "listingId": "20260424",
@@ -27915,7 +27961,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260425": {
       "listingId": "20260425",
@@ -27938,7 +27984,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260426": {
       "listingId": "20260426",
@@ -27961,7 +28007,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260432": {
       "listingId": "20260432",
@@ -27984,7 +28030,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260433": {
       "listingId": "20260433",
@@ -28007,7 +28053,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260449": {
       "listingId": "20260449",
@@ -28075,7 +28121,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260455": {
       "listingId": "20260455",
@@ -28176,7 +28222,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260457": {
       "listingId": "20260457",
@@ -28299,7 +28345,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260462": {
       "listingId": "20260462",
@@ -28322,7 +28368,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260466": {
       "listingId": "20260466",
@@ -28368,7 +28414,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260474": {
       "listingId": "20260474",
@@ -28391,12 +28437,12 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-29T16:01:19.426Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260502": {
       "listingId": "20260502",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "Lots 4 & 5 Berry St, Mount Shasta, CA 96067",
         "acres": 0.18,
@@ -28437,7 +28483,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260518": {
       "listingId": "20260518",
@@ -28460,7 +28506,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260522": {
       "listingId": "20260522",
@@ -28483,7 +28529,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260524": {
       "listingId": "20260524",
@@ -28506,7 +28552,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260533": {
       "listingId": "20260533",
@@ -28529,7 +28575,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260542": {
       "listingId": "20260542",
@@ -28552,7 +28598,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260543": {
       "listingId": "20260543",
@@ -28575,7 +28621,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260546": {
       "listingId": "20260546",
@@ -28598,7 +28644,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260555": {
       "listingId": "20260555",
@@ -28621,7 +28667,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260556": {
       "listingId": "20260556",
@@ -28644,7 +28690,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260557": {
       "listingId": "20260557",
@@ -28667,7 +28713,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260558": {
       "listingId": "20260558",
@@ -28690,7 +28736,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260559": {
       "listingId": "20260559",
@@ -28713,7 +28759,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260560": {
       "listingId": "20260560",
@@ -28759,7 +28805,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260576": {
       "listingId": "20260576",
@@ -29249,7 +29295,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260586": {
       "listingId": "20260586",
@@ -29272,7 +29318,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260596": {
       "listingId": "20260596",
@@ -29318,7 +29364,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260602": {
       "listingId": "20260602",
@@ -29341,7 +29387,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260603": {
       "listingId": "20260603",
@@ -29364,7 +29410,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-23T12:26:28.744Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260613": {
       "listingId": "20260613",
@@ -29422,7 +29468,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260618": {
       "listingId": "20260618",
@@ -29606,7 +29652,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260629": {
       "listingId": "20260629",
@@ -29629,7 +29675,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260630": {
       "listingId": "20260630",
@@ -29652,7 +29698,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260635": {
       "listingId": "20260635",
@@ -29675,7 +29721,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260636": {
       "listingId": "20260636",
@@ -29698,7 +29744,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260637": {
       "listingId": "20260637",
@@ -29721,7 +29767,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260638": {
       "listingId": "20260638",
@@ -29744,7 +29790,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260639": {
       "listingId": "20260639",
@@ -29767,7 +29813,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260640": {
       "listingId": "20260640",
@@ -29790,7 +29836,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260641": {
       "listingId": "20260641",
@@ -29813,7 +29859,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260646": {
       "listingId": "20260646",
@@ -29836,7 +29882,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260648": {
       "listingId": "20260648",
@@ -29859,7 +29905,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260649": {
       "listingId": "20260649",
@@ -30181,7 +30227,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260670": {
       "listingId": "20260670",
@@ -30204,7 +30250,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260674": {
       "listingId": "20260674",
@@ -30526,7 +30572,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260702": {
       "listingId": "20260702",
@@ -30549,7 +30595,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260703": {
       "listingId": "20260703",
@@ -31124,7 +31170,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260737": {
       "listingId": "20260737",
@@ -31147,7 +31193,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260746": {
       "listingId": "20260746",
@@ -31170,7 +31216,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260748": {
       "listingId": "20260748",
@@ -31216,7 +31262,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260758": {
       "listingId": "20260758",
@@ -31239,7 +31285,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260760": {
       "listingId": "20260760",
@@ -31262,7 +31308,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260762": {
       "listingId": "20260762",
@@ -31341,7 +31387,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260763": {
       "listingId": "20260763",
@@ -31364,7 +31410,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-25T12:41:43.229Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260768": {
       "listingId": "20260768",
@@ -31410,7 +31456,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260779": {
       "listingId": "20260779",
@@ -31467,7 +31513,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260782": {
       "listingId": "20260782",
@@ -31490,7 +31536,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-25T12:41:43.229Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260788": {
       "listingId": "20260788",
@@ -31536,7 +31582,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260792": {
       "listingId": "20260792",
@@ -31559,7 +31605,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260796": {
       "listingId": "20260796",
@@ -31582,7 +31628,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260802": {
       "listingId": "20260802",
@@ -31605,7 +31651,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260816": {
       "listingId": "20260816",
@@ -31628,7 +31674,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260817": {
       "listingId": "20260817",
@@ -31651,7 +31697,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260818": {
       "listingId": "20260818",
@@ -31674,7 +31720,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260819": {
       "listingId": "20260819",
@@ -31697,7 +31743,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260820": {
       "listingId": "20260820",
@@ -31743,7 +31789,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260832": {
       "listingId": "20260832",
@@ -31766,7 +31812,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260839": {
       "listingId": "20260839",
@@ -31789,7 +31835,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260844": {
       "listingId": "20260844",
@@ -31812,7 +31858,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260847": {
       "listingId": "20260847",
@@ -31891,7 +31937,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260848": {
       "listingId": "20260848",
@@ -31914,12 +31960,12 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260861": {
       "listingId": "20260861",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "Blk 15 Lot 5 S California St S, Dorris, CA 96023",
         "acres": 0.13,
@@ -31972,7 +32018,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260871": {
       "listingId": "20260871",
@@ -31995,7 +32041,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260872": {
       "listingId": "20260872",
@@ -32018,7 +32064,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260879": {
       "listingId": "20260879",
@@ -32041,7 +32087,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260890": {
       "listingId": "20260890",
@@ -32087,7 +32133,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260893": {
       "listingId": "20260893",
@@ -32110,7 +32156,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260894": {
       "listingId": "20260894",
@@ -32133,12 +32179,12 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260907": {
       "listingId": "20260907",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "Lot E. Intake Springs Rd, McCloud, CA 96057",
         "acres": 38,
@@ -32179,7 +32225,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260915": {
       "listingId": "20260915",
@@ -32214,7 +32260,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260916": {
       "listingId": "20260916",
@@ -32237,7 +32283,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260919": {
       "listingId": "20260919",
@@ -32260,7 +32306,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260924": {
       "listingId": "20260924",
@@ -32283,7 +32329,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260925": {
       "listingId": "20260925",
@@ -32306,7 +32352,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260936": {
       "listingId": "20260936",
@@ -32329,7 +32375,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260949": {
       "listingId": "20260949",
@@ -32352,7 +32398,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260950": {
       "listingId": "20260950",
@@ -32375,7 +32421,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260951": {
       "listingId": "20260951",
@@ -32398,7 +32444,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260952": {
       "listingId": "20260952",
@@ -32421,7 +32467,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260953": {
       "listingId": "20260953",
@@ -32444,7 +32490,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260955": {
       "listingId": "20260955",
@@ -32467,7 +32513,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260959": {
       "listingId": "20260959",
@@ -32490,7 +32536,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260963": {
       "listingId": "20260963",
@@ -32513,7 +32559,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260964": {
       "listingId": "20260964",
@@ -32536,7 +32582,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260967": {
       "listingId": "20260967",
@@ -32559,7 +32605,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260968": {
       "listingId": "20260968",
@@ -32568,7 +32614,7 @@
       "listing": {
         "title": "Lot 40 Lake Shore Drive, Weed, CA 96094",
         "acres": 0.24,
-        "price": 25000,
+        "price": 19999,
         "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260968/Lot-40-Lake-Shore-Drive-Weed-CA-96094",
         "latLng": [
           41.513297,
@@ -32582,7 +32628,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260972": {
       "listingId": "20260972",
@@ -32617,7 +32663,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260975": {
       "listingId": "20260975",
@@ -32640,7 +32686,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260977": {
       "listingId": "20260977",
@@ -32663,7 +32709,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260978": {
       "listingId": "20260978",
@@ -32686,7 +32732,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20260993": {
       "listingId": "20260993",
@@ -32709,7 +32755,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261001": {
       "listingId": "20261001",
@@ -32732,7 +32778,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261007": {
       "listingId": "20261007",
@@ -32755,7 +32801,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261015": {
       "listingId": "20261015",
@@ -32778,7 +32824,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261018": {
       "listingId": "20261018",
@@ -32801,7 +32847,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261032": {
       "listingId": "20261032",
@@ -32824,7 +32870,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261033": {
       "listingId": "20261033",
@@ -32847,7 +32893,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261035": {
       "listingId": "20261035",
@@ -32870,7 +32916,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261036": {
       "listingId": "20261036",
@@ -32893,7 +32939,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261038": {
       "listingId": "20261038",
@@ -32916,7 +32962,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-19T12:32:55.476Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261046": {
       "listingId": "20261046",
@@ -32962,7 +33008,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-23T12:26:28.744Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261050": {
       "listingId": "20261050",
@@ -33008,7 +33054,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-23T12:26:28.744Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261057": {
       "listingId": "20261057",
@@ -33031,7 +33077,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-25T12:41:43.229Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261059": {
       "listingId": "20261059",
@@ -33059,7 +33105,7 @@
     "20261064": {
       "listingId": "20261064",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "40 Acres Wagon Camp Rd, Mount Shasta, CA 96067",
         "acres": 40,
@@ -33100,12 +33146,12 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-29T16:01:19.426Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "20261068": {
       "listingId": "20261068",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "N Mt Shasta Blvd, Mount Shasta, CA 96067",
         "acres": 4.1,
@@ -33128,7 +33174,7 @@
     "20261081": {
       "listingId": "20261081",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "10867 Old Highway 99 S, Grenada, CA 96038",
         "acres": 22.18,
@@ -33147,6 +33193,75 @@
       "notes": "",
       "createdAt": "2026-08-29T16:01:19.426Z",
       "updatedAt": "2026-08-29T16:01:19.426Z"
+    },
+    "20261092": {
+      "listingId": "20261092",
+      "status": "open",
+      "active": true,
+      "listing": {
+        "title": "Lot 285 & 286 Cougar St, Hornbrook, CA 96067",
+        "acres": 9.4,
+        "price": 36500,
+        "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261092/Lot-285-286-Cougar-St-Hornbrook-CA-96067",
+        "latLng": [
+          41.889362329800754,
+          -122.50494900993489
+        ],
+        "locationSource": "county street address centroid (approximate)",
+        "propertyType": "land"
+      },
+      "candidates": [],
+      "evidence": [],
+      "ruledOutApns": [],
+      "notes": "",
+      "createdAt": "2026-09-03T15:36:23.590Z",
+      "updatedAt": "2026-09-03T15:36:23.590Z"
+    },
+    "20261093": {
+      "listingId": "20261093",
+      "status": "open",
+      "active": true,
+      "listing": {
+        "title": "Lot 44 Lake Cove Rd, Hornbrook, CA 96067",
+        "acres": 2.5,
+        "price": 9900,
+        "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261093/Lot-44-Lake-Cove-Rd-Hornbrook-CA-96067",
+        "latLng": [
+          41.2921686035008,
+          -122.3226887285016
+        ],
+        "locationSource": "county ZIP/town street match (approximate)",
+        "propertyType": "land"
+      },
+      "candidates": [],
+      "evidence": [],
+      "ruledOutApns": [],
+      "notes": "",
+      "createdAt": "2026-09-03T15:36:23.590Z",
+      "updatedAt": "2026-09-03T15:36:23.590Z"
+    },
+    "20261094": {
+      "listingId": "20261094",
+      "status": "open",
+      "active": true,
+      "listing": {
+        "title": "Parcel 2 Melo Rd, Mount Shasta, CA 96067",
+        "acres": 0.8,
+        "price": 80000,
+        "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261094/Parcel-2-Melo-Rd-Mount-Shasta-CA-96067",
+        "latLng": [
+          41.307098203000784,
+          -122.33788625825157
+        ],
+        "locationSource": "county ZIP/town street match (approximate)",
+        "propertyType": "land"
+      },
+      "candidates": [],
+      "evidence": [],
+      "ruledOutApns": [],
+      "notes": "",
+      "createdAt": "2026-09-03T15:36:23.590Z",
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN26070678": {
       "listingId": "SN26070678",
@@ -33169,12 +33284,12 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SC26055721": {
       "listingId": "SC26055721",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "4 Lot 5 Mountain Estates Subdivision, Dunsmuir, CA 96025",
         "acres": 0.29,
@@ -33215,7 +33330,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "ND26107003": {
       "listingId": "ND26107003",
@@ -33238,7 +33353,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "ND26112562": {
       "listingId": "ND26112562",
@@ -33261,7 +33376,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "ND26161127": {
       "listingId": "ND26161127",
@@ -33284,7 +33399,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "ND26167352": {
       "listingId": "ND26167352",
@@ -33321,12 +33436,12 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "OR26045027": {
       "listingId": "OR26045027",
       "status": "open",
-      "active": true,
+      "active": false,
       "listing": {
         "title": "Juniper Valley, Weed, CA 96094",
         "acres": 20.9,
@@ -33367,7 +33482,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "OR26169266": {
       "listingId": "OR26169266",
@@ -33541,7 +33656,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "PW26037026": {
       "listingId": "PW26037026",
@@ -33564,7 +33679,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN25217843": {
       "listingId": "SN25217843",
@@ -33587,7 +33702,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN26019332": {
       "listingId": "SN26019332",
@@ -33610,7 +33725,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN26019385": {
       "listingId": "SN26019385",
@@ -33633,7 +33748,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN26070661": {
       "listingId": "SN26070661",
@@ -33656,7 +33771,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN26086596": {
       "listingId": "SN26086596",
@@ -33679,7 +33794,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN26086706": {
       "listingId": "SN26086706",
@@ -33702,7 +33817,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN26111736": {
       "listingId": "SN26111736",
@@ -33725,7 +33840,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN26121386": {
       "listingId": "SN26121386",
@@ -33771,7 +33886,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SR26023320": {
       "listingId": "SR26023320",
@@ -33794,7 +33909,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SW26019994": {
       "listingId": "SW26019994",
@@ -33817,7 +33932,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SW26165512": {
       "listingId": "SW26165512",
@@ -33904,7 +34019,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "OR25264389": {
       "listingId": "OR25264389",
@@ -33927,7 +34042,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN25143548": {
       "listingId": "SN25143548",
@@ -33950,7 +34065,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN26019355": {
       "listingId": "SN26019355",
@@ -33973,7 +34088,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN26080773": {
       "listingId": "SN26080773",
@@ -33996,7 +34111,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN26128300": {
       "listingId": "SN26128300",
@@ -34019,7 +34134,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     },
     "SN26164458": {
       "listingId": "SN26164458",
@@ -34042,7 +34157,7 @@
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-08-29T16:01:19.426Z"
+      "updatedAt": "2026-09-03T15:36:23.590Z"
     }
   }
 }
