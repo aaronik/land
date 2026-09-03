@@ -10,8 +10,8 @@
   <!-- Cloudflare Web Analytics -->
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"bf1755097209498fa6a1d29fad38e071"}'></script>
   <!-- End Cloudflare Web Analytics -->
-  <script type="module" crossorigin src="/assets/index-D3yjK6Ab.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-M55S6mWT.css">
+  <script type="module" crossorigin src="/assets/index-Cbub5EHB.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DgyyU71k.css">
 </head>
 <body>
   <header class="masthead">
@@ -32,10 +32,12 @@
         <p class="meta">Hover over a parcel for a quick summary. Click it to keep the details here.</p>
       </section>
 
-      <section>
-        <label for="search">Find an APN, address, listing, or place</label>
+      <section class="place-finder" aria-labelledby="place-finder-heading">
+        <div class="section-kicker">Explore the map</div>
+        <h2 id="place-finder-heading">Find a place</h2>
+        <p>Search a parcel, address, listing, or nearby landmark.</p>
         <div class="search-row">
-          <input id="search" type="search" placeholder="Address, MLS, APN, or place" autocomplete="off">
+          <input id="search" type="search" placeholder="Address, MLS, APN, or place" autocomplete="off" aria-label="Find an APN, address, listing, or place">
           <button id="search-button">Search</button>
         </div>
       </section>
@@ -55,6 +57,8 @@
         <label><input type="checkbox" data-map-layer="huc12"><i class="swatch watershed-overlay"></i>HUC-12 subwatersheds</label>
         <label><input type="checkbox" data-map-layer="wetlands"><i class="swatch wetlands-overlay"></i>National Wetlands Inventory</label>
         <div class="layer-key" data-layer-key="wetlands" aria-label="National Wetlands Inventory information"><span><i style="--key-color:#4d7dcc"></i>Mapped wetland polygon</span><span>USFWS National Wetlands Inventory screening data. Map presence or absence does not establish wetland jurisdiction, boundaries, conditions, or permitting requirements; verify with a site assessment and the appropriate agencies.</span></div>
+        <label><input type="checkbox" data-map-layer="critical-habitat"><i class="swatch critical-habitat-overlay"></i>USFWS critical habitat</label>
+        <div class="layer-key" data-layer-key="critical-habitat" aria-label="USFWS critical habitat legend"><span><i style="--key-color:#a80000"></i>Final designation</span><span><i style="--key-color:#e600a9"></i>Proposed designation</span><span>USFWS screening data for mapped proposed and final critical habitat. Click an area for species and designation status. It does not determine species presence, project effects, permitting, consultation requirements, or legal obligations; verify with USFWS and the applicable Federal Register notice.</span></div>
         <label><input type="checkbox" data-map-layer="cell-coverage"><i class="swatch cell-coverage-overlay"></i>4G LTE coverage</label>
         <div class="layer-key" data-layer-key="cell-coverage" aria-label="Cell coverage legend"><span><i style="--key-color:#00c5ff"></i>AT&amp;T</span><span><i style="--key-color:#ff00c5"></i>T-Mobile</span><span><i style="--key-color:#ef3030"></i>Verizon</span><span>County-published coverage as of January 2024. It is modeled coverage, not a guarantee of service, signal strength, data speed, indoor coverage, or emergency calling at a site.</span></div>
         <label><input type="checkbox" data-map-layer="pct"><i class="swatch pct-overlay"></i>Pacific Crest Trail</label>
