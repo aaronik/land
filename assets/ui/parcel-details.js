@@ -2,8 +2,9 @@
 
 const ZONING_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/CDD_Zoning_Districts_Public/FeatureServer/0/query';
 
-export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, onParcelQuest, onSaveResearch, onAdjustParcel, isParcelAdjusted, onClose }) {
+export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, wildfirePerimetersQueryUrl, recentWildfirePerimetersQueryUrl, parcelsQueryUrl, onParcelQuest, onSaveResearch, onAdjustParcel, isParcelAdjusted, onClose }) {
   const zoningByApn = new Map();
+  const wildfireHistoryByApn = new Map();
   let zoningRequestId = 0;
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
   const money = value => value ? `$${Number(value).toLocaleString()}` : '';
@@ -49,6 +50,42 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     try { const zoning = await zoningForParcel(apn); if (requestId === zoningRequestId && target.isConnected) target.textContent = ` · ${zoning || 'Not available'}`; }
     catch (error) { if (requestId === zoningRequestId && target.isConnected) target.textContent = ' · Unavailable'; console.warn(error); }
   };
+  const wildfireDate = value => { const timestamp = Number(value); return Number.isFinite(timestamp) && timestamp > 0 ? new Date(timestamp).toLocaleDateString() : ''; };
+  const wildfireHistoryForParcel = async apn => {
+    if (wildfireHistoryByApn.has(apn)) return wildfireHistoryByApn.get(apn);
+    const parcelUrl = new URL(parcelsQueryUrl);
+    parcelUrl.search = new URLSearchParams({ f: 'geojson', where: `APN = '${String(apn).replace(/'/g, "''")}'`, outFields: 'APN', returnGeometry: 'true', outSR: '4326' });
+    const parcelResponse = await fetch(parcelUrl);
+    if (!parcelResponse.ok) throw new Error(`parcel geometry query returned ${parcelResponse.status}`);
+    const parcelData = await parcelResponse.json();
+    const geometry = parcelData.features?.[0]?.geometry;
+    if (!geometry) return [];
+    const fireUrl = new URL(wildfirePerimetersQueryUrl);
+    const query = { f: 'json', where: '1=1', geometry: JSON.stringify(geometry), geometryType: 'esriGeometryPolygon', inSR: '4326', spatialRel: 'esriSpatialRelIntersects', outFields: 'YEAR_,AGENCY,UNIT_ID,FIRE_NAME,ALARM_DATE,CONT_DATE,REPORT_AC,GIS_ACRES', returnGeometry: 'false', orderByFields: 'YEAR_ DESC' };
+    fireUrl.search = new URLSearchParams(query);
+    const recentFireUrl = new URL(recentWildfirePerimetersQueryUrl);
+    recentFireUrl.search = new URLSearchParams({ ...query, outFields: 'YEAR_,AGENCY,UNIT_ID,FIRE_NAME,INC_NUM,ALARM_DATE,CONT_DATE,CAUSE,GIS_ACRES,IRWINID' });
+    const [fireResponse, recentFireResponse] = await Promise.all([fetch(fireUrl), fetch(recentFireUrl)]);
+    if (!fireResponse.ok) throw new Error(`wildfire query returned ${fireResponse.status}`);
+    if (!recentFireResponse.ok) throw new Error(`recent wildfire query returned ${recentFireResponse.status}`);
+    const [fireData, recentFireData] = await Promise.all([fireResponse.json(), recentFireResponse.json()]);
+    if (fireData.error) throw new Error(fireData.error.message || 'wildfire query failed');
+    if (recentFireData.error) throw new Error(recentFireData.error.message || 'recent wildfire query failed');
+    const unique = new Map();
+    for (const fire of [...(fireData.features || []), ...(recentFireData.features || [])].map(feature => feature.attributes).filter(Boolean)) unique.set(`${fire.FIRE_NAME}|${fire.ALARM_DATE}|${fire.INC_NUM || ''}`, fire);
+    const fires = [...unique.values()].sort((a, b) => Number(b.ALARM_DATE || 0) - Number(a.ALARM_DATE || 0));
+    wildfireHistoryByApn.set(apn, fires);
+    return fires;
+  };
+  const wildfireHistorySection = apn => `<section class="sales-history" data-wildfire-history><h4>Historic wildfire perimeters</h4><p class="muted">Checking county incident perimeters…</p></section>`;
+  const updateWildfireHistory = async apn => {
+    const target = detailsElement.querySelector('[data-wildfire-history]'); if (!target || !apn) return;
+    try {
+      const fires = await wildfireHistoryForParcel(apn);
+      if (!target.isConnected) return;
+      target.innerHTML = `<h4>Historic wildfire perimeters</h4>${fires.length ? fires.map(fire => `<article><strong>${escapeHtml(fire.FIRE_NAME || 'Unnamed fire')} · ${escapeHtml(fire.YEAR_ || 'Year not reported')}</strong><span>${escapeHtml(fire.AGENCY || 'Agency not reported')}</span><small>${wildfireDate(fire.ALARM_DATE) ? `Alarmed ${escapeHtml(wildfireDate(fire.ALARM_DATE))}` : 'Alarm date not reported'}${fire.GIS_ACRES || fire.REPORT_AC ? ` · ${Number(fire.GIS_ACRES || fire.REPORT_AC).toLocaleString(undefined, { maximumFractionDigits: 1 })} mapped acres` : ''}</small></article>`).join('') : '<p class="muted">No county historic-fire perimeter intersects this parcel.</p>'}<p class="source-note">Intersection with a mapped incident perimeter—not burn severity, current fuels, damage, evacuation status, or insurance availability.</p>`;
+    } catch (error) { if (target.isConnected) target.innerHTML = '<h4>Historic wildfire perimeters</h4><p class="muted">County perimeter history is temporarily unavailable.</p>'; console.warn(error); }
+  };
   const parcelDirectionsLink = apn => {
     const point = parcelQueryPoint(apn); if (!point) return '';
     const url = new URL('https://www.google.com/maps/dir/');
@@ -65,8 +102,8 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
   const showParcelDetails = (properties, saleFeature = matchingSale(properties.APN)) => {
     const p = { ...(saleFeature?.properties || {}), ...properties }, records = saleFeature?.properties.records || p.records || [], salesHistory = saleFeature?.properties.salesHistory || p.salesHistory || [];
     const directions = parcelDirectionsLink(p.APN), cards = records.map((record, index) => recordCard(record, index === 0 ? directions : '')).join('');
-    detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta">${escapeHtml(p.Acres ?? getApnIndex()[p.APN]?.acres ?? '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${cards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${salesHistorySection(salesHistory)}${researchControls(p.APN)}<section class="parcel-alignment"><h4>Align parcel outline</h4><p>Use the yellow copy to line up the county outline with field evidence. Drag the outline to move it; drag the yellow handle to rotate it. This alignment is saved in this browser only.</p><button type="button" data-adjust-parcel>${isParcelAdjusted?.(p.APN) ? 'Hide aligned outline' : 'Show aligned outline'}</button></section>`;
-    updateParcelZoning(p.APN); bindResearchControls(p.APN);
+    detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta">${escapeHtml(p.Acres ?? getApnIndex()[p.APN]?.acres ?? '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${cards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${salesHistorySection(salesHistory)}${wildfireHistorySection(p.APN)}${researchControls(p.APN)}<section class="parcel-alignment"><h4>Align parcel outline</h4><p>Use the yellow copy to line up the county outline with field evidence. Drag the outline to move it; drag the yellow handle to rotate it. This alignment is saved in this browser only.</p><button type="button" data-adjust-parcel>${isParcelAdjusted?.(p.APN) ? 'Hide aligned outline' : 'Show aligned outline'}</button></section>`;
+    updateParcelZoning(p.APN); updateWildfireHistory(p.APN); bindResearchControls(p.APN);
   };
   return { recordCard, showParcelDetails };
 }

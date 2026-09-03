@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T18:42:39.715Z",
+  "generatedAt": "2026-09-03T16:40:39.693Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -356,6 +356,38 @@
         "IS_CA",
         "PERMITTED_STATUS",
         "TSDF_YES_NO"
+      ]
+    },
+    "wildfire_perimeters": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/HistoricFirePerimeters_Public/FeatureServer/0",
+      "featureCount": 1811,
+      "fields": [
+        "FID",
+        "YEAR_",
+        "AGENCY",
+        "UNIT_ID",
+        "FIRE_NAME",
+        "ALARM_DATE",
+        "CONT_DATE",
+        "REPORT_AC",
+        "GIS_ACRES"
+      ]
+    },
+    "recent_wildfire_perimeters": {
+      "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Fire_Perimeters_2019_to_2025/FeatureServer/329",
+      "featureCount": 94,
+      "fields": [
+        "OBJECTID",
+        "YEAR_",
+        "AGENCY",
+        "UNIT_ID",
+        "FIRE_NAME",
+        "INC_NUM",
+        "ALARM_DATE",
+        "CONT_DATE",
+        "CAUSE",
+        "GIS_ACRES",
+        "IRWINID"
       ]
     }
   }

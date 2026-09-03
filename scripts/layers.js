@@ -186,6 +186,19 @@ const LAYERS = {
     url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/FireHazardSeverity_Public/FeatureServer/0',
     objectId: 'FID', fields: ['FID', 'HAZ_CODE', 'HAZ_CLASS', 'RESP']
   },
+  wildfire_perimeters: {
+    name: 'Siskiyou County historic wildfire perimeters',
+    url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/HistoricFirePerimeters_Public/FeatureServer/0',
+    objectId: 'FID',
+    bbox: SISKIYOU_BBOX,
+    fields: ['FID', 'YEAR_', 'AGENCY', 'UNIT_ID', 'FIRE_NAME', 'ALARM_DATE', 'CONT_DATE', 'REPORT_AC', 'GIS_ACRES']
+  },
+  recent_wildfire_perimeters: {
+    name: 'Siskiyou County recent wildfire perimeters',
+    url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Fire_Perimeters_2019_to_2025/FeatureServer/329',
+    bbox: SISKIYOU_BBOX,
+    fields: ['OBJECTID', 'YEAR_', 'AGENCY', 'UNIT_ID', 'FIRE_NAME', 'INC_NUM', 'ALARM_DATE', 'CONT_DATE', 'CAUSE', 'GIS_ACRES', 'IRWINID']
+  },
   public_land: {
     name: 'PAD-US federal fee managers',
     url: 'https://services.arcgis.com/v01gqwM5QqNysAAi/arcgis/rest/services/Federal_Fee_Managers_Authoritative_PADUS/FeatureServer/0',

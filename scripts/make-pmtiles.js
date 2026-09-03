@@ -21,6 +21,8 @@ const configs = {
   springs: { min: 6, max: 14, fields: LAYERS.springs.fields.filter(field => field !== 'OBJECTID') },
   geology: { min: 6, max: 13, fields: LAYERS.geology.fields },
   fire_hazard: { min: 6, max: 14, fields: LAYERS.fire_hazard.fields.filter(field => field !== 'FID') },
+  wildfire_perimeters: { min: 6, max: 14, fields: LAYERS.wildfire_perimeters.fields.filter(field => field !== 'FID') },
+  recent_wildfire_perimeters: { min: 6, max: 14, fields: LAYERS.recent_wildfire_perimeters.fields.filter(field => field !== 'OBJECTID') },
   public_land: { min: 6, max: 13, fields: LAYERS.public_land.fields.filter(field => field !== 'OBJECTID') },
   flood: { min: 6, max: 14, fields: LAYERS.flood.fields.filter(field => field !== 'OBJECTID') },
   soils: { min: 6, max: 14, fields: LAYERS.soils.fields },

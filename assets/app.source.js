@@ -39,6 +39,9 @@ const ZONING_FILL_COLOR = ['match', ['get', 'zoning'],
   'WETLANDS', '#4065eb', 'transparent'
 ];
 const PARCELQUEST_URL = 'https://assr.parcelquest.com/impl/SISASSR';
+const WILDFIRE_PERIMETERS_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/HistoricFirePerimeters_Public/FeatureServer/0/query';
+const PARCELS_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query';
+const RECENT_WILDFIRE_PERIMETERS_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Fire_Perimeters_2019_to_2025/FeatureServer/329/query';
 const DIRECTIONS_ORIGIN = 'Mt. Shasta City Park, 1315 Nixon Road, Mount Shasta, CA 96067';
 const protocol = new Protocol();
 maplibregl.addProtocol('pmtiles', protocol.tile.bind(protocol));
@@ -280,6 +283,9 @@ const parcelDetails = createParcelDetails({
   featureCenter,
   getApnIndex: () => apnIndex,
   getSaleData: () => saleData,
+  wildfirePerimetersQueryUrl: WILDFIRE_PERIMETERS_QUERY_URL,
+  recentWildfirePerimetersQueryUrl: RECENT_WILDFIRE_PERIMETERS_QUERY_URL,
+  parcelsQueryUrl: PARCELS_QUERY_URL,
   onParcelQuest: apn => { selectedResearchApn = apn; document.querySelector('#parcelquest-warning').showModal(); },
   onSaveResearch: apn => showParcelDetails({ APN: apn }),
   onAdjustParcel: async apn => { try { return await parcelAdjustmentControl.toggle(apn); } catch (error) { console.error(error); alert(error.message); return false; } },
@@ -333,6 +339,7 @@ function addPmtilesSource(id) {
     farmland: '<a href="https://www.conservation.ca.gov/dlrp/fmmp" target="_blank">California DOC Farmland Mapping and Monitoring Program</a>',
     rcra_sites: '<a href="https://rcrapublic.epa.gov/rcrainfoweb/action/main-menu/view" target="_blank">EPA RCRAInfo hazardous waste handlers</a>',
     fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>',
+    wildfire_perimeters: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County historic wildfire perimeters</a>',
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
     forest_roads: '<a href="https://data.fs.usda.gov/geodata/edw/datasets.php?xmlKeyword=Motor+vehicle+Use+Map" target="_blank">USFS Motor Vehicle Use Map</a>',
     waterways: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
@@ -418,6 +425,7 @@ function toggleLayer(id, visibleValue) {
     'cell-coverage': ['cell-att', 'cell-tmobile', 'cell-verizon'],
     pct: ['pct-casing', 'pct', 'pct-markers'],
     'groundwater-basins': ['groundwater-basins-fill', 'groundwater-basins-lines', 'groundwater-basins-labels'],
+    'wildfire-perimeters': ['wildfire-perimeters-fill', 'wildfire-perimeters-lines', 'recent-wildfire-perimeters-fill', 'recent-wildfire-perimeters-lines'],
     zoning: ['zoning-fill', 'zoning-lines']
   };
   const layerIds = groupedLayers[id] || [id];
@@ -471,10 +479,17 @@ function initializeMapLayers() {
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
     ], { layers: ['springs', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
-    const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill', 'geology'] });
+    const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill', 'geology', 'recent-wildfire-perimeters-fill', 'wildfire-perimeters-fill'] });
     const feature = markerHits[0] || polygonHits[0];
     if (!feature) return;
     const props = feature.properties || {};
+    if (feature.layer.id === 'wildfire-perimeters-fill' || feature.layer.id === 'recent-wildfire-perimeters-fill') {
+      const value = value => value === null || value === undefined || value === '' ? 'Not reported' : escapeHtml(value);
+      const date = value => { const number = Number(value); return Number.isFinite(number) && number > 0 ? new Date(number).toLocaleDateString() : 'Not reported'; };
+      const acres = props.GIS_ACRES || props.REPORT_AC;
+      document.querySelector('#details').innerHTML = `<h3>Historic wildfire perimeter</h3><p class="meta">${value(props.YEAR_)} · ${value(props.AGENCY)}${props.UNIT_ID ? ` · Unit ${value(props.UNIT_ID)}` : ''}</p><p><strong>${value(props.FIRE_NAME || 'Unnamed fire')}</strong><br>Alarm date: ${date(props.ALARM_DATE)}<br>Containment date: ${date(props.CONT_DATE)}<br>Mapped area: ${acres ? `${Number(acres).toLocaleString(undefined, { maximumFractionDigits: 1 })} acres` : 'Not reported'}${props.REPORT_AC && props.GIS_ACRES ? `<br>Reported area: ${Number(props.REPORT_AC).toLocaleString()} acres` : ''}</p><p class="source-note">Siskiyou County mapped incident perimeter. It shows a fire footprint, not burn severity, current fuels, damage, evacuation status, or insurance availability.</p>`;
+      return;
+    }
     if (feature.layer.id === 'geology') {
       const detail = value => value ? `<p>${escapeHtml(value)}</p>` : '';
       document.querySelector('#details').innerHTML = `<h3>Surface geology</h3><p class="meta">${escapeHtml(props.material_class || 'Mapped geologic unit')}</p><p><strong>${escapeHtml(props.unit_name || props.sgmc_label || props.orig_label || 'Not labeled')}</strong>${props.unit_age ? `<br>${escapeHtml(props.unit_age)}` : ''}${props.lithology ? `<br>Major lithology: ${escapeHtml(props.lithology)}` : ''}</p>${detail(props.unit_description)}<p class="source-note">Generalized statewide geologic mapping for context only. It does not establish groundwater depth, yield, quality, fractures, or drilling conditions at this site.</p>`;
@@ -520,7 +535,7 @@ function initializeMapLayers() {
     }
     selectParcel(props);
   });
-  for (const id of ['geology', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['geology', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }
