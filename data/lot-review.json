@@ -1,7 +1,43 @@
 {
-  "generatedAt": "2026-08-29T16:01:19.426Z",
-  "count": 218,
+  "generatedAt": "2026-09-03T15:36:23.590Z",
+  "count": 214,
   "listings": [
+    {
+      "mlsNumber": "20261093",
+      "title": "Lot 44 Lake Cove Rd, Hornbrook, CA 96067",
+      "acres": 2.5,
+      "latLng": [
+        41.2921686035008,
+        -122.3226887285016
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261093/Lot-44-Lake-Cove-Rd-Hornbrook-CA-96067",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261092",
+      "title": "Lot 285 & 286 Cougar St, Hornbrook, CA 96067",
+      "acres": 9.4,
+      "latLng": [
+        41.889362329800754,
+        -122.50494900993489
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261092/Lot-285-286-Cougar-St-Hornbrook-CA-96067",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20230744",
+      "title": "Blk 1 Lot 10 Big Springs Road, Weed, CA 96094",
+      "acres": 10,
+      "latLng": [
+        41.50664872065077,
+        -122.36450450830156
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20230744/Blk-1-Lot-10-Big-Springs-Road-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261065",
       "title": "Lot 236 & 237 Stone Crest Dr, Weed, CA 96094",
@@ -447,18 +483,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20260861",
-      "title": "Blk 15 Lot 5 S California St S, Dorris, CA 96023",
-      "acres": 0.13,
-      "latLng": [
-        41.964321731163565,
-        -121.91960383930392
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260861/Blk-15-Lot-5-S-California-St-S-Dorris-CA-96023",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20250575",
       "title": "Unit 4 Lot 575 Krce Hare St., Montague, CA 96044",
       "acres": 4.6,
@@ -503,30 +527,6 @@
         -122.38565648250157
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250985/Lot-175-Shasta-Ln-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "SC26055721",
-      "title": "4 Lot 5 Mountain Estates Subdivision, Dunsmuir, CA 96025",
-      "acres": 0.29,
-      "latLng": [
-        41.22861,
-        -122.27218
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-MRMLS/SC26055721/4-Lot-5-Mountain-Estates-Subdivision-Dunsmuir-CA-96025",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260502",
-      "title": "Lots 4 & 5 Berry St, Mount Shasta, CA 96067",
-      "acres": 0.18,
-      "latLng": [
-        41.308924219040776,
-        -122.31357107928159
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260502/Lots-4-5-Berry-St-Mount-Shasta-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -1163,18 +1163,6 @@
         -122.35931850464442
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260292/Lot-192-Rockwood-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250861",
-      "title": "Lot 10 Lakeshore Dr., McCloud, CA 96057",
-      "acres": 0.21,
-      "latLng": [
-        41.264773207160765,
-        -122.11460654389602
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250861/Lot-10-Lakeshore-Dr-McCloud-CA-96057",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -1839,30 +1827,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20251052",
-      "title": "Unit 3 Lot 23 Whitepine St., Hornbrook, CA 96044",
-      "acres": 1.08,
-      "latLng": [
-        41.88189972058409,
-        -122.45603904141824
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251052/Unit-3-Lot-23-Whitepine-St-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20251051",
-      "title": "Lots 55 & 56 Tennis Ct., Weed, CA 96094",
-      "acres": 0.48,
-      "latLng": [
-        41.50743206350076,
-        -122.37915613250158
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251051/Lots-55-56-Tennis-Ct-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20251039",
       "title": "Unit 3 Lot 169 Whitepine, Hornbrook, CA 96044",
       "acres": 1,
@@ -2435,18 +2399,6 @@
         -122.37916666966163
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20241230/Unit-4-Lot-327-Indian-Island-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20241229",
-      "title": "Unit 5 Lot 63 Desavado Road, Montague, CA 96064",
-      "acres": 3.65,
-      "latLng": [
-        41.89257429412576,
-        -122.42582827100156
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20241229/Unit-5-Lot-63-Desavado-Road-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
