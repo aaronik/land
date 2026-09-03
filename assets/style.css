@@ -33,9 +33,15 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .stats div { min-width: 0; }
 .stats strong { display: block; font-family: Georgia, serif; font-size: 25px; }
 .stats span { display: block; font-size: 10px; color: #657069; text-transform: uppercase; }
+.panel .place-finder { padding: 14px 14px 16px; border: 1px solid rgba(22,35,29,.18); border-radius: 9px; background: rgba(237, 243, 227, .72); }
+.place-finder .section-kicker { margin: 0 0 4px; color: #55703d; font-size: 9px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+.place-finder h2 { margin-bottom: 4px; font-family: Georgia, serif; font-size: 20px; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.place-finder p { margin: 0 0 11px; color: #5d6861; font-size: 11px; line-height: 1.4; }
 .search-row { display: flex; gap: 6px; }
 .search-row input { min-width: 0; flex: 1; border: 1px solid #b8bdb8; border-radius: 7px; padding: 9px; background: white; }
+.search-row input:focus { outline: 2px solid rgba(18,98,70,.25); outline-offset: 1px; border-color: #126246; }
 .search-row button { border: 0; border-radius: 7px; padding: 9px 12px; color: white; background: var(--ink); cursor: pointer; }
+.search-row button:hover { background: #294037; }
 .layer-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .layer-heading h2 { margin-bottom: 10px; }
 #reset-map-layers { margin: -4px 0 6px; padding: 4px 7px; border: 1px solid var(--line); border-radius: 5px; color: #425048; background: transparent; font-size: 10px; font-weight: 700; cursor: pointer; }
@@ -143,8 +149,10 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .record.public.home { border-left-color: #b94b18; }
 .record strong { font-size: 13px; }
 .record p { margin: 4px 0; }
-.sales-history { margin-top: 14px; padding: 12px; background: #f7f2df; border: 1px solid var(--line); border-left: 4px solid #c28a2c; border-radius: 7px; }
+.sales-history { margin-top: 14px; padding: 12px; background: #edf5ee; border: 1px solid rgba(37, 109, 71, .25); border-left: 4px solid #287a50; border-radius: 7px; }
+.wildfire-history { background: #fff0e7; border-color: rgba(177, 70, 29, .28); border-left-color: #c84d25; }
 .sales-history h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; }
+.wildfire-history h4 { color: #873419; }
 .sales-history article { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 11px; }
 .sales-history article:first-of-type { border-top: 0; }
 .sales-history article strong { font: 600 18px Georgia, serif; }
