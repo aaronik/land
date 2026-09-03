@@ -191,6 +191,7 @@ const LAYERS = {
     url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/HistoricFirePerimeters_Public/FeatureServer/0',
     objectId: 'FID',
     bbox: SISKIYOU_BBOX,
+    where: "YEAR_ >= '1900' AND YEAR_ < '2019'",
     fields: ['FID', 'YEAR_', 'AGENCY', 'UNIT_ID', 'FIRE_NAME', 'ALARM_DATE', 'CONT_DATE', 'REPORT_AC', 'GIS_ACRES']
   },
   recent_wildfire_perimeters: {

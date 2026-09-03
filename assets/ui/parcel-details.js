@@ -62,10 +62,10 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     const geometry = parcelData.features?.[0]?.geometry;
     if (!geometry) return [];
     const fireUrl = new URL(wildfirePerimetersQueryUrl);
-    const query = { f: 'json', where: '1=1', geometry: JSON.stringify(geometry), geometryType: 'esriGeometryPolygon', inSR: '4326', spatialRel: 'esriSpatialRelIntersects', outFields: 'YEAR_,AGENCY,UNIT_ID,FIRE_NAME,ALARM_DATE,CONT_DATE,REPORT_AC,GIS_ACRES', returnGeometry: 'false', orderByFields: 'YEAR_ DESC' };
+    const query = { f: 'json', where: "YEAR_ >= '1900' AND YEAR_ < '2019'", geometry: JSON.stringify(geometry), geometryType: 'esriGeometryPolygon', inSR: '4326', spatialRel: 'esriSpatialRelIntersects', outFields: 'YEAR_,AGENCY,UNIT_ID,FIRE_NAME,ALARM_DATE,CONT_DATE,REPORT_AC,GIS_ACRES', returnGeometry: 'false', orderByFields: 'YEAR_ DESC' };
     fireUrl.search = new URLSearchParams(query);
     const recentFireUrl = new URL(recentWildfirePerimetersQueryUrl);
-    recentFireUrl.search = new URLSearchParams({ ...query, outFields: 'YEAR_,AGENCY,UNIT_ID,FIRE_NAME,INC_NUM,ALARM_DATE,CONT_DATE,CAUSE,GIS_ACRES,IRWINID' });
+    recentFireUrl.search = new URLSearchParams({ ...query, where: '1=1', outFields: 'YEAR_,AGENCY,UNIT_ID,FIRE_NAME,INC_NUM,ALARM_DATE,CONT_DATE,CAUSE,GIS_ACRES,IRWINID' });
     const [fireResponse, recentFireResponse] = await Promise.all([fetch(fireUrl), fetch(recentFireUrl)]);
     if (!fireResponse.ok) throw new Error(`wildfire query returned ${fireResponse.status}`);
     if (!recentFireResponse.ok) throw new Error(`recent wildfire query returned ${recentFireResponse.status}`);

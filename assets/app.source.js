@@ -335,6 +335,8 @@ function updateSales() {
 function addPmtilesSource(id) {
   const url = new URL(`data/generated/${id}.pmtiles`, window.location.href);
   url.searchParams.set('v', new URL(import.meta.url).pathname.split('/').pop());
+  if (id === 'wildfire_perimeters') url.searchParams.set('wildfire-revision', 'dated-2018');
+  if (id === 'recent_wildfire_perimeters') url.searchParams.set('wildfire-revision', '2019-2025');
   const attributions = {
     flood: '<a href="https://www.fema.gov/flood-maps/national-flood-hazard-layer" target="_blank">FEMA NFHL</a>',
     soils: '<a href="https://sdmdataaccess.nrcs.usda.gov/" target="_blank">USDA NRCS SSURGO</a>',

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T16:40:39.693Z",
+  "generatedAt": "2026-09-03T17:01:58.532Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -360,7 +360,7 @@
     },
     "wildfire_perimeters": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/HistoricFirePerimeters_Public/FeatureServer/0",
-      "featureCount": 1811,
+      "featureCount": 1043,
       "fields": [
         "FID",
         "YEAR_",

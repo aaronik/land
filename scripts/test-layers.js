@@ -47,6 +47,7 @@ function testWildfirePerimeterSource() {
   const perimeters = LAYERS.wildfire_perimeters;
   assert.match(perimeters.url, /HistoricFirePerimeters_Public\/FeatureServer\/0$/);
   assert.equal(perimeters.bbox, '-123.73,40.98,-121.43,42.02');
+  assert.equal(perimeters.where, "YEAR_ >= '1900' AND YEAR_ < '2019'");
   assert.deepEqual(perimeters.fields, ['FID', 'YEAR_', 'AGENCY', 'UNIT_ID', 'FIRE_NAME', 'ALARM_DATE', 'CONT_DATE', 'REPORT_AC', 'GIS_ACRES']);
   const recent = LAYERS.recent_wildfire_perimeters;
   assert.match(recent.url, /Siskiyou_Fire_Perimeters_2019_to_2025\/FeatureServer\/329$/);
