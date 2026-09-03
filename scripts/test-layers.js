@@ -96,6 +96,16 @@ function testWetlandsSource() {
   assert.deepEqual(wetlands.fields, ['OBJECTID', 'ATTRIBUTE', 'WETLAND_TYPE', 'ACRES']);
 }
 
+function testCriticalHabitatSources() {
+  const fields = ['OBJECTID', 'comname', 'sciname', 'unit', 'subunit', 'unitname', 'subunitname', 'status', 'fedreg', 'pubdate', 'effectdate', 'listing_status'];
+  for (const [name, layerId] of [['critical_habitat_final', 0], ['critical_habitat_proposed', 2]]) {
+    const habitat = LAYERS[name];
+    assert.match(habitat.url, new RegExp(`USFWS_Critical_Habitat/FeatureServer/${layerId}$`));
+    assert.equal(habitat.bbox, '-123.73,40.98,-121.43,42.02');
+    assert.deepEqual(habitat.fields, fields);
+  }
+}
+
 (async () => {
   await testPaginationCompleteness();
   await testIncompleteDownloadFails();
@@ -106,5 +116,6 @@ function testWetlandsSource() {
   testFarmlandSource();
   testRcraSiteSource();
   testWetlandsSource();
-  console.log('Passed: ArcGIS pagination, transportation, waterways, farmland, RCRA sites, wetlands, and listing confidence tests.');
+  testCriticalHabitatSources();
+  console.log('Passed: ArcGIS pagination, transportation, waterways, farmland, RCRA sites, wetlands, critical habitat, and listing confidence tests.');
 })().catch(error => { console.error(error); process.exit(1); });

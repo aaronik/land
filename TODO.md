@@ -10,7 +10,7 @@ Wells / springs look too similar on map
   - [x] Historic and recent wildfire perimeters, with fire name, dates, acres, and parcel intersection/proximity.
   - [ ] CPUC utility fire-threat tier.
   - [x] County address points, including whether an official address is assigned at or near a parcel.
-  - [ ] USFWS proposed/final critical habitat, including intersecting species and status.
+  - [x] USFWS proposed/final critical habitat, including intersecting species and status.
   - [ ] FCC fixed-broadband availability: providers, technology, and advertised maximum speeds.
 - [ ] Improve access and infrastructure analysis: routable travel/access, legal versus physical access, road type and maintenance, driveway distance, utility proximity, and travel time to towns and essential services.
 - [ ] Add market intelligence: comparable-sales search, price and days-on-market trends, price-change history, and area market summaries.

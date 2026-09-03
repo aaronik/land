@@ -30,6 +30,7 @@ const configs = {
   rcra_sites: { min: 6, max: 14, fields: LAYERS.rcra_sites.fields.filter(field => field !== 'OBJECTID') },
   huc12: { min: 6, max: 14, fields: LAYERS.huc12.fields.filter(field => field !== 'objectid') },
   wetlands: { min: 6, max: 14, fields: LAYERS.wetlands.fields.filter(field => field !== 'OBJECTID') },
+  critical_habitat_final: { min: 6, max: 14, fields: LAYERS.critical_habitat_final.fields.filter(field => field !== 'OBJECTID') },
   cell_att: { min: 6, max: 13, fields: LAYERS.cell_att.fields.filter(field => field !== 'OBJECTID') },
   cell_tmobile: { min: 6, max: 13, fields: LAYERS.cell_tmobile.fields.filter(field => field !== 'OBJECTID') },
   cell_verizon: { min: 6, max: 13, fields: LAYERS.cell_verizon.fields.filter(field => field !== 'OBJECTID') },

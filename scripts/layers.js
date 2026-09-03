@@ -251,6 +251,18 @@ const LAYERS = {
     where: 'Wetlands.OBJECTID > 0',
     objectId: 'Wetlands.OBJECTID', fields: ['OBJECTID', 'ATTRIBUTE', 'WETLAND_TYPE', 'ACRES']
   },
+  critical_habitat_final: {
+    name: 'USFWS final critical habitat',
+    url: 'https://services.arcgis.com/QVENGdaPbd4LUkLV/ArcGIS/rest/services/USFWS_Critical_Habitat/FeatureServer/0',
+    bbox: SISKIYOU_BBOX,
+    fields: ['OBJECTID', 'comname', 'sciname', 'unit', 'subunit', 'unitname', 'subunitname', 'status', 'fedreg', 'pubdate', 'effectdate', 'listing_status']
+  },
+  critical_habitat_proposed: {
+    name: 'USFWS proposed critical habitat',
+    url: 'https://services.arcgis.com/QVENGdaPbd4LUkLV/ArcGIS/rest/services/USFWS_Critical_Habitat/FeatureServer/2',
+    bbox: SISKIYOU_BBOX,
+    fields: ['OBJECTID', 'comname', 'sciname', 'unit', 'subunit', 'unitname', 'subunitname', 'status', 'fedreg', 'pubdate', 'effectdate', 'listing_status']
+  },
   cell_att: {
     name: 'AT&T 4G LTE coverage',
     url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/ATT_4G_LTE/FeatureServer/17',

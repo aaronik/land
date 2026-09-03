@@ -54,6 +54,8 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('farmland');
   addPmtilesSource('rcra_sites');
   addPmtilesSource('huc12');
+  addPmtilesSource('critical_habitat_final');
+  map.addSource('critical_habitat_proposed', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('wetlands-wms', {
     type: 'raster', tileSize: 256, minzoom: 6, maxzoom: 18,
     tiles: ['https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/services/Wetlands/MapServer/WMSServer?service=WMS&version=1.3.0&request=GetMap&layers=0&styles=&format=image/png&transparent=true&crs=EPSG:3857&width=256&height=256&bbox={bbox-epsg-3857}'],
@@ -190,6 +192,14 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
       'circle-stroke-width': 1.2,
       'circle-opacity': 0.92
     }
+  });
+  map.addLayer({
+    id: 'critical-habitat-final', type: 'fill', source: 'critical_habitat_final', 'source-layer': 'critical_habitat_final', minzoom: 6,
+    layout: { visibility: 'none' }, paint: { 'fill-color': '#a80000', 'fill-opacity': 0.2, 'fill-outline-color': '#730000' }
+  });
+  map.addLayer({
+    id: 'critical-habitat-proposed', type: 'fill', source: 'critical_habitat_proposed', 'source-layer': 'critical_habitat_proposed', minzoom: 6,
+    layout: { visibility: 'none' }, paint: { 'fill-color': '#e600a9', 'fill-opacity': 0.22, 'fill-outline-color': '#a80084' }
   });
   map.addLayer({ id: 'farmland', type: 'fill', source: 'farmland', 'source-layer': 'farmland', minzoom: 6, layout: { visibility: 'none' },
     paint: {

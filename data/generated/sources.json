@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T17:01:58.532Z",
+  "generatedAt": "2026-09-03T18:13:14.280Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -388,6 +388,42 @@
         "CAUSE",
         "GIS_ACRES",
         "IRWINID"
+      ]
+    },
+    "critical_habitat_final": {
+      "source": "https://services.arcgis.com/QVENGdaPbd4LUkLV/ArcGIS/rest/services/USFWS_Critical_Habitat/FeatureServer/0",
+      "featureCount": 4,
+      "fields": [
+        "OBJECTID",
+        "comname",
+        "sciname",
+        "unit",
+        "subunit",
+        "unitname",
+        "subunitname",
+        "status",
+        "fedreg",
+        "pubdate",
+        "effectdate",
+        "listing_status"
+      ]
+    },
+    "critical_habitat_proposed": {
+      "source": "https://services.arcgis.com/QVENGdaPbd4LUkLV/ArcGIS/rest/services/USFWS_Critical_Habitat/FeatureServer/2",
+      "featureCount": 0,
+      "fields": [
+        "OBJECTID",
+        "comname",
+        "sciname",
+        "unit",
+        "subunit",
+        "unitname",
+        "subunitname",
+        "status",
+        "fedreg",
+        "pubdate",
+        "effectdate",
+        "listing_status"
       ]
     }
   }

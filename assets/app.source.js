@@ -351,6 +351,8 @@ function addPmtilesSource(id) {
     geology: '<a href="https://mrdata.usgs.gov/geology/state/" target="_blank">USGS State Geologic Map Compilation</a>',
     huc12: '<a href="https://www.usgs.gov/national-hydrography/watershed-boundary-dataset" target="_blank">USGS Watershed Boundary Dataset</a>',
     wetlands: '<a href="https://www.fws.gov/program/national-wetlands-inventory" target="_blank">USFWS National Wetlands Inventory</a>',
+    critical_habitat_final: '<a href="https://ecos.fws.gov/ecp/report/table/critical-habitat.html" target="_blank">USFWS Critical Habitat</a>',
+    critical_habitat_proposed: '<a href="https://ecos.fws.gov/ecp/report/table/critical-habitat.html" target="_blank">USFWS Critical Habitat</a>',
     cell_att: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>',
     cell_tmobile: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>',
     cell_verizon: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>',
@@ -424,6 +426,7 @@ function toggleLayer(id, visibleValue) {
     'place-names': ['waterbodies', 'waterbody-labels', 'summits', 'towns'],
     huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels'],
     wetlands: ['wetlands'],
+    'critical-habitat': ['critical-habitat-final', 'critical-habitat-proposed'],
     farmland: ['farmland'],
     'rcra-sites': ['rcra-sites'],
     'cell-coverage': ['cell-att', 'cell-tmobile', 'cell-verizon'],
@@ -483,8 +486,9 @@ function initializeMapLayers() {
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
     ], { layers: ['springs', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
-    const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill', 'geology', 'recent-wildfire-perimeters-fill', 'wildfire-perimeters-fill'] });
-    const feature = markerHits[0] || polygonHits[0];
+    const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'recent-wildfire-perimeters-fill', 'wildfire-perimeters-fill'] });
+    const habitatHits = polygonHits.filter(hit => hit.layer.id === 'critical-habitat-final' || hit.layer.id === 'critical-habitat-proposed');
+    const feature = markerHits[0] || habitatHits[0] || polygonHits[0];
     if (!feature) return;
     const props = feature.properties || {};
     if (feature.layer.id === 'wildfire-perimeters-fill' || feature.layer.id === 'recent-wildfire-perimeters-fill') {
@@ -492,6 +496,19 @@ function initializeMapLayers() {
       const date = value => { const number = Number(value); return Number.isFinite(number) && number > 0 ? new Date(number).toLocaleDateString() : 'Not reported'; };
       const acres = props.GIS_ACRES || props.REPORT_AC;
       document.querySelector('#details').innerHTML = `<h3>Historic wildfire perimeter</h3><p class="meta">${value(props.YEAR_)} · ${value(props.AGENCY)}${props.UNIT_ID ? ` · Unit ${value(props.UNIT_ID)}` : ''}</p><p><strong>${value(props.FIRE_NAME || 'Unnamed fire')}</strong><br>Alarm date: ${date(props.ALARM_DATE)}<br>Containment date: ${date(props.CONT_DATE)}<br>Mapped area: ${acres ? `${Number(acres).toLocaleString(undefined, { maximumFractionDigits: 1 })} acres` : 'Not reported'}${props.REPORT_AC && props.GIS_ACRES ? `<br>Reported area: ${Number(props.REPORT_AC).toLocaleString()} acres` : ''}</p><p class="source-note">Siskiyou County mapped incident perimeter. It shows a fire footprint, not burn severity, current fuels, damage, evacuation status, or insurance availability.</p>`;
+      return;
+    }
+    if (feature.layer.id === 'critical-habitat-final' || feature.layer.id === 'critical-habitat-proposed') {
+      const entries = [...new Map(habitatHits.map(hit => {
+        const props = hit.properties || {};
+        const designation = hit.layer.id === 'critical-habitat-final' ? 'Final designation' : 'Proposed designation';
+        const unit = [props.unitname || props.unit, props.subunitname || props.subunit].filter(Boolean).map(escapeHtml).join(' · ');
+        const status = props.status || props.listing_status;
+        const name = escapeHtml(props.comname || 'Unnamed species');
+        const detail = `${designation}${status ? ` · ${escapeHtml(status)}` : ''}${unit ? ` · Unit: ${unit}` : ''}`;
+        return [`${name}|${props.sciname || ''}|${detail}`, `<strong>${name}</strong>${props.sciname ? ` (<em>${escapeHtml(props.sciname)}</em>)` : ''}<br>${detail}`];
+      })).values()];
+      document.querySelector('#details').innerHTML = `<h3>USFWS critical habitat</h3><p class="meta">${entries.length} intersecting mapped ${entries.length === 1 ? 'designation' : 'designations'}</p><p>${entries.join('<br><br>')}</p><p class="source-note">USFWS screening data. This mapped designation does not determine species presence, project effects, permitting, consultation requirements, or legal obligations; verify with USFWS and the applicable Federal Register notice.</p>`;
       return;
     }
     if (feature.layer.id === 'geology') {
@@ -539,7 +556,7 @@ function initializeMapLayers() {
     }
     selectParcel(props);
   });
-  for (const id of ['geology', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }
