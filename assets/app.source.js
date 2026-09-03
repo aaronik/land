@@ -42,6 +42,7 @@ const PARCELQUEST_URL = 'https://assr.parcelquest.com/impl/SISASSR';
 const WILDFIRE_PERIMETERS_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/HistoricFirePerimeters_Public/FeatureServer/0/query';
 const PARCELS_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query';
 const RECENT_WILDFIRE_PERIMETERS_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Fire_Perimeters_2019_to_2025/FeatureServer/329/query';
+const ADDRESS_POINTS_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/AddressPointNew/FeatureServer/9/query';
 const DIRECTIONS_ORIGIN = 'Mt. Shasta City Park, 1315 Nixon Road, Mount Shasta, CA 96067';
 const protocol = new Protocol();
 maplibregl.addProtocol('pmtiles', protocol.tile.bind(protocol));
@@ -286,6 +287,7 @@ const parcelDetails = createParcelDetails({
   wildfirePerimetersQueryUrl: WILDFIRE_PERIMETERS_QUERY_URL,
   recentWildfirePerimetersQueryUrl: RECENT_WILDFIRE_PERIMETERS_QUERY_URL,
   parcelsQueryUrl: PARCELS_QUERY_URL,
+  addressPointsQueryUrl: ADDRESS_POINTS_QUERY_URL,
   onParcelQuest: apn => { selectedResearchApn = apn; document.querySelector('#parcelquest-warning').showModal(); },
   onSaveResearch: apn => showParcelDetails({ APN: apn }),
   onAdjustParcel: async apn => { try { return await parcelAdjustmentControl.toggle(apn); } catch (error) { console.error(error); alert(error.message); return false; } },

@@ -8,10 +8,8 @@ Wells / springs look too similar on map
 - [ ] Add side-by-side parcel comparison and a land feasibility scorecard: slope/buildable area, frontage/access, utilities, water/well risk, flood/fire exposure, zoning constraints, taxes, and price per acre.
 - [ ] Add API-ready due-diligence layers and parcel signals:
   - [x] Historic and recent wildfire perimeters, with fire name, dates, acres, and parcel intersection/proximity.
-  - [ ] Active county road closures and detours, with selected-parcel access alerts.
-  - [ ] Fire-response district / responsible agency.
   - [ ] CPUC utility fire-threat tier.
-  - [ ] County address points, including whether an official address is assigned at or near a parcel.
+  - [x] County address points, including whether an official address is assigned at or near a parcel.
   - [ ] USFWS proposed/final critical habitat, including intersecting species and status.
   - [ ] FCC fixed-broadband availability: providers, technology, and advertised maximum speeds.
 - [ ] Improve access and infrastructure analysis: routable travel/access, legal versus physical access, road type and maintenance, driveway distance, utility proximity, and travel time to towns and essential services.
