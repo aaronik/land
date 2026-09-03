@@ -79,7 +79,11 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     return fires;
   };
   const wildfireHistorySection = apn => `<section class="sales-history" data-wildfire-history><h4>Historic wildfire perimeters</h4><p class="muted">Checking county incident perimeters…</p></section>`;
-  const officialAddress = properties => [properties.FullAddNum || [properties.AddNum_Pre, properties.AddNumber, properties.AddNum_Suf].filter(Boolean).join(''), properties.FullSt_Add].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
+  const officialAddress = properties => {
+    const number = properties.FullAddNum || [properties.AddNum_Pre, properties.AddNumber, properties.AddNum_Suf].filter(Boolean).join('');
+    const street = String(properties.FullSt_Add || '').trim();
+    return (street && (!number || new RegExp(`^${String(number).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:\\s|$)`, 'i').test(street)) ? street : [number, street].filter(Boolean).join(' ')).replace(/\s+/g, ' ').trim();
+  };
   const addressPointsForParcel = async apn => {
     if (addressPointsByApn.has(apn)) return addressPointsByApn.get(apn);
     const parcelUrl = new URL(parcelsQueryUrl);
@@ -90,32 +94,25 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     const geometry = parcelData.features?.[0]?.geometry;
     if (!geometry) return { official: [], nearby: [] };
     const query = { f: 'json', where: '1=1', geometry: JSON.stringify(geometry), geometryType: 'esriGeometryPolygon', inSR: '4326', spatialRel: 'esriSpatialRelIntersects', outFields: 'FullAddNum,FullSt_Add,MSAGComm,Post_Code,title,Longitude,Latitude', returnGeometry: 'false' };
-    const coordinates = []; const collectCoordinates = value => Array.isArray(value) ? (typeof value[0] === 'number' ? coordinates.push(value) : value.forEach(collectCoordinates)) : null; collectCoordinates(geometry.rings);
-    const longitudes = coordinates.map(point => point[0]), latitudes = coordinates.map(point => point[1]), padding = 0.002;
-    const nearbyUrl = new URL(addressPointsQueryUrl);
-    nearbyUrl.search = new URLSearchParams({ f: 'json', where: '1=1', geometry: `${Math.min(...longitudes) - padding},${Math.min(...latitudes) - padding},${Math.max(...longitudes) + padding},${Math.max(...latitudes) + padding}`, geometryType: 'esriGeometryEnvelope', inSR: '4326', spatialRel: 'esriSpatialRelIntersects', outFields: 'FullAddNum,FullSt_Add,MSAGComm,Post_Code,title,Longitude,Latitude', returnGeometry: 'false', resultRecordCount: '20' });
     const officialUrl = new URL(addressPointsQueryUrl); officialUrl.search = new URLSearchParams(query);
-    const [officialResponse, nearbyResponse] = await Promise.all([fetch(officialUrl), fetch(nearbyUrl)]);
+    const officialResponse = await fetch(officialUrl);
     if (!officialResponse.ok) throw new Error(`address point query returned ${officialResponse.status}`);
-    if (!nearbyResponse.ok) throw new Error(`nearby address point query returned ${nearbyResponse.status}`);
-    const [officialData, nearbyData] = await Promise.all([officialResponse.json(), nearbyResponse.json()]);
+    const officialData = await officialResponse.json();
     if (officialData.error) throw new Error(officialData.error.message || 'address point query failed');
-    if (nearbyData.error) throw new Error(nearbyData.error.message || 'nearby address point query failed');
-    const official = (officialData.features || []).map(feature => feature.attributes).filter(Boolean);
-    const officialKeys = new Set(official.map(officialAddress));
-    const result = { official, nearby: (nearbyData.features || []).map(feature => feature.attributes).filter(address => address && officialAddress(address) && !officialKeys.has(officialAddress(address))) };
+    const result = { official: (officialData.features || []).map(feature => feature.attributes).filter(Boolean) };
     addressPointsByApn.set(apn, result);
     return result;
   };
-  const addressPointsSection = () => '<section class="sales-history" data-address-points><h4>Official county address</h4><p class="muted">Checking county address points…</p></section>';
+  const addressPointsSection = () => '';
   const updateAddressPoints = async apn => {
-    const target = detailsElement.querySelector('[data-address-points]'); if (!target || !apn) return;
+    const target = detailsElement.querySelector('[data-selected-address]'); if (!target || !apn) return;
     try {
-      const { official, nearby } = await addressPointsForParcel(apn);
+      const { official } = await addressPointsForParcel(apn);
       if (!target.isConnected) return;
-      const addresses = [...new Map(official.map(address => [officialAddress(address), address])).values()].filter(address => officialAddress(address));
-      target.innerHTML = `<h4>Official county address</h4>${addresses.length ? addresses.map(address => `<article><strong>${escapeHtml(officialAddress(address))}</strong><small>${escapeHtml([address.MSAGComm, address.Post_Code].filter(Boolean).join(', ') || 'County address point')}</small></article>`).join('') : '<p class="muted">No county address point is mapped inside this parcel.</p>'}${nearby.length ? `<p class="meta">Nearby county address points</p>${nearby.slice(0, 5).map(address => `<article><small>${escapeHtml(officialAddress(address))}${address.MSAGComm ? ` · ${escapeHtml(address.MSAGComm)}` : ''}</small></article>`).join('')}` : ''}<p class="source-note">County NG911 address-point data. Nearby points are not this parcel’s address. No mapped point does not determine whether an address can be assigned, whether access or utilities exist, or whether a listing address is correct.</p>`;
-    } catch (error) { if (target.isConnected) target.innerHTML = '<h4>Official county address</h4><p class="muted">County address points are temporarily unavailable.</p>'; console.warn(error); }
+      const address = [...new Set(official.map(officialAddress).filter(Boolean))][0];
+      target.textContent = address || '';
+      target.hidden = !address;
+    } catch (error) { if (target.isConnected) { target.textContent = ''; target.hidden = true; } console.warn(error); }
   };
   const updateWildfireHistory = async apn => {
     const target = detailsElement.querySelector('[data-wildfire-history]'); if (!target || !apn) return;
@@ -141,7 +138,7 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
   const showParcelDetails = (properties, saleFeature = matchingSale(properties.APN)) => {
     const p = { ...(saleFeature?.properties || {}), ...properties }, records = saleFeature?.properties.records || p.records || [], salesHistory = saleFeature?.properties.salesHistory || p.salesHistory || [];
     const directions = parcelDirectionsLink(p.APN), cards = records.map((record, index) => recordCard(record, index === 0 ? directions : '')).join('');
-    detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta">${escapeHtml(p.Acres ?? getApnIndex()[p.APN]?.acres ?? '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p>${cards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${salesHistorySection(salesHistory)}${addressPointsSection()}${wildfireHistorySection(p.APN)}${researchControls(p.APN)}<section class="parcel-alignment"><h4>Align parcel outline</h4><p>Use the yellow copy to line up the county outline with field evidence. Drag the outline to move it; drag the yellow handle to rotate it. This alignment is saved in this browser only.</p><button type="button" data-adjust-parcel>${isParcelAdjusted?.(p.APN) ? 'Hide aligned outline' : 'Show aligned outline'}</button></section>`;
+    detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta">${escapeHtml(p.Acres ?? getApnIndex()[p.APN]?.acres ?? '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p><p class="meta" data-selected-address hidden></p>${cards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${salesHistorySection(salesHistory)}${addressPointsSection()}${wildfireHistorySection(p.APN)}${researchControls(p.APN)}<section class="parcel-alignment"><h4>Align parcel outline</h4><p>Use the yellow copy to line up the county outline with field evidence. Drag the outline to move it; drag the yellow handle to rotate it. This alignment is saved in this browser only.</p><button type="button" data-adjust-parcel>${isParcelAdjusted?.(p.APN) ? 'Hide aligned outline' : 'Show aligned outline'}</button></section>`;
     updateParcelZoning(p.APN); updateAddressPoints(p.APN); updateWildfireHistory(p.APN); bindResearchControls(p.APN);
   };
   return { recordCard, showParcelDetails };
