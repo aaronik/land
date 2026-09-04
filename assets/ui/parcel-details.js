@@ -20,9 +20,18 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
   const recordCard = (record, extraLink = '') => {
     if (record.kind === 'private') {
       const home = record.category === 'private-home';
+      const mlsPhoto = /^[A-Z]{2}-[A-Z]+$/.test(String(record.mlsId || '')) && record.mlsNumber
+        ? `https://idx-photos-ihouseprd.b-cdn.net/${encodeURIComponent(record.mlsId)}/${encodeURIComponent(record.mlsNumber)}/org/000.jpg?width=640`
+        : (record.listingSource === 'Mt. Shasta Realty' || record.listingSource === 'Coldwell Banker Mountain Gate') && record.mlsNumber
+          ? `https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/${encodeURIComponent(record.mlsNumber)}/org/000.jpg?width=640`
+          : '';
+      const photoUrl = record.primaryPhoto || mlsPhoto;
+      const primaryPhoto = photoUrl && /^https:\/\//.test(photoUrl)
+        ? `<a class="record-primary-photo" href="${escapeHtml(record.url)}" target="_blank" rel="noopener" aria-label="Open listing for ${escapeHtml(record.title || 'this property')}"><img src="${escapeHtml(photoUrl)}" alt="Primary photo for ${escapeHtml(record.title || 'this property')}" loading="lazy" onerror="this.closest('a').remove()"></a>`
+        : '';
       const homeDetails = home ? [record.beds && `${record.beds} bd`, record.baths && `${record.baths} ba`, record.sqft && `${Number(record.sqft).toLocaleString()} sq ft`].filter(Boolean).join(' · ') : '';
       const listingDate = /^\d{4}-\d{2}-\d{2}$/.test(record.listingDate) ? new Date(`${record.listingDate}T12:00:00`).toLocaleDateString() : '';
-      return `<article class="record ${home ? 'home' : ''}"><strong>${home ? 'Private home' : 'Private land'}</strong><p>${escapeHtml(record.title || '')}</p><p>${money(record.price)} · ${escapeHtml(record.acres || '—')} acres${homeDetails ? ` · ${escapeHtml(homeDetails)}` : ''} · ${escapeHtml(record.status || '')}${listingDate ? ` · Listed ${escapeHtml(listingDate)}` : ''}</p>${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open listing ↗</a>` : ''}${extraLink}</article>`;
+      return `<article class="record ${home ? 'home' : ''}">${primaryPhoto}<strong>${home ? 'Private home' : 'Private land'}</strong><p>${escapeHtml(record.title || '')}</p><p>${money(record.price)} · ${escapeHtml(record.acres || '—')} acres${homeDetails ? ` · ${escapeHtml(homeDetails)}` : ''} · ${escapeHtml(record.status || '')}${listingDate ? ` · Listed ${escapeHtml(listingDate)}` : ''}</p>${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open listing ↗</a>` : ''}${extraLink}</article>`;
     }
     return `<article class="record public"><strong>Public auction record</strong><p>${escapeHtml(record.minimumBid || 'No parsed minimum')} · ${escapeHtml(record.status || 'Unknown status')}</p><p>${escapeHtml(record.source || '')}</p>${record.sourceUrl ? `<a href="${escapeHtml(record.sourceUrl)}" target="_blank" rel="noopener">Source PDF ↗</a>` : ''}${extraLink}</article>`;
   };

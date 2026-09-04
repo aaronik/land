@@ -148,6 +148,9 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .record.public { border-left-color: #ff9d4d; }
 .record.home { border-left-color: #7653b5; }
 .record.public.home { border-left-color: #b94b18; }
+.record-primary-photo { display: block; margin: -11px -11px 10px; overflow: hidden; border-radius: 3px 3px 0 0; background: #e3e6df; }
+.record-primary-photo img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.record-primary-photo:focus-visible { outline: 2px solid #126246; outline-offset: 2px; }
 .record strong { font-size: 13px; }
 .record p { margin: 4px 0; }
 .sales-history { margin-top: 14px; padding: 12px; background: #edf5ee; border: 1px solid rgba(37, 109, 71, .25); border-left: 4px solid #287a50; border-radius: 7px; }

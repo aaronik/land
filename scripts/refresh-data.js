@@ -538,10 +538,14 @@ async function privateRecords(items) {
         beds: Number(item.beds) || 0, baths: Number(item.bathsTotal) || 0,
         sqft: Number(item.sqft) || 0, yearBuilt: Number(item.yearBuilt) || 0,
         url: `${item.source.site}/idx/listing/${item.mlsId}/${item.mlsNo}/${slug}`,
+        primaryPhoto: Array.isArray(item.photos) && item.photos.includes('000')
+          ? `https://idx-photos-ihouseprd.b-cdn.net/${encodeURIComponent(item.mlsId)}/${encodeURIComponent(item.mlsNo)}/org/000.jpg?width=640`
+          : '',
         listingSource: item.source.name,
         parcelMatchSource: overrideApns.length ? override.source : (persistedApns.length ? `persisted MLS linkage: ${persistedLink.source}` : (listedApn ? 'listing APN' : (nearbyMatch ? 'county address point + nearest parcel (15m)' : (verifiedAddress ? 'county address point' : 'unresolved')))),
         parcelMatchConfidence: override?.confidence || (persistedApns.length ? persistedLink.confidence : ''),
-        mlsNumber: item.mlsNo
+        mlsNumber: item.mlsNo,
+        mlsId: item.mlsId
       };
       if (apn) {
         const apns = overrideApns.length ? overrideApns : (persistedApns.length ? persistedApns : [apn]);
@@ -585,7 +589,7 @@ function externalRecords() {
     status: item.status || 'For Sale', listingDate: item.listingDate || '',
     propertyType: item.propertyType || 'land', propertySubType: item.propertySubType || 'Bare Land',
     beds: 0, baths: 0, sqft: 0, yearBuilt: 0,
-    url: item.url, listingSource: item.listingSource || 'External listing',
+    url: item.url, primaryPhoto: item.primaryPhoto || '', listingSource: item.listingSource || 'External listing',
     parcelMatchSource: item.parcelMatchSource || 'listing APN',
     parcelMatchConfidence: item.parcelMatchConfidence || 'provided',
     mlsNumber: item.id || value, notes: item.notes || ''
