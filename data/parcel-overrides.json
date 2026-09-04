@@ -1011,6 +1011,14 @@
     "confidence": "manually verified",
     "notes": "acreage"
   },
+  "20261094": {
+    "apns": [
+      "036-200-070"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "acreage"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
