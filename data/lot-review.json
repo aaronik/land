@@ -1,7 +1,31 @@
 {
-  "generatedAt": "2026-09-03T15:36:23.590Z",
-  "count": 214,
+  "generatedAt": "2026-09-04T19:58:31.278Z",
+  "count": 216,
   "listings": [
+    {
+      "mlsNumber": "20261097",
+      "title": "Unit 4 Lot 118 Lake Shore Dr., Weed, CA 96094",
+      "acres": 0.31,
+      "latLng": [
+        41.51783501888007,
+        -122.37568799450162
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261097/Unit-4-Lot-118-Lake-Shore-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261096",
+      "title": "Lot 205 Unt 5-3 Douglas Ct., Weed, CA 96094",
+      "acres": 0.26,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261096/Lot-205-Unt-5-3-Douglas-Ct-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261093",
       "title": "Lot 44 Lake Cove Rd, Hornbrook, CA 96067",

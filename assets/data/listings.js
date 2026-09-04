@@ -13,10 +13,6 @@ export function createListingData(getState) {
     const acres = Number(String(record.acres ?? '').replace(/,/g, ''));
     return Number.isFinite(acres) ? acres : null;
   };
-  const recordMatchesSearch = (record, query = state().searchQuery) => {
-    if (!query) return true;
-    return normalizeSearch([record.title, record.APN, record.mlsNumber, record.item, record.listingSource].filter(Boolean).join(' ')).includes(query);
-  };
   const recordMatchesListingDate = record => {
     const { listedSince, listedBefore } = state();
     if (!listedSince && !listedBefore) return true;
@@ -42,12 +38,11 @@ export function createListingData(getState) {
   const recordIsVisible = (record, fallbackAcres) => {
     const { enabledCategories } = state();
     const acres = recordAcreage(record) ?? recordAcreage({ acres: fallbackAcres });
-    return enabledCategories.has(record.category) && recordMatchesSearch(record) && recordMatchesListingDate(record) && recordMatchesDiscoveryFilters(record) && acreageMatches(acres);
+    return enabledCategories.has(record.category) && recordMatchesListingDate(record) && recordMatchesDiscoveryFilters(record) && acreageMatches(acres);
   };
   const searchableFeature = feature => {
-    const { enabledCategories, searchQuery } = state();
-    const apnMatches = searchQuery && normalizeSearch(feature.properties.APN).includes(searchQuery);
-    const records = (feature.properties.records || []).filter(record => enabledCategories.has(record.category) && (apnMatches || recordMatchesSearch(record)) && recordMatchesListingDate(record) && recordMatchesDiscoveryFilters(record) && acreageMatches(recordAcreage(record) ?? recordAcreage({ acres: feature.properties.Acres })));
+    const { enabledCategories } = state();
+    const records = (feature.properties.records || []).filter(record => enabledCategories.has(record.category) && recordMatchesListingDate(record) && recordMatchesDiscoveryFilters(record) && acreageMatches(recordAcreage(record) ?? recordAcreage({ acres: feature.properties.Acres })));
     return records.length ? { ...feature, properties: { ...feature.properties, records } } : null;
   };
   const firstCategory = feature => {

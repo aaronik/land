@@ -83,31 +83,3 @@ export function initializeMobileSheet({ panel = document.querySelector('.panel')
   panel.addEventListener('pointercancel', finishPointer);
   mobile.addEventListener('change', () => setOpen(false));
 }
-
-export function createSearchController({ map, maplibregl, detailsElement, featureCenter, filteredMappedListings, filteredUnmappedListings, normalizeSearch, getApnIndex, getPlaceIndex, setSearchQuery, updateSales, selectApn, showParcelDetails }) {
-  const fitResults = (mapped, unmapped) => {
-    const points = [...mapped.map(featureCenter), ...unmapped.map(record => [record.latLng?.[1], record.latLng?.[0]])].filter(point => point?.every(Number.isFinite));
-    if (!points.length) return;
-    if (points.length === 1) return map.easeTo({ center: points[0], zoom: 15 });
-    map.fitBounds(points.reduce((bounds, point) => bounds.extend(point), new maplibregl.LngLatBounds(points[0], points[0])), { padding: 90, maxZoom: 15 });
-  };
-  return () => {
-    const input = document.querySelector('#search').value.trim(), normalized = normalizeSearch(input), compact = normalized.replaceAll(' ', ''), apnIndex = getApnIndex();
-    const apn = Object.keys(apnIndex).find(key => normalizeSearch(key).replaceAll(' ', '') === compact);
-    if (input && apn) { setSearchQuery(''); updateSales(); const item = apnIndex[apn]; selectApn(apn); map.fitBounds([[item.bbox[0], item.bbox[1]], [item.bbox[2], item.bbox[3]]], { padding: 90, maxZoom: 16 }); showParcelDetails({ APN: apn, Acres: item.acres }); return; }
-    const place = input && getPlaceIndex().find(item => normalizeSearch(item.name) === normalized);
-    if (place) {
-      setSearchQuery(''); updateSales();
-      const [west, south, east, north] = place.bbox;
-      const isPoint = west === east && south === north;
-      if (isPoint) map.easeTo({ center: place.center, zoom: 12 });
-      else map.fitBounds([[west, south], [east, north]], { padding: 90, maxZoom: 14 });
-      detailsElement.innerHTML = `<h3>${place.name.replace(/[&<>]/g, '')}</h3><p class="meta">${place.type}</p>`;
-      return;
-    }
-    setSearchQuery(normalized); updateSales(); const mapped = filteredMappedListings(), unmapped = filteredUnmappedListings(), count = mapped.length + unmapped.length;
-    if (!input) detailsElement.innerHTML = '<h3>No parcel selected</h3><p class="meta">Showing all listings and auctions.</p>';
-    else if (!count) detailsElement.innerHTML = `<p class="muted">No listing matched “${input.replace(/[&<>]/g, '')}”.</p>`;
-    else { detailsElement.innerHTML = `<h3>${count} matching ${count === 1 ? 'listing' : 'listings'}</h3><p class="meta">Showing results containing “${input.replace(/[&<>]/g, '')}”. Clear the search to show everything.</p>`; fitResults(mapped, unmapped); }
-  };
-}

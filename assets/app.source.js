@@ -8,7 +8,7 @@ import { createListingData } from './data/listings.js';
 import { createParcelDetails } from './ui/parcel-details.js';
 import { installMapSourcesAndLayers } from './map/layers.js';
 import { ParcelAdjustmentControl } from './map/parcel-adjustment.js';
-import { createSearchController, initializeMobileSheet } from './state/ui.js';
+import { initializeMobileSheet } from './state/ui.js';
 import { updateUrlParameter } from './state/url.js';
 
 const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
@@ -59,7 +59,6 @@ const assetUrl = path => new URL(path, window.location.href).href;
 
 let saleData;
 let apnIndex = {};
-let placeIndex = [];
 let selectedResearchApn = '';
 let selectedApn = '';
 let terrainEnabled = false;
@@ -71,7 +70,6 @@ const initialUrl = new URL(window.location.href);
 const initialTerrainEnabled = initialUrl.searchParams.get(TERRAIN_URL_PARAM) === '1';
 const initialSelectedApn = initialUrl.searchParams.get(PARCEL_URL_PARAM) || '';
 let enabledCategories = new Set(Object.keys(COLORS));
-let searchQuery = '';
 let minimumAcreage = 0;
 let maximumAcreage = 0;
 let minimumPrice = 0;
@@ -270,7 +268,7 @@ function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
 }
 function money(value) { return value ? `$${Number(value).toLocaleString()}` : ''; }
-const listingData = createListingData(() => ({ saleData, enabledCategories, searchQuery, minimumAcreage, maximumAcreage, minimumPrice, maximumPrice, minimumPricePerAcre, maximumPricePerAcre, enabledPropertyTypes, minimumBeds, minimumBaths, listingKeywords, listedSince, listedBefore }));
+const listingData = createListingData(() => ({ saleData, enabledCategories, minimumAcreage, maximumAcreage, minimumPrice, maximumPrice, minimumPricePerAcre, maximumPricePerAcre, enabledPropertyTypes, minimumBeds, minimumBaths, listingKeywords, listedSince, listedBefore }));
 const { categories, featureCenter, filteredMappedListings, filteredUnmappedListings, normalizeSearch, saleGeoJson, salePointGeoJson, unmappedGeoJson } = listingData;
 
 function parcelQuestUsageKey() { return `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`; }
@@ -594,17 +592,7 @@ map.once('style.load', () => {
   if (initialTerrainEnabled) applyTerrain(true, { updateUrl: false, animate: false });
 });
 
-const findListings = createSearchController({
-  map, maplibregl, detailsElement: document.querySelector('#details'), featureCenter,
-  filteredMappedListings, filteredUnmappedListings, normalizeSearch, getApnIndex: () => apnIndex, getPlaceIndex: () => placeIndex,
-  setSearchQuery: value => { searchQuery = value; }, updateSales,
-  selectApn: apn => setSelectedApn(apn), showParcelDetails
-});
-
 document.querySelector('#terrain-toggle').addEventListener('click', () => toggleTerrain());
-document.querySelector('#search-button').addEventListener('click', findListings);
-document.querySelector('#search').addEventListener('keydown', event => { if (event.key === 'Enter') findListings(); });
-document.querySelector('#search').addEventListener('search', findListings);
 listingTypeInputs.forEach(input => input.addEventListener('change', () => {
   enabledCategories = new Set(listingTypeInputs.filter(item => item.checked).map(item => item.value));
   saveListingTypeVisibility();
@@ -707,12 +695,10 @@ document.querySelector('#continue-parcelquest').addEventListener('click', async 
 
 Promise.all([
   fetch('data/parcels.json').then(response => { if (!response.ok) throw new Error(`sale data returned ${response.status}`); return response.json(); }),
-  fetch('data/generated/apn-index.json').then(response => { if (!response.ok) throw new Error(`parcel index returned ${response.status}`); return response.json(); }),
-  fetch('data/generated/place-index.json').then(response => { if (!response.ok) throw new Error(`place index returned ${response.status}`); return response.json(); })
-]).then(([sales, index, places]) => {
+  fetch('data/generated/apn-index.json').then(response => { if (!response.ok) throw new Error(`parcel index returned ${response.status}`); return response.json(); })
+]).then(([sales, index]) => {
   saleData = sales;
   apnIndex = index;
-  placeIndex = Array.isArray(places) ? places : [];
   updateSales();
   restoreInitialSelectedParcel();
   document.querySelector('#updated').textContent = `Data refreshed ${new Date(sales.generatedAt).toLocaleString()}`;
