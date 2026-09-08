@@ -1,6 +1,20 @@
 'use strict';
 
 const ZONING_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/CDD_Zoning_Districts_Public/FeatureServer/0/query';
+const ZONING_CODE_URL = 'https://library.municode.com/ca/siskiyou_county/codes/code_of_ordinances?nodeId=TIT10PLZO';
+const ZONING_EXPLANATIONS = [
+  [/^AG-1(?:-|$)/, ['Prime Agriculture (AG-1)', 'AG-1 is Siskiyou County’s Prime Agriculture district. It is applied to prime agricultural land—land the County identifies for protection because of its agricultural capability and importance.', 'AG-1 and AG-2 both support agricultural uses, but AG-1 is the prime-agricultural category. If this label includes “B-40” or “B-80,” the number is a combining-district minimum parcel size in acres. Confirm uses, splits, homes, and permits with County Planning.']],
+  [/^AG-2(?:-|$)/, ['Non-Prime Agriculture (AG-2)', 'AG-2 is Siskiyou County’s Non-Prime Agriculture district. It is the County’s agricultural category for land that is not designated prime agricultural land.', 'AG-2 still supports agricultural uses, but differs from AG-1 in the County’s prime-versus-non-prime agricultural-land classification. If this label includes “B-20,” “B-40,” or “B-80,” the number is a combining-district minimum parcel size in acres. Confirm uses, splits, homes, and permits with County Planning.']],
+  [/^R-R/, ['Rural residential district', 'This is a Siskiyou County rural residential zoning district. It is intended for rural residential development and related uses, subject to the specific district standards and any required County approvals.', 'The suffix, if present, is part of the mapped district designation. Review the County code and verify setbacks, density, access, water, septic, and permit requirements with County Planning before relying on it.']],
+  [/^RES-/, ['Residential district', 'This is a Siskiyou County residential zoning district. Residential districts regulate the type and intensity of residential development, along with related uses and development standards.', 'The exact RES district and any suffix matter. Zoning alone does not establish what can be built or divided; County Planning must confirm the rules that apply to a proposed use.']],
+  [/^C-/, ['Commercial district', 'This is a Siskiyou County commercial zoning district. Commercial districts are used for business-oriented land uses, with the exact district determining which uses and development standards apply.', 'The exact designation—including any suffix—controls. Confirm allowed uses, conditional-use permits, parking, access, and building standards with County Planning.']],
+  [/^M-/, ['Industrial district', 'This is a Siskiyou County industrial zoning district. Industrial districts accommodate industrial and related business uses, subject to the specific district’s use and development standards.', 'The precise designation and any suffix are important. Verify the proposed use, permit path, utilities, access, and environmental requirements with County Planning.']],
+  [/^O$/, ['Open space district', 'This is Siskiyou County’s open space zoning district. Open space zoning is generally used to manage land for open-space and resource values rather than intensive development.', 'The mapped designation is only a starting point. Confirm all applicable use restrictions and approval requirements with County Planning.']],
+  [/^PD/, ['Planned development district', 'This is a Siskiyou County planned development designation. Planned developments can have site-specific plans and conditions, so the parenthetical label is especially important to the applicable rules.', 'Review the adopted planned-development approval as well as the County code. County Planning can confirm the requirements for this parcel and any proposed change or new use.']],
+  [/^TP/, ['Timber preserve district', 'This is a Siskiyou County timber preserve zoning district. Timber preserve zoning is intended to support long-term timber and resource management, subject to County and state requirements.', 'Zoning is not a complete forestry or development determination. Confirm the applicable County standards and any state timber, access, water, or environmental permits.']],
+  [/^WETLANDS$/, ['Wetlands map designation', 'The County zoning layer identifies this area as wetlands. Wetland mapping is a screening flag and may indicate that development needs additional agency review.', 'It is not a jurisdictional wetland determination. Confirm conditions on the ground and any County, state, or federal permitting requirements before planning work.']],
+  [/^(Incorporated|ROW)/, ['Not a County zoning district', 'This map label indicates incorporated area or right-of-way rather than an unincorporated Siskiyou County zoning district.', 'The relevant city or road agency—not Siskiyou County’s unincorporated-area zoning code—may control land-use rules. Confirm jurisdiction before proceeding.']]
+];
 
 export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, wildfirePerimetersQueryUrl, recentWildfirePerimetersQueryUrl, parcelsQueryUrl, addressPointsQueryUrl, onParcelQuest, onSaveResearch, onAdjustParcel, isParcelAdjusted, onClose }) {
   const zoningByApn = new Map();
@@ -55,9 +69,24 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     const zoning = [...new Set((data.features || []).map(feature => feature.attributes?.zoning || feature.attributes?.zoneclass).filter(Boolean))].join(' / ');
     zoningByApn.set(apn, zoning); return zoning;
   };
+  const zoningExplanation = zoning => ZONING_EXPLANATIONS.find(([pattern]) => pattern.test(zoning))?.[1] || ['County zoning designation', 'This is the zoning designation returned by Siskiyou County’s public zoning map.', 'Review the County code and confirm the allowed uses and development standards with County Planning before relying on this map.'];
+  const openZoningExplainer = zoning => {
+    const [title, summary, guidance] = zoningExplanation(zoning);
+    const dialog = document.createElement('dialog');
+    dialog.className = 'zoning-explainer-dialog';
+    dialog.innerHTML = `<button class="dialog-close" type="button" aria-label="Close zoning information">×</button><h2>${escapeHtml(zoning)}: ${escapeHtml(title)}</h2><p>${escapeHtml(summary)}</p><p>${escapeHtml(guidance)}</p><p class="source-note">This is a plain-language map aid, not a zoning determination. <a href="${ZONING_CODE_URL}" target="_blank" rel="noopener noreferrer">Read Siskiyou County Code, Title 10 ↗</a></p>`;
+    dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('close', () => dialog.remove(), { once: true });
+    document.body.append(dialog); dialog.showModal();
+  };
   const updateParcelZoning = async apn => {
     const requestId = ++zoningRequestId, target = detailsElement.querySelector('[data-selected-zoning]'); if (!target || !apn) return;
-    try { const zoning = await zoningForParcel(apn); if (requestId === zoningRequestId && target.isConnected) target.textContent = ` · ${zoning || 'Not available'}`; }
+    try {
+      const zoning = await zoningForParcel(apn);
+      if (requestId !== zoningRequestId || !target.isConnected) return;
+      target.innerHTML = zoning ? ` · <button class="zoning-explainer-trigger" type="button" data-zoning-explainer="${escapeHtml(zoning)}" aria-label="Learn about ${escapeHtml(zoning)} zoning">${escapeHtml(zoning)}</button>` : ' · Not available';
+      target.querySelector('[data-zoning-explainer]')?.addEventListener('click', event => openZoningExplainer(event.currentTarget.dataset.zoningExplainer));
+    }
     catch (error) { if (requestId === zoningRequestId && target.isConnected) target.textContent = ' · Unavailable'; console.warn(error); }
   };
   const wildfireDate = value => { const timestamp = Number(value); return Number.isFinite(timestamp) && timestamp > 0 ? new Date(timestamp).toLocaleDateString() : ''; };

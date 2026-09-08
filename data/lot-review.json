@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-09-06T14:44:45.455Z",
+  "generatedAt": "2026-09-08T16:42:31.522Z",
   "count": 216,
   "listings": [
+    {
+      "mlsNumber": "20250861",
+      "title": "Lot 10 Lakeshore Dr., McCloud, CA 96057",
+      "acres": 0.21,
+      "latLng": [
+        41.264773207160765,
+        -122.11460654389602
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20250861/Lot-10-Lakeshore-Dr-McCloud-CA-96057",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261097",
       "title": "Unit 4 Lot 118 Lake Shore Dr., Weed, CA 96094",
@@ -1031,18 +1043,6 @@
         -122.38250289783488
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20240956/Unit-9-2-Lot-89-Mountain-Wood-Dr-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260381",
-      "title": "Unit 4 Lot 170 Lake Shastina, N Browndeer Rd, Weed, CA 96094",
-      "acres": 0.39,
-      "latLng": [
-        41.513725573000784,
-        -122.3782393955016
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260381/Unit-4-Lot-170-Lake-Shastina-N-Browndeer-Rd-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
