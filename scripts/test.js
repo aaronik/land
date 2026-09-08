@@ -23,7 +23,7 @@ if (!failures.length) {
   if (!refresh.includes('/^\\s*(?:PAR(?:CEL)?|PRCL)\\.?\\s*#?\\s*[\\dA-Z-]+\\s+/')) failures.push('Parcel-number street prefixes such as Par. 3 are not stripped');
   if (!refresh.includes('/\\b(?:LOTS?|BLOCKS?)\\s*[#-]?\\s*\\d+/i')) failures.push('Plural Lots listings are missing from the parcel review queue');
   if (!html.includes('id="minimum-acreage"') || !html.includes('max="100" step="1"') || !app.includes('minimumAcreage = Number(minimumAcreageInput.value)') || !app.includes("minimumAcreageInput.addEventListener('input'") || !listings.includes('recordIsVisible')) failures.push('Granular 0–100 minimum acreage filter is missing');
-  if (!html.includes('id="listed-since" type="date"') || !listings.includes('recordMatchesListingDate') || !app.includes("listedSinceInput.addEventListener('change'")) failures.push('Listed-since date filter is missing');
+  if (!html.includes('id="listed-since" type="date"') || !html.includes('id="clear-listing-dates"') || !listings.includes('recordMatchesListingDate') || !app.includes("listedSinceInput.addEventListener('change'") || !app.includes("document.querySelector('#clear-listing-dates')")) failures.push('Listing-date filter or clear action is missing');
   if (!html.includes('parcelquest-warning')) failures.push('ParcelQuest warning dialog is missing');
   if (!parcelDetails.includes('Open on ParcelQuest ↗') || !parcelDetails.includes('Open on Parcel Map ↗') || !parcelDetails.includes('Siskiyou County Assessor')) failures.push('County assessment and external owner lookup actions are missing');
   if (!parcelDetails.includes('salesHistorySection') || !parcelDetails.includes('No matched public sold-listing history')) failures.push('Clicked parcels do not display sales history');

@@ -55,6 +55,9 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .date-filter input:hover { border-color: #839087; }
 .date-filter input:focus { outline: 2px solid rgba(18,98,70,.25); outline-offset: 1px; border-color: #126246; }
 .date-filter input::-webkit-calendar-picker-indicator { opacity: .72; cursor: pointer; }
+#clear-listing-dates { width: 100%; min-height: 32px; margin-top: 10px; border: 1px solid #839087; border-radius: 6px; color: #425048; background: white; font-size: 12px; font-weight: 700; cursor: pointer; }
+#clear-listing-dates:hover { border-color: #126246; color: var(--ink); background: #f2f2f2; }
+#clear-listing-dates:focus-visible { outline: 2px solid rgba(18,98,70,.25); outline-offset: 1px; border-color: #126246; }
 .price-filter, .property-filter, .details-filter { margin-top: 14px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.52); }
 .price-filter h3, .property-filter h3, .details-filter h3 { margin: 0 0 9px; font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .price-filter .subheading { margin-top: 12px; }

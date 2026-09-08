@@ -640,6 +640,11 @@ function updateListingDateFilter() {
 }
 listedSinceInput.addEventListener('change', updateListingDateFilter);
 listedBeforeInput.addEventListener('change', updateListingDateFilter);
+document.querySelector('#clear-listing-dates').addEventListener('click', () => {
+  listedSinceInput.value = listedSinceInput.defaultValue;
+  listedBeforeInput.value = listedBeforeInput.defaultValue;
+  updateListingDateFilter();
+});
 const discoveryFilterInputs = [...document.querySelectorAll('.price-filter input, .property-filter input, .details-filter input, .details-filter select')];
 const propertyTypeInputs = [...document.querySelectorAll('.property-type-filter')];
 function updateDiscoveryFilters() {
