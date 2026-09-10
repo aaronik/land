@@ -34,10 +34,40 @@ const MONEY_RE = /\$\s*\d[\d,]*\.\d{2}/g;
 const STATUS_RE = /\b(REDEEMED|REMOVED|SOLD|WITHDRAWN)\b/i;
 const DATE_RANGE_RE = /\b((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}\s*(?:-|–|to)\s*(?:(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+)?\d{1,2},?\s+\d{4})\b/i;
 
+function fetchTarget(url) {
+  const parsed = new URL(url);
+  return `${parsed.origin}${parsed.pathname}`;
+}
+
+function fetchErrorDetails(error) {
+  const details = [];
+  const seen = new Set();
+  for (let current = error; current instanceof Error && !seen.has(current); current = current.cause) {
+    seen.add(current);
+    details.push(Object.fromEntries(
+      ['name', 'message', 'code', 'errno', 'syscall', 'hostname', 'address', 'port']
+        .filter(key => current[key] !== undefined)
+        .map(key => [key, current[key]])
+    ));
+  }
+  return details;
+}
+
 async function fetchOk(url, options = {}) {
-  const response = await fetch(url, { ...options, headers: { 'User-Agent': UA, ...(options.headers || {}) } });
-  if (!response.ok) throw new Error(`${response.status} ${response.statusText}: ${url}`);
-  return response;
+  const target = fetchTarget(url);
+  const method = options.method || 'GET';
+  const startedAt = Date.now();
+  console.log(`[fetch] starting ${method} ${target}`);
+  try {
+    const response = await fetch(url, { ...options, headers: { 'User-Agent': UA, ...(options.headers || {}) } });
+    const elapsedMs = Date.now() - startedAt;
+    console.log(`[fetch] response ${JSON.stringify({ method, target, status: response.status, statusText: response.statusText, elapsedMs })}`);
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}: ${target}`);
+    return response;
+  } catch (error) {
+    console.error(`[fetch] failed ${JSON.stringify({ method, target, elapsedMs: Date.now() - startedAt, errors: fetchErrorDetails(error) })}`);
+    throw error;
+  }
 }
 
 function normalizeApn(value) {
