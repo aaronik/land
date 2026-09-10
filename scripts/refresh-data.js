@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { Agent } = require('undici');
 const { resolveUnmappedParcels } = require('./parcel-resolver');
 const { emptyQueue, loadJson, mergeQueue, saveJson } = require('./apn-research');
 
@@ -29,6 +30,8 @@ const GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/
 const ADDRESS_GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/AddressPointNew/FeatureServer/9/query';
 const ROAD_GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Roads_Public/FeatureServer/0/query';
 const UA = 'Mozilla/5.0 shasta-land-map/1.0';
+const FETCH_CONNECT_TIMEOUT_MS = 60_000;
+const fetchDispatcher = new Agent({ connectTimeout: FETCH_CONNECT_TIMEOUT_MS });
 const APN_RE = /\b(\d{3})[-\s]?(\d{3})[-\s]?(\d{3})[-\s]?(\d{3})\b/g;
 const MONEY_RE = /\$\s*\d[\d,]*\.\d{2}/g;
 const STATUS_RE = /\b(REDEEMED|REMOVED|SOLD|WITHDRAWN)\b/i;
@@ -57,9 +60,9 @@ async function fetchOk(url, options = {}) {
   const target = fetchTarget(url);
   const method = options.method || 'GET';
   const startedAt = Date.now();
-  console.log(`[fetch] starting ${method} ${target}`);
+  console.log(`[fetch] starting ${method} ${target} (connect timeout ${FETCH_CONNECT_TIMEOUT_MS}ms)`);
   try {
-    const response = await fetch(url, { ...options, headers: { 'User-Agent': UA, ...(options.headers || {}) } });
+    const response = await fetch(url, { ...options, dispatcher: fetchDispatcher, headers: { 'User-Agent': UA, ...(options.headers || {}) } });
     const elapsedMs = Date.now() - startedAt;
     console.log(`[fetch] response ${JSON.stringify({ method, target, status: response.status, statusText: response.statusText, elapsedMs })}`);
     if (!response.ok) throw new Error(`${response.status} ${response.statusText}: ${target}`);
