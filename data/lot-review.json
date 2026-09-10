@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-09-08T16:42:31.522Z",
-  "count": 216,
+  "generatedAt": "2026-09-10T15:55:12.571Z",
+  "count": 215,
   "listings": [
+    {
+      "mlsNumber": "20261107",
+      "title": "Lot 23 Whitepine St., Hornbrook, CA 96044",
+      "acres": 1.08,
+      "latLng": [
+        41.883044,
+        -122.472112
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261107/Lot-23-Whitepine-St-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20250861",
       "title": "Lot 10 Lakeshore Dr., McCloud, CA 96057",
@@ -1095,18 +1107,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20260356",
-      "title": "Lot 301 Eel Unit 4, Hornbrook, CA 96044",
-      "acres": 2.5,
-      "latLng": [
-        41.900848203000784,
-        -122.43566973200154
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260356/Lot-301-Eel-Unit-4-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20260333",
       "title": "Lot 356 Cougar St, Hornbrook, CA 96044",
       "acres": 2.87,
@@ -1487,18 +1487,6 @@
         -122.37430663380158
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260149/Unit-5-3-Lot-7-Wood-Ct-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260148",
-      "title": "Unit 4 lot 185 Antler Way, Weed, CA 96094",
-      "acres": 0.43,
-      "latLng": [
-        41.51254266566744,
-        -122.38179071211272
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260148/Unit-4-lot-185-Antler-Way-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
