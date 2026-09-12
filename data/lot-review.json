@@ -1,7 +1,31 @@
 {
-  "generatedAt": "2026-09-10T15:55:12.571Z",
-  "count": 215,
+  "generatedAt": "2026-09-12T14:46:50.709Z",
+  "count": 217,
   "listings": [
+    {
+      "mlsNumber": "20261110",
+      "title": "Lot 2 Bunny Lane, Montague, CA 96064",
+      "acres": 40,
+      "latLng": [
+        41.634595,
+        -122.384955
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261110/Lot-2-Bunny-Lane-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261109",
+      "title": "Unit 4 Lot 215 Rainbow Dr, Weed, CA 96094",
+      "acres": 0.37,
+      "latLng": [
+        41.512246583842874,
+        -122.38200017689633
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261109/Unit-4-Lot-215-Rainbow-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261107",
       "title": "Lot 23 Whitepine St., Hornbrook, CA 96044",
