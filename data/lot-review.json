@@ -1,7 +1,31 @@
 {
-  "generatedAt": "2026-09-10T15:55:12.571Z",
+  "generatedAt": "2026-09-12T22:13:28.077Z",
   "count": 215,
   "listings": [
+    {
+      "mlsNumber": "20261110",
+      "title": "Lot 2 Bunny Lane, Montague, CA 96064",
+      "acres": 40,
+      "latLng": [
+        41.634595,
+        -122.384955
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261110/Lot-2-Bunny-Lane-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261109",
+      "title": "Unit 4 Lot 215 Rainbow Dr, Weed, CA 96094",
+      "acres": 0.37,
+      "latLng": [
+        41.512246583842874,
+        -122.38200017689633
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261109/Unit-4-Lot-215-Rainbow-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261107",
       "title": "Lot 23 Whitepine St., Hornbrook, CA 96044",
@@ -1095,18 +1119,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "SN26070678",
-      "title": "Unit 5 Lot 121 Raven Ct., Montague, CA 96064",
-      "acres": 4.8,
-      "latLng": [
-        41.88418,
-        -122.437692
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-MRMLS/SN26070678/Unit-5-Lot-121-Raven-Ct-Montague-CA-96064",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20260333",
       "title": "Lot 356 Cougar St, Hornbrook, CA 96044",
       "acres": 2.87,
@@ -1763,18 +1775,6 @@
         -122.38565648250157
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251194/Lot-164-Shasta-Lane-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20251159",
-      "title": "Unit 5-4 Lot 60 Tennis Ct, Weed, CA 96094",
-      "acres": 0.78,
-      "latLng": [
-        41.498038,
-        -122.376508
-      ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20251159/Unit-5-4-Lot-60-Tennis-Ct-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
