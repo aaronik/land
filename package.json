@@ -10,6 +10,7 @@
     "refresh": "node scripts/refresh-data.js",
     "override": "node scripts/parcel-override.js",
     "research": "node scripts/apn-research.js",
+    "parcel-evidence": "node scripts/parcel-evidence.js",
     "layers:download": "node scripts/download-layers.js",
     "layers:build": "node scripts/make-pmtiles.js",
     "build": "vite build",

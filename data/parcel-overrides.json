@@ -145,6 +145,14 @@
     "confidence": "manually verified",
     "notes": "pics"
   },
+  "20251159": {
+    "apns": [
+      "107-350-300"
+    ],
+    "source": "verified assessor-map-to-gis: https://primecountry.com/property/20251159/, https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20251159/org/017.jpg?width=1600, https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?f=pjson&where=APN%3D%27107-350-300%27&outFields=APN%2CAcres&returnGeometry=true&outSR=4326",
+    "confidence": "high; visual/explicit evidence reviewed",
+    "notes": "The listing's photo 17 is a Siskiyou County Assessor tax map for book-page 107-35 and Lake Shastina Tract 1000-5-4. It shows the offered merged 0.78-acre Lot 60 at the Tennis Court cul-de-sac backing the greenbelt. County GIS APN 107-350-300 is the matching 0.78-acre merged polygon at that cul-de-sac; APN 107-350-170 is 0.80 acre and lies east along the Lake Shore side rather than at the mapped Tennis Court parcel."
+  },
   "20251228": {
     "apns": [
       "009-330-030"
@@ -1034,6 +1042,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "map pics"
+  },
+  "SN26070678": {
+    "apns": [
+      "104-390-100"
+    ],
+    "source": "verified explicit-apn: https://www.nestfully.com/landlots-for-sale/unit-5-Lot-121-Raven-Ct-Montague-CA-96064-430225626, https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?f=pjson%26where=APN%3D%27104-390-100%27%26outFields=APN%2CAcres%2CDescr%2CAddress1%2CNeighborhoodCode%26returnGeometry=false",
+    "confidence": "high; visual/explicit evidence reviewed",
+    "notes": "The accessible CRMLS-syndicated Nestfully listing explicitly identifies the offered Unit 5 Lot 121 Raven Court property (MLS SN26070678) as Tax/Property ID 104390100. Siskiyou County's public parcel GIS independently returns APN 104-390-100 (the formatted same identifier) as an existing 2.5-acre parcel. This is an explicit listing APN, not a match inferred from location, acreage, or a sequence."
   },
   "SN26121386": {
     "apns": [

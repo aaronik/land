@@ -61,6 +61,16 @@ npm run research -- show <MLS>
 
 Candidate generation uses the MLS point only to create a review set; it never maps a listing. Add source-linked evidence with `research evidence`, select a candidate, explicitly rule out competing candidates, then run `research assess`. `research resolve` is blocked unless every APN is verified in county GIS and the independent-evidence and ambiguity gates pass. Run `npm run research -- help` for all commands. Research state is stored in `data/apn-research.json` and survives later syncs.
 
+### Listing-image parcel research
+
+For a lot-only MLS listing, download all public IDX photos—including plats and assessor maps—without relying on the broker page:
+
+```sh
+npm run parcel-evidence -- <MLS>
+```
+
+Review `.cache/parcel-evidence/<MLS>/`, correlate the numbered lot or printed APN with county GIS, then persist it with `npm run override -- add ...`. The `/parcel-research` skill documents the complete evidence and verification procedure.
+
 ### Manual parcel overrides
 
 After identifying a listing's parcel on the map, copy its APN and run:
