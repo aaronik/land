@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { Agent } = require('undici');
+const { fetchOk } = require('./refresh-fetch');
 const { resolveUnmappedParcels } = require('./parcel-resolver');
 const { emptyQueue, loadJson, mergeQueue, saveJson } = require('./apn-research');
 
@@ -29,49 +29,10 @@ const TAX_PAGE = 'https://www.siskiyoucounty.gov/treasurer-taxcollector/page/tax
 const GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query';
 const ADDRESS_GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/AddressPointNew/FeatureServer/9/query';
 const ROAD_GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Roads_Public/FeatureServer/0/query';
-const UA = 'Mozilla/5.0 shasta-land-map/1.0';
-const FETCH_CONNECT_TIMEOUT_MS = 60_000;
-const fetchDispatcher = new Agent({ connectTimeout: FETCH_CONNECT_TIMEOUT_MS });
 const APN_RE = /\b(\d{3})[-\s]?(\d{3})[-\s]?(\d{3})[-\s]?(\d{3})\b/g;
 const MONEY_RE = /\$\s*\d[\d,]*\.\d{2}/g;
 const STATUS_RE = /\b(REDEEMED|REMOVED|SOLD|WITHDRAWN)\b/i;
 const DATE_RANGE_RE = /\b((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}\s*(?:-|–|to)\s*(?:(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+)?\d{1,2},?\s+\d{4})\b/i;
-
-function fetchTarget(url) {
-  const parsed = new URL(url);
-  return `${parsed.origin}${parsed.pathname}`;
-}
-
-function fetchErrorDetails(error) {
-  const details = [];
-  const seen = new Set();
-  for (let current = error; current instanceof Error && !seen.has(current); current = current.cause) {
-    seen.add(current);
-    details.push(Object.fromEntries(
-      ['name', 'message', 'code', 'errno', 'syscall', 'hostname', 'address', 'port']
-        .filter(key => current[key] !== undefined)
-        .map(key => [key, current[key]])
-    ));
-  }
-  return details;
-}
-
-async function fetchOk(url, options = {}) {
-  const target = fetchTarget(url);
-  const method = options.method || 'GET';
-  const startedAt = Date.now();
-  console.log(`[fetch] starting ${method} ${target} (connect timeout ${FETCH_CONNECT_TIMEOUT_MS}ms)`);
-  try {
-    const response = await fetch(url, { ...options, dispatcher: fetchDispatcher, headers: { 'User-Agent': UA, ...(options.headers || {}) } });
-    const elapsedMs = Date.now() - startedAt;
-    console.log(`[fetch] response ${JSON.stringify({ method, target, status: response.status, statusText: response.statusText, elapsedMs })}`);
-    if (!response.ok) throw new Error(`${response.status} ${response.statusText}: ${target}`);
-    return response;
-  } catch (error) {
-    console.error(`[fetch] failed ${JSON.stringify({ method, target, elapsedMs: Date.now() - startedAt, errors: fetchErrorDetails(error) })}`);
-    throw error;
-  }
-}
 
 function normalizeApn(value) {
   const match = String(value || '').match(/(\d{3})\D?(\d{3})\D?(\d{3})/);
