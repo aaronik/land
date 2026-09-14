@@ -45,7 +45,7 @@ async function main() {
     assert.ok(options.dispatcher);
   }
   assert.ok(test.logs.some(line => line.includes('UND_ERR_CONNECT_TIMEOUT')));
-  assert.ok(test.logs.some(line => line.includes('"connectTimeoutMs":60000')));
+  assert.ok(test.logs.some(line => line.includes('"connectTimeoutMs":10000')));
   assert.ok(test.logs.every(line => !line.includes('secret=hidden')));
 
   test = fixture([timeout]);

@@ -3,7 +3,7 @@
 const { Agent } = require('undici');
 const { setTimeout: sleep } = require('node:timers/promises');
 
-const CONNECT_TIMEOUT_MS = 60_000;
+const CONNECT_TIMEOUT_MS = 10_000;
 const MAX_ATTEMPTS = 4;
 const MAX_DELAY_MS = 30_000;
 const dispatcher = new Agent({ connectTimeout: CONNECT_TIMEOUT_MS });
