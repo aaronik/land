@@ -29,8 +29,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Diagnose upstream connectivity
+        continue-on-error: true
+        timeout-minutes: 1
+        run: node scripts/diagnose-refresh-network.js
+
       - name: Refresh sales data
+        id: refresh
         run: npm run refresh
+
+      - name: Diagnose connectivity after refresh failure
+        if: ${{ failure() && steps.refresh.outcome == 'failure' }}
+        continue-on-error: true
+        timeout-minutes: 1
+        run: node scripts/diagnose-refresh-network.js
 
       - name: Validate refreshed data
         run: npm test
