@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-09-12T22:13:28.077Z",
-  "count": 215,
+  "generatedAt": "2026-09-14T23:42:20.583Z",
+  "count": 217,
   "listings": [
+    {
+      "mlsNumber": "20261126",
+      "title": "Lot 98 Unit 1 Dennis Lane, Hornbrook, CA 96044",
+      "acres": 1.98,
+      "latLng": [
+        41.906887599384326,
+        -122.51472420665009
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261126/Lot-98-Unit-1-Dennis-Lane-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261110",
       "title": "Lot 2 Bunny Lane, Montague, CA 96064",
@@ -551,6 +563,18 @@
         -122.38779542933493
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260879/Unit-5-4-Lot-138-Ls-Mt-Blanch-Dr-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260861",
+      "title": "Blk 15 Lot 5 S California St S, Dorris, CA 96023",
+      "acres": 0.13,
+      "latLng": [
+        41.964321731163565,
+        -121.91960383930392
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20260861/Blk-15-Lot-5-S-California-St-S-Dorris-CA-96023",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
