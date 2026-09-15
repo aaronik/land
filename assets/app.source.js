@@ -287,7 +287,6 @@ const parcelDetails = createParcelDetails({
   parcelsQueryUrl: PARCELS_QUERY_URL,
   addressPointsQueryUrl: ADDRESS_POINTS_QUERY_URL,
   onParcelQuest: apn => { selectedResearchApn = apn; document.querySelector('#parcelquest-warning').showModal(); },
-  onSaveResearch: apn => showParcelDetails({ APN: apn }),
   onAdjustParcel: async apn => { try { return await parcelAdjustmentControl.toggle(apn); } catch (error) { console.error(error); alert(error.message); return false; } },
   isParcelAdjusted: apn => parcelAdjustmentControl.isActive(apn),
   onClose: clearSelectedParcel

@@ -16,7 +16,7 @@ const ZONING_EXPLANATIONS = [
   [/^(Incorporated|ROW)/, ['Not a County zoning district', 'This map label indicates incorporated area or right-of-way rather than an unincorporated Siskiyou County zoning district.', 'The relevant city or road agency—not Siskiyou County’s unincorporated-area zoning code—may control land-use rules. Confirm jurisdiction before proceeding.']]
 ];
 
-export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, wildfirePerimetersQueryUrl, recentWildfirePerimetersQueryUrl, parcelsQueryUrl, addressPointsQueryUrl, onParcelQuest, onSaveResearch, onAdjustParcel, isParcelAdjusted, onClose }) {
+export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, wildfirePerimetersQueryUrl, recentWildfirePerimetersQueryUrl, parcelsQueryUrl, addressPointsQueryUrl, onParcelQuest, onAdjustParcel, isParcelAdjusted, onClose }) {
   const zoningByApn = new Map();
   const addressPointsByApn = new Map();
   const wildfireHistoryByApn = new Map();
@@ -80,15 +80,13 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     const amount = archived ? (record.price ? `Listed at ${money(record.price)}` : 'Prior MLS listing') : money(record.soldPrice);
     return `<article class="record previous-listing">${photo}<strong>${dateLabel}</strong><p>${escapeHtml(record.title || '')}</p><p>${amount}${record.acres ? ` · ${escapeHtml(record.acres)} acres` : ''}${date ? ` · ${escapeHtml(new Date(`${date}T12:00:00`).toLocaleDateString())}` : ''}</p>${archived && record.lastSeenAt ? `<p class="meta">Last seen ${escapeHtml(new Date(`${String(record.lastSeenAt).slice(0, 10)}T12:00:00`).toLocaleDateString())}</p>` : ''}${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open historical listing ↗</a>` : ''}</article>`;
   };
-  const researchKey = apn => `shasta-land-research:${apn}`;
   const parcelQuestUsageKey = () => `siskiyou-county-lookup:${new Date().toISOString().slice(0, 7)}`;
   const parcelMapOwnerLink = () => '<a class="parcel-map-owner-link" href="https://map.parcelmap.app/california/siskiyou" target="_blank" rel="noopener noreferrer">Open on Parcel Map ↗</a>';
   const researchControls = (apn, records = []) => {
     if (!apn) return '';
-    const saved = JSON.parse(localStorage.getItem(researchKey(apn)) || '{}');
     const opens = Number(localStorage.getItem(parcelQuestUsageKey()) || 0);
     const mlsNumber = records.find(record => record.mlsNumber)?.mlsNumber;
-    return `<section class="research"><h4>Parcel research</h4><div class="research-actions"><button type="button" data-copy-apn>Copy APN</button>${mlsNumber ? `<button type="button" data-copy-mls="${escapeHtml(mlsNumber)}">Copy MLS #</button>` : ''}<button type="button" data-parcelquest>Open on ParcelQuest ↗</button>${parcelMapOwnerLink()}</div><textarea data-research-notes rows="4" placeholder="Notes stored only in this browser">${escapeHtml(saved.notes || '')}</textarea><button type="button" data-save-research>Save private notes</button><p>ParcelQuest is Siskiyou County Assessor’s official parcel, value, and map lookup; the APN is copied before it opens. Parcel Map is a separate external owner lookup and does not support a direct parcel link. ${opens} ParcelQuest lookup${opens === 1 ? '' : 's'} opened from this browser this month.</p></section>`;
+    return `<section class="research"><h4>Parcel research</h4><div class="research-actions"><button type="button" data-copy-apn>Copy APN</button>${mlsNumber ? `<button type="button" data-copy-mls="${escapeHtml(mlsNumber)}">Copy MLS #</button>` : ''}<button type="button" data-parcelquest>Open on ParcelQuest ↗</button>${parcelMapOwnerLink()}</div><p>ParcelQuest is Siskiyou County Assessor’s official parcel, value, and map lookup; the APN is copied before it opens. Parcel Map is a separate external owner lookup and does not support a direct parcel link. ${opens} ParcelQuest lookup${opens === 1 ? '' : 's'} opened from this browser this month.</p></section>`;
   };
   const zoningForParcel = async apn => {
     if (zoningByApn.has(apn)) return zoningByApn.get(apn);
@@ -201,7 +199,6 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     detailsElement.querySelector('[data-copy-apn]')?.addEventListener('click', () => navigator.clipboard.writeText(apn));
     detailsElement.querySelector('[data-copy-mls]')?.addEventListener('click', event => navigator.clipboard.writeText(event.currentTarget.dataset.copyMls));
     detailsElement.querySelector('[data-parcelquest]')?.addEventListener('click', () => onParcelQuest(apn));
-    detailsElement.querySelector('[data-save-research]')?.addEventListener('click', () => { localStorage.setItem(researchKey(apn), JSON.stringify({ notes: detailsElement.querySelector('[data-research-notes]').value, updated: new Date().toISOString() })); onSaveResearch(apn); });
     detailsElement.querySelector('[data-adjust-parcel]')?.addEventListener('click', async event => { const button = event.currentTarget; const active = await onAdjustParcel?.(apn); button.textContent = active ? 'Hide aligned outline' : 'Show aligned outline'; });
     detailsElement.querySelector('[data-close-parcel]')?.addEventListener('click', onClose);
   };

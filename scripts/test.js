@@ -32,7 +32,7 @@ if (!failures.length) {
   if (!refresh.includes("fetchMls('homes-sold')") || !refresh.includes("kind: 'sale-history'") || !refresh.includes('feature.properties.salesHistory = salesHistory')) failures.push('Sold MLS history is not ingested by APN');
   if (!refresh.includes("'mls-apn-links.json'") || !refresh.includes('function saveMlsLinks(') || !refresh.includes('persisted MLS linkage:') || !refresh.includes('overrideApns[0] || listedApn || persistedApns[0]')) failures.push('MLS-to-APN linkages are not persisted and reused');
   if (!app.includes("const DIRECTIONS_ORIGIN = 'Mt. Shasta City Park") || !parcelDetails.includes("new URL('https://www.google.com/maps/dir/')") || !parcelDetails.includes('destination: `${point[1]},${point[0]}`') || !parcelDetails.includes('Directions from Mt. Shasta City Park')) failures.push('Parcel directions from Mt. Shasta City Park are missing');
-  if (!app.includes('localStorage')) failures.push('browser-local research cache is missing');
+  if (['data-research-notes', 'data-save-research', 'shasta-land-research:', 'onSaveResearch'].some(token => parcelDetails.includes(token) || app.includes(token))) failures.push('Removed private notes feature is still present');
   if (!mapLayers.includes("id: 'road-labels'") || !mapLayers.includes("['get', 'ROADNAME']")) failures.push('County road name labels are missing');
   if (!app.includes("roads: ['roads', 'road-labels', 'forest-roads', 'forest-road-labels']")) failures.push('Road toggle does not control county and USFS road layers');
   if (!html.includes('data-map-layer="railroads"')) failures.push('Railroad toggle is missing');

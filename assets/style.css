@@ -181,7 +181,6 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .unmapped-listing-actions button, .research button, .research-actions a { color: #254b38; background: #dce8d5; }
 .unmapped-listing-actions button:hover, .research button:hover, .research-actions a:hover { background: #cbdcbe; }
 .unmapped-listing-actions button:focus-visible, .research button:focus-visible, .research-actions a:focus-visible { outline: 2px solid #126246; outline-offset: 2px; }
-.research textarea { width: 100%; margin: 8px 0 6px; padding: 7px; border: 1px solid #b8bdb8; border-radius: 6px; resize: vertical; font: inherit; }
 .research p { margin: 7px 0 0; color: #667067; font-size: 10px; line-height: 1.4; }
 dialog { width: min(460px, 90vw); border: 0; border-radius: 10px; color: var(--ink); background: var(--paper); box-shadow: 0 20px 70px rgba(0,0,0,.45); }
 dialog::backdrop { background: rgba(12, 25, 19, .72); }
