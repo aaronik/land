@@ -155,6 +155,8 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .record-primary-photo:focus-visible { outline: 2px solid #126246; outline-offset: 2px; }
 .record strong { font-size: 13px; }
 .record p { margin: 4px 0; }
+.unmapped-listing-actions { margin-top: 8px; }
+.unmapped-listing-actions button { width: 100%; padding: 8px; border: 0; border-radius: 6px; color: white; background: var(--ink); cursor: pointer; font: inherit; font-weight: 700; }
 .sales-history { margin-top: 14px; padding: 12px; background: #edf5ee; border: 1px solid rgba(37, 109, 71, .25); border-left: 4px solid #287a50; border-radius: 7px; }
 .wildfire-history { background: #fff0e7; border-color: rgba(177, 70, 29, .28); border-left-color: #c84d25; }
 .sales-history h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; }
@@ -176,6 +178,9 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .research-actions { display: grid; gap: 6px; }
 .research button, .research-actions a, .dialog-actions button { border: 0; border-radius: 6px; padding: 8px; color: white; background: var(--ink); cursor: pointer; font-weight: 700; }
 .research-actions a { text-align: center; text-decoration: none; }
+.unmapped-listing-actions button, .research button, .research-actions a { color: #254b38; background: #dce8d5; }
+.unmapped-listing-actions button:hover, .research button:hover, .research-actions a:hover { background: #cbdcbe; }
+.unmapped-listing-actions button:focus-visible, .research button:focus-visible, .research-actions a:focus-visible { outline: 2px solid #126246; outline-offset: 2px; }
 .research textarea { width: 100%; margin: 8px 0 6px; padding: 7px; border: 1px solid #b8bdb8; border-radius: 6px; resize: vertical; font: inherit; }
 .research p { margin: 7px 0 0; color: #667067; font-size: 10px; line-height: 1.4; }
 dialog { width: min(460px, 90vw); border: 0; border-radius: 10px; color: var(--ink); background: var(--paper); box-shadow: 0 20px 70px rgba(0,0,0,.45); }

@@ -27,6 +27,7 @@ if (!failures.length) {
   if (!html.includes('parcelquest-warning')) failures.push('ParcelQuest warning dialog is missing');
   if (!parcelDetails.includes('Open on ParcelQuest ↗') || !parcelDetails.includes('Open on Parcel Map ↗') || !parcelDetails.includes('Siskiyou County Assessor')) failures.push('County assessment and external owner lookup actions are missing');
   if (!parcelDetails.includes('Copy MLS #') || !parcelDetails.includes('data-copy-mls') || !parcelDetails.includes('dataset.copyMls')) failures.push('MLS copy action is missing');
+  if (!app.includes("feature.layer.id === 'unmapped-markers'") || !app.includes('const mlsCopyAction = props.mlsNumber') || !app.includes("document.querySelector('[data-copy-mls]')?.addEventListener")) failures.push('Unmapped listings do not provide an MLS copy action');
   if (!parcelDetails.includes('salesHistorySection') || !parcelDetails.includes('No matched public sold-listing history')) failures.push('Clicked parcels do not display sales history');
   if (!refresh.includes("fetchMls('homes-sold')") || !refresh.includes("kind: 'sale-history'") || !refresh.includes('feature.properties.salesHistory = salesHistory')) failures.push('Sold MLS history is not ingested by APN');
   if (!refresh.includes("'mls-apn-links.json'") || !refresh.includes('function saveMlsLinks(') || !refresh.includes('persisted MLS linkage:') || !refresh.includes('overrideApns[0] || listedApn || persistedApns[0]')) failures.push('MLS-to-APN linkages are not persisted and reused');

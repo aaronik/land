@@ -540,7 +540,9 @@ function initializeMapLayers() {
       return;
     }
     if (feature.layer.id === 'unmapped-markers') {
-      document.querySelector('#details').innerHTML = `<div class="details-heading"><h3>Unmapped listing</h3><button class="close-parcel" type="button" data-close-details aria-label="Close selected listing" title="Close selected listing">×</button></div><p class="meta">MLS point only — boundary unverified.</p>${recordCard(props)}`;
+      const mlsCopyAction = props.mlsNumber ? `<div class="unmapped-listing-actions"><button type="button" data-copy-mls="${escapeHtml(props.mlsNumber)}">Copy MLS #</button></div>` : '';
+      document.querySelector('#details').innerHTML = `<div class="details-heading"><h3>Unmapped listing</h3><button class="close-parcel" type="button" data-close-details aria-label="Close selected listing" title="Close selected listing">×</button></div><p class="meta">MLS point only — boundary unverified.</p>${recordCard(props)}${mlsCopyAction}`;
+      document.querySelector('[data-copy-mls]')?.addEventListener('click', event => navigator.clipboard.writeText(event.currentTarget.dataset.copyMls));
       document.querySelector('[data-close-details]').addEventListener('click', clearSelectedParcel);
       return;
     }
