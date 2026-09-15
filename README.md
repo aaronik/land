@@ -38,6 +38,8 @@ GitHub Pages cannot run server code and the upstream sites do not consistently a
 
 Private listings without MLS coordinates cannot be assigned an APN automatically and are omitted from the parcel map. Public records remain visible as historical records and are marked `EXPIRED` once their advertised closing date passes.
 
+Every refresh snapshots mapped MLS listings in `data/mls-listing-archive.json`. Once a listing no longer appears in the active MLS feed, it remains available under **Previously listed (sold)**, with the first refresh date on which it disappeared. That date means only that the public feed stopped advertising it—not necessarily that it sold or was withdrawn.
+
 ## Data refresh
 
 Run the sales-data refresh independently when needed:

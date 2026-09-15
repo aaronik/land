@@ -7,7 +7,11 @@ export function createListingData(getState) {
     if (!Number.isFinite(number) || number <= 0) return '';
     return new Intl.NumberFormat('en-US', { maximumSignificantDigits: 3, useGrouping: false }).format(number).toLowerCase();
   };
-  const categories = feature => new Set((feature.properties.records || []).map(record => record.category));
+  const categories = feature => new Set([
+    ...(feature.properties.records || []).map(record => record.category),
+    ...((feature.properties.salesHistory || []).map(() => 'previous-listing')),
+    ...((feature.properties.archivedListings || []).map(() => 'previous-listing'))
+  ]);
   const normalizeSearch = value => String(value || '').toUpperCase().replace(/[^A-Z0-9]+/g, ' ').trim();
   const recordAcreage = record => {
     const acres = Number(String(record.acres ?? '').replace(/,/g, ''));
@@ -40,10 +44,19 @@ export function createListingData(getState) {
     const acres = recordAcreage(record) ?? recordAcreage({ acres: fallbackAcres });
     return enabledCategories.has(record.category) && recordMatchesListingDate(record) && recordMatchesDiscoveryFilters(record) && acreageMatches(acres);
   };
+  const historyRecordIsVisible = (record, fallbackAcres) => {
+    const { enabledCategories } = state();
+    const acres = recordAcreage(record) ?? recordAcreage({ acres: fallbackAcres });
+    return enabledCategories.has('previous-listing')
+      && recordMatchesListingDate({ ...record, listingDate: record.soldDate || String(record.disappearedAt || '').slice(0, 10) })
+      && acreageMatches(acres);
+  };
   const searchableFeature = feature => {
     const { enabledCategories } = state();
     const records = (feature.properties.records || []).filter(record => enabledCategories.has(record.category) && recordMatchesListingDate(record) && recordMatchesDiscoveryFilters(record) && acreageMatches(recordAcreage(record) ?? recordAcreage({ acres: feature.properties.Acres })));
-    return records.length ? { ...feature, properties: { ...feature.properties, records } } : null;
+    const salesHistory = (feature.properties.salesHistory || []).filter(record => historyRecordIsVisible(record, feature.properties.Acres));
+    const archivedListings = (feature.properties.archivedListings || []).filter(record => historyRecordIsVisible(record, feature.properties.Acres));
+    return records.length || salesHistory.length || archivedListings.length ? { ...feature, properties: { ...feature.properties, records, salesHistory, archivedListings } } : null;
   };
   const firstCategory = feature => {
     const { enabledCategories } = state();
@@ -85,14 +98,27 @@ export function createListingData(getState) {
     for (const feature of filteredMappedListings()) {
       const point = featureCenter(feature);
       if (!point) continue;
-      for (const [index, record] of (feature.properties.records || []).entries()) {
+      const listingRecords = [
+        ...(feature.properties.records || []),
+        ...(feature.properties.salesHistory || []).map(record => ({ ...record, category: 'previous-listing' })),
+        ...(feature.properties.archivedListings || []).map(record => ({ ...record, category: 'previous-listing', archived: true }))
+      ];
+      for (const [index, record] of listingRecords.entries()) {
         // An MLS listing may be associated with several parcel polygons. Keep its
         // first parcel as the marker's location, but emit only one marker.
         const key = listingMarkerKey(record) || `parcel:${feature.properties.APN}:${index}`;
         if (markers.has(key)) continue;
+        const isPreviousListing = record.category === 'previous-listing';
         markers.set(key, {
           type: 'Feature', geometry: { type: 'Point', coordinates: point },
-          properties: { ...feature.properties, records: [record], displayCategory: record.category, markerLabel: markerLabel({ records: [record] }) }
+          properties: {
+            ...feature.properties,
+            records: isPreviousListing ? [] : [record],
+            salesHistory: isPreviousListing && !record.archived ? [record] : [],
+            archivedListings: isPreviousListing && record.archived ? [record] : [],
+            displayCategory: record.category,
+            markerLabel: isPreviousListing ? '' : markerLabel({ records: [record] })
+          }
         });
       }
     }

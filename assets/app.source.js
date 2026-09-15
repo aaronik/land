@@ -11,7 +11,7 @@ import { ParcelAdjustmentControl } from './map/parcel-adjustment.js';
 import { initializeMobileSheet } from './state/ui.js';
 import { updateUrlParameter } from './state/url.js';
 
-const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
+const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'previous-listing': '#55768d', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
 // Colors follow the unique-value renderer saved on Siskiyou County's official
 // zoning layer. MapLibre cannot reproduce every ArcGIS hatch, so buffered
 // variants retain their official zoning-family color.
@@ -306,10 +306,10 @@ function setSelectedApn(apn, { updateUrl = true } = {}) {
   }
   if (updateUrl) updateSelectedParcelUrl(selectedApn);
 }
-function selectParcel(properties) {
+function selectParcel(properties, saleFeature) {
   if (!properties?.APN) return;
   setSelectedApn(properties.APN);
-  showParcelDetails(properties);
+  showParcelDetails(properties, saleFeature);
 }
 let initialParcelRestored = false;
 function restoreInitialSelectedParcel() {
@@ -546,10 +546,19 @@ function initializeMapLayers() {
     }
     if (feature.layer.id === 'sale-markers' || feature.layer.id === 'sale-fill') {
       let records = props.records || [];
+      let salesHistory = props.salesHistory || [];
+      let archivedListings = props.archivedListings || [];
       if (typeof records === 'string') {
         try { records = JSON.parse(records); } catch { records = []; }
       }
-      selectParcel({ ...props, records });
+      if (typeof salesHistory === 'string') {
+        try { salesHistory = JSON.parse(salesHistory); } catch { salesHistory = []; }
+      }
+      if (typeof archivedListings === 'string') {
+        try { archivedListings = JSON.parse(archivedListings); } catch { archivedListings = []; }
+      }
+      const clickedSale = { type: 'Feature', properties: { ...props, records, salesHistory, archivedListings } };
+      selectParcel({ ...props, records, salesHistory, archivedListings }, clickedSale);
       return;
     }
     selectParcel(props);

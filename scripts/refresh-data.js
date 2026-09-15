@@ -12,6 +12,7 @@ const root = path.resolve(__dirname, '..');
 const outFile = path.join(root, 'data', 'parcels.json');
 const overridesFile = path.join(root, 'data', 'parcel-overrides.json');
 const mlsLinksFile = path.join(root, 'data', 'mls-apn-links.json');
+const listingArchiveFile = path.join(root, 'data', 'mls-listing-archive.json');
 const reviewFile = path.join(root, 'data', 'lot-review.json');
 const resolverReportFile = path.join(root, 'data', 'parcel-resolution-report.json');
 const researchFile = path.join(root, 'data', 'apn-research.json');
@@ -67,6 +68,59 @@ function saveMlsLinks(file, records, generatedAt) {
   const sorted = Object.fromEntries(Object.entries(next).sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true })));
   fs.writeFileSync(file, `${JSON.stringify(sorted, null, 2)}\n`);
   return sorted;
+}
+
+function loadListingArchive() {
+  const archive = loadJson(listingArchiveFile, { schemaVersion: 1, listings: {} });
+  return archive && typeof archive === 'object' && archive.listings && typeof archive.listings === 'object'
+    ? archive : { schemaVersion: 1, listings: {} };
+}
+function archiveActiveListings(archive, records, generatedAt) {
+  const activeMls = new Set(records.map(record => normalizeMls(record.mlsNumber)).filter(Boolean));
+  for (const [, entry] of Object.entries(archive.listings)) {
+    if (activeMls.has(entry.mlsNumber)) {
+      entry.lastSeenAt = generatedAt;
+      delete entry.disappearedAt;
+    } else if (!entry.disappearedAt) entry.disappearedAt = generatedAt;
+  }
+  for (const record of records) {
+    const mls = normalizeMls(record.mlsNumber);
+    if (!mls) continue;
+    const key = `${mls}:${normalizeApn(record.APN)}`;
+    const prior = archive.listings[key] || {};
+    archive.listings[key] = {
+      ...prior, ...record, mlsNumber: mls,
+      firstSeenAt: prior.firstSeenAt || generatedAt,
+      lastSeenAt: generatedAt
+    };
+    delete archive.listings[key].disappearedAt;
+  }
+  return archive;
+}
+function archivedRecords(archive) {
+  return Object.values(archive.listings).filter(record => record.disappearedAt && record.APN);
+}
+function restoreArchivedResearchListings(archive, generatedAt) {
+  const research = loadJson(researchFile, emptyQueue());
+  for (const [mls, item] of Object.entries(research.items || {})) {
+    if (item.active !== false || !item.listing || archive.listings[normalizeMls(mls)]) continue;
+    const link = MLS_APN_LINKS[normalizeMls(mls)];
+    if (!link?.apns?.length) continue;
+    const listed = item.listing;
+    for (const apn of link.apns.map(normalizeApn).filter(Boolean)) {
+      const key = `${normalizeMls(mls)}:${apn}`;
+      if (archive.listings[key]) continue;
+      archive.listings[key] = {
+        APN: apn, kind: 'private', mlsNumber: normalizeMls(mls), title: listed.title || '', price: Number(listed.price) || null,
+        acres: Number(listed.acres) || null, listingDate: listed.listingDate || '', propertyType: listed.propertyType || 'land',
+        url: listed.listingUrl || '', primaryPhoto: listed.primaryPhoto || '', mlsId: listed.mlsId || 'CA-SISKIYOU', listingSource: 'Retained MLS listing', parcelMatchSource: link.source,
+        parcelMatchConfidence: link.confidence || '', firstSeenAt: item.createdAt || generatedAt,
+        lastSeenAt: item.updatedAt || generatedAt, disappearedAt: item.updatedAt || generatedAt,
+        disappearanceDateSource: 'retained research record'
+      };
+    }
+  }
+  return archive;
 }
 
 async function fetchMlsPage(source, page, perPage = 100, listingType = 'homes-for-sale') {
@@ -677,15 +731,19 @@ async function main() {
   const privateData = { records: [...firstPass.records, ...secondary.resolved], unmapped: fallbackUnmapped };
   const privateRows = privateData.records;
   const generatedAt = new Date().toISOString();
+  const listingArchive = archiveActiveListings(restoreArchivedResearchListings(loadListingArchive(), generatedAt), privateRows, generatedAt);
+  saveJson(listingArchiveFile, listingArchive);
+  const archivedRows = archivedRecords(listingArchive);
   Object.assign(MLS_APN_LINKS, saveMlsLinks(mlsLinksFile, privateRows, generatedAt));
   const historyRows = await soldHistory(soldItems);
   Object.assign(MLS_APN_LINKS, saveMlsLinks(mlsLinksFile, [...privateRows, ...historyRows], generatedAt));
   const externalRows = externalRecords();
   const records = [...privateRows, ...externalRows, ...auctions];
-  const allMappedRows = [...records, ...historyRows];
+  const allMappedRows = [...records, ...historyRows, ...archivedRows];
   const features = await parcelFeatures([...new Set(allMappedRows.map(row => row.APN))]);
   const recordsByApn = new Map();
   const historyByApn = new Map();
+  const archivedByApn = new Map();
   for (const record of records) {
     if (!recordsByApn.has(record.APN)) recordsByApn.set(record.APN, []);
     recordsByApn.get(record.APN).push(record);
@@ -693,6 +751,10 @@ async function main() {
   for (const record of historyRows) {
     if (!historyByApn.has(record.APN)) historyByApn.set(record.APN, []);
     historyByApn.get(record.APN).push(record);
+  }
+  for (const record of archivedRows) {
+    if (!archivedByApn.has(record.APN)) archivedByApn.set(record.APN, []);
+    archivedByApn.get(record.APN).push(record);
   }
   for (const feature of features) {
     const apn = normalizeApn(feature.properties.APN);
@@ -706,6 +768,7 @@ async function main() {
     }
     feature.properties.records = recordsForParcel;
     feature.properties.salesHistory = salesHistory;
+    feature.properties.archivedListings = (archivedByApn.get(apn) || []).sort((a, b) => String(b.disappearedAt).localeCompare(String(a.disappearedAt)));
   }
   const output = {
     generatedAt, sources: { mls: MLS_SOURCES.map(source => ({ name: source.name, api: source.api })), externalListings: EXTERNAL_LISTINGS.map(item => item.url), auctions: TAX_PAGE, parcels: GIS },

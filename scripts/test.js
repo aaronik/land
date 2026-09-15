@@ -58,7 +58,7 @@ if (!failures.length) {
   if (app.includes('/api/parcelquest')) failures.push('ParcelQuest must not be proxied');
   for (const feature of data.features || []) {
     if (!/^\d{3}-\d{3}-\d{3}$/.test(feature.properties?.APN || '')) failures.push(`invalid APN ${feature.properties?.APN}`);
-    if ((!Array.isArray(feature.properties?.records) || !feature.properties.records.length) && (!Array.isArray(feature.properties?.salesHistory) || !feature.properties.salesHistory.length)) failures.push(`missing records for ${feature.properties?.APN}`);
+    if ((!Array.isArray(feature.properties?.records) || !feature.properties.records.length) && (!Array.isArray(feature.properties?.salesHistory) || !feature.properties.salesHistory.length) && (!Array.isArray(feature.properties?.archivedListings) || !feature.properties.archivedListings.length)) failures.push(`missing records for ${feature.properties?.APN}`);
   }
 }
 if (failures.length) { console.error(failures.map(item => `- ${item}`).join('\n')); process.exit(1); }
