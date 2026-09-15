@@ -1043,6 +1043,22 @@
     "confidence": "manually verified",
     "notes": "description / acreage"
   },
+  "20261123": {
+    "apns": [
+      "019-480-231"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Random guess out of 8 parcels on the right road / elevation. Likely wrong, but only by a bit."
+  },
+  "20261126": {
+    "apns": [
+      "103-160-180"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Photos / acreage"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
