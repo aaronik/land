@@ -541,6 +541,7 @@ function preferredUnmappedLocation(item, mlsPoint, streetPlacement) {
 }
 
 async function privateRecords(items) {
+  const { listingUrl } = await import('../assets/data/listing-url.js');
   const records = [], unmapped = [];
   const streetPointCache = new Map();
   const regionCache = new Map();
@@ -585,7 +586,7 @@ async function privateRecords(items) {
         propertyType: item.propertyType || '', propertySubType: item.propertySubType || '',
         beds: Number(item.beds) || 0, baths: Number(item.bathsTotal) || 0,
         sqft: Number(item.sqft) || 0, yearBuilt: Number(item.yearBuilt) || 0,
-        url: `${item.source.site}/idx/listing/${item.mlsId}/${item.mlsNo}/${slug}`,
+        url: listingUrl({ url: `${item.source.site}/idx/listing/${item.mlsId}/${item.mlsNo}/${slug}` }),
         primaryPhoto: Array.isArray(item.photos) && item.photos.includes('000')
           ? `https://idx-photos-ihouseprd.b-cdn.net/${encodeURIComponent(item.mlsId)}/${encodeURIComponent(item.mlsNo)}/org/000.jpg?width=640`
           : '',

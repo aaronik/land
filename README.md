@@ -93,6 +93,20 @@ Multiple parcels can be comma-separated. The helper immediately patches `data/pa
 
 Each refresh writes trusted programmatic and manual MLS-to-APN matches to `data/mls-apn-links.json`. Active and sold MLS feeds join through the MLS number, with precedence given to manual overrides, then explicit listing APNs, then the persisted linkage. This lets sold history reuse previously established parcel matches instead of repeating or weakening the match.
 
+## Future data acquisition
+
+The current ingestion uses brokers’ public website search endpoints, not direct MLS credentials. Their available feeds can change; public accessibility does not itself grant permission to republish the data.
+
+Explore a direct data license with the **Siskiyou Association of REALTORS®**:
+
+- **Email:** [siskiyouaor@gmail.com](mailto:siskiyouaor@gmail.com)
+- **Phone:** [530-926-5083](tel:+15309265083)
+- **Website:** [siskiyouaor.com](https://www.siskiyouaor.com/)
+
+Their [2026 MLS rules](https://www.siskiyouaor.com/wp-content/uploads/2026/02/2026-MLS-Rules-adopted-Jan-22-2026.pdf) provide feeds to participants or their designated vendors for licensed uses (§11.14), protect MLS access with passcodes (§12.12), and allow third-party licensing agreements (§12.20). No anonymous direct API was identified in the published documentation.
+
+Ask whether this project qualifies for a third-party agreement without brokerage membership, and confirm fees, API/feed availability, listing and sold-history coverage, refresh limits, and permitted display, archival, photo, and redistribution uses. Eligibility and terms have not yet been confirmed with the association.
+
 ## Deployment
 
 ```sh

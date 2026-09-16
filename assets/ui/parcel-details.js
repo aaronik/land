@@ -1,5 +1,7 @@
 'use strict';
 
+import { listingUrl } from '../data/listing-url.js';
+
 const ZONING_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/CDD_Zoning_Districts_Public/FeatureServer/0/query';
 const ZONING_CODE_URL = 'https://library.municode.com/ca/siskiyou_county/codes/code_of_ordinances?nodeId=TIT10PLZO';
 const ZONING_EXPLANATIONS = [
@@ -41,11 +43,11 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
           : '';
       const photoUrl = record.primaryPhoto || mlsPhoto;
       const primaryPhoto = photoUrl && /^https:\/\//.test(photoUrl)
-        ? `<a class="record-primary-photo" href="${escapeHtml(record.url)}" target="_blank" rel="noopener" aria-label="Open listing for ${escapeHtml(record.title || 'this property')}"><img src="${escapeHtml(photoUrl)}" alt="Primary photo for ${escapeHtml(record.title || 'this property')}" loading="lazy" onerror="this.closest('a').remove()"></a>`
+        ? `<a class="record-primary-photo" href="${escapeHtml(listingUrl(record))}" target="_blank" rel="noopener" aria-label="Open listing for ${escapeHtml(record.title || 'this property')}"><img src="${escapeHtml(photoUrl)}" alt="Primary photo for ${escapeHtml(record.title || 'this property')}" loading="lazy" onerror="this.closest('a').remove()"></a>`
         : '';
       const homeDetails = home ? [record.beds && `${record.beds} bd`, record.baths && `${record.baths} ba`, record.sqft && `${Number(record.sqft).toLocaleString()} sq ft`].filter(Boolean).join(' · ') : '';
       const listingDate = /^\d{4}-\d{2}-\d{2}$/.test(record.listingDate) ? new Date(`${record.listingDate}T12:00:00`).toLocaleDateString() : '';
-      return `<article class="record ${home ? 'home' : ''}">${primaryPhoto}<strong>${home ? 'Private home' : 'Private land'}</strong><p>${escapeHtml(record.title || '')}</p><p>${money(record.price)} · ${escapeHtml(record.acres || '—')} acres${homeDetails ? ` · ${escapeHtml(homeDetails)}` : ''} · ${escapeHtml(record.status || '')}${listingDate ? ` · Listed ${escapeHtml(listingDate)}` : ''}</p>${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open listing ↗</a>` : ''}${extraLink}</article>`;
+      return `<article class="record ${home ? 'home' : ''}">${primaryPhoto}<strong>${home ? 'Private home' : 'Private land'}</strong><p>${escapeHtml(record.title || '')}</p><p>${money(record.price)} · ${escapeHtml(record.acres || '—')} acres${homeDetails ? ` · ${escapeHtml(homeDetails)}` : ''} · ${escapeHtml(record.status || '')}${listingDate ? ` · Listed ${escapeHtml(listingDate)}` : ''}</p>${record.url ? `<a href="${escapeHtml(listingUrl(record))}" target="_blank" rel="noopener">Open listing ↗</a>` : ''}${extraLink}</article>`;
     }
     return `<article class="record public"><strong>Public auction record</strong><p>${escapeHtml(record.minimumBid || 'No parsed minimum')} · ${escapeHtml(record.status || 'Unknown status')}</p><p>${escapeHtml(record.source || '')}</p>${record.sourceUrl ? `<a href="${escapeHtml(record.sourceUrl)}" target="_blank" rel="noopener">Source PDF ↗</a>` : ''}${extraLink}</article>`;
   };
@@ -55,8 +57,8 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
       : record.mlsNumber ? `https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/${encodeURIComponent(record.mlsNumber)}/org/000.jpg?width=640` : '';
     const photoUrl = record.primaryPhoto || mlsPhoto;
     const photo = photoUrl && /^https:\/\//.test(photoUrl)
-      ? `<a class="record-primary-photo" href="${escapeHtml(record.url)}" target="_blank" rel="noopener" aria-label="Open historical listing for ${escapeHtml(record.title || 'this property')}"><img src="${escapeHtml(photoUrl)}" alt="Primary photo for ${escapeHtml(record.title || 'this property')}" loading="lazy" onerror="this.closest('a').remove()"></a>` : '';
-    return `<article>${photo}<strong>${money(record.soldPrice)}</strong><span>${escapeHtml(new Date(`${record.soldDate}T12:00:00`).toLocaleDateString())}</span>${record.listPrice ? `<small>Listed at ${money(record.listPrice)}</small>` : ''}<small>${escapeHtml(record.title || '')} · MLS ${escapeHtml(record.mlsNumber || '—')}</small>${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open historical listing ↗</a>` : ''}</article>`;
+      ? `<a class="record-primary-photo" href="${escapeHtml(listingUrl(record))}" target="_blank" rel="noopener" aria-label="Open historical listing for ${escapeHtml(record.title || 'this property')}"><img src="${escapeHtml(photoUrl)}" alt="Primary photo for ${escapeHtml(record.title || 'this property')}" loading="lazy" onerror="this.closest('a').remove()"></a>` : '';
+    return `<article>${photo}<strong>${money(record.soldPrice)}</strong><span>${escapeHtml(new Date(`${record.soldDate}T12:00:00`).toLocaleDateString())}</span>${record.listPrice ? `<small>Listed at ${money(record.listPrice)}</small>` : ''}<small>${escapeHtml(record.title || '')} · MLS ${escapeHtml(record.mlsNumber || '—')}</small>${record.url ? `<a href="${escapeHtml(listingUrl(record))}" target="_blank" rel="noopener">Open historical listing ↗</a>` : ''}</article>`;
   }).join('')}<p class="source-note">Public IDX sold-listing data matched to the county parcel by APN or exact county address. This is not a complete deed history.</p></section>`;
   const archivedListingsSection = records => !records.length ? '' : `<section class="sales-history"><h4>Previous listings</h4>${records.map(record => {
     const mlsPhoto = /^[A-Z]{2}-[A-Z]+$/.test(String(record.mlsId || '')) && record.mlsNumber
@@ -64,8 +66,8 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
       : record.mlsNumber ? `https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/${encodeURIComponent(record.mlsNumber)}/org/000.jpg?width=640` : '';
     const photoUrl = record.primaryPhoto || mlsPhoto;
     const photo = photoUrl && /^https:\/\//.test(photoUrl)
-      ? `<a class="record-primary-photo" href="${escapeHtml(record.url)}" target="_blank" rel="noopener" aria-label="Open archived listing for ${escapeHtml(record.title || 'this property')}"><img src="${escapeHtml(photoUrl)}" alt="Primary photo for ${escapeHtml(record.title || 'this property')}" loading="lazy" onerror="this.closest('a').remove()"></a>` : '';
-    return `<article>${photo}<strong>Listing no longer advertised</strong><span>${escapeHtml(new Date(`${String(record.disappearedAt).slice(0, 10)}T12:00:00`).toLocaleDateString())}</span><small>Last seen ${escapeHtml(new Date(`${String(record.lastSeenAt).slice(0, 10)}T12:00:00`).toLocaleDateString())}${record.price ? ` · Listed at ${money(record.price)}` : ''}</small><small>${escapeHtml(record.title || '')} · MLS ${escapeHtml(record.mlsNumber || '—')}</small>${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open archived listing ↗</a>` : ''}</article>`;
+      ? `<a class="record-primary-photo" href="${escapeHtml(listingUrl(record))}" target="_blank" rel="noopener" aria-label="Open archived listing for ${escapeHtml(record.title || 'this property')}"><img src="${escapeHtml(photoUrl)}" alt="Primary photo for ${escapeHtml(record.title || 'this property')}" loading="lazy" onerror="this.closest('a').remove()"></a>` : '';
+    return `<article>${photo}<strong>Listing no longer advertised</strong><span>${escapeHtml(new Date(`${String(record.disappearedAt).slice(0, 10)}T12:00:00`).toLocaleDateString())}</span><small>Last seen ${escapeHtml(new Date(`${String(record.lastSeenAt).slice(0, 10)}T12:00:00`).toLocaleDateString())}${record.price ? ` · Listed at ${money(record.price)}` : ''}</small><small>${escapeHtml(record.title || '')} · MLS ${escapeHtml(record.mlsNumber || '—')}</small>${record.url ? `<a href="${escapeHtml(listingUrl(record))}" target="_blank" rel="noopener">Open archived listing ↗</a>` : ''}</article>`;
   }).join('')}<p class="source-note">The date shown is when this listing first disappeared from the monitored public MLS feed; it does not establish a withdrawal, sale, or closing date.</p></section>`;
   const previousListingCard = record => {
     const archived = Boolean(record.disappearedAt);
@@ -74,11 +76,11 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
       : record.mlsNumber ? `https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/${encodeURIComponent(record.mlsNumber)}/org/000.jpg?width=640` : '';
     const photoUrl = record.primaryPhoto || mlsPhoto;
     const photo = photoUrl && /^https:\/\//.test(photoUrl)
-      ? `<a class="record-primary-photo" href="${escapeHtml(record.url)}" target="_blank" rel="noopener" aria-label="Open historical listing for ${escapeHtml(record.title || 'this property')}"><img src="${escapeHtml(photoUrl)}" alt="Primary photo for ${escapeHtml(record.title || 'this property')}" loading="lazy" onerror="this.closest('a').remove()"></a>` : '';
+      ? `<a class="record-primary-photo" href="${escapeHtml(listingUrl(record))}" target="_blank" rel="noopener" aria-label="Open historical listing for ${escapeHtml(record.title || 'this property')}"><img src="${escapeHtml(photoUrl)}" alt="Primary photo for ${escapeHtml(record.title || 'this property')}" loading="lazy" onerror="this.closest('a').remove()"></a>` : '';
     const date = archived ? String(record.disappearedAt).slice(0, 10) : record.soldDate;
     const dateLabel = archived ? 'No longer advertised' : 'Sold';
     const amount = archived ? (record.price ? `Listed at ${money(record.price)}` : 'Prior MLS listing') : money(record.soldPrice);
-    return `<article class="record previous-listing">${photo}<strong>${dateLabel}</strong><p>${escapeHtml(record.title || '')}</p><p>${amount}${record.acres ? ` · ${escapeHtml(record.acres)} acres` : ''}${date ? ` · ${escapeHtml(new Date(`${date}T12:00:00`).toLocaleDateString())}` : ''}</p>${archived && record.lastSeenAt ? `<p class="meta">Last seen ${escapeHtml(new Date(`${String(record.lastSeenAt).slice(0, 10)}T12:00:00`).toLocaleDateString())}</p>` : ''}${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open historical listing ↗</a>` : ''}</article>`;
+    return `<article class="record previous-listing">${photo}<strong>${dateLabel}</strong><p>${escapeHtml(record.title || '')}</p><p>${amount}${record.acres ? ` · ${escapeHtml(record.acres)} acres` : ''}${date ? ` · ${escapeHtml(new Date(`${date}T12:00:00`).toLocaleDateString())}` : ''}</p>${archived && record.lastSeenAt ? `<p class="meta">Last seen ${escapeHtml(new Date(`${String(record.lastSeenAt).slice(0, 10)}T12:00:00`).toLocaleDateString())}</p>` : ''}${record.url ? `<a href="${escapeHtml(listingUrl(record))}" target="_blank" rel="noopener">Open historical listing ↗</a>` : ''}</article>`;
   };
   const parcelQuestUsageKey = () => `siskiyou-county-lookup:${new Date().toISOString().slice(0, 7)}`;
   const parcelMapOwnerLink = () => '<a class="parcel-map-owner-link" href="https://map.parcelmap.app/california/siskiyou" target="_blank" rel="noopener noreferrer">Open on Parcel Map ↗</a>';
