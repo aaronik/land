@@ -267,6 +267,14 @@
     "confidence": "manually verified",
     "notes": "best guess based on size"
   },
+  "20260269": {
+    "apns": [
+      "030-380-390"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
   "20260307": {
     "apns": [
       "057-141-060"
@@ -1090,6 +1098,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "map pics"
+  },
+  "OR26169266": {
+    "apns": [
+      "022-160-030"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "dot location / acreage"
   },
   "SN26070678": {
     "apns": [

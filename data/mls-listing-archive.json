@@ -11429,6 +11429,46 @@
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T16:01:24.940Z",
       "lastSeenAt": "2026-09-15T16:01:24.940Z"
+    },
+    "20261094:036-200-070": {
+      "APN": "036-200-070",
+      "kind": "private",
+      "mlsNumber": "20261094",
+      "title": "Parcel 2 Melo Rd, Mount Shasta, CA 96067",
+      "price": 80000,
+      "acres": 0.8,
+      "listingDate": "",
+      "propertyType": "land",
+      "url": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261094/Parcel-2-Melo-Rd-Mount-Shasta-CA-96067",
+      "primaryPhoto": "",
+      "mlsId": "CA-SISKIYOU",
+      "listingSource": "Retained MLS listing",
+      "parcelMatchSource": "manual override: user-verified listing APN",
+      "parcelMatchConfidence": "manually verified",
+      "firstSeenAt": "2026-09-03T15:36:23.590Z",
+      "lastSeenAt": "2026-09-03T15:36:23.590Z",
+      "disappearedAt": "2026-09-03T15:36:23.590Z",
+      "disappearanceDateSource": "retained research record"
+    },
+    "20261116:027-070-170": {
+      "APN": "027-070-170",
+      "kind": "private",
+      "mlsNumber": "20261116",
+      "title": "4 acres Bartel - McCloud River, McCloud, CA 96057",
+      "price": 250000,
+      "acres": 4,
+      "listingDate": "",
+      "propertyType": "land",
+      "url": "https://www.mountshastarealty.com/idx/listing/CA-SISKIYOU/20261116/4-acres-Bartel-McCloud-River-McCloud-CA-96057",
+      "primaryPhoto": "",
+      "mlsId": "CA-SISKIYOU",
+      "listingSource": "Retained MLS listing",
+      "parcelMatchSource": "manual override: user-verified listing APN",
+      "parcelMatchConfidence": "manually verified",
+      "firstSeenAt": "2026-09-12T22:13:28.077Z",
+      "lastSeenAt": "2026-09-12T22:13:28.077Z",
+      "disappearedAt": "2026-09-12T22:13:28.077Z",
+      "disappearanceDateSource": "retained research record"
     }
   }
 }
