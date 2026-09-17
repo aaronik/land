@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T18:13:14.280Z",
+  "generatedAt": "2026-09-17T18:28:51.263Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -424,6 +424,19 @@
         "pubdate",
         "effectdate",
         "listing_status"
+      ]
+    },
+    "incorporated_places": {
+      "source": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Places_CouSub_ConCity_SubMCD/MapServer/4",
+      "featureCount": 9,
+      "fields": [
+        "OBJECTID",
+        "NAME",
+        "BASENAME",
+        "GEOID",
+        "PLACE",
+        "STATE",
+        "FUNCSTAT"
       ]
     }
   }

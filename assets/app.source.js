@@ -357,6 +357,7 @@ function addPmtilesSource(id) {
     pct_markers: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>',
     groundwater_basins: '<a href="https://data.cnra.ca.gov/dataset/i08-b118-ca-groundwaterbasins" target="_blank">CA DWR Bulletin 118 groundwater basins</a>',
     groundwater_wells: '<a href="https://data.cnra.ca.gov/dataset/well-completion-reports" target="_blank">CA DWR Well Completion Reports</a>',
+    incorporated_places: '<a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html" target="_blank">U.S. Census Bureau TIGER/Line incorporated places</a>',
     zoning: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>'
   };
   map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id], ...(id === 'parcels' ? { promoteId: 'APN' } : {}) });
@@ -421,6 +422,7 @@ function toggleLayer(id, visibleValue) {
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
     waterways: ['waterways-casing', 'waterways', 'waterway-labels', 'springs'],
     'place-names': ['waterbodies', 'waterbody-labels', 'summits', 'towns'],
+    'incorporated-places': ['incorporated-places-red', 'incorporated-places-white-dashes'],
     huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels'],
     wetlands: ['wetlands'],
     'critical-habitat': ['critical-habitat-final', 'critical-habitat-proposed'],

@@ -167,6 +167,12 @@ const LAYERS = {
     bbox: SISKIYOU_BBOX,
     fields: ['OBJECTID', 'gaz_id', 'gaz_name', 'gaz_featureclass', 'fcode', 'state_alpha', 'county_name']
   },
+  incorporated_places: {
+    name: 'U.S. Census incorporated places',
+    url: 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Places_CouSub_ConCity_SubMCD/MapServer/4',
+    bbox: SISKIYOU_BBOX,
+    fields: ['OBJECTID', 'NAME', 'BASENAME', 'GEOID', 'PLACE', 'STATE', 'FUNCSTAT']
+  },
   springs: {
     name: 'USGS NHD springs',
     url: 'https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/0',

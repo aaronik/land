@@ -78,6 +78,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('waterbodies');
   addPmtilesSource('summits');
   addPmtilesSource('towns');
+  addPmtilesSource('incorporated_places');
   addPmtilesSource('springs');
   map.addSource('sales', { type: 'geojson', data: saleGeoJson() });
   map.addSource('sale-points', { type: 'geojson', data: salePointGeoJson() });
@@ -255,6 +256,16 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
       'text-offset': [0, 0.2], 'text-anchor': 'bottom', 'text-padding': 5
     },
     paint: { 'text-color': '#f4dc9d', 'text-halo-color': 'rgba(39, 31, 19, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
+  });
+  map.addLayer({
+    id: 'incorporated-places-red', type: 'line', source: 'incorporated_places', 'source-layer': 'incorporated_places', minzoom: 6,
+    layout: { visibility: 'none', 'line-cap': 'butt', 'line-join': 'round' },
+    paint: { 'line-color': '#d52828', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 2.2, 14, 4.4], 'line-opacity': 0.98 }
+  });
+  map.addLayer({
+    id: 'incorporated-places-white-dashes', type: 'line', source: 'incorporated_places', 'source-layer': 'incorporated_places', minzoom: 6,
+    layout: { visibility: 'none', 'line-cap': 'butt', 'line-join': 'round' },
+    paint: { 'line-color': '#fff', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.15, 14, 2.3], 'line-dasharray': [1.25, 1.25], 'line-opacity': 1 }
   });
   map.addLayer({
     id: 'towns', type: 'symbol', source: 'towns', 'source-layer': 'towns', minzoom: 7,
