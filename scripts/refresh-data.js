@@ -100,11 +100,14 @@ function archiveActiveListings(archive, records, generatedAt) {
 function archivedRecords(archive) {
   return Object.values(archive.listings).filter(record => record.disappearedAt && record.APN);
 }
-function restoreArchivedResearchListings(archive, generatedAt) {
-  const research = loadJson(researchFile, emptyQueue());
+function restoreArchivedResearchListings(archive, generatedAt, research = loadJson(researchFile, emptyQueue()), overrides = PARCEL_OVERRIDES, links = MLS_APN_LINKS) {
   for (const [mls, item] of Object.entries(research.items || {})) {
     if (item.active !== false || !item.listing || archive.listings[normalizeMls(mls)]) continue;
-    const link = MLS_APN_LINKS[normalizeMls(mls)];
+    // Overrides may have been added after the listing's last active refresh,
+    // so there need not be a persisted MLS linkage yet.
+    const override = overrides[normalizeMls(mls)];
+    const overrideApns = (override?.apns || []).map(normalizeApn).filter(Boolean);
+    const link = overrideApns.length ? override : links[normalizeMls(mls)];
     if (!link?.apns?.length) continue;
     const listed = item.listing;
     for (const apn of link.apns.map(normalizeApn).filter(Boolean)) {
@@ -792,4 +795,4 @@ async function main() {
 }
 
 if (require.main === module) main().catch(error => { console.error(error.stack || error); process.exit(1); });
-module.exports = { addressStreetKey, addressStreetsEquivalent, countyStreetPoint, normalizeStreet, pointDistanceMeters, preferredUnmappedLocation, selectCountyAddressCandidate, streetCandidatesForCity, streetSimilarity };
+module.exports = { restoreArchivedResearchListings, addressStreetKey, addressStreetsEquivalent, countyStreetPoint, normalizeStreet, pointDistanceMeters, preferredUnmappedLocation, selectCountyAddressCandidate, streetCandidatesForCity, streetSimilarity };

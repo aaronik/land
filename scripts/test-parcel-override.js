@@ -42,5 +42,21 @@ assert.equal(moved.features.length, 2);
 assert.ok(!moved.features.some(feature => ['021-520-380', '021-520-390'].includes(feature.properties.APN)));
 assert.ok(moved.features.some(feature => feature.properties.APN === '021-520-400'));
 
+for (const field of ['salesHistory', 'archivedListings']) {
+  const history = { mlsNumber: '20261116', APN: '027-070-170' };
+  const historicalFeature = {
+    ...countyFeature(history.APN),
+    properties: { ...countyFeature(history.APN).properties, records: [], [field]: [history] }
+  };
+  const withHistory = { ...input, features: [...input.features, historicalFeature] };
+  const patched = patchMapData(withHistory, listing.mlsNumber, override, override.apns.map(countyFeature));
+  assert.deepEqual(patched.features.find(feature => feature.properties.APN === history.APN), historicalFeature);
+  const sameParcel = patchMapData(withHistory, listing.mlsNumber, { ...override, apns: [history.APN] }, [countyFeature(history.APN)]);
+  const parcel = sameParcel.features.filter(feature => feature.properties.APN === history.APN);
+  assert.equal(parcel.length, 1, 'merge into a historical parcel without duplicating it');
+  assert.deepEqual(parcel[0].properties[field], [history]);
+  assert.equal(parcel[0].properties.records[0].mlsNumber, listing.mlsNumber);
+}
+
 assert.throws(() => patchMapData(input, 'MISSING', override, []), /not in current map data/);
 console.log('Passed: incremental parcel override map patching.');

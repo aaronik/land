@@ -85,7 +85,7 @@ function patchMapData(data, mls, override, parcelFeatures) {
   const existingByApn = new Map();
   for (const feature of data.features) {
     const records = (feature.properties?.records || []).filter(record => !matchesMls(record));
-    if (!records.length) continue;
+    if (!records.length && !feature.properties?.salesHistory?.length && !feature.properties?.archivedListings?.length) continue;
     const retained = { ...feature, properties: { ...feature.properties, records } };
     retainedFeatures.push(retained);
     existingByApn.set(normalizeApn(retained.properties.APN), retained);
