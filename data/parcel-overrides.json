@@ -1083,6 +1083,30 @@
     "confidence": "manually verified",
     "notes": "Photos / acreage"
   },
+  "20261130": {
+    "apns": [
+      "057-482-010"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "addy"
+  },
+  "20261132": {
+    "apns": [
+      "011-460-030"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
+  "20261139": {
+    "apns": [
+      "037-110-260"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Rough pictures, might be wrong"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
