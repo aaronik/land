@@ -8,6 +8,7 @@ const SOURCE_URL = 'https://www.siskiyou.news/2025/08/29/siskiyou-county-tax-col
 const TAX_BASE = 'https://common1.mptsweb.com/MBC';
 const GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query';
 const outFile = path.join(__dirname, '..', 'data', 'siskiyou-tax-delinquent.json');
+const crawlFile = path.join(__dirname, '..', 'data', 'siskiyou-tax-delinquent-crawl.json');
 const APN_RE = /(\d{3})-(\d{3})-(\d{3})-(\d{3})\s+\$([\d,]+\.\d{2})/g;
 
 function parseNotice(html) {
@@ -52,18 +53,30 @@ async function parcelFeatures(records) {
   }
   return features;
 }
+function crawlCandidates() {
+  try {
+    const data = JSON.parse(fs.readFileSync(crawlFile, 'utf8'));
+    return (data.features || []).flatMap(feature => feature.properties?.records || []).map(record => ({ APN: record.APN })).filter(record => record.APN);
+  } catch { return []; }
+}
 async function refreshSiskiyouTaxDelinquent() {
-  const notice = await (await fetchOk(SOURCE_URL)).text();
-  const candidates = parseNotice(notice);
-  if (!candidates.length) throw new Error('No candidate APNs parsed from the published Siskiyou notice.');
+  const discovered = crawlCandidates();
+  let candidates = discovered;
+  let candidateSource = 'countywide crawl';
+  if (!candidates.length) {
+    const notice = await (await fetchOk(SOURCE_URL)).text();
+    candidates = parseNotice(notice);
+    candidateSource = '2025 published notice (bootstrap fallback)';
+  }
+  if (!candidates.length) throw new Error('No tax-delinquent candidate APNs are available.');
   const current = [];
   for (const candidate of candidates) {
     try { const record = await currentTaxStatus(candidate); if (record) current.push(record); } catch (error) { console.warn(`Tax lookup failed for ${candidate.APN}: ${error.message}`); }
   }
   const features = await parcelFeatures(current);
-  const output = { generatedAt: new Date().toISOString(), source: SOURCE_URL, notice: 'Current status is checked monthly against Siskiyou County’s per-parcel tax system. Balances can change; verify with the County.', counts: { noticeCandidates: candidates.length, currentlyDefaulted: current.length, mappedParcels: features.length }, type: 'FeatureCollection', features };
+  const output = { generatedAt: new Date().toISOString(), source: `Siskiyou County tax system (current per-parcel lookup; candidates: ${candidateSource})`, notice: 'Current status is checked against Siskiyou County’s per-parcel tax system. Balances can change; verify with the County.', counts: { candidateApns: candidates.length, currentlyDefaulted: current.length, mappedParcels: features.length }, type: 'FeatureCollection', features };
   fs.writeFileSync(outFile, `${JSON.stringify(output)}\n`);
   return output;
 }
 if (require.main === module) refreshSiskiyouTaxDelinquent().then(output => console.log(`Wrote ${output.counts.mappedParcels} currently tax-defaulted Siskiyou parcels.`)).catch(error => { console.error(error.stack || error); process.exit(1); });
-module.exports = { parseNotice, currentTaxStatus, refreshSiskiyouTaxDelinquent };
+module.exports = { crawlCandidates, defaultedTaxFields, parcelFeatures, parseNotice, currentTaxStatus, refreshSiskiyouTaxDelinquent };
