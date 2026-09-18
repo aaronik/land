@@ -11,7 +11,7 @@ import { ParcelAdjustmentControl } from './map/parcel-adjustment.js';
 import { initializeMobileSheet } from './state/ui.js';
 import { updateUrlParameter } from './state/url.js';
 
-const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'previous-listing': '#55768d', 'public-land': '#ff9d4d', 'public-home': '#b94b18' };
+const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'previous-listing': '#55768d', 'public-land': '#ff9d4d', 'public-home': '#b94b18', 'tax-delinquent': '#c43c78' };
 // Colors follow the unique-value renderer saved on Siskiyou County's official
 // zoning layer. MapLibre cannot reproduce every ArcGIS hatch, so buffered
 // variants retain their official zoning-family color.
@@ -712,9 +712,10 @@ document.querySelector('#continue-parcelquest').addEventListener('click', async 
 
 Promise.all([
   fetch('data/parcels.json').then(response => { if (!response.ok) throw new Error(`sale data returned ${response.status}`); return response.json(); }),
+  fetch('data/siskiyou-tax-delinquent.json').then(response => response.ok ? response.json() : { features: [] }),
   fetch('data/generated/apn-index.json').then(response => { if (!response.ok) throw new Error(`parcel index returned ${response.status}`); return response.json(); })
-]).then(([sales, index]) => {
-  saleData = sales;
+]).then(([sales, delinquent, index]) => {
+  saleData = { ...sales, features: [...(sales.features || []), ...(delinquent.features || [])] };
   apnIndex = index;
   updateSales();
   restoreInitialSelectedParcel();

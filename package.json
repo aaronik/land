@@ -8,6 +8,7 @@
     "dev": "vite",
     "start": "vite preview",
     "refresh": "node scripts/refresh-data.js",
+    "refresh:tax-delinquent": "node scripts/refresh-siskiyou-tax-delinquent.js",
     "override": "node scripts/parcel-override.js",
     "research": "node scripts/apn-research.js",
     "parcel-evidence": "node scripts/parcel-evidence.js",

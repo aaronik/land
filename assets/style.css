@@ -76,6 +76,8 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .swatch.private-land { background: #42d7a6; } .swatch.private-home { background: #7653b5; }
 .swatch.previous-listing { background: #55768d; }
 .swatch.public-land { background: #ff9d4d; } .swatch.public-home { background: #b94b18; }
+.swatch.tax-delinquent { background: #c43c78; }
+.delinquent-note { margin: 8px 0 0; color: #687169; font-size: 10px; line-height: 1.4; }
 .swatch.public-overlay { background: #4e9f54; } .swatch.zoning-overlay { background: linear-gradient(135deg, #38a800 0 25%, #ff7f7f 25% 50%, #aa66cd 50% 75%, #ffff8c 75%); border: 1px solid #6e6e6e; }
 .swatch.watershed-overlay { border: 2px solid #44d7e8; background: rgba(68,215,232,.22); }
 .swatch.wetlands-overlay { border: 1px solid #315b9e; background: #4d7dcc; }
