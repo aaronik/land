@@ -1,7 +1,7 @@
 'use strict';
 
-// Local-only, resumable crawl of Siskiyou's public tax lookup. It deliberately
-// uses one request at a time; do not add this to a scheduled workflow.
+// Resumable Siskiyou current-roll crawl. This can run locally or in bounded
+// GitHub Actions batches. Progress is deliberately tracked in data/.
 const fs = require('fs');
 const path = require('path');
 const { setTimeout: sleep } = require('node:timers/promises');
@@ -11,17 +11,19 @@ const { defaultedTaxFields, parcelFeatures } = require('./refresh-siskiyou-tax-d
 const GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query';
 const TAX_BASE = 'https://common1.mptsweb.com/MBC';
 const root = path.join(__dirname, '..');
-const checkpointFile = path.join(root, '.cache', 'siskiyou-tax-crawl.json');
-const outFile = path.join(root, 'data', 'siskiyou-tax-delinquent-crawl.json');
+const checkpointFile = path.join(root, 'data', 'siskiyou-tax-crawl-progress.json');
+const partialFile = path.join(root, 'data', 'siskiyou-tax-delinquent-crawl.json');
 const finalFile = path.join(root, 'data', 'siskiyou-tax-delinquent.json');
 const delayMs = Math.max(0, Number(process.env.TAX_CRAWL_DELAY_MS || 250));
 const limit = Math.max(0, Number(process.env.TAX_CRAWL_PREFIX_LIMIT || 0));
+const maxMinutes = Math.max(0, Number(process.env.TAX_CRAWL_MAX_MINUTES || 0));
+const deadline = maxMinutes ? Date.now() + maxMinutes * 60_000 : Infinity;
 
 const apnFromAssessment = asmt => `${asmt.slice(0, 3)}-${asmt.slice(3, 6)}-${asmt.slice(6, 9)}`;
 const save = state => { fs.mkdirSync(path.dirname(checkpointFile), { recursive: true }); fs.writeFileSync(checkpointFile, `${JSON.stringify(state)}\n`); };
-const load = () => {
-  try { return JSON.parse(fs.readFileSync(checkpointFile, 'utf8')); } catch { return null; }
-};
+const load = () => { try { return JSON.parse(fs.readFileSync(checkpointFile, 'utf8')); } catch { return null; } };
+const outOfTime = () => Date.now() >= deadline;
+
 async function prefixes() {
   const values = [], seen = new Set();
   for (let offset = 0;; offset += 2000) {
@@ -49,36 +51,55 @@ async function defaultedRecord(row) {
   const APN = apnFromAssessment(row.Asmt);
   return { APN, kind: 'tax-delinquent', category: 'tax-delinquent', county: 'Siskiyou', title: `Siskiyou County tax-defaulted parcel ${APN}`, redemptionAmount: balance, paymentPlan, status: 'TAX-DEFAULTED', source: 'Siskiyou County tax system (current per-parcel lookup)', sourceUrl: url };
 }
-async function publish(records, state) {
-  const unique = [...new Map(records.map(record => [record.APN, record])).values()];
+async function publish(state) {
+  const unique = [...new Map(state.defaulted.map(record => [record.APN, record])).values()];
   const features = await parcelFeatures(unique);
-  const output = { generatedAt: new Date().toISOString(), source: 'Siskiyou County tax system (countywide current-roll crawl)', notice: 'Current status was checked by a local, resumable countywide crawl. Balances can change; verify with Siskiyou County.', counts: { scannedPrefixes: state.completed.length, totalPrefixes: state.prefixes.length, scannedAssessments: state.scannedAssessments, currentlyDefaulted: unique.length, mappedParcels: features.length, complete: state.completed.length === state.prefixes.length }, type: 'FeatureCollection', features };
-  fs.writeFileSync(outFile, `${JSON.stringify(output)}\n`);
-  if (output.counts.complete) fs.writeFileSync(finalFile, `${JSON.stringify(output)}\n`);
-  console.log(`${output.counts.complete ? 'Published' : 'Saved partial'} ${features.length} mapped defaulted parcels (${state.completed.length}/${state.prefixes.length} prefixes).`);
+  const complete = state.completed.length === state.prefixes.length;
+  const output = { generatedAt: new Date().toISOString(), source: 'Siskiyou County tax system (countywide current-roll crawl)', notice: 'Current status was checked by a resumable countywide crawl. Balances can change; verify with Siskiyou County.', counts: { scannedPrefixes: state.completed.length, totalPrefixes: state.prefixes.length, scannedAssessments: state.scannedAssessments, currentlyDefaulted: unique.length, mappedParcels: features.length, complete }, type: 'FeatureCollection', features };
+  fs.writeFileSync(partialFile, `${JSON.stringify(output)}\n`);
+  if (complete) fs.writeFileSync(finalFile, `${JSON.stringify(output)}\n`);
+  return output;
 }
 async function main() {
+  try {
+    const prior = JSON.parse(fs.readFileSync(partialFile, 'utf8'));
+    if (prior?.counts?.complete && !process.env.TAX_CRAWL_RESTART) {
+      console.log(JSON.stringify({ complete: true, scannedPrefixes: prior.counts.scannedPrefixes, totalPrefixes: prior.counts.totalPrefixes, message: 'Existing crawl is complete; set TAX_CRAWL_RESTART=1 to start a new crawl.' }));
+      return;
+    }
+  } catch { /* No prior crawl output. */ }
   let state = load();
-  if (!state || !Array.isArray(state.prefixes) || !Array.isArray(state.completed) || !Array.isArray(state.defaulted)) state = { prefixes: await prefixes(), completed: [], defaulted: [], scannedAssessments: 0, startedAt: new Date().toISOString() };
+  if (!state || !Array.isArray(state.prefixes) || !Array.isArray(state.completed) || !Array.isArray(state.defaulted)) {
+    state = { prefixes: await prefixes(), completed: [], defaulted: [], scannedAssessments: 0, startedAt: new Date().toISOString(), active: null };
+  }
+  state.active ||= null;
   const complete = new Set(state.completed);
-  const todo = state.prefixes.filter(prefix => !complete.has(prefix));
-  const run = limit ? todo.slice(0, limit) : todo;
-  console.log(`Crawling ${run.length} prefixes; ${state.completed.length}/${state.prefixes.length} are already checkpointed. Delay: ${delayMs}ms.`);
-  for (const [index, prefix] of run.entries()) {
-    const rows = await prefixAssessments(prefix);
-    const seenAssessments = new Set();
-    for (const row of rows) {
-      if (seenAssessments.has(row.Asmt)) continue;
-      seenAssessments.add(row.Asmt); state.scannedAssessments += 1;
+  let prefixesRun = 0;
+  console.log(`Resuming ${state.completed.length}/${state.prefixes.length} prefixes; deadline: ${Number.isFinite(deadline) ? new Date(deadline).toISOString() : 'none'}.`);
+  while (!outOfTime() && (!limit || prefixesRun < limit)) {
+    if (!state.active) {
+      const prefix = state.prefixes.find(value => !complete.has(value));
+      if (!prefix) break;
+      state.active = { prefix, rows: await prefixAssessments(prefix), next: 0 };
+      save(state);
+    }
+    const active = state.active;
+    while (active.next < active.rows.length && !outOfTime()) {
+      const row = active.rows[active.next++];
+      state.scannedAssessments += 1;
       const record = await defaultedRecord(row);
       if (record) state.defaulted.push(record);
-      if (delayMs) await sleep(delayMs);
+      state.updatedAt = new Date().toISOString(); save(state);
+      if (delayMs && !outOfTime()) await sleep(delayMs);
     }
-    state.completed.push(prefix); complete.add(prefix); state.updatedAt = new Date().toISOString(); save(state);
-    console.log(`${state.completed.length}/${state.prefixes.length}: ${prefix} (${rows.length} assessments; ${state.defaulted.length} defaulted total)`);
-    if (delayMs && index < run.length - 1) await sleep(delayMs);
+    if (active.next < active.rows.length) break;
+    state.completed.push(active.prefix); complete.add(active.prefix); state.active = null; prefixesRun += 1;
+    state.updatedAt = new Date().toISOString(); save(state);
+    console.log(`${state.completed.length}/${state.prefixes.length}: ${active.prefix} (${active.rows.length} assessments; ${state.defaulted.length} defaulted total)`);
+    if (delayMs && !outOfTime()) await sleep(delayMs);
   }
-  await publish(state.defaulted, state);
+  const output = await publish(state);
+  console.log(JSON.stringify({ complete: output.counts.complete, scannedPrefixes: output.counts.scannedPrefixes, totalPrefixes: output.counts.totalPrefixes }));
 }
 if (require.main === module) main().catch(error => { console.error(error.stack || error); process.exit(1); });
 module.exports = { apnFromAssessment, prefixAssessments, prefixes };

@@ -1,0 +1,57 @@
+name: Continue Siskiyou tax crawl
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: write
+
+concurrency:
+  group: siskiyou-tax-crawl
+  cancel-in-progress: false
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Crawl current-roll tax records for up to five hours
+        env:
+          TAX_CRAWL_MAX_MINUTES: 325
+          TAX_CRAWL_DELAY_MS: 250
+        run: npm run crawl:tax-delinquent
+      - name: Commit crawl progress
+        id: commit
+        run: |
+          if git diff --quiet -- data/siskiyou-tax-crawl-progress.json data/siskiyou-tax-delinquent-crawl.json data/siskiyou-tax-delinquent.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/siskiyou-tax-crawl-progress.json data/siskiyou-tax-delinquent-crawl.json data/siskiyou-tax-delinquent.json
+            git commit -m "continue Siskiyou tax crawl $(date -u +'%Y-%m-%dT%H:%MZ')"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Deploy completed countywide layer
+        if: ${{ success() }}
+        run: |
+          COMPLETE=$(node -p "require('./data/siskiyou-tax-delinquent-crawl.json').counts.complete")
+          if [ "$COMPLETE" = "true" ]; then npm run deploy; fi
+      - name: Continue crawl in a new run
+        if: ${{ success() }}
+        env:
+          GH_TOKEN: ${{ secrets.TAX_CRAWL_DISPATCH_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          COMPLETE=$(node -p "require('./data/siskiyou-tax-delinquent-crawl.json').counts.complete")
+          if [ "$COMPLETE" != "true" ]; then
+            gh workflow run continue-siskiyou-tax-crawl.yml --repo "$REPOSITORY"
+          fi
