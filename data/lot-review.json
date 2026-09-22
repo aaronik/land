@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T20:49:05.340Z",
+  "generatedAt": "2026-09-22T16:03:58.724Z",
   "count": 220,
   "listings": [
     {
@@ -11,6 +11,18 @@
         -122.516426
       ],
       "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-MRMLS/SN26192210/Lot-285-286-Cougar-St-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261151",
+      "title": "Lot 307 Dove St., Hornbrook, CA 96044",
+      "acres": 4.84,
+      "latLng": [
+        41.906887599384326,
+        -122.51472420665009
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261151/Lot-307-Dove-St-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -112,13 +124,13 @@
     },
     {
       "mlsNumber": "20261093",
-      "title": "Lot 44 Lake Cove Rd, Hornbrook, CA 96067",
+      "title": "Lot 44 Lake Cove Rd, Hornbrook, CA 96044",
       "acres": 2.5,
       "latLng": [
-        41.2921686035008,
-        -122.3226887285016
+        41.906887599384326,
+        -122.51472420665009
       ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261093/Lot-44-Lake-Cove-Rd-Hornbrook-CA-96067",
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261093/Lot-44-Lake-Cove-Rd-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -1271,18 +1283,6 @@
         -122.37076544683492
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260280/Unit-5-Lot-59-Rodriquez-Pl-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250686",
-      "title": "Lot 3 Quail Hill Subdivision, Mount Shasta, CA 96067",
-      "acres": 2.5,
-      "latLng": [
-        41.308244,
-        -122.299503
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250686/Lot-3-Quail-Hill-Subdivision-Mount-Shasta-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
