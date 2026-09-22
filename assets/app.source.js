@@ -701,6 +701,7 @@ document.querySelector('#reset-map-layers').addEventListener('click', () => {
   } catch { /* Storage may be disabled. */ }
   applyMapLayerVisibility();
   updateSales();
+  clearSelectedParcel();
 });
 document.querySelector('#cancel-parcelquest').addEventListener('click', () => document.querySelector('#parcelquest-warning').close());
 document.querySelector('#continue-parcelquest').addEventListener('click', async () => {
