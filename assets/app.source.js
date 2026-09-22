@@ -715,7 +715,16 @@ Promise.all([
   fetch('data/siskiyou-tax-delinquent.json').then(response => response.ok ? response.json() : { features: [] }),
   fetch('data/generated/apn-index.json').then(response => { if (!response.ok) throw new Error(`parcel index returned ${response.status}`); return response.json(); })
 ]).then(([sales, delinquent, index]) => {
-  saleData = { ...sales, features: [...(sales.features || []), ...(delinquent.features || [])] };
+  saleData = {
+    ...sales,
+    features: [...(sales.features || []), ...(delinquent.features || []).map(feature => ({
+      ...feature,
+      properties: {
+        ...feature.properties,
+        records: (feature.properties.records || []).map(record => record.kind === 'tax-delinquent' ? { ...record, checkedAt: record.checkedAt || delinquent.generatedAt } : record)
+      }
+    }))]
+  };
   apnIndex = index;
   updateSales();
   restoreInitialSelectedParcel();
