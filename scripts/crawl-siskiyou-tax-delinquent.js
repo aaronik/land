@@ -61,6 +61,11 @@ async function publish(state) {
   return output;
 }
 async function main() {
+  if (process.env.TAX_CRAWL_RESTART) {
+    fs.rmSync(checkpointFile, { force: true });
+    fs.rmSync(partialFile, { force: true });
+    console.log('Starting a new countywide crawl; prior checkpoint cleared.');
+  }
   try {
     const prior = JSON.parse(fs.readFileSync(partialFile, 'utf8'));
     if (prior?.counts?.complete && !process.env.TAX_CRAWL_RESTART) {

@@ -2,6 +2,12 @@ name: Continue Siskiyou tax crawl
 
 on:
   workflow_dispatch:
+    inputs:
+      continuation:
+        description: Internal continuation run; do not enable manually.
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   actions: write
@@ -26,6 +32,7 @@ jobs:
         env:
           TAX_CRAWL_MAX_MINUTES: 325
           TAX_CRAWL_DELAY_MS: 250
+          TAX_CRAWL_RESTART: ${{ inputs.continuation == false && '1' || '' }}
         run: npm run crawl:tax-delinquent
       - name: Commit crawl progress
         id: commit
@@ -53,5 +60,5 @@ jobs:
         run: |
           COMPLETE=$(node -p "require('./data/siskiyou-tax-delinquent-crawl.json').counts.complete")
           if [ "$COMPLETE" != "true" ]; then
-            gh workflow run continue-siskiyou-tax-crawl.yml --repo "$REPOSITORY"
+            gh workflow run continue-siskiyou-tax-crawl.yml --repo "$REPOSITORY" --field continuation=true
           fi
