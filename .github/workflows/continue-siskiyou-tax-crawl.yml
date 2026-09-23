@@ -37,16 +37,40 @@ jobs:
       - name: Commit crawl progress
         id: commit
         run: |
-          if git diff --quiet -- data/siskiyou-tax-crawl-progress.json data/siskiyou-tax-delinquent-crawl.json data/siskiyou-tax-delinquent.json; then
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/siskiyou-tax-crawl-progress.json data/siskiyou-tax-delinquent-crawl.json data/siskiyou-tax-delinquent.json
+          if git diff --cached --quiet; then
+            echo "Crawl data is unchanged."
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/siskiyou-tax-crawl-progress.json data/siskiyou-tax-delinquent-crawl.json data/siskiyou-tax-delinquent.json
             git commit -m "continue Siskiyou tax crawl $(date -u +'%Y-%m-%dT%H:%MZ')"
-            git push
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+            # Other workflows may update main during a five-hour crawl. Rebase
+            # the checkpoint commit, never force-push over their work.
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo "changed=true" >> "$GITHUB_OUTPUT"
+                break
+              fi
+              if [ "$attempt" -eq 5 ]; then
+                echo "Could not push crawl checkpoint after five attempts." >&2
+                exit 1
+              fi
+              sleep 10
+            done
           fi
+      - name: Preserve checkpoint if crawl or push fails
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: siskiyou-tax-crawl-recovery-${{ github.run_id }}
+          path: |
+            data/siskiyou-tax-crawl-progress.json
+            data/siskiyou-tax-delinquent-crawl.json
+          if-no-files-found: warn
+          retention-days: 30
       - name: Deploy completed countywide layer
         if: ${{ success() }}
         run: |
