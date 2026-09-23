@@ -11,6 +11,7 @@ const generated = path.join(root, 'data', 'generated');
 const configs = {
   parcels: { min: 6, max: 15, fields: LAYERS.parcels.fields.filter(field => field !== 'OBJECTID') },
   zoning: { min: 6, max: 14, fields: LAYERS.zoning.fields.filter(field => field !== 'OBJECTID') },
+  municipal_zoning: { min: 6, max: 14, fields: LAYERS.municipal_zoning.fields },
   roads: { min: 6, max: 14, fields: LAYERS.roads.fields.filter(field => field !== 'FID') },
   forest_roads: { min: 6, max: 14, fields: LAYERS.forest_roads.fields.filter(field => field !== 'objectid') },
   railroads: { min: 6, max: 14, fields: LAYERS.railroads.fields.filter(field => field !== 'OBJECTID') },

@@ -16,7 +16,7 @@
     "layers:download": "node scripts/download-layers.js",
     "layers:build": "node scripts/make-pmtiles.js",
     "build": "vite build",
-    "test": "node scripts/test-refresh-network.js && node scripts/test-refresh-fetch.js && node scripts/test.js && node scripts/test-polygon-draw-geometry.js && node scripts/test-parcel-resolver.js && node scripts/test-parcel-override.js && node scripts/test-apn-research.js && node scripts/test-address-matcher.js && node scripts/test-layers.js && node scripts/test-listing-view-model.js && node scripts/test-listing-url.js && node scripts/test-listing-archive.js",
+    "test": "node scripts/test-refresh-network.js && node scripts/test-refresh-fetch.js && node scripts/test.js && node scripts/test-polygon-draw-geometry.js && node scripts/test-parcel-resolver.js && node scripts/test-parcel-override.js && node scripts/test-apn-research.js && node scripts/test-address-matcher.js && node scripts/test-layers.js && node scripts/test-municipal-zoning.js && node scripts/test-listing-view-model.js && node scripts/test-listing-url.js && node scripts/test-listing-archive.js",
     "release": "npm run test && npm run deploy",
     "deploy": "npm run build && node scripts/deploy.js"
   },

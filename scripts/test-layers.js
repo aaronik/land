@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const { fetchArcGISLayer, parseSoilGml, normalizeApn, listingConfidence, LAYERS } = require('./layers');
+const { webMercatorToWgs84 } = require('./download-layers');
 
 async function testPaginationCompleteness() {
   const calls = [];
@@ -41,6 +42,19 @@ function testMatchingConfidence() {
   assert.equal(listingConfidence({ source: 'county address point', listedAcres: 100, gisAcres: 40 }), 'possible_multi_parcel');
   assert.equal(listingConfidence({ source: 'county address point', listedAcres: 20, gisAcres: 100 }), 'ambiguous');
   assert.equal(listingConfidence({ source: '', listedAcres: 20, gisAcres: null }), 'unmatched');
+}
+
+function testMunicipalZoningProjection() {
+  const [longitude, latitude] = webMercatorToWgs84([-13614896.6061, 5056230.1187]);
+  assert(Math.abs(longitude + 122.3047) < 0.001);
+  assert(Math.abs(latitude - 41.2969) < 0.001);
+}
+
+function testMunicipalZoningSource() {
+  const municipal = LAYERS.municipal_zoning;
+  assert.match(municipal.url, /OtheringBelonging\/CAZoning/);
+  assert.deepEqual(municipal.cities, ['Dorris', 'Dunsmuir', 'Etna', 'Fort Jones', 'Montague', 'Mount Shasta', 'Tulelake', 'Weed', 'Yreka']);
+  assert.deepEqual(municipal.fields, ['zoning', 'zoneclass', 'jurisdiction', 'map_source', 'map_date']);
 }
 
 function testWildfirePerimeterSource() {
@@ -111,6 +125,8 @@ function testCriticalHabitatSources() {
   await testIncompleteDownloadFails();
   testSoilGmlParsing();
   testMatchingConfidence();
+  testMunicipalZoningProjection();
+  testMunicipalZoningSource();
   testActiveRailroadSource();
   testWaterwaysSource();
   testFarmlandSource();

@@ -160,6 +160,52 @@ function parcelIndex(features) {
   return index;
 }
 
+function municipalZoningUrl(city) {
+  return `https://raw.githubusercontent.com/OtheringBelonging/CAZoning/main/Data/Siskiyou/${encodeURIComponent(city)}.geojson`;
+}
+
+function webMercatorToWgs84([x, y]) {
+  // CAZoning's Siskiyou municipal files are GeoJSON-shaped but carry their
+  // digitized map coordinates in EPSG:3857; PMTiles expects WGS84 lon/lat.
+  return [x * 180 / 20037508.34, (360 / Math.PI) * Math.atan(Math.exp(y * Math.PI / 20037508.34)) - 90];
+}
+
+function convertMunicipalGeometry(geometry) {
+  if (!geometry || geometry.type !== 'Polygon') return geometry;
+  return { ...geometry, coordinates: geometry.coordinates.map(ring => ring.map(webMercatorToWgs84)) };
+}
+
+async function fetchMunicipalZoning(config, request = fetch) {
+  const features = [];
+  for (const city of config.cities) {
+    const response = await request(municipalZoningUrl(city));
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}: ${city} zoning`);
+    const data = await response.json();
+    for (const feature of data.features || []) {
+      const properties = feature.properties || {};
+      features.push({
+        ...feature,
+        geometry: convertMunicipalGeometry(feature.geometry),
+        properties: {
+          zoning: properties.code || '', zoneclass: properties.dscrptn || '',
+          jurisdiction: properties.juris || city, map_source: properties.Source || '', map_date: properties.Date || ''
+        }
+      });
+    }
+  }
+  return { type: 'FeatureCollection', features };
+}
+
+function mergeZoning(county, municipal) {
+  return {
+    type: 'FeatureCollection',
+    features: [
+      ...(county.features || []).map(feature => ({ ...feature, properties: { ...feature.properties, jurisdiction: 'Siskiyou County', map_source: 'Siskiyou County GIS', map_date: '' } })),
+      ...(municipal.features || [])
+    ]
+  };
+}
+
 async function main() {
   const requested = process.argv.slice(2);
   const names = requested.length ? requested : Object.keys(LAYERS);
@@ -170,8 +216,20 @@ async function main() {
     const config = LAYERS[name];
     if (!config) throw new Error(`Unknown layer: ${name}`);
     console.log(`Downloading ${config.name}…`);
+    if (name === 'municipal_zoning') {
+      const data = await fetchMunicipalZoning(config);
+      fs.writeFileSync(path.join(raw, `${name}.geojson`), JSON.stringify(data));
+      manifest.layers[name] = { source: config.url, featureCount: data.features.length, fields: config.fields };
+      console.log(`  ${data.features.length.toLocaleString()} features`);
+      continue;
+    }
     const sourceConfig = name === 'groundwater_wells' ? { ...config, fields: config.fields.filter(field => !field.startsWith('Nearby')) } : config;
-    const data = sourceConfig.type === 'wfs-gml' ? await fetchSoilLayer(sourceConfig) : sourceConfig.type === 'usgs-geology-wfs' ? await fetchUsgsGeology(sourceConfig) : await fetchArcGISLayer(sourceConfig);
+    let data = sourceConfig.type === 'wfs-gml' ? await fetchSoilLayer(sourceConfig) : sourceConfig.type === 'usgs-geology-wfs' ? await fetchUsgsGeology(sourceConfig) : await fetchArcGISLayer(sourceConfig);
+    if (name === 'zoning') {
+      // County zoning remains its authoritative unincorporated-area source.
+      // Municipal districts are published as the separate municipal_zoning
+      // overlay so they cannot alter the established County layer.
+    }
     if (name === 'groundwater_wells') addNearbyWellSummaries(data);
     fs.writeFileSync(path.join(raw, `${name}.geojson`), JSON.stringify(data));
     manifest.layers[name] = { source: config.url, featureCount: data.features.length, fields: config.fields };
@@ -181,4 +239,6 @@ async function main() {
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 }
 
-main().catch(error => { console.error(error); process.exit(1); });
+if (require.main === module) main().catch(error => { console.error(error); process.exit(1); });
+
+module.exports = { webMercatorToWgs84, convertMunicipalGeometry, fetchMunicipalZoning, mergeZoning };

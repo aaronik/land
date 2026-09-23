@@ -111,6 +111,15 @@ const LAYERS = {
     url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/CDD_Zoning_Districts_Public/FeatureServer/0',
     fields: ['OBJECTID', 'zoning', 'zoneclass']
   },
+  municipal_zoning: {
+    name: 'Siskiyou County municipal zoning',
+    // Digitized municipal zoning maps compiled by the Othering & Belonging
+    // Institute. The source metadata retained with each feature identifies
+    // the map and year; municipalities remain the authoritative source.
+    url: 'https://github.com/OtheringBelonging/CAZoning/tree/main/Data/Siskiyou',
+    fields: ['zoning', 'zoneclass', 'jurisdiction', 'map_source', 'map_date'],
+    cities: ['Dorris', 'Dunsmuir', 'Etna', 'Fort Jones', 'Montague', 'Mount Shasta', 'Tulelake', 'Weed', 'Yreka']
+  },
   roads: {
     name: 'Siskiyou County roads',
     url: 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Roads_Public/FeatureServer/0',

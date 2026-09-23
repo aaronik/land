@@ -44,7 +44,7 @@ function addWellSymbols(map) {
   }
 }
 
-export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, saleGeoJson, salePointGeoJson, unmappedGeoJson }) {
+export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, saleGeoJson, salePointGeoJson, unmappedGeoJson, municipalZoningUrl }) {
     addPmtilesSource('public_land');
   addPmtilesSource('fire_hazard');
   addPmtilesSource('wildfire_perimeters');
@@ -70,6 +70,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('groundwater_wells');
   addPmtilesSource('geology');
   addPmtilesSource('zoning');
+  map.addSource('municipal_zoning', { type: 'geojson', data: municipalZoningUrl, attribution: '<a href="https://github.com/OtheringBelonging/CAZoning/tree/main/Data/Siskiyou" target="_blank">Municipal zoning-map compilation</a>' });
   addPmtilesSource('parcels');
   addPmtilesSource('roads');
   addPmtilesSource('forest_roads');
@@ -218,6 +219,9 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   map.addLayer({ id: 'recent-wildfire-perimeters-lines', type: 'line', source: 'recent_wildfire_perimeters', 'source-layer': 'recent_wildfire_perimeters', minzoom: 6, layout: { visibility: 'none', 'line-join': 'round' }, paint: { 'line-color': '#9f241b', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.2, 13, 2.6], 'line-opacity': 0.95 } });
   map.addLayer({ id: 'zoning-fill', type: 'fill', source: 'zoning', 'source-layer': 'zoning', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': ZONING_FILL_COLOR, 'fill-opacity': 0.65 } });
   map.addLayer({ id: 'zoning-lines', type: 'line', source: 'zoning', 'source-layer': 'zoning', minzoom: 6, layout: { visibility: 'none' }, paint: { 'line-color': '#6e6e6e', 'line-width': ['interpolate', ['linear'], ['zoom'], 10.5, 0.5, 15, 1.2], 'line-opacity': 0.8 } });
+  // Municipal polygons must sit above the County's incorporated-area masks.
+  map.addLayer({ id: 'municipal-zoning-fill', type: 'fill', source: 'municipal_zoning', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': ZONING_FILL_COLOR, 'fill-opacity': 0.78 } });
+  map.addLayer({ id: 'municipal-zoning-lines', type: 'line', source: 'municipal_zoning', minzoom: 6, layout: { visibility: 'none' }, paint: { 'line-color': '#27342e', 'line-width': ['interpolate', ['linear'], ['zoom'], 10.5, 0.8, 15, 1.6], 'line-opacity': 0.9 } });
   map.addLayer({ id: 'parcel-fill', type: 'fill', source: 'parcels', 'source-layer': 'parcels', minzoom: 6, paint: { 'fill-color': '#fff', 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.01, 13, 0.045] } });
   map.addLayer({ id: 'parcel-lines', type: 'line', source: 'parcels', 'source-layer': 'parcels', minzoom: 6, paint: { 'line-color': '#aeb4b7', 'line-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 13, 0.85], 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.45, 15, 1.8] } });
   map.addLayer({

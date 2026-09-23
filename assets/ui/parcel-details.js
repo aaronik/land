@@ -4,6 +4,35 @@ import { listingUrl } from '../data/listing-url.js';
 
 const ZONING_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/CDD_Zoning_Districts_Public/FeatureServer/0/query';
 const ZONING_CODE_URL = 'https://library.municode.com/ca/siskiyou_county/codes/code_of_ordinances?nodeId=TIT10PLZO';
+const MUNICIPAL_ZONING_CODES = {
+  'Mount Shasta': { url: 'https://ecode360.com/51184723', label: 'Read Mt. Shasta district regulations (Title 18)' }
+};
+const MUNICIPAL_ZONING_MAPS = 'https://github.com/OtheringBelonging/CAZoning/tree/main/Data/Siskiyou';
+
+const MOUNT_SHASTA_DISTRICT_CONTEXT = {
+  'C-1': 'The City’s Downtown Commercial district is its commercial-center zone for downtown activity; the City’s district regulations distinguish permitted, conditional, and accessory uses, along with site standards.',
+  'C-2': 'The City’s General Commercial district is a separate commercial-center zone from downtown C-1; its own use and site standards apply.',
+  'R-1/B-1': 'The City calls this R1/B1: low-density residential with a 10,000-square-foot minimum parcel size in the district regulations.',
+  'R-1': 'The City’s low-density residential district is oriented toward detached single-family homes. Consult the City’s district regulations for lot and development standards.',
+  'R-1-U': 'The City’s low-density residential urban district is oriented toward detached single-family homes on smaller lots than R-1.',
+  'R-2': 'The City identifies this as its medium-density residential district.',
+  'R-3': 'The City identifies this as its high-density residential district.',
+  'EC': 'The City identifies this as its Employment Center district; uses and standards differ from commercial districts.'
+};
+
+export function municipalZoningExplanation({ zoning, jurisdiction, zoneclass, map_date: mapDate }) {
+  const description = String(zoneclass || '').trim();
+  const title = description && description.toUpperCase() !== zoning.toUpperCase() ? description : 'Municipal zoning designation';
+  const summary = jurisdiction === 'Mount Shasta' && MOUNT_SHASTA_DISTRICT_CONTEXT[zoning]
+    ? MOUNT_SHASTA_DISTRICT_CONTEXT[zoning]
+    : description
+      ? `${jurisdiction}’s mapped ${zoning} district is labeled “${description}” in the municipal zoning map compilation.`
+      : `${zoning} is a mapped ${jurisdiction} zoning designation; the source data does not provide a district description.`;
+  const guidance = `This city/town code is not a Siskiyou County zoning district. District names describe the mapped category, not allowed uses, setbacks, density, or permit eligibility. Confirm the current zoning map and applicable regulations with ${jurisdiction} Planning before relying on it.`;
+  const date = mapDate && mapDate !== 'No date' ? ` The mapped source is dated ${mapDate}; it may not reflect later amendments.` : ' The source map is undated; it may not reflect later amendments.';
+  return { title, summary, guidance, date, code: MUNICIPAL_ZONING_CODES[jurisdiction] };
+}
+
 const ZONING_EXPLANATIONS = [
   [/^AG-1(?:-|$)/, ['Prime Agriculture (AG-1)', 'AG-1 is Siskiyou County’s Prime Agriculture district. It is applied to prime agricultural land—land the County identifies for protection because of its agricultural capability and importance.', 'AG-1 and AG-2 both support agricultural uses, but AG-1 is the prime-agricultural category. If this label includes “B-40” or “B-80,” the number is a combining-district minimum parcel size in acres. Confirm uses, splits, homes, and permits with County Planning.']],
   [/^AG-2(?:-|$)/, ['Non-Prime Agriculture (AG-2)', 'AG-2 is Siskiyou County’s Non-Prime Agriculture district. It is the County’s agricultural category for land that is not designated prime agricultural land.', 'AG-2 still supports agricultural uses, but differs from AG-1 in the County’s prime-versus-non-prime agricultural-land classification. If this label includes “B-20,” “B-40,” or “B-80,” the number is a combining-district minimum parcel size in acres. Confirm uses, splits, homes, and permits with County Planning.']],
@@ -18,7 +47,7 @@ const ZONING_EXPLANATIONS = [
   [/^(Incorporated|ROW)/, ['Not a County zoning district', 'This map label indicates incorporated area or right-of-way rather than an unincorporated Siskiyou County zoning district.', 'The relevant city or road agency—not Siskiyou County’s unincorporated-area zoning code—may control land-use rules. Confirm jurisdiction before proceeding.']]
 ];
 
-export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, wildfirePerimetersQueryUrl, recentWildfirePerimetersQueryUrl, parcelsQueryUrl, addressPointsQueryUrl, onParcelQuest, onAdjustParcel, isParcelAdjusted, onClose }) {
+export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, municipalZoningUrl, map, wildfirePerimetersQueryUrl, recentWildfirePerimetersQueryUrl, parcelsQueryUrl, addressPointsQueryUrl, onParcelQuest, onAdjustParcel, isParcelAdjusted, onClose }) {
   const zoningByApn = new Map();
   const addressPointsByApn = new Map();
   const wildfireHistoryByApn = new Map();
@@ -94,9 +123,40 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     const mlsNumber = records.find(record => record.mlsNumber)?.mlsNumber;
     return `<section class="research"><h4>Parcel research</h4><div class="research-actions"><button type="button" data-copy-apn>Copy APN</button>${mlsNumber ? `<button type="button" data-copy-mls="${escapeHtml(mlsNumber)}">Copy MLS #</button>` : ''}<button type="button" data-parcelquest>Open on ParcelQuest ↗</button>${parcelMapOwnerLink()}</div><p>ParcelQuest is Siskiyou County Assessor’s official parcel, value, and map lookup; the APN is copied before it opens. Parcel Map is a separate external owner lookup and does not support a direct parcel link. ${opens} ParcelQuest lookup${opens === 1 ? '' : 's'} opened from this browser this month.</p></section>`;
   };
+  let municipalZoningPromise;
+  const pointInRing = (point, ring) => {
+    let inside = false;
+    for (let index = 0, previous = ring.length - 1; index < ring.length; previous = index++) {
+      const [x, y] = ring[index], [previousX, previousY] = ring[previous];
+      if ((y > point[1]) !== (previousY > point[1]) && point[0] < (previousX - x) * (point[1] - y) / (previousY - y) + x) inside = !inside;
+    }
+    return inside;
+  };
+  const municipalZoningForPoint = async point => {
+    if (!municipalZoningUrl) return null;
+    municipalZoningPromise ||= fetch(municipalZoningUrl).then(response => response.ok ? response.json() : Promise.reject(new Error(`municipal zoning returned ${response.status}`)));
+    const data = await municipalZoningPromise;
+    const feature = data.features?.find(candidate => candidate.geometry?.type === 'Polygon' && pointInRing(point, candidate.geometry.coordinates[0]));
+    if (!feature?.properties?.zoning) return null;
+    return { zoning: feature.properties.zoning, jurisdiction: feature.properties.jurisdiction, zoneclass: feature.properties.zoneclass, map_date: feature.properties.map_date };
+  };
+  const zoningAtPoint = point => {
+    if (!map?.getLayer('zoning-fill')) return null;
+    const pixel = map.project(point);
+    const features = map.queryRenderedFeatures(pixel, { layers: ['zoning-fill'] });
+    const municipal = features.find(feature => feature.properties?.jurisdiction && feature.properties.jurisdiction !== 'Siskiyou County');
+    const feature = municipal || features[0];
+    if (!feature?.properties?.zoning) return null;
+    return { zoning: feature.properties.zoning, jurisdiction: feature.properties.jurisdiction || 'Siskiyou County' };
+  };
   const zoningForParcel = async apn => {
     if (zoningByApn.has(apn)) return zoningByApn.get(apn);
     const point = parcelQueryPoint(apn); if (!point) return '';
+    const municipal = await municipalZoningForPoint(point);
+    const mapped = municipal || zoningAtPoint(point);
+    if (mapped && mapped.jurisdiction !== 'Siskiyou County') {
+      zoningByApn.set(apn, mapped); return mapped;
+    }
     const url = new URL(ZONING_QUERY_URL);
     url.search = new URLSearchParams({ f: 'json', geometry: point.join(','), geometryType: 'esriGeometryPoint', inSR: '4326', spatialRel: 'esriSpatialRelIntersects', outFields: 'zoning,zoneclass', returnGeometry: 'false' });
     const response = await fetch(url); if (!response.ok) throw new Error(`zoning query returned ${response.status}`);
@@ -106,10 +166,16 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
   };
   const zoningExplanation = zoning => ZONING_EXPLANATIONS.find(([pattern]) => pattern.test(zoning))?.[1] || ['County zoning designation', 'This is the zoning designation returned by Siskiyou County’s public zoning map.', 'Review the County code and confirm the allowed uses and development standards with County Planning before relying on this map.'];
   const openZoningExplainer = zoning => {
-    const [title, summary, guidance] = zoningExplanation(zoning);
+    const isMunicipal = typeof zoning === 'object' && zoning.jurisdiction && zoning.jurisdiction !== 'Siskiyou County';
+    const label = isMunicipal ? `${zoning.zoning} (${zoning.jurisdiction})` : zoning;
+    const municipal = isMunicipal ? municipalZoningExplanation(zoning) : null;
+    const [title, summary, guidance] = municipal ? [municipal.title, municipal.summary, municipal.guidance] : zoningExplanation(label);
+    const source = municipal
+      ? `This is a plain-language map aid, not a zoning determination.${escapeHtml(municipal.date)} <a href="${municipal.code?.url || MUNICIPAL_ZONING_MAPS}" target="_blank" rel="noopener noreferrer">${escapeHtml(municipal.code?.label || 'View municipal zoning-map data')} ↗</a>`
+      : `This is a plain-language map aid, not a zoning determination. <a href="${ZONING_CODE_URL}" target="_blank" rel="noopener noreferrer">Read Siskiyou County Code, Title 10 ↗</a>`;
     const dialog = document.createElement('dialog');
     dialog.className = 'zoning-explainer-dialog';
-    dialog.innerHTML = `<button class="dialog-close" type="button" aria-label="Close zoning information">×</button><h2>${escapeHtml(zoning)}: ${escapeHtml(title)}</h2><p>${escapeHtml(summary)}</p><p>${escapeHtml(guidance)}</p><p class="source-note">This is a plain-language map aid, not a zoning determination. <a href="${ZONING_CODE_URL}" target="_blank" rel="noopener noreferrer">Read Siskiyou County Code, Title 10 ↗</a></p>`;
+    dialog.innerHTML = `<button class="dialog-close" type="button" aria-label="Close zoning information">×</button><h2>${escapeHtml(label)}: ${escapeHtml(title)}</h2><p>${escapeHtml(summary)}</p><p>${escapeHtml(guidance)}</p><p class="source-note">${source}</p>`;
     dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
     dialog.addEventListener('close', () => dialog.remove(), { once: true });
     document.body.append(dialog); dialog.showModal();
@@ -119,8 +185,9 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     try {
       const zoning = await zoningForParcel(apn);
       if (requestId !== zoningRequestId || !target.isConnected) return;
-      target.innerHTML = zoning ? ` · <button class="zoning-explainer-trigger" type="button" data-zoning-explainer="${escapeHtml(zoning)}" aria-label="Learn about ${escapeHtml(zoning)} zoning">${escapeHtml(zoning)}</button>` : ' · Not available';
-      target.querySelector('[data-zoning-explainer]')?.addEventListener('click', event => openZoningExplainer(event.currentTarget.dataset.zoningExplainer));
+      const label = typeof zoning === 'object' ? `${zoning.zoning} (${zoning.jurisdiction})` : zoning;
+      target.innerHTML = zoning ? ` · <button class="zoning-explainer-trigger" type="button" data-zoning-explainer="${escapeHtml(label)}" aria-label="Learn about ${escapeHtml(label)} zoning">${escapeHtml(label)}</button>` : ' · Not available';
+      target.querySelector('[data-zoning-explainer]')?.addEventListener('click', () => openZoningExplainer(zoning));
     }
     catch (error) { if (requestId === zoningRequestId && target.isConnected) target.textContent = ' · Unavailable'; console.warn(error); }
   };

@@ -35,8 +35,15 @@ const ZONING_FILL_COLOR = ['match', ['get', 'zoning'],
   'RES-1', '#fff000', 'RES-2', '#ffdc00',
   ['RES-3', 'RES-3-B-2.5', 'RES-3-B-5', 'RES-3-B-20'], '#ffc800',
   ['RES-4', 'RES-4-B-2.5'], '#ff9600',
-  ['TP', 'TP-B-80'], '#267300', ['Incorporated', 'Incorporated ROW'], '#e1e1e1',
-  'WETLANDS', '#4065eb', 'transparent'
+  ['TP', 'TP-B-80'], '#267300', ['Incorporated', 'Incorporated ROW'], '#e1e1e1', 'WETLANDS', '#4065eb',
+  // Municipal zoning maps use each jurisdiction's own codes. Use a consistent
+  // broad family color while retaining the exact municipal code in the tile.
+  ['C-1', 'C-2', 'CH', 'CPO', 'CT', 'HIGHWAY', 'Business', 'Commercial', 'C2 General Commercial', 'General Commercial', 'Retail Commercial', 'EC'], '#ff7f7f',
+  ['M', 'M-1', 'M-2', 'Industrial', 'General Industrial', 'Limited Industrial'], '#aa66cd',
+  ['OS', 'P', 'PF', 'PA', 'P/SP'], '#7af5ca',
+  ['R-1', 'R-1-U', 'R-1/B-1', 'R-1/2/3', 'R-1-10', 'R-1-12', 'R-2', 'R-3', 'R-3-12', 'R-3-16', 'R-4', 'R-A', 'RPO', 'RSC', 'MDR', 'High Density Residential', 'Residential Agriculture', 'Residential High Density', 'Residential Medium Density', 'Residential Single Family', 'Residential Single Family Expanded', 'Rural Residential'], '#fff000',
+  ['PUD', 'UC', 'V-Mixed Use', 'R4 Residential Mixed Use'], '#d0d0d0',
+  'transparent'
 ];
 const PARCELQUEST_URL = 'https://assr.parcelquest.com/impl/SISASSR';
 const WILDFIRE_PERIMETERS_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/HistoricFirePerimeters_Public/FeatureServer/0/query';
@@ -282,6 +289,8 @@ const parcelDetails = createParcelDetails({
   featureCenter,
   getApnIndex: () => apnIndex,
   getSaleData: () => saleData,
+  municipalZoningUrl: assetUrl('data/raw/municipal_zoning.geojson'),
+  map,
   wildfirePerimetersQueryUrl: WILDFIRE_PERIMETERS_QUERY_URL,
   recentWildfirePerimetersQueryUrl: RECENT_WILDFIRE_PERIMETERS_QUERY_URL,
   parcelsQueryUrl: PARCELS_QUERY_URL,
@@ -358,7 +367,8 @@ function addPmtilesSource(id) {
     groundwater_basins: '<a href="https://data.cnra.ca.gov/dataset/i08-b118-ca-groundwaterbasins" target="_blank">CA DWR Bulletin 118 groundwater basins</a>',
     groundwater_wells: '<a href="https://data.cnra.ca.gov/dataset/well-completion-reports" target="_blank">CA DWR Well Completion Reports</a>',
     incorporated_places: '<a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html" target="_blank">U.S. Census Bureau TIGER/Line incorporated places</a>',
-    zoning: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a>'
+    zoning: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County GIS</a> · <a href="https://github.com/OtheringBelonging/CAZoning/tree/main/Data/Siskiyou" target="_blank">municipal zoning-map compilation</a>',
+    municipal_zoning: '<a href="https://github.com/OtheringBelonging/CAZoning/tree/main/Data/Siskiyou" target="_blank">Municipal zoning-map compilation</a>'
   };
   map.addSource(id, { type: 'vector', url: `pmtiles://${url.href}`, attribution: attributions[id], ...(id === 'parcels' ? { promoteId: 'APN' } : {}) });
 }
@@ -432,7 +442,7 @@ function toggleLayer(id, visibleValue) {
     pct: ['pct-casing', 'pct', 'pct-markers'],
     'groundwater-basins': ['groundwater-basins-fill', 'groundwater-basins-lines', 'groundwater-basins-labels'],
     'wildfire-perimeters': ['wildfire-perimeters-fill', 'wildfire-perimeters-lines', 'recent-wildfire-perimeters-fill', 'recent-wildfire-perimeters-lines'],
-    zoning: ['zoning-fill', 'zoning-lines']
+    zoning: ['zoning-fill', 'zoning-lines', 'municipal-zoning-fill', 'municipal-zoning-lines']
   };
   const layerIds = groupedLayers[id] || [id];
   for (const layerId of layerIds) if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibleValue ? 'visible' : 'none');
@@ -475,7 +485,7 @@ function initializeMapLayers() {
   if (layersInitialized || !map.getStyle()) return;
   layersInitialized = true;
   try {
-    installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, saleGeoJson, salePointGeoJson, unmappedGeoJson });
+    installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, saleGeoJson, salePointGeoJson, unmappedGeoJson, municipalZoningUrl: assetUrl('data/raw/municipal_zoning.geojson') });
   map.on('click', event => {
     if (polygonDrawControl.consumeMapClickSuppression()) return;
     if (map.queryRenderedFeatures(event.point, { layers: ['polygon-drawings-labels'] }).length) return;
