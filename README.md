@@ -49,7 +49,7 @@ npm run refresh:parcel-boundaries
 npm run build # or npm run deploy to publish
 ```
 
-This downloads the current Siskiyou County parcel GIS into `data/raw/parcels.geojson`, updates `data/generated/apn-index.json`, and rebuilds `data/generated/parcels.pmtiles`. Commit the updated data files and deploy to make the new boundaries visible to visitors. Requires `tippecanoe` and the `pmtiles` CLI. It does not refresh listing geometry in `data/parcels.json`; run `npm run refresh` separately if those listing footprints also need updating.
+This downloads the current Siskiyou County parcel GIS into `data/raw/parcels.geojson`, updates `data/generated/apn-index.json`, and rebuilds `data/generated/parcels.pmtiles`. Commit the updated data files and deploy to make the new boundaries visible to visitors. Requires `tippecanoe` and the `pmtiles` CLI. It does not refresh listing geometry in `data/parcels.json`; run `npm run refresh` separately if those listing footprints also need updating. The `Refresh parcel boundaries` GitHub Actions workflow runs monthly on the 3rd at 15:00 UTC (or manually from Actions) and only rebuilds, commits, and deploys when the downloaded county parcel data changes.
 
 Run the sales-data refresh independently when needed:
 
