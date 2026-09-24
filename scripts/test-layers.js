@@ -79,6 +79,14 @@ function testActiveRailroadSource() {
   assert(railroads.fields.includes('RROWNER1'));
 }
 
+function testTransmissionLineSource() {
+  const lines = LAYERS.transmission_lines;
+  assert.match(lines.url, /Transmission_Line\/FeatureServer\/2$/);
+  assert.equal(lines.bbox, '-123.73,40.98,-121.43,42.02');
+  assert.equal(lines.where, "Status = 'Operational'");
+  assert.deepEqual(lines.fields, ['OBJECTID', 'Name', 'kV', 'Owner', 'Status', 'Type', 'Source']);
+}
+
 function testWaterwaysSource() {
   const waterways = LAYERS.waterways;
   assert.match(waterways.url, /hydro\.nationalmap\.gov.*\/nhd\/MapServer\/6/);
@@ -128,6 +136,7 @@ function testCriticalHabitatSources() {
   testMunicipalZoningProjection();
   testMunicipalZoningSource();
   testActiveRailroadSource();
+  testTransmissionLineSource();
   testWaterwaysSource();
   testFarmlandSource();
   testRcraSiteSource();

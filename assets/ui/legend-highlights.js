@@ -10,6 +10,7 @@ const LAYERS = {
   waterways: 'waterways',
   springs: 'springs',
   railroads: 'railroads',
+  'transmission-lines': 'transmission-lines',
   pct: 'pct',
   huc12: 'huc12-fill',
   'incorporated-places': 'incorporated-places-red',

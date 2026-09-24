@@ -82,6 +82,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('roads');
   addPmtilesSource('forest_roads');
   addPmtilesSource('railroads');
+  addPmtilesSource('transmission_lines');
   addPmtilesSource('waterways');
   addPmtilesSource('waterbodies');
   addPmtilesSource('summits');
@@ -367,6 +368,16 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
       'text-letter-spacing': 0.04, 'text-offset': [0, 1.1], 'text-padding': 4, 'text-keep-upright': true
     },
     paint: { 'text-color': '#ff6b67', 'text-halo-color': 'rgba(25, 16, 16, 0.95)', 'text-halo-width': 2, 'text-halo-blur': 0.4 }
+  });
+  map.addLayer({
+    id: 'transmission-lines-casing', type: 'line', source: 'transmission_lines', 'source-layer': 'transmission_lines', minzoom: 6,
+    layout: { visibility: 'none', 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': '#342b17', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 3, 14, 5], 'line-opacity': 0.9 }
+  });
+  map.addLayer({
+    id: 'transmission-lines', type: 'line', source: 'transmission_lines', 'source-layer': 'transmission_lines', minzoom: 6,
+    layout: { visibility: 'none', 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': '#e6b94f', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.5, 14, 2.7] }
   });
   map.addLayer({ id: 'sale-fill', type: 'fill', source: 'sales', paint: { 'fill-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'previous-listing', COLORS['previous-listing'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'fill-opacity': 0.42 } });
   map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'previous-listing', COLORS['previous-listing'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });

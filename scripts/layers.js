@@ -145,6 +145,13 @@ const LAYERS = {
     where: "NET IN ('M','I','O','S','Y','Z') OR (NET = 'X' AND RROWNER1 = 'MCR')",
     fields: ['OBJECTID', 'FRAARCID', 'RROWNER1', 'RROWNER2', 'RROWNER3', 'DIVISION', 'SUBDIV', 'BRANCH', 'YARDNAME', 'PASSNGR', 'TRACKS', 'NET']
   },
+  transmission_lines: {
+    name: 'CEC operational electric transmission lines',
+    url: 'https://services3.arcgis.com/bWPjFyq029ChCGur/arcgis/rest/services/Transmission_Line/FeatureServer/2',
+    bbox: SISKIYOU_BBOX,
+    where: "Status = 'Operational'",
+    fields: ['OBJECTID', 'Name', 'kV', 'Owner', 'Status', 'Type', 'Source']
+  },
   waterways: {
     name: 'USGS NHD rivers and streams',
     url: 'https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/6',

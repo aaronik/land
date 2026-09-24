@@ -5,6 +5,7 @@ import { legendMatches, LEGEND_QUERY_LAYERS, queryLegendFeatures, queryParcelWat
 
 const features = [
   { layer: { id: 'parcel-fill' }, properties: { APN: '123' } },
+  { layer: { id: 'transmission-lines' }, properties: { Name: 'Test line' } },
   { layer: { id: 'zoning-fill' }, properties: { zoning: 'RES-2' } },
   { layer: { id: 'fire-hazard' }, properties: { HAZ_CLASS: 'Very High' } },
   { layer: { id: 'cell-att' }, properties: {} },
@@ -16,6 +17,7 @@ assert.deepEqual([...matches.get('zoning')], ['RES-2']);
 assert.deepEqual([...matches.get('cell-coverage')], ['AT&T', 'Verizon']);
 assert.deepEqual([...matches.get('wildfire-perimeters')], ['Recent']);
 assert(matches.has('parcel-lines'));
+assert(matches.has('transmission-lines'));
 assert(matches.has('listing:private-land'));
 assert(matches.has('listing:public-land'));
 assert(!matches.has('listing:private-home'));

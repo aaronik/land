@@ -402,6 +402,7 @@ function addPmtilesSource(id) {
     fire_hazard: '<a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones" target="_blank">CAL FIRE FHSZ</a>',
     wildfire_perimeters: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County historic wildfire perimeters</a>',
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
+    transmission_lines: '<a href="https://www.arcgis.com/home/item.html?id=260b4513acdb4a3a8e4d64e69fc84fee" target="_blank" rel="noopener noreferrer">California Energy Commission transmission lines</a>',
     forest_roads: '<a href="https://data.fs.usda.gov/geodata/edw/datasets.php?xmlKeyword=Motor+vehicle+Use+Map" target="_blank">USFS Motor Vehicle Use Map</a>',
     waterways: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
     springs: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
@@ -482,6 +483,7 @@ function toggleLayer(id, visibleValue) {
     'usgs-3dep-slope': ['usgs-3dep-slope'],
     roads: ['roads', 'road-labels', 'forest-roads', 'forest-road-labels'],
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
+    'transmission-lines': ['transmission-lines-casing', 'transmission-lines'],
     waterways: ['waterways-casing', 'waterways', 'waterway-labels', 'springs'],
     'place-names': ['waterbodies', 'waterbody-labels', 'summits', 'towns'],
     'incorporated-places': ['incorporated-places-red', 'incorporated-places-white-dashes'],
@@ -550,15 +552,21 @@ function initializeMapLayers() {
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
     ], { layers: ['springs', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
+    const lineHits = map.queryRenderedFeatures([
+      [event.point.x - 5, event.point.y - 5],
+      [event.point.x + 5, event.point.y + 5]
+    ], { layers: ['transmission-lines'] });
     const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'recent-wildfire-perimeters-fill', 'wildfire-perimeters-fill'] });
     const habitatHits = polygonHits.filter(hit => hit.layer.id === 'critical-habitat-final' || hit.layer.id === 'critical-habitat-proposed');
     const parcelHit = polygonHits.find(hit => hit.layer.id === 'sale-fill') || polygonHits.find(hit => hit.layer.id === 'parcel-fill');
     const overlayHit = habitatHits[0] || polygonHits.find(hit => hit !== parcelHit && hit.layer.id !== 'parcel-fill' && hit.layer.id !== 'sale-fill');
-    // Parcel selection is the default even under an overlay. Alt/Option-click
-    // inspects the colored layer instead, without requiring it to be hidden.
+    // Parcel selection remains the default under area overlays. A directly
+    // clicked transmission line is inspectable without holding Alt/Option.
     const inspectOverlay = event.originalEvent?.altKey;
-    const feature = markerHits[0] || (inspectOverlay ? overlayHit || parcelHit : parcelHit || overlayHit);
-    if ((inspectOverlay || !parcelHit) && map.getLayoutProperty('land-cover', 'visibility') === 'visible' && !markerHits.length && !habitatHits.length && !polygonHits.some(hit => hit.layer.id === 'sale-fill')) {
+    // Listings and point markers retain priority. A visible transmission line
+    // is inspected on a normal click even when the parcel fill lies beneath it.
+    const feature = markerHits[0] || (inspectOverlay ? lineHits[0] || overlayHit || parcelHit : polygonHits.find(hit => hit.layer.id === 'sale-fill') || lineHits[0] || parcelHit || overlayHit);
+    if ((inspectOverlay || !parcelHit) && map.getLayoutProperty('land-cover', 'visibility') === 'visible' && !markerHits.length && !lineHits.length && !habitatHits.length && !polygonHits.some(hit => hit.layer.id === 'sale-fill')) {
       const details = document.querySelector('#details');
       details.innerHTML = `<h3>Vegetation &amp; land cover</h3><p class="meta">Checking 2024 map class…</p>`;
       try {
@@ -572,6 +580,11 @@ function initializeMapLayers() {
     }
     if (!feature) return;
     const props = feature.properties || {};
+    if (feature.layer.id === 'transmission-lines') {
+      const value = value => value === null || value === undefined || String(value).trim() === '' ? 'Not reported' : escapeHtml(value);
+      document.querySelector('#details').innerHTML = `<h3>Electric transmission line</h3><p class="meta">California Energy Commission · ${value(props.Status)}</p><p><strong>${value(props.Name)}</strong><br>Reported voltage: ${value(props.kV)} kV<br>Owner: ${value(props.Owner)}<br>Type: ${value(props.Type)}</p><p class="source-note">Mapped route for planning context only. Proximity does not establish electrical service, capacity, connection rights, or an easement. Verify with the utility.</p>`;
+      return;
+    }
     if (feature.layer.id === 'wildfire-perimeters-fill' || feature.layer.id === 'recent-wildfire-perimeters-fill') {
       const value = value => value === null || value === undefined || value === '' ? 'Not reported' : escapeHtml(value);
       const date = value => { const number = Number(value); return Number.isFinite(number) && number > 0 ? new Date(number).toLocaleDateString() : 'Not reported'; };
@@ -648,7 +661,7 @@ function initializeMapLayers() {
     }
     selectParcel(props, null, event.lngLat);
   });
-  for (const id of ['geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['transmission-lines', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }

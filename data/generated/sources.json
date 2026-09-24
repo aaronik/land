@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T19:10:57.003Z",
+  "generatedAt": "2026-09-24T22:16:47.574Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -448,6 +448,19 @@
         "jurisdiction",
         "map_source",
         "map_date"
+      ]
+    },
+    "transmission_lines": {
+      "source": "https://services3.arcgis.com/bWPjFyq029ChCGur/arcgis/rest/services/Transmission_Line/FeatureServer/2",
+      "featureCount": 77,
+      "fields": [
+        "OBJECTID",
+        "Name",
+        "kV",
+        "Owner",
+        "Status",
+        "Type",
+        "Source"
       ]
     }
   }
