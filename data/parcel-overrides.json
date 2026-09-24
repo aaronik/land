@@ -943,6 +943,14 @@
     "confidence": "manually verified",
     "notes": "map pics"
   },
+  "20260840": {
+    "apns": [
+      "036-011-170"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "from realtor"
+  },
   "20260851": {
     "apns": [
       "028-510-330"
