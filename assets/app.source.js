@@ -7,6 +7,7 @@ import { installMapControls } from './map/controls.js';
 import { createListingData } from './data/listings.js';
 import { createParcelDetails } from './ui/parcel-details.js';
 import { installMapSourcesAndLayers } from './map/layers.js';
+import { identifyLandCover, LAND_COVER_YEAR } from './map/land-cover.js';
 import { ParcelAdjustmentControl } from './map/parcel-adjustment.js';
 import { initializeMobileSheet } from './state/ui.js';
 import { updateUrlParameter } from './state/url.js';
@@ -486,7 +487,9 @@ function initializeMapLayers() {
   layersInitialized = true;
   try {
     installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, saleGeoJson, salePointGeoJson, unmappedGeoJson, municipalZoningUrl: assetUrl('data/raw/municipal_zoning.geojson') });
-  map.on('click', event => {
+  let landCoverClickSerial = 0;
+  map.on('click', async event => {
+    const clickSerial = ++landCoverClickSerial;
     if (polygonDrawControl.consumeMapClickSuppression()) return;
     if (map.queryRenderedFeatures(event.point, { layers: ['polygon-drawings-labels'] }).length) return;
     if (distanceMeasureControl.isActive() || coordinatePinControl.isActive() || polygonDrawControl.isActive() || roadTrackerControl.isActive()) return;
@@ -498,6 +501,18 @@ function initializeMapLayers() {
     const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'recent-wildfire-perimeters-fill', 'wildfire-perimeters-fill'] });
     const habitatHits = polygonHits.filter(hit => hit.layer.id === 'critical-habitat-final' || hit.layer.id === 'critical-habitat-proposed');
     const feature = markerHits[0] || habitatHits[0] || polygonHits[0];
+    if (map.getLayoutProperty('land-cover', 'visibility') === 'visible' && !markerHits.length && !habitatHits.length && !polygonHits.some(hit => hit.layer.id === 'sale-fill')) {
+      const details = document.querySelector('#details');
+      details.innerHTML = `<h3>Vegetation &amp; land cover</h3><p class="meta">Checking 2024 map class…</p>`;
+      try {
+        const cover = await identifyLandCover(event.lngLat);
+        if (clickSerial !== landCoverClickSerial || map.getLayoutProperty('land-cover', 'visibility') !== 'visible') return;
+        details.innerHTML = `<h3>Vegetation &amp; land cover</h3><p class="meta">Annual NLCD ${LAND_COVER_YEAR} · approximately 30 m resolution</p><p><strong>${cover || 'No mapped class at this point'}</strong></p><p class="source-note">Broad mapped land cover, not a site survey or evidence that particular plants or animals live here. Small streamside habitats may not appear. Compare with waterways and wetlands; verify on the ground.</p>`;
+      } catch {
+        if (clickSerial === landCoverClickSerial) details.innerHTML = '<h3>Vegetation &amp; land cover</h3><p class="source-note">The land-cover service is unavailable. Try again later or turn off this layer to inspect parcels.</p>';
+      }
+      return;
+    }
     if (!feature) return;
     const props = feature.properties || {};
     if (feature.layer.id === 'wildfire-perimeters-fill' || feature.layer.id === 'recent-wildfire-perimeters-fill') {

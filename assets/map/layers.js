@@ -1,5 +1,7 @@
 'use strict';
 
+import { landCoverTileUrl, LAND_COVER_SERVICE } from './land-cover.js';
+
 function addSpringSymbol(map) {
   const size = 24;
   const data = new Uint8Array(size * size * 4);
@@ -54,6 +56,11 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('farmland');
   addPmtilesSource('rcra_sites');
   addPmtilesSource('huc12');
+  map.addSource('land-cover-raster', {
+    type: 'raster', tileSize: 256, minzoom: 6, maxzoom: 18,
+    tiles: [landCoverTileUrl()],
+    attribution: `<a href="${LAND_COVER_SERVICE}" target="_blank" rel="noopener noreferrer">USGS/MRLC Annual NLCD 2024 land cover</a>`
+  });
   addPmtilesSource('critical_habitat_final');
   map.addSource('critical_habitat_proposed', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('wetlands-wms', {
@@ -138,6 +145,10 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
       'text-halo-width': 2,
       'text-halo-blur': 0.4
     }
+  });
+  map.addLayer({
+    id: 'land-cover', type: 'raster', source: 'land-cover-raster', minzoom: 6,
+    layout: { visibility: 'none' }, paint: { 'raster-opacity': 0.66, 'raster-fade-duration': 0, 'raster-resampling': 'nearest' }
   });
   map.addLayer({ id: 'public-land', type: 'fill', source: 'public_land', 'source-layer': 'public_land', minzoom: 6, paint: { 'fill-color': '#4e9f54', 'fill-opacity': 0.38 } });
   map.addLayer({ id: 'huc12-fill', type: 'fill', source: 'huc12', 'source-layer': 'huc12', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': '#27b8ca', 'fill-opacity': 0.08 } });
