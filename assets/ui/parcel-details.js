@@ -62,6 +62,10 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     return bbox ? [(bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2] : null;
   };
   const displayAddress = records => (records.find(record => record.kind === 'private')?.title || '').replace(/,\s*(?:CA|California)(?:\s+\d{5}(?:-\d{4})?)?\s*$/i, '').trim();
+  const taxRecordContent = record => {
+    const checkedAt = record.checkedAt && !Number.isNaN(Date.parse(record.checkedAt)) ? new Date(record.checkedAt).toLocaleDateString() : 'date unavailable';
+    return `<p>${money(record.redemptionAmount)} current defaulted-tax balance · Payment plan: ${escapeHtml(record.paymentPlan || 'Not reported')}</p><p>${escapeHtml(record.source || '')}</p>${record.sourceUrl ? `<a href="${escapeHtml(record.sourceUrl)}" target="_blank" rel="noopener">Official current tax record ↗</a>` : ''}<p class="source-note">Status checked as of ${escapeHtml(checkedAt)}.</p>`;
+  };
   const recordCard = (record, extraLink = '') => {
     if (record.kind === 'private') {
       const home = record.category === 'private-home';
@@ -79,11 +83,11 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
       return `<article class="record ${home ? 'home' : ''}">${primaryPhoto}<strong>${home ? 'Private home' : 'Private land'}</strong><p>${escapeHtml(record.title || '')}</p><p>${money(record.price)} · ${escapeHtml(record.acres || '—')} acres${homeDetails ? ` · ${escapeHtml(homeDetails)}` : ''} · ${escapeHtml(record.status || '')}${listingDate ? ` · Listed ${escapeHtml(listingDate)}` : ''}</p>${record.url ? `<a href="${escapeHtml(listingUrl(record))}" target="_blank" rel="noopener">Open listing ↗</a>` : ''}${extraLink}</article>`;
     }
     if (record.kind === 'tax-delinquent') {
-      const checkedAt = record.checkedAt && !Number.isNaN(Date.parse(record.checkedAt)) ? new Date(record.checkedAt).toLocaleDateString() : 'date unavailable';
-      return `<article class="record public tax-delinquent"><strong>Tax-defaulted property — not an auction listing</strong><p>${money(record.redemptionAmount)} current defaulted-tax balance · Payment plan: ${escapeHtml(record.paymentPlan || 'Not reported')}</p><p>${escapeHtml(record.source || '')}</p>${record.sourceUrl ? `<a href="${escapeHtml(record.sourceUrl)}" target="_blank" rel="noopener">Official current tax record ↗</a>` : ''}<p class="source-note">Status checked as of ${escapeHtml(checkedAt)}.</p>${extraLink}</article>`;
+      return `<article class="record public tax-delinquent">${taxRecordContent(record)}${extraLink}</article>`;
     }
     return `<article class="record public"><strong>Public auction record</strong><p>${escapeHtml(record.minimumBid || 'No parsed minimum')} · ${escapeHtml(record.status || 'Unknown status')}</p><p>${escapeHtml(record.source || '')}</p>${record.sourceUrl ? `<a href="${escapeHtml(record.sourceUrl)}" target="_blank" rel="noopener">Source PDF ↗</a>` : ''}${extraLink}</article>`;
   };
+  const taxDelinquencySection = records => !records.length ? '' : `<section class="tax-delinquency"><h4>Tax delinquency</h4>${records.map(taxRecordContent).join('')}</section>`;
   const salesHistorySection = records => !records.length ? '<section class="sales-history"><h4>Sales history</h4><p class="muted">No matched public sold-listing history was found for this APN.</p></section>' : `<section class="sales-history"><h4>Sales history</h4>${records.map(record => {
     const mlsPhoto = /^[A-Z]{2}-[A-Z]+$/.test(String(record.mlsId || '')) && record.mlsNumber
       ? `https://idx-photos-ihouseprd.b-cdn.net/${encodeURIComponent(record.mlsId)}/${encodeURIComponent(record.mlsNumber)}/org/000.jpg?width=640`
@@ -276,9 +280,10 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
   };
   const showParcelDetails = (properties, saleFeature = matchingSale(properties.APN)) => {
     const p = { ...(saleFeature?.properties || {}), ...properties }, records = saleFeature?.properties.records || p.records || [], salesHistory = saleFeature?.properties.salesHistory || p.salesHistory || [], archivedListings = saleFeature?.properties.archivedListings || p.archivedListings || [];
-    const directions = parcelDirectionsLink(p.APN), cards = records.map((record, index) => recordCard(record, index === 0 ? directions : '')).join('');
+    const taxRecords = (getSaleData()?.features || []).filter(feature => feature.properties?.APN === p.APN).flatMap(feature => feature.properties.records || []).filter(record => record.kind === 'tax-delinquent');
+    const directions = parcelDirectionsLink(p.APN), cards = records.filter(record => record.kind !== 'tax-delinquent').map((record, index) => recordCard(record, index === 0 ? directions : '')).join('');
     const previousCards = [...archivedListings, ...salesHistory].map(previousListingCard).join('');
-    detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || archivedListings[0]?.title || salesHistory[0]?.title || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta">${escapeHtml(p.Acres ?? getApnIndex()[p.APN]?.acres ?? '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p><p class="meta" data-selected-address hidden></p>${cards || previousCards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${researchControls(p.APN, records)}${!previousCards ? salesHistorySection(salesHistory) : ''}${!previousCards ? archivedListingsSection(archivedListings) : ''}${addressPointsSection()}${wildfireHistorySection(p.APN)}`;
+    detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || archivedListings[0]?.title || salesHistory[0]?.title || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta">${escapeHtml(p.Acres ?? getApnIndex()[p.APN]?.acres ?? '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p><p class="meta" data-selected-address hidden></p>${cards || previousCards || `${directions}${taxRecords.length ? '' : '<p class="muted">Official county parcel. No current listing or auction record is attached.</p>'}`}${researchControls(p.APN, records)}${taxDelinquencySection(taxRecords)}${!previousCards ? salesHistorySection(salesHistory) : ''}${!previousCards ? archivedListingsSection(archivedListings) : ''}${addressPointsSection()}${wildfireHistorySection(p.APN)}`;
     updateParcelZoning(p.APN); updateAddressPoints(p.APN); updateWildfireHistory(p.APN); bindResearchControls(p.APN);
   };
   return { recordCard, showParcelDetails };

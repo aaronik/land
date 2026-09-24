@@ -154,6 +154,7 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .directions-link { display: block; margin-top: 3px; }
 .record { margin-top: 11px; padding: 11px; background: white; border: 1px solid var(--line); border-left: 4px solid #42d7a6; border-radius: 6px; font-size: 12px; }
 .record.public { border-left-color: #ff9d4d; }
+.record.public.tax-delinquent { border-left-color: #c43c78; }
 .record.home { border-left-color: #7653b5; }
 .record.public.home { border-left-color: #b94b18; }
 .record.previous-listing { border-left-color: #55768d; }
@@ -164,6 +165,10 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .record p { margin: 4px 0; }
 .unmapped-listing-actions { margin-top: 8px; }
 .unmapped-listing-actions button { width: 100%; padding: 8px; border: 0; border-radius: 6px; color: white; background: var(--ink); cursor: pointer; font: inherit; font-weight: 700; }
+.tax-delinquency { margin-top: 14px; padding: 12px; background: #fbeef3; border: 1px solid rgba(196, 60, 120, .25); border-left: 4px solid #c43c78; border-radius: 7px; font-size: 12px; }
+.tax-delinquency h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; }
+.tax-delinquency p { margin: 4px 0; }
+.tax-delinquency .source-note { color: #667067; font-size: 10px; line-height: 1.4; }
 .sales-history { margin-top: 14px; padding: 12px; background: #edf5ee; border: 1px solid rgba(37, 109, 71, .25); border-left: 4px solid #287a50; border-radius: 7px; }
 .wildfire-history { background: #fff0e7; border-color: rgba(177, 70, 29, .28); border-left-color: #c84d25; }
 .sales-history h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; }
