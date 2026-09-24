@@ -8,6 +8,7 @@
     "dev": "vite",
     "start": "vite preview",
     "refresh": "node scripts/refresh-data.js",
+    "refresh:parcel-boundaries": "npm run layers:download -- parcels && npm run layers:build -- parcels",
     "refresh:tax-delinquent": "node scripts/refresh-siskiyou-tax-delinquent.js",
     "crawl:tax-delinquent": "node scripts/crawl-siskiyou-tax-delinquent.js",
     "override": "node scripts/parcel-override.js",

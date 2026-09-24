@@ -42,6 +42,15 @@ Every refresh snapshots mapped MLS listings in `data/mls-listing-archive.json`. 
 
 ## Data refresh
 
+To refresh the county parcel outlines (independently of the daily sales-data refresh):
+
+```sh
+npm run refresh:parcel-boundaries
+npm run build # or npm run deploy to publish
+```
+
+This downloads the current Siskiyou County parcel GIS into `data/raw/parcels.geojson`, updates `data/generated/apn-index.json`, and rebuilds `data/generated/parcels.pmtiles`. Commit the updated data files and deploy to make the new boundaries visible to visitors. Requires `tippecanoe` and the `pmtiles` CLI. It does not refresh listing geometry in `data/parcels.json`; run `npm run refresh` separately if those listing footprints also need updating.
+
 Run the sales-data refresh independently when needed:
 
 ```sh

@@ -381,6 +381,7 @@ function updateSales() {
 function addPmtilesSource(id) {
   const url = new URL(`data/generated/${id}.pmtiles`, window.location.href);
   url.searchParams.set('v', new URL(import.meta.url).pathname.split('/').pop());
+  if (id === 'parcels') url.searchParams.set('parcel-revision', __PARCEL_BOUNDARIES_REVISION__);
   if (id === 'wildfire_perimeters') url.searchParams.set('wildfire-revision', 'dated-2018');
   if (id === 'recent_wildfire_perimeters') url.searchParams.set('wildfire-revision', '2019-2025');
   const attributions = {

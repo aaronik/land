@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { readFileSync } from 'node:fs';
+import { readFileSync, statSync } from 'node:fs';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 const maplibreWorkers = {
@@ -26,6 +26,9 @@ export default defineConfig({
   },
   build: {
     outDir: 'build'
+  },
+  define: {
+    __PARCEL_BOUNDARIES_REVISION__: JSON.stringify(String(statSync('data/generated/parcels.pmtiles').mtimeMs))
   },
   plugins: [
     maplibreWorkers,
