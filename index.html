@@ -10,8 +10,8 @@
   <!-- Cloudflare Web Analytics -->
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"bf1755097209498fa6a1d29fad38e071"}'></script>
   <!-- End Cloudflare Web Analytics -->
-  <script type="module" crossorigin src="/assets/index-rTdpU8yq.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CRlEZF49.css">
+  <script type="module" crossorigin src="/assets/index-CJVIbx2R.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Bbwvscm7.css">
 </head>
 <body>
   <header class="masthead">
@@ -34,6 +34,7 @@
 
       <section class="legend">
         <div class="layer-heading"><h2>Official map layers</h2><button id="reset-map-layers" type="button">Reset to defaults</button></div>
+        <p class="legend-selection-note">Select a parcel to bold matching entries within expanded legends at the clicked location. Layers may vary across a parcel.</p>
         <label><input type="checkbox" data-map-layer="roads" checked><i class="swatch roads-overlay"></i>Roads</label>
         <label><input type="checkbox" data-map-layer="waterways" checked><i class="swatch waterways-overlay"></i>Rivers, streams, &amp; springs</label>
         <div class="layer-key" data-layer-key="waterways" aria-label="Rivers, streams, and springs legend"><span><i style="--key-color:#38a8ff"></i>Perennial</span><span><i style="--key-color:#6ca8cf"></i>Intermittent / ephemeral</span><span><i class="key-spring"></i>Mapped spring</span></div>
@@ -49,6 +50,8 @@
         <label><input type="checkbox" data-map-layer="huc12"><i class="swatch watershed-overlay"></i>HUC-12 subwatersheds</label>
         <label><input type="checkbox" data-map-layer="wetlands"><i class="swatch wetlands-overlay"></i>National Wetlands Inventory</label>
         <div class="layer-key" data-layer-key="wetlands" aria-label="National Wetlands Inventory information"><span><i style="--key-color:#4d7dcc"></i>Mapped wetland polygon</span><span>USFWS National Wetlands Inventory screening data. Map presence or absence does not establish wetland jurisdiction, boundaries, conditions, or permitting requirements; verify with a site assessment and the appropriate agencies.</span></div>
+        <label><input type="checkbox" data-map-layer="land-cover"><i class="swatch land-cover-overlay"></i>Vegetation &amp; land cover (2024)</label>
+        <div class="layer-key" data-layer-key="land-cover" aria-label="Vegetation and land cover legend"><span><i style="--key-color:#238b45"></i>Forest</span><span><i style="--key-color:#b4a468"></i>Shrub / scrub</span><span><i style="--key-color:#d6ce82"></i>Grassland / herbaceous</span><span><i style="--key-color:#5c8291"></i>Woody / herbaceous wetland</span><span><i style="--key-color:#4473a4"></i>Open water</span><span><i style="--key-color:#b6a883"></i>Pasture / cropland</span><span><i style="--key-color:#d4aca4"></i>Developed / barren</span><span>USGS/MRLC Annual NLCD 2024, ~30 m pixels. Broad land-cover classes (colors are illustrative); Alt/Option-click the map for the class at a point. Waterway edges and small riparian corridors may be missed. This is not a plant or animal inventory, a wetland delineation, or proof of species presence.</span></div>
         <label><input type="checkbox" data-map-layer="critical-habitat"><i class="swatch critical-habitat-overlay"></i>USFWS critical habitat</label>
         <div class="layer-key" data-layer-key="critical-habitat" aria-label="USFWS critical habitat legend"><span><i style="--key-color:#a80000"></i>Final designation</span><span><i style="--key-color:#e600a9"></i>Proposed designation</span><span>USFWS screening data for mapped proposed and final critical habitat. Click an area for species and designation status. It does not determine species presence, project effects, permitting, consultation requirements, or legal obligations; verify with USFWS and the applicable Federal Register notice.</span></div>
         <label><input type="checkbox" data-map-layer="cell-coverage"><i class="swatch cell-coverage-overlay"></i>4G LTE coverage</label>
@@ -192,7 +195,7 @@
           <li><b>Zoom:</b> use the mouse wheel, trackpad, or + / − buttons</li>
           <li><b>Rotate:</b> right-click and drag, or hold <kbd>Ctrl</kbd> while dragging</li>
           <li><b>Tilt:</b> right-click and drag up or down</li>
-          <li><b>Inspect:</b> click a parcel, listing, spring, well, or geology area</li>
+          <li><b>Inspect:</b> click a parcel to select it, even under a colored layer; hold <kbd>Alt</kbd> / <kbd>Option</kbd> and click to inspect the overlay instead</li>
         </ul>
       </section>
       <section>
