@@ -8,6 +8,7 @@ const LAYERS = {
   'parcel-lines': 'parcel-fill',
   roads: 'roads',
   waterways: 'waterways',
+  springs: 'springs',
   railroads: 'railroads',
   pct: 'pct',
   huc12: 'huc12-fill',
@@ -30,6 +31,70 @@ const LAYERS = {
 };
 export const LEGEND_QUERY_LAYERS = [...new Set(Object.values(LAYERS))];
 
+// A line can be subpixel-wide at low zoom. Small query boxes also prevent a
+// selected stream or spring from flickering off after tiles finish rendering.
+export function queryLegendFeatures(map, location, layers) {
+  const point = map.project(location);
+  const features = map.queryRenderedFeatures(point, { layers });
+  for (const [layer, radius] of [['waterways', 5], ['springs', 9]]) {
+    if (!layers.includes(layer)) continue;
+    features.push(...map.queryRenderedFeatures([
+      [point.x - radius, point.y - radius],
+      [point.x + radius, point.y + radius]
+    ], { layers: [layer] }));
+  }
+  return features;
+}
+
+export function queryParcelWaterFeatures(map, parcels, layers) {
+  const waterLayers = layers.filter(id => id === 'waterways' || id === 'springs');
+  if (!waterLayers.length || !parcels.length) return [];
+  const polygons = parcels.flatMap(feature => {
+    const geometry = feature.geometry;
+    if (geometry?.type === 'Polygon') return [geometry.coordinates];
+    if (geometry?.type === 'MultiPolygon') return geometry.coordinates;
+    return [];
+  });
+  if (!polygons.length) return [];
+  const points = polygons.flat(2).map(coordinate => map.project(coordinate));
+  const canvas = map.getCanvas();
+  const west = Math.max(0, Math.min(...points.map(point => point.x)) - 9);
+  const east = Math.min(canvas.clientWidth, Math.max(...points.map(point => point.x)) + 9);
+  const north = Math.max(0, Math.min(...points.map(point => point.y)) - 9);
+  const south = Math.min(canvas.clientHeight, Math.max(...points.map(point => point.y)) + 9);
+  if (west > east || north > south) return [];
+
+  const inRing = (point, ring) => {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const a = ring[i], b = ring[j];
+      if ((a[1] > point[1]) !== (b[1] > point[1]) && point[0] < (b[0] - a[0]) * (point[1] - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+    }
+    return inside;
+  };
+  const inParcel = point => polygons.some(polygon => inRing(point, polygon[0]) && !polygon.slice(1).some(hole => inRing(point, hole)));
+  const crosses = (a, b, c, d) => {
+    const orient = (p, q, r) => (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]);
+    const onSegment = (p, q, r) => Math.min(p[0], q[0]) <= r[0] && r[0] <= Math.max(p[0], q[0]) && Math.min(p[1], q[1]) <= r[1] && r[1] <= Math.max(p[1], q[1]);
+    const o1 = orient(a, b, c), o2 = orient(a, b, d), o3 = orient(c, d, a), o4 = orient(c, d, b);
+    return ((o1 === 0 && onSegment(a, b, c)) || (o2 === 0 && onSegment(a, b, d)) || (o3 === 0 && onSegment(c, d, a)) || (o4 === 0 && onSegment(c, d, b)) || ((o1 > 0) !== (o2 > 0) && (o3 > 0) !== (o4 > 0)));
+  };
+  const intersects = line => polygons.some(polygon => line.some((point, index) => {
+    if (inParcel(point)) return true;
+    if (!index) return false;
+    const previous = line[index - 1];
+    return polygon.some(ring => ring.some((vertex, i) => crosses(previous, point, vertex, ring[(i + 1) % ring.length])));
+  }));
+  return map.queryRenderedFeatures([[west, north], [east, south]], { layers: waterLayers }).filter(feature => {
+    const geometry = feature.geometry;
+    if (geometry?.type === 'Point') return inParcel(geometry.coordinates);
+    if (geometry?.type === 'MultiPoint') return geometry.coordinates.some(inParcel);
+    if (geometry?.type === 'LineString') return intersects(geometry.coordinates);
+    if (geometry?.type === 'MultiLineString') return geometry.coordinates.some(intersects);
+    return false;
+  });
+}
+
 export function legendMatches(features, listingCategories = []) {
   const matches = new Map();
   const add = (id, key) => {
@@ -41,6 +106,7 @@ export function legendMatches(features, listingCategories = []) {
     const layer = feature.layer?.id;
     const p = feature.properties || {};
     if (layer === 'parcel-fill') { add('parcel-lines'); continue; }
+    if (layer === 'springs') { add('waterways', 'Mapped spring'); continue; }
     if (layer === 'municipal-zoning-fill') { add('zoning', p.zoning); continue; }
     if (layer === 'recent-wildfire-perimeters-fill') { add('wildfire-perimeters', 'Recent'); continue; }
     if (layer === 'critical-habitat-proposed') { add('critical-habitat', 'Proposed'); continue; }

@@ -11,7 +11,7 @@ import { identifyLandCover, LAND_COVER_YEAR, landCoverLegendClass } from './map/
 import { ParcelAdjustmentControl, ParcelAdjustmentMapControl } from './map/parcel-adjustment.js';
 import { initializeMobileSheet } from './state/ui.js';
 import { updateUrlParameter } from './state/url.js';
-import { LEGEND_QUERY_LAYERS, legendMatches, updateLegendHighlights } from './ui/legend-highlights.js';
+import { LEGEND_QUERY_LAYERS, legendMatches, queryLegendFeatures, queryParcelWaterFeatures, updateLegendHighlights } from './ui/legend-highlights.js';
 
 const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'previous-listing': '#55768d', 'public-land': '#ff9d4d', 'public-home': '#b94b18', 'tax-delinquent': '#c43c78' };
 // Colors follow the unique-value renderer saved on Siskiyou County's official
@@ -328,9 +328,19 @@ function refreshLegendHighlights() {
   const listingCategories = listing ? categories(listing) : [];
   let features = [];
   if (selectedApn && selectedLegendLocation && layersInitialized && map.isStyleLoaded()) {
-    const point = map.project(selectedLegendLocation);
     const layers = LEGEND_QUERY_LAYERS.filter(id => map.getLayer(id) && map.getLayoutProperty(id, 'visibility') !== 'none');
-    if (layers.length) features = map.queryRenderedFeatures(point, { layers });
+    if (layers.length) features = queryLegendFeatures(map, selectedLegendLocation, layers.filter(id => id !== 'waterways' && id !== 'springs'));
+    const waterLayers = layers.filter(id => id === 'waterways' || id === 'springs');
+    if (waterLayers.length) {
+      const parcelLayers = ['parcel-fill', 'sale-fill'].filter(id => map.getLayer(id) && map.getLayoutProperty(id, 'visibility') !== 'none');
+      const bbox = apnIndex[selectedApn]?.bbox;
+      const parcelQuery = bbox ? [map.project([bbox[0], bbox[3]]), map.project([bbox[2], bbox[1]])] : map.project(selectedLegendLocation);
+      const parcels = parcelLayers.length ? map.queryRenderedFeatures(parcelQuery, { layers: parcelLayers })
+        .filter(feature => feature.properties?.APN === selectedApn) : [];
+      features.push(...(parcels.length
+        ? queryParcelWaterFeatures(map, parcels, waterLayers)
+        : queryLegendFeatures(map, selectedLegendLocation, waterLayers)));
+    }
   }
   const matches = legendMatches(features, listingCategories);
   if (selectedApn && selectedLandCoverClass && map.getLayer('land-cover') && map.getLayoutProperty('land-cover', 'visibility') === 'visible') matches.set('land-cover', new Set([selectedLandCoverClass]));
