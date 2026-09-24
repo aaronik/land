@@ -13,6 +13,19 @@ export const LAND_COVER_CLASSES = {
   90: 'Woody wetlands', 95: 'Emergent herbaceous wetlands'
 };
 
+// Legend swatches group several of the source's 30 m classes together.
+export function landCoverLegendClass(value) {
+  if (!value) return null;
+  if (value.includes('forest')) return 'Forest';
+  if (value.includes('wetland')) return 'Woody / herbaceous wetland';
+  if (value === 'Open water') return 'Open water';
+  if (value.includes('scrub')) return 'Shrub / scrub';
+  if (['Grassland/herbaceous', 'Sedge/herbaceous', 'Lichens', 'Moss'].includes(value)) return 'Grassland / herbaceous';
+  if (['Pasture/hay', 'Cultivated crops'].includes(value)) return 'Pasture / cropland';
+  if (value.startsWith('Developed') || value === 'Barren land') return 'Developed / barren';
+  return null; // No matching swatch (e.g. perennial snow/ice).
+}
+
 export function landCoverTileUrl() {
   const params = new URLSearchParams({
     f: 'image', bbox: '{bbox-epsg-3857}', bboxSR: '3857', imageSR: '3857',

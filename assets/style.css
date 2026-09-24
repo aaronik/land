@@ -37,9 +37,12 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .layer-heading h2 { margin-bottom: 10px; }
 #reset-map-layers { margin: -4px 0 6px; padding: 4px 7px; border: 1px solid var(--line); border-radius: 5px; color: #425048; background: transparent; font-size: 10px; font-weight: 700; cursor: pointer; }
 #reset-map-layers:hover { color: var(--ink); border-color: rgba(22,35,29,.4); }
+.legend-selection-note { margin: 0 0 10px; color: #5b6960; font-size: 11px; line-height: 1.35; }
 .legend label { display: flex; align-items: center; gap: 7px; margin: 7px 0; font-size: 13px; font-weight: 400; line-height: 16px; letter-spacing: 0; text-transform: none; cursor: pointer; }
 .legend input { display: block; width: 14px; height: 14px; flex: 0 0 14px; accent-color: var(--ink); margin: 0; }
 .legend .swatch { flex: 0 0 12px; margin: 0; }
+.layer-key span.legend-match { font-weight: 800; color: #123e2e; background: rgba(18, 98, 70, .11); border-radius: 3px; }
+.layer-key span.legend-match i { outline: 2px solid #126246; outline-offset: 1px; }
 .acreage-filter { margin-top: 15px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.52); }
 .acreage-filter h3 { margin: 0 0 9px; font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .acreage-control + .acreage-control { margin-top: 8px; }

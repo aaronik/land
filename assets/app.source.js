@@ -7,10 +7,11 @@ import { installMapControls } from './map/controls.js';
 import { createListingData } from './data/listings.js';
 import { createParcelDetails } from './ui/parcel-details.js';
 import { installMapSourcesAndLayers } from './map/layers.js';
-import { identifyLandCover, LAND_COVER_YEAR } from './map/land-cover.js';
+import { identifyLandCover, LAND_COVER_YEAR, landCoverLegendClass } from './map/land-cover.js';
 import { ParcelAdjustmentControl } from './map/parcel-adjustment.js';
 import { initializeMobileSheet } from './state/ui.js';
 import { updateUrlParameter } from './state/url.js';
+import { LEGEND_QUERY_LAYERS, legendMatches, updateLegendHighlights } from './ui/legend-highlights.js';
 
 const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'previous-listing': '#55768d', 'public-land': '#ff9d4d', 'public-home': '#b94b18', 'tax-delinquent': '#c43c78' };
 // Colors follow the unique-value renderer saved on Siskiyou County's official
@@ -304,8 +305,41 @@ const parcelDetails = createParcelDetails({
 const { recordCard, showParcelDetails } = parcelDetails;
 
 function updateSelectedParcelUrl(apn) { updateUrlParameter(PARCEL_URL_PARAM, apn); }
-function setSelectedApn(apn, { updateUrl = true } = {}) {
+let selectedLegendLocation = null;
+let selectedLandCoverClass = null;
+let landCoverLegendRequest = 0;
+async function refreshSelectedLandCover() {
+  const requestId = ++landCoverLegendRequest;
+  selectedLandCoverClass = null;
+  if (!selectedApn || !selectedLegendLocation || !map.getLayer('land-cover') || map.getLayoutProperty('land-cover', 'visibility') !== 'visible') {
+    refreshLegendHighlights();
+    return;
+  }
+  try {
+    const lng = selectedLegendLocation.lng ?? selectedLegendLocation[0];
+    const lat = selectedLegendLocation.lat ?? selectedLegendLocation[1];
+    const cover = await identifyLandCover({ lng, lat });
+    if (requestId !== landCoverLegendRequest) return;
+    selectedLandCoverClass = landCoverLegendClass(cover);
+  } catch { /* A failed identify must not prevent selecting the parcel. */ }
+  if (requestId === landCoverLegendRequest) refreshLegendHighlights();
+}
+function refreshLegendHighlights() {
+  const listing = selectedApn && filteredMappedListings().find(feature => feature.properties.APN === selectedApn);
+  const listingCategories = listing ? categories(listing) : [];
+  let features = [];
+  if (selectedApn && selectedLegendLocation && layersInitialized && map.isStyleLoaded()) {
+    const point = map.project(selectedLegendLocation);
+    const layers = LEGEND_QUERY_LAYERS.filter(id => map.getLayer(id) && map.getLayoutProperty(id, 'visibility') !== 'none');
+    if (layers.length) features = map.queryRenderedFeatures(point, { layers });
+  }
+  const matches = legendMatches(features, listingCategories);
+  if (selectedApn && selectedLandCoverClass && map.getLayer('land-cover') && map.getLayoutProperty('land-cover', 'visibility') === 'visible') matches.set('land-cover', new Set([selectedLandCoverClass]));
+  updateLegendHighlights(document, matches);
+}
+function setSelectedApn(apn, { updateUrl = true, location = null } = {}) {
   const nextApn = apn || '';
+  selectedLegendLocation = nextApn ? location || (nextApn === selectedApn ? selectedLegendLocation : null) : null;
   if (selectedApn && map.getSource('parcels')) {
     map.removeFeatureState({ source: 'parcels', sourceLayer: 'parcels', id: selectedApn }, 'selected');
   }
@@ -314,10 +348,12 @@ function setSelectedApn(apn, { updateUrl = true } = {}) {
     map.setFeatureState({ source: 'parcels', sourceLayer: 'parcels', id: selectedApn }, { selected: true });
   }
   if (updateUrl) updateSelectedParcelUrl(selectedApn);
+  refreshSelectedLandCover();
+  refreshLegendHighlights();
 }
-function selectParcel(properties, saleFeature) {
+function selectParcel(properties, saleFeature, location) {
   if (!properties?.APN) return;
-  setSelectedApn(properties.APN);
+  setSelectedApn(properties.APN, { location });
   showParcelDetails(properties, saleFeature);
 }
 let initialParcelRestored = false;
@@ -326,11 +362,12 @@ function restoreInitialSelectedParcel() {
   const item = apnIndex[initialSelectedApn];
   if (!item) return;
   initialParcelRestored = true;
-  setSelectedApn(initialSelectedApn, { updateUrl: false });
+  setSelectedApn(initialSelectedApn, { updateUrl: false, location: item.bbox && [(item.bbox[0] + item.bbox[2]) / 2, (item.bbox[1] + item.bbox[3]) / 2] });
   showParcelDetails({ APN: initialSelectedApn, Acres: item.acres });
 }
 function updateSales() {
   map.getSource('sales')?.setData(saleGeoJson());
+  refreshLegendHighlights();
   map.getSource('sale-points')?.setData(salePointGeoJson());
   map.getSource('unmapped')?.setData(unmappedGeoJson());
   const shown = filteredMappedListings();
@@ -448,6 +485,7 @@ function toggleLayer(id, visibleValue) {
   const layerIds = groupedLayers[id] || [id];
   for (const layerId of layerIds) if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibleValue ? 'visible' : 'none');
   document.querySelector(`[data-layer-key="${id}"]`)?.classList.toggle('visible', visibleValue);
+  refreshLegendHighlights();
 }
 function updateTerrainUrl(enabled) { updateUrlParameter(TERRAIN_URL_PARAM, enabled ? '1' : ''); }
 function applyTerrain(enabled, { updateUrl = true, animate = true } = {}) {
@@ -500,8 +538,13 @@ function initializeMapLayers() {
     ], { layers: ['springs', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
     const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'recent-wildfire-perimeters-fill', 'wildfire-perimeters-fill'] });
     const habitatHits = polygonHits.filter(hit => hit.layer.id === 'critical-habitat-final' || hit.layer.id === 'critical-habitat-proposed');
-    const feature = markerHits[0] || habitatHits[0] || polygonHits[0];
-    if (map.getLayoutProperty('land-cover', 'visibility') === 'visible' && !markerHits.length && !habitatHits.length && !polygonHits.some(hit => hit.layer.id === 'sale-fill')) {
+    const parcelHit = polygonHits.find(hit => hit.layer.id === 'sale-fill') || polygonHits.find(hit => hit.layer.id === 'parcel-fill');
+    const overlayHit = habitatHits[0] || polygonHits.find(hit => hit !== parcelHit && hit.layer.id !== 'parcel-fill' && hit.layer.id !== 'sale-fill');
+    // Parcel selection is the default even under an overlay. Alt/Option-click
+    // inspects the colored layer instead, without requiring it to be hidden.
+    const inspectOverlay = event.originalEvent?.altKey;
+    const feature = markerHits[0] || (inspectOverlay ? overlayHit || parcelHit : parcelHit || overlayHit);
+    if ((inspectOverlay || !parcelHit) && map.getLayoutProperty('land-cover', 'visibility') === 'visible' && !markerHits.length && !habitatHits.length && !polygonHits.some(hit => hit.layer.id === 'sale-fill')) {
       const details = document.querySelector('#details');
       details.innerHTML = `<h3>Vegetation &amp; land cover</h3><p class="meta">Checking 2024 map class…</p>`;
       try {
@@ -586,10 +629,10 @@ function initializeMapLayers() {
         try { archivedListings = JSON.parse(archivedListings); } catch { archivedListings = []; }
       }
       const clickedSale = { type: 'Feature', properties: { ...props, records, salesHistory, archivedListings } };
-      selectParcel({ ...props, records, salesHistory, archivedListings }, clickedSale);
+      selectParcel({ ...props, records, salesHistory, archivedListings }, clickedSale, event.lngLat);
       return;
     }
-    selectParcel(props);
+    selectParcel(props, null, event.lngLat);
   });
   for (const id of ['geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
@@ -617,6 +660,8 @@ function initializeMapLayers() {
   roadTrackerControl.refresh();
   updateSales();
   restoreInitialSelectedParcel();
+  map.on('idle', refreshLegendHighlights);
+  refreshLegendHighlights();
   document.body.classList.add('map-ready');
   } catch (error) {
     layersInitialized = false;
@@ -702,6 +747,7 @@ updateDiscoveryFilters();
 updateListingDateFilter();
 mapLayerInputs.forEach(input => input.addEventListener('change', () => {
   toggleLayer(input.dataset.mapLayer, input.checked);
+  if (input.dataset.mapLayer === 'land-cover') refreshSelectedLandCover();
   saveMapLayerVisibility();
 }));
 document.querySelector('#reset-map-layers').addEventListener('click', () => {
@@ -725,6 +771,7 @@ document.querySelector('#reset-map-layers').addEventListener('click', () => {
     localStorage.removeItem(LISTING_FILTER_STORAGE_KEY);
   } catch { /* Storage may be disabled. */ }
   applyMapLayerVisibility();
+  refreshSelectedLandCover();
   updateSales();
   clearSelectedParcel();
 });

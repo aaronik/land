@@ -3,7 +3,9 @@
 const assert = require('node:assert/strict');
 
 (async () => {
-  const { LAND_COVER_SERVICE, LAND_COVER_MOSAIC_RULE, landCoverTileUrl, identifyLandCover } = await import('../assets/map/land-cover.js');
+  const { LAND_COVER_SERVICE, LAND_COVER_MOSAIC_RULE, landCoverTileUrl, identifyLandCover, landCoverLegendClass } = await import('../assets/map/land-cover.js');
+  for (const [source, legend] of Object.entries({ 'Evergreen forest': 'Forest', 'Shrub/scrub': 'Shrub / scrub', 'Grassland/herbaceous': 'Grassland / herbaceous', 'Woody wetlands': 'Woody / herbaceous wetland', 'Emergent herbaceous wetlands': 'Woody / herbaceous wetland', 'Open water': 'Open water', 'Cultivated crops': 'Pasture / cropland', 'Developed open space': 'Developed / barren' })) assert.equal(landCoverLegendClass(source), legend);
+  assert.equal(landCoverLegendClass('Perennial snow/ice'), null);
   const tile = landCoverTileUrl();
   assert.match(tile, /bbox=\{bbox-epsg-3857\}/);
   assert.equal(new URL(tile).searchParams.get('mosaicRule'), LAND_COVER_MOSAIC_RULE);
