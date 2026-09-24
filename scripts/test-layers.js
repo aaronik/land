@@ -87,6 +87,13 @@ function testTransmissionLineSource() {
   assert.deepEqual(lines.fields, ['OBJECTID', 'Name', 'kV', 'Owner', 'Status', 'Type', 'Source']);
 }
 
+function testDamSource() {
+  const dams = LAYERS.dams;
+  assert.match(dams.url, /NID_v1\/FeatureServer\/0$/);
+  assert.equal(dams.bbox, '-123.73,40.98,-121.43,42.02');
+  assert.deepEqual(dams.fields, ['OBJECTID', 'NIDID', 'NAME', 'COUNTYSTATE', 'PRIMARY_PURPOSE', 'DAM_HEIGHT', 'HAZARD_POTENTIAL']);
+}
+
 function testWaterwaysSource() {
   const waterways = LAYERS.waterways;
   assert.match(waterways.url, /hydro\.nationalmap\.gov.*\/nhd\/MapServer\/6/);
@@ -137,6 +144,7 @@ function testCriticalHabitatSources() {
   testMunicipalZoningSource();
   testActiveRailroadSource();
   testTransmissionLineSource();
+  testDamSource();
   testWaterwaysSource();
   testFarmlandSource();
   testRcraSiteSource();

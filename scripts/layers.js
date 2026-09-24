@@ -152,6 +152,12 @@ const LAYERS = {
     where: "Status = 'Operational'",
     fields: ['OBJECTID', 'Name', 'kV', 'Owner', 'Status', 'Type', 'Source']
   },
+  dams: {
+    name: 'USACE National Inventory of Dams',
+    url: 'https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/NID_v1/FeatureServer/0',
+    bbox: SISKIYOU_BBOX,
+    fields: ['OBJECTID', 'NIDID', 'NAME', 'COUNTYSTATE', 'PRIMARY_PURPOSE', 'DAM_HEIGHT', 'HAZARD_POTENTIAL']
+  },
   waterways: {
     name: 'USGS NHD rivers and streams',
     url: 'https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/6',

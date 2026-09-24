@@ -16,6 +16,7 @@ const configs = {
   forest_roads: { min: 6, max: 14, fields: LAYERS.forest_roads.fields.filter(field => field !== 'objectid') },
   railroads: { min: 6, max: 14, fields: LAYERS.railroads.fields.filter(field => field !== 'OBJECTID') },
   transmission_lines: { min: 6, max: 14, fields: LAYERS.transmission_lines.fields.filter(field => field !== 'OBJECTID') },
+  dams: { min: 6, max: 14, preserveAll: true, fields: LAYERS.dams.fields.filter(field => field !== 'OBJECTID') },
   waterways: { min: 6, max: 14, fields: LAYERS.waterways.fields.filter(field => field !== 'OBJECTID') },
   waterbodies: { min: 6, max: 14, fields: LAYERS.waterbodies.fields.filter(field => field !== 'OBJECTID') },
   summits: { min: 6, max: 14, fields: LAYERS.summits.fields.filter(field => field !== 'OBJECTID') },
@@ -58,7 +59,9 @@ function main() {
     if (!config || !fs.existsSync(input)) throw new Error(`Missing raw layer: ${name}`);
     const mbtiles = path.join(generated, `${name}.mbtiles`);
     const pmtiles = path.join(generated, `${name}.pmtiles`);
-    const args = ['--force', `--output=${mbtiles}`, `--layer=${name}`, `--minimum-zoom=${config.min}`, `--maximum-zoom=${config.max}`, '--drop-densest-as-needed', '--coalesce-densest-as-needed', '--extend-zooms-if-still-dropping', '--read-parallel', '--exclude-all'];
+    const args = ['--force', `--output=${mbtiles}`, `--layer=${name}`, `--minimum-zoom=${config.min}`, `--maximum-zoom=${config.max}`, '--read-parallel', '--exclude-all'];
+    if (config.preserveAll) args.push('--drop-rate=1', '--no-feature-limit', '--no-tile-size-limit');
+    else args.push('--drop-densest-as-needed', '--coalesce-densest-as-needed', '--extend-zooms-if-still-dropping');
     for (const field of config.fields) args.push(`--include=${field}`);
     args.push(input);
     console.log(`Building ${name}.pmtiles…`);

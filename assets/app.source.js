@@ -403,6 +403,7 @@ function addPmtilesSource(id) {
     wildfire_perimeters: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County historic wildfire perimeters</a>',
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
     transmission_lines: '<a href="https://www.arcgis.com/home/item.html?id=260b4513acdb4a3a8e4d64e69fc84fee" target="_blank" rel="noopener noreferrer">California Energy Commission transmission lines</a>',
+    dams: '<a href="https://nid.sec.usace.army.mil/" target="_blank" rel="noopener noreferrer">USACE National Inventory of Dams</a>',
     forest_roads: '<a href="https://data.fs.usda.gov/geodata/edw/datasets.php?xmlKeyword=Motor+vehicle+Use+Map" target="_blank">USFS Motor Vehicle Use Map</a>',
     waterways: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
     springs: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
@@ -484,6 +485,7 @@ function toggleLayer(id, visibleValue) {
     roads: ['roads', 'road-labels', 'forest-roads', 'forest-road-labels'],
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
     'transmission-lines': ['transmission-lines-casing', 'transmission-lines'],
+    dams: ['dams'],
     waterways: ['waterways-casing', 'waterways', 'waterway-labels', 'springs'],
     'place-names': ['waterbodies', 'waterbody-labels', 'summits', 'towns'],
     'incorporated-places': ['incorporated-places-red', 'incorporated-places-white-dashes'],
@@ -551,7 +553,7 @@ function initializeMapLayers() {
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
-    ], { layers: ['springs', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
+    ], { layers: ['springs', 'dams', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
     const lineHits = map.queryRenderedFeatures([
       [event.point.x - 5, event.point.y - 5],
       [event.point.x + 5, event.point.y + 5]
@@ -580,6 +582,13 @@ function initializeMapLayers() {
     }
     if (!feature) return;
     const props = feature.properties || {};
+    if (feature.layer.id === 'dams') {
+      const value = value => value === null || value === undefined || String(value).trim() === '' ? 'Not reported' : escapeHtml(value);
+      const height = Number(props.DAM_HEIGHT);
+      const heightText = props.DAM_HEIGHT !== null && props.DAM_HEIGHT !== undefined && Number.isFinite(height) && height > 0 ? `${value(height)} ft` : 'Not reported';
+      document.querySelector('#details').innerHTML = `<h3>Inventory dam</h3><p class="meta">USACE National Inventory of Dams · ${value(props.NIDID)}</p><p><strong>${value(props.NAME)}</strong><br>County / state: ${value(props.COUNTYSTATE)}<br>Primary purpose: ${value(props.PRIMARY_PURPOSE)}<br>Reported height: ${heightText}<br>Hazard potential classification: ${value(props.HAZARD_POTENTIAL)}</p><p class="source-note">Inventory point, not an inundation zone or current safety assessment. Hazard potential describes possible downstream consequences of a failure, not the probability of failure. Locations and details may be incomplete or outdated; verify with the responsible authority.</p>`;
+      return;
+    }
     if (feature.layer.id === 'transmission-lines') {
       const value = value => value === null || value === undefined || String(value).trim() === '' ? 'Not reported' : escapeHtml(value);
       document.querySelector('#details').innerHTML = `<h3>Electric transmission line</h3><p class="meta">California Energy Commission · ${value(props.Status)}</p><p><strong>${value(props.Name)}</strong><br>Reported voltage: ${value(props.kV)} kV<br>Owner: ${value(props.Owner)}<br>Type: ${value(props.Type)}</p><p class="source-note">Mapped route for planning context only. Proximity does not establish electrical service, capacity, connection rights, or an easement. Verify with the utility.</p>`;
@@ -661,7 +670,7 @@ function initializeMapLayers() {
     }
     selectParcel(props, null, event.lngLat);
   });
-  for (const id of ['transmission-lines', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['dams', 'transmission-lines', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }

@@ -33,6 +33,26 @@ function addSpringSymbol(map) {
   map.addImage('usgs-spring', { width: size, height: size, data });
 }
 
+function addDamSymbol(map) {
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 48;
+  const context = canvas.getContext('2d');
+  // Trapezoid: broad, level crest and short, level base (2x resolution).
+  context.beginPath();
+  context.moveTo(5, 11);
+  context.lineTo(43, 11);
+  context.lineTo(32, 37);
+  context.lineTo(16, 37);
+  context.closePath();
+  context.fillStyle = '#348eb7';
+  context.strokeStyle = '#e3f5fa';
+  context.lineWidth = 4;
+  context.lineJoin = 'round';
+  context.fill();
+  context.stroke();
+  map.addImage('dam-trapezoid', context.getImageData(0, 0, 48, 48), { pixelRatio: 2 });
+}
+
 function addWellSymbols(map) {
   const colors = { shallow: [112, 228, 239], medium: [74, 196, 230], deep: [67, 132, 222], veryDeep: [118, 81, 199] };
   for (const [name, color] of Object.entries(colors)) {
@@ -83,6 +103,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('forest_roads');
   addPmtilesSource('railroads');
   addPmtilesSource('transmission_lines');
+  addPmtilesSource('dams');
   addPmtilesSource('waterways');
   addPmtilesSource('waterbodies');
   addPmtilesSource('summits');
@@ -378,6 +399,15 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     id: 'transmission-lines', type: 'line', source: 'transmission_lines', 'source-layer': 'transmission_lines', minzoom: 6,
     layout: { visibility: 'none', 'line-cap': 'round', 'line-join': 'round' },
     paint: { 'line-color': '#e6b94f', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.5, 14, 2.7] }
+  });
+  addDamSymbol(map);
+  map.addLayer({
+    id: 'dams', type: 'symbol', source: 'dams', 'source-layer': 'dams', minzoom: 6,
+    layout: {
+      visibility: 'none', 'icon-image': 'dam-trapezoid',
+      'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 1.15, 8, 1.25, 13, 1.35, 17, 1.5, 20, 1.6],
+      'icon-allow-overlap': true, 'icon-ignore-placement': true
+    }
   });
   map.addLayer({ id: 'sale-fill', type: 'fill', source: 'sales', paint: { 'fill-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'previous-listing', COLORS['previous-listing'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'fill-opacity': 0.42 } });
   map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'previous-listing', COLORS['previous-listing'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });
