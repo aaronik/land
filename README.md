@@ -61,6 +61,38 @@ The `Refresh sales data` GitHub Actions workflow also runs daily at 12:00 UTC (4
 
 The countywide tax-delinquency crawl runs on the 1st of each month at 16:00 UTC. It checkpoints and continues across workflow runs until complete; continuation dispatch requires `TAX_CRAWL_DISPATCH_TOKEN`. The separate tax refresh runs Tuesdays and Fridays at 18:00 UTC, rechecks crawl-discovered APNs against the County's current tax system, commits `data/siskiyou-tax-delinquent.json`, and deploys. Both workflows can also be started manually from Actions. GitHub scheduled runs may start late.
 
+### Refreshable map layers
+
+The following downloaded GIS layers can change upstream. Their identifiers are the arguments to `npm run layers:download -- <names>` and `npm run layers:build -- <names>`:
+
+| Map data | Layer identifiers | Automatic refresh |
+| --- | --- | --- |
+| County parcel boundaries | `parcels` | Monthly parcel-boundaries workflow |
+| County and municipal zoning | `zoning`, `municipal_zoning` | None |
+| Roads, forest roads, and railroads | `roads`, `forest_roads`, `railroads` | None |
+| Electric transmission lines | `transmission_lines` | None |
+| Dams (national inventory) | `dams` | None |
+| **Recorded landslides and debris flows** | **`landslides`** | **None** |
+| Rivers, lakes, springs, summits, towns, and incorporated places | `waterways`, `waterbodies`, `springs`, `summits`, `towns`, `incorporated_places` | None |
+| Surface geology and fire hazard | `geology`, `fire_hazard` | None |
+| Historic and recent wildfire perimeters | `wildfire_perimeters`, `recent_wildfire_perimeters` | None |
+| Federal public land and FEMA flood zones | `public_land`, `flood` | None |
+| Soils, farmland, and hazardous-waste handlers | `soils`, `farmland`, `rcra_sites` | None |
+| Watersheds and wetlands | `huc12`, `wetlands` | None (wetlands displayed from a live USFWS WMS, not the downloaded copy) |
+| Final and proposed critical habitat | `critical_habitat_final`, `critical_habitat_proposed` | None (the proposed map layer is currently empty) |
+| Cellular coverage and Pacific Crest Trail | `cell_att`, `cell_tmobile`, `cell_verizon`, `pct`, `pct_markers` | None |
+| Groundwater basins and reported wells | `groundwater_basins`, `groundwater_wells` | None |
+
+For example, refresh the three newly added infrastructure/history layers without rebuilding unrelated datasets:
+
+```sh
+npm run layers:download -- transmission_lines dams landslides
+npm run layers:build -- transmission_lines dams landslides
+npm run build # or npm run deploy to publish
+```
+
+Commit the changed `data/raw/*.geojson`, `data/generated/*.pmtiles`, and `data/generated/sources.json` to retain them across deployments. Both `layers:download` and `layers:build` **without arguments** operate on every configured layer; this can take a long time and fail if an upstream service is unavailable. Downloads are not atomic, and `npm run build`, `npm run deploy`, `npm run refresh`, and the scheduled sales/tax workflows do **not** refresh these GIS archives. The browser instead fetches land cover from USGS/MRLC, wetlands from the USFWS WMS, and satellite imagery from Esri at viewing time; those are not refreshed by these commands. Requires `tippecanoe` and the `pmtiles` CLI to rebuild tiles.
+
 ### Evidence-backed APN research
 
 Use the persistent research queue for unresolved land listings:
