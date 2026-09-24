@@ -1,16 +1,28 @@
 {
-  "generatedAt": "2026-09-22T16:03:58.724Z",
-  "count": 220,
+  "generatedAt": "2026-09-24T18:30:30.321Z",
+  "count": 221,
   "listings": [
     {
-      "mlsNumber": "SN26192210",
-      "title": "Lot 285/286 Cougar St, Hornbrook, CA 96044",
-      "acres": 9.4,
+      "mlsNumber": "20261157",
+      "title": "Unit 1 Lot 56 Brook Ln., Weed, CA 96094",
+      "acres": 0.25,
       "latLng": [
-        41.889519,
-        -122.516426
+        41.52717502350079,
+        -122.37210021980158
       ],
-      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-MRMLS/SN26192210/Lot-285-286-Cougar-St-Hornbrook-CA-96044",
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261157/Unit-1-Lot-56-Brook-Ln-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261156",
+      "title": "Lot 6 Blk Upper River Ave., Dunsmuir, CA 96025",
+      "acres": 0.14,
+      "latLng": [
+        41.2151145830008,
+        -122.26921051700164
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261156/Lot-6-Blk-Upper-River-Ave-Dunsmuir-CA-96025",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -23,6 +35,18 @@
         -122.51472420665009
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261151/Lot-307-Dove-St-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "SN26192210",
+      "title": "Lot 285/286 Cougar St, Hornbrook, CA 96044",
+      "acres": 9.4,
+      "latLng": [
+        41.889519,
+        -122.516426
+      ],
+      "listingUrl": "https://www.mountshastarealty.com/idx/listing/CA-MRMLS/SN26192210/Lot-285-286-Cougar-St-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -395,18 +419,6 @@
         -122.38619462692465
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260963/9-2-Lot-131-Elkridge-Rd-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260410",
-      "title": "Unt 5-3 Lot 187 Hogan Dr, Weed, CA 96094",
-      "acres": 0.27,
-      "latLng": [
-        41.50317416173989,
-        -122.370521946219
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260410/Unt-5-3-Lot-187-Hogan-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
