@@ -47,7 +47,7 @@ const ZONING_EXPLANATIONS = [
   [/^(Incorporated|ROW)/, ['Not a County zoning district', 'This map label indicates incorporated area or right-of-way rather than an unincorporated Siskiyou County zoning district.', 'The relevant city or road agency—not Siskiyou County’s unincorporated-area zoning code—may control land-use rules. Confirm jurisdiction before proceeding.']]
 ];
 
-export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, municipalZoningUrl, map, wildfirePerimetersQueryUrl, recentWildfirePerimetersQueryUrl, parcelsQueryUrl, addressPointsQueryUrl, onParcelQuest, onAdjustParcel, isParcelAdjusted, onClose }) {
+export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, municipalZoningUrl, map, wildfirePerimetersQueryUrl, recentWildfirePerimetersQueryUrl, parcelsQueryUrl, addressPointsQueryUrl, onParcelQuest, onClose }) {
   const zoningByApn = new Map();
   const addressPointsByApn = new Map();
   const wildfireHistoryByApn = new Map();
@@ -272,14 +272,13 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     detailsElement.querySelector('[data-copy-apn]')?.addEventListener('click', () => navigator.clipboard.writeText(apn));
     detailsElement.querySelector('[data-copy-mls]')?.addEventListener('click', event => navigator.clipboard.writeText(event.currentTarget.dataset.copyMls));
     detailsElement.querySelector('[data-parcelquest]')?.addEventListener('click', () => onParcelQuest(apn));
-    detailsElement.querySelector('[data-adjust-parcel]')?.addEventListener('click', async event => { const button = event.currentTarget; const active = await onAdjustParcel?.(apn); button.textContent = active ? 'Hide aligned outline' : 'Show aligned outline'; });
     detailsElement.querySelector('[data-close-parcel]')?.addEventListener('click', onClose);
   };
   const showParcelDetails = (properties, saleFeature = matchingSale(properties.APN)) => {
     const p = { ...(saleFeature?.properties || {}), ...properties }, records = saleFeature?.properties.records || p.records || [], salesHistory = saleFeature?.properties.salesHistory || p.salesHistory || [], archivedListings = saleFeature?.properties.archivedListings || p.archivedListings || [];
     const directions = parcelDirectionsLink(p.APN), cards = records.map((record, index) => recordCard(record, index === 0 ? directions : '')).join('');
     const previousCards = [...archivedListings, ...salesHistory].map(previousListingCard).join('');
-    detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || archivedListings[0]?.title || salesHistory[0]?.title || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta">${escapeHtml(p.Acres ?? getApnIndex()[p.APN]?.acres ?? '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p><p class="meta" data-selected-address hidden></p>${cards || previousCards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${researchControls(p.APN, records)}${!previousCards ? salesHistorySection(salesHistory) : ''}${!previousCards ? archivedListingsSection(archivedListings) : ''}${addressPointsSection()}${wildfireHistorySection(p.APN)}<section class="parcel-alignment"><h4>Align parcel outline</h4><p>Use the yellow copy to line up the county outline with field evidence. Drag the outline to move it; drag the yellow handle to rotate it. This alignment is saved in this browser only.</p><button type="button" data-adjust-parcel>${isParcelAdjusted?.(p.APN) ? 'Hide aligned outline' : 'Show aligned outline'}</button></section>`;
+    detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || archivedListings[0]?.title || salesHistory[0]?.title || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta">${escapeHtml(p.Acres ?? getApnIndex()[p.APN]?.acres ?? '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p><p class="meta" data-selected-address hidden></p>${cards || previousCards || `${directions}<p class="muted">Official county parcel. No current listing or auction record is attached.</p>`}${researchControls(p.APN, records)}${!previousCards ? salesHistorySection(salesHistory) : ''}${!previousCards ? archivedListingsSection(archivedListings) : ''}${addressPointsSection()}${wildfireHistorySection(p.APN)}`;
     updateParcelZoning(p.APN); updateAddressPoints(p.APN); updateWildfireHistory(p.APN); bindResearchControls(p.APN);
   };
   return { recordCard, showParcelDetails };

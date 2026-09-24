@@ -437,7 +437,7 @@ class DistanceMeasureControl {
     this.map.getSource('distance-measurement')?.setData({ type: 'FeatureCollection', features: [...features, ...points] });
   }
 }
-export function installMapControls(map, maplibregl) {
+export function installMapControls(map, maplibregl, parcelAdjustmentMapControl) {
   map.addControl(new GoogleStreetViewControl(), 'top-left');
   map.addControl(new CardinalCompassControl(), 'top-right');
   map.addControl(new MilesScaleControl(), 'bottom-left');
@@ -464,6 +464,7 @@ export function installMapControls(map, maplibregl) {
   roadTrackerControl = new RoadTrackerControl(deactivateOtherTools);
   map.addControl(coordinatePinControl, 'top-left');
   map.addControl(distanceMeasureControl, 'top-left');
+  map.addControl(parcelAdjustmentMapControl, 'top-left');
   map.addControl(polygonDrawControl, 'top-left');
   map.addControl(roadTrackerControl, 'top-left');
   return { coordinatePinControl, distanceMeasureControl, polygonDrawControl, roadTrackerControl };

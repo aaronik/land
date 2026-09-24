@@ -175,11 +175,11 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .sales-history article small { grid-column: 1 / -1; color: #667067; line-height: 1.35; }
 .sales-history .source-note { margin: 7px 0 0; color: #667067; font-size: 10px; line-height: 1.4; }
 .research { margin-top: 14px; padding: 12px; background: #eef2e9; border: 1px solid var(--line); border-radius: 7px; }
-.parcel-alignment { margin-top: 14px; padding: 12px; border: 1px solid rgba(166, 124, 0, .42); border-radius: 7px; background: rgba(255, 220, 87, .2); }
-.parcel-alignment h4 { margin: 0 0 6px; color: #6d5200; font-size: 12px; text-transform: uppercase; }
-.parcel-alignment p { margin: 0 0 9px; color: #5c501e; font-size: 11px; line-height: 1.4; }
-.parcel-alignment button { padding: 6px 9px; border: 1px solid rgba(109, 82, 0, .5); border-radius: 4px; color: #463500; background: #ffdc57; font-size: 11px; font-weight: 700; cursor: pointer; }
-.parcel-alignment button:hover { background: #f2d04e; }
+.parcel-adjustment-map-control { display: flex; min-height: 30px; border: 0 !important; box-shadow: 0 1px 5px rgba(0,0,0,.4) !important; }
+.parcel-adjustment-toggle { display: flex; align-items: center; gap: 5px; height: 30px; padding: 0 9px; border: 0; border-radius: 2px; color: var(--ink); background: white; cursor: pointer; font-size: 12px; font-weight: 700; }
+.parcel-adjustment-toggle span { font-size: 17px; line-height: 1; }
+.parcel-adjustment-toggle.active { background: #ffdc57; }
+.parcel-adjustment-toggle:disabled { color: #7b847e; cursor: default; }
 
 .research h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; }
 .research-actions { display: grid; gap: 6px; }

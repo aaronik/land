@@ -8,7 +8,7 @@ import { createListingData } from './data/listings.js';
 import { createParcelDetails } from './ui/parcel-details.js';
 import { installMapSourcesAndLayers } from './map/layers.js';
 import { identifyLandCover, LAND_COVER_YEAR, landCoverLegendClass } from './map/land-cover.js';
-import { ParcelAdjustmentControl } from './map/parcel-adjustment.js';
+import { ParcelAdjustmentControl, ParcelAdjustmentMapControl } from './map/parcel-adjustment.js';
 import { initializeMobileSheet } from './state/ui.js';
 import { updateUrlParameter } from './state/url.js';
 import { LEGEND_QUERY_LAYERS, legendMatches, updateLegendHighlights } from './ui/legend-highlights.js';
@@ -270,8 +270,9 @@ geolocateButton?.addEventListener('click', () => {
     startDeviceHeading();
   }
 });
-const { coordinatePinControl, distanceMeasureControl, polygonDrawControl, roadTrackerControl } = installMapControls(map, maplibregl);
 const parcelAdjustmentControl = new ParcelAdjustmentControl(map);
+const parcelAdjustmentMapControl = new ParcelAdjustmentMapControl(parcelAdjustmentControl, () => selectedApn);
+const { coordinatePinControl, distanceMeasureControl, polygonDrawControl, roadTrackerControl } = installMapControls(map, maplibregl, parcelAdjustmentMapControl);
 
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
@@ -298,8 +299,6 @@ const parcelDetails = createParcelDetails({
   parcelsQueryUrl: PARCELS_QUERY_URL,
   addressPointsQueryUrl: ADDRESS_POINTS_QUERY_URL,
   onParcelQuest: apn => { selectedResearchApn = apn; document.querySelector('#parcelquest-warning').showModal(); },
-  onAdjustParcel: async apn => { try { return await parcelAdjustmentControl.toggle(apn); } catch (error) { console.error(error); alert(error.message); return false; } },
-  isParcelAdjusted: apn => parcelAdjustmentControl.isActive(apn),
   onClose: clearSelectedParcel
 });
 const { recordCard, showParcelDetails } = parcelDetails;
@@ -339,11 +338,14 @@ function refreshLegendHighlights() {
 }
 function setSelectedApn(apn, { updateUrl = true, location = null } = {}) {
   const nextApn = apn || '';
+  const previousApn = selectedApn;
   selectedLegendLocation = nextApn ? location || (nextApn === selectedApn ? selectedLegendLocation : null) : null;
   if (selectedApn && map.getSource('parcels')) {
     map.removeFeatureState({ source: 'parcels', sourceLayer: 'parcels', id: selectedApn }, 'selected');
   }
   selectedApn = nextApn;
+  if (nextApn !== previousApn) parcelAdjustmentControl.deactivate();
+  parcelAdjustmentMapControl.update();
   if (selectedApn && map.getSource('parcels')) {
     map.setFeatureState({ source: 'parcels', sourceLayer: 'parcels', id: selectedApn }, { selected: true });
   }

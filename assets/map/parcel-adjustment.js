@@ -5,6 +5,44 @@ const PARCEL_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/r
 const radians = value => value * Math.PI / 180;
 const normalizeApn = value => String(value || '').replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{3})/, '$1-$2-$3');
 
+export class ParcelAdjustmentMapControl {
+  constructor(adjustment, getSelectedApn) {
+    this.adjustment = adjustment;
+    this.getSelectedApn = getSelectedApn;
+  }
+  onAdd() {
+    this.container = document.createElement('div');
+    this.container.className = 'maplibregl-ctrl parcel-adjustment-map-control';
+    this.container.innerHTML = '<button type="button" class="parcel-adjustment-toggle" aria-label="Align parcel outline" title="Select a parcel to align its outline" aria-pressed="false"><span aria-hidden="true">⬡</span><b>Align parcel</b></button>';
+    this.button = this.container.querySelector('button');
+    this.button.addEventListener('click', async () => {
+      const apn = this.getSelectedApn();
+      if (!apn || this.button.disabled) return;
+      this.button.disabled = true;
+      try {
+        await this.adjustment.toggle(apn);
+        if (this.getSelectedApn() !== apn) this.adjustment.deactivate();
+      } catch (error) {
+        console.error(error);
+        alert(error.message);
+      } finally {
+        this.update();
+      }
+    });
+    this.update();
+    return this.container;
+  }
+  update() {
+    const apn = this.getSelectedApn();
+    const active = Boolean(apn && this.adjustment.isActive(apn));
+    this.button.disabled = !apn;
+    this.button.classList.toggle('active', active);
+    this.button.setAttribute('aria-pressed', String(active));
+    this.button.title = !apn ? 'Select a parcel to align its outline' : active ? 'Hide aligned outline' : 'Show aligned outline for selected parcel. Drag to move; drag the yellow handle to rotate. Saved in this browser only.';
+  }
+  onRemove() { this.container.remove(); }
+}
+
 export class ParcelAdjustmentControl {
   constructor(map) { this.map = map; this.saved = this.load(); this.mode = null; this.attach(); }
   load() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; } }
