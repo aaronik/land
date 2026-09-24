@@ -158,6 +158,13 @@ const LAYERS = {
     bbox: SISKIYOU_BBOX,
     fields: ['OBJECTID', 'NIDID', 'NAME', 'COUNTYSTATE', 'PRIMARY_PURPOSE', 'DAM_HEIGHT', 'HAZARD_POTENTIAL']
   },
+  landslides: {
+    name: 'USGS historical landslides and debris flows',
+    url: 'https://services.arcgis.com/v01gqwM5QqNysAAi/arcgis/rest/services/US_Landslide_point_v2/FeatureServer/11',
+    bbox: SISKIYOU_BBOX,
+    where: "LS_Type <> 'snow avalanche'",
+    fields: ['OBJECTID', 'USGS_ID', 'Date_Min', 'Date_Max', 'Confidence', 'LS_Type', 'Inventory', 'Inv_URL', 'Info_Sourc']
+  },
   waterways: {
     name: 'USGS NHD rivers and streams',
     url: 'https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/6',

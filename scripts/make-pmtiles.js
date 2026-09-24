@@ -17,6 +17,7 @@ const configs = {
   railroads: { min: 6, max: 14, fields: LAYERS.railroads.fields.filter(field => field !== 'OBJECTID') },
   transmission_lines: { min: 6, max: 14, fields: LAYERS.transmission_lines.fields.filter(field => field !== 'OBJECTID') },
   dams: { min: 6, max: 14, preserveAll: true, fields: LAYERS.dams.fields.filter(field => field !== 'OBJECTID') },
+  landslides: { min: 6, max: 14, preserveAll: true, fields: LAYERS.landslides.fields.filter(field => field !== 'OBJECTID') },
   waterways: { min: 6, max: 14, fields: LAYERS.waterways.fields.filter(field => field !== 'OBJECTID') },
   waterbodies: { min: 6, max: 14, fields: LAYERS.waterbodies.fields.filter(field => field !== 'OBJECTID') },
   summits: { min: 6, max: 14, fields: LAYERS.summits.fields.filter(field => field !== 'OBJECTID') },

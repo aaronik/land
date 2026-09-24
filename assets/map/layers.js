@@ -104,6 +104,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('railroads');
   addPmtilesSource('transmission_lines');
   addPmtilesSource('dams');
+  addPmtilesSource('landslides');
   addPmtilesSource('waterways');
   addPmtilesSource('waterbodies');
   addPmtilesSource('summits');
@@ -407,6 +408,14 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
       visibility: 'none', 'icon-image': 'dam-trapezoid',
       'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 1.15, 8, 1.25, 13, 1.35, 17, 1.5, 20, 1.6],
       'icon-allow-overlap': true, 'icon-ignore-placement': true
+    }
+  });
+  map.addLayer({
+    id: 'landslides', type: 'circle', source: 'landslides', 'source-layer': 'landslides', minzoom: 6,
+    layout: { visibility: 'none' },
+    paint: {
+      'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 5, 12, 7, 17, 9],
+      'circle-color': '#ba7143', 'circle-stroke-color': '#fbe3b2', 'circle-stroke-width': 2
     }
   });
   map.addLayer({ id: 'sale-fill', type: 'fill', source: 'sales', paint: { 'fill-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'previous-listing', COLORS['previous-listing'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'fill-opacity': 0.42 } });

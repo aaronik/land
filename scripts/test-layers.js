@@ -94,6 +94,14 @@ function testDamSource() {
   assert.deepEqual(dams.fields, ['OBJECTID', 'NIDID', 'NAME', 'COUNTYSTATE', 'PRIMARY_PURPOSE', 'DAM_HEIGHT', 'HAZARD_POTENTIAL']);
 }
 
+function testLandslideSource() {
+  const landslides = LAYERS.landslides;
+  assert.match(landslides.url, /US_Landslide_point_v2\/FeatureServer\/11$/);
+  assert.equal(landslides.bbox, '-123.73,40.98,-121.43,42.02');
+  assert.equal(landslides.where, "LS_Type <> 'snow avalanche'");
+  assert.deepEqual(landslides.fields, ['OBJECTID', 'USGS_ID', 'Date_Min', 'Date_Max', 'Confidence', 'LS_Type', 'Inventory', 'Inv_URL', 'Info_Sourc']);
+}
+
 function testWaterwaysSource() {
   const waterways = LAYERS.waterways;
   assert.match(waterways.url, /hydro\.nationalmap\.gov.*\/nhd\/MapServer\/6/);
@@ -145,6 +153,7 @@ function testCriticalHabitatSources() {
   testActiveRailroadSource();
   testTransmissionLineSource();
   testDamSource();
+  testLandslideSource();
   testWaterwaysSource();
   testFarmlandSource();
   testRcraSiteSource();

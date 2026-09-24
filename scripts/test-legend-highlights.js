@@ -7,6 +7,7 @@ const features = [
   { layer: { id: 'parcel-fill' }, properties: { APN: '123' } },
   { layer: { id: 'transmission-lines' }, properties: { Name: 'Test line' } },
   { layer: { id: 'dams' }, properties: { NAME: 'Test dam' } },
+  { layer: { id: 'landslides' }, properties: { LS_Type: 'debris flow' } },
   { layer: { id: 'zoning-fill' }, properties: { zoning: 'RES-2' } },
   { layer: { id: 'fire-hazard' }, properties: { HAZ_CLASS: 'Very High' } },
   { layer: { id: 'cell-att' }, properties: {} },
@@ -20,6 +21,7 @@ assert.deepEqual([...matches.get('wildfire-perimeters')], ['Recent']);
 assert(matches.has('parcel-lines'));
 assert(matches.has('transmission-lines'));
 assert(matches.has('dams'));
+assert(matches.has('landslides'));
 assert(matches.has('listing:private-land'));
 assert(matches.has('listing:public-land'));
 assert(!matches.has('listing:private-home'));

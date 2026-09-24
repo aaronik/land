@@ -404,6 +404,7 @@ function addPmtilesSource(id) {
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
     transmission_lines: '<a href="https://www.arcgis.com/home/item.html?id=260b4513acdb4a3a8e4d64e69fc84fee" target="_blank" rel="noopener noreferrer">California Energy Commission transmission lines</a>',
     dams: '<a href="https://nid.sec.usace.army.mil/" target="_blank" rel="noopener noreferrer">USACE National Inventory of Dams</a>',
+    landslides: '<a href="https://www.sciencebase.gov/catalog/item/671eef1fd34ed0f827ea9f12" target="_blank" rel="noopener noreferrer">USGS U.S. Landslide Inventory</a>',
     forest_roads: '<a href="https://data.fs.usda.gov/geodata/edw/datasets.php?xmlKeyword=Motor+vehicle+Use+Map" target="_blank">USFS Motor Vehicle Use Map</a>',
     waterways: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
     springs: '<a href="https://www.usgs.gov/national-hydrography/national-hydrography-dataset" target="_blank">USGS National Hydrography Dataset</a>',
@@ -486,6 +487,7 @@ function toggleLayer(id, visibleValue) {
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
     'transmission-lines': ['transmission-lines-casing', 'transmission-lines'],
     dams: ['dams'],
+    landslides: ['landslides'],
     waterways: ['waterways-casing', 'waterways', 'waterway-labels', 'springs'],
     'place-names': ['waterbodies', 'waterbody-labels', 'summits', 'towns'],
     'incorporated-places': ['incorporated-places-red', 'incorporated-places-white-dashes'],
@@ -553,7 +555,7 @@ function initializeMapLayers() {
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
-    ], { layers: ['springs', 'dams', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
+    ], { layers: ['springs', 'dams', 'landslides', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
     const lineHits = map.queryRenderedFeatures([
       [event.point.x - 5, event.point.y - 5],
       [event.point.x + 5, event.point.y + 5]
@@ -582,6 +584,15 @@ function initializeMapLayers() {
     }
     if (!feature) return;
     const props = feature.properties || {};
+    if (feature.layer.id === 'landslides') {
+      const value = value => value === null || value === undefined || String(value).trim() === '' ? 'Not reported' : escapeHtml(value);
+      const date = date => /^\d{4}\/\d{2}\/\d{2}/.test(String(date || '')) ? escapeHtml(String(date).slice(0, 10)) : '';
+      const from = date(props.Date_Min), to = date(props.Date_Max);
+      const dateRange = from && to && from !== to ? `${from} – ${to}` : from || to || 'Not reported';
+      const inventoryLink = /^https:\/\//i.test(String(props.Inv_URL || '')) ? `<p><a href="${escapeHtml(props.Inv_URL)}" target="_blank" rel="noopener noreferrer">Original inventory ↗</a></p>` : '';
+      document.querySelector('#details').innerHTML = `<h3>Recorded landslide</h3><p class="meta">USGS inventory · ${value(props.USGS_ID)}</p><p><strong>${value(props.LS_Type)}</strong><br>Recorded date range: ${dateRange}<br>Compiled inventory: ${value(props.Inventory)}<br>Underlying source: ${value(props.Info_Sourc)}</p>${inventoryLink}<p class="source-note">Historical inventory point, not an exact landslide boundary or a parcel-level hazard assessment. Mapped points are incomplete; absence of a point does not imply stable ground.</p>`;
+      return;
+    }
     if (feature.layer.id === 'dams') {
       const value = value => value === null || value === undefined || String(value).trim() === '' ? 'Not reported' : escapeHtml(value);
       const height = Number(props.DAM_HEIGHT);
@@ -670,7 +681,7 @@ function initializeMapLayers() {
     }
     selectParcel(props, null, event.lngLat);
   });
-  for (const id of ['dams', 'transmission-lines', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['landslides', 'dams', 'transmission-lines', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }
