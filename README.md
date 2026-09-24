@@ -59,6 +59,8 @@ npm run refresh
 
 The `Refresh sales data` GitHub Actions workflow also runs daily at 12:00 UTC (4 AM PST / 5 AM PDT) and can be started manually from the Actions tab. It commits updated files under `data/` to the default branch, then builds and deploys the refreshed site to `gh-pages`.
 
+The countywide tax-delinquency crawl runs on the 1st of each month at 16:00 UTC. It checkpoints and continues across workflow runs until complete; continuation dispatch requires `TAX_CRAWL_DISPATCH_TOKEN`. The separate tax refresh runs Tuesdays and Fridays at 18:00 UTC, rechecks crawl-discovered APNs against the County's current tax system, commits `data/siskiyou-tax-delinquent.json`, and deploys. Both workflows can also be started manually from Actions. GitHub scheduled runs may start late.
+
 ### Evidence-backed APN research
 
 Use the persistent research queue for unresolved land listings:

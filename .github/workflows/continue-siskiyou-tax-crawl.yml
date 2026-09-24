@@ -1,6 +1,9 @@
 name: Continue Siskiyou tax crawl
 
 on:
+  schedule:
+    # Monthly on the 1st at 16:00 UTC; continuations resume this crawl.
+    - cron: '0 16 1 * *'
   workflow_dispatch:
     inputs:
       continuation:
