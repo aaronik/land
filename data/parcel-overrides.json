@@ -242,6 +242,14 @@
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
   },
+  "20260238": {
+    "apns": [
+      "106-380-060"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics"
+  },
   "20260246": {
     "apns": [
       "020-170-270",
@@ -428,6 +436,15 @@
     "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
     "confidence": "manually verified by lot number, parcel topology, and acreage",
     "notes": "Lot 13 McCloud subdivision"
+  },
+  "20260605": {
+    "apns": [
+      "106-440-170",
+      "106-440-160"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "from description"
   },
   "20260613": {
     "apns": [
