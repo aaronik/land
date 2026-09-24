@@ -430,8 +430,9 @@ function saveMapLayerVisibility() {
 function loadListingTypeVisibility() {
   try {
     const saved = JSON.parse(localStorage.getItem(LISTING_TYPE_STORAGE_KEY));
-    if (!saved || typeof saved !== 'object') return;
-    for (const input of listingTypeInputs) if (typeof saved[input.value] === 'boolean') input.checked = saved[input.value];
+    if (saved && typeof saved === 'object') {
+      for (const input of listingTypeInputs) if (typeof saved[input.value] === 'boolean') input.checked = saved[input.value];
+    }
   } catch { /* Use markup defaults when storage is unavailable or malformed. */ }
   enabledCategories = new Set(listingTypeInputs.filter(input => input.checked).map(input => input.value));
 }
