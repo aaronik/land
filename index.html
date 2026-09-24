@@ -28,11 +28,14 @@
       </button>
       <section class="details" id="details">
         <h3>No parcel selected</h3>
-        <p class="meta">Hover over a parcel for a quick summary. Click it to keep the details here.</p>
       </section>
 
+      <div class="panel-heading">
+        <h2>Map controls</h2>
+        <button id="reset-map-layers" type="button">Reset all controls</button>
+      </div>
       <section class="legend">
-        <div class="layer-heading"><h2>Official map layers</h2><button id="reset-map-layers" type="button">Reset to defaults</button></div>
+        <h2>Official map layers</h2>
         <p class="legend-selection-note">Select a parcel to bold matching entries within expanded legends at the clicked location. Layers may vary across a parcel.</p>
         <label><input type="checkbox" data-map-layer="roads" checked><i class="swatch roads-overlay"></i>Roads</label>
         <label><input type="checkbox" data-map-layer="waterways" checked><i class="swatch waterways-overlay"></i>Rivers, streams, &amp; springs</label>

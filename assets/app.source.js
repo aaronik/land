@@ -284,7 +284,7 @@ const { categories, featureCenter, filteredMappedListings, filteredUnmappedListi
 function parcelQuestUsageKey() { return `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`; }
 function clearSelectedParcel() {
   setSelectedApn('');
-  document.querySelector('#details').innerHTML = '<h3>No parcel selected</h3><p class="meta">Hover over a parcel for a quick summary. Click it to keep the details here.</p>';
+  document.querySelector('#details').innerHTML = '<h3>No parcel selected</h3>';
 }
 const parcelDetails = createParcelDetails({
   detailsElement: document.querySelector('#details'),

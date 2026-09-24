@@ -33,10 +33,11 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .stats div { min-width: 0; }
 .stats strong { display: block; font-family: Georgia, serif; font-size: 25px; }
 .stats span { display: block; font-size: 10px; color: #657069; text-transform: uppercase; }
-.layer-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.layer-heading h2 { margin-bottom: 10px; }
-#reset-map-layers { margin: -4px 0 6px; padding: 4px 7px; border: 1px solid var(--line); border-radius: 5px; color: #425048; background: transparent; font-size: 10px; font-weight: 700; cursor: pointer; }
+.panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-bottom: 12px; margin-bottom: 18px; border-bottom: 1px solid var(--line); }
+.panel-heading h2 { margin: 0; }
+#reset-map-layers { padding: 6px 9px; border: 1px solid var(--line); border-radius: 5px; color: #425048; background: transparent; font-size: 11px; font-weight: 700; cursor: pointer; }
 #reset-map-layers:hover { color: var(--ink); border-color: rgba(22,35,29,.4); }
+#reset-map-layers:focus-visible { outline: 2px solid #126246; outline-offset: 2px; }
 .legend-selection-note { margin: 0 0 10px; color: #5b6960; font-size: 11px; line-height: 1.35; }
 .legend label { display: flex; align-items: center; gap: 7px; margin: 7px 0; font-size: 13px; font-weight: 400; line-height: 16px; letter-spacing: 0; text-transform: none; cursor: pointer; }
 .legend input { display: block; width: 14px; height: 14px; flex: 0 0 14px; accent-color: var(--ink); margin: 0; }
