@@ -87,6 +87,13 @@ function testTransmissionLineSource() {
   assert.deepEqual(lines.fields, ['OBJECTID', 'Name', 'kV', 'Owner', 'Status', 'Type', 'Source']);
 }
 
+function testIfrRouteSource() {
+  const routes = LAYERS.ifr_routes;
+  assert.match(routes.url, /ATS_Route\/FeatureServer\/0$/);
+  assert.equal(routes.bbox, '-123.73,40.98,-121.43,42.02');
+  assert.deepEqual(routes.fields, ['OBJECTID', 'IDENT', 'TYPE_CODE', 'LEVEL_', 'MEA_E_VAL', 'MEA_E_UOM', 'MEA_W_VAL', 'MEA_W_UOM', 'MAA_VAL', 'MAA_UOM']);
+}
+
 function testBridgeAndPowerPlantSources() {
   const bridges = LAYERS.bridges;
   assert.match(bridges.url, /NTAD_National_Bridge_Inventory\/FeatureServer\/0$/);
@@ -174,6 +181,7 @@ function testCriticalHabitatSources() {
   testMunicipalZoningSource();
   testActiveRailroadSource();
   testTransmissionLineSource();
+  testIfrRouteSource();
   testBridgeAndPowerPlantSources();
   testDamSource();
   testLandslideSource();

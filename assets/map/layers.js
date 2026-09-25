@@ -134,6 +134,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('forest_roads');
   addPmtilesSource('railroads');
   addPmtilesSource('transmission_lines');
+  addPmtilesSource('ifr_routes');
   addPmtilesSource('bridges');
   addPmtilesSource('power_plants');
   addPmtilesSource('dams');
@@ -474,6 +475,16 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     id: 'power-plants', type: 'circle', source: 'power_plants', 'source-layer': 'power_plants', minzoom: 6,
     layout: { visibility: 'none' },
     paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 13, 8], 'circle-color': ['match', ['get', 'Retired_Plant'], 1, '#9b9b9b', '#ffd357'], 'circle-stroke-color': '#3b2d12', 'circle-stroke-width': 2 }
+  });
+  map.addLayer({
+    id: 'ifr-routes-low', type: 'line', source: 'ifr_routes', 'source-layer': 'ifr_routes', minzoom: 6,
+    filter: ['==', ['get', 'LEVEL_'], 'L'], layout: { visibility: 'none', 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': '#d0acff', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.6, 14, 3.2], 'line-dasharray': [3, 2], 'line-opacity': 0.95 }
+  });
+  map.addLayer({
+    id: 'ifr-routes-high', type: 'line', source: 'ifr_routes', 'source-layer': 'ifr_routes', minzoom: 6,
+    filter: ['==', ['get', 'LEVEL_'], 'U'], layout: { visibility: 'none', 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': '#ac91e0', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.4, 14, 2.8], 'line-dasharray': [1, 2.5], 'line-opacity': 0.9 }
   });
   map.addLayer({ id: 'sale-fill', type: 'fill', source: 'sales', paint: { 'fill-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'previous-listing', COLORS['previous-listing'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'fill-opacity': 0.42 } });
   map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'previous-listing', COLORS['previous-listing'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });

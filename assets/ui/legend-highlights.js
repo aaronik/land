@@ -11,6 +11,8 @@ const LAYERS = {
   springs: 'springs',
   railroads: 'railroads',
   'transmission-lines': 'transmission-lines',
+  'ifr-routes-low': 'ifr-routes-low',
+  'ifr-routes-high': 'ifr-routes-high',
   dams: 'dams',
   bridges: 'bridges',
   'power-plants': 'power-plants',
@@ -112,6 +114,7 @@ export function legendMatches(features, listingCategories = []) {
     const layer = feature.layer?.id;
     const p = feature.properties || {};
     if (layer === 'landslide-footprints-fill') { add('landslides'); continue; }
+    if (layer === 'ifr-routes-low' || layer === 'ifr-routes-high') { add('ifr-routes', layer === 'ifr-routes-low' ? 'Lower-altitude' : 'Upper-altitude'); continue; }
     if (layer === 'parcel-fill') { add('parcel-lines'); continue; }
     if (layer === 'springs') { add('waterways', 'Mapped spring'); continue; }
     if (layer === 'municipal-zoning-fill') { add('zoning', p.zoning); continue; }

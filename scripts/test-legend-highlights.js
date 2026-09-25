@@ -9,6 +9,8 @@ const features = [
   { layer: { id: 'dams' }, properties: { NAME: 'Test dam' } },
   { layer: { id: 'bridges' }, properties: {} },
   { layer: { id: 'power-plants' }, properties: {} },
+  { layer: { id: 'ifr-routes-low' }, properties: { IDENT: 'V1' } },
+  { layer: { id: 'ifr-routes-high' }, properties: { IDENT: 'J1' } },
   { layer: { id: 'landslides' }, properties: { LS_Type: 'debris flow' } },
   { layer: { id: 'landslide-footprints-fill' }, properties: { USGS_ID: 'ply123' } },
   { layer: { id: 'zoning-fill' }, properties: { zoning: 'RES-2' } },
@@ -26,6 +28,7 @@ assert(matches.has('transmission-lines'));
 assert(matches.has('dams'));
 assert(matches.has('bridges'));
 assert(matches.has('power-plants'));
+assert.deepEqual([...matches.get('ifr-routes')], ['Lower-altitude', 'Upper-altitude']);
 assert(matches.has('landslides'));
 assert(matches.has('listing:private-land'));
 assert(matches.has('listing:public-land'));

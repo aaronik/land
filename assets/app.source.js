@@ -403,6 +403,7 @@ function addPmtilesSource(id) {
     wildfire_perimeters: '<a href="https://open-data-siskiyou.hub.arcgis.com/" target="_blank">Siskiyou County historic wildfire perimeters</a>',
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
     transmission_lines: '<a href="https://www.arcgis.com/home/item.html?id=260b4513acdb4a3a8e4d64e69fc84fee" target="_blank" rel="noopener noreferrer">California Energy Commission transmission lines</a>',
+    ifr_routes: '<a href="https://www.arcgis.com/home/item.html?id=acf64966af5f48a1a40fdbcb31238ba7" target="_blank" rel="noopener noreferrer">FAA Aeronautical Information Services ATS routes</a>',
     dams: '<a href="https://nid.sec.usace.army.mil/" target="_blank" rel="noopener noreferrer">USACE National Inventory of Dams</a>',
     bridges: '<a href="https://www.bts.gov/national-transportation-atlas-database" target="_blank" rel="noopener noreferrer">FHWA/BTS National Bridge Inventory</a>',
     power_plants: '<a href="https://www.arcgis.com/home/item.html?id=b3e56d5c29004564830b452356623a86" target="_blank" rel="noopener noreferrer">California Energy Commission power plants</a>',
@@ -489,6 +490,7 @@ function toggleLayer(id, visibleValue) {
     roads: ['roads', 'road-labels', 'forest-roads', 'forest-road-labels'],
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
     'transmission-lines': ['transmission-lines-casing', 'transmission-lines'],
+    'ifr-routes': ['ifr-routes-low', 'ifr-routes-high'],
     dams: ['dams'],
     bridges: ['bridges'],
     'power-plants': ['power-plants'],
@@ -564,7 +566,7 @@ function initializeMapLayers() {
     const lineHits = map.queryRenderedFeatures([
       [event.point.x - 5, event.point.y - 5],
       [event.point.x + 5, event.point.y + 5]
-    ], { layers: ['transmission-lines'] });
+    ], { layers: ['transmission-lines', 'ifr-routes-low', 'ifr-routes-high'] });
     const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill', 'landslide-footprints-fill', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'recent-wildfire-perimeters-fill', 'wildfire-perimeters-fill'] });
     const habitatHits = polygonHits.filter(hit => hit.layer.id === 'critical-habitat-final' || hit.layer.id === 'critical-habitat-proposed');
     const parcelHit = polygonHits.find(hit => hit.layer.id === 'sale-fill') || polygonHits.find(hit => hit.layer.id === 'parcel-fill');
@@ -589,6 +591,13 @@ function initializeMapLayers() {
     }
     if (!feature) return;
     const props = feature.properties || {};
+    if (feature.layer.id === 'ifr-routes-low' || feature.layer.id === 'ifr-routes-high') {
+      const value = value => value === null || value === undefined || String(value).trim() === '' ? 'Not reported' : escapeHtml(value);
+      const minimum = Number(props.MEA_E_VAL);
+      const minText = Number.isFinite(minimum) && minimum > 0 && minimum < 999999 ? `${minimum.toLocaleString()} ${value(props.MEA_E_UOM || 'ft')}` : 'Not reported';
+      document.querySelector('#details').innerHTML = `<h3>FAA charted IFR route</h3><p class="meta">${feature.layer.id === 'ifr-routes-low' ? 'Lower-altitude' : 'Upper-altitude'} ATS route · ${value(props.IDENT)}</p><p>Navigation: ${props.TYPE_CODE === 'RNAV' ? 'Area navigation (RNAV)' : props.TYPE_CODE === 'CONV' ? 'Conventional' : value(props.TYPE_CODE)}<br>Published minimum enroute altitude (eastbound): ${minText}</p><p class="source-note">Charted route, not a record of actual flights, traffic frequency, noise, or altitude above this location. Published route altitudes are navigation constraints, not observed aircraft heights. Not for navigation; consult current FAA charts.</p>`;
+      return;
+    }
     if (feature.layer.id === 'bridges') {
       const value = value => value === null || value === undefined || String(value).trim() === '' ? 'Not reported' : escapeHtml(value);
       const condition = { G: 'Good', F: 'Fair', P: 'Poor' }[String(props.BRIDGE_CONDITION || '')] || value(props.BRIDGE_CONDITION);
@@ -701,7 +710,7 @@ function initializeMapLayers() {
     }
     selectParcel(props, null, event.lngLat);
   });
-  for (const id of ['bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['ifr-routes-low', 'ifr-routes-high', 'bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }

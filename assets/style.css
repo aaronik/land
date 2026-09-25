@@ -94,6 +94,7 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .swatch.fire-overlay { background: #d73027; } .swatch.wildfire-perimeters-overlay { border: 2px solid #d95032; background: rgba(238,156,68,.35); } .swatch.roads-overlay { background: #f8d37c; } .swatch.railroads-overlay { background: #e53935; } .swatch.parcel-lines-overlay { border: 1px solid rgba(22,35,29,.16); background: repeating-linear-gradient(135deg, transparent 0 3px, #aeb4b7 3px 4px); } .swatch.waterways-overlay { background: #38a8ff; }
 .swatch.bridges-overlay { background: #7257b5; border: 2px solid #e7dafd; transform: rotate(45deg) scale(.82); border-radius: 1px; }
 .swatch.power-plants-overlay { background: #ffd357; border: 2px solid #3b2d12; border-radius: 50%; }
+.swatch.ifr-routes-overlay { background: repeating-linear-gradient(90deg, #d0acff 0 4px, transparent 4px 6px); border: 1px solid #46305d; }
 .swatch.transmission-lines-overlay { background: #e6b94f; border: 2px solid #342b17; }
 .swatch.dams-overlay { background: #348eb7; border: 2px solid #e3f5fa; border-radius: 0; clip-path: polygon(0 0, 100% 0, 72% 100%, 28% 100%); }
 .swatch.landslides-overlay { background: #ba7143; border: 2px solid #fbe3b2; border-radius: 0; }

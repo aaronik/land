@@ -152,6 +152,12 @@ const LAYERS = {
     where: "Status = 'Operational'",
     fields: ['OBJECTID', 'Name', 'kV', 'Owner', 'Status', 'Type', 'Source']
   },
+  ifr_routes: {
+    name: 'FAA charted IFR ATS routes',
+    url: 'https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/ATS_Route/FeatureServer/0',
+    bbox: SISKIYOU_BBOX,
+    fields: ['OBJECTID', 'IDENT', 'TYPE_CODE', 'LEVEL_', 'MEA_E_VAL', 'MEA_E_UOM', 'MEA_W_VAL', 'MEA_W_UOM', 'MAA_VAL', 'MAA_UOM']
+  },
   bridges: {
     name: 'FHWA National Bridge Inventory — Siskiyou County',
     url: 'https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/NTAD_National_Bridge_Inventory/FeatureServer/0',
