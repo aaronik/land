@@ -16,6 +16,8 @@ const configs = {
   forest_roads: { min: 6, max: 14, fields: LAYERS.forest_roads.fields.filter(field => field !== 'objectid') },
   railroads: { min: 6, max: 14, fields: LAYERS.railroads.fields.filter(field => field !== 'OBJECTID') },
   transmission_lines: { min: 6, max: 14, fields: LAYERS.transmission_lines.fields.filter(field => field !== 'OBJECTID') },
+  bridges: { min: 6, max: 14, preserveAll: true, fields: LAYERS.bridges.fields.filter(field => field !== 'OBJECTID') },
+  power_plants: { min: 6, max: 14, preserveAll: true, fields: LAYERS.power_plants.fields.filter(field => field !== 'OBJECTID') },
   dams: { min: 6, max: 14, preserveAll: true, fields: LAYERS.dams.fields.filter(field => field !== 'OBJECTID') },
   landslides: { min: 6, max: 14, preserveAll: true, fields: LAYERS.landslides.fields.filter(field => field !== 'OBJECTID') },
   landslide_footprints: { min: 6, max: 14, preserveAll: true, fields: LAYERS.landslide_footprints.fields.filter(field => field !== 'OBJECTID') },

@@ -152,6 +152,20 @@ const LAYERS = {
     where: "Status = 'Operational'",
     fields: ['OBJECTID', 'Name', 'kV', 'Owner', 'Status', 'Type', 'Source']
   },
+  bridges: {
+    name: 'FHWA National Bridge Inventory — Siskiyou County',
+    url: 'https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/NTAD_National_Bridge_Inventory/FeatureServer/0',
+    bbox: SISKIYOU_BBOX,
+    where: "STATE_CODE_001 = '06' AND COUNTY_CODE_003 = '093'",
+    fields: ['OBJECTID', 'STRUCTURE_NUMBER_008', 'FACILITY_CARRIED_007', 'FEATURES_DESC_006A', 'BRIDGE_CONDITION', 'YEAR_BUILT_027', 'DATE_OF_INSPECT_090']
+  },
+  power_plants: {
+    name: 'CEC electric power plants — Siskiyou County',
+    url: 'https://services3.arcgis.com/bWPjFyq029ChCGur/arcgis/rest/services/Power_Plant/FeatureServer/0',
+    bbox: SISKIYOU_BBOX,
+    where: "County = 'Siskiyou'",
+    fields: ['OBJECTID', 'CECPlantID', 'PlantName', 'Retired_Plant', 'County', 'Capacity_Latest', 'PriEnergySource', 'OperatorCompanyID']
+  },
   dams: {
     name: 'USACE National Inventory of Dams',
     url: 'https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/NID_v1/FeatureServer/0',

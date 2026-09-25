@@ -69,8 +69,8 @@ The following downloaded GIS layers can change upstream. Their identifiers are t
 | --- | --- | --- |
 | County parcel boundaries | `parcels` | Monthly parcel-boundaries workflow |
 | County and municipal zoning | `zoning`, `municipal_zoning` | None |
-| Roads, forest roads, and railroads | `roads`, `forest_roads`, `railroads` | None |
-| Electric transmission lines | `transmission_lines` | None |
+| Roads, forest roads, railroads, and bridge locations | `roads`, `forest_roads`, `railroads`, `bridges` | None |
+| Electric transmission lines and power plants | `transmission_lines`, `power_plants` | None |
 | Dams (national inventory) | `dams` | None |
 | **Recorded landslides and debris flows (points and footprints)** | **`landslides`, `landslide_footprints`** | **None** |
 | Rivers, lakes, springs, summits, towns, and incorporated places | `waterways`, `waterbodies`, `springs`, `summits`, `towns`, `incorporated_places` | None |
@@ -83,11 +83,11 @@ The following downloaded GIS layers can change upstream. Their identifiers are t
 | Cellular coverage and Pacific Crest Trail | `cell_att`, `cell_tmobile`, `cell_verizon`, `pct`, `pct_markers` | None |
 | Groundwater basins and reported wells | `groundwater_basins`, `groundwater_wells` | None |
 
-For example, refresh the three newly added infrastructure/history layers without rebuilding unrelated datasets:
+For example, refresh the newly added infrastructure/history layers without rebuilding unrelated datasets:
 
 ```sh
-npm run layers:download -- transmission_lines dams landslides landslide_footprints
-npm run layers:build -- transmission_lines dams landslides landslide_footprints
+npm run layers:download -- bridges power_plants transmission_lines dams landslides landslide_footprints
+npm run layers:build -- bridges power_plants transmission_lines dams landslides landslide_footprints
 npm run build # or npm run deploy to publish
 ```
 

@@ -74,6 +74,16 @@ function addLandslidePointSymbol(map) {
   map.addImage('landslide-point', { width: size, height: size, data }, { pixelRatio: 2 });
 }
 
+function addBridgeSymbol(map) {
+  const size = 32;
+  const data = new Uint8Array(size * size * 4);
+  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+    const distance = Math.abs(x - 15.5) + Math.abs(y - 15.5);
+    if (distance <= 12) data.set(distance >= 9 ? [231, 218, 253, 255] : [114, 87, 181, 255], (y * size + x) * 4);
+  }
+  map.addImage('bridge-diamond', { width: size, height: size, data }, { pixelRatio: 2 });
+}
+
 function addWellSymbols(map) {
   const colors = { shallow: [112, 228, 239], medium: [74, 196, 230], deep: [67, 132, 222], veryDeep: [118, 81, 199] };
   for (const [name, color] of Object.entries(colors)) {
@@ -124,6 +134,8 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('forest_roads');
   addPmtilesSource('railroads');
   addPmtilesSource('transmission_lines');
+  addPmtilesSource('bridges');
+  addPmtilesSource('power_plants');
   addPmtilesSource('dams');
   addPmtilesSource('landslides');
   addPmtilesSource('landslide_footprints');
@@ -452,6 +464,16 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
       visibility: 'none', 'icon-image': 'landslide-point', 'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 1.15, 13, 1.35, 17, 1.5],
       'icon-allow-overlap': true, 'icon-ignore-placement': true
     }
+  });
+  addBridgeSymbol(map);
+  map.addLayer({
+    id: 'bridges', type: 'symbol', source: 'bridges', 'source-layer': 'bridges', minzoom: 9,
+    layout: { visibility: 'none', 'icon-image': 'bridge-diamond', 'icon-size': ['interpolate', ['linear'], ['zoom'], 9, 0.8, 14, 1.2], 'icon-allow-overlap': true, 'icon-ignore-placement': true }
+  });
+  map.addLayer({
+    id: 'power-plants', type: 'circle', source: 'power_plants', 'source-layer': 'power_plants', minzoom: 6,
+    layout: { visibility: 'none' },
+    paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 13, 8], 'circle-color': ['match', ['get', 'Retired_Plant'], 1, '#9b9b9b', '#ffd357'], 'circle-stroke-color': '#3b2d12', 'circle-stroke-width': 2 }
   });
   map.addLayer({ id: 'sale-fill', type: 'fill', source: 'sales', paint: { 'fill-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'previous-listing', COLORS['previous-listing'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'fill-opacity': 0.42 } });
   map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'previous-listing', COLORS['previous-listing'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T00:54:34.863Z",
+  "generatedAt": "2026-09-25T03:43:02.907Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -504,6 +504,33 @@
         "Inventory",
         "Inv_URL",
         "Info_Sourc"
+      ]
+    },
+    "bridges": {
+      "source": "https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/NTAD_National_Bridge_Inventory/FeatureServer/0",
+      "featureCount": 425,
+      "fields": [
+        "OBJECTID",
+        "STRUCTURE_NUMBER_008",
+        "FACILITY_CARRIED_007",
+        "FEATURES_DESC_006A",
+        "BRIDGE_CONDITION",
+        "YEAR_BUILT_027",
+        "DATE_OF_INSPECT_090"
+      ]
+    },
+    "power_plants": {
+      "source": "https://services3.arcgis.com/bWPjFyq029ChCGur/arcgis/rest/services/Power_Plant/FeatureServer/0",
+      "featureCount": 6,
+      "fields": [
+        "OBJECTID",
+        "CECPlantID",
+        "PlantName",
+        "Retired_Plant",
+        "County",
+        "Capacity_Latest",
+        "PriEnergySource",
+        "OperatorCompanyID"
       ]
     }
   }

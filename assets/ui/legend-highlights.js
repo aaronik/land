@@ -12,6 +12,8 @@ const LAYERS = {
   railroads: 'railroads',
   'transmission-lines': 'transmission-lines',
   dams: 'dams',
+  bridges: 'bridges',
+  'power-plants': 'power-plants',
   landslides: 'landslides',
   'landslide-footprints': 'landslide-footprints-fill',
   pct: 'pct',

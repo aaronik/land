@@ -404,6 +404,8 @@ function addPmtilesSource(id) {
     railroads: '<a href="https://doi.org/10.21949/1528950" target="_blank">USDOT/FRA North American Rail Network</a>',
     transmission_lines: '<a href="https://www.arcgis.com/home/item.html?id=260b4513acdb4a3a8e4d64e69fc84fee" target="_blank" rel="noopener noreferrer">California Energy Commission transmission lines</a>',
     dams: '<a href="https://nid.sec.usace.army.mil/" target="_blank" rel="noopener noreferrer">USACE National Inventory of Dams</a>',
+    bridges: '<a href="https://www.bts.gov/national-transportation-atlas-database" target="_blank" rel="noopener noreferrer">FHWA/BTS National Bridge Inventory</a>',
+    power_plants: '<a href="https://www.arcgis.com/home/item.html?id=b3e56d5c29004564830b452356623a86" target="_blank" rel="noopener noreferrer">California Energy Commission power plants</a>',
     landslides: '<a href="https://www.sciencebase.gov/catalog/item/671eef1fd34ed0f827ea9f12" target="_blank" rel="noopener noreferrer">USGS U.S. Landslide Inventory</a>',
     landslide_footprints: '<a href="https://www.sciencebase.gov/catalog/item/671eef1fd34ed0f827ea9f12" target="_blank" rel="noopener noreferrer">USGS U.S. Landslide Inventory polygons</a>',
     forest_roads: '<a href="https://data.fs.usda.gov/geodata/edw/datasets.php?xmlKeyword=Motor+vehicle+Use+Map" target="_blank">USFS Motor Vehicle Use Map</a>',
@@ -488,6 +490,8 @@ function toggleLayer(id, visibleValue) {
     railroads: ['railroad-casing', 'railroads', 'railroad-ties', 'railroad-labels'],
     'transmission-lines': ['transmission-lines-casing', 'transmission-lines'],
     dams: ['dams'],
+    bridges: ['bridges'],
+    'power-plants': ['power-plants'],
     landslides: ['landslide-footprints-fill', 'landslide-footprints-lines', 'landslide-footprints-locators', 'landslides'],
     waterways: ['waterways-casing', 'waterways', 'waterway-labels', 'springs'],
     'place-names': ['waterbodies', 'waterbody-labels', 'summits', 'towns'],
@@ -556,7 +560,7 @@ function initializeMapLayers() {
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
-    ], { layers: ['springs', 'dams', 'landslides', 'landslide-footprints-locators', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
+    ], { layers: ['springs', 'dams', 'power-plants', 'bridges', 'landslides', 'landslide-footprints-locators', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
     const lineHits = map.queryRenderedFeatures([
       [event.point.x - 5, event.point.y - 5],
       [event.point.x + 5, event.point.y + 5]
@@ -585,6 +589,20 @@ function initializeMapLayers() {
     }
     if (!feature) return;
     const props = feature.properties || {};
+    if (feature.layer.id === 'bridges') {
+      const value = value => value === null || value === undefined || String(value).trim() === '' ? 'Not reported' : escapeHtml(value);
+      const condition = { G: 'Good', F: 'Fair', P: 'Poor' }[String(props.BRIDGE_CONDITION || '')] || value(props.BRIDGE_CONDITION);
+      document.querySelector('#details').innerHTML = `<h3>Bridge inventory</h3><p class="meta">FHWA National Bridge Inventory · ${value(props.STRUCTURE_NUMBER_008)}</p><p><strong>${value(props.FACILITY_CARRIED_007)}</strong><br>Crosses: ${value(props.FEATURES_DESC_006A)}<br>Recorded condition: ${condition}<br>Year built: ${value(props.YEAR_BUILT_027)}</p><p class="source-note">Inventory record, not a live closure, inspection report, access right, or passability determination. Verify current conditions and legal access locally.</p>`;
+      return;
+    }
+    if (feature.layer.id === 'power-plants') {
+      const value = value => value === null || value === undefined || String(value).trim() === '' ? 'Not reported' : escapeHtml(value);
+      const energySource = { WAT: 'Hydroelectric', SOL: 'Solar', WND: 'Wind', NG: 'Natural gas', GAS: 'Natural gas', BIO: 'Biomass', GEO: 'Geothermal' }[String(props.PriEnergySource || '')] || value(props.PriEnergySource);
+      const capacity = Number(props.Capacity_Latest);
+      const capacityText = props.Capacity_Latest !== null && props.Capacity_Latest !== undefined && Number.isFinite(capacity) ? `${capacity.toLocaleString()} MW` : 'Not reported';
+      document.querySelector('#details').innerHTML = `<h3>Electric power plant</h3><p class="meta">California Energy Commission · ${value(props.CECPlantID)} · ${Number(props.Retired_Plant) === 1 ? 'Marked retired' : 'Not marked retired'}</p><p><strong>${value(props.PlantName)}</strong><br>Primary source: ${energySource}<br>Reported capacity: ${capacityText}<br>Operator: ${value(props.OperatorCompanyID)}</p><p class="source-note">Facility inventory, not live generation, available grid capacity, or evidence of a parcel connection. Verify status with the utility and CEC.</p>`;
+      return;
+    }
     if (feature.layer.id === 'landslides' || feature.layer.id === 'landslide-footprints-fill' || feature.layer.id === 'landslide-footprints-locators') {
       const footprint = feature.layer.id !== 'landslides';
       const value = value => value === null || value === undefined || String(value).trim() === '' ? 'Not reported' : escapeHtml(value);
@@ -683,7 +701,7 @@ function initializeMapLayers() {
     }
     selectParcel(props, null, event.lngLat);
   });
-  for (const id of ['landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }

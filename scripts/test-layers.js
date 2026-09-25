@@ -87,6 +87,20 @@ function testTransmissionLineSource() {
   assert.deepEqual(lines.fields, ['OBJECTID', 'Name', 'kV', 'Owner', 'Status', 'Type', 'Source']);
 }
 
+function testBridgeAndPowerPlantSources() {
+  const bridges = LAYERS.bridges;
+  assert.match(bridges.url, /NTAD_National_Bridge_Inventory\/FeatureServer\/0$/);
+  assert.equal(bridges.bbox, '-123.73,40.98,-121.43,42.02');
+  assert.equal(bridges.where, "STATE_CODE_001 = '06' AND COUNTY_CODE_003 = '093'");
+  assert(bridges.fields.includes('BRIDGE_CONDITION'));
+  const plants = LAYERS.power_plants;
+  assert.match(plants.url, /Power_Plant\/FeatureServer\/0$/);
+  assert.equal(plants.bbox, bridges.bbox);
+  assert.equal(plants.where, "County = 'Siskiyou'");
+  assert(plants.fields.includes('Retired_Plant'));
+  assert(plants.fields.includes('PriEnergySource'));
+}
+
 function testDamSource() {
   const dams = LAYERS.dams;
   assert.match(dams.url, /NID_v1\/FeatureServer\/0$/);
@@ -160,6 +174,7 @@ function testCriticalHabitatSources() {
   testMunicipalZoningSource();
   testActiveRailroadSource();
   testTransmissionLineSource();
+  testBridgeAndPowerPlantSources();
   testDamSource();
   testLandslideSource();
   testLandslideFootprintSource();
