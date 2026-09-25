@@ -8,6 +8,7 @@ const features = [
   { layer: { id: 'transmission-lines' }, properties: { Name: 'Test line' } },
   { layer: { id: 'dams' }, properties: { NAME: 'Test dam' } },
   { layer: { id: 'landslides' }, properties: { LS_Type: 'debris flow' } },
+  { layer: { id: 'landslide-footprints-fill' }, properties: { USGS_ID: 'ply123' } },
   { layer: { id: 'zoning-fill' }, properties: { zoning: 'RES-2' } },
   { layer: { id: 'fire-hazard' }, properties: { HAZ_CLASS: 'Very High' } },
   { layer: { id: 'cell-att' }, properties: {} },
@@ -27,6 +28,8 @@ assert(matches.has('listing:public-land'));
 assert(!matches.has('listing:private-home'));
 assert(LEGEND_QUERY_LAYERS.includes('parcel-fill'));
 assert(LEGEND_QUERY_LAYERS.includes('springs'));
+assert(LEGEND_QUERY_LAYERS.includes('landslide-footprints-fill'));
+assert(legendMatches([{ layer: { id: 'landslide-footprints-fill' }, properties: {} }]).has('landslides'));
 const queries = [];
 const waterMap = {
   project: () => ({ x: 100, y: 200 }),

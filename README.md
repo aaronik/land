@@ -72,7 +72,7 @@ The following downloaded GIS layers can change upstream. Their identifiers are t
 | Roads, forest roads, and railroads | `roads`, `forest_roads`, `railroads` | None |
 | Electric transmission lines | `transmission_lines` | None |
 | Dams (national inventory) | `dams` | None |
-| **Recorded landslides and debris flows** | **`landslides`** | **None** |
+| **Recorded landslides and debris flows (points and footprints)** | **`landslides`, `landslide_footprints`** | **None** |
 | Rivers, lakes, springs, summits, towns, and incorporated places | `waterways`, `waterbodies`, `springs`, `summits`, `towns`, `incorporated_places` | None |
 | Surface geology and fire hazard | `geology`, `fire_hazard` | None |
 | Historic and recent wildfire perimeters | `wildfire_perimeters`, `recent_wildfire_perimeters` | None |
@@ -86,8 +86,8 @@ The following downloaded GIS layers can change upstream. Their identifiers are t
 For example, refresh the three newly added infrastructure/history layers without rebuilding unrelated datasets:
 
 ```sh
-npm run layers:download -- transmission_lines dams landslides
-npm run layers:build -- transmission_lines dams landslides
+npm run layers:download -- transmission_lines dams landslides landslide_footprints
+npm run layers:build -- transmission_lines dams landslides landslide_footprints
 npm run build # or npm run deploy to publish
 ```
 

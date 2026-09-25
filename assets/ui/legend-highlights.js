@@ -13,6 +13,7 @@ const LAYERS = {
   'transmission-lines': 'transmission-lines',
   dams: 'dams',
   landslides: 'landslides',
+  'landslide-footprints': 'landslide-footprints-fill',
   pct: 'pct',
   huc12: 'huc12-fill',
   'incorporated-places': 'incorporated-places-red',
@@ -108,6 +109,7 @@ export function legendMatches(features, listingCategories = []) {
   for (const feature of features) {
     const layer = feature.layer?.id;
     const p = feature.properties || {};
+    if (layer === 'landslide-footprints-fill') { add('landslides'); continue; }
     if (layer === 'parcel-fill') { add('parcel-lines'); continue; }
     if (layer === 'springs') { add('waterways', 'Mapped spring'); continue; }
     if (layer === 'municipal-zoning-fill') { add('zoning', p.zoning); continue; }

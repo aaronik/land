@@ -102,6 +102,14 @@ function testLandslideSource() {
   assert.deepEqual(landslides.fields, ['OBJECTID', 'USGS_ID', 'Date_Min', 'Date_Max', 'Confidence', 'LS_Type', 'Inventory', 'Inv_URL', 'Info_Sourc']);
 }
 
+function testLandslideFootprintSource() {
+  const footprints = LAYERS.landslide_footprints;
+  assert.match(footprints.url, /US_Landslide_poly_v2\/FeatureServer\/12$/);
+  assert.equal(footprints.bbox, LAYERS.landslides.bbox);
+  assert.equal(footprints.where, LAYERS.landslides.where);
+  assert.deepEqual(footprints.fields, LAYERS.landslides.fields);
+}
+
 function testWaterwaysSource() {
   const waterways = LAYERS.waterways;
   assert.match(waterways.url, /hydro\.nationalmap\.gov.*\/nhd\/MapServer\/6/);
@@ -154,6 +162,7 @@ function testCriticalHabitatSources() {
   testTransmissionLineSource();
   testDamSource();
   testLandslideSource();
+  testLandslideFootprintSource();
   testWaterwaysSource();
   testFarmlandSource();
   testRcraSiteSource();

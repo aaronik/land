@@ -53,6 +53,27 @@ function addDamSymbol(map) {
   map.addImage('dam-trapezoid', context.getImageData(0, 0, 48, 48), { pixelRatio: 2 });
 }
 
+function addLandslideFootprintSymbol(map) {
+  const size = 32;
+  const data = new Uint8Array(size * size * 4);
+  for (let y = 4; y < 28; y++) for (let x = 4; x < 28; x++) {
+    const border = x < 8 || x >= 24 || y < 8 || y >= 24;
+    if (border) data.set([251, 227, 178, 255], (y * size + x) * 4);
+    else if (x < 10 || x >= 22 || y < 10 || y >= 22) data.set([116, 53, 23, 255], (y * size + x) * 4);
+  }
+  map.addImage('landslide-footprint-locator', { width: size, height: size, data }, { pixelRatio: 2 });
+}
+
+function addLandslidePointSymbol(map) {
+  const size = 32;
+  const data = new Uint8Array(size * size * 4);
+  for (let y = 4; y < 28; y++) for (let x = 4; x < 28; x++) {
+    const border = x < 8 || x >= 24 || y < 8 || y >= 24;
+    data.set(border ? [251, 227, 178, 255] : [186, 113, 67, 255], (y * size + x) * 4);
+  }
+  map.addImage('landslide-point', { width: size, height: size, data }, { pixelRatio: 2 });
+}
+
 function addWellSymbols(map) {
   const colors = { shallow: [112, 228, 239], medium: [74, 196, 230], deep: [67, 132, 222], veryDeep: [118, 81, 199] };
   for (const [name, color] of Object.entries(colors)) {
@@ -105,6 +126,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('transmission_lines');
   addPmtilesSource('dams');
   addPmtilesSource('landslides');
+  addPmtilesSource('landslide_footprints');
   addPmtilesSource('waterways');
   addPmtilesSource('waterbodies');
   addPmtilesSource('summits');
@@ -411,11 +433,24 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     }
   });
   map.addLayer({
-    id: 'landslides', type: 'circle', source: 'landslides', 'source-layer': 'landslides', minzoom: 6,
-    layout: { visibility: 'none' },
-    paint: {
-      'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 5, 12, 7, 17, 9],
-      'circle-color': '#ba7143', 'circle-stroke-color': '#fbe3b2', 'circle-stroke-width': 2
+    id: 'landslide-footprints-fill', type: 'fill', source: 'landslide_footprints', 'source-layer': 'landslide_footprints', minzoom: 6,
+    layout: { visibility: 'none' }, paint: { 'fill-color': '#ba7143', 'fill-opacity': 0.24 }
+  });
+  map.addLayer({
+    id: 'landslide-footprints-lines', type: 'line', source: 'landslide_footprints', 'source-layer': 'landslide_footprints', minzoom: 6,
+    layout: { visibility: 'none' }, paint: { 'line-color': '#fbe3b2', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 0.8, 14, 1.6], 'line-opacity': 0.85 }
+  });
+  addLandslideFootprintSymbol(map);
+  map.addLayer({
+    id: 'landslide-footprints-locators', type: 'symbol', source: 'landslide_footprints', 'source-layer': 'landslide_footprints', minzoom: 6, maxzoom: 11,
+    layout: { visibility: 'none', 'icon-image': 'landslide-footprint-locator', 'icon-size': 1.15, 'icon-allow-overlap': true, 'icon-ignore-placement': true }
+  });
+  addLandslidePointSymbol(map);
+  map.addLayer({
+    id: 'landslides', type: 'symbol', source: 'landslides', 'source-layer': 'landslides', minzoom: 6,
+    layout: {
+      visibility: 'none', 'icon-image': 'landslide-point', 'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 1.15, 13, 1.35, 17, 1.5],
+      'icon-allow-overlap': true, 'icon-ignore-placement': true
     }
   });
   map.addLayer({ id: 'sale-fill', type: 'fill', source: 'sales', paint: { 'fill-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'previous-listing', COLORS['previous-listing'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'fill-opacity': 0.42 } });

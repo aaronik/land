@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T22:43:26.718Z",
+  "generatedAt": "2026-09-25T00:54:34.863Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -479,6 +479,21 @@
     "landslides": {
       "source": "https://services.arcgis.com/v01gqwM5QqNysAAi/arcgis/rest/services/US_Landslide_point_v2/FeatureServer/11",
       "featureCount": 22,
+      "fields": [
+        "OBJECTID",
+        "USGS_ID",
+        "Date_Min",
+        "Date_Max",
+        "Confidence",
+        "LS_Type",
+        "Inventory",
+        "Inv_URL",
+        "Info_Sourc"
+      ]
+    },
+    "landslide_footprints": {
+      "source": "https://services.arcgis.com/v01gqwM5QqNysAAi/arcgis/rest/services/US_Landslide_poly_v2/FeatureServer/12",
+      "featureCount": 79,
       "fields": [
         "OBJECTID",
         "USGS_ID",

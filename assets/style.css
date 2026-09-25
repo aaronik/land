@@ -94,7 +94,7 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .swatch.fire-overlay { background: #d73027; } .swatch.wildfire-perimeters-overlay { border: 2px solid #d95032; background: rgba(238,156,68,.35); } .swatch.roads-overlay { background: #f8d37c; } .swatch.railroads-overlay { background: #e53935; } .swatch.parcel-lines-overlay { border: 1px solid rgba(22,35,29,.16); background: repeating-linear-gradient(135deg, transparent 0 3px, #aeb4b7 3px 4px); } .swatch.waterways-overlay { background: #38a8ff; }
 .swatch.transmission-lines-overlay { background: #e6b94f; border: 2px solid #342b17; }
 .swatch.dams-overlay { background: #348eb7; border: 2px solid #e3f5fa; border-radius: 0; clip-path: polygon(0 0, 100% 0, 72% 100%, 28% 100%); }
-.swatch.landslides-overlay { background: #ba7143; border: 2px solid #fbe3b2; border-radius: 50%; }
+.swatch.landslides-overlay { background: #ba7143; border: 2px solid #fbe3b2; border-radius: 0; }
 .swatch.place-names-overlay { background: linear-gradient(135deg, #b9e4ff 0 50%, #f4dc9d 50%); }
 .swatch.incorporated-places-overlay, .key-incorporated-places { border: 2px solid #d52828 !important; background: repeating-linear-gradient(135deg, #d52828 0 3px, #fff 3px 6px) !important; }
 .swatch.flood-overlay { background: #26bce8; }

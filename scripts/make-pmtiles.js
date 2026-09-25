@@ -18,6 +18,7 @@ const configs = {
   transmission_lines: { min: 6, max: 14, fields: LAYERS.transmission_lines.fields.filter(field => field !== 'OBJECTID') },
   dams: { min: 6, max: 14, preserveAll: true, fields: LAYERS.dams.fields.filter(field => field !== 'OBJECTID') },
   landslides: { min: 6, max: 14, preserveAll: true, fields: LAYERS.landslides.fields.filter(field => field !== 'OBJECTID') },
+  landslide_footprints: { min: 6, max: 14, preserveAll: true, fields: LAYERS.landslide_footprints.fields.filter(field => field !== 'OBJECTID') },
   waterways: { min: 6, max: 14, fields: LAYERS.waterways.fields.filter(field => field !== 'OBJECTID') },
   waterbodies: { min: 6, max: 14, fields: LAYERS.waterbodies.fields.filter(field => field !== 'OBJECTID') },
   summits: { min: 6, max: 14, fields: LAYERS.summits.fields.filter(field => field !== 'OBJECTID') },
@@ -61,7 +62,7 @@ function main() {
     const mbtiles = path.join(generated, `${name}.mbtiles`);
     const pmtiles = path.join(generated, `${name}.pmtiles`);
     const args = ['--force', `--output=${mbtiles}`, `--layer=${name}`, `--minimum-zoom=${config.min}`, `--maximum-zoom=${config.max}`, '--read-parallel', '--exclude-all'];
-    if (config.preserveAll) args.push('--drop-rate=1', '--no-feature-limit', '--no-tile-size-limit');
+    if (config.preserveAll) args.push('--drop-rate=1', '--no-feature-limit', '--no-tile-size-limit', ...(name === 'landslide_footprints' ? ['--no-tiny-polygon-reduction'] : []));
     else args.push('--drop-densest-as-needed', '--coalesce-densest-as-needed', '--extend-zooms-if-still-dropping');
     for (const field of config.fields) args.push(`--include=${field}`);
     args.push(input);
