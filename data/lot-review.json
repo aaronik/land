@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-09-24T18:30:30.321Z",
-  "count": 221,
+  "generatedAt": "2026-09-28T18:26:43.618Z",
+  "count": 220,
   "listings": [
     {
-      "mlsNumber": "20261157",
-      "title": "Unit 1 Lot 56 Brook Ln., Weed, CA 96094",
-      "acres": 0.25,
+      "mlsNumber": "20261171",
+      "title": "Lot 20 N Old Stage Rd, Weed, CA 96094",
+      "acres": 20.6,
       "latLng": [
-        41.52717502350079,
-        -122.37210021980158
+        41.37747,
+        -122.384208
       ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261157/Unit-1-Lot-56-Brook-Ln-Weed-CA-96094",
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261171/Lot-20-N-Old-Stage-Rd-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -149,7 +149,7 @@
     {
       "mlsNumber": "20261093",
       "title": "Lot 44 Lake Cove Rd, Hornbrook, CA 96044",
-      "acres": 2.5,
+      "acres": 2.55,
       "latLng": [
         41.906887599384326,
         -122.51472420665009
@@ -1415,18 +1415,6 @@
         -122.38200017689633
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260239/Unit-4-lot-202-Rainbow-Dr-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260238",
-      "title": "Unit 4 lot 201 Rainbow Dr, Weed, CA 96094",
-      "acres": 1.03,
-      "latLng": [
-        41.512246583842874,
-        -122.38200017689633
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260238/Unit-4-lot-201-Rainbow-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
