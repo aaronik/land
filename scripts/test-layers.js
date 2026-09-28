@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const { fetchArcGISLayer, parseSoilGml, normalizeApn, listingConfidence, LAYERS } = require('./layers');
+const { fetchArcGISLayer, fetchSoilLayer, parseSoilGml, normalizeApn, listingConfidence, LAYERS } = require('./layers');
 const { webMercatorToWgs84 } = require('./download-layers');
 
 async function testPaginationCompleteness() {
@@ -33,6 +33,13 @@ function testSoilGmlParsing() {
   assert.equal(features.length, 1);
   assert.deepEqual(features[0].geometry.coordinates[0][0], [-122, 41]);
   assert.equal(features[0].properties.muname, 'Test & soil');
+}
+
+async function testSoilDistinctPolygonsWithSharedFid() {
+  const polygon = (west, fid = 'soil.1') => `<gml:featureMember><ms:mapunitpolyextended fid="${fid}"><gml:Polygon><gml:outerBoundaryIs><gml:LinearRing><gml:coordinates>41,${west} 41,${west + 0.01} 41.01,${west + 0.01} 41,${west}</gml:coordinates></gml:LinearRing></gml:outerBoundaryIs></gml:Polygon><ms:mukey>123</ms:mukey></ms:mapunitpolyextended></gml:featureMember>`;
+  const xml = `<wfs:FeatureCollection>${polygon(-122)}${polygon(-121.9)}${polygon(-122)}</wfs:FeatureCollection>`;
+  const data = await fetchSoilLayer({ bbox: '-122,41,-121.75,41.25', typeName: 'mapunitpolyextended', fields: ['mukey'], url: 'https://example.test/wfs' }, async () => ({ ok: true, text: async () => xml }));
+  assert.equal(data.features.length, 2, 'Distinct polygons with a common map-unit ID must not disappear');
 }
 
 function testMatchingConfidence() {
@@ -176,6 +183,7 @@ function testCriticalHabitatSources() {
   await testPaginationCompleteness();
   await testIncompleteDownloadFails();
   testSoilGmlParsing();
+  await testSoilDistinctPolygonsWithSharedFid();
   testMatchingConfidence();
   testMunicipalZoningProjection();
   testMunicipalZoningSource();

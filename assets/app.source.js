@@ -8,10 +8,13 @@ import { createListingData } from './data/listings.js';
 import { createParcelDetails } from './ui/parcel-details.js';
 import { installMapSourcesAndLayers } from './map/layers.js';
 import { identifyLandCover, LAND_COVER_YEAR, landCoverLegendClass } from './map/land-cover.js';
+import { identifyVegetation, loadVegetationLegend, VEGETATION_YEAR } from './map/vegetation.js';
+import { buildVegetationLegend, highlightVegetationLegend } from './ui/vegetation-legend.js';
 import { ParcelAdjustmentControl, ParcelAdjustmentMapControl } from './map/parcel-adjustment.js';
 import { initializeMobileSheet } from './state/ui.js';
 import { updateUrlParameter } from './state/url.js';
 import { LEGEND_QUERY_LAYERS, legendMatches, queryLegendFeatures, queryParcelWaterFeatures, updateLegendHighlights } from './ui/legend-highlights.js';
+import { buildSoilLegend, updateSoilLegendValues } from './ui/soil-legend.js';
 
 const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'previous-listing': '#55768d', 'public-land': '#ff9d4d', 'public-home': '#b94b18', 'tax-delinquent': '#c43c78' };
 // Colors follow the unique-value renderer saved on Siskiyou County's official
@@ -304,8 +307,24 @@ const parcelDetails = createParcelDetails({
 const { recordCard, showParcelDetails } = parcelDetails;
 
 function updateSelectedParcelUrl(apn) { updateUrlParameter(PARCEL_URL_PARAM, apn); }
+buildSoilLegend(document);
 let selectedLegendLocation = null;
+let clickedSoil = null;
 let selectedLandCoverClass = null;
+let vegetationLegendRequest = 0;
+async function refreshSelectedVegetation() {
+  const requestId = ++vegetationLegendRequest;
+  highlightVegetationLegend(document, null);
+  if (!selectedApn || !selectedLegendLocation || !map.getLayer('vegetation') || map.getLayoutProperty('vegetation', 'visibility') !== 'visible') return;
+  try {
+    const lng = selectedLegendLocation.lng ?? selectedLegendLocation[0];
+    const lat = selectedLegendLocation.lat ?? selectedLegendLocation[1];
+    const community = await identifyVegetation({ lng, lat });
+    if (requestId !== vegetationLegendRequest || map.getLayoutProperty('vegetation', 'visibility') !== 'visible') return;
+    await ensureVegetationLegend();
+    if (requestId === vegetationLegendRequest) highlightVegetationLegend(document, community.code);
+  } catch { /* Keep parcel selection functional if the image service is down. */ }
+}
 let landCoverLegendRequest = 0;
 async function refreshSelectedLandCover() {
   const requestId = ++landCoverLegendRequest;
@@ -343,11 +362,17 @@ function refreshLegendHighlights() {
     }
   }
   const matches = legendMatches(features, listingCategories);
+  const soilFeature = clickedSoil || (selectedApn && features.find(feature => feature.layer.id === 'soils')?.properties);
+  if (soilFeature && map.getLayer('soils') && map.getLayoutProperty('soils', 'visibility') === 'visible') {
+    matches.set('soils', new Set([soilFeature.texture_group || 'Not rated']));
+    updateSoilLegendValues(document, soilFeature);
+  } else updateSoilLegendValues(document, null);
   if (selectedApn && selectedLandCoverClass && map.getLayer('land-cover') && map.getLayoutProperty('land-cover', 'visibility') === 'visible') matches.set('land-cover', new Set([selectedLandCoverClass]));
   updateLegendHighlights(document, matches);
 }
 function setSelectedApn(apn, { updateUrl = true, location = null } = {}) {
   const nextApn = apn || '';
+  if (!location) clickedSoil = null;
   const previousApn = selectedApn;
   selectedLegendLocation = nextApn ? location || (nextApn === selectedApn ? selectedLegendLocation : null) : null;
   if (selectedApn && map.getSource('parcels')) {
@@ -361,6 +386,7 @@ function setSelectedApn(apn, { updateUrl = true, location = null } = {}) {
   }
   if (updateUrl) updateSelectedParcelUrl(selectedApn);
   refreshSelectedLandCover();
+  void refreshSelectedVegetation();
   refreshLegendHighlights();
 }
 function selectParcel(properties, saleFeature, location) {
@@ -483,6 +509,16 @@ function applyMapLayerVisibility() {
 loadMapLayerVisibility();
 loadListingTypeVisibility();
 
+let vegetationLegendLoaded = false;
+async function ensureVegetationLegend() {
+  if (vegetationLegendLoaded) return;
+  try {
+    buildVegetationLegend(document, await loadVegetationLegend());
+    vegetationLegendLoaded = true;
+  } catch {
+    document.querySelector('.vegetation-legend-status').textContent = 'LANDFIRE legend unavailable. Turn this layer off and on to retry.';
+  }
+}
 function toggleLayer(id, visibleValue) {
   const groupedLayers = {
     'topographic-contours': ['topographic-contours', 'topographic-contour-labels'],
@@ -510,8 +546,10 @@ function toggleLayer(id, visibleValue) {
     zoning: ['zoning-fill', 'zoning-lines', 'municipal-zoning-fill', 'municipal-zoning-lines']
   };
   const layerIds = groupedLayers[id] || [id];
+  if (id === 'soils' && !visibleValue) clickedSoil = null;
   for (const layerId of layerIds) if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibleValue ? 'visible' : 'none');
   document.querySelector(`[data-layer-key="${id}"]`)?.classList.toggle('visible', visibleValue);
+  if (id === 'vegetation' && visibleValue) void ensureVegetationLegend();
   refreshLegendHighlights();
 }
 function updateTerrainUrl(enabled) { updateUrlParameter(TERRAIN_URL_PARAM, enabled ? '1' : ''); }
@@ -555,7 +593,9 @@ function initializeMapLayers() {
   let landCoverClickSerial = 0;
   map.on('click', async event => {
     const clickSerial = ++landCoverClickSerial;
+    ++vegetationLegendRequest;
     if (polygonDrawControl.consumeMapClickSuppression()) return;
+    clickedSoil = null;
     if (map.queryRenderedFeatures(event.point, { layers: ['polygon-drawings-labels'] }).length) return;
     if (distanceMeasureControl.isActive() || coordinatePinControl.isActive() || polygonDrawControl.isActive() || roadTrackerControl.isActive()) return;
     const radius = 9;
@@ -567,16 +607,34 @@ function initializeMapLayers() {
       [event.point.x - 5, event.point.y - 5],
       [event.point.x + 5, event.point.y + 5]
     ], { layers: ['transmission-lines', 'ifr-routes-low', 'ifr-routes-high'] });
-    const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill', 'landslide-footprints-fill', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'recent-wildfire-perimeters-fill', 'wildfire-perimeters-fill'] });
+    const polygonHits = map.queryRenderedFeatures(event.point, { layers: ['sale-fill', 'parcel-fill', 'soils', 'landslide-footprints-fill', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'recent-wildfire-perimeters-fill', 'wildfire-perimeters-fill'] });
     const habitatHits = polygonHits.filter(hit => hit.layer.id === 'critical-habitat-final' || hit.layer.id === 'critical-habitat-proposed');
     const parcelHit = polygonHits.find(hit => hit.layer.id === 'sale-fill') || polygonHits.find(hit => hit.layer.id === 'parcel-fill');
-    const overlayHit = habitatHits[0] || polygonHits.find(hit => hit !== parcelHit && hit.layer.id !== 'parcel-fill' && hit.layer.id !== 'sale-fill');
-    // Parcel selection remains the default under area overlays. A directly
-    // clicked transmission line is inspectable without holding Alt/Option.
     const inspectOverlay = event.originalEvent?.altKey;
-    // Listings and point markers retain priority. A visible transmission line
-    // is inspected on a normal click even when the parcel fill lies beneath it.
-    const feature = markerHits[0] || (inspectOverlay ? lineHits[0] || overlayHit || parcelHit : polygonHits.find(hit => hit.layer.id === 'sale-fill') || lineHits[0] || parcelHit || overlayHit);
+    const overlayHit = habitatHits[0] || polygonHits.find(hit => hit !== parcelHit && hit.layer.id !== 'parcel-fill' && hit.layer.id !== 'sale-fill' && (inspectOverlay || hit.layer.id !== 'soils'));
+    const soilHit = polygonHits.find(hit => hit.layer.id === 'soils');
+    // Preserve parcel selection on normal taps; also inspect soil at the tap.
+    // Listings, markers, and transmission lines keep their existing priority.
+    if (soilHit && map.getLayoutProperty('soils', 'visibility') === 'visible' && !markerHits.length && !lineHits.length) {
+      clickedSoil = soilHit.properties;
+    }
+    refreshLegendHighlights();
+    const feature = markerHits[0] || (inspectOverlay ? lineHits[0] || overlayHit || parcelHit : polygonHits.find(hit => hit.layer.id === 'sale-fill') || lineHits[0] || parcelHit || overlayHit || soilHit);
+    if ((inspectOverlay || !parcelHit) && (feature?.layer.id === 'parcel-fill' || !feature) && map.getLayoutProperty('vegetation', 'visibility') === 'visible' && !markerHits.length && !lineHits.length && !habitatHits.length && !polygonHits.some(hit => hit.layer.id === 'sale-fill' || hit.layer.id === 'landslide-footprints-fill')) {
+      const details = document.querySelector('#details');
+      details.innerHTML = '<h3>Mapped vegetation community</h3><p class="meta">Checking LANDFIRE class…</p>';
+      try {
+        const community = await identifyVegetation(event.lngLat);
+        if (clickSerial !== landCoverClickSerial || map.getLayoutProperty('vegetation', 'visibility') !== 'visible') return;
+        await ensureVegetationLegend();
+        if (clickSerial !== landCoverClickSerial || map.getLayoutProperty('vegetation', 'visibility') !== 'visible') return;
+        highlightVegetationLegend(document, community.code);
+        details.innerHTML = `<h3>Mapped vegetation community</h3><p class="meta">USGS/USFS LANDFIRE ${VEGETATION_YEAR} EVT · 30 m pixels</p><p><strong>${escapeHtml(community.name)}</strong>${community.physiognomy ? `<br>${escapeHtml(community.physiognomy)}` : ''}${community.lifeform ? ` · ${escapeHtml(community.lifeform)}` : ''}</p><p class="source-note">Modeled ecological system, not a species inventory or a survey of this location. LANDFIRE does not recommend interpreting individual pixels or small groups of pixels as site-level evidence; verify locally.</p>`;
+      } catch {
+        if (clickSerial === landCoverClickSerial) details.innerHTML = '<h3>Mapped vegetation community</h3><p class="source-note">LANDFIRE is unavailable; try again later.</p>';
+      }
+      return;
+    }
     if ((inspectOverlay || !parcelHit) && map.getLayoutProperty('land-cover', 'visibility') === 'visible' && !markerHits.length && !lineHits.length && !habitatHits.length && !polygonHits.some(hit => hit.layer.id === 'sale-fill' || hit.layer.id === 'landslide-footprints-fill')) {
       const details = document.querySelector('#details');
       details.innerHTML = `<h3>Vegetation &amp; land cover</h3><p class="meta">Checking 2024 map class…</p>`;
@@ -596,6 +654,15 @@ function initializeMapLayers() {
       const minimum = Number(props.MEA_E_VAL);
       const minText = Number.isFinite(minimum) && minimum > 0 && minimum < 999999 ? `${minimum.toLocaleString()} ${value(props.MEA_E_UOM || 'ft')}` : 'Not reported';
       document.querySelector('#details').innerHTML = `<h3>FAA charted IFR route</h3><p class="meta">${feature.layer.id === 'ifr-routes-low' ? 'Lower-altitude' : 'Upper-altitude'} ATS route · ${value(props.IDENT)}</p><p>Navigation: ${props.TYPE_CODE === 'RNAV' ? 'Area navigation (RNAV)' : props.TYPE_CODE === 'CONV' ? 'Conventional' : value(props.TYPE_CODE)}<br>Published minimum enroute altitude (eastbound): ${minText}</p><p class="source-note">Charted route, not a record of actual flights, traffic frequency, noise, or altitude above this location. Published route altitudes are navigation constraints, not observed aircraft heights. Not for navigation; consult current FAA charts.</p>`;
+      return;
+    }
+    if (feature.layer.id === 'soils') {
+      clickedSoil = props;
+      refreshLegendHighlights();
+      const value = item => item === null || item === undefined || String(item).trim() === '' ? 'Not reported' : escapeHtml(item);
+      const percent = item => typeof item === 'number' && Number.isFinite(item) ? `${value(item)}%` : 'Not reported';
+      const depth = props.surface_texture && props.texture_top_cm !== '' && props.texture_bottom_cm !== '' ? ` (${value(props.texture_top_cm)}–${value(props.texture_bottom_cm)} cm)` : '';
+      document.querySelector('#details').innerHTML = `<h3>Mapped soil component</h3><p class="meta">USDA NRCS SSURGO · map unit ${value(props.mukey)}</p><p><strong>${value(props.dominant_series)}</strong> · estimated dominant component ${value(props.dominant_percent)}%<br>Shallowest classified horizon: ${value(props.surface_texture)}${depth}<br>Sand: ${percent(props.sand_pct)} · Silt: ${percent(props.silt_pct)} · Clay: ${percent(props.clay_pct)}<br>Soil classification: ${value(props.soil_taxonomy)}<br>Map unit: ${value(props.muname)}<br>Drainage: ${value(props.drclassdcd)}</p><p class="source-note">A map unit can contain multiple soils. The dominant component and its representative horizon are not a sample from this point or a parcel-level soil test; verify in the field.</p>`;
       return;
     }
     if (feature.layer.id === 'bridges') {
@@ -710,7 +777,7 @@ function initializeMapLayers() {
     }
     selectParcel(props, null, event.lngLat);
   });
-  for (const id of ['ifr-routes-low', 'ifr-routes-high', 'bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['ifr-routes-low', 'ifr-routes-high', 'bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'soils', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }
@@ -824,6 +891,7 @@ updateListingDateFilter();
 mapLayerInputs.forEach(input => input.addEventListener('change', () => {
   toggleLayer(input.dataset.mapLayer, input.checked);
   if (input.dataset.mapLayer === 'land-cover') refreshSelectedLandCover();
+  if (input.dataset.mapLayer === 'vegetation') void refreshSelectedVegetation();
   saveMapLayerVisibility();
 }));
 document.querySelector('#reset-map-layers').addEventListener('click', () => {
@@ -843,10 +911,12 @@ document.querySelector('#reset-map-layers').addEventListener('click', () => {
   updateListingDateFilter();
   try {
     localStorage.removeItem(MAP_LAYER_STORAGE_KEY);
+    localStorage.removeItem('shasta-land-atlas.soil-mode.v1');
     localStorage.removeItem(LISTING_TYPE_STORAGE_KEY);
     localStorage.removeItem(LISTING_FILTER_STORAGE_KEY);
   } catch { /* Storage may be disabled. */ }
   applyMapLayerVisibility();
+  void refreshSelectedVegetation();
   refreshSelectedLandCover();
   updateSales();
   clearSelectedParcel();

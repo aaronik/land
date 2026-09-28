@@ -1,5 +1,6 @@
 'use strict';
 
+const crypto = require('crypto');
 const SISKIYOU_BBOX = '-123.73,40.98,-121.43,42.02';
 const SOIL_WFS = 'https://SDMDataAccess.sc.egov.usda.gov/Spatial/SDMWGS84Geographic.wfs';
 const SOIL_FIELDS = ['areasymbol', 'musym', 'nationalmusym', 'mukey', 'muname', 'slopegraddcp', 'brockdepmin', 'wtdepannmin', 'flodfreqdcd', 'drclassdcd', 'hydgrpdcd', 'engdwobdcd'];
@@ -95,7 +96,13 @@ async function fetchSoilLayer(config, request = fetch) {
     const response = await request(`${config.url}?${params}`);
     if (!response.ok) throw new Error(`${response.status} ${response.statusText}: ${config.name}`);
     const batch = parseSoilGml(await response.text(), config.fields);
-    for (const feature of batch) features.set(feature.properties.fid || feature.properties.mupolygonkey, feature);
+    for (const feature of batch) {
+      // WFS fid identifies the map UNIT, not an individual polygon; many
+      // disjoint polygons share it. Cells also repeat full intersecting polygons.
+      // Hash geometry to remove only the latter, without dropping coverage.
+      const key = crypto.createHash('sha256').update(JSON.stringify(feature.geometry)).digest('hex');
+      features.set(key, feature);
+    }
   }
   return { type: 'FeatureCollection', features: [...features.values()] };
 }

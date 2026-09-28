@@ -1,6 +1,8 @@
 'use strict';
 
 import { landCoverTileUrl, LAND_COVER_SERVICE } from './land-cover.js';
+import { vegetationTileUrl, VEGETATION_SERVICE } from './vegetation.js';
+import { soilTextureExpression } from './soil-styles.js';
 
 function addSpringSymbol(map) {
   const size = 24;
@@ -104,6 +106,11 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('recent_wildfire_perimeters');
   addPmtilesSource('flood');
   addPmtilesSource('soils');
+  map.addSource('vegetation-raster', {
+    type: 'raster', tileSize: 256, minzoom: 6, maxzoom: 18,
+    tiles: [vegetationTileUrl()],
+    attribution: `<a href="${VEGETATION_SERVICE}" target="_blank" rel="noopener noreferrer">USGS/USFS LANDFIRE 2025 EVT</a>`
+  });
   addPmtilesSource('farmland');
   addPmtilesSource('rcra_sites');
   addPmtilesSource('huc12');
@@ -205,6 +212,10 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     }
   });
   map.addLayer({
+    id: 'vegetation', type: 'raster', source: 'vegetation-raster', minzoom: 6,
+    layout: { visibility: 'none' }, paint: { 'raster-opacity': 0.68, 'raster-fade-duration': 0, 'raster-resampling': 'nearest' }
+  });
+  map.addLayer({
     id: 'land-cover', type: 'raster', source: 'land-cover-raster', minzoom: 6,
     layout: { visibility: 'none' }, paint: { 'raster-opacity': 0.66, 'raster-fade-duration': 0, 'raster-resampling': 'nearest' }
   });
@@ -279,7 +290,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
       'fill-outline-color': 'rgba(69, 89, 39, 0.72)'
     }
   });
-  map.addLayer({ id: 'soils', type: 'fill', source: 'soils', 'source-layer': 'soils', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'drclassdcd'], 'Very poorly drained', '#4f78a8', 'Poorly drained', '#6b94b7', 'Somewhat poorly drained', '#87adbf', 'Moderately well drained', '#b9a46b', 'Well drained', '#a97a45', 'Somewhat excessively drained', '#c48d54', 'Excessively drained', '#d5a767', '#9b8064'], 'fill-opacity': 0.34, 'fill-outline-color': 'rgba(69, 45, 25, 0.7)' } });
+  map.addLayer({ id: 'soils', type: 'fill', source: 'soils', 'source-layer': 'soils', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': soilTextureExpression(), 'fill-opacity': 0.33, 'fill-outline-color': 'rgba(69, 45, 25, 0.26)' } });
   map.addLayer({ id: 'flood', type: 'fill', source: 'flood', 'source-layer': 'flood', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': ['case', ['==', ['get', 'SFHA_TF'], 'T'], '#00c5ff', ['all', ['==', ['get', 'FLD_ZONE'], 'X'], ['match', ['get', 'ZONE_SUBTY'], '0.2 PCT ANNUAL CHANCE FLOOD HAZARD', true, '0.2 PERCENT ANNUAL CHANCE FLOOD HAZARD', true, false]], '#75d5ec', ['==', ['get', 'FLD_ZONE'], 'D'], '#e8d15c', '#3db7de'], 'fill-opacity': 0.38, 'fill-outline-color': 'rgba(0, 104, 160, 0.8)' } });
   map.addLayer({ id: 'fire-hazard', type: 'fill', source: 'fire_hazard', 'source-layer': 'fire_hazard', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'HAZ_CLASS'], 'Very High', '#d73027', 'High', '#fc8d59', 'Moderate', '#fee08b', '#f5a623'], 'fill-opacity': 0.3 } });
   map.addLayer({ id: 'wildfire-perimeters-fill', type: 'fill', source: 'wildfire_perimeters', 'source-layer': 'wildfire_perimeters', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': '#f5d66b', 'fill-opacity': 0.12 } });

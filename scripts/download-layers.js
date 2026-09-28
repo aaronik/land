@@ -231,6 +231,14 @@ async function main() {
       // overlay so they cannot alter the established County layer.
     }
     if (name === 'groundwater_wells') addNearbyWellSummaries(data);
+    if (name === 'soils') {
+      const { fetchComponents } = require('./enrich-soils');
+      const keys = [...new Set(data.features.map(feature => String(feature.properties.mukey)).filter(key => /^\d+$/.test(key)))];
+      const components = new Map();
+      for (let i = 0; i < keys.length; i += 60) for (const [key, value] of await fetchComponents(keys.slice(i, i + 60))) components.set(key, value);
+      if (components.size !== keys.length) throw new Error(`Incomplete SSURGO join: ${components.size}/${keys.length}`);
+      for (const feature of data.features) Object.assign(feature.properties, components.get(String(feature.properties.mukey)) || { texture_group: 'Not rated' });
+    }
     fs.writeFileSync(path.join(raw, `${name}.geojson`), JSON.stringify(data));
     manifest.layers[name] = { source: config.url, featureCount: data.features.length, fields: config.fields };
     if (name === 'parcels') fs.writeFileSync(path.join(generated, 'apn-index.json'), JSON.stringify(parcelIndex(data.features)));

@@ -1,0 +1,18 @@
+'use strict';
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const html = fs.readFileSync('index.html', 'utf8');
+const app = fs.readFileSync('assets/app.source.js', 'utf8');
+const layers = fs.readFileSync('assets/map/layers.js', 'utf8');
+const style = fs.readFileSync('assets/style.css', 'utf8');
+assert.equal((html.match(/data-map-layer="soils"/g) || []).length, 1);
+assert.doesNotMatch(html, /id="soil-mode"|data-soil-legend=|data-map-layer="soil-(?:sand|silt|clay)"/);
+assert.match(html, /class="layer-key soil-texture-key" data-layer-key="soils"/);
+assert.match(layers, /id: 'soils', type: 'fill'[\s\S]*?'fill-opacity': 0\.33/);
+assert.doesNotMatch(layers, /id: 'soil-(?:sand|silt|clay)'/);
+assert.match(style, /\.soil-texture-key span\.legend-match/);
+assert.match(app, /clickedSoil = soilHit\.properties;/);
+assert.match(app, /updateSoilLegendValues\(document, soilFeature\)/);
+assert.match(app, /buildSoilLegend\(document\)/);
+assert.match(app, /localStorage\.removeItem\(MAP_LAYER_STORAGE_KEY\)/);
+console.log('Single soil overlay and clicked legend checks passed');

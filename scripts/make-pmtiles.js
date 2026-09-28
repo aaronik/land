@@ -34,7 +34,7 @@ const configs = {
   recent_wildfire_perimeters: { min: 6, max: 14, fields: LAYERS.recent_wildfire_perimeters.fields.filter(field => field !== 'OBJECTID') },
   public_land: { min: 6, max: 13, fields: LAYERS.public_land.fields.filter(field => field !== 'OBJECTID') },
   flood: { min: 6, max: 14, fields: LAYERS.flood.fields.filter(field => field !== 'OBJECTID') },
-  soils: { min: 6, max: 14, fields: LAYERS.soils.fields },
+  soils: { min: 6, max: 14, fields: [...LAYERS.soils.fields, 'dominant_series', 'dominant_percent', 'soil_taxonomy', 'surface_texture', 'texture_top_cm', 'texture_bottom_cm', 'texture_group', 'sand_pct', 'silt_pct', 'clay_pct'] },
   farmland: { min: 6, max: 14, fields: LAYERS.farmland.fields.filter(field => field !== 'OBJECTID') },
   rcra_sites: { min: 6, max: 14, fields: LAYERS.rcra_sites.fields.filter(field => field !== 'OBJECTID') },
   huc12: { min: 6, max: 14, fields: LAYERS.huc12.fields.filter(field => field !== 'objectid') },
@@ -65,7 +65,7 @@ function main() {
     const mbtiles = path.join(generated, `${name}.mbtiles`);
     const pmtiles = path.join(generated, `${name}.pmtiles`);
     const args = ['--force', `--output=${mbtiles}`, `--layer=${name}`, `--minimum-zoom=${config.min}`, `--maximum-zoom=${config.max}`, '--read-parallel', '--exclude-all'];
-    if (config.preserveAll) args.push('--drop-rate=1', '--no-feature-limit', '--no-tile-size-limit', ...(name === 'landslide_footprints' ? ['--no-tiny-polygon-reduction'] : []));
+    if (config.preserveAll || name === 'soils') args.push('--drop-rate=1', '--no-feature-limit', '--no-tile-size-limit', ...(name === 'landslide_footprints' || name === 'soils' ? ['--no-tiny-polygon-reduction'] : []));
     else args.push('--drop-densest-as-needed', '--coalesce-densest-as-needed', '--extend-zooms-if-still-dropping');
     for (const field of config.fields) args.push(`--include=${field}`);
     args.push(input);

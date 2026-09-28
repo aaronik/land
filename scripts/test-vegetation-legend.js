@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import { JSDOM } from 'jsdom';
+import classes from '../data/generated/landfire-evt-2025.json' with { type: 'json' };
+import { buildVegetationLegend, highlightVegetationLegend } from '../assets/ui/vegetation-legend.js';
+import { VEGETATION_SERVICE, identifyVegetation } from '../assets/map/vegetation.js';
+
+const dom = new JSDOM('<div class="vegetation-key"><span class="vegetation-legend-status"></span><div class="vegetation-legend-classes"></div></div>');
+const doc = dom.window.document;
+assert.equal(classes['7158'].color, '#43a2b5');
+buildVegetationLegend(doc, classes);
+const rows = doc.querySelectorAll('.vegetation-legend-classes > span');
+assert(rows.length > 500);
+const matched = highlightVegetationLegend(doc, '7158');
+assert.equal(matched.textContent, 'North Pacific Montane Riparian Woodland');
+assert.equal(matched.querySelector('i').style.getPropertyValue('--key-color'), '#43a2b5');
+assert(matched.classList.contains('vegetation-selected'));
+assert.equal(doc.querySelectorAll('.vegetation-legend-classes .vegetation-selected').length, 1);
+highlightVegetationLegend(doc, '999999');
+assert.equal(doc.querySelectorAll('.vegetation-legend-classes .vegetation-selected').length, 0);
+let requested;
+const community = await identifyVegetation({ lng: -122.3, lat: 41.3 }, async url => { requested = url; return { ok: true, json: async () => ({ value: 7158 }) }; }, async () => classes);
+assert.equal(community.code, '7158');
+assert.equal(community.color, '#43a2b5');
+assert(requested.startsWith(`${VEGETATION_SERVICE}/identify?`));
+console.log('LANDFIRE class-color legend and tapped-class highlighting passed');

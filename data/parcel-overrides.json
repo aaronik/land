@@ -1140,6 +1140,14 @@
     "confidence": "manually verified",
     "notes": "Rough pictures, might be wrong"
   },
+  "20261157": {
+    "apns": [
+      "106-040-330"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "from photos, saw the house on the side and the red house across the st"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"

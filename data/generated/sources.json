@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T19:23:46.187Z",
+  "generatedAt": "2026-09-28T11:55:40.059Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -66,7 +66,7 @@
     },
     "soils": {
       "source": "https://SDMDataAccess.sc.egov.usda.gov/Spatial/SDMWGS84Geographic.wfs",
-      "featureCount": 1514,
+      "featureCount": 17894,
       "fields": [
         "areasymbol",
         "musym",

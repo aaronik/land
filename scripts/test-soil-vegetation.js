@@ -1,0 +1,35 @@
+'use strict';
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const { queryFor, textureGroup, fetchComponents } = require('./enrich-soils');
+const { parseCsv } = require('./download-vegetation-legend');
+
+(async () => {
+  assert.throws(() => queryFor(["1'); DROP TABLE component;--"]));
+  assert.match(queryFor(['691857']), /chtexture tx/);
+  assert.equal(textureGroup('Sandy loam'), 'Sandy loam');
+  assert.equal(textureGroup('Fine sandy loam'), 'Fine sandy loam');
+  assert.equal(textureGroup('Silty clay loam'), 'Silty clay loam');
+  assert.equal(textureGroup('Loamy coarse sand'), 'Loamy coarse sand');
+  assert.equal(textureGroup('Loam'), 'Loam');
+  assert.equal(textureGroup('Clay'), 'Clay');
+  assert.equal(textureGroup(null), 'Not rated');
+  const joined = await fetchComponents(['691857'], async () => ({ ok: true, json: async () => ({ Table: [['691857', 'Darkwoods', '40', 'Taxonomy', '3', '31', 'Loam', '39.5', '37.5', '23']] }) }));
+  assert.deepEqual(joined.get('691857'), { dominant_series: 'Darkwoods', dominant_percent: '40', soil_taxonomy: 'Taxonomy', surface_texture: 'Loam', texture_top_cm: '3', texture_bottom_cm: '31', texture_group: 'Loam', sand_pct: 39.5, silt_pct: 37.5, clay_pct: 23 });
+  const unrated = await fetchComponents(['1'], async () => ({ ok: true, json: async () => ({ Table: [['1', 'Rock', '100', '', null, null, null, null, null, null]] }) }));
+  assert.equal(unrated.get('1').sand_pct, null);
+  assert.deepEqual(parseCsv('VALUE,EVT_NAME,EVT_LF\n12,"Forest, mixed",Tree\n'), [['VALUE', 'EVT_NAME', 'EVT_LF'], ['12', 'Forest, mixed', 'Tree']]);
+  const legend = JSON.parse(fs.readFileSync('data/generated/landfire-evt-2025.json'));
+  assert.equal(legend['7158'].name, 'North Pacific Montane Riparian Woodland');
+  const { SOIL_TEXTURE_COLORS, soilTextureExpression } = await import('../assets/map/soil-styles.js');
+  const textureValues = new Set(JSON.parse(fs.readFileSync('data/raw/soils.geojson')).features.map(feature => feature.properties.texture_group));
+  assert.deepEqual([...textureValues].filter(texture => !(texture in SOIL_TEXTURE_COLORS)), []);
+  const expression = soilTextureExpression();
+  assert.equal(expression[0], 'match');
+  assert.equal(expression.at(-1), '#909090');
+  const vegetation = await import('../assets/map/vegetation.js');
+  assert.match(vegetation.vegetationTileUrl(), /bbox=\{bbox-epsg-3857\}/);
+  const result = await vegetation.identifyVegetation({ lng: -122.3, lat: 41.3 }, async () => ({ ok: true, json: async () => ({ value: 7158 }) }), async () => legend);
+  assert.equal(result.name, legend['7158'].name);
+  console.log('Soil texture and vegetation service tests passed');
+})().catch(error => { console.error(error); process.exitCode = 1; });

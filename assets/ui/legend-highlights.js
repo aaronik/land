@@ -132,7 +132,7 @@ export function legendMatches(features, listingCategories = []) {
     else if (id === 'wildfire-perimeters') add(id, 'Historic');
     else if (id === 'critical-habitat') add(id, 'Final');
     else if (id === 'farmland') add(id, { P: 'Prime', S: 'Statewide', U: 'Unique', L: 'Local', G: 'Grazing', I: 'Irrigated', N: 'Nonirrigated' }[p.polygon_ty]);
-    else if (id === 'soils') add(id, p.drclassdcd);
+    else if (id === 'soils') add(id, p.texture_group);
     else if (id === 'flood') add(id, p.SFHA_TF === 'T' ? 'Special Flood' : p.FLD_ZONE === 'D' ? 'Undetermined' : p.FLD_ZONE === 'X' && /0\.2 PCT|0\.2 PERCENT/.test(p.ZONE_SUBTY || '') ? '0.2%' : 'Other mapped');
     else if (id === 'waterways') add(id, p.fcode === 46000 || p.fcode === 46006 ? 'Perennial' : 'Intermittent');
     else add(id);
@@ -156,10 +156,16 @@ function zoningKeyMatches(text, value) {
 export function updateLegendHighlights(root, matches) {
   for (const key of root.querySelectorAll('.layer-key')) {
     const values = matches.get(key.dataset.layerKey);
-    for (const span of key.querySelectorAll('span')) {
+    const spans = key.dataset.layerKey === 'soils' ? key.querySelectorAll(':scope > span') : key.querySelectorAll('span');
+    for (const span of spans) {
       const text = span.textContent.trim();
       const match = values && [...values].some(value => {
         if (key.dataset.layerKey === 'zoning') return zoningKeyMatches(text, value);
+        if (key.dataset.layerKey === 'soils') {
+          if (span.dataset?.soilTexture) return span.dataset.soilTexture === value;
+          if (span.classList?.contains('soil-particle-row')) return false;
+          return text === value || (value === 'Not rated' && text === 'Not rated / other');
+        }
         return text === value || text.startsWith(`${value} `) || text.startsWith(`${value} (`);
       });
       span.classList.toggle('legend-match', !!match && key.classList.contains('visible'));
