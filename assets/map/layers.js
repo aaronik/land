@@ -142,6 +142,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('railroads');
   addPmtilesSource('transmission_lines');
   addPmtilesSource('ifr_routes');
+  map.addSource('fatal-traffic-crashes', { type: 'geojson', data: 'data/fatal-traffic-crashes.geojson', attribution: '<a href="https://www.nhtsa.gov/file-downloads?p=nhtsa/downloads/FARS/" target="_blank" rel="noopener noreferrer">NHTSA FARS (2015–2024)</a>' });
   addPmtilesSource('bridges');
   addPmtilesSource('power_plants');
   addPmtilesSource('dams');
@@ -501,6 +502,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   map.addLayer({ id: 'sale-lines', type: 'line', source: 'sales', paint: { 'line-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'previous-listing', COLORS['previous-listing'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'line-width': 3 } });
   map.addLayer({ id: 'sale-markers', type: 'circle', source: 'sale-points', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'displayCategory'], 'private-land', COLORS['private-land'], 'private-home', COLORS['private-home'], 'previous-listing', COLORS['previous-listing'], 'public-land', COLORS['public-land'], COLORS['public-home']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.95, 'circle-pitch-alignment': 'map' } });
   map.addLayer({ id: 'sale-marker-labels', type: 'symbol', source: 'sale-points', filter: ['!=', ['get', 'markerLabel'], ''], layout: { 'text-field': ['get', 'markerLabel'], 'text-font': ['Noto Sans Bold'], 'text-size': 12, 'text-offset': [0, -1.35], 'text-anchor': 'bottom', 'text-padding': 3, 'text-pitch-alignment': 'viewport' }, paint: { 'text-color': '#fff', 'text-halo-color': 'rgba(20, 25, 22, 0.9)', 'text-halo-width': 2, 'text-halo-blur': 0.4 } });
+  map.addLayer({ id: 'fatal-traffic-crashes', type: 'circle', source: 'fatal-traffic-crashes', minzoom: 7, layout: { visibility: 'none' }, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 7], 'circle-color': '#e13f38', 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.96 } });
   map.addLayer({ id: 'coordinate-pin-halo', type: 'circle', source: 'coordinate-pin', paint: { 'circle-radius': 11, 'circle-color': 'rgba(255,255,255,.9)', 'circle-stroke-color': '#b52c2c', 'circle-stroke-width': 2 } });
   map.addLayer({ id: 'coordinate-pin', type: 'circle', source: 'coordinate-pin', paint: { 'circle-radius': 5, 'circle-color': '#d93636', 'circle-stroke-color': '#fff', 'circle-stroke-width': 1.5 } });
   map.addLayer({ id: 'road-tracks-outline', type: 'line', source: 'road-tracks', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': 'rgba(20, 28, 24, .95)', 'line-width': 7 } });

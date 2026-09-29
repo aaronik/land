@@ -72,6 +72,7 @@ The following downloaded GIS layers can change upstream. Their identifiers are t
 | Roads, forest roads, railroads, and bridge locations | `roads`, `forest_roads`, `railroads`, `bridges` | None |
 | Electric transmission lines and power plants | `transmission_lines`, `power_plants` | None |
 | FAA charted IFR routes (not actual traffic) | `ifr_routes` | None |
+| Fatal motor-vehicle crash locations (2015–2024) | `data/fatal-traffic-crashes.geojson` | None; `npm run refresh:fatal-traffic-crashes` after checking annual release status |
 | Dams (national inventory) | `dams` | None |
 | **Recorded landslides and debris flows (points and footprints)** | **`landslides`, `landslide_footprints`** | **None** |
 | Rivers, lakes, springs, summits, towns, and incorporated places | `waterways`, `waterbodies`, `springs`, `summits`, `towns`, `incorporated_places` | None |
@@ -83,6 +84,8 @@ The following downloaded GIS layers can change upstream. Their identifiers are t
 | Final and proposed critical habitat | `critical_habitat_final`, `critical_habitat_proposed` | None (the proposed map layer is currently empty) |
 | Cellular coverage and Pacific Crest Trail | `cell_att`, `cell_tmobile`, `cell_verizon`, `pct`, `pct_markers` | None |
 | Groundwater basins and reported wells | `groundwater_basins`, `groundwater_wells` | None |
+
+The **fatal traffic crash** toggle uses [NHTSA FARS annual CSV archives](https://www.nhtsa.gov/file-downloads?p=nhtsa/downloads/FARS/) for Siskiyou County (2015–2024, 125 mapped crashes; 2024 initial and earlier years final). FARS archives extend back to 1975, but older geocoded locations and decades-old road conditions are less useful for current land decisions. A point represents one crash, even when multiple people died; missing/invalid coordinates are excluded. The crash point is not necessarily the place of death and can be approximate or revised. Fatal incidents alone cannot rank intersections without traffic volume and other crash/severity data; a blank stretch is not evidence of safety. Refresh with `npm run refresh:fatal-traffic-crashes` (Node.js; cached ZIPs in `.cache/fars/`). After checking the new year's release notes and CSV fields, update `LAST_YEAR` and release labels in `scripts/refresh-fatal-traffic-crashes.js`, rerun, and commit the GeoJSON. Do not confuse preliminary and final releases.
 
 The **USDA soil overlay** uses existing SSURGO map-unit polygons joined by `mukey` to the largest-percentage component and its shallowest representative classified horizon. A single toggle shows subtly colored exact texture classes; the legend lists Sand, Silt, and Clay beneath each texture. Tapping a location highlights the matched texture and its three rows and fills those rows with the selected map unit’s reported percentages, or “Not reported” when unavailable. Selecting a parcel keeps its usual details while updating the soil legend; tapping soil outside a parcel shows soil details. Refresh with `npm run layers:download -- soils && npm run layers:build -- soils`; to re-enrich existing polygons, run `node scripts/enrich-soils.js && npm run layers:build -- soils`. SSURGO map units can contain multiple soils: more attribute detail does **not** mean finer surveyed boundaries or parcel soil tests. Source: [USDA NRCS Soil Data Access](https://sdmdataaccess.nrcs.usda.gov/).
 

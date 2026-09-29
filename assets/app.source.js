@@ -602,7 +602,7 @@ function initializeMapLayers() {
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
-    ], { layers: ['springs', 'dams', 'power-plants', 'bridges', 'landslides', 'landslide-footprints-locators', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
+    ], { layers: ['fatal-traffic-crashes', 'springs', 'dams', 'power-plants', 'bridges', 'landslides', 'landslide-footprints-locators', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
     const lineHits = map.queryRenderedFeatures([
       [event.point.x - 5, event.point.y - 5],
       [event.point.x + 5, event.point.y + 5]
@@ -663,6 +663,13 @@ function initializeMapLayers() {
       const percent = item => typeof item === 'number' && Number.isFinite(item) ? `${value(item)}%` : 'Not reported';
       const depth = props.surface_texture && props.texture_top_cm !== '' && props.texture_bottom_cm !== '' ? ` (${value(props.texture_top_cm)}–${value(props.texture_bottom_cm)} cm)` : '';
       document.querySelector('#details').innerHTML = `<h3>Mapped soil component</h3><p class="meta">USDA NRCS SSURGO · map unit ${value(props.mukey)}</p><p><strong>${value(props.dominant_series)}</strong> · estimated dominant component ${value(props.dominant_percent)}%<br>Shallowest classified horizon: ${value(props.surface_texture)}${depth}<br>Sand: ${percent(props.sand_pct)} · Silt: ${percent(props.silt_pct)} · Clay: ${percent(props.clay_pct)}<br>Soil classification: ${value(props.soil_taxonomy)}<br>Map unit: ${value(props.muname)}<br>Drainage: ${value(props.drclassdcd)}</p><p class="source-note">A map unit can contain multiple soils. The dominant component and its representative horizon are not a sample from this point or a parcel-level soil test; verify in the field.</p>`;
+      return;
+    }
+    if (feature.layer.id === 'fatal-traffic-crashes') {
+      const props = feature.properties;
+      const road = [props.road, props.crossRoad].filter(part => part && String(part).trim()).map(escapeHtml).join(' / ') || 'Road not reported';
+      const date = `${Number(props.month)}/${Number(props.day)}/${Number(props.year)}`;
+      document.querySelector('#details').innerHTML = `<h3>Fatal traffic crash</h3><p class="meta">NHTSA FARS · ${escapeHtml(props.release)} release · Case ${escapeHtml(props.case)}</p><p><strong>${road}</strong><br>Crash date: ${date}</p><p class="source-note">Mapped crash location, not necessarily where anyone died. Coordinates may be approximate or revised. Past fatal crashes alone do not establish current road danger or the safety of a nearby parcel; other crashes are not shown.</p>`;
       return;
     }
     if (feature.layer.id === 'bridges') {
@@ -777,7 +784,7 @@ function initializeMapLayers() {
     }
     selectParcel(props, null, event.lngLat);
   });
-  for (const id of ['ifr-routes-low', 'ifr-routes-high', 'bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'soils', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['fatal-traffic-crashes', 'ifr-routes-low', 'ifr-routes-high', 'bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'soils', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }
