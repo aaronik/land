@@ -1148,6 +1148,23 @@
     "confidence": "manually verified",
     "notes": "from photos, saw the house on the side and the red house across the st"
   },
+  "20261170": {
+    "apns": [
+      "060-282-050",
+      "060-282-060"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "address"
+  },
+  "20261171": {
+    "apns": [
+      "021-530-060"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "shape / size"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
@@ -1187,5 +1204,13 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "map pics"
+  },
+  "SN26160022": {
+    "apns": [
+      "013-030-031"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "dot location, acreage"
   }
 }
