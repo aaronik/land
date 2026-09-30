@@ -2,6 +2,7 @@
 
 import { PolygonDrawControl } from './polygon-draw.js';
 import { RoadTrackerControl } from './road-tracker.js';
+import { RoadDistanceControl } from './road-distance.js';
 
 class CardinalCompassControl {
   onAdd(controlMap) {
@@ -444,28 +445,35 @@ export function installMapControls(map, maplibregl, parcelAdjustmentMapControl) 
   let coordinatePinControl;
   let polygonDrawControl;
   let roadTrackerControl;
+  let roadDistanceControl;
   const deactivateOtherTools = () => {
     if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
     coordinatePinControl?.deactivate();
     polygonDrawControl?.deactivate();
+    roadDistanceControl?.deactivate();
   };
   const distanceMeasureControl = new DistanceMeasureControl(() => {
     coordinatePinControl?.deactivate();
     polygonDrawControl?.deactivate();
+    roadDistanceControl?.deactivate();
   });
   coordinatePinControl = new CoordinatePinControl(maplibregl, () => {
     if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
     polygonDrawControl?.deactivate();
+    roadDistanceControl?.deactivate();
   });
   polygonDrawControl = new PolygonDrawControl(maplibregl, () => {
     if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
     coordinatePinControl?.deactivate();
+    roadDistanceControl?.deactivate();
   });
   roadTrackerControl = new RoadTrackerControl(deactivateOtherTools);
+  roadDistanceControl = new RoadDistanceControl(deactivateOtherTools);
   map.addControl(coordinatePinControl, 'top-left');
   map.addControl(distanceMeasureControl, 'top-left');
+  map.addControl(roadDistanceControl, 'top-left');
   map.addControl(parcelAdjustmentMapControl, 'top-left');
   map.addControl(polygonDrawControl, 'top-left');
   map.addControl(roadTrackerControl, 'top-left');
-  return { coordinatePinControl, distanceMeasureControl, polygonDrawControl, roadTrackerControl };
+  return { coordinatePinControl, distanceMeasureControl, roadDistanceControl, polygonDrawControl, roadTrackerControl };
 }

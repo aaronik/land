@@ -275,7 +275,7 @@ geolocateButton?.addEventListener('click', () => {
 });
 const parcelAdjustmentControl = new ParcelAdjustmentControl(map);
 const parcelAdjustmentMapControl = new ParcelAdjustmentMapControl(parcelAdjustmentControl, () => selectedApn);
-const { coordinatePinControl, distanceMeasureControl, polygonDrawControl, roadTrackerControl } = installMapControls(map, maplibregl, parcelAdjustmentMapControl);
+const { coordinatePinControl, distanceMeasureControl, roadDistanceControl, polygonDrawControl, roadTrackerControl } = installMapControls(map, maplibregl, parcelAdjustmentMapControl);
 
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
@@ -594,10 +594,10 @@ function initializeMapLayers() {
   map.on('click', async event => {
     const clickSerial = ++landCoverClickSerial;
     ++vegetationLegendRequest;
-    if (polygonDrawControl.consumeMapClickSuppression()) return;
+    if (polygonDrawControl.consumeMapClickSuppression() || roadDistanceControl.consumeMapClickSuppression()) return;
     clickedSoil = null;
     if (map.queryRenderedFeatures(event.point, { layers: ['polygon-drawings-labels'] }).length) return;
-    if (distanceMeasureControl.isActive() || coordinatePinControl.isActive() || polygonDrawControl.isActive() || roadTrackerControl.isActive()) return;
+    if (distanceMeasureControl.isActive() || roadDistanceControl.isActive() || coordinatePinControl.isActive() || polygonDrawControl.isActive() || roadTrackerControl.isActive()) return;
     const radius = 9;
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
