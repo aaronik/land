@@ -2,6 +2,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { JSDOM } = require('jsdom');
 
 async function main() {
   const source = fs.readFileSync(path.join(__dirname, '../assets/map/road-distance-geometry.js'), 'utf8');
@@ -30,6 +31,48 @@ async function main() {
   const seam = buildRoadGraph([line([[0, 0], [0.001, 0]]), line([[0.001000005, 0], [0.002, 0]])]);
   assert.ok(shortestRoadPath(seam, snapToRoad(seam, [0.0005, 0]), snapToRoad(seam, [0.0015, 0])));
   assert.ok(buildRoadGraph(roads, 1).error);
-  console.log('Passed: road-distance graph, snapping, bends, disconnected roads and tile seams.');
+
+  const dom = new JSDOM('<!doctype html><html><body></body></html>');
+  global.document = dom.window.document;
+  const controlSource = fs.readFileSync(path.join(__dirname, '../assets/map/road-distance.js'), 'utf8')
+    .replace("import { buildRoadGraph, snapToRoad, shortestRoadPath } from './road-distance-geometry.js';", '');
+  const { RoadDistanceControl } = await import(`data:text/javascript;base64,${Buffer.from(source + '\n' + controlSource).toString('base64')}`);
+  const listeners = new Map(), data = { features: [] };
+  let panEnabled = true;
+  const map = {
+    on(type, fn) { listeners.set(type, fn); }, off(type) { listeners.delete(type); },
+    getCanvas() { return { style: map.style }; }, style: {},
+    getLayer() { return true; },
+    getSource() { return { setData(value) { data.features = value.features; } }; },
+    queryRenderedFeatures() { return [{ properties: { index: map.endpointIndex } }]; }, endpointIndex: 0,
+    dragPan: { isEnabled: () => panEnabled, disable: () => { panEnabled = false; }, enable: () => { panEnabled = true; } }
+  };
+  const control = new RoadDistanceControl();
+  control.onAdd(map);
+  control.graph = graph; control.start = start; control.end = end;
+  control.render(route); control.showRoute(route);
+  control.startEndpointDrag({ point: { x: 1, y: 1 }, preventDefault() {} });
+  assert.equal(panEnabled, false);
+  const newStart = [0.0002, 0];
+  control.moveEndpointDrag({ lngLat: { lng: newStart[0], lat: newStart[1] }, preventDefault() {} });
+  assert.ok(Math.abs(control.start.point[0] - newStart[0]) < 1e-10);
+  assert.ok(data.features[0].geometry.coordinates.length > 2);
+  const previous = control.start;
+  control.moveEndpointDrag({ lngLat: { lng: 0.05, lat: 0.05 } });
+  assert.equal(control.start, previous, 'off-road drag retains last valid route');
+  control.moveEndpointDrag({ lngLat: { lng: 0.0105, lat: 0.01 } });
+  assert.equal(control.start, previous, 'disconnected drag retains last valid route');
+  control.finishEndpointDrag();
+  assert.equal(panEnabled, true);
+  assert.equal(control.consumeMapClickSuppression(), true);
+  map.endpointIndex = 1;
+  control.startEndpointDrag({ point: { x: 1, y: 1 }, preventDefault() {} });
+  control.moveEndpointDrag({ lngLat: { lng: 0.0028, lat: 0.001 }, preventDefault() {} });
+  assert.ok(Math.abs(control.end.point[0] - 0.0028) < 1e-10);
+  control.clear();
+  assert.equal(panEnabled, true);
+  assert.equal(data.features.length, 0);
+  control.onRemove();
+  console.log('Passed: road-distance graph, snapping, bends, disconnected roads, tile seams and endpoint dragging.');
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });

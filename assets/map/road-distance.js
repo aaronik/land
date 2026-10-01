@@ -14,10 +14,35 @@ export class RoadDistanceControl {
     this.toggleButton.addEventListener('click', () => this.active ? this.clear() : this.activate());
     this.clearButton.addEventListener('click', () => this.clear());
     this.onClick = event => this.click(event);
+    this.onPointerDown = event => this.startEndpointDrag(event);
+    this.onPointerMove = event => this.moveEndpointDrag(event);
+    this.onPointerUp = () => this.finishEndpointDrag();
+    this.onHover = event => this.updateCursor(event);
+    this.onDocumentPointerUp = () => this.finishEndpointDrag();
     this.map.on('click', this.onClick);
+    this.map.on('mousedown', this.onPointerDown);
+    this.map.on('touchstart', this.onPointerDown);
+    this.map.on('mousemove', this.onPointerMove);
+    this.map.on('touchmove', this.onPointerMove);
+    this.map.on('mousemove', this.onHover);
+    this.map.on('mouseup', this.onPointerUp);
+    this.map.on('touchend', this.onPointerUp);
+    this.map.on('touchcancel', this.onPointerUp);
+    document.addEventListener('mouseup', this.onDocumentPointerUp, true);
+    document.addEventListener('touchend', this.onDocumentPointerUp, true);
+    document.addEventListener('touchcancel', this.onDocumentPointerUp, true);
     return this.container;
   }
-  onRemove() { this.map.off('click', this.onClick); this.clear(); this.container.remove(); this.map = null; }
+  onRemove() {
+    this.finishEndpointDrag();
+    for (const type of ['mousedown', 'touchstart']) this.map.off(type, this.onPointerDown);
+    for (const type of ['mousemove', 'touchmove']) this.map.off(type, this.onPointerMove);
+    this.map.off('mousemove', this.onHover);
+    for (const type of ['mouseup', 'touchend', 'touchcancel']) this.map.off(type, this.onPointerUp);
+    for (const type of ['mouseup', 'touchend', 'touchcancel']) document.removeEventListener(type, this.onDocumentPointerUp, true);
+    this.map.off('click', this.onClick);
+    this.clear(); this.container.remove(); this.map = null;
+  }
   isActive() { return this.active; }
   consumeMapClickSuppression() {
     if (!this.suppressMapClick) return false;
@@ -25,6 +50,7 @@ export class RoadDistanceControl {
     return true;
   }
   activate() {
+    this.finishEndpointDrag();
     this.onActivate(); this.active = true; this.start = null; this.end = null;
     this.render(); this.message('Click a road for the start, then click another road for the end.');
     this.map.getCanvas().style.cursor = 'crosshair';
@@ -37,6 +63,7 @@ export class RoadDistanceControl {
     if (!this.end) this.message('');
   }
   clear() {
+    this.finishEndpointDrag();
     this.deactivate(); this.start = null; this.end = null; this.graph = null;
     this.render(); this.message('');
   }
@@ -52,7 +79,59 @@ export class RoadDistanceControl {
     }
     this.map.getSource('road-distance')?.setData({ type: 'FeatureCollection', features });
   }
+  endpointAt(point) {
+    if (!point || !this.map.getLayer('road-distance-points')) return null;
+    return this.map.queryRenderedFeatures(point, { layers: ['road-distance-points'] })[0] || null;
+  }
+  eventLngLat(event) { return event.lngLat || event.lngLats?.[0] || (event.point && this.map.unproject(event.point)); }
+  startEndpointDrag(event) {
+    if (this.active || !this.start || !this.end || !this.graph || this.endpointDrag || !event.point) return;
+    const endpoint = this.endpointAt(event.point);
+    if (!endpoint) return;
+    const index = Number(endpoint.properties?.index);
+    if (index !== 0 && index !== 1) return;
+    this.endpointDrag = { index, dragPanWasEnabled: this.map.dragPan?.isEnabled?.() };
+    this.map.dragPan?.disable();
+    event.preventDefault?.();
+    this.map.getCanvas().style.cursor = 'grabbing';
+  }
+  moveEndpointDrag(event) {
+    if (!this.endpointDrag) return;
+    const lngLat = this.eventLngLat(event);
+    if (!lngLat) return;
+    const snap = snapToRoad(this.graph, [lngLat.lng, lngLat.lat]);
+    if (!snap) { this.message('No loaded road within 50 m. Drag closer to a mapped road.'); return; }
+    const route = this.endpointDrag.index === 0
+      ? shortestRoadPath(this.graph, snap, this.end)
+      : shortestRoadPath(this.graph, this.start, snap);
+    if (!route) { this.message('No connected road path here. Drag toward a connected mapped road.'); return; }
+    if (this.endpointDrag.index === 0) this.start = snap;
+    else this.end = snap;
+    this.showRoute(route);
+    event.preventDefault?.();
+  }
+  finishEndpointDrag() {
+    if (!this.endpointDrag) return;
+    const drag = this.endpointDrag;
+    this.endpointDrag = null;
+    if (drag.dragPanWasEnabled) this.map?.dragPan?.enable();
+    this.suppressMapClick = true;
+    setTimeout(() => { this.suppressMapClick = false; }, 0);
+    if (this.map) this.map.getCanvas().style.cursor = 'grab';
+  }
+  updateCursor(event) {
+    if (!this.active && !this.endpointDrag && this.start && this.end) {
+      this.map.getCanvas().style.cursor = this.endpointAt(event.point) ? 'grab' : '';
+    }
+  }
+  showRoute(route) {
+    this.render(route);
+    const feet = Math.round(route.meters * 3.280839895).toLocaleString();
+    const miles = route.meters / 1609.344;
+    this.message(`Along mapped roads: ${feet} ft (${miles.toFixed(miles < 10 ? 3 : 2)} mi). Approximate; not a driving route. Drag the ends to adjust or click × to clear.`);
+  }
   click(event) {
+    if (this.suppressMapClick) { this.suppressMapClick = false; return; }
     if (!this.active) return;
     if (!this.start) {
       const features = [];
@@ -69,10 +148,7 @@ export class RoadDistanceControl {
     const route = shortestRoadPath(this.graph, this.start, snap);
     if (!route) { this.message('No connected road path in loaded map data. Zoom out or choose another endpoint; roads that only cross on the map may not connect.'); return; }
     this.end = snap;
-    this.render(route);
-    const feet = Math.round(route.meters * 3.280839895).toLocaleString();
-    const miles = route.meters / 1609.344;
-    this.message(`Along mapped roads: ${feet} ft (${miles.toFixed(miles < 10 ? 3 : 2)} mi). Approximate; not a driving route. Click × to clear.`);
+    this.showRoute(route);
     this.suppressMapClick = true;
     setTimeout(() => { this.suppressMapClick = false; }, 0);
     this.deactivate();

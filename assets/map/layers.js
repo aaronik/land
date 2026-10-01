@@ -510,7 +510,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   map.addLayer({ id: 'road-tracks', type: 'line', source: 'road-tracks', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': ['case', ['get', 'recording'], '#ff7a30', '#49dca6'], 'line-width': 4 } });
   map.addLayer({ id: 'road-distance-outline', type: 'line', source: 'road-distance', paint: { 'line-color': '#fff', 'line-width': 8 } });
   map.addLayer({ id: 'road-distance-line', type: 'line', source: 'road-distance', paint: { 'line-color': '#8b399b', 'line-width': 5 } });
-  map.addLayer({ id: 'road-distance-points', type: 'circle', source: 'road-distance', paint: { 'circle-radius': 7, 'circle-color': '#8b399b', 'circle-stroke-color': '#fff', 'circle-stroke-width': 2 } });
+  map.addLayer({ id: 'road-distance-points', type: 'circle', source: 'road-distance', filter: ['==', ['geometry-type'], 'Point'], paint: { 'circle-radius': 7, 'circle-color': '#8b399b', 'circle-stroke-color': '#fff', 'circle-stroke-width': 2 } });
   map.addLayer({ id: 'distance-measurement-line-outline', type: 'line', source: 'distance-measurement', filter: ['==', ['get', 'kind'], 'line'], paint: { 'line-color': 'rgba(255,255,255,.95)', 'line-width': 6, 'line-opacity': .95 } });
   map.addLayer({ id: 'distance-measurement-line', type: 'line', source: 'distance-measurement', filter: ['==', ['get', 'kind'], 'line'], paint: { 'line-color': '#126246', 'line-width': 3, 'line-dasharray': [1.5, 1.2] } });
   map.addLayer({ id: 'distance-measurement-points', type: 'circle', source: 'distance-measurement', filter: ['==', ['get', 'kind'], 'point'], paint: { 'circle-radius': 7, 'circle-color': '#126246', 'circle-stroke-color': '#fff', 'circle-stroke-width': 2 } });
