@@ -22,9 +22,9 @@ const PARCEL_OVERRIDES = fs.existsSync(overridesFile) ? JSON.parse(fs.readFileSy
 const MLS_APN_LINKS = fs.existsSync(mlsLinksFile) ? JSON.parse(fs.readFileSync(mlsLinksFile, 'utf8')) : {};
 const UNRESOLVED_LISTING_FALLBACK = [41.328436, -122.326324];
 const MLS_SOURCES = [
-  // When the same property appears in both feeds, retain this listing's URL.
-  { name: 'Mt. Shasta Realty', api: 'https://www.mountshastarealty.com/-/AjaxSearch/idx_search', site: 'https://www.mountshastarealty.com', priority: 0 },
-  { name: 'Coldwell Banker Mountain Gate', api: 'https://www.realtymtshasta.com/-/AjaxSearch/idx_search', site: 'https://www.realtymtshasta.com', priority: 1 }
+  // Mt. Shasta Realty's current site no longer uses this IDX endpoint (POST returns 405).
+  // Mountain Gate currently serves the county-wide CA-SISKIYOU MLS feed.
+  { name: 'Coldwell Banker Mountain Gate', api: 'https://www.realtymtshasta.com/-/AjaxSearch/idx_search', site: 'https://www.realtymtshasta.com', priority: 0 }
 ];
 const TAX_PAGE = 'https://www.siskiyoucounty.gov/treasurer-taxcollector/page/tax-sale-auction';
 const GIS = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query';
@@ -160,7 +160,6 @@ async function fetchMls(listingType = 'homes-for-sale') {
   const unique = new Map();
   for (const item of feeds.flat().sort((a, b) => a.source.priority - b.source.priority)) {
     const key = listingType === 'homes-sold' ? String(item.mlsNo || item.id) : listingKey(item);
-    // Mt. Shasta Realty has priority for a duplicate MLS/address match.
     if (!unique.has(key)) unique.set(key, item);
   }
   return [...unique.values()];
