@@ -226,6 +226,14 @@
     "confidence": "manually verified",
     "notes": "address"
   },
+  "20260214": {
+    "apns": [
+      "037-400-170"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "from clearing in the pics"
+  },
   "20260222": {
     "apns": [
       "049-021-110"
