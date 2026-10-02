@@ -6,7 +6,7 @@ export class RoadDistanceControl {
   onAdd(map) {
     this.map = map;
     this.container = document.createElement('div');
-    this.container.className = 'maplibregl-ctrl road-distance-control';
+    this.container.className = 'maplibregl-ctrl map-tool-control road-distance-control';
     this.container.innerHTML = '<button type="button" class="road-distance-toggle" aria-pressed="false" title="Measure along mapped roads"><span aria-hidden="true">⌁</span><b>Road distance</b></button><button type="button" class="road-distance-clear" aria-label="Clear road distance" title="Clear road distance" hidden>×</button><output aria-live="polite" hidden></output>';
     this.toggleButton = this.container.querySelector('.road-distance-toggle');
     this.clearButton = this.container.querySelector('.road-distance-clear');

@@ -26,7 +26,7 @@ export class RoadTrackerControl {
   onAdd(map) {
     this.map = map;
     this.container = document.createElement('div');
-    this.container.className = 'maplibregl-ctrl road-tracker-control';
+    this.container.className = 'maplibregl-ctrl map-tool-control road-tracker-control';
     this.container.innerHTML = '<button type="button" class="road-tracker-toggle" aria-pressed="false" aria-label="Start road tracking" title="Start road tracking"><span aria-hidden="true">⌁</span><b>Track road</b></button><button type="button" class="road-tracker-manage" aria-label="Manage saved road tracks" title="Manage saved road tracks" hidden>☰</button><output aria-live="polite" hidden></output>';
     this.toggleButton = this.container.querySelector('.road-tracker-toggle');
     this.manageButton = this.container.querySelector('.road-tracker-manage');

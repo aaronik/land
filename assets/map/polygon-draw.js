@@ -68,7 +68,7 @@ export class PolygonDrawControl {
   onAdd(map) {
     this.map = map;
     this.container = document.createElement('div');
-    this.container.className = 'maplibregl-ctrl polygon-draw-control';
+    this.container.className = 'maplibregl-ctrl map-tool-control polygon-draw-control';
     this.container.innerHTML = '<button type="button" class="polygon-draw-toggle" aria-pressed="false" aria-label="Draw a polygon" title="Draw a polygon"><span aria-hidden="true">⬠</span><b>Draw</b></button><button type="button" class="polygon-draw-undo" aria-label="Undo last vertex" title="Undo last vertex" hidden>↶</button><button type="button" class="polygon-draw-finish" aria-label="Finish polygon" title="Finish polygon" hidden>Finish</button><button type="button" class="polygon-draw-open" aria-label="Manage saved polygons" title="Manage saved polygons" hidden>☰</button><output aria-live="polite" hidden></output>';
     this.toggleButton = this.container.querySelector('.polygon-draw-toggle'); this.undoButton = this.container.querySelector('.polygon-draw-undo'); this.finishButton = this.container.querySelector('.polygon-draw-finish'); this.openButton = this.container.querySelector('.polygon-draw-open'); this.output = this.container.querySelector('output');
     this.toggleButton.addEventListener('click', () => this.toggle()); this.undoButton.addEventListener('click', () => this.undo()); this.finishButton.addEventListener('click', () => this.finish()); this.openButton.addEventListener('click', () => this.openManager());

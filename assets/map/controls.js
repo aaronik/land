@@ -3,6 +3,7 @@
 import { PolygonDrawControl } from './polygon-draw.js';
 import { RoadTrackerControl } from './road-tracker.js';
 import { RoadDistanceControl } from './road-distance.js';
+import { ElevationPinControl } from './elevation-pin.js';
 
 class CardinalCompassControl {
   onAdd(controlMap) {
@@ -166,7 +167,7 @@ class CoordinatePinControl {
   onAdd(controlMap) {
     this.map = controlMap;
     this.container = document.createElement('div');
-    this.container.className = 'maplibregl-ctrl coordinate-pin-control';
+    this.container.className = 'maplibregl-ctrl map-tool-control coordinate-pin-control';
     this.container.innerHTML = '<button type="button" class="coordinate-pin-toggle" aria-pressed="false" aria-label="Drop a coordinate pin" title="Drop a coordinate pin"><span aria-hidden="true">●</span><b>Pin</b></button><button type="button" class="coordinate-pin-clear" aria-label="Clear coordinate pin" title="Clear coordinate pin" hidden>×</button><output aria-live="polite" hidden></output>';
     this.toggleButton = this.container.querySelector('.coordinate-pin-toggle');
     this.clearButton = this.container.querySelector('.coordinate-pin-clear');
@@ -261,7 +262,7 @@ class DistanceMeasureControl {
   onAdd(controlMap) {
     this.map = controlMap;
     this.container = document.createElement('div');
-    this.container.className = 'maplibregl-ctrl distance-measure-control';
+    this.container.className = 'maplibregl-ctrl map-tool-control distance-measure-control';
     this.container.innerHTML = '<button type="button" class="distance-measure-toggle" aria-pressed="false" aria-label="Measure a distance" title="Measure a distance"><span aria-hidden="true">↔</span><b>Measure</b></button><button type="button" class="distance-measure-clear" aria-label="Clear measurement" title="Clear measurement" hidden>×</button><output aria-live="polite" hidden></output>';
     this.toggleButton = this.container.querySelector('.distance-measure-toggle');
     this.clearButton = this.container.querySelector('.distance-measure-clear');
@@ -443,37 +444,49 @@ export function installMapControls(map, maplibregl, parcelAdjustmentMapControl) 
   map.addControl(new CardinalCompassControl(), 'top-right');
   map.addControl(new MilesScaleControl(), 'bottom-left');
   let coordinatePinControl;
+  let elevationPinControl;
   let polygonDrawControl;
   let roadTrackerControl;
   let roadDistanceControl;
   const deactivateOtherTools = () => {
     if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
     coordinatePinControl?.deactivate();
+    elevationPinControl?.deactivate();
     polygonDrawControl?.deactivate();
     roadDistanceControl?.deactivate();
   };
   const distanceMeasureControl = new DistanceMeasureControl(() => {
     coordinatePinControl?.deactivate();
+    elevationPinControl?.deactivate();
     polygonDrawControl?.deactivate();
     roadDistanceControl?.deactivate();
   });
   coordinatePinControl = new CoordinatePinControl(maplibregl, () => {
     if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
+    elevationPinControl?.deactivate();
+    polygonDrawControl?.deactivate();
+    roadDistanceControl?.deactivate();
+  });
+  elevationPinControl = new ElevationPinControl(maplibregl, () => {
+    if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
+    coordinatePinControl?.deactivate();
     polygonDrawControl?.deactivate();
     roadDistanceControl?.deactivate();
   });
   polygonDrawControl = new PolygonDrawControl(maplibregl, () => {
     if (distanceMeasureControl.isActive()) distanceMeasureControl.deactivate();
     coordinatePinControl?.deactivate();
+    elevationPinControl?.deactivate();
     roadDistanceControl?.deactivate();
   });
   roadTrackerControl = new RoadTrackerControl(deactivateOtherTools);
   roadDistanceControl = new RoadDistanceControl(deactivateOtherTools);
   map.addControl(coordinatePinControl, 'top-left');
+  map.addControl(elevationPinControl, 'top-left');
   map.addControl(distanceMeasureControl, 'top-left');
   map.addControl(roadDistanceControl, 'top-left');
   map.addControl(parcelAdjustmentMapControl, 'top-left');
   map.addControl(polygonDrawControl, 'top-left');
   map.addControl(roadTrackerControl, 'top-left');
-  return { coordinatePinControl, distanceMeasureControl, roadDistanceControl, polygonDrawControl, roadTrackerControl };
+  return { coordinatePinControl, elevationPinControl, distanceMeasureControl, roadDistanceControl, polygonDrawControl, roadTrackerControl };
 }
