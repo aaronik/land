@@ -13,8 +13,14 @@ export class ParcelAdjustmentMapControl {
   onAdd() {
     this.container = document.createElement('div');
     this.container.className = 'maplibregl-ctrl parcel-adjustment-map-control';
-    this.container.innerHTML = '<button type="button" class="parcel-adjustment-toggle" aria-label="Align parcel outline" title="Select a parcel to align its outline" aria-pressed="false"><span aria-hidden="true">⬡</span><b>Align parcel</b></button>';
-    this.button = this.container.querySelector('button');
+    this.container.innerHTML = '<button type="button" class="parcel-adjustment-toggle" aria-label="Align parcel outline" title="Select a parcel to align its outline" aria-pressed="false"><span aria-hidden="true">⬡</span><b>Align parcel</b></button><button type="button" class="parcel-adjustment-lock" aria-label="Lock aligned parcel" title="Lock aligned parcel" aria-pressed="false" hidden>🔓</button>';
+    this.button = this.container.querySelector('.parcel-adjustment-toggle');
+    this.lockButton = this.container.querySelector('.parcel-adjustment-lock');
+    this.lockButton.addEventListener('click', () => {
+      if (!this.adjustment.isActive(this.getSelectedApn())) return;
+      this.adjustment.setLocked(!this.adjustment.isLocked());
+      this.update();
+    });
     this.button.addEventListener('click', async () => {
       const apn = this.getSelectedApn();
       if (!apn || this.button.disabled) return;
@@ -39,6 +45,13 @@ export class ParcelAdjustmentMapControl {
     this.button.classList.toggle('active', active);
     this.button.setAttribute('aria-pressed', String(active));
     this.button.title = !apn ? 'Select a parcel to align its outline' : active ? 'Hide aligned outline' : 'Show aligned outline for selected parcel. Drag to move; drag the yellow handle to rotate. Saved in this browser only.';
+    const locked = active && this.adjustment.isLocked();
+    this.lockButton.hidden = !active;
+    this.lockButton.classList.toggle('active', locked);
+    this.lockButton.setAttribute('aria-pressed', String(locked));
+    this.lockButton.setAttribute('aria-label', locked ? 'Unlock aligned parcel' : 'Lock aligned parcel');
+    this.lockButton.title = locked ? 'Unlock aligned parcel to move or rotate it' : 'Lock aligned parcel to prevent moving or rotating it';
+    this.lockButton.textContent = locked ? '🔒' : '🔓';
   }
   onRemove() { this.container.remove(); }
 }
@@ -67,11 +80,22 @@ export class ParcelAdjustmentControl {
     url.search = new URLSearchParams({ f: 'geojson', where: `APN='${apn}'`, outFields: 'APN', returnGeometry: 'true', outSR: '4326' });
     const response = await fetch(url); const data = await response.json();
     if (!response.ok || data.error || !data.features?.[0]) throw new Error('County parcel geometry could not be loaded.');
-    this.apn = apn; this.original = data.features[0]; this.transform = { dx: 0, dy: 0, rotation: 0, ...(this.saved[apn] || {}) };
+    this.apn = apn; this.original = data.features[0];
+    const saved = this.saved[apn] || {};
+    this.transform = { dx: saved.dx || 0, dy: saved.dy || 0, rotation: saved.rotation || 0 };
+    this.locked = saved.locked === true;
     this.center = this.centerOf(this.original.geometry.coordinates[0]); this.render();
   }
-  deactivate() { this.mode = null; this.apn = null; this.original = null; this.map.getSource('parcel-adjustment')?.setData({ type: 'FeatureCollection', features: [] }); }
-  reset() { if (!this.apn) return; delete this.saved[this.apn]; this.persist(); this.transform = { dx: 0, dy: 0, rotation: 0 }; this.render(); }
+  isLocked() { return this.locked === true; }
+  setLocked(locked) {
+    if (!this.apn) return;
+    this.finish();
+    this.locked = locked;
+    this.saved[this.apn] = { ...this.transform, locked };
+    this.persist();
+  }
+  deactivate() { this.finish(); this.apn = null; this.original = null; this.map.getSource('parcel-adjustment')?.setData({ type: 'FeatureCollection', features: [] }); }
+  reset() { if (!this.apn) return; this.finish(); delete this.saved[this.apn]; this.persist(); this.transform = { dx: 0, dy: 0, rotation: 0 }; this.locked = false; this.render(); }
   centerOf(ring) { const points = ring.slice(0, -1); return points.reduce((sum, point) => [sum[0] + point[0] / points.length, sum[1] + point[1] / points.length], [0, 0]); }
   pointTransform(point) {
     const [lng, lat] = this.center, scale = Math.cos(radians(lat));
@@ -89,7 +113,7 @@ export class ParcelAdjustmentControl {
     ] });
   }
   start(event) {
-    if (!this.apn || !event.point) return;
+    if (!this.apn || this.locked || !event.point) return;
     const handle = this.map.queryRenderedFeatures(event.point, { layers: ['parcel-adjustment-handle'] })[0];
     const parcel = this.map.queryRenderedFeatures(event.point, { layers: ['parcel-adjustment-fill', 'parcel-adjustment-line'] })[0];
     if (!handle && !parcel) return;
@@ -104,5 +128,5 @@ export class ParcelAdjustmentControl {
     else { const center = this.pointTransform(this.center); const angle = Math.atan2(point[1] - center[1], (point[0] - center[0]) * Math.cos(radians(center[1]))); this.transform.rotation = this.startTransform.rotation + (angle - this.startAngle) * 180 / Math.PI; }
     this.render(); event.preventDefault?.();
   }
-  finish() { if (!this.mode) return; this.mode = null; this.map.dragPan.enable(); this.map.getCanvas().style.cursor = ''; this.saved[this.apn] = this.transform; this.persist(); }
+  finish() { if (!this.mode) return; this.mode = null; this.map.dragPan.enable(); this.map.getCanvas().style.cursor = ''; this.saved[this.apn] = { ...this.transform, locked: this.locked }; this.persist(); }
 }

@@ -207,6 +207,9 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .parcel-adjustment-toggle { display: flex; align-items: center; gap: 5px; height: 30px; padding: 0 9px; border: 0; border-radius: 2px; color: var(--ink); background: white; cursor: pointer; font-size: 12px; font-weight: 700; }
 .parcel-adjustment-toggle span { font-size: 17px; line-height: 1; }
 .parcel-adjustment-toggle.active { background: #ffdc57; }
+.parcel-adjustment-lock { min-width: 32px; border: 0; border-left: 1px solid var(--line); border-radius: 0 2px 2px 0; background: white; cursor: pointer; font-size: 15px; }
+.parcel-adjustment-lock.active { background: #ffdc57; }
+.parcel-adjustment-lock[hidden] { display: none; }
 .parcel-adjustment-toggle:disabled { color: #7b847e; cursor: default; }
 
 .research h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; }
