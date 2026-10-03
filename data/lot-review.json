@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-01T18:54:37.217Z",
-  "count": 216,
+  "generatedAt": "2026-10-03T15:44:36.105Z",
+  "count": 214,
   "listings": [
     {
       "mlsNumber": "20261190",
@@ -23,18 +23,6 @@
         -122.335901
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261185/Lot-2-Nemeth-Dr-Montague-CA-96064",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20261174",
-      "title": "Lot 19 Lot 19 Jennie Rd, Montague, CA 96064",
-      "acres": 2.3,
-      "latLng": [
-        41.726852558525,
-        -122.44620948487768
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261174/Lot-19-Lot-19-Jennie-Rd-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -1427,18 +1415,6 @@
         -122.61788010050157
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260219/Lot-2-Swallow-Circle-Yreka-CA-96034",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260214",
-      "title": "Lot 16 Matthew Ct, Mount Shasta, CA 96067",
-      "acres": 1.1,
-      "latLng": [
-        41.285437,
-        -122.290801
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260214/Lot-16-Matthew-Ct-Mount-Shasta-CA-96067",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
