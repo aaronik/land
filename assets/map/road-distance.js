@@ -1,5 +1,6 @@
 'use strict';
 import { buildRoadGraph, snapToRoad, shortestRoadPath } from './road-distance-geometry.js';
+import { loadRoadFeatures } from './road-distance-tiles.js';
 
 export class RoadDistanceControl {
   constructor(onActivate = () => {}) { this.onActivate = onActivate; this.active = false; this.start = null; this.end = null; }
@@ -51,7 +52,7 @@ export class RoadDistanceControl {
   }
   activate() {
     this.finishEndpointDrag();
-    this.onActivate(); this.active = true; this.start = null; this.end = null;
+    this.onActivate(); this.active = true; this.start = null; this.end = null; this.requestId = (this.requestId || 0) + 1;
     this.render(); this.message('Click a road for the start, then click another road for the end.');
     this.map.getCanvas().style.cursor = 'crosshair';
   }
@@ -64,7 +65,7 @@ export class RoadDistanceControl {
   }
   clear() {
     this.finishEndpointDrag();
-    this.deactivate(); this.start = null; this.end = null; this.graph = null;
+    this.deactivate(); this.start = null; this.end = null; this.graph = null; this.requestId = (this.requestId || 0) + 1;
     this.render(); this.message('');
   }
   message(text) { this.output.textContent = text; this.output.hidden = !text; }
@@ -130,27 +131,33 @@ export class RoadDistanceControl {
     const miles = route.meters / 1609.344;
     this.message(`Along mapped roads: ${feet} ft (${miles.toFixed(miles < 10 ? 3 : 2)} mi). Approximate; not a driving route. Drag the ends to adjust or click × to clear.`);
   }
-  click(event) {
+  async click(event) {
     if (this.suppressMapClick) { this.suppressMapClick = false; return; }
     if (!this.active) return;
-    if (!this.start) {
-      const features = [];
-      for (const source of ['roads', 'forest_roads']) {
-        try { features.push(...this.map.querySourceFeatures(source, { sourceLayer: source })); }
-        catch { /* Vector source may not yet be loaded. */ }
-      }
+    const point = [event.lngLat.lng, event.lngLat.lat];
+    const request = ++this.requestId;
+    this.message('Loading mapped roads…');
+    try {
+      const features = await loadRoadFeatures(this.start?.point || point, point);
+      if (request !== this.requestId || !this.active) return;
       this.graph = buildRoadGraph(features);
       if (this.graph.error) { this.message(this.graph.error); return; }
+      // The previous snap belongs to the old graph; remap it to this one.
+      const start = this.start && snapToRoad(this.graph, this.start.point);
+      if (this.start && !start) { this.message('Start road is not available in this area. Clear and try again.'); return; }
+      const snap = snapToRoad(this.graph, point);
+      if (!snap) { this.message('No mapped road within 50 m. Click closer to a mapped road.'); return; }
+      if (!this.start) { this.start = snap; this.render(); this.message('Start set. Click a second point on a connected road.'); return; }
+      const route = shortestRoadPath(this.graph, start, snap);
+      if (!route) { this.message('No connected road path in mapped data. Try another endpoint; roads that only cross on the map may not connect.'); return; }
+      this.start = start;
+      this.end = snap;
+      this.showRoute(route);
+      this.suppressMapClick = true;
+      setTimeout(() => { this.suppressMapClick = false; }, 0);
+      this.deactivate();
+    } catch (error) {
+      if (request === this.requestId && this.active) this.message(`Could not load mapped roads: ${error.message}`);
     }
-    const snap = snapToRoad(this.graph, [event.lngLat.lng, event.lngLat.lat]);
-    if (!snap) { this.message('No loaded road within 50 m. Zoom in and click closer to a mapped road.'); return; }
-    if (!this.start) { this.start = snap; this.render(); this.message('Start set. Click a second point on a connected road.'); return; }
-    const route = shortestRoadPath(this.graph, this.start, snap);
-    if (!route) { this.message('No connected road path in loaded map data. Zoom out or choose another endpoint; roads that only cross on the map may not connect.'); return; }
-    this.end = snap;
-    this.showRoute(route);
-    this.suppressMapClick = true;
-    setTimeout(() => { this.suppressMapClick = false; }, 0);
-    this.deactivate();
   }
 }

@@ -1,7 +1,8 @@
 'use strict';
 
-// Routes only over geometry currently loaded by MapLibre. This is a measurement,
-// not a navigation graph: crossings connect only when the source shares vertices.
+// Routes over mapped road centerlines from the local vector archives. This is
+// a measurement, not navigation: crossings only connect at shared vertices
+// or at very short dangling endpoint gaps.
 const R = 6371008.8;
 const radians = Math.PI / 180;
 export function metersBetween(a, b) {
@@ -37,8 +38,8 @@ function heapPop(heap) {
 
 export function buildRoadGraph(features, maxSegments = 80000) {
   const nodes = [], edges = [], buckets = new Map(), seen = new Set();
-  // Adjacent tile fragments can differ slightly at the seam. Merge only
-  // vertices within 1.5 m, rather than joining nearby parallel roads.
+  // Merge only nearly identical vertices at tile seams. Larger dangling
+  // endpoint gaps are handled separately below.
   const first = features.find(f => f.geometry?.coordinates?.length)?.geometry;
   const lat0 = (first?.type === 'MultiLineString' ? first.coordinates[0]?.[0]?.[1] : first?.coordinates?.[0]?.[1]) || 41;
   const scaleX = 111195 * Math.cos(lat0 * radians), scaleY = 111195;
@@ -76,6 +77,25 @@ export function buildRoadGraph(features, maxSegments = 80000) {
       nodes[u].edges.push(id); nodes[v].edges.push(id);
     }
   }
+  // Independent county/USFS centerlines can stop a few meters short of each
+  // other. Connect dangling ends to their nearest vertex, but never join two
+  // full road interiors merely because they cross or run alongside each other.
+  const endpoints = nodes.map((node, id) => node.edges.length === 1 ? id : -1).filter(id => id >= 0);
+  for (const u of endpoints) {
+    const [x, y] = nodes[u].xy, bx = Math.floor(x / 1.5), by = Math.floor(y / 1.5);
+    let nearest = -1, distance = 5;
+    for (let dx = -4; dx <= 4; dx++) for (let dy = -4; dy <= 4; dy++) {
+      for (const v of buckets.get(`${bx + dx},${by + dy}`) || []) {
+        if (u === v || nodes[u].edges.some(id => edges[id].u === v || edges[id].v === v)) continue;
+        const gap = Math.hypot(x - nodes[v].xy[0], y - nodes[v].xy[1]);
+        if (gap < distance) { nearest = v; distance = gap; }
+      }
+    }
+    if (nearest < 0 || edges.length >= maxSegments) continue;
+    const id = edges.length;
+    edges.push({ u, v: nearest, length: metersBetween(nodes[u].point, nodes[nearest].point), connector: true });
+    nodes[u].edges.push(id); nodes[nearest].edges.push(id);
+  }
   return { nodes, edges, scaleX, scaleY };
 }
 
@@ -84,7 +104,9 @@ export function snapToRoad(graph, point, maxMeters = 50) {
   const [x, y] = [point[0] * graph.scaleX, point[1] * graph.scaleY];
   let best = null;
   for (let id = 0; id < graph.edges.length; id++) {
-    const edge = graph.edges[id], a = graph.nodes[edge.u].xy, b = graph.nodes[edge.v].xy;
+    const edge = graph.edges[id];
+    if (edge.connector) continue;
+    const a = graph.nodes[edge.u].xy, b = graph.nodes[edge.v].xy;
     const dx = b[0] - a[0], dy = b[1] - a[1];
     const t = Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / (dx * dx + dy * dy)));
     const distance = Math.hypot(x - a[0] - t * dx, y - a[1] - t * dy);

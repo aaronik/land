@@ -31,11 +31,16 @@ async function main() {
   const seam = buildRoadGraph([line([[0, 0], [0.001, 0]]), line([[0.001000005, 0], [0.002, 0]])]);
   assert.ok(shortestRoadPath(seam, snapToRoad(seam, [0.0005, 0]), snapToRoad(seam, [0.0015, 0])));
   assert.ok(buildRoadGraph(roads, 1).error);
+  const gap = buildRoadGraph([line([[0, 0], [0.001, 0]]), line([[0.00104, 0], [0.002, 0]])]);
+  assert.ok(shortestRoadPath(gap, snapToRoad(gap, [0.0005, 0]), snapToRoad(gap, [0.0015, 0])), 'short independent road endpoint gaps connect');
+  const parallel = buildRoadGraph([line([[0, 0], [0.003, 0]]), line([[0.001, 0.00004], [0.002, 0.00004]])]);
+  assert.equal(shortestRoadPath(parallel, snapToRoad(parallel, [0.0015, 0]), snapToRoad(parallel, [0.0015, 0.00004])), null, 'parallel road interiors must not connect');
 
   const dom = new JSDOM('<!doctype html><html><body></body></html>');
   global.document = dom.window.document;
   const controlSource = fs.readFileSync(path.join(__dirname, '../assets/map/road-distance.js'), 'utf8')
-    .replace("import { buildRoadGraph, snapToRoad, shortestRoadPath } from './road-distance-geometry.js';", '');
+    .replace("import { buildRoadGraph, snapToRoad, shortestRoadPath } from './road-distance-geometry.js';", '')
+    .replace("import { loadRoadFeatures } from './road-distance-tiles.js';", '');
   const { RoadDistanceControl } = await import(`data:text/javascript;base64,${Buffer.from(source + '\n' + controlSource).toString('base64')}`);
   const listeners = new Map(), data = { features: [] };
   let panEnabled = true;

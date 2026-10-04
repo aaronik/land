@@ -1,5 +1,9 @@
 # Agent Guidelines
 
+## Feature completion
+
+Before considering any feature complete, manually test it in the running application through the relevant user workflow. Automated tests and a successful build do not replace manual testing. Report what was manually tested; if manual testing is not possible, state that explicitly and do not claim the feature is complete.
+
 ## Large geospatial data
 
 Never read, search, print, diff, or otherwise load the contents of these directories into context:
