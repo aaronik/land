@@ -10,7 +10,8 @@ export function createListingData(getState) {
   const categories = feature => new Set([
     ...(feature.properties.records || []).map(record => record.category),
     ...((feature.properties.salesHistory || []).map(() => 'previous-listing')),
-    ...((feature.properties.archivedListings || []).map(() => 'previous-listing'))
+    ...((feature.properties.archivedListings || []).map(() => 'previous-listing')),
+    ...((feature.properties.soldExternalListings || []).map(() => 'previous-listing'))
   ]);
   const normalizeSearch = value => String(value || '').toUpperCase().replace(/[^A-Z0-9]+/g, ' ').trim();
   const recordAcreage = record => {
@@ -56,7 +57,8 @@ export function createListingData(getState) {
     const records = (feature.properties.records || []).filter(record => enabledCategories.has(record.category) && recordMatchesListingDate(record) && recordMatchesDiscoveryFilters(record) && acreageMatches(recordAcreage(record) ?? recordAcreage({ acres: feature.properties.Acres })));
     const salesHistory = (feature.properties.salesHistory || []).filter(record => historyRecordIsVisible(record, feature.properties.Acres));
     const archivedListings = (feature.properties.archivedListings || []).filter(record => historyRecordIsVisible(record, feature.properties.Acres));
-    return records.length || salesHistory.length || archivedListings.length ? { ...feature, properties: { ...feature.properties, records, salesHistory, archivedListings } } : null;
+    const soldExternalListings = (feature.properties.soldExternalListings || []).filter(record => historyRecordIsVisible(record, feature.properties.Acres));
+    return records.length || salesHistory.length || archivedListings.length || soldExternalListings.length ? { ...feature, properties: { ...feature.properties, records, salesHistory, archivedListings, soldExternalListings } } : null;
   };
   const firstCategory = feature => {
     const { enabledCategories } = state();
@@ -101,7 +103,8 @@ export function createListingData(getState) {
       const listingRecords = [
         ...(feature.properties.records || []),
         ...(feature.properties.salesHistory || []).map(record => ({ ...record, category: 'previous-listing' })),
-        ...(feature.properties.archivedListings || []).map(record => ({ ...record, category: 'previous-listing', archived: true }))
+        ...(feature.properties.archivedListings || []).map(record => ({ ...record, category: 'previous-listing', archived: true })),
+        ...(feature.properties.soldExternalListings || []).map(record => ({ ...record, category: 'previous-listing', soldExternal: true }))
       ];
       for (const [index, record] of listingRecords.entries()) {
         // An MLS listing may be associated with several parcel polygons. Keep its
@@ -114,8 +117,9 @@ export function createListingData(getState) {
           properties: {
             ...feature.properties,
             records: isPreviousListing ? [] : [record],
-            salesHistory: isPreviousListing && !record.archived ? [record] : [],
+            salesHistory: isPreviousListing && !record.archived && !record.soldExternal ? [record] : [],
             archivedListings: isPreviousListing && record.archived ? [record] : [],
+            soldExternalListings: isPreviousListing && record.soldExternal ? [record] : [],
             displayCategory: record.category,
             markerLabel: isPreviousListing ? '' : markerLabel({ records: [record] })
           }

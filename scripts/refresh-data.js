@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { fetchOk } = require('./refresh-fetch');
+const { refreshExternalListings } = require('./external-listings');
 const { resolveUnmappedParcels } = require('./parcel-resolver');
 const { emptyQueue, loadJson, mergeQueue, saveJson } = require('./apn-research');
 
@@ -633,8 +634,8 @@ async function soldHistory(items) {
   });
 }
 
-function externalRecords() {
-  return EXTERNAL_LISTINGS.flatMap(item => (item.apns || []).map(value => ({
+function externalRecords(items = EXTERNAL_LISTINGS) {
+  return items.flatMap(item => (item.apns || []).map(value => ({
     APN: normalizeApn(value), kind: 'private', title: item.title || `Land listing ${value}`,
     price: Number(item.price) || null, acres: Number(item.acres) || null,
     status: item.status || 'For Sale', listingDate: item.listingDate || '',
@@ -643,7 +644,7 @@ function externalRecords() {
     url: item.url, primaryPhoto: item.primaryPhoto || '', listingSource: item.listingSource || 'External listing',
     parcelMatchSource: item.parcelMatchSource || 'listing APN',
     parcelMatchConfidence: item.parcelMatchConfidence || 'provided',
-    mlsNumber: item.id || value, notes: item.notes || ''
+    mlsNumber: item.id || value, referenceListing: Boolean(item.referenceListing), notes: item.notes || ''
   }))).filter(record => record.APN && record.url);
 }
 
@@ -740,9 +741,11 @@ async function main() {
   Object.assign(MLS_APN_LINKS, saveMlsLinks(mlsLinksFile, privateRows, generatedAt));
   const historyRows = await soldHistory(soldItems);
   Object.assign(MLS_APN_LINKS, saveMlsLinks(mlsLinksFile, [...privateRows, ...historyRows], generatedAt));
-  const externalRows = externalRecords();
-  const records = [...privateRows, ...externalRows, ...auctions];
-  const allMappedRows = [...records, ...historyRows, ...archivedRows];
+  const checkedExternal = await refreshExternalListings(EXTERNAL_LISTINGS, async url => (await fetchOk(url)).text());
+  const externalRows = externalRecords(checkedExternal);
+  const soldExternalRows = externalRows.filter(record => record.status === 'Sold');
+  const records = [...privateRows, ...externalRows.filter(record => record.status !== 'Sold'), ...auctions];
+  const allMappedRows = [...records, ...historyRows, ...archivedRows, ...soldExternalRows];
   const features = await parcelFeatures([...new Set(allMappedRows.map(row => row.APN))]);
   const recordsByApn = new Map();
   const historyByApn = new Map();
@@ -772,6 +775,7 @@ async function main() {
     feature.properties.records = recordsForParcel;
     feature.properties.salesHistory = salesHistory;
     feature.properties.archivedListings = (archivedByApn.get(apn) || []).sort((a, b) => String(b.disappearedAt).localeCompare(String(a.disappearedAt)));
+    feature.properties.soldExternalListings = soldExternalRows.filter(record => record.APN === apn);
   }
   const output = {
     generatedAt, sources: { mls: MLS_SOURCES.map(source => ({ name: source.name, api: source.api })), externalListings: EXTERNAL_LISTINGS.map(item => item.url), auctions: TAX_PAGE, parcels: GIS },

@@ -5,12 +5,27 @@
     "title": "40 Acres Siskiyou (036-250-420)",
     "price": 249000,
     "acres": 40,
-    "status": "For Sale",
+    "status": "Sold",
     "propertyType": "land",
     "url": "https://www.californiaoutdoorproperties.com/listing/40-acres-siskiyou-420",
     "listingSource": "California Outdoor Properties",
     "parcelMatchSource": "listing APN",
     "parcelMatchConfidence": "provided",
-    "notes": "Listing page also advertises APN 036-250-440 as a separate 40-acre lot for $249,000. County GIS reports 30.45 acres; add it when a dedicated listing URL or confirmation is available."
+    "notes": "Listing page also mentions APN 036-250-440 as a separate parcel. That parcel is tracked as coming soon with this page as a temporary reference; the sold badge applies only to 036-250-420."
+  },
+  {
+    "id": "california-outdoor-properties-40-acres-siskiyou-440",
+    "apns": ["036-250-440"],
+    "title": "40 Acres Siskiyou (036-250-440) — coming soon",
+    "price": null,
+    "acres": null,
+    "status": "Coming Soon",
+    "referenceListing": true,
+    "propertyType": "land",
+    "url": "https://www.californiaoutdoorproperties.com/listing/40-acres-siskiyou-420",
+    "listingSource": "California Outdoor Properties",
+    "parcelMatchSource": "seller-reported upcoming listing; sibling listing mentions APN",
+    "parcelMatchConfidence": "seller-reported",
+    "notes": "Not yet listed. This link is for the separate, sold APN 036-250-420; its page mentions APN 036-250-440 as another lot at an advertised $249,000. Price and acreage are from that page, not a live listing for 036-250-440. Replace with this parcel's own URL and verify its status once published."
   }
 ]
