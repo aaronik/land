@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T15:53:20.337Z",
+  "generatedAt": "2026-10-06T15:44:53.052Z",
   "count": 215,
   "listings": [
     {
@@ -172,13 +172,13 @@
     },
     {
       "mlsNumber": "20261092",
-      "title": "Lot 285 & 286 Cougar St, Hornbrook, CA 96067",
+      "title": "Lot 285 & 286 Cougar St, Hornbrook, CA 96044",
       "acres": 9.4,
       "latLng": [
-        41.889362329800754,
-        -122.50494900993489
+        41.888833,
+        -122.498626
       ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261092/Lot-285-286-Cougar-St-Hornbrook-CA-96067",
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261092/Lot-285-286-Cougar-St-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
