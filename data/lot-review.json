@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-10-03T15:44:36.105Z",
-  "count": 214,
+  "generatedAt": "2026-10-05T15:53:20.337Z",
+  "count": 215,
   "listings": [
+    {
+      "mlsNumber": "20261199",
+      "title": "Lot 208 Deer Run Rd, Hornbrook, CA 96044",
+      "acres": 2.5,
+      "latLng": [
+        41.906887599384326,
+        -122.51472420665009
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261199/Lot-208-Deer-Run-Rd-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261190",
       "title": "Un3 Blk F Lot19 White Fur Ct., McCloud, CA 96057",
