@@ -902,6 +902,7 @@ mapLayerInputs.forEach(input => input.addEventListener('change', () => {
   saveMapLayerVisibility();
 }));
 document.querySelector('#reset-map-layers').addEventListener('click', () => {
+  polygonDrawControl.resetDisplay();
   for (const input of mapLayerInputs) input.checked = defaultMapLayerVisibility[input.dataset.mapLayer];
   for (const input of listingTypeInputs) input.checked = defaultListingTypeVisibility[input.value];
   minimumAcreageInput.value = minimumAcreageInput.defaultValue;

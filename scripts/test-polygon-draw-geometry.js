@@ -1,7 +1,5 @@
 'use strict';
 const assert = require('assert/strict');
-const fs = require('fs');
-const path = require('path');
 
 function approximatelyEqual(actual, expected, message) {
   assert.ok(
@@ -11,8 +9,7 @@ function approximatelyEqual(actual, expected, message) {
 }
 
 async function main() {
-  const source = fs.readFileSync(path.join(__dirname, '..', 'assets/map/polygon-draw.js'), 'utf8');
-  const geometry = await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
+  const geometry = await import('../assets/map/polygon-draw.js');
   const { azimuthFor, destination, reverseAzimuth, updatedEdgeVertices } = geometry;
   const quadrants = [
     { name: 'N 44 E', ns: 'N', ew: 'E', bearing: 44 },

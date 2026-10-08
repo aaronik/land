@@ -1,0 +1,54 @@
+'use strict';
+const assert = require('node:assert/strict');
+const { JSDOM } = require('jsdom');
+
+(async () => {
+  const { defaultDrawings } = await import('../assets/map/default-drawings.js');
+  const { loadSeededDrawings, missingDefaultDrawings, DRAWINGS_KEY, SEEDS_KEY } = await import('../assets/map/drawing-seeds.js');
+  const { drawingCurves } = await import('../assets/map/survey-curve-labels.js');
+  const dom = new JSDOM('<!doctype html><body></body>', { url: 'https://example.org/land/' });
+  global.document = dom.window.document; global.window = dom.window;
+  Object.defineProperty(global, 'localStorage', { value: dom.window.localStorage, configurable: true });
+  const store = dom.window.localStorage;
+  const fresh = loadSeededDrawings(store);
+  assert.equal(fresh.length, 7);
+  assert.deepEqual(fresh, defaultDrawings);
+  assert.notEqual(fresh[0].vertices, defaultDrawings[0].vertices);
+  assert.equal(JSON.parse(store.getItem(SEEDS_KEY)).length, 7);
+  assert.equal(loadSeededDrawings(store).length, 7, 'reload never duplicates seeds');
+  assert.equal(drawingCurves(fresh[2]).length, 6, 'seed geometry matches curve fingerprints');
+  fresh[0].name = 'My parcel'; fresh[0].vertices[0][0] += .0001; fresh[1].visible = false;
+  const custom = { id: 'custom', name: 'Keep', vertices: [[0,0],[1,0],[0,1]], visible: true };
+  fresh.push(custom); fresh.splice(2,1);
+  store.setItem(DRAWINGS_KEY, JSON.stringify(fresh));
+  assert.deepEqual(loadSeededDrawings(store), fresh, 'edits, hides, deletes and custom drawings preserved');
+  assert.equal(missingDefaultDrawings(fresh).length, 1);
+  // Existing manual imports, with no seed ledger, must not be overwritten.
+  store.removeItem(SEEDS_KEY);
+  const partial = [fresh[0], fresh[1], custom];
+  store.setItem(DRAWINGS_KEY, JSON.stringify(partial));
+  const migrated = loadSeededDrawings(store);
+  assert.equal(migrated.length, 8); assert.deepEqual(migrated.slice(0,3), partial);
+  store.setItem(DRAWINGS_KEY, '[]');
+  assert.equal(loadSeededDrawings(store).length, 0, 'delete-all remains empty');
+  const { PolygonDrawControl } = await import('../assets/map/polygon-draw.js');
+  dom.window.HTMLDialogElement.prototype.showModal = function () { this.open = true; };
+  dom.window.HTMLDialogElement.prototype.close = function () { this.open = false; };
+  let bounds;
+  const map = { on() {}, off() {}, getCanvas: () => ({ style: {} }), getSource: () => ({ setData() {} }), fitBounds: b => { bounds = b; } };
+  const ctrl = new PolygonDrawControl({}); ctrl.onAdd(map);
+  assert.equal(ctrl.drawings.length,0); assert.equal(ctrl.openButton.hidden,false);
+  ctrl.openManager(); ctrl.manager.querySelector('[data-action="restore-defaults"]').click();
+  assert.equal(ctrl.drawings.length,7); ctrl.manager.querySelector('[data-action="zoom-drawings"]').click();
+  assert(bounds[0][0] < -122.34 && bounds[1][0] > -122.33);
+  assert.equal(ctrl.manager.open,false); ctrl.onRemove();
+  // Read or write failures do not destroy unreadable data or mark unsaved seeds delivered.
+  store.setItem(DRAWINGS_KEY,'not json');
+  assert.equal(loadSeededDrawings(store).length,7); assert.equal(store.getItem(DRAWINGS_KEY),'not json');
+  assert.equal(loadSeededDrawings(undefined).length,7);
+  const writes=[]; const full={getItem:()=>null,setItem(k){writes.push(k);throw new Error('quota');}};
+  assert.equal(loadSeededDrawings(full).length,7); assert.deepEqual(writes,[DRAWINGS_KEY]);
+  store.clear(); store.setItem(DRAWINGS_KEY,JSON.stringify(defaultDrawings)); store.setItem(SEEDS_KEY,'broken');
+  assert.equal(loadSeededDrawings(store).length,7); assert.equal(JSON.parse(store.getItem(SEEDS_KEY)).length,7);
+  console.log('Passed: default drawing seeds, migration, edits/deletes, restore/zoom, storage failures.');
+})().catch(error => { console.error(error); process.exit(1); });

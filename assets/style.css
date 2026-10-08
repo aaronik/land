@@ -314,6 +314,10 @@ footer p:first-child { color: var(--ink); font-weight: 700; }
 .polygon-visibility-actions { display: flex; gap: 7px; margin: 0 0 8px; }
 .polygon-visibility-actions button { min-height: 28px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: white; font-size: 10px; font-weight: 700; cursor: pointer; }
 .polygon-visibility-actions button:disabled { color: #7b847e; cursor: default; }
+.polygon-display-options { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 12px 0; }
+.polygon-display-options label { display: inline-flex; align-items: center; gap: 6px; }
+.polygon-display-options input { width: auto; margin: 0; }
+.polygon-display-options button { padding: 5px 8px; cursor: pointer; }
 .saved-polygon-drawings { margin: 10px 0 0; padding: 0; list-style: none; }
 .saved-polygon-drawings li { display: flex; align-items: end; gap: 7px; padding: 9px 0; border-bottom: 1px solid var(--line); }
 .saved-polygon-drawings button { min-height: 28px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: white; font-size: 10px; font-weight: 700; cursor: pointer; }
