@@ -1,6 +1,7 @@
 // Bundled Castle Oaks survey-call drafts, road-aligned-v1.
 // Source: PMB 12 pp78–79; visual road alignment, not verified legal boundaries.
-// Preserve stable IDs: device edits are never replaced automatically.
+// Parcel 7 retains the section 32/33 bearing-change corner (geometry revision v2).
+// Preserve stable IDs and never overwrite user-edited geometry.
 export const defaultDrawings = [
   {
     "id": "castle-oaks-survey-parcel-1",
@@ -2192,7 +2193,7 @@ export const defaultDrawings = [
   },
   {
     "id": "castle-oaks-survey-parcel-7",
-    "name": "Castle Oaks Parcel 7 — road-aligned survey calls — REVIEW acreage",
+    "name": "Castle Oaks Parcel 7 — road-aligned survey calls",
     "vertices": [
       [
         -122.33213393877439,
@@ -2211,11 +2212,46 @@ export const defaultDrawings = [
         41.26926633209918
       ],
       [
+        -122.32572655580675,
+        41.26928733556215
+      ],
+      [
         -122.3319951523102,
         41.2693551740548
       ]
     ],
     "visible": true,
-    "alignmentRevision": "road-aligned-v1"
+    "alignmentRevision": "road-aligned-v1",
+    "geometryRevision": "survey-north-bend-v2"
   }
 ];
+
+// Narrow correction for our shipped Parcel 7 export omission, not a general
+// overwrite policy. Only the exact unedited five-vertex geometry is eligible.
+export const parcel7NorthBendCorrection = {
+  "id": "castle-oaks-survey-parcel-7",
+  "previousName": "Castle Oaks Parcel 7 \u2014 road-aligned survey calls \u2014 REVIEW acreage",
+  "previousVertices": [
+    [
+      -122.33213393877439,
+      41.26925220824785
+    ],
+    [
+      -122.32736526623026,
+      41.26720098329318
+    ],
+    [
+      -122.3211738476638,
+      41.26718104645098
+    ],
+    [
+      -122.32111192145955,
+      41.26926633209918
+    ],
+    [
+      -122.3319951523102,
+      41.2693551740548
+    ]
+  ],
+  "revision": "survey-north-bend-v2"
+};
