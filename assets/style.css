@@ -323,10 +323,10 @@ footer p:first-child { color: var(--ink); font-weight: 700; }
 .polygon-display-options input { width: auto; margin: 0; }
 .polygon-display-options button { padding: 5px 8px; cursor: pointer; }
 .saved-polygon-drawings { margin: 10px 0 0; padding: 0; list-style: none; }
-.saved-polygon-drawings li { display: flex; align-items: end; gap: 7px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.saved-polygon-drawings li { display: flex; flex-wrap: wrap; align-items: end; gap: 7px; padding: 9px 0; border-bottom: 1px solid var(--line); }
 .saved-polygon-drawings button { min-height: 28px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: white; font-size: 10px; font-weight: 700; cursor: pointer; }
-.saved-polygon-drawings > li > button { color: #7e2424; border-color: rgba(126,36,36,.3); }
-.saved-polygon-drawings form { display: grid; grid-template-columns: minmax(120px, 1fr) auto; align-items: end; gap: 7px; flex: 1; }
+.saved-polygon-drawings > li > button[data-action="delete"] { color: #7e2424; border-color: rgba(126,36,36,.3); }
+.saved-polygon-drawings form { display: grid; grid-template-columns: minmax(120px, 1fr) auto; align-items: end; gap: 7px; flex: 1 1 100%; min-width: 0; }
 .saved-polygon-drawings form label { margin: 0; font-size: 10px; }
 .saved-polygon-drawings form input { width: 100%; height: 28px; margin-top: 3px; padding: 4px 6px; border: 1px solid #b8bdb8; border-radius: 4px; background: white; }
 .saved-polygon-drawings form small { grid-column: 1; }

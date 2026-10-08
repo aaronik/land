@@ -1,6 +1,7 @@
 'use strict';
 
 import { drawingCurves } from './survey-curve-labels.js';
+import { defaultDrawings } from './default-drawings.js';
 import { DRAWINGS_KEY, SEEDS_KEY, defaultDrawingIds, loadSeededDrawings, missingDefaultDrawings } from './drawing-seeds.js';
 
 const DISPLAY_KEY = 'shasta-land-atlas.polygon-display.v1';
@@ -83,6 +84,18 @@ export class PolygonDrawControl {
     if (!additions.length) return;
     this.drawings.push(...additions);
     this.persist(); this.updateData(); this.updateUi(); this.renderManager();
+  }
+  resetDefaultGeometry(id) {
+    const drawing = this.drawings.find(item => item.id === id);
+    const original = defaultDrawings.find(item => item.id === id);
+    if (!drawing || !original || JSON.stringify(drawing.vertices) === JSON.stringify(original.vertices)) return;
+    if (!window.confirm(`Restore the original corners for “${drawing.name}”? This cannot be undone. Its name and visibility will stay the same.`)) return;
+    this.finishVertexDrag();
+    this.popup?.remove();
+    this.selectedEdge = null;
+    this.editCurveDrawingId = null;
+    drawing.vertices = structuredClone(original.vertices);
+    this.persist(); this.updateData(); this.renderManager();
   }
   zoomToDrawings() {
     const points = this.drawings.filter(item => item.visible).flatMap(item => item.vertices);
@@ -240,6 +253,7 @@ export class PolygonDrawControl {
       const button = event.target.closest('[data-action]'); if (!button) return;
       if (button.dataset.action === 'reset-display') this.resetDisplay();
       if (button.dataset.action === 'restore-defaults') this.restoreDefaults();
+      if (button.dataset.action === 'reset-geometry') this.resetDefaultGeometry(button.dataset.id);
       if (button.dataset.action === 'zoom-drawings') this.zoomToDrawings();
       if (button.dataset.action === 'edit-curves' && !this.locked) {
         this.popup?.remove();
@@ -261,10 +275,10 @@ export class PolygonDrawControl {
   openManager() { this.renderManager(); this.manager.showModal(); }
   renderManager() {
     const hiddenCount = this.drawings.filter(item => !item.visible).length;
-    const items = this.drawings.map(item => `<li><form data-rename="${escapeHtml(item.id)}"><label>Polygon name<input name="name" value="${escapeHtml(item.name)}" aria-label="Polygon name"></label><small>${item.vertices.length} segments · ${item.visible ? 'Shown' : 'Hidden'}</small><button type="submit">Rename</button></form>${drawingCurves(item).length || this.editCurveDrawingId === item.id ? `<button type="button" data-action="edit-curves" data-id="${escapeHtml(item.id)}" ${this.locked ? 'disabled title="Unlock saved polygons to edit curves"' : ''}>${this.editCurveDrawingId === item.id ? 'Done editing curves' : 'Edit curve vertices'}</button>` : ''}<button type="button" data-action="visibility" data-id="${escapeHtml(item.id)}" aria-pressed="${item.visible}" title="${item.visible ? 'Hide polygon' : 'Show polygon'}">${item.visible ? 'Hide' : 'Show'}</button><button type="button" data-action="delete" data-id="${escapeHtml(item.id)}" data-name="${escapeHtml(item.name)}">Delete</button></li>`).join('');
+    const items = this.drawings.map(item => `<li><form data-rename="${escapeHtml(item.id)}"><label>Polygon name<input name="name" value="${escapeHtml(item.name)}" aria-label="Polygon name"></label><small>${item.vertices.length} segments · ${item.visible ? 'Shown' : 'Hidden'}</small><button type="submit">Rename</button></form>${drawingCurves(item).length || this.editCurveDrawingId === item.id ? `<button type="button" data-action="edit-curves" data-id="${escapeHtml(item.id)}" ${this.locked ? 'disabled title="Unlock saved polygons to edit curves"' : ''}>${this.editCurveDrawingId === item.id ? 'Done editing curves' : 'Edit curve vertices'}</button>` : ''}${defaultDrawings.some(original => original.id === item.id && JSON.stringify(original.vertices) !== JSON.stringify(item.vertices)) ? `<button type="button" data-action="reset-geometry" data-id="${escapeHtml(item.id)}" title="Restore this default polygon's original corners">Restore corners</button>` : ''}<button type="button" data-action="visibility" data-id="${escapeHtml(item.id)}" aria-pressed="${item.visible}" title="${item.visible ? 'Hide polygon' : 'Show polygon'}">${item.visible ? 'Hide' : 'Show'}</button><button type="button" data-action="delete" data-id="${escapeHtml(item.id)}" data-name="${escapeHtml(item.name)}">Delete</button></li>`).join('');
     const visibilityControls = this.drawings.length ? `<div class="polygon-visibility-actions"><button type="button" data-action="visibility-all" data-visible="true" ${hiddenCount ? '' : 'disabled'}>Show all</button><button type="button" data-action="visibility-all" data-visible="false" ${hiddenCount < this.drawings.length ? '' : 'disabled'}>Hide all</button></div>` : '';
     const missingDefaults = missingDefaultDrawings(this.drawings).length;
-    this.manager.innerHTML = `<button class="dialog-close" type="button" data-action="close" aria-label="Close saved polygons">×</button><h2>Saved polygons</h2><p class="meta">Castle Oaks road-aligned survey drafts are included with the app. These are not verified legal boundaries; a 1.41-ft C12 closure gap remains flagged. Parcel 7’s omitted northern corner has been corrected. Edits, visibility and deletions stay on this device.</p><div class="polygon-visibility-actions"><button type="button" data-action="zoom-drawings" ${this.drawings.some(item => item.visible) ? '' : 'disabled'}>Zoom to shown drawings</button><button type="button" data-action="restore-defaults" ${missingDefaults ? '' : 'disabled'}>Restore missing defaults${missingDefaults ? ` (${missingDefaults})` : ''}</button></div><p>Click a straight call to edit that edge; click a curve label for its recorded radius and arc length. Intermediate curve vertices are hidden until editing. Editing a chord changes the shape, not the original survey arc.</p><div class="polygon-display-options"><label><input type="checkbox" data-measurements checked> Show measurements</label><button type="button" data-action="reset-display">Reset display to defaults</button></div>${visibilityControls}${items ? `<ul class="saved-polygon-drawings">${items}</ul>` : '<p class="meta">No saved polygons yet.</p>'}`;
+    this.manager.innerHTML = `<button class="dialog-close" type="button" data-action="close" aria-label="Close saved polygons">×</button><h2>Saved polygons</h2><p class="meta">Castle Oaks road-aligned survey drafts are included with the app. These are not verified legal boundaries; a 1.41-ft C12 closure gap remains flagged. Parcel 7’s omitted northern corner has been corrected. Edits, visibility and deletions stay on this device.</p><div class="polygon-visibility-actions"><button type="button" data-action="zoom-drawings" ${this.drawings.some(item => item.visible) ? '' : 'disabled'}>Zoom to shown drawings</button><button type="button" data-action="restore-defaults" ${missingDefaults ? '' : 'disabled'}>Restore missing defaults${missingDefaults ? ` (${missingDefaults})` : ''}</button></div><p>Click a straight call to edit that edge; click a curve label for its recorded radius and arc length. Intermediate curve vertices are hidden until editing. Editing a chord changes the shape, not the original survey arc.</p><div class="polygon-display-options"><label><input type="checkbox" data-measurements checked> Show measurements</label><button type="button" data-action="reset-display">Reset measurement display</button></div>${visibilityControls}${items ? `<ul class="saved-polygon-drawings">${items}</ul>` : '<p class="meta">No saved polygons yet.</p>'}`;
     this.manager.querySelector('[data-measurements]').checked = this.showMeasurements;
   }
   resetDisplay() {
