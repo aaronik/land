@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-06T17:43:32.854Z",
-  "count": 215,
+  "generatedAt": "2026-10-08T19:23:45.728Z",
+  "count": 211,
   "listings": [
     {
       "mlsNumber": "20261199",
@@ -351,30 +351,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20260978",
-      "title": "Lot 83 Unit 7-2 Black Bear Rd., Weed, CA 96094",
-      "acres": 0.23,
-      "latLng": [
-        41.46268891844234,
-        -122.38240783539575
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260978/Lot-83-Unit-7-2-Black-Bear-Rd-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260977",
-      "title": "Lot 84 Unit 7-2 Black Bear Rd., Weed, CA 96094",
-      "acres": 0.33,
-      "latLng": [
-        41.46268891844234,
-        -122.38240783539575
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260977/Lot-84-Unit-7-2-Black-Bear-Rd-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20260975",
       "title": "Unit 5 Lot #103 Greenfinch Way, Montague, CA 96064",
       "acres": 5,
@@ -647,18 +623,6 @@
         -121.91960383930392
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260861/Blk-15-Lot-5-S-California-St-S-Dorris-CA-96023",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20250575",
-      "title": "Unit 4 Lot 575 Krce Hare St., Montague, CA 96044",
-      "acres": 4.6,
-      "latLng": [
-        41.891814757000795,
-        -122.43008328200155
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250575/Unit-4-Lot-575-Krce-Hare-St-Montague-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -947,18 +911,6 @@
         -122.36058089477939
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260546/Unit-8-1-Lot-26-Lake-Shastina-Rockwood-Rd-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260533",
-      "title": "Unit 8-2 Lot 22 Lake Shastina, Gleenwood Dr., Weed, CA 96094",
-      "acres": 0.23,
-      "latLng": [
-        41.525169566233316,
-        -122.37377923853647
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260533/Unit-8-2-Lot-22-Lake-Shastina-Gleenwood-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
