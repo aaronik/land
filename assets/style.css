@@ -39,6 +39,8 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 #reset-map-layers:hover { color: var(--ink); border-color: rgba(22,35,29,.4); }
 #reset-map-layers:focus-visible { outline: 2px solid #126246; outline-offset: 2px; }
 .legend-selection-note { margin: 0 0 10px; color: #5b6960; font-size: 11px; line-height: 1.35; }
+.legend .layer-group-heading { margin: 16px 0 8px; padding-top: 12px; border-top: 1px solid var(--line); color: #425048; font-size: 11px; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
+.legend .layer-group-heading:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
 .legend label { display: flex; align-items: center; gap: 7px; margin: 7px 0; font-size: 13px; font-weight: 400; line-height: 16px; letter-spacing: 0; text-transform: none; cursor: pointer; }
 .legend input { display: block; width: 14px; height: 14px; flex: 0 0 14px; accent-color: var(--ink); margin: 0; }
 .legend .swatch { flex: 0 0 12px; margin: 0; }
