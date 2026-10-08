@@ -788,7 +788,7 @@ function initializeMapLayers() {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }
-  map.on('mouseenter', 'polygon-drawings-labels', () => { if (!polygonDrawControl.isActive()) map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseenter', 'polygon-drawings-labels', () => { if (!polygonDrawControl.isActive() && !polygonDrawControl.locked) map.getCanvas().style.cursor = 'pointer'; });
   map.on('mouseleave', 'polygon-drawings-labels', () => { if (!polygonDrawControl.isActive()) map.getCanvas().style.cursor = ''; });
   const rotationHeavyLayers = ['public-land', 'parcel-fill', 'parcel-lines', 'sale-fill', 'sale-lines'];
   let rotationRestoreTimer;

@@ -278,7 +278,7 @@ footer p:first-child { color: var(--ink); font-weight: 700; }
 .coordinate-pin-popup strong { font-variant-numeric: tabular-nums; }
 .coordinate-pin-popup button { margin: 4px 0 0 4px; padding: 2px 5px; border: 1px solid rgba(22,35,29,.25); border-radius: 3px; color: var(--ink); background: white; font-size: 10px; font-weight: 700; cursor: pointer; }
 .distance-measure-control, .road-distance-control, .coordinate-pin-control, .elevation-pin-control, .polygon-draw-control, .road-tracker-control { display: flex; align-items: stretch; min-height: 30px; border: 0 !important; box-shadow: 0 1px 5px rgba(0,0,0,.4) !important; }
-.distance-measure-toggle, .distance-measure-clear, .road-distance-toggle, .road-distance-clear, .coordinate-pin-toggle, .coordinate-pin-clear, .elevation-pin-toggle, .elevation-pin-clear, .polygon-draw-toggle, .polygon-draw-undo, .polygon-draw-finish, .polygon-draw-open, .road-tracker-toggle, .road-tracker-manage { border: 0; color: var(--ink); background: white; cursor: pointer; font-size: 12px; font-weight: 700; }
+.distance-measure-toggle, .distance-measure-clear, .road-distance-toggle, .road-distance-clear, .coordinate-pin-toggle, .coordinate-pin-clear, .elevation-pin-toggle, .elevation-pin-clear, .polygon-draw-toggle, .polygon-draw-undo, .polygon-draw-finish, .polygon-draw-lock, .polygon-draw-open, .road-tracker-toggle, .road-tracker-manage { border: 0; color: var(--ink); background: white; cursor: pointer; font-size: 12px; font-weight: 700; }
 .distance-measure-toggle, .road-distance-toggle, .coordinate-pin-toggle, .elevation-pin-toggle, .polygon-draw-toggle, .road-tracker-toggle { display: flex; align-items: center; gap: 5px; height: 30px; padding: 0 9px; border-radius: 2px 0 0 2px; }
 .distance-measure-toggle span, .road-distance-toggle span, .coordinate-pin-toggle span, .elevation-pin-toggle span, .polygon-draw-toggle span, .road-tracker-toggle span { font-size: 17px; line-height: 1; }
 .distance-measure-toggle.active { color: white; background: #126246; }
@@ -286,8 +286,10 @@ footer p:first-child { color: var(--ink); font-weight: 700; }
 .coordinate-pin-toggle.active { color: white; background: #b52c2c; }
 .elevation-pin-toggle.active { color: white; background: #126246; }
 .polygon-draw-toggle.active { color: var(--ink); background: #5fc4e8; }
+.polygon-draw-lock.active { background: #5fc4e8; }
+.polygon-draw-lock[hidden] { display: none; }
 .road-tracker-toggle.active { color: white; background: #bb4b1d; }
-.distance-measure-clear, .road-distance-clear, .coordinate-pin-clear, .elevation-pin-clear, .polygon-draw-undo, .polygon-draw-finish, .polygon-draw-open, .road-tracker-manage { min-width: 27px; padding: 0 7px; border-left: 1px solid rgba(22,35,29,.15); border-radius: 0; line-height: 1; }
+.distance-measure-clear, .road-distance-clear, .coordinate-pin-clear, .elevation-pin-clear, .polygon-draw-undo, .polygon-draw-finish, .polygon-draw-lock, .polygon-draw-open, .road-tracker-manage { min-width: 27px; padding: 0 7px; border-left: 1px solid rgba(22,35,29,.15); border-radius: 0; line-height: 1; }
 .polygon-draw-undo { font-size: 18px; }
 .distance-measure-clear, .road-distance-clear, .coordinate-pin-clear, .elevation-pin-clear, .polygon-draw-open, .road-tracker-manage { font-size: 20px; }
 .polygon-draw-open, .road-tracker-manage { border-radius: 0 2px 2px 0; }

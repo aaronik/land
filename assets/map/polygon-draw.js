@@ -4,6 +4,7 @@ import { drawingCurves } from './survey-curve-labels.js';
 import { DRAWINGS_KEY, SEEDS_KEY, defaultDrawingIds, loadSeededDrawings, missingDefaultDrawings } from './drawing-seeds.js';
 
 const DISPLAY_KEY = 'shasta-land-atlas.polygon-display.v1';
+const LOCK_KEY = 'shasta-land-atlas.polygon-lock.v1';
 const STORAGE_KEY = DRAWINGS_KEY;
 const EARTH_RADIUS_METERS = 6371008.8;
 const radians = value => value * Math.PI / 180;
@@ -61,6 +62,8 @@ export class PolygonDrawControl {
     this.maplibregl = maplibregl;
     this.onActivate = onActivate;
     this.drawings = this.load();
+    this.locked = false;
+    try { this.locked = localStorage.getItem(LOCK_KEY) === 'true'; } catch { /* Storage unavailable. */ }
     this.showMeasurements = true;
     try { this.showMeasurements = JSON.parse(localStorage.getItem(DISPLAY_KEY))?.showMeasurements !== false; } catch { /* Markup default. */ }
     this.editCurveDrawingId = null;
@@ -100,12 +103,12 @@ export class PolygonDrawControl {
     this.map = map;
     this.container = document.createElement('div');
     this.container.className = 'maplibregl-ctrl map-tool-control polygon-draw-control';
-    this.container.innerHTML = '<button type="button" class="polygon-draw-toggle" aria-pressed="false" aria-label="Draw a polygon" title="Draw a polygon"><span aria-hidden="true">⬠</span><b>Draw</b></button><button type="button" class="polygon-draw-undo" aria-label="Undo last vertex" title="Undo last vertex" hidden>↶</button><button type="button" class="polygon-draw-finish" aria-label="Finish polygon" title="Finish polygon" hidden>Finish</button><button type="button" class="polygon-draw-open" aria-label="Manage saved polygons" title="Manage saved polygons" hidden>☰</button><output aria-live="polite" hidden></output>';
-    this.toggleButton = this.container.querySelector('.polygon-draw-toggle'); this.undoButton = this.container.querySelector('.polygon-draw-undo'); this.finishButton = this.container.querySelector('.polygon-draw-finish'); this.openButton = this.container.querySelector('.polygon-draw-open'); this.output = this.container.querySelector('output');
-    this.toggleButton.addEventListener('click', () => this.toggle()); this.undoButton.addEventListener('click', () => this.undo()); this.finishButton.addEventListener('click', () => this.finish()); this.openButton.addEventListener('click', () => this.openManager());
+    this.container.innerHTML = '<button type="button" class="polygon-draw-toggle" aria-pressed="false" aria-label="Draw a polygon" title="Draw a polygon"><span aria-hidden="true">⬠</span><b>Draw</b></button><button type="button" class="polygon-draw-undo" aria-label="Undo last vertex" title="Undo last vertex" hidden>↶</button><button type="button" class="polygon-draw-finish" aria-label="Finish polygon" title="Finish polygon" hidden>Finish</button><button type="button" class="polygon-draw-lock" aria-label="Lock saved polygons" title="Lock saved polygons to prevent editing" aria-pressed="false" hidden>🔓</button><button type="button" class="polygon-draw-open" aria-label="Manage saved polygons" title="Manage saved polygons" hidden>☰</button><output aria-live="polite" hidden></output>';
+    this.toggleButton = this.container.querySelector('.polygon-draw-toggle'); this.undoButton = this.container.querySelector('.polygon-draw-undo'); this.finishButton = this.container.querySelector('.polygon-draw-finish'); this.lockButton = this.container.querySelector('.polygon-draw-lock'); this.openButton = this.container.querySelector('.polygon-draw-open'); this.output = this.container.querySelector('output');
+    this.toggleButton.addEventListener('click', () => this.toggle()); this.undoButton.addEventListener('click', () => this.undo()); this.finishButton.addEventListener('click', () => this.finish()); this.lockButton.addEventListener('click', () => this.setLocked(!this.locked)); this.openButton.addEventListener('click', () => this.openManager());
     this.onMapClick = event => this.addVertex(event);
     this.onLabelClick = event => {
-      if (this.suppressMapClick) return;
+      if (this.suppressMapClick || this.locked) return;
       const label = this.labelAt(event.point);
       if (label) this.openEdgePopup(label);
     };
@@ -141,6 +144,15 @@ export class PolygonDrawControl {
     this.popup?.remove(); this.manager?.remove(); this.container.remove(); this.map = undefined;
   }
   isActive() { return this.active; }
+  setLocked(locked) {
+    this.finishVertexDrag();
+    this.popup?.remove();
+    this.editCurveDrawingId = null;
+    this.locked = locked;
+    try { if (locked) localStorage.setItem(LOCK_KEY, 'true'); else localStorage.removeItem(LOCK_KEY); } catch { /* Storage unavailable. */ }
+    if (this.map) this.map.getCanvas().style.cursor = this.active ? 'crosshair' : '';
+    this.updateData(); this.updateUi();
+  }
   labelAt(point) {
     if (!this.map.getLayer('polygon-drawings-labels')) return null;
     return this.map.queryRenderedFeatures(point, { layers: ['polygon-drawings-labels'] })[0] || null;
@@ -152,7 +164,7 @@ export class PolygonDrawControl {
   eventLngLat(event) { return event.lngLat || event.lngLats?.[0] || (event.point && this.map.unproject(event.point)); }
   startVertexDrag(event) {
     const lngLat = this.eventLngLat(event);
-    if (this.active || !event.point || !lngLat || this.labelAt(event.point)) return;
+    if (this.active || this.locked || !event.point || !lngLat || this.labelAt(event.point)) return;
     const feature = this.vertexAt(event.point), id = feature?.properties?.drawingId, vertex = Number(feature?.properties?.vertexIndex);
     const drawing = this.drawings.find(item => item.id === id);
     if (!drawing || !Number.isInteger(vertex) || vertex < 0 || vertex >= drawing.vertices.length) return;
@@ -170,6 +182,7 @@ export class PolygonDrawControl {
   moveVertexDrag(event) {
     if (!this.vertexDrag) {
       if (this.active || this.popup || !event.point) return;
+      if (this.locked) { this.map.getCanvas().style.cursor = ''; return; }
       this.map.getCanvas().style.cursor = this.labelAt(event.point) ? 'pointer' : this.vertexAt(event.point) ? 'grab' : '';
       return;
     }
@@ -228,7 +241,7 @@ export class PolygonDrawControl {
       if (button.dataset.action === 'reset-display') this.resetDisplay();
       if (button.dataset.action === 'restore-defaults') this.restoreDefaults();
       if (button.dataset.action === 'zoom-drawings') this.zoomToDrawings();
-      if (button.dataset.action === 'edit-curves') {
+      if (button.dataset.action === 'edit-curves' && !this.locked) {
         this.popup?.remove();
         this.editCurveDrawingId = this.editCurveDrawingId === button.dataset.id ? null : button.dataset.id;
         this.updateData(); this.renderManager(); this.manager.close();
@@ -248,7 +261,7 @@ export class PolygonDrawControl {
   openManager() { this.renderManager(); this.manager.showModal(); }
   renderManager() {
     const hiddenCount = this.drawings.filter(item => !item.visible).length;
-    const items = this.drawings.map(item => `<li><form data-rename="${escapeHtml(item.id)}"><label>Polygon name<input name="name" value="${escapeHtml(item.name)}" aria-label="Polygon name"></label><small>${item.vertices.length} segments · ${item.visible ? 'Shown' : 'Hidden'}</small><button type="submit">Rename</button></form>${drawingCurves(item).length || this.editCurveDrawingId === item.id ? `<button type="button" data-action="edit-curves" data-id="${escapeHtml(item.id)}">${this.editCurveDrawingId === item.id ? 'Done editing curves' : 'Edit curve vertices'}</button>` : ''}<button type="button" data-action="visibility" data-id="${escapeHtml(item.id)}" aria-pressed="${item.visible}" title="${item.visible ? 'Hide polygon' : 'Show polygon'}">${item.visible ? 'Hide' : 'Show'}</button><button type="button" data-action="delete" data-id="${escapeHtml(item.id)}" data-name="${escapeHtml(item.name)}">Delete</button></li>`).join('');
+    const items = this.drawings.map(item => `<li><form data-rename="${escapeHtml(item.id)}"><label>Polygon name<input name="name" value="${escapeHtml(item.name)}" aria-label="Polygon name"></label><small>${item.vertices.length} segments · ${item.visible ? 'Shown' : 'Hidden'}</small><button type="submit">Rename</button></form>${drawingCurves(item).length || this.editCurveDrawingId === item.id ? `<button type="button" data-action="edit-curves" data-id="${escapeHtml(item.id)}" ${this.locked ? 'disabled title="Unlock saved polygons to edit curves"' : ''}>${this.editCurveDrawingId === item.id ? 'Done editing curves' : 'Edit curve vertices'}</button>` : ''}<button type="button" data-action="visibility" data-id="${escapeHtml(item.id)}" aria-pressed="${item.visible}" title="${item.visible ? 'Hide polygon' : 'Show polygon'}">${item.visible ? 'Hide' : 'Show'}</button><button type="button" data-action="delete" data-id="${escapeHtml(item.id)}" data-name="${escapeHtml(item.name)}">Delete</button></li>`).join('');
     const visibilityControls = this.drawings.length ? `<div class="polygon-visibility-actions"><button type="button" data-action="visibility-all" data-visible="true" ${hiddenCount ? '' : 'disabled'}>Show all</button><button type="button" data-action="visibility-all" data-visible="false" ${hiddenCount < this.drawings.length ? '' : 'disabled'}>Hide all</button></div>` : '';
     const missingDefaults = missingDefaultDrawings(this.drawings).length;
     this.manager.innerHTML = `<button class="dialog-close" type="button" data-action="close" aria-label="Close saved polygons">×</button><h2>Saved polygons</h2><p class="meta">Castle Oaks road-aligned survey drafts are included with the app. These are not verified legal boundaries; a 1.41-ft C12 closure gap remains flagged. Parcel 7’s omitted northern corner has been corrected. Edits, visibility and deletions stay on this device.</p><div class="polygon-visibility-actions"><button type="button" data-action="zoom-drawings" ${this.drawings.some(item => item.visible) ? '' : 'disabled'}>Zoom to shown drawings</button><button type="button" data-action="restore-defaults" ${missingDefaults ? '' : 'disabled'}>Restore missing defaults${missingDefaults ? ` (${missingDefaults})` : ''}</button></div><p>Click a straight call to edit that edge; click a curve label for its recorded radius and arc length. Intermediate curve vertices are hidden until editing. Editing a chord changes the shape, not the original survey arc.</p><div class="polygon-display-options"><label><input type="checkbox" data-measurements checked> Show measurements</label><button type="button" data-action="reset-display">Reset display to defaults</button></div>${visibilityControls}${items ? `<ul class="saved-polygon-drawings">${items}</ul>` : '<p class="meta">No saved polygons yet.</p>'}`;
@@ -267,7 +280,7 @@ export class PolygonDrawControl {
     this.updateData();
   }
   openEdgePopup(feature) {
-    if (this.active || !feature) return;
+    if (this.active || this.locked || !feature) return;
     if (feature.properties.curveLabel) {
       this.popup?.remove();
       const content = document.createElement('div');
@@ -312,6 +325,7 @@ export class PolygonDrawControl {
     this.popup.on('close', () => { this.popup = null; this.clearSelectedEdge(); });
   }
   updateEdge(id, edge, data, content) {
+    if (this.locked) return;
     const call = { ns: data.get('ns'), degrees: Number(data.get('degrees')), minutes: Number(data.get('minutes')), seconds: Number(data.get('seconds')), ew: data.get('ew'), distance: Number(data.get('distance')) };
     if (!validCall(call)) { content.querySelector('.polygon-popup-error').textContent = 'Enter a valid quadrant bearing and distance.'; return; }
     const drawing = this.drawings.find(item => item.id === id); if (!drawing) return;
@@ -322,6 +336,7 @@ export class PolygonDrawControl {
     this.persist(); this.updateData(); this.popup?.remove();
   }
   deleteEdge(id, edge) {
+    if (this.locked) return;
     const drawing = this.drawings.find(item => item.id === id);
     if (!drawing || drawing.vertices.length <= 3) return;
     drawing.vertices.splice((edge + 1) % drawing.vertices.length, 1);
@@ -376,6 +391,12 @@ export class PolygonDrawControl {
     const count = this.draft?.vertices.length || 0;
     this.toggleButton.classList.toggle('active', this.active); this.toggleButton.setAttribute('aria-pressed', String(this.active));
     this.undoButton.hidden = !this.active || !count; this.finishButton.hidden = !this.active; this.finishButton.disabled = count < 3; this.openButton.hidden = false;
+    this.lockButton.hidden = !this.drawings.length;
+    this.lockButton.classList.toggle('active', this.locked);
+    this.lockButton.setAttribute('aria-pressed', String(this.locked));
+    this.lockButton.setAttribute('aria-label', this.locked ? 'Unlock saved polygons' : 'Lock saved polygons');
+    this.lockButton.title = this.locked ? 'Unlock saved polygons to edit their vertices and edges' : 'Lock saved polygons to prevent vertex and edge edits';
+    this.lockButton.textContent = this.locked ? '🔒' : '🔓';
     const message = this.active ? `Click vertices (${count} placed).` : '';
     this.output.hidden = !message; this.output.textContent = message;
   }
