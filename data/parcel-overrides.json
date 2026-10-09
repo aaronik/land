@@ -1173,6 +1173,14 @@
     "confidence": "manually verified",
     "notes": "shape / size"
   },
+  "20261183": {
+    "apns": [
+      "036-400-110"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "location / address"
+  },
   "20261209": {
     "apns": [
       "057-811-150"
