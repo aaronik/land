@@ -15,7 +15,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -40,7 +40,7 @@
       "parcelMatchSource": "Siskiyou Association of Realtors listing tax/property ID, verified in county parcel GIS",
       "parcelMatchConfidence": "verified; explicit MLS tax ID and exact acreage match",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -65,7 +65,7 @@
       "parcelMatchSource": "evidence-backed APN research (e001, e002)",
       "parcelMatchConfidence": "high; evidence reviewed",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -90,7 +90,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T18:16:11.483Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -115,7 +115,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T18:16:11.483Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -140,7 +140,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T18:16:11.483Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -165,7 +165,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -208,7 +208,7 @@
       "parcelMatchSource": "verified assessor-map-to-gis: https://primecountry.com/property/20251159/, https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20251159/org/017.jpg?width=1600, https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?f=pjson&where=APN%3D%27107-350-300%27&outFields=APN%2CAcres&returnGeometry=true&outSR=4326",
       "parcelMatchConfidence": "high; visual/explicit evidence reviewed",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -259,7 +259,7 @@
       "parcelMatchSource": "persisted MLS linkage: county address point",
       "parcelMatchConfidence": "programmatic",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -284,7 +284,7 @@
       "parcelMatchSource": "evidence-backed APN research (e001, e002)",
       "parcelMatchConfidence": "high; evidence reviewed",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -309,7 +309,7 @@
       "parcelMatchSource": "persisted MLS linkage: county address point",
       "parcelMatchConfidence": "programmatic",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -352,7 +352,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -377,7 +377,7 @@
       "parcelMatchSource": "evidence-backed APN research (e001, e002)",
       "parcelMatchConfidence": "high; evidence reviewed",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -438,7 +438,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -463,7 +463,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -488,7 +488,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -513,7 +513,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -538,7 +538,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -563,7 +563,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -588,7 +588,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -613,7 +613,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -638,7 +638,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -663,7 +663,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -688,7 +688,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -713,7 +713,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -738,7 +738,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -763,7 +763,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -788,7 +788,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -813,7 +813,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -838,7 +838,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -863,7 +863,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -888,7 +888,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -913,7 +913,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -938,7 +938,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -963,7 +963,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -988,7 +988,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1013,7 +1013,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1038,7 +1038,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1063,7 +1063,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1088,7 +1088,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1113,7 +1113,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1138,7 +1138,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1163,7 +1163,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1188,7 +1188,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1213,7 +1213,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1238,7 +1238,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1263,7 +1263,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1288,7 +1288,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1313,7 +1313,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1338,7 +1338,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1363,7 +1363,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1388,7 +1388,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1413,7 +1413,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1438,7 +1438,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1463,7 +1463,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1488,7 +1488,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1513,7 +1513,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1538,7 +1538,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1563,7 +1563,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1588,7 +1588,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1613,7 +1613,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1638,7 +1638,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1663,7 +1663,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1688,7 +1688,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1713,7 +1713,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1738,7 +1738,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1763,7 +1763,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1788,7 +1788,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1813,7 +1813,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1838,7 +1838,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1863,7 +1863,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1888,7 +1888,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1913,7 +1913,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1938,7 +1938,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1963,7 +1963,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -1988,7 +1988,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -2013,7 +2013,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -2038,7 +2038,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -2063,7 +2063,7 @@
       "parcelMatchSource": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
       "parcelMatchConfidence": "manually verified by lot number, parcel topology, and acreage",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -2088,7 +2088,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2113,7 +2113,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2138,7 +2138,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2163,7 +2163,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2188,7 +2188,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2213,7 +2213,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -2238,7 +2238,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2263,7 +2263,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2288,7 +2288,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-18T17:07:38.722Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2313,7 +2313,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-23T12:26:28.744Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -2338,7 +2338,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-23T12:26:28.744Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2363,7 +2363,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-23T12:26:28.744Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2388,7 +2388,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-23T12:26:28.744Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2413,7 +2413,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-23T12:26:28.744Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2438,7 +2438,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-29T16:01:19.426Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2463,7 +2463,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-29T16:01:19.426Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Acreage",
@@ -2488,7 +2488,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-08-29T16:01:19.426Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Building/Land",
@@ -2513,7 +2513,7 @@
       "parcelMatchSource": "manual override: user-verified listing APN",
       "parcelMatchConfidence": "manually verified",
       "firstSeenAt": "2026-09-12T22:13:28.077Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z",
       "disappearanceDateSource": "retained research record",
       "status": "For Sale",
       "propertySubType": "Unimproved Land",
@@ -2624,7 +2624,7 @@
       "mlsNumber": "20261126",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261125:023-790-030": {
       "APN": "023-790-030",
@@ -2648,7 +2648,7 @@
       "mlsNumber": "20261125",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261124:058-141-160": {
       "APN": "058-141-160",
@@ -2672,7 +2672,7 @@
       "mlsNumber": "20261124",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261123:019-480-231": {
       "APN": "019-480-231",
@@ -2696,7 +2696,7 @@
       "mlsNumber": "20261123",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20240148:016-390-170": {
       "APN": "016-390-170",
@@ -2720,7 +2720,7 @@
       "mlsNumber": "20240148",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261122:039-290-090": {
       "APN": "039-290-090",
@@ -2744,7 +2744,7 @@
       "mlsNumber": "20261122",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261121:036-050-100": {
       "APN": "036-050-100",
@@ -2768,7 +2768,7 @@
       "mlsNumber": "20261121",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261117:062-091-190": {
       "APN": "062-091-190",
@@ -2792,7 +2792,7 @@
       "mlsNumber": "20261117",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261115:049-204-010": {
       "APN": "049-204-010",
@@ -2816,7 +2816,7 @@
       "mlsNumber": "20261115",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261108:057-691-110": {
       "APN": "057-691-110",
@@ -2840,7 +2840,7 @@
       "mlsNumber": "20261108",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26195140:059-273-150": {
       "APN": "059-273-150",
@@ -2889,7 +2889,7 @@
       "mlsNumber": "20261103",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26195047:021-271-520": {
       "APN": "021-271-520",
@@ -2963,7 +2963,7 @@
       "mlsNumber": "20261100",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261099:056-061-240": {
       "APN": "056-061-240",
@@ -2987,7 +2987,7 @@
       "mlsNumber": "20261099",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261095:036-350-260": {
       "APN": "036-350-260",
@@ -3086,7 +3086,7 @@
       "mlsNumber": "20261088",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261086:059-172-040": {
       "APN": "059-172-040",
@@ -3110,7 +3110,7 @@
       "mlsNumber": "20261086",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26190084:106-430-150": {
       "APN": "106-430-150",
@@ -3159,7 +3159,7 @@
       "mlsNumber": "20261084",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261083:100-631-170": {
       "APN": "100-631-170",
@@ -3183,7 +3183,7 @@
       "mlsNumber": "20261083",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261082:057-740-050": {
       "APN": "057-740-050",
@@ -3207,7 +3207,7 @@
       "mlsNumber": "20261082",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261078:108-240-300": {
       "APN": "108-240-300",
@@ -3231,7 +3231,7 @@
       "mlsNumber": "20261078",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "OC26188693:024-550-150": {
       "APN": "024-550-150",
@@ -3280,7 +3280,7 @@
       "mlsNumber": "20261076",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261075:036-270-060": {
       "APN": "036-270-060",
@@ -3304,7 +3304,7 @@
       "mlsNumber": "20261075",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261074:053-396-140": {
       "APN": "053-396-140",
@@ -3328,7 +3328,7 @@
       "mlsNumber": "20261074",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261073:054-132-050": {
       "APN": "054-132-050",
@@ -3352,7 +3352,7 @@
       "mlsNumber": "20261073",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260143:006-420-160": {
       "APN": "006-420-160",
@@ -3376,7 +3376,7 @@
       "mlsNumber": "20260143",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261071:021-262-060": {
       "APN": "021-262-060",
@@ -3400,7 +3400,7 @@
       "mlsNumber": "20261071",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261070:057-571-300": {
       "APN": "057-571-300",
@@ -3424,7 +3424,8 @@
       "mlsNumber": "20261070",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "disappearedAt": "2026-10-09T17:21:26.792Z"
     },
     "20261069:036-320-260": {
       "APN": "036-320-260",
@@ -3448,7 +3449,7 @@
       "mlsNumber": "20261069",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261067:039-240-130": {
       "APN": "039-240-130",
@@ -3472,7 +3473,7 @@
       "mlsNumber": "20261067",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261066:104-060-040": {
       "APN": "104-060-040",
@@ -3496,7 +3497,7 @@
       "mlsNumber": "20261066",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261063:013-410-230": {
       "APN": "013-410-230",
@@ -3520,7 +3521,7 @@
       "mlsNumber": "20261063",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261062:107-210-150": {
       "APN": "107-210-150",
@@ -3569,7 +3570,7 @@
       "mlsNumber": "20261060",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260971:004-420-031": {
       "APN": "004-420-031",
@@ -3593,7 +3594,7 @@
       "mlsNumber": "20260971",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250869:058-191-070": {
       "APN": "058-191-070",
@@ -3617,7 +3618,7 @@
       "mlsNumber": "20250869",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "26875859:040-240-200": {
       "APN": "040-240-200",
@@ -3666,7 +3667,7 @@
       "mlsNumber": "20260530",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261054:058-013-100": {
       "APN": "058-013-100",
@@ -3690,7 +3691,7 @@
       "mlsNumber": "20261054",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261053:056-021-200": {
       "APN": "056-021-200",
@@ -3714,7 +3715,7 @@
       "mlsNumber": "20261053",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261051:107-340-040": {
       "APN": "107-340-040",
@@ -3738,7 +3739,7 @@
       "mlsNumber": "20261051",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261052:021-170-370": {
       "APN": "021-170-370",
@@ -3762,7 +3763,7 @@
       "mlsNumber": "20261052",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261045:057-512-040": {
       "APN": "057-512-040",
@@ -3786,7 +3787,7 @@
       "mlsNumber": "20261045",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260707:023-300-530": {
       "APN": "023-300-530",
@@ -3810,7 +3811,7 @@
       "mlsNumber": "20260707",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260939:107-250-150": {
       "APN": "107-250-150",
@@ -3834,7 +3835,8 @@
       "mlsNumber": "20260939",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "disappearedAt": "2026-10-09T17:21:26.792Z"
     },
     "20261034:062-202-040": {
       "APN": "062-202-040",
@@ -3858,7 +3860,7 @@
       "mlsNumber": "20261034",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261030:051-222-070": {
       "APN": "051-222-070",
@@ -3882,7 +3884,7 @@
       "mlsNumber": "20261030",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261029:038-380-110": {
       "APN": "038-380-110",
@@ -3906,7 +3908,7 @@
       "mlsNumber": "20261029",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261026:106-290-480": {
       "APN": "106-290-480",
@@ -3930,7 +3932,7 @@
       "mlsNumber": "20261026",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260961:059-221-020": {
       "APN": "059-221-020",
@@ -3954,7 +3956,7 @@
       "mlsNumber": "20260961",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261025:004-030-070": {
       "APN": "004-030-070",
@@ -3978,7 +3980,7 @@
       "mlsNumber": "20261025",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260749:024-320-430": {
       "APN": "024-320-430",
@@ -4002,7 +4004,7 @@
       "mlsNumber": "20260749",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "OC26176689:052-223-070": {
       "APN": "052-223-070",
@@ -4051,7 +4053,7 @@
       "mlsNumber": "20260901",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261020:107-070-300": {
       "APN": "107-070-300",
@@ -4075,7 +4077,7 @@
       "mlsNumber": "20261020",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261014:054-132-070": {
       "APN": "054-132-070",
@@ -4099,7 +4101,7 @@
       "mlsNumber": "20261014",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261019:021-280-320": {
       "APN": "021-280-320",
@@ -4123,7 +4125,7 @@
       "mlsNumber": "20261019",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261016:006-110-280": {
       "APN": "006-110-280",
@@ -4147,7 +4149,7 @@
       "mlsNumber": "20261016",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261011:061-361-010": {
       "APN": "061-361-010",
@@ -4171,7 +4173,7 @@
       "mlsNumber": "20261011",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261010:057-771-280": {
       "APN": "057-771-280",
@@ -4195,7 +4197,7 @@
       "mlsNumber": "20261010",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "26869661:040-420-080": {
       "APN": "040-420-080",
@@ -4269,7 +4271,7 @@
       "mlsNumber": "20261005",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260353:107-200-310": {
       "APN": "107-200-310",
@@ -4318,7 +4320,7 @@
       "mlsNumber": "20261003",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261000:106-400-130": {
       "APN": "106-400-130",
@@ -4342,7 +4344,7 @@
       "mlsNumber": "20261000",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260999:006-140-150": {
       "APN": "006-140-150",
@@ -4366,7 +4368,7 @@
       "mlsNumber": "20260999",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260131:013-380-030": {
       "APN": "013-380-030",
@@ -4390,7 +4392,7 @@
       "mlsNumber": "20260131",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260997:053-662-400": {
       "APN": "053-662-400",
@@ -4414,7 +4416,7 @@
       "mlsNumber": "20260997",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260996:021-121-130": {
       "APN": "021-121-130",
@@ -4438,7 +4440,7 @@
       "mlsNumber": "20260996",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260995:057-511-510": {
       "APN": "057-511-510",
@@ -4462,7 +4464,7 @@
       "mlsNumber": "20260995",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "OR26169240:040-290-090": {
       "APN": "040-290-090",
@@ -4536,7 +4538,7 @@
       "mlsNumber": "20260992",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260987:053-581-140": {
       "APN": "053-581-140",
@@ -4560,7 +4562,7 @@
       "mlsNumber": "20260987",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26163769:107-330-250": {
       "APN": "107-330-250",
@@ -4609,7 +4611,7 @@
       "mlsNumber": "20260985",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260983:021-252-410": {
       "APN": "021-252-410",
@@ -4633,7 +4635,7 @@
       "mlsNumber": "20260983",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260982:021-232-120": {
       "APN": "021-232-120",
@@ -4657,7 +4659,7 @@
       "mlsNumber": "20260982",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260981:021-262-370": {
       "APN": "021-262-370",
@@ -4681,13 +4683,13 @@
       "mlsNumber": "20260981",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260980:052-062-080": {
       "APN": "052-062-080",
       "kind": "private",
       "title": "460 E Webb E, Montague, CA 96064",
-      "price": 245000,
+      "price": 210000,
       "acres": 0.52,
       "status": "For Sale",
       "listingDate": "2026-07-28",
@@ -4705,7 +4707,7 @@
       "mlsNumber": "20260980",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260979:021-770-140": {
       "APN": "021-770-140",
@@ -4729,7 +4731,7 @@
       "mlsNumber": "20260979",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260066:036-520-070": {
       "APN": "036-520-070",
@@ -4753,7 +4755,7 @@
       "mlsNumber": "20260066",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260969:049-241-050": {
       "APN": "049-241-050",
@@ -4777,7 +4779,7 @@
       "mlsNumber": "20260969",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260965:061-121-030": {
       "APN": "061-121-030",
@@ -4801,7 +4803,7 @@
       "mlsNumber": "20260965",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260962:021-050-050": {
       "APN": "021-050-050",
@@ -4825,7 +4827,7 @@
       "mlsNumber": "20260962",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260958:021-570-700": {
       "APN": "021-570-700",
@@ -4849,7 +4851,7 @@
       "mlsNumber": "20260958",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260946:021-221-620": {
       "APN": "021-221-620",
@@ -4873,7 +4875,7 @@
       "mlsNumber": "20260946",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260945:053-103-010": {
       "APN": "053-103-010",
@@ -4897,7 +4899,7 @@
       "mlsNumber": "20260945",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260944:008-380-480": {
       "APN": "008-380-480",
@@ -4921,7 +4923,7 @@
       "mlsNumber": "20260944",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251058:040-400-170": {
       "APN": "040-400-170",
@@ -4945,7 +4947,7 @@
       "mlsNumber": "20251058",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260940:024-470-090": {
       "APN": "024-470-090",
@@ -4969,7 +4971,7 @@
       "mlsNumber": "20260940",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260934:013-490-010": {
       "APN": "013-490-010",
@@ -4993,7 +4995,7 @@
       "mlsNumber": "20260934",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260932:055-151-010": {
       "APN": "055-151-010",
@@ -5017,7 +5019,7 @@
       "mlsNumber": "20260932",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26158692:040-090-040": {
       "APN": "040-090-040",
@@ -5066,7 +5068,7 @@
       "mlsNumber": "20260930",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260926:023-790-200": {
       "APN": "023-790-200",
@@ -5090,7 +5092,7 @@
       "mlsNumber": "20260926",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260923:023-201-280": {
       "APN": "023-201-280",
@@ -5114,7 +5116,7 @@
       "mlsNumber": "20260923",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260920:021-071-200": {
       "APN": "021-071-200",
@@ -5163,7 +5165,7 @@
       "mlsNumber": "20260918",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260914:053-092-020": {
       "APN": "053-092-020",
@@ -5187,7 +5189,7 @@
       "mlsNumber": "20260914",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260913:015-540-540": {
       "APN": "015-540-540",
@@ -5236,7 +5238,7 @@
       "mlsNumber": "20260911",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260908:015-410-320": {
       "APN": "015-410-320",
@@ -5260,7 +5262,7 @@
       "mlsNumber": "20260908",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260906:004-050-170": {
       "APN": "004-050-170",
@@ -5284,7 +5286,7 @@
       "mlsNumber": "20260906",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260904:015-540-340": {
       "APN": "015-540-340",
@@ -5308,7 +5310,7 @@
       "mlsNumber": "20260904",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260903:107-470-480": {
       "APN": "107-470-480",
@@ -5332,7 +5334,7 @@
       "mlsNumber": "20260903",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260902:060-481-090": {
       "APN": "060-481-090",
@@ -5356,7 +5358,7 @@
       "mlsNumber": "20260902",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260562:057-463-080": {
       "APN": "057-463-080",
@@ -5380,7 +5382,7 @@
       "mlsNumber": "20260562",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260900:059-030-010": {
       "APN": "059-030-010",
@@ -5404,7 +5406,7 @@
       "mlsNumber": "20260900",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260897:057-462-020": {
       "APN": "057-462-020",
@@ -5428,7 +5430,7 @@
       "mlsNumber": "20260897",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260487:053-291-080": {
       "APN": "053-291-080",
@@ -5452,7 +5454,7 @@
       "mlsNumber": "20260487",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260889:041-230-190": {
       "APN": "041-230-190",
@@ -5476,7 +5478,7 @@
       "mlsNumber": "20260889",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260885:020-422-060": {
       "APN": "020-422-060",
@@ -5525,7 +5527,7 @@
       "mlsNumber": "20260884",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260880:007-590-031": {
       "APN": "007-590-031",
@@ -5549,7 +5551,7 @@
       "mlsNumber": "20260880",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260874:053-236-030": {
       "APN": "053-236-030",
@@ -5573,7 +5575,7 @@
       "mlsNumber": "20260874",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251085:023-511-430": {
       "APN": "023-511-430",
@@ -5597,7 +5599,7 @@
       "mlsNumber": "20251085",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260866:107-010-140": {
       "APN": "107-010-140",
@@ -5621,7 +5623,7 @@
       "mlsNumber": "20260866",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260863:051-221-010": {
       "APN": "051-221-010",
@@ -5645,7 +5647,7 @@
       "mlsNumber": "20260863",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260859:060-511-340": {
       "APN": "060-511-340",
@@ -5669,7 +5671,7 @@
       "mlsNumber": "20260859",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260855:062-071-320": {
       "APN": "062-071-320",
@@ -5693,7 +5695,7 @@
       "mlsNumber": "20260855",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260786:053-701-030": {
       "APN": "053-701-030",
@@ -5717,7 +5719,7 @@
       "mlsNumber": "20260786",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26138585:109-160-190": {
       "APN": "109-160-190",
@@ -5766,7 +5768,7 @@
       "mlsNumber": "20260853",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260852:023-180-350": {
       "APN": "023-180-350",
@@ -5790,7 +5792,7 @@
       "mlsNumber": "20260852",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260851:028-510-330": {
       "APN": "028-510-330",
@@ -5814,7 +5816,7 @@
       "mlsNumber": "20260851",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250745:020-071-550": {
       "APN": "020-071-550",
@@ -5838,7 +5840,7 @@
       "mlsNumber": "20250745",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260849:023-060-230": {
       "APN": "023-060-230",
@@ -5862,7 +5864,7 @@
       "mlsNumber": "20260849",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260415:014-150-080": {
       "APN": "014-150-080",
@@ -5911,7 +5913,7 @@
       "mlsNumber": "20260841",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260840:036-480-010": {
       "APN": "036-480-010",
@@ -5935,7 +5937,7 @@
       "mlsNumber": "20260840",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260838:107-260-260": {
       "APN": "107-260-260",
@@ -5959,7 +5961,7 @@
       "mlsNumber": "20260838",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260554:102-260-260": {
       "APN": "102-260-260",
@@ -5983,7 +5985,7 @@
       "mlsNumber": "20260554",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260833:106-420-240": {
       "APN": "106-420-240",
@@ -6032,7 +6034,7 @@
       "mlsNumber": "20251317",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260828:013-030-460": {
       "APN": "013-030-460",
@@ -6056,7 +6058,7 @@
       "mlsNumber": "20260828",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260825:049-272-050": {
       "APN": "049-272-050",
@@ -6080,7 +6082,7 @@
       "mlsNumber": "20260825",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260823:057-173-020": {
       "APN": "057-173-020",
@@ -6104,7 +6106,7 @@
       "mlsNumber": "20260823",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260821:106-270-180": {
       "APN": "106-270-180",
@@ -6128,7 +6130,7 @@
       "mlsNumber": "20260821",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260812:057-151-060": {
       "APN": "057-151-060",
@@ -6152,7 +6154,7 @@
       "mlsNumber": "20260812",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260808:014-690-170": {
       "APN": "014-690-170",
@@ -6176,7 +6178,7 @@
       "mlsNumber": "20260808",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "NS26131808:100-221-020": {
       "APN": "100-221-020",
@@ -6225,7 +6227,7 @@
       "mlsNumber": "20260807",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260805:028-450-070": {
       "APN": "028-450-070",
@@ -6249,7 +6251,7 @@
       "mlsNumber": "20260805",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260804:024-602-150": {
       "APN": "024-602-150",
@@ -6273,7 +6275,7 @@
       "mlsNumber": "20260804",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260797:024-121-630": {
       "APN": "024-121-630",
@@ -6297,7 +6299,7 @@
       "mlsNumber": "20260797",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250559:027-350-060": {
       "APN": "027-350-060",
@@ -6321,7 +6323,7 @@
       "mlsNumber": "20250559",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260791:040-290-090": {
       "APN": "040-290-090",
@@ -6370,7 +6372,7 @@
       "mlsNumber": "20251045",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260775:060-441-180": {
       "APN": "060-441-180",
@@ -6394,7 +6396,7 @@
       "mlsNumber": "20260775",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251304:054-132-030": {
       "APN": "054-132-030",
@@ -6418,7 +6420,7 @@
       "mlsNumber": "20251304",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260771:060-111-100": {
       "APN": "060-111-100",
@@ -6442,7 +6444,7 @@
       "mlsNumber": "20260771",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260767:057-441-050": {
       "APN": "057-441-050",
@@ -6466,7 +6468,7 @@
       "mlsNumber": "20260767",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260766:023-700-080": {
       "APN": "023-700-080",
@@ -6515,7 +6517,7 @@
       "mlsNumber": "20260765",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260764:061-141-060": {
       "APN": "061-141-060",
@@ -6539,7 +6541,7 @@
       "mlsNumber": "20260764",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251190:006-520-010": {
       "APN": "006-520-010",
@@ -6563,7 +6565,7 @@
       "mlsNumber": "20251190",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260755:003-330-110": {
       "APN": "003-330-110",
@@ -6587,7 +6589,8 @@
       "mlsNumber": "20260755",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "disappearedAt": "2026-10-09T17:21:26.792Z"
     },
     "SR26123183:008-570-250": {
       "APN": "008-570-250",
@@ -6636,7 +6639,7 @@
       "mlsNumber": "20260753",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260553:049-203-120": {
       "APN": "049-203-120",
@@ -6660,7 +6663,7 @@
       "mlsNumber": "20260553",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260751:014-690-180": {
       "APN": "014-690-180",
@@ -6684,7 +6687,7 @@
       "mlsNumber": "20260751",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260501:053-072-240": {
       "APN": "053-072-240",
@@ -6733,7 +6736,7 @@
       "mlsNumber": "20221407",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260736:006-410-440": {
       "APN": "006-410-440",
@@ -6757,7 +6760,7 @@
       "mlsNumber": "20260736",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20230903:013-210-790": {
       "APN": "013-210-790",
@@ -6781,7 +6784,7 @@
       "mlsNumber": "20230903",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260710:036-360-170": {
       "APN": "036-360-170",
@@ -6805,7 +6808,7 @@
       "mlsNumber": "20260710",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260708:016-531-400": {
       "APN": "016-531-400",
@@ -6829,7 +6832,7 @@
       "mlsNumber": "20260708",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260699:052-112-050": {
       "APN": "052-112-050",
@@ -6853,7 +6856,7 @@
       "mlsNumber": "20260699",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260698:023-201-250": {
       "APN": "023-201-250",
@@ -6877,7 +6880,7 @@
       "mlsNumber": "20260698",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260696:108-210-390": {
       "APN": "108-210-390",
@@ -6901,7 +6904,7 @@
       "mlsNumber": "20260696",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260695:056-112-210": {
       "APN": "056-112-210",
@@ -6950,7 +6953,7 @@
       "mlsNumber": "20260694",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260692:061-181-010": {
       "APN": "061-181-010",
@@ -6974,7 +6977,7 @@
       "mlsNumber": "20260692",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260691:021-590-220": {
       "APN": "021-590-220",
@@ -6998,7 +7001,7 @@
       "mlsNumber": "20260691",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260688:022-110-120": {
       "APN": "022-110-120",
@@ -7022,7 +7025,7 @@
       "mlsNumber": "20260688",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260673:021-263-120": {
       "APN": "021-263-120",
@@ -7046,7 +7049,7 @@
       "mlsNumber": "20260673",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26106061:054-122-070": {
       "APN": "054-122-070",
@@ -7120,7 +7123,7 @@
       "mlsNumber": "20260174",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20241047:036-050-100": {
       "APN": "036-050-100",
@@ -7144,7 +7147,7 @@
       "mlsNumber": "20241047",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20240671:057-072-100": {
       "APN": "057-072-100",
@@ -7168,7 +7171,7 @@
       "mlsNumber": "20240671",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250623:003-610-060": {
       "APN": "003-610-060",
@@ -7217,7 +7220,7 @@
       "mlsNumber": "20260663",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260662:061-361-040": {
       "APN": "061-361-040",
@@ -7241,7 +7244,7 @@
       "mlsNumber": "20260662",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260645:103-230-120": {
       "APN": "103-230-120",
@@ -7265,7 +7268,7 @@
       "mlsNumber": "20260645",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260644:108-270-430": {
       "APN": "108-270-430",
@@ -7289,7 +7292,7 @@
       "mlsNumber": "20260644",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26110993:015-591-340": {
       "APN": "015-591-340",
@@ -7338,7 +7341,7 @@
       "mlsNumber": "20260631",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260617:049-342-130": {
       "APN": "049-342-130",
@@ -7362,7 +7365,7 @@
       "mlsNumber": "20260617",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260616:003-620-150": {
       "APN": "003-620-150",
@@ -7436,7 +7439,7 @@
       "mlsNumber": "20260611",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260609:006-250-210": {
       "APN": "006-250-210",
@@ -7460,7 +7463,7 @@
       "mlsNumber": "20260609",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260606:008-440-360": {
       "APN": "008-440-360",
@@ -7484,7 +7487,7 @@
       "mlsNumber": "20260606",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260600:049-342-110": {
       "APN": "049-342-110",
@@ -7508,7 +7511,7 @@
       "mlsNumber": "20260600",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260599:049-342-090": {
       "APN": "049-342-090",
@@ -7532,7 +7535,7 @@
       "mlsNumber": "20260599",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260598:049-342-070": {
       "APN": "049-342-070",
@@ -7556,7 +7559,7 @@
       "mlsNumber": "20260598",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260593:003-071-500": {
       "APN": "003-071-500",
@@ -7580,7 +7583,7 @@
       "mlsNumber": "20260593",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260592:024-602-110": {
       "APN": "024-602-110",
@@ -7604,7 +7607,7 @@
       "mlsNumber": "20260592",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260590:024-382-490": {
       "APN": "024-382-490",
@@ -7628,7 +7631,7 @@
       "mlsNumber": "20260590",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260589:036-090-370": {
       "APN": "036-090-370",
@@ -7677,7 +7680,7 @@
       "mlsNumber": "20260581",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260580:049-342-010": {
       "APN": "049-342-010",
@@ -7701,7 +7704,7 @@
       "mlsNumber": "20260580",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260579:049-342-020": {
       "APN": "049-342-020",
@@ -7725,7 +7728,7 @@
       "mlsNumber": "20260579",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260571:057-594-460": {
       "APN": "057-594-460",
@@ -7749,7 +7752,8 @@
       "mlsNumber": "20260571",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "disappearedAt": "2026-10-09T17:21:26.792Z"
     },
     "20260571:057-594-450": {
       "APN": "057-594-450",
@@ -7773,7 +7777,8 @@
       "mlsNumber": "20260571",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "disappearedAt": "2026-10-09T17:21:26.792Z"
     },
     "20260571:057-594-440": {
       "APN": "057-594-440",
@@ -7797,7 +7802,8 @@
       "mlsNumber": "20260571",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "disappearedAt": "2026-10-09T17:21:26.792Z"
     },
     "20260566:054-081-070": {
       "APN": "054-081-070",
@@ -7821,7 +7827,7 @@
       "mlsNumber": "20260566",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260565:024-450-570": {
       "APN": "024-450-570",
@@ -7845,7 +7851,7 @@
       "mlsNumber": "20260565",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260550:008-570-360": {
       "APN": "008-570-360",
@@ -7869,7 +7875,7 @@
       "mlsNumber": "20260550",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260548:053-341-110": {
       "APN": "053-341-110",
@@ -7893,7 +7899,7 @@
       "mlsNumber": "20260548",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251216:060-153-010": {
       "APN": "060-153-010",
@@ -7917,7 +7923,7 @@
       "mlsNumber": "20251216",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260544:106-350-360": {
       "APN": "106-350-360",
@@ -7941,7 +7947,7 @@
       "mlsNumber": "20260544",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260541:057-691-370": {
       "APN": "057-691-370",
@@ -7990,7 +7996,7 @@
       "mlsNumber": "20260539",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260538:049-011-170": {
       "APN": "049-011-170",
@@ -8014,7 +8020,7 @@
       "mlsNumber": "20260538",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260535:019-680-400": {
       "APN": "019-680-400",
@@ -8038,7 +8044,7 @@
       "mlsNumber": "20260535",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260409:024-420-330": {
       "APN": "024-420-330",
@@ -8062,7 +8068,7 @@
       "mlsNumber": "20260409",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260528:037-100-460": {
       "APN": "037-100-460",
@@ -8086,7 +8092,7 @@
       "mlsNumber": "20260528",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250424:024-350-190": {
       "APN": "024-350-190",
@@ -8110,7 +8116,7 @@
       "mlsNumber": "20250424",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260517:060-302-040": {
       "APN": "060-302-040",
@@ -8159,7 +8165,7 @@
       "mlsNumber": "20260508",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260506:037-350-270": {
       "APN": "037-350-270",
@@ -8183,7 +8189,7 @@
       "mlsNumber": "20260506",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260498:022-590-340": {
       "APN": "022-590-340",
@@ -8207,7 +8213,7 @@
       "mlsNumber": "20260498",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260493:023-140-250": {
       "APN": "023-140-250",
@@ -8231,7 +8237,7 @@
       "mlsNumber": "20260493",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260490:058-213-110": {
       "APN": "058-213-110",
@@ -8255,7 +8261,7 @@
       "mlsNumber": "20260490",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26090861:058-213-110": {
       "APN": "058-213-110",
@@ -8304,7 +8310,7 @@
       "mlsNumber": "20260483",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260485:053-591-550": {
       "APN": "053-591-550",
@@ -8328,7 +8334,7 @@
       "mlsNumber": "20260485",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260484:008-560-200": {
       "APN": "008-560-200",
@@ -8352,7 +8358,7 @@
       "mlsNumber": "20260484",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260480:013-670-120": {
       "APN": "013-670-120",
@@ -8376,7 +8382,7 @@
       "mlsNumber": "20260480",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260478:041-330-110": {
       "APN": "041-330-110",
@@ -8400,7 +8406,7 @@
       "mlsNumber": "20260478",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260477:053-292-090": {
       "APN": "053-292-090",
@@ -8424,7 +8430,7 @@
       "mlsNumber": "20260477",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260002:053-022-040": {
       "APN": "053-022-040",
@@ -8548,7 +8554,7 @@
       "mlsNumber": "20250451",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260461:021-211-200": {
       "APN": "021-211-200",
@@ -8572,7 +8578,7 @@
       "mlsNumber": "20260461",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260165:053-281-040": {
       "APN": "053-281-040",
@@ -8621,7 +8627,7 @@
       "mlsNumber": "20260452",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260439:021-520-500": {
       "APN": "021-520-500",
@@ -8645,7 +8651,7 @@
       "mlsNumber": "20260439",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260431:008-580-090": {
       "APN": "008-580-090",
@@ -8669,7 +8675,7 @@
       "mlsNumber": "20260431",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260429:053-541-500": {
       "APN": "053-541-500",
@@ -8693,7 +8699,7 @@
       "mlsNumber": "20260429",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260420:014-361-240": {
       "APN": "014-361-240",
@@ -8717,7 +8723,7 @@
       "mlsNumber": "20260420",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260416:008-380-460": {
       "APN": "008-380-460",
@@ -8741,7 +8747,7 @@
       "mlsNumber": "20260416",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260405:016-500-100": {
       "APN": "016-500-100",
@@ -8765,7 +8771,7 @@
       "mlsNumber": "20260405",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260401:013-210-540": {
       "APN": "013-210-540",
@@ -8789,7 +8795,7 @@
       "mlsNumber": "20260401",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260400:104-160-130": {
       "APN": "104-160-130",
@@ -8813,7 +8819,7 @@
       "mlsNumber": "20260400",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260398:103-430-030": {
       "APN": "103-430-030",
@@ -8837,7 +8843,7 @@
       "mlsNumber": "20260398",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260396:036-531-061": {
       "APN": "036-531-061",
@@ -8861,7 +8867,7 @@
       "mlsNumber": "20260396",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251144:057-612-050": {
       "APN": "057-612-050",
@@ -8885,7 +8891,7 @@
       "mlsNumber": "20251144",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250336:021-760-280": {
       "APN": "021-760-280",
@@ -8909,7 +8915,7 @@
       "mlsNumber": "20250336",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250335:021-760-270": {
       "APN": "021-760-270",
@@ -8933,7 +8939,7 @@
       "mlsNumber": "20250335",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250334:021-760-260": {
       "APN": "021-760-260",
@@ -8957,7 +8963,7 @@
       "mlsNumber": "20250334",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250333:021-760-230": {
       "APN": "021-760-230",
@@ -8981,7 +8987,7 @@
       "mlsNumber": "20250333",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250332:021-760-200": {
       "APN": "021-760-200",
@@ -9005,7 +9011,7 @@
       "mlsNumber": "20250332",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250330:021-760-110": {
       "APN": "021-760-110",
@@ -9029,7 +9035,7 @@
       "mlsNumber": "20250330",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250329:021-760-050": {
       "APN": "021-760-050",
@@ -9053,7 +9059,7 @@
       "mlsNumber": "20250329",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250328:021-760-030": {
       "APN": "021-760-030",
@@ -9077,7 +9083,7 @@
       "mlsNumber": "20250328",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250327:021-760-020": {
       "APN": "021-760-020",
@@ -9101,7 +9107,7 @@
       "mlsNumber": "20250327",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250322:021-750-270": {
       "APN": "021-750-270",
@@ -9125,7 +9131,7 @@
       "mlsNumber": "20250322",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250321:021-750-260": {
       "APN": "021-750-260",
@@ -9149,7 +9155,7 @@
       "mlsNumber": "20250321",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250320:021-750-090": {
       "APN": "021-750-090",
@@ -9173,7 +9179,7 @@
       "mlsNumber": "20250320",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250319:021-750-030": {
       "APN": "021-750-030",
@@ -9197,7 +9203,7 @@
       "mlsNumber": "20250319",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250318:021-750-250": {
       "APN": "021-750-250",
@@ -9221,7 +9227,7 @@
       "mlsNumber": "20250318",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260384:104-150-150": {
       "APN": "104-150-150",
@@ -9245,7 +9251,7 @@
       "mlsNumber": "20260384",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260376:059-291-100": {
       "APN": "059-291-100",
@@ -9269,7 +9275,7 @@
       "mlsNumber": "20260376",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250510:021-280-250": {
       "APN": "021-280-250",
@@ -9293,7 +9299,7 @@
       "mlsNumber": "20250510",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250510:021-280-330": {
       "APN": "021-280-330",
@@ -9317,7 +9323,7 @@
       "mlsNumber": "20250510",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260375:058-022-080": {
       "APN": "058-022-080",
@@ -9366,7 +9372,7 @@
       "mlsNumber": "20260369",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260367:037-100-310": {
       "APN": "037-100-310",
@@ -9390,7 +9396,7 @@
       "mlsNumber": "20260367",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260354:107-320-140": {
       "APN": "107-320-140",
@@ -9439,7 +9445,7 @@
       "mlsNumber": "20260348",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260344:055-033-050": {
       "APN": "055-033-050",
@@ -9463,7 +9469,7 @@
       "mlsNumber": "20260344",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260340:053-412-130": {
       "APN": "053-412-130",
@@ -9512,7 +9518,7 @@
       "mlsNumber": "20260334",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260330:039-181-050": {
       "APN": "039-181-050",
@@ -9536,7 +9542,7 @@
       "mlsNumber": "20260330",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260320:049-062-290": {
       "APN": "049-062-290",
@@ -9560,7 +9566,7 @@
       "mlsNumber": "20260320",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260314:057-162-040": {
       "APN": "057-162-040",
@@ -9634,7 +9640,7 @@
       "mlsNumber": "20260304",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260303:106-260-180": {
       "APN": "106-260-180",
@@ -9658,7 +9664,7 @@
       "mlsNumber": "20260303",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260289:036-040-210": {
       "APN": "036-040-210",
@@ -9682,7 +9688,7 @@
       "mlsNumber": "20260289",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260283:021-071-040": {
       "APN": "021-071-040",
@@ -9706,7 +9712,7 @@
       "mlsNumber": "20260283",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260281:100-532-090": {
       "APN": "100-532-090",
@@ -9730,7 +9736,7 @@
       "mlsNumber": "20260281",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260273:022-200-280": {
       "APN": "022-200-280",
@@ -9754,7 +9760,7 @@
       "mlsNumber": "20260273",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260268:037-190-330": {
       "APN": "037-190-330",
@@ -9778,7 +9784,7 @@
       "mlsNumber": "20260268",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260265:106-050-230": {
       "APN": "106-050-230",
@@ -9827,7 +9833,7 @@
       "mlsNumber": "20241124",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20241124:036-550-101": {
       "APN": "036-550-101",
@@ -9851,7 +9857,7 @@
       "mlsNumber": "20241124",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20240890:021-242-100": {
       "APN": "021-242-100",
@@ -9875,7 +9881,7 @@
       "mlsNumber": "20240890",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260231:104-310-450": {
       "APN": "104-310-450",
@@ -9899,7 +9905,7 @@
       "mlsNumber": "20260231",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260224:103-150-250": {
       "APN": "103-150-250",
@@ -9923,7 +9929,7 @@
       "mlsNumber": "20260224",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260199:037-400-180": {
       "APN": "037-400-180",
@@ -9947,7 +9953,7 @@
       "mlsNumber": "20260199",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260198:106-080-450": {
       "APN": "106-080-450",
@@ -9971,7 +9977,7 @@
       "mlsNumber": "20260198",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260195:035-071-220": {
       "APN": "035-071-220",
@@ -9995,7 +10001,7 @@
       "mlsNumber": "20260195",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260182:021-520-380": {
       "APN": "021-520-380",
@@ -10019,7 +10025,7 @@
       "mlsNumber": "20260182",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260164:021-630-430": {
       "APN": "021-630-430",
@@ -10043,7 +10049,7 @@
       "mlsNumber": "20260164",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260160:037-200-130": {
       "APN": "037-200-130",
@@ -10067,7 +10073,7 @@
       "mlsNumber": "20260160",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26039272:053-481-290": {
       "APN": "053-481-290",
@@ -10116,7 +10122,7 @@
       "mlsNumber": "20260157",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26039015:062-122-190": {
       "APN": "062-122-190",
@@ -10165,7 +10171,7 @@
       "mlsNumber": "20260146",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250984:039-182-120": {
       "APN": "039-182-120",
@@ -10214,7 +10220,7 @@
       "mlsNumber": "20260097",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260093:039-310-030": {
       "APN": "039-310-030",
@@ -10238,7 +10244,7 @@
       "mlsNumber": "20260093",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260092:039-310-020": {
       "APN": "039-310-020",
@@ -10262,7 +10268,7 @@
       "mlsNumber": "20260092",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "MC26015313:020-170-090": {
       "APN": "020-170-090",
@@ -10311,7 +10317,7 @@
       "mlsNumber": "20260040",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260013:053-591-550": {
       "APN": "053-591-550",
@@ -10335,7 +10341,7 @@
       "mlsNumber": "20260013",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260006:031-020-260": {
       "APN": "031-020-260",
@@ -10359,7 +10365,7 @@
       "mlsNumber": "20260006",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251336:053-501-280": {
       "APN": "053-501-280",
@@ -10383,7 +10389,7 @@
       "mlsNumber": "20251336",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251323:055-161-320": {
       "APN": "055-161-320",
@@ -10407,7 +10413,7 @@
       "mlsNumber": "20251323",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251314:053-750-200": {
       "APN": "053-750-200",
@@ -10431,7 +10437,7 @@
       "mlsNumber": "20251314",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251293:102-270-060": {
       "APN": "102-270-060",
@@ -10455,7 +10461,7 @@
       "mlsNumber": "20251293",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251292:107-090-490": {
       "APN": "107-090-490",
@@ -10479,7 +10485,7 @@
       "mlsNumber": "20251292",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251260:028-020-220": {
       "APN": "028-020-220",
@@ -10503,7 +10509,7 @@
       "mlsNumber": "20251260",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251260:028-020-210": {
       "APN": "028-020-210",
@@ -10527,7 +10533,7 @@
       "mlsNumber": "20251260",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251253:016-030-280": {
       "APN": "016-030-280",
@@ -10576,7 +10582,7 @@
       "mlsNumber": "20251247",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251238:037-380-070": {
       "APN": "037-380-070",
@@ -10600,7 +10606,7 @@
       "mlsNumber": "20251238",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN25251902:056-051-020": {
       "APN": "056-051-020",
@@ -10649,7 +10655,7 @@
       "mlsNumber": "20251206",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN25192728:019-661-260": {
       "APN": "019-661-260",
@@ -10698,7 +10704,7 @@
       "mlsNumber": "20251201",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251198:019-661-260": {
       "APN": "019-661-260",
@@ -10722,7 +10728,7 @@
       "mlsNumber": "20251198",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251147:039-370-040": {
       "APN": "039-370-040",
@@ -10796,7 +10802,7 @@
       "mlsNumber": "20251142",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251138:008-481-020": {
       "APN": "008-481-020",
@@ -10820,7 +10826,7 @@
       "mlsNumber": "20251138",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN25224181:054-081-090": {
       "APN": "054-081-090",
@@ -10869,7 +10875,7 @@
       "mlsNumber": "20251124",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250273:037-370-110": {
       "APN": "037-370-110",
@@ -10918,7 +10924,7 @@
       "mlsNumber": "20251112",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251100:004-450-441": {
       "APN": "004-450-441",
@@ -10942,7 +10948,7 @@
       "mlsNumber": "20251100",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251083:003-650-450": {
       "APN": "003-650-450",
@@ -10966,7 +10972,7 @@
       "mlsNumber": "20251083",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251079:039-170-110": {
       "APN": "039-170-110",
@@ -11040,7 +11046,7 @@
       "mlsNumber": "20251034",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251025:057-203-040": {
       "APN": "057-203-040",
@@ -11064,7 +11070,7 @@
       "mlsNumber": "20251025",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251006:037-400-370": {
       "APN": "037-400-370",
@@ -11088,7 +11094,7 @@
       "mlsNumber": "20251006",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250991:004-450-471": {
       "APN": "004-450-471",
@@ -11112,7 +11118,7 @@
       "mlsNumber": "20250991",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250927:021-760-170": {
       "APN": "021-760-170",
@@ -11136,7 +11142,7 @@
       "mlsNumber": "20250927",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250877:028-520-200": {
       "APN": "028-520-200",
@@ -11210,7 +11216,8 @@
       "mlsNumber": "20250783",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-08T19:23:45.728Z",
+      "disappearedAt": "2026-10-09T17:21:26.792Z"
     },
     "20230695:007-300-181": {
       "APN": "007-300-181",
@@ -11234,7 +11241,7 @@
       "mlsNumber": "20230695",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250768:057-631-070": {
       "APN": "057-631-070",
@@ -11258,7 +11265,7 @@
       "mlsNumber": "20250768",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250617:021-680-010": {
       "APN": "021-680-010",
@@ -11282,7 +11289,7 @@
       "mlsNumber": "20250617",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250484:013-480-210": {
       "APN": "013-480-210",
@@ -11306,7 +11313,7 @@
       "mlsNumber": "20250484",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250471:003-400-780": {
       "APN": "003-400-780",
@@ -11330,7 +11337,7 @@
       "mlsNumber": "20250471",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250405:022-180-290": {
       "APN": "022-180-290",
@@ -11354,7 +11361,7 @@
       "mlsNumber": "20250405",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250125:004-400-361": {
       "APN": "004-400-361",
@@ -11378,7 +11385,7 @@
       "mlsNumber": "20250125",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T04:24:58.848Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "PW24244396:055-021-150": {
       "APN": "055-021-150",
@@ -11427,7 +11434,7 @@
       "mlsNumber": "20260244",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T15:37:58.709Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261128:107-270-350": {
       "APN": "107-270-350",
@@ -11451,7 +11458,7 @@
       "mlsNumber": "20261128",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T16:01:24.940Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20240386:049-322-110": {
       "APN": "049-322-110",
@@ -11475,7 +11482,7 @@
       "mlsNumber": "20240386",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-15T16:01:24.940Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260207:059-301-050": {
       "APN": "059-301-050",
@@ -11695,7 +11702,7 @@
       "mlsNumber": "20261138",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-17T20:49:05.340Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261135:040-460-080": {
       "APN": "040-460-080",
@@ -11719,7 +11726,7 @@
       "mlsNumber": "20261135",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-17T20:49:05.340Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260570:020-030-210": {
       "APN": "020-030-210",
@@ -11768,7 +11775,7 @@
       "mlsNumber": "20261131",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-17T20:49:05.340Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261048:058-102-250": {
       "APN": "058-102-250",
@@ -11792,7 +11799,7 @@
       "mlsNumber": "20261048",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-17T20:49:05.340Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260269:030-380-390": {
       "APN": "030-380-390",
@@ -11816,7 +11823,7 @@
       "mlsNumber": "20260269",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-17T20:49:05.340Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN25121002:060-442-080": {
       "APN": "060-442-080",
@@ -11865,7 +11872,7 @@
       "mlsNumber": "20261150",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-22T16:03:58.724Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261149:057-750-240": {
       "APN": "057-750-240",
@@ -11914,7 +11921,7 @@
       "mlsNumber": "20261146",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-22T16:03:58.724Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261145:061-051-100": {
       "APN": "061-051-100",
@@ -11938,7 +11945,7 @@
       "mlsNumber": "20261145",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-22T16:03:58.724Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261144:053-191-100": {
       "APN": "053-191-100",
@@ -11962,7 +11969,7 @@
       "mlsNumber": "20261144",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-22T16:03:58.724Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261142:052-013-030": {
       "APN": "052-013-030",
@@ -11986,7 +11993,7 @@
       "mlsNumber": "20261142",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-22T16:03:58.724Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261139:037-110-260": {
       "APN": "037-110-260",
@@ -12010,7 +12017,7 @@
       "mlsNumber": "20261139",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-22T16:03:58.724Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261132:011-460-030": {
       "APN": "011-460-030",
@@ -12034,7 +12041,7 @@
       "mlsNumber": "20261132",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-22T16:03:58.724Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261130:057-482-010": {
       "APN": "057-482-010",
@@ -12058,7 +12065,7 @@
       "mlsNumber": "20261130",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-22T16:03:58.724Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20250604:060-442-080": {
       "APN": "060-442-080",
@@ -12107,7 +12114,7 @@
       "mlsNumber": "20260460",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-22T16:03:58.724Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20251090:041-370-090": {
       "APN": "041-370-090",
@@ -12131,7 +12138,7 @@
       "mlsNumber": "20251090",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-24T18:30:30.321Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261155:107-470-040": {
       "APN": "107-470-040",
@@ -12155,7 +12162,7 @@
       "mlsNumber": "20261155",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-24T18:30:30.321Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "NDP2608877:041-040-400": {
       "APN": "041-040-400",
@@ -12204,7 +12211,7 @@
       "mlsNumber": "20261154",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-24T18:30:30.321Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261114:061-231-040": {
       "APN": "061-231-040",
@@ -12228,7 +12235,7 @@
       "mlsNumber": "20261114",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-24T18:30:30.321Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260972:008-481-110": {
       "APN": "008-481-110",
@@ -12277,7 +12284,7 @@
       "mlsNumber": "20260840",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-24T18:30:30.321Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260922:013-660-070": {
       "APN": "013-660-070",
@@ -12301,7 +12308,7 @@
       "mlsNumber": "20260922",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-24T18:30:30.321Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261173:014-640-080": {
       "APN": "014-640-080",
@@ -12325,7 +12332,7 @@
       "mlsNumber": "20261173",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-28T18:26:43.618Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26203560:053-191-100": {
       "APN": "053-191-100",
@@ -12374,7 +12381,7 @@
       "mlsNumber": "20261169",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-28T18:26:43.618Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261166:061-361-010": {
       "APN": "061-361-010",
@@ -12398,7 +12405,7 @@
       "mlsNumber": "20261166",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-28T18:26:43.618Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261164:021-660-120": {
       "APN": "021-660-120",
@@ -12422,7 +12429,7 @@
       "mlsNumber": "20261164",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-28T18:26:43.618Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261160:106-050-230": {
       "APN": "106-050-230",
@@ -12446,7 +12453,7 @@
       "mlsNumber": "20261160",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-28T18:26:43.618Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261157:106-040-330": {
       "APN": "106-040-330",
@@ -12470,7 +12477,7 @@
       "mlsNumber": "20261157",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-28T18:26:43.618Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260605:106-440-170": {
       "APN": "106-440-170",
@@ -12494,7 +12501,7 @@
       "mlsNumber": "20260605",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-28T18:26:43.618Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260605:106-440-160": {
       "APN": "106-440-160",
@@ -12518,7 +12525,7 @@
       "mlsNumber": "20260605",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-28T18:26:43.618Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260238:106-380-060": {
       "APN": "106-380-060",
@@ -12542,7 +12549,7 @@
       "mlsNumber": "20260238",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-09-28T18:26:43.618Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261180:024-383-060": {
       "APN": "024-383-060",
@@ -12566,7 +12573,7 @@
       "mlsNumber": "20261180",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261179:039-390-110": {
       "APN": "039-390-110",
@@ -12590,7 +12597,7 @@
       "mlsNumber": "20261179",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261178:107-210-260": {
       "APN": "107-210-260",
@@ -12614,7 +12621,7 @@
       "mlsNumber": "20261178",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261177:014-583-460": {
       "APN": "014-583-460",
@@ -12638,7 +12645,7 @@
       "mlsNumber": "20261177",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261175:107-170-110": {
       "APN": "107-170-110",
@@ -12662,7 +12669,7 @@
       "mlsNumber": "20261175",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261171:021-530-060": {
       "APN": "021-530-060",
@@ -12686,7 +12693,7 @@
       "mlsNumber": "20261171",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261170:060-282-050": {
       "APN": "060-282-050",
@@ -12710,7 +12717,7 @@
       "mlsNumber": "20261170",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261170:060-282-060": {
       "APN": "060-282-060",
@@ -12734,7 +12741,7 @@
       "mlsNumber": "20261170",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261134:019-710-440": {
       "APN": "019-710-440",
@@ -12758,7 +12765,7 @@
       "mlsNumber": "20261134",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261105:059-273-150": {
       "APN": "059-273-150",
@@ -12782,7 +12789,7 @@
       "mlsNumber": "20261105",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261102:021-271-520": {
       "APN": "021-271-520",
@@ -12806,7 +12813,7 @@
       "mlsNumber": "20261102",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261085:106-430-150": {
       "APN": "106-430-150",
@@ -12830,7 +12837,7 @@
       "mlsNumber": "20261085",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260878:053-093-100": {
       "APN": "053-093-100",
@@ -12854,7 +12861,7 @@
       "mlsNumber": "20260878",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260154:062-122-190": {
       "APN": "062-122-190",
@@ -12878,7 +12885,7 @@
       "mlsNumber": "20260154",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:36:56.083Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "SN26160022:013-030-031": {
       "APN": "013-030-031",
@@ -12922,7 +12929,7 @@
       "mlsNumber": "20261191",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-01T18:54:37.217Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261195:021-232-680": {
       "APN": "021-232-680",
@@ -12971,7 +12978,7 @@
       "mlsNumber": "20261194",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-03T15:44:36.105Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261193:039-380-060": {
       "APN": "039-380-060",
@@ -12995,7 +13002,7 @@
       "mlsNumber": "20261193",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-03T15:44:36.105Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261192:060-171-140": {
       "APN": "060-171-140",
@@ -13019,7 +13026,7 @@
       "mlsNumber": "20261192",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-03T15:44:36.105Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260214:037-400-170": {
       "APN": "037-400-170",
@@ -13043,7 +13050,7 @@
       "mlsNumber": "20260214",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-03T15:44:36.105Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261200:103-170-400": {
       "APN": "103-170-400",
@@ -13067,7 +13074,7 @@
       "mlsNumber": "20261200",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-06T15:44:53.052Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261208:060-442-080": {
       "APN": "060-442-080",
@@ -13086,12 +13093,12 @@
       "url": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261208/216-College-Ave-Weed-CA-96094",
       "primaryPhoto": "https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20261208/org/000.jpg?width=640",
       "listingSource": "Coldwell Banker Mountain Gate",
-      "parcelMatchSource": "county address point",
-      "parcelMatchConfidence": "",
+      "parcelMatchSource": "persisted MLS linkage: county address point",
+      "parcelMatchConfidence": "programmatic",
       "mlsNumber": "20261208",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-08T19:23:45.728Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261206:060-134-050": {
       "APN": "060-134-050",
@@ -13110,12 +13117,12 @@
       "url": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261206/1522-Wakefield-Avenue-Weed-CA-96094",
       "primaryPhoto": "https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20261206/org/000.jpg?width=640",
       "listingSource": "Coldwell Banker Mountain Gate",
-      "parcelMatchSource": "county address point",
-      "parcelMatchConfidence": "",
+      "parcelMatchSource": "persisted MLS linkage: county address point",
+      "parcelMatchConfidence": "programmatic",
       "mlsNumber": "20261206",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-08T19:23:45.728Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261204:036-510-060": {
       "APN": "036-510-060",
@@ -13134,12 +13141,12 @@
       "url": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261204/2626-Sean-Way-Mount-Shasta-CA-96067",
       "primaryPhoto": "https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20261204/org/000.jpg?width=640",
       "listingSource": "Coldwell Banker Mountain Gate",
-      "parcelMatchSource": "county address point",
-      "parcelMatchConfidence": "",
+      "parcelMatchSource": "persisted MLS linkage: county address point",
+      "parcelMatchConfidence": "programmatic",
       "mlsNumber": "20261204",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-08T19:23:45.728Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20261203:060-034-240": {
       "APN": "060-034-240",
@@ -13158,12 +13165,12 @@
       "url": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261203/12-Camino-Weed-CA-96094",
       "primaryPhoto": "https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20261203/org/000.jpg?width=640",
       "listingSource": "Coldwell Banker Mountain Gate",
-      "parcelMatchSource": "county address point",
-      "parcelMatchConfidence": "",
+      "parcelMatchSource": "persisted MLS linkage: county address point",
+      "parcelMatchConfidence": "programmatic",
       "mlsNumber": "20261203",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-08T19:23:45.728Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     },
     "20260531:030-511-200": {
       "APN": "030-511-200",
@@ -13187,7 +13194,55 @@
       "mlsNumber": "20260531",
       "mlsId": "CA-SISKIYOU",
       "firstSeenAt": "2026-10-08T19:23:45.728Z",
-      "lastSeenAt": "2026-10-08T19:23:45.728Z"
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
+    },
+    "20261215:053-501-420": {
+      "APN": "053-501-420",
+      "kind": "private",
+      "title": "1111 North Street, Yreka, CA 96097",
+      "price": 389000,
+      "acres": 0.74,
+      "status": "For Sale",
+      "listingDate": "2026-10-10",
+      "propertyType": "house",
+      "propertySubType": "Single Family Home",
+      "beds": 3,
+      "baths": 0,
+      "sqft": 1817,
+      "yearBuilt": 0,
+      "url": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261215/1111-North-Street-Yreka-CA-96097",
+      "primaryPhoto": "https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20261215/org/000.jpg?width=640",
+      "listingSource": "Coldwell Banker Mountain Gate",
+      "parcelMatchSource": "county address point",
+      "parcelMatchConfidence": "",
+      "mlsNumber": "20261215",
+      "mlsId": "CA-SISKIYOU",
+      "firstSeenAt": "2026-10-09T17:21:26.792Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
+    },
+    "20261214:057-161-030": {
+      "APN": "057-161-030",
+      "kind": "private",
+      "title": "517 W Jessie St. W, Mount Shasta, CA 96067",
+      "price": 399000,
+      "acres": 2.03,
+      "status": "For Sale",
+      "listingDate": "2026-10-07",
+      "propertyType": "multi",
+      "propertySubType": "Residential",
+      "beds": 0,
+      "baths": 0,
+      "sqft": 2500,
+      "yearBuilt": 1926,
+      "url": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261214/517-W-Jessie-St-W-Mount-Shasta-CA-96067",
+      "primaryPhoto": "https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20261214/org/000.jpg?width=640",
+      "listingSource": "Coldwell Banker Mountain Gate",
+      "parcelMatchSource": "county address point",
+      "parcelMatchConfidence": "",
+      "mlsNumber": "20261214",
+      "mlsId": "CA-SISKIYOU",
+      "firstSeenAt": "2026-10-09T17:21:26.792Z",
+      "lastSeenAt": "2026-10-09T17:21:26.792Z"
     }
   }
 }
