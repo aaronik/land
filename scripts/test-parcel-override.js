@@ -42,7 +42,7 @@ assert.equal(moved.features.length, 2);
 assert.ok(!moved.features.some(feature => ['021-520-380', '021-520-390'].includes(feature.properties.APN)));
 assert.ok(moved.features.some(feature => feature.properties.APN === '021-520-400'));
 
-for (const field of ['salesHistory', 'archivedListings']) {
+for (const field of ['salesHistory', 'archivedListings', 'soldExternalListings']) {
   const history = { mlsNumber: '20261116', APN: '027-070-170' };
   const historicalFeature = {
     ...countyFeature(history.APN),
