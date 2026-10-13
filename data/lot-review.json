@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-10-11T17:10:54.184Z",
-  "count": 211,
+  "generatedAt": "2026-10-13T14:47:49.748Z",
+  "count": 212,
   "listings": [
+    {
+      "mlsNumber": "20261221",
+      "title": "Lot 539 Blue Gill, Hornbrook, CA 96044",
+      "acres": 2.5,
+      "latLng": [
+        41.896192410000744,
+        -122.43266197833488
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261221/Lot-539-Blue-Gill-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261199",
       "title": "Lot 208 Deer Run Rd, Hornbrook, CA 96044",
