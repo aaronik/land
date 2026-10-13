@@ -1189,6 +1189,14 @@
     "confidence": "manually verified",
     "notes": "address"
   },
+  "20261222": {
+    "apns": [
+      "002-140-240"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "sat photos and buildings"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
