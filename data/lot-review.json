@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-15T16:05:53.839Z",
-  "count": 212,
+  "generatedAt": "2026-10-16T16:45:43.813Z",
+  "count": 211,
   "listings": [
     {
       "mlsNumber": "20261221",
@@ -1175,18 +1175,6 @@
         -122.504621
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260333/Lot-356-Cougar-St-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260309",
-      "title": "Lot 242 Eagle Rest Ct., Weed, CA 96094",
-      "acres": 0.49,
-      "latLng": [
-        41.46268891844234,
-        -122.38240783539575
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260309/Lot-242-Eagle-Rest-Ct-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
