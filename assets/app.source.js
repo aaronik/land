@@ -238,11 +238,12 @@ geolocateControl.on('geolocate', position => {
 
 function deviceCompassHeading(event) {
   // iOS provides a magnetic-north compass value directly. Other browsers
-  // expose alpha as a clockwise device rotation, so invert it to get heading.
+  // expose alpha as a clockwise device rotation; offset the Android cone
+  // counterclockwise by 90 degrees from the unadjusted heading.
   if (Number.isFinite(event.webkitCompassHeading)) return event.webkitCompassHeading;
   if (!Number.isFinite(event.alpha)) return null;
   const screenAngle = screen.orientation?.angle ?? window.orientation ?? 0;
-  return (360 - event.alpha + screenAngle) % 360;
+  return normalizeHeading(360 - event.alpha + screenAngle - 90);
 }
 
 function startDeviceHeading() {
