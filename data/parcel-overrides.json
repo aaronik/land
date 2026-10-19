@@ -1197,6 +1197,14 @@
     "confidence": "manually verified",
     "notes": "sat photos and buildings"
   },
+  "20261236": {
+    "apns": [
+      "021-570-150"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "address"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
