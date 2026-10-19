@@ -28,7 +28,8 @@ export default defineConfig({
     outDir: 'build'
   },
   define: {
-    __PARCEL_BOUNDARIES_REVISION__: JSON.stringify(String(statSync('data/generated/parcels.pmtiles').mtimeMs))
+    __PARCEL_BOUNDARIES_REVISION__: JSON.stringify(String(statSync('data/generated/parcels.pmtiles').mtimeMs)),
+    __PUBLIC_LAND_REVISION__: JSON.stringify(String(statSync('data/generated/public_land.pmtiles').mtimeMs))
   },
   plugins: [
     maplibreWorkers,

@@ -28,6 +28,37 @@ async function defaultRequest(url, params) {
   return data;
 }
 
+// ArcGIS GeoJSON responses for PAD-US flatten interior rings into independent
+// MultiPolygon members. Fetch Esri JSON instead: its clockwise outer and
+// counterclockwise inner rings retain the distinction needed for inholdings.
+function arcgisPolygonGeometry(rings) {
+  const signedArea = ring => {
+    let area = 0;
+    const [originX, originY] = ring[0];
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++)
+      area += (ring[j][0] - originX) * (ring[i][1] - originY) - (ring[i][0] - originX) * (ring[j][1] - originY);
+    return area / 2;
+  };
+  const contains = (ring, [x, y]) => {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [ax, ay] = ring[i], [bx, by] = ring[j];
+      if ((ay > y) !== (by > y) && x < (bx - ax) * (y - ay) / (by - ay) + ax) inside = !inside;
+    }
+    return inside;
+  };
+  const parts = rings.filter(ring => ring.length >= 4).map(ring => ({ ring, area: signedArea(ring) }));
+  const outers = parts.filter(part => part.area < 0).map(part => ({ ...part, rings: [part.ring] }));
+  for (const hole of parts.filter(part => part.area > 0)) {
+    const parent = outers.filter(outer => Math.abs(outer.area) > hole.area && contains(outer.ring, hole.ring[0]))
+      .sort((a, b) => Math.abs(a.area) - Math.abs(b.area))[0];
+    if (!parent) throw new Error(`PAD-US interior ring has no enclosing outer ring near ${hole.ring[0]}`);
+    parent.rings.push(hole.ring);
+  }
+  if (!outers.length && parts.length) throw new Error('PAD-US polygon has no outer ring');
+  return { type: 'MultiPolygon', coordinates: outers.map(outer => outer.rings) };
+}
+
 async function fetchArcGISLayer(config, request = params => defaultRequest(config.url, params)) {
   const spatial = config.bbox ? {
     geometry: config.bbox,
@@ -41,12 +72,15 @@ async function fetchArcGISLayer(config, request = params => defaultRequest(confi
   const features = [];
   while (features.length < expected) {
     const data = await request({
-      f: 'geojson', where: config.where || '1=1', outFields: config.fields.join(','), returnGeometry: 'true',
+      f: config.preserveRings ? 'json' : 'geojson', where: config.where || '1=1', outFields: config.fields.join(','), returnGeometry: 'true',
       outSR: '4326', orderByFields: `${config.objectId || 'OBJECTID'} ASC`, resultOffset: features.length,
       resultRecordCount: pageSize, ...(config.maxAllowableOffset ? { maxAllowableOffset: config.maxAllowableOffset, geometryPrecision: config.geometryPrecision || 6 } : {}), ...spatial
     });
     const batch = data.features || [];
-    features.push(...batch);
+    features.push(...(config.preserveRings ? batch.map(feature => ({
+      type: 'Feature', properties: feature.attributes,
+      geometry: feature.geometry ? arcgisPolygonGeometry(feature.geometry.rings) : null
+    })) : batch));
     if (!batch.length) break;
   }
   if (features.length !== expected) throw new Error(`${config.name || 'layer'} incomplete: collected ${features.length} of ${expected}`);
@@ -272,6 +306,7 @@ const LAYERS = {
   public_land: {
     name: 'PAD-US federal fee managers',
     url: 'https://services.arcgis.com/v01gqwM5QqNysAAi/arcgis/rest/services/Federal_Fee_Managers_Authoritative_PADUS/FeatureServer/0',
+    preserveRings: true,
     bbox: SISKIYOU_BBOX,
     fields: ['OBJECTID', 'Own_Name', 'Own_Type', 'Mang_Name', 'Mang_Type', 'Unit_Nm', 'Pub_Access', 'GIS_Acres']
   },

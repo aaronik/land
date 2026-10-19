@@ -22,6 +22,27 @@ async function testPaginationCompleteness() {
   assert(calls.every(call => call.outSR === undefined || call.outSR === '4326'));
 }
 
+async function testPublicLandInteriorRings() {
+  const outer = [[0, 0], [0, 10], [10, 10], [10, 0], [0, 0]];
+  const hole = [[2, 2], [8, 2], [8, 8], [2, 8], [2, 2]];
+  const island = [[3, 3], [3, 7], [7, 7], [7, 3], [3, 3]];
+  const other = [[20, 20], [20, 30], [30, 30], [30, 20], [20, 20]];
+  const calls = [];
+  const request = async params => {
+    calls.push(params);
+    return params.returnCountOnly === 'true' ? { count: 1 } : {
+      features: [{ attributes: { OBJECTID: 1 }, geometry: { rings: [hole, other, island, outer] } }]
+    };
+  };
+  const data = await fetchArcGISLayer({ ...LAYERS.public_land, url: 'https://example.test/0' }, request);
+  assert.equal(calls[1].f, 'json');
+  assert.equal(data.features[0].geometry.type, 'MultiPolygon');
+  assert.deepEqual(data.features[0].geometry.coordinates, [[other], [island], [outer, hole]]);
+  assert.deepEqual(data.features[0].properties, { OBJECTID: 1 });
+  await assert.rejects(() => fetchArcGISLayer({ ...LAYERS.public_land }, async p => p.returnCountOnly === 'true'
+    ? { count: 1 } : { features: [{ attributes: {}, geometry: { rings: [hole] } }] }), /no enclosing outer ring/);
+}
+
 async function testIncompleteDownloadFails() {
   const request = async params => params.returnCountOnly === 'true' ? { count: 2 } : { features: [] };
   await assert.rejects(() => fetchArcGISLayer({ url: 'https://example.test/0', fields: ['APN'] }, request), /collected 0 of 2/);
@@ -181,6 +202,7 @@ function testCriticalHabitatSources() {
 
 (async () => {
   await testPaginationCompleteness();
+  await testPublicLandInteriorRings();
   await testIncompleteDownloadFails();
   testSoilGmlParsing();
   await testSoilDistinctPolygonsWithSharedFid();
