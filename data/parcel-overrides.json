@@ -113,6 +113,14 @@
     "confidence": "manually verified",
     "notes": "Dogwood Dr, Weed, CA 96094; listing imagery outlines this 5.8-acre parcel. Existing improvements may reflect an encroachment."
   },
+  "20250620": {
+    "apns": [
+      "104-370-090"
+    ],
+    "source": "evidence-backed APN research (e001, e002)",
+    "confidence": "high; evidence reviewed",
+    "notes": "Research evidence: e001, e002"
+  },
   "20250745": {
     "apns": [
       "020-071-550"
@@ -120,6 +128,17 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "Zen mountain"
+  },
+  "20250767": {
+    "apns": [
+      "037-260-490",
+      "037-260-190",
+      "037-260-200",
+      "037-260-500"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "guess based on description"
   },
   "20250768": {
     "apns": [
@@ -177,6 +196,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "from pics"
+  },
+  "20260046": {
+    "apns": [
+      "102-370-150"
+    ],
+    "source": "evidence-backed APN research (e001, e002)",
+    "confidence": "high; evidence reviewed",
+    "notes": "Research evidence: e001, e002"
   },
   "20260108": {
     "apns": [
@@ -1025,6 +1052,14 @@
     "confidence": "manually verified",
     "notes": "4509 N Old Stage, Mt Shasta, CA 96067"
   },
+  "20260993": {
+    "apns": [
+      "102-120-100"
+    ],
+    "source": "evidence-backed APN research (e001, e002)",
+    "confidence": "high; evidence reviewed",
+    "notes": "Research evidence: e001, e002"
+  },
   "20261010": {
     "apns": [
       "057-771-280"
@@ -1040,6 +1075,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "3812 Dale Creek Rd, Weed, CA 96094"
+  },
+  "20261036": {
+    "apns": [
+      "102-350-140"
+    ],
+    "source": "evidence-backed APN research (e001, e002)",
+    "confidence": "high; evidence reviewed",
+    "notes": "Research evidence: e001, e002"
   },
   "20261046": {
     "apns": [
@@ -1196,6 +1239,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "sat photos and buildings"
+  },
+  "20261234": {
+    "apns": [
+      "102-200-200"
+    ],
+    "source": "evidence-backed APN research (e001, e002)",
+    "confidence": "high; evidence reviewed",
+    "notes": "Research evidence: e001, e002"
   },
   "20261236": {
     "apns": [
