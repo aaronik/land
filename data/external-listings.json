@@ -14,6 +14,22 @@
     "notes": "Listing page also mentions APN 036-250-440 as a separate parcel. That parcel is tracked as coming soon with this page as a temporary reference; the sold badge applies only to 036-250-420."
   },
   {
+    "id": "redding-mls-26-3686",
+    "apns": ["037-260-520"],
+    "title": "131 Big Canyon Drive, Mount Shasta, CA 96067",
+    "price": 150000,
+    "acres": 2.43,
+    "status": "Active",
+    "listingDate": "2026-08-02",
+    "propertyType": "commercial",
+    "propertySubType": "Commercial Land",
+    "url": "https://reddingcommercial.com/idx/131-Big-Canyon-Drive-Mount-Shasta-CA-96067-mls_26-3686/",
+    "listingSource": "Redding MLS (broker IDX)",
+    "parcelMatchSource": "listing APN",
+    "parcelMatchConfidence": "provided",
+    "notes": "Broker IDX identifies APN 037-260-520-000. Advertised as commercial land, but displayed zoning is RS-2 residential; confirm zoning independently. External listing status is not automatically refreshed."
+  },
+  {
     "id": "california-outdoor-properties-40-acres-siskiyou-440",
     "apns": ["036-250-440"],
     "title": "40 Acres Siskiyou (036-250-440) — coming soon",
