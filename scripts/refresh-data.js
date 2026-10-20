@@ -147,7 +147,7 @@ async function fetchMlsSource(source, listingType = 'homes-for-sale') {
     if (!(data.listings || []).length) break;
   }
   if (items.length !== total) throw new Error(`${source.name}: incomplete MLS data: ${items.length}/${total}`);
-  return items.filter(item => ['land', 'farm', 'house', 'multi', 'condo', 'mobile'].includes(item.propertyType));
+  return items.filter(item => ['land', 'farm', 'house', 'multi', 'condo', 'mobile', 'commercial'].includes(item.propertyType));
 }
 
 function listingKey(item) {
@@ -160,7 +160,7 @@ async function fetchMls(listingType = 'homes-for-sale') {
   const feeds = await Promise.all(MLS_SOURCES.map(source => fetchMlsSource(source, listingType)));
   const unique = new Map();
   for (const item of feeds.flat().sort((a, b) => a.source.priority - b.source.priority)) {
-    const key = listingType === 'homes-sold' ? String(item.mlsNo || item.id) : listingKey(item);
+    const key = listingType.endsWith('-sold') ? String(item.mlsNo || item.id) : listingKey(item);
     if (!unique.has(key)) unique.set(key, item);
   }
   return [...unique.values()];
@@ -613,7 +613,7 @@ async function privateRecords(items) {
           record.latLng = sourceLatLng;
           record.locationSource = placement.source;
         }
-        record.category = ['land', 'farm'].includes(record.propertyType) ? 'private-land' : 'private-home';
+        record.category = record.propertyType === 'commercial' ? 'private-commercial' : (['land', 'farm'].includes(record.propertyType) ? 'private-land' : 'private-home');
         unmapped.push(record);
       }
     });
@@ -722,7 +722,11 @@ async function parcelFeatures(apns) {
 async function main() {
   pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
   console.log('Fetching MLS, sold history, and county auction sources…');
-  const [mls, soldItems, auctions] = await Promise.all([fetchMls(), fetchMls('homes-sold'), fetchAuctions()]);
+  const [homes, commercial, soldHomes, soldCommercial, auctions] = await Promise.all([
+    fetchMls(), fetchMls('commercial-for-sale'), fetchMls('homes-sold'), fetchMls('commercial-sold'), fetchAuctions()
+  ]);
+  const mls = [...homes, ...commercial];
+  const soldItems = [...soldHomes, ...soldCommercial];
   const firstPass = await privateRecords(mls);
   const resolverEnabled = process.env.SECONDARY_PARCEL_RESOLVER !== '0';
   if (resolverEnabled) console.log('Running conservative secondary parcel resolver…');
@@ -769,7 +773,7 @@ async function main() {
     const hasHomeLandUse = /^1\d{2}/.test(String(feature.properties.LandUse1 || ''));
     for (const record of recordsForParcel) {
       record.category = record.kind === 'private'
-        ? (['land', 'farm'].includes(record.propertyType) ? 'private-land' : 'private-home')
+        ? (record.propertyType === 'commercial' ? 'private-commercial' : (['land', 'farm'].includes(record.propertyType) ? 'private-land' : 'private-home'))
         : (hasHomeLandUse ? 'public-home' : 'public-land');
     }
     feature.properties.records = recordsForParcel;

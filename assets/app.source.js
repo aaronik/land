@@ -16,7 +16,7 @@ import { updateUrlParameter } from './state/url.js';
 import { LEGEND_QUERY_LAYERS, legendMatches, queryLegendFeatures, queryParcelWaterFeatures, updateLegendHighlights } from './ui/legend-highlights.js';
 import { buildSoilLegend, updateSoilLegendValues } from './ui/soil-legend.js';
 
-const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'previous-listing': '#55768d', 'public-land': '#ff9d4d', 'public-home': '#b94b18', 'tax-delinquent': '#c43c78' };
+const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'private-commercial': '#1684bc', 'previous-listing': '#55768d', 'public-land': '#ff9d4d', 'public-home': '#b94b18', 'tax-delinquent': '#c43c78' };
 // Colors follow the unique-value renderer saved on Siskiyou County's official
 // zoning layer. MapLibre cannot reproduce every ArcGIS hatch, so buffered
 // variants retain their official zoning-family color.

@@ -80,7 +80,7 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .unmapped-key { display: flex; align-items: center; gap: 7px; margin: -2px 0 12px; color: #687169; font-size: 11px; line-height: 14px; }
 .unmapped-key i { display: block; width: 12px; height: 12px; flex: 0 0 12px; box-sizing: border-box; border: 2px solid white; border-radius: 50%; background: #42d7a6; box-shadow: 0 0 0 1px #687169; }
 .swatch { display: inline-block; width: 12px; height: 12px; margin-right: 7px; border-radius: 3px; vertical-align: -1px; }
-.swatch.private-land { background: #42d7a6; } .swatch.private-home { background: #7653b5; }
+.swatch.private-land { background: #42d7a6; } .swatch.private-home { background: #7653b5; } .swatch.private-commercial { background: #1684bc; }
 .swatch.previous-listing { background: #55768d; }
 .swatch.public-land { background: #ff9d4d; } .swatch.public-home { background: #b94b18; }
 .swatch.tax-delinquent { background: #c43c78; }
@@ -162,6 +162,7 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .sale-pin { width: 18px; height: 18px; padding: 0; border: 3px solid white; border-radius: 50% 50% 50% 0; background: #42d7a6; box-shadow: 0 2px 7px rgba(0,0,0,.75); transform: rotate(-45deg); cursor: pointer; }
 .sale-pin:hover, .sale-pin:focus-visible { width: 23px; height: 23px; outline: 3px solid rgba(255,255,255,.6); z-index: 2; }
 .sale-pin.private-home { background: #7653b5; }
+.sale-pin.private-commercial { background: #1684bc; }
 .sale-pin.public-land { background: #ff9d4d; }
 .sale-pin.public-home { background: #b94b18; }
 .details h3 { margin: 0 0 4px; font: 500 23px Georgia, serif; }

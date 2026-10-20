@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-19T18:15:16.924Z",
-  "count": 211,
+  "generatedAt": "2026-10-20T17:43:33.942Z",
+  "count": 207,
   "listings": [
     {
       "mlsNumber": "20261221",
@@ -267,18 +267,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20261036",
-      "title": "Lot 184 Iron Gate Rd, Hornbrook, CA 96044",
-      "acres": 2.5,
-      "latLng": [
-        41.906887599384326,
-        -122.51472420665009
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261036/Lot-184-Iron-Gate-Rd-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20261035",
       "title": "Lot 156 Iron Gate Rd, Hornbrook, CA 96044",
       "acres": 2.5,
@@ -335,18 +323,6 @@
         -122.505611
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260208/Lot-231-Pine-Ct-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260993",
-      "title": "Lot 181 Lakeview Rd, Hornbrook, CA 96044",
-      "acres": 4.2,
-      "latLng": [
-        41.906887599384326,
-        -122.51472420665009
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260993/Lot-181-Lakeview-Rd-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -1563,18 +1539,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20260046",
-      "title": "Lot 185 Iron Gate Rd, Hornbrook, CA 96044",
-      "acres": 2.5,
-      "latLng": [
-        41.906887599384326,
-        -122.51472420665009
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260046/Lot-185-Iron-Gate-Rd-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20240065",
       "title": "Blk 1 Lot 8 Jackson Ranch Road, Weed, CA 96094",
       "acres": 10,
@@ -1619,18 +1583,6 @@
         -122.367731
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250116/Lot-32-Silver-Spur-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20251306",
-      "title": "lot 44 White Dr., Montague, CA 96064",
-      "acres": 2.2,
-      "latLng": [
-        41.552665,
-        -122.265603
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251306/lot-44-White-Dr-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },

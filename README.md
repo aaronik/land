@@ -9,7 +9,7 @@ permitted. This is source-available software, not Open Source Initiative
 
 Static GitHub Pages map combining the two `~/suite/bin/shasta_*land*` workflows:
 
-- Siskiyou MLS private land/farm listings
+- Siskiyou MLS private land, farm, home, and commercial-for-sale listings, plus residential and commercial sold history. Sold records are mapped only when a parcel match is verified; unmatched sold listings are omitted. Listings from other MLS systems are not covered by this feed.
 - Siskiyou County tax-sale PDF records
 - Siskiyou County parcel polygons and attributes
 - Esri satellite imagery

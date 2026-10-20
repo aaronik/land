@@ -69,6 +69,7 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
   const recordCard = (record, extraLink = '') => {
     if (record.kind === 'private') {
       const home = record.category === 'private-home';
+      const label = record.category === 'private-commercial' ? 'Commercial property' : (home ? 'Private home' : 'Private land');
       const mlsPhoto = /^[A-Z]{2}-[A-Z]+$/.test(String(record.mlsId || '')) && record.mlsNumber
         ? `https://idx-photos-ihouseprd.b-cdn.net/${encodeURIComponent(record.mlsId)}/${encodeURIComponent(record.mlsNumber)}/org/000.jpg?width=640`
         : (record.listingSource === 'Mt. Shasta Realty' || record.listingSource === 'Coldwell Banker Mountain Gate') && record.mlsNumber
@@ -80,7 +81,7 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
         : '';
       const homeDetails = home ? [record.beds && `${record.beds} bd`, record.baths && `${record.baths} ba`, record.sqft && `${Number(record.sqft).toLocaleString()} sq ft`].filter(Boolean).join(' · ') : '';
       const listingDate = /^\d{4}-\d{2}-\d{2}$/.test(record.listingDate) ? new Date(`${record.listingDate}T12:00:00`).toLocaleDateString() : '';
-      return `<article class="record ${home ? 'home' : ''}">${primaryPhoto}<strong>${home ? 'Private home' : 'Private land'}</strong><p>${escapeHtml(record.title || '')}</p><p>${record.price ? money(record.price) : 'Price not confirmed'} · ${escapeHtml(record.acres || '—')} ${record.acres ? 'acres' : 'listed acres not confirmed'}${homeDetails ? ` · ${escapeHtml(homeDetails)}` : ''} · ${escapeHtml(record.status || '')}${listingDate ? ` · Listed ${escapeHtml(listingDate)}` : ''}</p>${record.referenceListing ? '<p class="source-note">Upcoming listing not published; link is to a different, sold parcel. Do not treat that page’s status or price as this parcel’s.</p>' : ''}${record.url ? `<a href="${escapeHtml(listingUrl(record))}" target="_blank" rel="noopener">${record.referenceListing ? 'Open related parcel listing (not this parcel) ↗' : 'Open listing ↗'}</a>` : ''}${extraLink}</article>`;
+      return `<article class="record ${home ? 'home' : ''}">${primaryPhoto}<strong>${label}</strong><p>${escapeHtml(record.title || '')}</p><p>${record.price ? money(record.price) : 'Price not confirmed'} · ${escapeHtml(record.acres || '—')} ${record.acres ? 'acres' : 'listed acres not confirmed'}${homeDetails ? ` · ${escapeHtml(homeDetails)}` : ''} · ${escapeHtml(record.status || '')}${listingDate ? ` · Listed ${escapeHtml(listingDate)}` : ''}</p>${record.referenceListing ? '<p class="source-note">Upcoming listing not published; link is to a different, sold parcel. Do not treat that page’s status or price as this parcel’s.</p>' : ''}${record.url ? `<a href="${escapeHtml(listingUrl(record))}" target="_blank" rel="noopener">${record.referenceListing ? 'Open related parcel listing (not this parcel) ↗' : 'Open listing ↗'}</a>` : ''}${extraLink}</article>`;
     }
     if (record.kind === 'tax-delinquent') {
       return `<article class="record public tax-delinquent">${taxRecordContent(record)}${extraLink}</article>`;
