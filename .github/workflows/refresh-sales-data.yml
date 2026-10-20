@@ -2,8 +2,8 @@ name: Refresh sales data
 
 on:
   schedule:
-    # GitHub schedules use UTC: 4:17 AM PST / 5:17 AM PDT.
-    - cron: '17 12 * * *'
+    # GitHub schedules use UTC: 8:30 PM PST / 9:30 PM PDT.
+    - cron: '30 4 * * *'
   workflow_dispatch:
 
 permissions:
