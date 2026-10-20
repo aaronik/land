@@ -16307,7 +16307,7 @@
     },
     "20250620": {
       "listingId": "20250620",
-      "status": "open",
+      "status": "resolved",
       "active": true,
       "listing": {
         "title": "21.6 Acres Canary Lane, Hornbrook, CA 96044",
@@ -16321,12 +16321,57 @@
         "locationSource": "ZIP code centroid (approximate)",
         "propertyType": "land"
       },
-      "candidates": [],
-      "evidence": [],
+      "candidates": [
+        {
+          "apn": "104-370-090",
+          "selected": true
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e001",
+          "type": "listing",
+          "signals": [
+            "explicit_apn",
+            "road",
+            "acreage"
+          ],
+          "url": "https://www.homes.com/property/0-21-6-acres-canary-ln-hornbrook-ca-unit-4-20250620/bwxc9y5dz7tdf/",
+          "apns": [
+            "104-370-090"
+          ],
+          "note": "Syndicated listing prints parcel identifier; 21.6 acres; Canary Lane; Unit 4",
+          "retrievedAt": "2026-10-20T16:25:27.359Z"
+        },
+        {
+          "id": "e002",
+          "type": "county_gis",
+          "signals": [
+            "location",
+            "acreage"
+          ],
+          "url": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN%3D%27104-370-090%27&outFields=APN%2CAcres&returnGeometry=true&outSR=4326&f=geojson",
+          "apns": [
+            "104-370-090"
+          ],
+          "note": "County GIS parcel geometry and acreage: 21.6 acres; Canary Lane; Unit 4",
+          "retrievedAt": "2026-10-20T16:25:27.359Z"
+        }
+      ],
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-10-19T18:15:16.924Z"
+      "updatedAt": "2026-10-20T16:25:27.359Z",
+      "resolution": {
+        "apns": [
+          "104-370-090"
+        ],
+        "evidenceIds": [
+          "e001",
+          "e002"
+        ],
+        "resolvedAt": "2026-10-20T16:25:32.102Z"
+      }
     },
     "20250642": {
       "listingId": "20250642",
@@ -24376,7 +24421,7 @@
     },
     "20260046": {
       "listingId": "20260046",
-      "status": "open",
+      "status": "resolved",
       "active": true,
       "listing": {
         "title": "Lot 185 Iron Gate Rd, Hornbrook, CA 96044",
@@ -24390,12 +24435,57 @@
         "locationSource": "ZIP code centroid (approximate)",
         "propertyType": "land"
       },
-      "candidates": [],
-      "evidence": [],
+      "candidates": [
+        {
+          "apn": "102-370-150",
+          "selected": true
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e001",
+          "type": "listing",
+          "signals": [
+            "explicit_apn",
+            "road",
+            "acreage"
+          ],
+          "url": "https://www.redfin.com/CA/Hornbrook/Lot-185-Iron-Gate-Rd-96044/home/200165273",
+          "apns": [
+            "102-370-150"
+          ],
+          "note": "Syndicated listing prints parcel identifier; 2.5 acres; Lot 185 Iron Gate Rd",
+          "retrievedAt": "2026-10-20T16:25:27.359Z"
+        },
+        {
+          "id": "e002",
+          "type": "county_gis",
+          "signals": [
+            "location",
+            "acreage"
+          ],
+          "url": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN%3D%27102-370-150%27&outFields=APN%2CAcres&returnGeometry=true&outSR=4326&f=geojson",
+          "apns": [
+            "102-370-150"
+          ],
+          "note": "County GIS parcel geometry and acreage: 2.5 acres; Lot 185 Iron Gate Rd",
+          "retrievedAt": "2026-10-20T16:25:27.359Z"
+        }
+      ],
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-10-19T18:15:16.924Z"
+      "updatedAt": "2026-10-20T16:25:27.359Z",
+      "resolution": {
+        "apns": [
+          "102-370-150"
+        ],
+        "evidenceIds": [
+          "e001",
+          "e002"
+        ],
+        "resolvedAt": "2026-10-20T16:25:29.617Z"
+      }
     },
     "20260047": {
       "listingId": "20260047",
@@ -32805,7 +32895,7 @@
     },
     "20260993": {
       "listingId": "20260993",
-      "status": "open",
+      "status": "resolved",
       "active": true,
       "listing": {
         "title": "Lot 181 Lakeview Rd, Hornbrook, CA 96044",
@@ -32819,12 +32909,57 @@
         "locationSource": "ZIP code centroid (approximate); MLS pin rejected as inconsistent",
         "propertyType": "land"
       },
-      "candidates": [],
-      "evidence": [],
+      "candidates": [
+        {
+          "apn": "102-120-100",
+          "selected": true
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e001",
+          "type": "listing",
+          "signals": [
+            "explicit_apn",
+            "road",
+            "acreage"
+          ],
+          "url": "https://www.homes.com/property/lot-181-lakeview-rd-hornbrook-ca-unit-3/tetbjk5vezhc8/",
+          "apns": [
+            "102-120-100"
+          ],
+          "note": "Syndicated listing prints parcel identifier; 4.2 acres; Lot 181 Lakeview Rd; Unit 3",
+          "retrievedAt": "2026-10-20T16:25:27.359Z"
+        },
+        {
+          "id": "e002",
+          "type": "county_gis",
+          "signals": [
+            "location",
+            "acreage"
+          ],
+          "url": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN%3D%27102-120-100%27&outFields=APN%2CAcres&returnGeometry=true&outSR=4326&f=geojson",
+          "apns": [
+            "102-120-100"
+          ],
+          "note": "County GIS parcel geometry and acreage: 4.2 acres; Lot 181 Lakeview Rd; Unit 3",
+          "retrievedAt": "2026-10-20T16:25:27.359Z"
+        }
+      ],
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-10-19T18:15:16.924Z"
+      "updatedAt": "2026-10-20T16:25:27.359Z",
+      "resolution": {
+        "apns": [
+          "102-120-100"
+        ],
+        "evidenceIds": [
+          "e001",
+          "e002"
+        ],
+        "resolvedAt": "2026-10-20T16:25:30.931Z"
+      }
     },
     "20261001": {
       "listingId": "20261001",
@@ -32989,7 +33124,7 @@
     },
     "20261036": {
       "listingId": "20261036",
-      "status": "open",
+      "status": "resolved",
       "active": true,
       "listing": {
         "title": "Lot 184 Iron Gate Rd, Hornbrook, CA 96044",
@@ -33003,12 +33138,57 @@
         "locationSource": "ZIP code centroid (approximate)",
         "propertyType": "land"
       },
-      "candidates": [],
-      "evidence": [],
+      "candidates": [
+        {
+          "apn": "102-350-140",
+          "selected": true
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e001",
+          "type": "listing",
+          "signals": [
+            "explicit_apn",
+            "road",
+            "acreage"
+          ],
+          "url": "https://www.redfin.com/CA/Hornbrook/Lot-184-Iron-Gate-Rd-96044/home/199016450",
+          "apns": [
+            "102-350-140"
+          ],
+          "note": "Syndicated listing prints parcel identifier; 2.5 acres; Lot 184 Iron Gate Rd",
+          "retrievedAt": "2026-10-20T16:25:27.358Z"
+        },
+        {
+          "id": "e002",
+          "type": "county_gis",
+          "signals": [
+            "location",
+            "acreage"
+          ],
+          "url": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN%3D%27102-350-140%27&outFields=APN%2CAcres&returnGeometry=true&outSR=4326&f=geojson",
+          "apns": [
+            "102-350-140"
+          ],
+          "note": "County GIS parcel geometry and acreage: 2.5 acres; Lot 184 Iron Gate Rd",
+          "retrievedAt": "2026-10-20T16:25:27.359Z"
+        }
+      ],
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-08-18T17:07:38.722Z",
-      "updatedAt": "2026-10-19T18:15:16.924Z"
+      "updatedAt": "2026-10-20T16:25:27.359Z",
+      "resolution": {
+        "apns": [
+          "102-350-140"
+        ],
+        "evidenceIds": [
+          "e001",
+          "e002"
+        ],
+        "resolvedAt": "2026-10-20T16:25:28.572Z"
+      }
     },
     "20261038": {
       "listingId": "20261038",
@@ -34346,7 +34526,7 @@
     },
     "20261234": {
       "listingId": "20261234",
-      "status": "open",
+      "status": "resolved",
       "active": true,
       "listing": {
         "title": "10015 Buck Lane, Hornbrook, CA 96044",
@@ -34360,12 +34540,66 @@
         "locationSource": "ZIP code centroid (approximate)",
         "propertyType": "land"
       },
-      "candidates": [],
-      "evidence": [],
+      "candidates": [
+        {
+          "apn": "102-200-200",
+          "gisAcres": 2.5,
+          "acreDelta": null,
+          "distanceMeters": null,
+          "section": "2",
+          "township": "47N",
+          "range": "5W",
+          "pointMatch": false,
+          "selected": true
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e001",
+          "type": "listing",
+          "signals": [
+            "explicit_apn",
+            "location",
+            "acreage"
+          ],
+          "source": "",
+          "url": "https://www.landsearch.com/properties/10015-buck-ln-hornbrook-ca-96044/5629948",
+          "apns": [
+            "102-200-200"
+          ],
+          "note": "MLS SAR 20261234; 10015 Buck Ln; 2.5 acres; Parcels section prints APN; listing point 41.959149,-122.397884.",
+          "retrievedAt": "2026-10-20T16:24:38.644Z"
+        },
+        {
+          "id": "e002",
+          "type": "county_gis",
+          "signals": [
+            "location",
+            "acreage"
+          ],
+          "source": "",
+          "url": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN%3D%27102-200-200%27&outFields=APN%2CAcres&returnGeometry=true&outSR=4326&f=geojson",
+          "apns": [
+            "102-200-200"
+          ],
+          "note": "Official parcel polygon and 2.5 acres; parcel centroid near listing point.",
+          "retrievedAt": "2026-10-20T16:24:38.816Z"
+        }
+      ],
       "ruledOutApns": [],
       "notes": "",
       "createdAt": "2026-10-18T15:57:42.388Z",
-      "updatedAt": "2026-10-19T18:15:16.924Z"
+      "updatedAt": "2026-10-20T16:24:38.996Z",
+      "resolution": {
+        "apns": [
+          "102-200-200"
+        ],
+        "evidenceIds": [
+          "e001",
+          "e002"
+        ],
+        "resolvedAt": "2026-10-20T16:24:40.054Z"
+      }
     },
     "20261235": {
       "listingId": "20261235",
