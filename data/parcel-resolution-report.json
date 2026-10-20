@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-19T18:15:16.924Z",
+  "generatedAt": "2026-10-20T17:16:48.402Z",
   "resolver": "subdivision-lot-sequence-v3",
-  "evaluatedGroups": 87,
+  "evaluatedGroups": 83,
   "mappedListings": 0,
   "establishedModels": [],
   "groups": [
@@ -29,11 +29,8 @@
         "20261199",
         "20261151",
         "20261093",
-        "20261036",
         "20261035",
-        "20260993",
         "20260664",
-        "20260046",
         "20240676",
         "20240688"
       ],
@@ -373,18 +370,6 @@
         -122.51472420665009
       ],
       "mlsNumbers": [
-        "20261036"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.906887599384326,
-        -122.51472420665009
-      ],
-      "mlsNumbers": [
         "20261035"
       ],
       "status": "unresolved_singleton",
@@ -398,18 +383,6 @@
       ],
       "mlsNumbers": [
         "20260208"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.906887599384326,
-        -122.51472420665009
-      ],
-      "mlsNumbers": [
-        "20260993"
       ],
       "status": "unresolved_singleton",
       "reason": "no candidate in an established APN sequence",
@@ -885,35 +858,11 @@
     },
     {
       "latLng": [
-        41.906887599384326,
-        -122.51472420665009
-      ],
-      "mlsNumbers": [
-        "20260046"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
         41.541831,
         -122.367731
       ],
       "mlsNumbers": [
         "20250116"
-      ],
-      "status": "unresolved_singleton",
-      "reason": "no candidate in an established APN sequence",
-      "assignments": []
-    },
-    {
-      "latLng": [
-        41.552665,
-        -122.265603
-      ],
-      "mlsNumbers": [
-        "20251306"
       ],
       "status": "unresolved_singleton",
       "reason": "no candidate in an established APN sequence",
