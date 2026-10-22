@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-20T17:43:33.942Z",
-  "count": 207,
+  "generatedAt": "2026-10-22T03:53:54.266Z",
+  "count": 206,
   "listings": [
     {
       "mlsNumber": "20261221",
@@ -1271,18 +1271,6 @@
         -122.36973897278729
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260253/Unit-3-Lot-103-Juniper-Peak-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260251",
-      "title": "Blk 62 Lot 3 Carnes, Montague, CA 96064",
-      "acres": 2,
-      "latLng": [
-        41.580000618000746,
-        -122.30570605800158
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260251/Blk-62-Lot-3-Carnes-Montague-CA-96064",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
