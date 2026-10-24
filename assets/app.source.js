@@ -604,7 +604,7 @@ function initializeMapLayers() {
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
-    ], { layers: ['fatal-traffic-crashes', 'springs', 'dams', 'power-plants', 'bridges', 'landslides', 'landslide-footprints-locators', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
+    ], { layers: ['surveillance', 'fatal-traffic-crashes', 'springs', 'dams', 'power-plants', 'bridges', 'landslides', 'landslide-footprints-locators', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
     const lineHits = map.queryRenderedFeatures([
       [event.point.x - 5, event.point.y - 5],
       [event.point.x + 5, event.point.y + 5]
@@ -665,6 +665,13 @@ function initializeMapLayers() {
       const percent = item => typeof item === 'number' && Number.isFinite(item) ? `${value(item)}%` : 'Not reported';
       const depth = props.surface_texture && props.texture_top_cm !== '' && props.texture_bottom_cm !== '' ? ` (${value(props.texture_top_cm)}–${value(props.texture_bottom_cm)} cm)` : '';
       document.querySelector('#details').innerHTML = `<h3>Mapped soil component</h3><p class="meta">USDA NRCS SSURGO · map unit ${value(props.mukey)}</p><p><strong>${value(props.dominant_series)}</strong> · estimated dominant component ${value(props.dominant_percent)}%<br>Shallowest classified horizon: ${value(props.surface_texture)}${depth}<br>Sand: ${percent(props.sand_pct)} · Silt: ${percent(props.silt_pct)} · Clay: ${percent(props.clay_pct)}<br>Soil classification: ${value(props.soil_taxonomy)}<br>Map unit: ${value(props.muname)}<br>Drainage: ${value(props.drclassdcd)}</p><p class="source-note">A map unit can contain multiple soils. The dominant component and its representative horizon are not a sample from this point or a parcel-level soil test; verify in the field.</p>`;
+      return;
+    }
+    if (feature.layer.id === 'surveillance') {
+      const value = item => item === null || item === undefined || String(item).trim() === '' ? 'Not reported' : escapeHtml(item);
+      const type = { ALPR: 'License-plate reader (ALPR)', camera: 'Surveillance camera', gunshot_detector: 'Gunshot detector' }[props['surveillance:type']] || value(props['surveillance:type'] || 'Surveillance equipment');
+      const link = /^\d+$/.test(String(props.id)) ? `<p><a href="https://www.openstreetmap.org/node/${props.id}" target="_blank" rel="noopener noreferrer">View original OpenStreetMap record ↗</a></p>` : '';
+      document.querySelector('#details').innerHTML = `<h3>Community-mapped surveillance</h3><p class="meta">© OpenStreetMap contributors · ODbL</p><p><strong>${type}</strong><br>Manufacturer: ${value(props.manufacturer)}<br>Operator: ${value(props.operator)}<br>Mapped zone: ${value(props['surveillance:zone'])}</p>${link}<p class="source-note">Community-mapped equipment, not a verified or complete inventory. Its type, position, or operating status may be wrong or outdated.</p>`;
       return;
     }
     if (feature.layer.id === 'fatal-traffic-crashes') {
@@ -786,7 +793,7 @@ function initializeMapLayers() {
     }
     selectParcel(props, null, event.lngLat);
   });
-  for (const id of ['fatal-traffic-crashes', 'ifr-routes-low', 'ifr-routes-high', 'bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'soils', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['surveillance', 'fatal-traffic-crashes', 'ifr-routes-low', 'ifr-routes-high', 'bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'soils', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }
