@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-10-22T09:34:02.413Z",
+  "generatedAt": "2026-10-25T09:18:24.788Z",
   "count": 206,
   "listings": [
+    {
+      "mlsNumber": "20261257",
+      "title": "Lot 3 Eddy Drive, Mount Shasta, CA 96067",
+      "acres": 2.77,
+      "latLng": [
+        41.301519,
+        -122.298548
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261257/Lot-3-Eddy-Drive-Mount-Shasta-CA-96067",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261221",
       "title": "Lot 539 Blue Gill, Hornbrook, CA 96044",
@@ -1655,18 +1667,6 @@
         -122.37568799450162
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251246/Unit-1-Lot-16-Lake-Shore-Dr-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20251194",
-      "title": "Lot 164 Shasta Lane, Hornbrook, CA 96044",
-      "acres": 2.5,
-      "latLng": [
-        41.945958095000776,
-        -122.38565648250157
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20251194/Lot-164-Shasta-Lane-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
