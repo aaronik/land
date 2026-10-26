@@ -49,6 +49,7 @@ const ZONING_EXPLANATIONS = [
 
 export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, municipalZoningUrl, map, wildfirePerimetersQueryUrl, recentWildfirePerimetersQueryUrl, parcelsQueryUrl, addressPointsQueryUrl, onParcelQuest, onClose }) {
   const zoningByApn = new Map();
+  const acreageByApn = new Map();
   const addressPointsByApn = new Map();
   const wildfireHistoryByApn = new Map();
   let zoningRequestId = 0;
@@ -191,10 +192,38 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
       const zoning = await zoningForParcel(apn);
       if (requestId !== zoningRequestId || !target.isConnected) return;
       const label = typeof zoning === 'object' ? `${zoning.zoning} (${zoning.jurisdiction})` : zoning;
-      target.innerHTML = zoning ? ` · <button class="zoning-explainer-trigger" type="button" data-zoning-explainer="${escapeHtml(label)}" aria-label="Learn about ${escapeHtml(label)} zoning">${escapeHtml(label)}</button>` : ' · Not available';
+      const shortLabel = (typeof zoning === 'object' ? zoning.zoning : zoning).replace(/-/g, '').replace(/\s*\/\s*/g, '/');
+      target.innerHTML = zoning ? ` · <button class="zoning-explainer-trigger" type="button" data-zoning-explainer="${escapeHtml(label)}" aria-label="Learn about ${escapeHtml(label)} zoning">${escapeHtml(shortLabel)}</button>` : ' · Not available';
       target.querySelector('[data-zoning-explainer]')?.addEventListener('click', () => openZoningExplainer(zoning));
     }
     catch (error) { if (requestId === zoningRequestId && target.isConnected) target.textContent = ' · Unavailable'; console.warn(error); }
+  };
+  const updateParcelAcreage = async (apn, reportedAcres) => {
+    const target = detailsElement.querySelector('[data-selected-acreage]'); if (!target || !apn) return;
+    const countyAcres = Number(reportedAcres);
+    if (reportedAcres != null && Number.isFinite(countyAcres) && countyAcres > 0) {
+      target.textContent = `${countyAcres} acres`;
+      return;
+    }
+    target.textContent = '— acres';
+    try {
+      if (!acreageByApn.has(apn)) {
+        const url = new URL(parcelsQueryUrl);
+        url.search = new URLSearchParams({ f: 'json', where: `APN = '${String(apn).replace(/'/g, "''")}'`, outFields: 'APN,Acres,Shape__Area', returnGeometry: 'false' });
+        const response = await fetch(url); if (!response.ok) throw new Error(`parcel acreage query returned ${response.status}`);
+        const data = await response.json(); if (data.error) throw new Error(data.error.message || 'parcel acreage query failed');
+        const attributes = data.features?.[0]?.attributes;
+        const squareFeet = Number(attributes?.Shape__Area);
+        acreageByApn.set(apn, {
+          countyAcres: attributes?.Acres,
+          mapAcres: Number.isFinite(squareFeet) && squareFeet > 0 ? squareFeet / 43560 : null
+        });
+      }
+      if (target.isConnected && target === detailsElement.querySelector('[data-selected-acreage]')) {
+        const { countyAcres, mapAcres } = acreageByApn.get(apn);
+        target.textContent = Number(countyAcres) > 0 ? `${countyAcres} acres` : mapAcres > 0 ? `≈${mapAcres.toFixed(2)} acres` : '— acres';
+      }
+    } catch (error) { console.warn(error); }
   };
   const wildfireDate = value => { const timestamp = Number(value); return Number.isFinite(timestamp) && timestamp > 0 ? new Date(timestamp).toLocaleDateString() : ''; };
   const wildfireHistoryForParcel = async apn => {
@@ -285,8 +314,10 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     const directions = parcelDirectionsLink(p.APN), cards = records.filter(record => record.kind !== 'tax-delinquent').map((record, index) => recordCard(record, index === 0 ? directions : '')).join('');
     const dealerCards = soldExternalListings.map(record => `<article class="record previous-listing"><strong>Sold · dealer listing</strong><p>${escapeHtml(record.title || '')}</p><p>${record.price ? `Last advertised at ${money(record.price)} · ` : ''}${escapeHtml(record.acres || '—')} acres</p><p class="meta">Sale date and price not reported by dealer.</p>${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noopener">Open dealer listing ↗</a>` : ''}</article>`).join('');
     const previousCards = dealerCards + [...archivedListings, ...salesHistory].map(previousListingCard).join('');
-    detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || soldExternalListings[0]?.title || archivedListings[0]?.title || salesHistory[0]?.title || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta">${escapeHtml(p.Acres ?? getApnIndex()[p.APN]?.acres ?? '—')} GIS acres<span data-selected-zoning> · Zoning…</span>${p.APN ? ` · APN ${escapeHtml(p.APN)}` : ''}</p><p class="meta" data-selected-address hidden></p>${cards || previousCards || `${directions}${taxRecords.length ? '' : '<p class="muted">Official county parcel. No current listing or auction record is attached.</p>'}`}${researchControls(p.APN, records)}${taxDelinquencySection(taxRecords)}${!previousCards ? salesHistorySection(salesHistory) : ''}${!previousCards ? archivedListingsSection(archivedListings) : ''}${addressPointsSection()}${wildfireHistorySection(p.APN)}`;
-    updateParcelZoning(p.APN); updateAddressPoints(p.APN); updateWildfireHistory(p.APN); bindResearchControls(p.APN);
+    const reportedAcres = p.Acres ?? getApnIndex()[p.APN]?.acres;
+    const initialAcres = reportedAcres != null && Number(reportedAcres) > 0 ? `${escapeHtml(reportedAcres)} acres` : '— acres';
+    detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || soldExternalListings[0]?.title || archivedListings[0]?.title || salesHistory[0]?.title || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta"><span data-selected-acreage>${initialAcres}</span><span data-selected-zoning> · Zoning…</span>${p.APN ? `<span> · ${escapeHtml(p.APN)}</span>` : ''}</p><p class="meta" data-selected-address hidden></p>${cards || previousCards || `${directions}${taxRecords.length ? '' : '<p class="muted">Official county parcel. No current listing or auction record is attached.</p>'}`}${researchControls(p.APN, records)}${taxDelinquencySection(taxRecords)}${!previousCards ? salesHistorySection(salesHistory) : ''}${!previousCards ? archivedListingsSection(archivedListings) : ''}${addressPointsSection()}${wildfireHistorySection(p.APN)}`;
+    updateParcelAcreage(p.APN, reportedAcres); updateParcelZoning(p.APN); updateAddressPoints(p.APN); updateWildfireHistory(p.APN); bindResearchControls(p.APN);
   };
   return { recordCard, showParcelDetails };
 }
