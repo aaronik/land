@@ -1256,6 +1256,14 @@
     "confidence": "manually verified",
     "notes": "address"
   },
+  "20261257": {
+    "apns": [
+      "037-380-240"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Map images"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"

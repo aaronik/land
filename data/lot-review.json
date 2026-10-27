@@ -1,19 +1,7 @@
 {
-  "generatedAt": "2026-10-27T09:58:44.472Z",
-  "count": 204,
+  "generatedAt": "2026-10-27T16:04:10.471Z",
+  "count": 203,
   "listings": [
-    {
-      "mlsNumber": "20261257",
-      "title": "Lot 3 Eddy Drive, Mount Shasta, CA 96067",
-      "acres": 2.77,
-      "latLng": [
-        41.301519,
-        -122.298548
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261257/Lot-3-Eddy-Drive-Mount-Shasta-CA-96067",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
     {
       "mlsNumber": "20261221",
       "title": "Lot 539 Blue Gill, Hornbrook, CA 96044",
