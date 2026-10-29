@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-27T16:04:10.471Z",
-  "count": 203,
+  "generatedAt": "2026-10-29T11:02:26.180Z",
+  "count": 202,
   "listings": [
     {
       "mlsNumber": "20261221",
@@ -347,18 +347,6 @@
         -122.43578054800157
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260975/Unit-5-Lot-103-Greenfinch-Way-Montague-CA-96064",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260968",
-      "title": "Lot 40 Lake Shore Drive, Weed, CA 96094",
-      "acres": 0.24,
-      "latLng": [
-        41.513297,
-        -122.377096
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260968/Lot-40-Lake-Shore-Drive-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
