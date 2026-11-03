@@ -1264,6 +1264,22 @@
     "confidence": "manually verified",
     "notes": "Map images"
   },
+  "20261274": {
+    "apns": [
+      "060-381-270"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Map pics"
+  },
+  "20261275": {
+    "apns": [
+      "060-381-240"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Map pics"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
