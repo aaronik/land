@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-11-02T12:45:17.953Z",
-  "count": 199,
+  "generatedAt": "2026-11-04T12:24:23.205Z",
+  "count": 200,
   "listings": [
+    {
+      "mlsNumber": "20260208",
+      "title": "Lot 231 Pine Ct., Hornbrook, CA 96044",
+      "acres": 2.04,
+      "latLng": [
+        41.894987,
+        -122.505611
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260208/Lot-231-Pine-Ct-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261221",
       "title": "Lot 539 Blue Gill, Hornbrook, CA 96044",
