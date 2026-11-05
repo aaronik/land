@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-04T12:24:23.205Z",
-  "count": 200,
+  "generatedAt": "2026-11-05T12:38:49.104Z",
+  "count": 199,
   "listings": [
     {
       "mlsNumber": "20260208",
@@ -1391,18 +1391,6 @@
         -122.37430663380158
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260149/Unit-5-3-Lot-7-Wood-Ct-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260110",
-      "title": "Unit 2 Lot 592 Lazo Ln, Dorris, CA 96023",
-      "acres": 2.6,
-      "latLng": [
-        41.961841280532475,
-        -121.92833430129481
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260110/Unit-2-Lot-592-Lazo-Ln-Dorris-CA-96023",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
