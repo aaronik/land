@@ -1280,6 +1280,26 @@
     "confidence": "manually verified",
     "notes": "Map pics"
   },
+  "20261287": {
+    "apns": [
+      "003-660-090",
+      "003-660-130",
+      "003-660-100",
+      "003-660-140"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Rough from map and description, might not be accurate"
+  },
+  "20261289": {
+    "apns": [
+      "037-190-100",
+      "037-190-130"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "from description"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
