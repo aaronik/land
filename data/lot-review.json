@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-11-05T12:38:49.104Z",
-  "count": 199,
+  "generatedAt": "2026-11-06T12:21:15.711Z",
+  "count": 200,
   "listings": [
+    {
+      "mlsNumber": "20261293",
+      "title": "Lot 46 Norman Dr, Weed, CA 96064",
+      "acres": 2.59,
+      "latLng": [
+        41.568154,
+        -122.330047
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261293/Lot-46-Norman-Dr-Weed-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20260208",
       "title": "Lot 231 Pine Ct., Hornbrook, CA 96044",
