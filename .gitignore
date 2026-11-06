@@ -1,4 +1,12 @@
 node_modules/
 build/
 .cache/
+.cloudflare/
 .DS_Store
+infrastructure/.terraform/
+infrastructure/*.tfstate*
+infrastructure/*.tfvars
+infrastructure/crash.log
+.env
+.env.*
+.dev.vars*

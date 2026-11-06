@@ -181,3 +181,17 @@ npm run release
 ```
 
 This validates the existing data, builds `build/`, and publishes through `gh-pages`; it does not refresh or commit sales data. Configure the repository's Pages deployment to use the `gh-pages` branch.
+
+### Share-link preview Worker (optional until configured)
+
+The map's **↗** control copies a share URL at a Cloudflare Worker, not a direct GitHub Pages URL. Crawlers receive `og:image` metadata and a 1200 × 630 map-only screenshot; people visiting the link are sent to `land.aaronik.com` with the map camera, terrain setting and selected parcel. Other sidebar choices and locally saved drawings are **not** shared; screenshots use the markup-default layers and listing settings. Plain `#` URLs still work as before but do not get per-view previews. Screenshots are cached for 30 days in Workers KV; if Browser Run fails or quota is exhausted, the image redirects to the static fallback (`public/social-preview.jpg`).
+
+Initial setup was performed on the Cloudflare account associated with the production URL above. For a fresh machine or another account (requires OpenTofu and Node matching `cf`'s engine requirements):
+
+1. Install Worker dependencies: `npm --prefix worker ci`.
+2. Obtain a Cloudflare API token with Workers KV Storage Read/Write permissions for OpenTofu; Worker deployment also requires Workers Scripts Edit permission (or use `cf auth login`). Export `CLOUDFLARE_API_TOKEN` and `TF_VAR_cloudflare_account_id` for provisioning. Keep these **out of git**. Run `tofu -chdir=infrastructure init` and `tofu -chdir=infrastructure apply`. OpenTofu owns **only the KV namespace**, not the Worker deployment. Preserve `infrastructure/terraform.tfstate` privately (or configure a remote backend); a fresh checkout without that state will try to create another namespace.
+3. Run `cd worker && npm exec -- cf auth login` (or use the appropriate Cloudflare credentials), and ensure the same account is selected for the Worker as for KV. Set `PREVIEW_KV_ID=$(tofu -chdir=infrastructure output -raw preview_kv_id)`.
+4. Deploy the Worker with `npm --prefix worker run deploy`. The production share URL is `https://shasta-land-atlas-preview.aasullivan1618.workers.dev` (configured by default in `vite.config.mjs` and `scripts/deploy-preview.js`). `SHARE_PREVIEW_ORIGIN` can override it for another account; it is baked into the app at build time.
+5. On subsequent releases, run `npm run release`. This tests, deploys the Worker via `cf deploy`, then builds and publishes GitHub Pages. `scripts/deploy-preview.js` reads the KV ID from the local OpenTofu state unless `PREVIEW_KV_ID` is set explicitly; release refuses to deploy without a valid KV ID. `tofu apply` is intentionally separate from routine release. Preserve the OpenTofu state privately. When changing the app's capture rendering, bump `IMAGE_VERSION` in `worker/src/index.js` to invalidate old previews.
+
+Local checks: `npm --prefix worker test`, `npm --prefix worker run build`, `npm --prefix worker run dev`. Note Browser Run requires live account access to validate actual screenshot capture. On Cloudflare's free plan browser runtime is limited to 10 minutes/day and new browser sessions are rate-limited; the fallback is shown when new captures cannot run.

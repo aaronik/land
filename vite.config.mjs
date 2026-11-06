@@ -29,7 +29,8 @@ export default defineConfig({
   },
   define: {
     __PARCEL_BOUNDARIES_REVISION__: JSON.stringify(String(statSync('data/generated/parcels.pmtiles').mtimeMs)),
-    __PUBLIC_LAND_REVISION__: JSON.stringify(String(statSync('data/generated/public_land.pmtiles').mtimeMs))
+    __PUBLIC_LAND_REVISION__: JSON.stringify(String(statSync('data/generated/public_land.pmtiles').mtimeMs)),
+    __SHARE_PREVIEW_ORIGIN__: JSON.stringify(process.env.SHARE_PREVIEW_ORIGIN || 'https://shasta-land-atlas-preview.aasullivan1618.workers.dev')
   },
   plugins: [
     maplibreWorkers,

@@ -79,6 +79,8 @@ const PARCEL_URL_PARAM = 'parcel';
 const MAX_SAFE_TERRAIN_PITCH = 85;
 const TERRAIN_RECOVERY_PITCH = 78;
 const initialUrl = new URL(window.location.href);
+const previewCapture = initialUrl.searchParams.get('preview') === '1';
+if (previewCapture) document.body.classList.add('preview-capture');
 const initialTerrainEnabled = initialUrl.searchParams.get(TERRAIN_URL_PARAM) === '1';
 const initialSelectedApn = initialUrl.searchParams.get(PARCEL_URL_PARAM) || '';
 let enabledCategories = new Set(Object.keys(COLORS));
@@ -138,6 +140,33 @@ map.on('error', event => { window.__landErrors.push(event.error?.message || Stri
 
 const terrainControl = document.createElement('div');
 terrainControl.className = 'maplibregl-ctrl maplibregl-ctrl-group';
+const shareButton = document.createElement('button');
+shareButton.type = 'button';
+shareButton.className = 'maplibregl-ctrl-share';
+shareButton.setAttribute('aria-label', 'Copy share link with map preview');
+shareButton.title = 'Copy share link with map preview';
+shareButton.textContent = '↗';
+shareButton.disabled = true;
+map.once('load', () => { shareButton.disabled = false; });
+const shareControl = document.createElement('div');
+shareControl.className = 'maplibregl-ctrl maplibregl-ctrl-group';
+shareControl.appendChild(shareButton);
+if (__SHARE_PREVIEW_ORIGIN__) map.addControl({ onAdd: () => shareControl, onRemove: () => shareControl.remove() }, 'top-right');
+shareButton.addEventListener('click', async () => {
+  const origin = __SHARE_PREVIEW_ORIGIN__;
+  if (!origin) return;
+  const url = new URL(origin);
+  const camera = [map.getZoom(), map.getCenter().lat, map.getCenter().lng, map.getBearing(), map.getPitch()];
+  if (!Number.isFinite(camera[0]) || camera[0] < 1 || camera[0] > 20 || Math.abs(camera[1]) > 85 || Math.abs(camera[2]) > 180) return;
+  url.searchParams.set('view', camera.map(number => Number(number.toFixed(5))).join('/'));
+  if (terrainEnabled) url.searchParams.set('terrain', '1');
+  if (selectedApn) url.searchParams.set('parcel', selectedApn);
+  try {
+    await navigator.clipboard.writeText(url.href);
+    shareButton.title = 'Link copied';
+    setTimeout(() => { shareButton.title = 'Copy share link with map preview'; }, 2000);
+  } catch { window.prompt('Copy share link:', url.href); }
+});
 const terrainButton = document.createElement('button');
 terrainButton.id = 'terrain-toggle';
 terrainButton.className = 'maplibregl-ctrl-terrain-toggle';
@@ -466,6 +495,7 @@ const listingTypeInputs = [...document.querySelectorAll('.filter')];
 const defaultMapLayerVisibility = Object.fromEntries(mapLayerInputs.map(input => [input.dataset.mapLayer, input.defaultChecked]));
 const defaultListingTypeVisibility = Object.fromEntries(listingTypeInputs.map(input => [input.value, input.defaultChecked]));
 function loadMapLayerVisibility() {
+  if (previewCapture) return; // Capture defaults, not the renderer's local preferences.
   try {
     const saved = JSON.parse(localStorage.getItem(MAP_LAYER_STORAGE_KEY));
     if (!saved || typeof saved !== 'object') return;
@@ -476,6 +506,10 @@ function saveMapLayerVisibility() {
   try { localStorage.setItem(MAP_LAYER_STORAGE_KEY, JSON.stringify(Object.fromEntries(mapLayerInputs.map(input => [input.dataset.mapLayer, input.checked])))); } catch { /* Storage may be disabled. */ }
 }
 function loadListingTypeVisibility() {
+  if (previewCapture) {
+    enabledCategories = new Set(listingTypeInputs.filter(input => input.checked).map(input => input.value));
+    return;
+  }
   try {
     const saved = JSON.parse(localStorage.getItem(LISTING_TYPE_STORAGE_KEY));
     if (saved && typeof saved === 'object') {
@@ -488,6 +522,7 @@ function saveListingTypeVisibility() {
   try { localStorage.setItem(LISTING_TYPE_STORAGE_KEY, JSON.stringify(Object.fromEntries(listingTypeInputs.map(input => [input.value, input.checked])))); } catch { /* Storage may be disabled. */ }
 }
 function loadListingFilterState() {
+  if (previewCapture) return;
   try {
     const saved = JSON.parse(localStorage.getItem(LISTING_FILTER_STORAGE_KEY));
     if (!saved || typeof saved !== 'object') return;

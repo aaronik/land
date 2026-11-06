@@ -20,6 +20,7 @@ for (const saved of [null, '{invalid', JSON.stringify({ 'private-land': false, '
     listingTypeInputs: inputs,
     LISTING_TYPE_STORAGE_KEY: 'listing-types',
     localStorage: { getItem: () => saved },
+    previewCapture: false,
     Set
   });
   vm.runInContext(`let enabledCategories = new Set(['private-land', 'previous-listing', 'tax-delinquent']); ${load} loadListingTypeVisibility();`, context);
