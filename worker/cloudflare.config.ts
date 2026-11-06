@@ -11,6 +11,7 @@ export default defineConfig({
     compatibilityDate: '2026-10-01',
     compatibilityFlags: ['nodejs_compat'],
     workersDev: true,
+    observability: { enabled: true, headSamplingRate: 1, redactQueryString: true },
     env: {
       BROWSER: bindings.browser(),
       PREVIEWS: bindings.kv(kvId ? { id: kvId } : {})

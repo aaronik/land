@@ -1,5 +1,7 @@
 Wells / springs look too similar on map
 
+- [ ] Make copying the atlas address-bar URL sufficient for a view-specific social preview: move camera state out of the `#` fragment into server-visible URL parameters, route `land.aaronik.com` through Cloudflare, and serve per-view OG metadata/images on the same URL. Preserve existing hash links and remove the separate Copy URL button once verified across messaging apps.
+
 ## Land-search product gaps
 
 - [x] Add listing-discovery filters: price range, price per acre, property type/use, beds/baths, listing status, days on market, keywords, and richer acreage ranges.
