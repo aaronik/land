@@ -20,6 +20,11 @@ button, input { font: inherit; }
 .eyebrow { margin: 0 0 2px; color: #bdd77a; font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
 h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(28px, 4vw, 43px); line-height: .95; font-weight: 500; }
 .tagline { max-width: 470px; margin: 0; text-align: right; color: #dbe3dd; font-size: 14px; }
+.masthead-actions { display: flex; align-items: center; gap: 16px; }
+#copy-map-url { flex: none; min-width: 92px; padding: 9px 12px; border: 1px solid #788680; border-radius: 6px; color: #f1f3f1; background: transparent; font-size: 13px; font-weight: 700; cursor: pointer; }
+#copy-map-url:hover:not(:disabled) { border-color: #bbc8c1; background: rgba(255,255,255,.09); }
+#copy-map-url:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+#copy-map-url:disabled { opacity: .55; cursor: default; }
 
 main { height: calc(100% - 86px); display: grid; grid-template-columns: 350px 1fr; }
 .panel { padding: 22px; overflow-y: auto; background: var(--panel); border-right: 1px solid var(--line); z-index: 500; box-shadow: 8px 0 28px rgba(0,0,0,.12); }
@@ -251,7 +256,6 @@ body.preview-capture .masthead, body.preview-capture .panel { display: none; }
 body.preview-capture main { height: 100%; display: block; }
 body.preview-capture #map { width: 100%; height: 100%; }
 body.preview-capture .maplibregl-control-container { display: none; }
-.maplibregl-ctrl-share { font-size: 23px; line-height: 29px; }
 /* Keep the precise live location legible over satellite imagery and 3D terrain. */
 .maplibregl-user-location-dot,
 .maplibregl-user-location-accuracy-circle { z-index: 2; }
@@ -366,8 +370,9 @@ body.preview-capture .maplibregl-control-container { display: none; }
 .sheet-handle { display: none; }
 
 @media (max-width: 760px) {
-  .masthead { height: 72px; padding: 10px 14px; }
+  .masthead { height: 72px; padding: 10px 14px; align-items: center; gap: 10px; }
   .tagline { display: none; }
+  #copy-map-url { min-width: 82px; padding: 8px 9px; font-size: 12px; }
   main { position: relative; height: calc(100% - 30px); display: block; overflow: hidden; --mobile-sheet-peek: 132px; }
   #map { height: 100%; }
   .panel {

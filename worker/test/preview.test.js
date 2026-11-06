@@ -22,6 +22,8 @@ test('crawler receives image metadata while human navigates to app', async () =>
   assert.equal(response.status, 200);
   assert.match(html, /property="og:image" content="https:\/\/preview.example.com\/image\?/);
   assert.match(html, /twitter:card" content="summary_large_image"/);
+  assert.match(html, /og:image:type" content="image\/jpeg"/);
+  assert.doesNotMatch(html, /http-equiv="refresh"/);
   assert.match(html, new RegExp(`https://land.aaronik.com/\\?terrain=1#${view}`));
 });
 

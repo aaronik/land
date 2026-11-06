@@ -140,18 +140,8 @@ map.on('error', event => { window.__landErrors.push(event.error?.message || Stri
 
 const terrainControl = document.createElement('div');
 terrainControl.className = 'maplibregl-ctrl maplibregl-ctrl-group';
-const shareButton = document.createElement('button');
-shareButton.type = 'button';
-shareButton.className = 'maplibregl-ctrl-share';
-shareButton.setAttribute('aria-label', 'Copy share link with map preview');
-shareButton.title = 'Copy share link with map preview';
-shareButton.textContent = '↗';
-shareButton.disabled = true;
-map.once('load', () => { shareButton.disabled = false; });
-const shareControl = document.createElement('div');
-shareControl.className = 'maplibregl-ctrl maplibregl-ctrl-group';
-shareControl.appendChild(shareButton);
-if (__SHARE_PREVIEW_ORIGIN__) map.addControl({ onAdd: () => shareControl, onRemove: () => shareControl.remove() }, 'top-right');
+const shareButton = document.querySelector('#copy-map-url');
+map.once('load', () => { if (__SHARE_PREVIEW_ORIGIN__) shareButton.disabled = false; });
 shareButton.addEventListener('click', async () => {
   const origin = __SHARE_PREVIEW_ORIGIN__;
   if (!origin) return;
@@ -163,8 +153,9 @@ shareButton.addEventListener('click', async () => {
   if (selectedApn) url.searchParams.set('parcel', selectedApn);
   try {
     await navigator.clipboard.writeText(url.href);
-    shareButton.title = 'Link copied';
-    setTimeout(() => { shareButton.title = 'Copy share link with map preview'; }, 2000);
+    shareButton.textContent = 'Copied!';
+    clearTimeout(shareButton.copyFeedbackTimer);
+    shareButton.copyFeedbackTimer = setTimeout(() => { shareButton.textContent = 'Copy URL'; }, 2000);
   } catch { window.prompt('Copy share link:', url.href); }
 });
 const terrainButton = document.createElement('button');
