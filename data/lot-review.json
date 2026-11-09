@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-11-06T12:21:15.711Z",
-  "count": 200,
+  "generatedAt": "2026-11-09T21:43:22.831Z",
+  "count": 202,
   "listings": [
+    {
+      "mlsNumber": "20261300",
+      "title": "Lot 142 Creekside Rd, Hornbrook, CA 96044",
+      "acres": 2.6,
+      "latLng": [
+        41.906887599384326,
+        -122.51472420665009
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261300/Lot-142-Creekside-Rd-Hornbrook-CA-96044",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261293",
       "title": "Lot 46 Norman Dr, Weed, CA 96064",
@@ -251,6 +263,18 @@
         -122.428111
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260358/Lot-127-Willit-Way-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260258",
+      "title": "Lot 768 Ruff Way, Hornbrook, CA 96044",
+      "acres": 2.9,
+      "latLng": [
+        41.87339481800078,
+        -122.45006834700155
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260258/Lot-768-Ruff-Way-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
