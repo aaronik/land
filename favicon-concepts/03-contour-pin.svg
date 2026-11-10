@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Contour pin favicon concept">
+  <rect width="64" height="64" rx="13" fill="#16231d"/>
+  <path d="M7 17c7-8 14-8 19-5M7 28c5-7 10-10 17-10M7 41c5-7 10-11 17-12M12 53c3-6 6-9 12-12" fill="none" stroke="#bdd77a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M44 9c-10 0-17 8-17 18 0 12 17 29 17 29s17-17 17-29c0-10-7-18-17-18Z" fill="#f4f1e8"/>
+  <circle cx="44" cy="27" r="7" fill="#16231d"/>
+</svg>

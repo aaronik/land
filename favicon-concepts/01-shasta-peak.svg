@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Shasta Peak favicon concept">
+  <rect width="64" height="64" rx="13" fill="#16231d"/>
+  <path d="M6 47 29 15 39 29 44 23 59 47Z" fill="#bdd77a"/>
+  <path d="m29 15 10 14-7-3-4 4-5-6Z" fill="#f4f1e8"/>
+  <path d="m44 23 7 10-6-3-4 2-3-3Z" fill="#f4f1e8"/>
+  <path d="M6 47h53" stroke="#f4f1e8" stroke-width="3"/>
+</svg>
