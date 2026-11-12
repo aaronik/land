@@ -1,7 +1,31 @@
 {
-  "generatedAt": "2026-11-11T12:01:33.666Z",
-  "count": 202,
+  "generatedAt": "2026-11-12T13:03:55.795Z",
+  "count": 204,
   "listings": [
+    {
+      "mlsNumber": "20261308",
+      "title": "Unit 4, Lot 197 Rainbow Drive, Weed, CA 96094",
+      "acres": 0.32,
+      "latLng": [
+        41.512246583842874,
+        -122.38200017689633
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261308/Unit-4-Lot-197-Rainbow-Drive-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261307",
+      "title": "Unit 4, Lot 196 Rainbow Drive, Weed, CA 96094",
+      "acres": 0.35,
+      "latLng": [
+        41.512017,
+        -122.38404
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261307/Unit-4-Lot-196-Rainbow-Drive-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261300",
       "title": "Lot 142 Creekside Rd, Hornbrook, CA 96044",
