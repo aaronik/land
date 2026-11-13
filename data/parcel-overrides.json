@@ -1300,6 +1300,16 @@
     "confidence": "manually verified",
     "notes": "from description"
   },
+  "20261311": {
+    "apns": [
+      "060-571-370",
+      "060-571-400",
+      "060-571-310"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "description"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
