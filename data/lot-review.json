@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-12T13:03:55.795Z",
-  "count": 204,
+  "generatedAt": "2026-11-13T12:29:10.423Z",
+  "count": 205,
   "listings": [
     {
       "mlsNumber": "20261308",
@@ -863,6 +863,18 @@
         -122.38584241500158
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260629/unit-9-1-Lot-14-Lake-Shastina-Wildhorse-Pl-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20260627",
+      "title": "Unit 3e Lot 11 Mt Shasta Dr, McCloud, CA 96057",
+      "acres": 2.5,
+      "latLng": [
+        41.32049893125079,
+        -122.08094385050163
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260627/Unit-3e-Lot-11-Mt-Shasta-Dr-McCloud-CA-96057",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
