@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-13T12:29:10.423Z",
-  "count": 205,
+  "generatedAt": "2026-11-15T12:09:45.299Z",
+  "count": 204,
   "listings": [
     {
       "mlsNumber": "20261308",
@@ -2063,18 +2063,6 @@
         -122.306343
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250389/Lot-55-Patricia-Ave-Montague-CA-96064",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20231312",
-      "title": "Lot 98 Moore Dr., Hornbrook, CA 96044",
-      "acres": 2.5,
-      "latLng": [
-        41.87481461600079,
-        -122.45472341000155
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20231312/Lot-98-Moore-Dr-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
