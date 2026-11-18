@@ -1,7 +1,31 @@
 {
-  "generatedAt": "2026-11-16T17:09:54.949Z",
-  "count": 204,
+  "generatedAt": "2026-11-18T13:18:50.116Z",
+  "count": 205,
   "listings": [
+    {
+      "mlsNumber": "20261324",
+      "title": "Unit 1 Lot 136 Harborview, Weed, CA 96094",
+      "acres": 0.24,
+      "latLng": [
+        41.46268891844234,
+        -122.38240783539575
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261324/Unit-1-Lot-136-Harborview-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261320",
+      "title": "Lots 55 & 56 Tennis Ct, Weed, CA 96094",
+      "acres": 0.48,
+      "latLng": [
+        41.50743206350076,
+        -122.37915613250158
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261320/Lots-55-56-Tennis-Ct-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261308",
       "title": "Unit 4, Lot 197 Rainbow Drive, Weed, CA 96094",
@@ -971,18 +995,6 @@
         -122.37568799450162
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260518/Unit-2-Lot-36-Lake-Shastina-Lake-Shore-Dr-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20230230",
-      "title": "U 2 Lot 136 Mountain St, Hornbrook, CA 96044",
-      "acres": 3.04,
-      "latLng": [
-        41.894216653750775,
-        -122.47459635975157
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20230230/U-2-Lot-136-Mountain-St-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
