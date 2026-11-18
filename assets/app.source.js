@@ -7,6 +7,7 @@ import { installMapControls } from './map/controls.js';
 import { createListingData } from './data/listings.js';
 import { createParcelDetails } from './ui/parcel-details.js';
 import { installMapSourcesAndLayers } from './map/layers.js';
+import { createWebcamViewer } from './map/webcams.js';
 import { identifyLandCover, LAND_COVER_YEAR, landCoverLegendClass } from './map/land-cover.js';
 import { identifyVegetation, loadVegetationLegend, VEGETATION_YEAR } from './map/vegetation.js';
 import { buildVegetationLegend, highlightVegetationLegend } from './ui/vegetation-legend.js';
@@ -461,6 +462,8 @@ function addPmtilesSource(id) {
 const MAP_LAYER_STORAGE_KEY = 'shasta-land-atlas.map-layer-visibility.v1';
 const LISTING_TYPE_STORAGE_KEY = 'shasta-land-atlas.listing-type-visibility.v1';
 const LISTING_FILTER_STORAGE_KEY = 'shasta-land-atlas.listing-filter-state.v1';
+const webcamViewer = createWebcamViewer({ map, Popup: maplibregl.Popup });
+map.on('remove', () => webcamViewer.close());
 const mapLayerInputs = [...document.querySelectorAll('[data-map-layer]')];
 const listingTypeInputs = [...document.querySelectorAll('.filter')];
 const defaultMapLayerVisibility = Object.fromEntries(mapLayerInputs.map(input => [input.dataset.mapLayer, input.defaultChecked]));
@@ -548,6 +551,7 @@ function toggleLayer(id, visibleValue) {
     zoning: ['zoning-fill', 'zoning-lines', 'municipal-zoning-fill', 'municipal-zoning-lines']
   };
   const layerIds = groupedLayers[id] || [id];
+  if (id === 'webcams' && !visibleValue) webcamViewer.close();
   if (id === 'soils' && !visibleValue) clickedSoil = null;
   for (const layerId of layerIds) if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibleValue ? 'visible' : 'none');
   document.querySelector(`[data-layer-key="${id}"]`)?.classList.toggle('visible', visibleValue);
@@ -604,7 +608,7 @@ function initializeMapLayers() {
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
-    ], { layers: ['surveillance', 'fatal-traffic-crashes', 'springs', 'dams', 'power-plants', 'bridges', 'landslides', 'landslide-footprints-locators', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
+    ], { layers: ['webcams', 'surveillance', 'fatal-traffic-crashes', 'springs', 'dams', 'power-plants', 'bridges', 'landslides', 'landslide-footprints-locators', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
     const lineHits = map.queryRenderedFeatures([
       [event.point.x - 5, event.point.y - 5],
       [event.point.x + 5, event.point.y + 5]
@@ -621,7 +625,7 @@ function initializeMapLayers() {
       clickedSoil = soilHit.properties;
     }
     refreshLegendHighlights();
-    const feature = markerHits[0] || (inspectOverlay ? lineHits[0] || overlayHit || parcelHit : polygonHits.find(hit => hit.layer.id === 'sale-fill') || lineHits[0] || parcelHit || overlayHit || soilHit);
+    const feature = markerHits.find(hit => hit.layer.id === 'webcams') || markerHits[0] || (inspectOverlay ? lineHits[0] || overlayHit || parcelHit : polygonHits.find(hit => hit.layer.id === 'sale-fill') || lineHits[0] || parcelHit || overlayHit || soilHit);
     if ((inspectOverlay || !parcelHit) && (feature?.layer.id === 'parcel-fill' || !feature) && map.getLayoutProperty('vegetation', 'visibility') === 'visible' && !markerHits.length && !lineHits.length && !habitatHits.length && !polygonHits.some(hit => hit.layer.id === 'sale-fill' || hit.layer.id === 'landslide-footprints-fill')) {
       const details = document.querySelector('#details');
       details.innerHTML = '<h3>Mapped vegetation community</h3><p class="meta">Checking LANDFIRE class…</p>';
@@ -665,6 +669,10 @@ function initializeMapLayers() {
       const percent = item => typeof item === 'number' && Number.isFinite(item) ? `${value(item)}%` : 'Not reported';
       const depth = props.surface_texture && props.texture_top_cm !== '' && props.texture_bottom_cm !== '' ? ` (${value(props.texture_top_cm)}–${value(props.texture_bottom_cm)} cm)` : '';
       document.querySelector('#details').innerHTML = `<h3>Mapped soil component</h3><p class="meta">USDA NRCS SSURGO · map unit ${value(props.mukey)}</p><p><strong>${value(props.dominant_series)}</strong> · estimated dominant component ${value(props.dominant_percent)}%<br>Shallowest classified horizon: ${value(props.surface_texture)}${depth}<br>Sand: ${percent(props.sand_pct)} · Silt: ${percent(props.silt_pct)} · Clay: ${percent(props.clay_pct)}<br>Soil classification: ${value(props.soil_taxonomy)}<br>Map unit: ${value(props.muname)}<br>Drainage: ${value(props.drclassdcd)}</p><p class="source-note">A map unit can contain multiple soils. The dominant component and its representative horizon are not a sample from this point or a parcel-level soil test; verify in the field.</p>`;
+      return;
+    }
+    if (feature.layer.id === 'webcams') {
+      webcamViewer.open(feature);
       return;
     }
     if (feature.layer.id === 'surveillance') {
@@ -793,7 +801,7 @@ function initializeMapLayers() {
     }
     selectParcel(props, null, event.lngLat);
   });
-  for (const id of ['surveillance', 'fatal-traffic-crashes', 'ifr-routes-low', 'ifr-routes-high', 'bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'soils', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['webcams', 'surveillance', 'fatal-traffic-crashes', 'ifr-routes-low', 'ifr-routes-high', 'bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'soils', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }

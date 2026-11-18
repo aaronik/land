@@ -395,3 +395,25 @@ footer p:first-child { color: var(--ink); font-weight: 700; }
   .polygon-popup-bearing { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .polygon-popup-bearing label:first-child, .polygon-popup-bearing label:last-child { grid-column: span 1; }
 }
+
+/* Keep the complete camera frame visible, including source bars and partner logos. */
+.swatch.webcams-overlay { background: linear-gradient(90deg, #168bc4 50%, #ecab35 50%); border: 2px solid #fff; border-radius: 50%; }
+.webcam-popup { width: min(440px, calc(100vw - 30px)); z-index: 4; }
+.webcam-popup .maplibregl-popup-content { padding: 16px; max-height: min(640px, 70dvh); overflow-y: auto; color: #22352c; }
+.webcam-viewer h3 { margin: 0 22px 6px 0; font-size: 16px; }
+.webcam-viewer p { margin: 8px 0; }
+.webcam-viewer select { width: 100%; margin-bottom: 8px; }
+.webcam-image { display: block; width: 100%; height: auto; margin-top: 8px; }
+.webcam-image[hidden] { display: none; }
+.webcam-credit, .webcam-status { font-size: 12px; }
+.webcam-note, .webcam-license { font-size: 11px; line-height: 1.4; }
+.webcam-source { display: inline-block; margin: 8px; }
+.webcam-viewer button { cursor: pointer; padding: 6px 10px; }
+
+@media (max-width: 760px) {
+  /* A camera frame grows after loading; pin the viewer below the masthead so
+     MapLibre's marker anchor cannot push its close button off-screen. */
+  .webcam-popup { position: fixed; top: 84px; left: 15px; transform: none !important; }
+  .webcam-popup .maplibregl-popup-tip { display: none; }
+  .webcam-popup .maplibregl-popup-content { max-height: calc(100dvh - 240px); }
+}
