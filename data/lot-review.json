@@ -1,7 +1,31 @@
 {
-  "generatedAt": "2026-11-18T13:18:50.116Z",
-  "count": 205,
+  "generatedAt": "2026-11-20T13:25:18.351Z",
+  "count": 206,
   "listings": [
+    {
+      "mlsNumber": "20261330",
+      "title": "Lot 87 Lake Shastina Drive, Weed, CA 96094",
+      "acres": 0.36,
+      "latLng": [
+        41.521692,
+        -122.374617
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261330/Lot-87-Lake-Shastina-Drive-Weed-CA-96094",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
+    {
+      "mlsNumber": "20261329",
+      "title": "lot 597 Dragon Dr., Montague, CA 96064",
+      "acres": 2.7,
+      "latLng": [
+        41.726852558525,
+        -122.44620948487768
+      ],
+      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261329/lot-597-Dragon-Dr-Montague-CA-96064",
+      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
+      "status": "needs assessor-map confirmation"
+    },
     {
       "mlsNumber": "20261324",
       "title": "Unit 1 Lot 136 Harborview, Weed, CA 96094",
@@ -323,18 +347,6 @@
         -122.45006834700155
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260258/Lot-768-Ruff-Way-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260119",
-      "title": "Lot 263 Stag St, Weed, CA 96094",
-      "acres": 0.44,
-      "latLng": [
-        41.516465,
-        -122.381636
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260119/Lot-263-Stag-St-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
