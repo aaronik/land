@@ -1310,6 +1310,14 @@
     "confidence": "manually verified",
     "notes": "description"
   },
+  "20261328": {
+    "apns": [
+      "062-122-040"
+    ],
+    "source": "MLS syndication parcel number, verified in county parcel GIS",
+    "confidence": "verified; published APN and exact acreage match",
+    "notes": "931 E Oberlin Rd E. LandSearch MLS #20261328 lists APN 062-122-040 (https://www.landsearch.com/properties/931-e-oberlin-rd-yreka-ca-96097/5694633); Zillow lists 062122040000. County GIS confirms 0.52 acres; no county address point for 931 Oberlin."
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
