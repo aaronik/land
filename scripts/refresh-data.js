@@ -197,7 +197,9 @@ function normalizeStreet(value) {
     .replace(/\bDRIVE\b/g, 'DR').replace(/\bLANE\b/g, 'LN')
     .replace(/\bHIGHWAY\b/g, 'HWY').replace(/\bBOULEVARD\b/g, 'BLVD')
     .replace(/\bCIRCLE\b/g, 'CIR').replace(/\bPLACE\b/g, 'PL')
-    .replace(/[^A-Z0-9]+/g, ' ').trim();
+    .replace(/[^A-Z0-9]+/g, ' ').trim()
+    // IDX sometimes repeats the predirection at the end, with or without a street suffix.
+    .replace(/^(N|S|E|W|NE|NW|SE|SW) (.+) \1$/, '$1 $2');
 }
 
 function editDistance(a, b) {
