@@ -1412,6 +1412,15 @@
     "confidence": "high",
     "notes": "4000 Hope Ln, Dunsmuir: explicit APN and exact-address point match the 0.35-acre county record. https://www.zillow.com/homedetails/4000-Hope-Ln-Dunsmuir-CA-96025/15981212_zpid/"
   },
+  "20261153": {
+    "apns": [
+      "019-050-090",
+      "019-050-100"
+    ],
+    "source": "manual override: user-approved pair; MLS broker flyer + Siskiyou County GIS",
+    "confidence": "mixed evidence: 019-050-090 high; 019-050-100 inferred, user approved",
+    "notes": "R.S.B. 23-156, County Highway A-12: flyer explicitly names 019-050-090 (72.02 county acres). Adjoining 019-050-100 (11.00 county acres) completes 83.02 county acres; combined GIS footprint is about 81.22 acres. Both intersect County Highway A-12. Second APN inferred; survey not checked. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20261153?controller=ListingSearch&action=print_flyer"
+  },
   "20261157": {
     "apns": [
       "106-040-330"
@@ -1477,6 +1486,16 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "address"
+  },
+  "20261218": {
+    "apns": [
+      "028-240-070",
+      "028-240-370",
+      "028-240-360"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "thought i already did this one"
   },
   "20261222": {
     "apns": [
