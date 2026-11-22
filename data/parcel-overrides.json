@@ -15,6 +15,15 @@
     "confidence": "verified; explicit MLS tax ID and exact acreage match",
     "notes": "Lot 7 Ream Ave, Shasta Holiday subdivision; MLS tax/property ID 036-460-011; listing and GIS both 1.1 acres; listing says corner of Ream Ave and W.A. Barr Road"
   },
+  "20240233": {
+    "apns": [
+      "020-170-270",
+      "020-170-250"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "This one's back!"
+  },
   "20240386": {
     "apns": [
       "049-322-110"
@@ -1198,6 +1207,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "from photos, saw the house on the side and the red house across the st"
+  },
+  "20261158": {
+    "apns": [
+      "003-600-080"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "map pics and desc / acreage"
   },
   "20261170": {
     "apns": [
