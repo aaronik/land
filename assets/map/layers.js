@@ -355,18 +355,6 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     layout: { visibility: 'none', 'line-cap': 'butt', 'line-join': 'round' },
     paint: { 'line-color': '#fff', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.15, 14, 2.3], 'line-dasharray': [1.25, 1.25], 'line-opacity': 1 }
   });
-  map.addLayer({
-    id: 'towns', type: 'symbol', source: 'towns', 'source-layer': 'towns', minzoom: 7,
-    filter: ['all', ['has', 'gaz_name'], ['!=', ['get', 'gaz_name'], '']],
-    layout: {
-      'text-field': ['get', 'gaz_name'], 'text-font': ['Noto Sans Bold'],
-      'text-size': ['interpolate', ['linear'], ['zoom'], 6, 12, 8, 13, 14, 14],
-      'text-transform': 'uppercase', 'text-letter-spacing': 0.08,
-      'text-offset': [0, 0.7], 'text-anchor': 'top', 'text-padding': 6,
-      'text-allow-overlap': true, 'text-ignore-placement': true
-    },
-    paint: { 'text-color': '#fffdf0', 'text-halo-color': 'rgba(20, 28, 24, 0.98)', 'text-halo-width': 2.5, 'text-halo-blur': 0.4 }
-  });
   addSpringSymbol(map);
   map.addLayer({
     id: 'springs', type: 'symbol', source: 'springs', 'source-layer': 'springs', minzoom: 6,
@@ -532,5 +520,21 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   map.addLayer({ id: 'parcel-selected', type: 'line', source: 'parcels', 'source-layer': 'parcels', paint: { 'line-color': '#fff', 'line-width': 5, 'line-blur': 0.3, 'line-opacity': ['case', ['boolean', ['feature-state', 'selected'], false], 1, 0] } });
   map.addLayer({ id: 'unmapped-markers', type: 'circle', source: 'unmapped', paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 5, 12, 8], 'circle-color': ['match', ['get', 'category'], 'private-home', COLORS['private-home'], 'private-commercial', COLORS['private-commercial'], COLORS['private-land']], 'circle-stroke-color': '#fff', 'circle-stroke-width': 2, 'circle-opacity': 0.9, 'circle-pitch-alignment': 'map' } });
   map.addLayer({ id: 'unmapped-marker-labels', type: 'symbol', source: 'unmapped', filter: ['!=', ['get', 'markerLabel'], ''], layout: { 'text-field': ['get', 'markerLabel'], 'text-font': ['Noto Sans Bold'], 'text-size': 12, 'text-offset': [0, -1.35], 'text-anchor': 'bottom', 'text-padding': 3, 'text-pitch-alignment': 'viewport' }, paint: { 'text-color': '#fff', 'text-halo-color': 'rgba(20, 25, 22, 0.9)', 'text-halo-width': 2, 'text-halo-blur': 0.4 } });
-
+  // Towns sit above the map overlays and get first pick of label space.
+  const townName = ['get', 'gaz_name'];
+  const regionalTown = ['in', townName, ['literal', ['Yreka', 'Mount Shasta', 'Weed', 'Dunsmuir', 'Etna', 'Fort Jones', 'Happy Camp', 'Hornbrook', 'Montague', 'Tulelake', 'Dorris', 'McCloud']]];
+  map.addLayer({
+    id: 'towns', type: 'symbol', source: 'towns', 'source-layer': 'towns', minzoom: 5,
+    filter: ['all', ['has', 'gaz_name'], ['!=', townName, '']],
+    layout: {
+      'text-field': ['step', ['zoom'], ['case', regionalTown, townName, ''], 7, townName],
+      'text-font': ['Noto Sans Bold'],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 5, 13, 8, 16, 14, 18],
+      'symbol-sort-key': ['case', ['==', townName, 'Yreka'], 0, regionalTown, 1, 2],
+      'text-transform': 'uppercase', 'text-letter-spacing': 0.05,
+      'text-offset': [0, 0.45], 'text-anchor': 'top', 'text-padding': 4,
+      'text-pitch-alignment': 'viewport', 'text-rotation-alignment': 'viewport'
+    },
+    paint: { 'text-color': '#fffdf0', 'text-halo-color': '#111a15', 'text-halo-width': 2.75, 'text-halo-blur': 0.4 }
+  });
 }

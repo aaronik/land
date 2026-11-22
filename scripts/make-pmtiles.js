@@ -25,7 +25,7 @@ const configs = {
   waterways: { min: 6, max: 14, fields: LAYERS.waterways.fields.filter(field => field !== 'OBJECTID') },
   waterbodies: { min: 6, max: 14, fields: LAYERS.waterbodies.fields.filter(field => field !== 'OBJECTID') },
   summits: { min: 6, max: 14, fields: LAYERS.summits.fields.filter(field => field !== 'OBJECTID') },
-  towns: { min: 7, max: 14, fields: LAYERS.towns.fields.filter(field => field !== 'OBJECTID') },
+  towns: { min: 5, max: 14, preserveAll: true, fields: LAYERS.towns.fields.filter(field => field !== 'OBJECTID') },
   incorporated_places: { min: 6, max: 14, fields: LAYERS.incorporated_places.fields.filter(field => field !== 'OBJECTID') },
   springs: { min: 6, max: 14, fields: LAYERS.springs.fields.filter(field => field !== 'OBJECTID') },
   geology: { min: 6, max: 13, fields: LAYERS.geology.fields },
