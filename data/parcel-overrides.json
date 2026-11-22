@@ -57,6 +57,15 @@
     "confidence": "manually verified",
     "notes": "pics"
   },
+  "20240743": {
+    "apns": [
+      "053-471-010",
+      "053-471-020"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Flyer names -020 and describes two side-by-side Tebbe Street lots; adjoining pair totals 1.9 recorded acres. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20240743?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27053-471-010%27%2C%27053-471-020%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
+  },
   "20240759": {
     "apns": [
       "061-021-240"
@@ -172,6 +181,15 @@
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
   },
+  "20250721": {
+    "apns": [
+      "007-480-080",
+      "007-480-120"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Flyer names -120 and the adjoining Highway 96 tracts total exactly 102.4 recorded acres. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20250721?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27007-480-080%27%2C%27007-480-120%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
+  },
   "20250745": {
     "apns": [
       "020-071-550"
@@ -239,6 +257,14 @@
     "confidence": "manually verified",
     "notes": "pics"
   },
+  "20251075": {
+    "apns": [
+      "019-480-260"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "The MLS remarks give 41.539150, -121.996635, which falls inside a single county parcel, near its center. County Acres is 160, but the mapped area is 7,165,205.78 sq ft (164.49 acres), matching the listing. Use the assessor map or deed if legal acreage or surveyed boundaries are needed. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20251075?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?f=json&outFields=APN%2CAcres%2CShape__Area%2CShape__Length&returnGeometry=false&geometry=-121.996635%2C41.539150&geometryType=esriGeometryPoint&inSR=4326"
+  },
   "20251076": {
     "apns": [
       "011-440-070"
@@ -254,6 +280,16 @@
     "source": "verified assessor-map-to-gis: https://primecountry.com/property/20251159/, https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20251159/org/017.jpg?width=1600, https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?f=pjson&where=APN%3D%27107-350-300%27&outFields=APN%2CAcres&returnGeometry=true&outSR=4326",
     "confidence": "high; visual/explicit evidence reviewed",
     "notes": "The listing's photo 17 is a Siskiyou County Assessor tax map for book-page 107-35 and Lake Shastina Tract 1000-5-4. It shows the offered merged 0.78-acre Lot 60 at the Tennis Court cul-de-sac backing the greenbelt. County GIS APN 107-350-300 is the matching 0.78-acre merged polygon at that cul-de-sac; APN 107-350-170 is 0.80 acre and lies east along the Lake Shore side rather than at the mapped Tennis Court parcel."
+  },
+  "20251188": {
+    "apns": [
+      "003-010-020",
+      "003-010-040",
+      "003-010-130"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "The Picard Rd/Old State Hwy listing gives primary APN 003-010-020 in public records and names both additional APNs. County GIS polygons are in the Dorris border area, and county acreage sums to 115 + 446 + 353 = 914. The western parcel is separate from the eastern pair. Listing photos were not visually verified. Sources: https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27003-010-020%27%2C%27003-010-040%27%2C%27003-010-130%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=geojson https://www.redfin.com/CA/Dorris/0-KNA-96023/home/198727978 https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20251188?controller=ListingSearch&action=print_flyer"
   },
   "20251228": {
     "apns": [
@@ -280,6 +316,17 @@
     "confidence": "high",
     "notes": "9945 North State Highway 3, Fort Jones: exact county address point falls inside the 10.87-acre parcel, matching listing acreage; GIS footprint is about 10.35 acres. Original pin is a ZIP centroid. https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_County_Public_Address_Points/FeatureServer/0"
   },
+  "20260012": {
+    "apns": [
+      "061-251-100",
+      "061-251-080",
+      "061-361-300",
+      "061-361-280"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Flyer names three add-ons and says four parcels. Listing map and GIS corroborate the fourth; 64 recorded acres across from Greenhorn Lake. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260012?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27061-251-100%27%2C%27061-251-080%27%2C%27061-361-300%27%2C%27061-361-280%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
+  },
   "20260046": {
     "apns": [
       "102-370-150"
@@ -287,6 +334,15 @@
     "source": "evidence-backed APN research (e001, e002)",
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
+  },
+  "20260085": {
+    "apns": [
+      "051-092-050",
+      "051-092-040"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Exact county address points for 118 and 126 N Oregon Street; flyer names -040. Combined mapped area about 0.397 acre vs 0.4 listed. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260085?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27051-092-050%27%2C%27051-092-040%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
   },
   "20260101": {
     "apns": [
@@ -548,6 +604,14 @@
     "confidence": "manually verified",
     "notes": "map pics"
   },
+  "20260524": {
+    "apns": [
+      "107-340-190"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Flyer names the APN for Fisher Rd lot 225. County area field 0.25 acre matches listed 10,890 sq ft. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260524?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27107-340-190%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
+  },
   "20260528": {
     "apns": [
       "037-100-460"
@@ -750,6 +814,15 @@
     "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
     "confidence": "manually verified by lot number, parcel topology, and acreage",
     "notes": "Lot 31 McCloud subdivision"
+  },
+  "20260635": {
+    "apns": [
+      "056-281-270",
+      "056-281-300"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Flyer names -300 and adjoining tract by Highway 3 and Scott St fills the full 16.16 county acres. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260635?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27056-281-270%27%2C%27056-281-300%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
   },
   "20260649": {
     "apns": [
@@ -1175,6 +1248,15 @@
     "confidence": "manually verified by lot number, parcel topology, and acreage",
     "notes": "Lot 87 McCloud subdivision"
   },
+  "20260732": {
+    "apns": [
+      "031-241-270",
+      "031-241-190"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Flyer names -270; contiguous 10.28-acre tract crossed by East Fork Scott River matches the description. Exactly 23 recorded acres. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260732?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27031-241-270%27%2C%27031-241-190%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
+  },
   "20260733": {
     "apns": [
       "101-121-020"
@@ -1208,6 +1290,16 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "pics / visited"
+  },
+  "20260779": {
+    "apns": [
+      "061-121-060",
+      "054-162-050",
+      "054-162-060"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Zillow names the primary and both add-ons; GIS places them together and totals 14.80 acres vs 14.75 listed. https://www.zillow.com/homedetails/848-French-St-Yreka-CA-96097/219065089_zpid/ Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260779?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27061-121-060%27%2C%27054-162-050%27%2C%27054-162-060%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson https://www.zillow.com/homedetails/848-French-St-Yreka-CA-96097/219065089_zpid/"
   },
   "20260788": {
     "apns": [
@@ -1250,6 +1342,15 @@
     "source": "Siskiyou County exact address point intersected with county parcel GIS",
     "confidence": "high; exact county address point and acreage match",
     "notes": "532 Shasta Pines Drive; county address point lies inside APN 028-510-330; listing and GIS both 2.5 acres"
+  },
+  "20260860": {
+    "apns": [
+      "008-580-070",
+      "008-500-020"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Official 36726 address point identifies main tract; adjacent -020 is flyer-named. Combined GIS area about 6.31 acres. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260860?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27008-580-070%27%2C%27008-500-020%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
   },
   "20260867": {
     "apns": [
@@ -1305,6 +1406,22 @@
     "confidence": "manually verified",
     "notes": "map pics"
   },
+  "20260931": {
+    "apns": [
+      "040-230-120"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "MLS point and 18-acre county record agree; official county address point assigns 4824 Dandy Ln rather than Copco Rd, and GIS matches listed river frontage. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260931?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27040-230-120%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
+  },
+  "20260947": {
+    "apns": [
+      "030-523-060"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Exact official address point for 116 S 1st St. GIS measures 4701 sq ft vs 4792 listed; MLS pin elsewhere. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260947?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27030-523-060%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
+  },
   "20260955": {
     "apns": [
       "013-030-031"
@@ -1337,6 +1454,14 @@
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
   },
+  "20261001": {
+    "apns": [
+      "041-080-010"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "40.70 recorded acres; Bogus Creek crosses the parcel as described; nearby acreage lookalikes do not match the named creek. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20261001?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27041-080-010%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
+  },
   "20261010": {
     "apns": [
       "057-771-280"
@@ -1344,6 +1469,17 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "size / pictures / things on land"
+  },
+  "20261018": {
+    "apns": [
+      "109-070-030",
+      "109-070-040",
+      "109-070-050",
+      "109-070-060"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Flyer names the latter three and specifies four consecutive adjoining lots. The only approximately 20-acre parcel extending the chain is -030; 80.29 recorded acres vs 80 listed. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20261018?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27109-070-030%27%2C%27109-070-040%27%2C%27109-070-050%27%2C%27109-070-060%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
   },
   "20261019": {
     "apns": [
@@ -1360,6 +1496,14 @@
     "source": "evidence-backed APN research (e001, e002)",
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
+  },
+  "20261037": {
+    "apns": [
+      "038-280-040"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Official exact address point and the prior same-address public record agree with 40 county acres. https://www.zillow.com/homedetails/11820-Old-Highway-99-S-Grenada-CA-96038/64672798_zpid/ Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20261037?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27038-280-040%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson https://www.zillow.com/homedetails/11820-Old-Highway-99-S-Grenada-CA-96038/64672798_zpid/"
   },
   "20261046": {
     "apns": [
@@ -1403,6 +1547,15 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "acreage"
+  },
+  "20261092": {
+    "apns": [
+      "103-130-030",
+      "103-130-040"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Flyer names both; contiguous and total 9.4 recorded acres. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20261092?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27103-130-030%27%2C%27103-130-040%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
   },
   "20261094": {
     "apns": [
@@ -1517,6 +1670,15 @@
     "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
     "confidence": "high",
     "notes": "17147 Janice, Montague: explicit APN and exact-address point match. County acreage field and listing say 0.60; GIS footprint is about 0.34 acres. MLS pin hits a different APN. https://www.zillow.com/homedetails/17147-Janice-Rd-Montague-CA-96064/15968182_zpid/"
+  },
+  "20261167": {
+    "apns": [
+      "009-490-080",
+      "009-490-100"
+    ],
+    "source": "manual override: reviewed public listing evidence + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Flyer names -100; adjoining Indian Creek Rd companion -080. County total 8.1 vs 8.2 listed. Sources: https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20261167?controller=ListingSearch&action=print_flyer https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0/query?where=APN+IN+%28%27009-490-080%27%2C%27009-490-100%27%29&outFields=APN%2CAcres%2CShape__Area&returnGeometry=true&outSR=4326&f=pjson"
   },
   "20261170": {
     "apns": [
