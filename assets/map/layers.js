@@ -524,12 +524,12 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   const townName = ['get', 'gaz_name'];
   const regionalTown = ['in', townName, ['literal', ['Yreka', 'Mount Shasta', 'Weed', 'Dunsmuir', 'Etna', 'Fort Jones', 'Happy Camp', 'Hornbrook', 'Montague', 'Tulelake', 'Dorris', 'McCloud']]];
   map.addLayer({
-    id: 'towns', type: 'symbol', source: 'towns', 'source-layer': 'towns', minzoom: 5,
+    id: 'towns', type: 'symbol', source: 'towns', 'source-layer': 'towns', minzoom: 7,
     filter: ['all', ['has', 'gaz_name'], ['!=', townName, '']],
     layout: {
-      'text-field': ['step', ['zoom'], ['case', regionalTown, townName, ''], 7, townName],
+      'text-field': ['step', ['zoom'], ['case', regionalTown, townName, ''], 8, townName],
       'text-font': ['Noto Sans Bold'],
-      'text-size': ['interpolate', ['linear'], ['zoom'], 5, 13, 8, 16, 14, 18],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 7, 12, 8, 13, 14, 15],
       'symbol-sort-key': ['case', ['==', townName, 'Yreka'], 0, regionalTown, 1, 2],
       'text-transform': 'uppercase', 'text-letter-spacing': 0.05,
       'text-offset': [0, 0.45], 'text-anchor': 'top', 'text-padding': 4,

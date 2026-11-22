@@ -472,7 +472,11 @@ function loadMapLayerVisibility() {
   try {
     const saved = JSON.parse(localStorage.getItem(MAP_LAYER_STORAGE_KEY));
     if (!saved || typeof saved !== 'object') return;
-    for (const input of mapLayerInputs) if (typeof saved[input.dataset.mapLayer] === 'boolean') input.checked = saved[input.dataset.mapLayer];
+    for (const input of mapLayerInputs) {
+      const id = input.dataset.mapLayer;
+      if (typeof saved[id] === 'boolean') input.checked = saved[id];
+      else if ((id === 'lake-mountain-names' || id === 'town-names') && typeof saved['place-names'] === 'boolean') input.checked = saved['place-names'];
+    }
   } catch { /* Use markup defaults when storage is unavailable or malformed. */ }
 }
 function saveMapLayerVisibility() {
@@ -537,7 +541,8 @@ function toggleLayer(id, visibleValue) {
     'power-plants': ['power-plants'],
     landslides: ['landslide-footprints-fill', 'landslide-footprints-lines', 'landslide-footprints-locators', 'landslides'],
     waterways: ['waterways-casing', 'waterways', 'waterway-labels', 'springs'],
-    'place-names': ['waterbodies', 'waterbody-labels', 'summits', 'towns'],
+    'lake-mountain-names': ['waterbodies', 'waterbody-labels', 'summits'],
+    'town-names': ['towns'],
     'incorporated-places': ['incorporated-places-red', 'incorporated-places-white-dashes'],
     huc12: ['huc12-fill', 'huc12-lines', 'huc12-labels'],
     wetlands: ['wetlands'],
