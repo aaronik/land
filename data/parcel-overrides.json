@@ -7,6 +7,14 @@
     "confidence": "manually verified",
     "notes": "acreage / rough estimate by pics"
   },
+  "20220999": {
+    "apns": [
+      "013-750-610"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "2845 Watson Ct, Montague: explicit APN and exact-address point match the 1.13-acre county record. https://www.zillow.com/homedetails/2845-Watson-Ct-Montague-CA-96064/325563319_zpid/"
+  },
   "20221105": {
     "apns": [
       "036-460-011"
@@ -40,6 +48,14 @@
     "confidence": "manually verified",
     "notes": "pics"
   },
+  "20240759": {
+    "apns": [
+      "061-021-240"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "925 W Miner St, Yreka: explicit APN and exact-address point match the 0.19-acre county record. https://www.zillow.com/homedetails/925-W-Miner-St-Yreka-CA-96097/219064953_zpid/"
+  },
   "20240760": {
     "apns": [
       "061-021-260"
@@ -47,6 +63,14 @@
     "source": "evidence-backed APN research (e001, e002)",
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
+  },
+  "20240843": {
+    "apns": [
+      "061-091-070"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "831 Lane St, Yreka: explicit APN and exact-address point agree; GIS footprint is 0.265 acres vs. 0.27 listed and zero in the county acreage field. https://www.zillow.com/homedetails/831-Lane-St-Yreka-CA-96097/219065045_zpid/"
   },
   "20240890": {
     "apns": [
@@ -64,6 +88,15 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "No coords, got from pictures"
+  },
+  "20241331": {
+    "apns": [
+      "020-040-040",
+      "020-010-610"
+    ],
+    "source": "manual override: user-approved pair; MLS syndication + Siskiyou County GIS",
+    "confidence": "mixed evidence: 020-040-040 high; 020-010-610 medium (inferred, user approved)",
+    "notes": "East Louie Rd, Montague. Listing names 020-040-040 (320 county acres); adjoining 020-010-610 (400 county acres) completes the advertised two-parcel 720 acres. GIS polygons total about 729.17 acres; listing pins disagree. https://www.trulia.com/home/0-e-louie-rd-montague-ca-96064-442662680"
   },
   "20250324": {
     "apns": [
@@ -206,6 +239,14 @@
     "confidence": "manually verified",
     "notes": "from pics"
   },
+  "20251262": {
+    "apns": [
+      "024-121-650"
+    ],
+    "source": "manual override: official county address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "9945 North State Highway 3, Fort Jones: exact county address point falls inside the 10.87-acre parcel, matching listing acreage; GIS footprint is about 10.35 acres. Original pin is a ZIP centroid. https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_County_Public_Address_Points/FeatureServer/0"
+  },
   "20260046": {
     "apns": [
       "102-370-150"
@@ -237,6 +278,14 @@
     "source": "evidence-backed APN research (e001, e002)",
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
+  },
+  "20260144": {
+    "apns": [
+      "031-490-190"
+    ],
+    "source": "manual override: official county address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "10009 South State Highway 3, Callahan: exact county address point falls inside the 0.30-acre parcel; GIS footprint is 0.299 acres. Original pin is a ZIP centroid. https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_County_Public_Address_Points/FeatureServer/0"
   },
   "20260160": {
     "apns": [
@@ -342,6 +391,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "map pics"
+  },
+  "20260287": {
+    "apns": [
+      "057-840-060"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "1422 Kingston Rd, Mount Shasta: exact-address point overlaps the unit and larger common parcel; listing APN and 0.042-acre mapped footprint identify the unit. https://www.zillow.com/homedetails/1422-Kingston-Rd-Mount-Shasta-CA-96067/15980733_zpid/"
   },
   "20260307": {
     "apns": [
@@ -1028,6 +1085,14 @@
     "confidence": "manually verified",
     "notes": "rough - acreage is off by +10, not sure if these are right, based on rough pics"
   },
+  "20260754": {
+    "apns": [
+      "022-480-180"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "18830 Old Highway 99, Gazelle: explicit APN and exact-address point match the 6-acre county record. MLS pin hits a different APN. https://www.zillow.com/homedetails/18830-Old-Highway-99-Gazelle-CA-96034/15971950_zpid/"
+  },
   "20260768": {
     "apns": [
       "021-232-030"
@@ -1264,6 +1329,14 @@
     "confidence": "manually verified",
     "notes": "Rough pictures, might be wrong"
   },
+  "20261140": {
+    "apns": [
+      "059-050-330"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "4000 Hope Ln, Dunsmuir: explicit APN and exact-address point match the 0.35-acre county record. https://www.zillow.com/homedetails/4000-Hope-Ln-Dunsmuir-CA-96025/15981212_zpid/"
+  },
   "20261157": {
     "apns": [
       "106-040-330"
@@ -1279,6 +1352,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "map pics and desc / acreage"
+  },
+  "20261163": {
+    "apns": [
+      "004-440-261"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "17147 Janice, Montague: explicit APN and exact-address point match. County acreage field and listing say 0.60; GIS footprint is about 0.34 acres. MLS pin hits a different APN. https://www.zillow.com/homedetails/17147-Janice-Rd-Montague-CA-96064/15968182_zpid/"
   },
   "20261170": {
     "apns": [
@@ -1424,6 +1505,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "description"
+  },
+  "20261316": {
+    "apns": [
+      "023-730-240"
+    ],
+    "source": "manual override: Redfin public facts and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "4325 Old Pine Ct, Etna: explicit APN and exact-address point agree with the 5-acre county parcel; MLS pin hits a neighbor. https://www.redfin.com/CA/Etna/4325-Old-Pine-Ct-96027/home/122855596"
   },
   "20261319": {
     "apns": [
