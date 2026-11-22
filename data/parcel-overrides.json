@@ -222,6 +222,14 @@
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
   },
+  "20260113": {
+    "apns": [
+      "009-380-270"
+    ],
+    "source": "manual override: explicit Homes.com APN + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "3808 Indian Creek Rd: listing pin falls inside the 2.00-acre county parcel. https://www.homes.com/property/3808-indian-creek-rd-happy-camp-ca/mj8kf3w5jlm9d/"
+  },
   "20260142": {
     "apns": [
       "007-120-200"
@@ -261,6 +269,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "address"
+  },
+  "20260208": {
+    "apns": [
+      "103-060-080"
+    ],
+    "source": "manual override: explicit Siskiyou AOR property ID + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Lot 231 Pine Ct, Hornbrook: county confirms 2.04 acres. https://siskiyou.rdeskbw.com/landlots-for-sale/Lot-231-Pine-Ct-Hornbrook-CA-96044-429224389"
   },
   "20260214": {
     "apns": [
@@ -374,6 +390,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "pics"
+  },
+  "20260497": {
+    "apns": [
+      "016-430-340"
+    ],
+    "source": "manual override: explicit Homes.com APN and county address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "816 and 814 Curly Jack Rd: one 4.20-acre parcel; county 816 address point is inside. https://www.homes.com/property/816-and-814-curly-jack-rd-happy-camp-ca/kvx8m1vl10sh9/"
   },
   "20260502": {
     "apns": [
@@ -785,6 +809,14 @@
     "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
     "confidence": "manually verified by lot number, parcel topology, and acreage",
     "notes": "Lot 63 McCloud subdivision"
+  },
+  "20260702": {
+    "apns": [
+      "016-280-361"
+    ],
+    "source": "manual override: explicit Siskiyou AOR property ID + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "3.2 Miles Out China Grade Rd: county confirms 29.74 acres. https://siskiyou.rdeskbw.com/landlots-for-sale/32-Miles-out-China-Grade-Road-Happy-Camp-CA-96039-433405747"
   },
   "20260703": {
     "apns": [
@@ -1305,6 +1337,24 @@
     "confidence": "manually verified",
     "notes": "address"
   },
+  "20261251": {
+    "apns": [
+      "013-210-200",
+      "013-040-070",
+      "013-210-210"
+    ],
+    "source": "manual override: broker boundary map and MLS APNs + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "3211 Greenhorn Rd: three parcels total 62 acres; excludes separate Forest Service lease. https://id.land/maps/19ec5ab9c9d5abe043f252e5ff3c5035/embed"
+  },
+  "20261253": {
+    "apns": [
+      "039-220-180"
+    ],
+    "source": "manual override: explicit syndicated APN and broker map + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "5622 Jade Ave: Jade-Quartz corner, matching listing pin and 2.60 acres. https://www.redfin.com/CA/Montague/5622-Jade-Ave-96064/home/122952103"
+  },
   "20261257": {
     "apns": [
       "037-380-240"
@@ -1312,6 +1362,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "Map images"
+  },
+  "20261273": {
+    "apns": [
+      "021-590-340"
+    ],
+    "source": "manual override: CRMLS cross-listing + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "3206 Dale Creek Rd, Lot 81: explicit cross-listed APN, matching 5.10 acres and CRMLS pin. https://www.zillow.com/homedetails/3206-Dale-Creek-Rd-LOT-81-Weed-CA-96094/466508648_zpid/"
   },
   "20261274": {
     "apns": [
@@ -1349,6 +1407,14 @@
     "confidence": "manually verified",
     "notes": "from description"
   },
+  "20261293": {
+    "apns": [
+      "100-122-150"
+    ],
+    "source": "manual override: explicit CRMLS cross-listed APN + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Lot 46 Norman Dr: listing and mapped area 2.59 acres; county acreage field is 2.8. https://www.coldwellbanker.com/ca/montague/0-norman-dr/lid-P00800000HK1UvGbhgW9mTeGqG6zrxITZma1Mc0"
+  },
   "20261311": {
     "apns": [
       "060-571-370",
@@ -1367,6 +1433,15 @@
     "confidence": "manually verified",
     "notes": "Map pics and acreage"
   },
+  "20261321": {
+    "apns": [
+      "013-030-411",
+      "013-030-431"
+    ],
+    "source": "manual override: MLS description and explicit north APN + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Humbug Gulch: 13.01-acre north and 8.70-acre south parcels; listing flags a south-parcel boundary discrepancy. https://www.zillow.com/homedetails/Humbug-Gulch-Rd-Yreka-CA-96097/2056076575_zpid/"
+  },
   "20261328": {
     "apns": [
       "062-122-040"
@@ -1382,6 +1457,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "Map pics"
+  },
+  "20261330": {
+    "apns": [
+      "106-310-080"
+    ],
+    "source": "manual override: numbered assessor map in listing gallery + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Lot 87 Lake Shastina Dr: three side lengths match county geometry; 0.35 county vs. 0.36 listed. https://www.mountshastarealty.com/idx-media/20261330/8-9780f54e8d-1600.webp"
   },
   "MC26015313": {
     "apns": [
