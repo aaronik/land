@@ -7,6 +7,14 @@
     "confidence": "manually verified",
     "notes": "acreage / rough estimate by pics"
   },
+  "20220999": {
+    "apns": [
+      "013-750-610"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "2845 Watson Ct, Montague: explicit APN and exact-address point match the 1.13-acre county record. https://www.zillow.com/homedetails/2845-Watson-Ct-Montague-CA-96064/325563319_zpid/"
+  },
   "20221105": {
     "apns": [
       "036-460-011"
@@ -14,6 +22,24 @@
     "source": "Siskiyou Association of Realtors listing tax/property ID, verified in county parcel GIS",
     "confidence": "verified; explicit MLS tax ID and exact acreage match",
     "notes": "Lot 7 Ream Ave, Shasta Holiday subdivision; MLS tax/property ID 036-460-011; listing and GIS both 1.1 acres; listing says corner of Ream Ave and W.A. Barr Road"
+  },
+  "20221288": {
+    "apns": [
+      "013-020-070",
+      "013-020-080"
+    ],
+    "source": "manual override: syndication additional APN and adjoining county polygons + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Yreka Walker Rd: published additional APN -080; adjoining -070 and -080 total 462 county acres (227 + 235). https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20221288?controller=ListingSearch&action=print_flyer"
+  },
+  "20240233": {
+    "apns": [
+      "020-170-270",
+      "020-170-250"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "This one's back!"
   },
   "20240386": {
     "apns": [
@@ -31,6 +57,14 @@
     "confidence": "manually verified",
     "notes": "pics"
   },
+  "20240759": {
+    "apns": [
+      "061-021-240"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "925 W Miner St, Yreka: explicit APN and exact-address point match the 0.19-acre county record. https://www.zillow.com/homedetails/925-W-Miner-St-Yreka-CA-96097/219064953_zpid/"
+  },
   "20240760": {
     "apns": [
       "061-021-260"
@@ -38,6 +72,14 @@
     "source": "evidence-backed APN research (e001, e002)",
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
+  },
+  "20240843": {
+    "apns": [
+      "061-091-070"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "831 Lane St, Yreka: explicit APN and exact-address point agree; GIS footprint is 0.265 acres vs. 0.27 listed and zero in the county acreage field. https://www.zillow.com/homedetails/831-Lane-St-Yreka-CA-96097/219065045_zpid/"
   },
   "20240890": {
     "apns": [
@@ -55,6 +97,15 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "No coords, got from pictures"
+  },
+  "20241331": {
+    "apns": [
+      "020-040-040",
+      "020-010-610"
+    ],
+    "source": "manual override: user-approved pair; MLS syndication + Siskiyou County GIS",
+    "confidence": "mixed evidence: 020-040-040 high; 020-010-610 medium (inferred, user approved)",
+    "notes": "East Louie Rd, Montague. Listing names 020-040-040 (320 county acres); adjoining 020-010-610 (400 county acres) completes the advertised two-parcel 720 acres. GIS polygons total about 729.17 acres; listing pins disagree. https://www.trulia.com/home/0-e-louie-rd-montague-ca-96064-442662680"
   },
   "20250324": {
     "apns": [
@@ -172,6 +223,14 @@
     "confidence": "manually verified",
     "notes": "pics"
   },
+  "20251076": {
+    "apns": [
+      "011-440-070"
+    ],
+    "source": "manual override: broker Google Earth target and county parcel + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Orr Mountain: flyer Google Earth target lies inside this 80-acre county parcel, not the nearby alternatives. Flyer narrative says 81.56 acres; separate plain-text coordinates conflict. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20251076?controller=ListingSearch&action=print_flyer"
+  },
   "20251159": {
     "apns": [
       "107-350-300"
@@ -197,6 +256,14 @@
     "confidence": "manually verified",
     "notes": "from pics"
   },
+  "20251262": {
+    "apns": [
+      "024-121-650"
+    ],
+    "source": "manual override: official county address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "9945 North State Highway 3, Fort Jones: exact county address point falls inside the 10.87-acre parcel, matching listing acreage; GIS footprint is about 10.35 acres. Original pin is a ZIP centroid. https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_County_Public_Address_Points/FeatureServer/0"
+  },
   "20260046": {
     "apns": [
       "102-370-150"
@@ -213,6 +280,14 @@
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
   },
+  "20260113": {
+    "apns": [
+      "009-380-270"
+    ],
+    "source": "manual override: explicit Homes.com APN + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "3808 Indian Creek Rd: listing pin falls inside the 2.00-acre county parcel. https://www.homes.com/property/3808-indian-creek-rd-happy-camp-ca/mj8kf3w5jlm9d/"
+  },
   "20260142": {
     "apns": [
       "007-120-200"
@@ -220,6 +295,14 @@
     "source": "evidence-backed APN research (e001, e002)",
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
+  },
+  "20260144": {
+    "apns": [
+      "031-490-190"
+    ],
+    "source": "manual override: official county address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "10009 South State Highway 3, Callahan: exact county address point falls inside the 0.30-acre parcel; GIS footprint is 0.299 acres. Original pin is a ZIP centroid. https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_County_Public_Address_Points/FeatureServer/0"
   },
   "20260160": {
     "apns": [
@@ -237,6 +320,15 @@
     "confidence": "manually verified",
     "notes": "Poplar Court, Weed, CA 96094"
   },
+  "20260191": {
+    "apns": [
+      "023-250-350",
+      "023-250-360"
+    ],
+    "source": "manual override: IDX flyer additional APN and adjoining county polygons + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Duzel Creek Rd: flyer names -360 (90.9 acres); adjoining -350 (250 acres) completes 340.9 county acres. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260191?controller=ListingSearch&action=print_flyer"
+  },
   "20260199": {
     "apns": [
       "037-400-180"
@@ -252,6 +344,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "address"
+  },
+  "20260208": {
+    "apns": [
+      "103-060-080"
+    ],
+    "source": "manual override: explicit Siskiyou AOR property ID + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Lot 231 Pine Ct, Hornbrook: county confirms 2.04 acres. https://siskiyou.rdeskbw.com/landlots-for-sale/Lot-231-Pine-Ct-Hornbrook-CA-96044-429224389"
   },
   "20260214": {
     "apns": [
@@ -318,6 +418,14 @@
     "confidence": "manually verified",
     "notes": "map pics"
   },
+  "20260287": {
+    "apns": [
+      "057-840-060"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "1422 Kingston Rd, Mount Shasta: exact-address point overlaps the unit and larger common parcel; listing APN and 0.042-acre mapped footprint identify the unit. https://www.zillow.com/homedetails/1422-Kingston-Rd-Mount-Shasta-CA-96067/15980733_zpid/"
+  },
   "20260307": {
     "apns": [
       "057-141-060"
@@ -326,6 +434,14 @@
     "confidence": "high; exact county address point",
     "notes": "612 N Mt. Shasta Blvd; exact county address point intersects APN 057-141-060. Matcher fixed to accept one unique exact normalized address despite same-number South address."
   },
+  "20260352": {
+    "apns": [
+      "019-090-070"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "the AI found it"
+  },
   "20260367": {
     "apns": [
       "037-100-310"
@@ -333,6 +449,16 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "pics"
+  },
+  "20260372": {
+    "apns": [
+      "013-260-380",
+      "013-260-730",
+      "013-260-740"
+    ],
+    "source": "manual override: IDX flyer additional APNs and parcel geometry + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Yreka Ager Rd: flyer names -380 and -740; adjoining -730 completes exactly 318 county acres. Layout fits the listed paved-road split. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260372?controller=ListingSearch&action=print_flyer"
   },
   "20260396": {
     "apns": [
@@ -357,6 +483,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "pics"
+  },
+  "20260497": {
+    "apns": [
+      "016-430-340"
+    ],
+    "source": "manual override: explicit Homes.com APN and county address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "816 and 814 Curly Jack Rd: one 4.20-acre parcel; county 816 address point is inside. https://www.homes.com/property/816-and-814-curly-jack-rd-happy-camp-ca/kvx8m1vl10sh9/"
   },
   "20260502": {
     "apns": [
@@ -488,6 +622,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "map pics"
+  },
+  "20260614": {
+    "apns": [
+      "019-050-341"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "AI found it"
   },
   "20260617": {
     "apns": [
@@ -657,6 +799,14 @@
     "confidence": "manually verified by lot number, parcel topology, and acreage",
     "notes": "Lot 45 McCloud subdivision"
   },
+  "20260670": {
+    "apns": [
+      "022-160-030"
+    ],
+    "source": "manual override: IDX description and Forest Service access geometry + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Gazelle–Callahan: 320 county acres, reached by USFS Crater House Rd 41N32, adjacent to public-land-coded tracts as described. Spatial match; no printed APN located. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260670?controller=ListingSearch&action=print_flyer"
+  },
   "20260674": {
     "apns": [
       "049-343-060"
@@ -760,6 +910,14 @@
     "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
     "confidence": "manually verified by lot number, parcel topology, and acreage",
     "notes": "Lot 63 McCloud subdivision"
+  },
+  "20260702": {
+    "apns": [
+      "016-280-361"
+    ],
+    "source": "manual override: explicit Siskiyou AOR property ID + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "3.2 Miles Out China Grade Rd: county confirms 29.74 acres. https://siskiyou.rdeskbw.com/landlots-for-sale/32-Miles-out-China-Grade-Road-Happy-Camp-CA-96039-433405747"
   },
   "20260703": {
     "apns": [
@@ -971,6 +1129,14 @@
     "confidence": "manually verified",
     "notes": "rough - acreage is off by +10, not sure if these are right, based on rough pics"
   },
+  "20260754": {
+    "apns": [
+      "022-480-180"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "18830 Old Highway 99, Gazelle: explicit APN and exact-address point match the 6-acre county record. MLS pin hits a different APN. https://www.zillow.com/homedetails/18830-Old-Highway-99-Gazelle-CA-96034/15971950_zpid/"
+  },
   "20260768": {
     "apns": [
       "021-232-030"
@@ -986,6 +1152,16 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "map in pics"
+  },
+  "20260819": {
+    "apns": [
+      "023-201-540",
+      "023-240-170",
+      "023-240-200"
+    ],
+    "source": "manual override: IDX flyer and CRMLS cross-list acreage + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Duzel Creek Ranch: flyer names -540 and -170; -200 adjoins both. County fields total 274.80 acres (flyer remarks: 275); GIS measures 277.37, matching CRMLS SN26135037. MLS 257-acre field does not reconcile. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260819?controller=ListingSearch&action=print_flyer"
   },
   "20260820": {
     "apns": [
@@ -1011,6 +1187,27 @@
     "confidence": "high; exact county address point and acreage match",
     "notes": "532 Shasta Pines Drive; county address point lies inside APN 028-510-330; listing and GIS both 2.5 acres"
   },
+  "20260867": {
+    "apns": [
+      "024-121-630"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "AI found it again"
+  },
+  "20260870": {
+    "apns": [
+      "008-190-580",
+      "008-190-650",
+      "008-570-380",
+      "008-570-390",
+      "008-570-400",
+      "008-570-410"
+    ],
+    "source": "manual override: broker boundary map and county address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "44510 State Hwy 96, Seiad Valley: broker outline matches six parcels totaling 121.71 county acres, and official address point falls in -580. https://id.land/maps/16deb4ddfd27a586d964f40bb3e75586/embed"
+  },
   "20260884": {
     "apns": [
       "057-595-540"
@@ -1027,6 +1224,14 @@
     "confidence": "manually verified",
     "notes": "map pic"
   },
+  "20260898": {
+    "apns": [
+      "019-021-160"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "AI found it, pics match perfect"
+  },
   "20260907": {
     "apns": [
       "028-240-360",
@@ -1035,6 +1240,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "map pics"
+  },
+  "20260955": {
+    "apns": [
+      "013-030-031"
+    ],
+    "source": "manual override: Redfin public record + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Yreka Walker/Humbug: syndicated APN and county 626-acre record agree. https://www.redfin.com/CA/Yreka/626-96097/home/203274378"
   },
   "20260972": {
     "apns": [
@@ -1191,6 +1404,23 @@
     "confidence": "manually verified",
     "notes": "Rough pictures, might be wrong"
   },
+  "20261140": {
+    "apns": [
+      "059-050-330"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "4000 Hope Ln, Dunsmuir: explicit APN and exact-address point match the 0.35-acre county record. https://www.zillow.com/homedetails/4000-Hope-Ln-Dunsmuir-CA-96025/15981212_zpid/"
+  },
+  "20261153": {
+    "apns": [
+      "019-050-090",
+      "019-050-100"
+    ],
+    "source": "manual override: user-approved pair; MLS broker flyer + Siskiyou County GIS",
+    "confidence": "mixed evidence: 019-050-090 high; 019-050-100 inferred, user approved",
+    "notes": "R.S.B. 23-156, County Highway A-12: flyer explicitly names 019-050-090 (72.02 county acres). Adjoining 019-050-100 (11.00 county acres) completes 83.02 county acres; combined GIS footprint is about 81.22 acres. Both intersect County Highway A-12. Second APN inferred; survey not checked. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20261153?controller=ListingSearch&action=print_flyer"
+  },
   "20261157": {
     "apns": [
       "106-040-330"
@@ -1206,6 +1436,23 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "map pics and desc / acreage"
+  },
+  "20261159": {
+    "apns": [
+      "014-410-050",
+      "014-190-100"
+    ],
+    "source": "manual override: IDX flyer additional APN and adjoining county polygons + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "McAdams Creek Rd: flyer says two parcels and names -050 (60 acres); adjoining -100 (194 acres) completes 254 county acres. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20261159?controller=ListingSearch&action=print_flyer"
+  },
+  "20261163": {
+    "apns": [
+      "004-440-261"
+    ],
+    "source": "manual override: Zillow parcel number and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "17147 Janice, Montague: explicit APN and exact-address point match. County acreage field and listing say 0.60; GIS footprint is about 0.34 acres. MLS pin hits a different APN. https://www.zillow.com/homedetails/17147-Janice-Rd-Montague-CA-96064/15968182_zpid/"
   },
   "20261170": {
     "apns": [
@@ -1240,6 +1487,16 @@
     "confidence": "manually verified",
     "notes": "address"
   },
+  "20261218": {
+    "apns": [
+      "028-240-070",
+      "028-240-370",
+      "028-240-360"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "thought i already did this one"
+  },
   "20261222": {
     "apns": [
       "002-140-240"
@@ -1264,6 +1521,32 @@
     "confidence": "manually verified",
     "notes": "address"
   },
+  "20261238": {
+    "apns": [
+      "041-170-191"
+    ],
+    "source": "manual override: IDX access description and county acreage and zoning + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Fifth Avenue East: unique 81.26-acre county match; AG-1 parcel behind frontage aligns with broker's access description. MLS pin lands elsewhere. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20261238?controller=ListingSearch&action=print_flyer"
+  },
+  "20261251": {
+    "apns": [
+      "013-210-200",
+      "013-040-070",
+      "013-210-210"
+    ],
+    "source": "manual override: broker boundary map and MLS APNs + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "3211 Greenhorn Rd: three parcels total 62 acres; excludes separate Forest Service lease. https://id.land/maps/19ec5ab9c9d5abe043f252e5ff3c5035/embed"
+  },
+  "20261253": {
+    "apns": [
+      "039-220-180"
+    ],
+    "source": "manual override: explicit syndicated APN and broker map + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "5622 Jade Ave: Jade-Quartz corner, matching listing pin and 2.60 acres. https://www.redfin.com/CA/Montague/5622-Jade-Ave-96064/home/122952103"
+  },
   "20261257": {
     "apns": [
       "037-380-240"
@@ -1271,6 +1554,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "Map images"
+  },
+  "20261273": {
+    "apns": [
+      "021-590-340"
+    ],
+    "source": "manual override: CRMLS cross-listing + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "3206 Dale Creek Rd, Lot 81: explicit cross-listed APN, matching 5.10 acres and CRMLS pin. https://www.zillow.com/homedetails/3206-Dale-Creek-Rd-LOT-81-Weed-CA-96094/466508648_zpid/"
   },
   "20261274": {
     "apns": [
@@ -1308,6 +1599,14 @@
     "confidence": "manually verified",
     "notes": "from description"
   },
+  "20261293": {
+    "apns": [
+      "100-122-150"
+    ],
+    "source": "manual override: explicit CRMLS cross-listed APN + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Lot 46 Norman Dr: listing and mapped area 2.59 acres; county acreage field is 2.8. https://www.coldwellbanker.com/ca/montague/0-norman-dr/lid-P00800000HK1UvGbhgW9mTeGqG6zrxITZma1Mc0"
+  },
   "20261311": {
     "apns": [
       "060-571-370",
@@ -1318,6 +1617,14 @@
     "confidence": "manually verified",
     "notes": "description"
   },
+  "20261316": {
+    "apns": [
+      "023-730-240"
+    ],
+    "source": "manual override: Redfin public facts and exact-address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "4325 Old Pine Ct, Etna: explicit APN and exact-address point agree with the 5-acre county parcel; MLS pin hits a neighbor. https://www.redfin.com/CA/Etna/4325-Old-Pine-Ct-96027/home/122855596"
+  },
   "20261319": {
     "apns": [
       "013-100-260"
@@ -1325,6 +1632,15 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "Map pics and acreage"
+  },
+  "20261321": {
+    "apns": [
+      "013-030-411",
+      "013-030-431"
+    ],
+    "source": "manual override: MLS description and explicit north APN + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Humbug Gulch: 13.01-acre north and 8.70-acre south parcels; listing flags a south-parcel boundary discrepancy. https://www.zillow.com/homedetails/Humbug-Gulch-Rd-Yreka-CA-96097/2056076575_zpid/"
   },
   "20261328": {
     "apns": [
@@ -1341,6 +1657,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "Map pics"
+  },
+  "20261330": {
+    "apns": [
+      "106-310-080"
+    ],
+    "source": "manual override: numbered assessor map in listing gallery + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Lot 87 Lake Shastina Dr: three side lengths match county geometry; 0.35 county vs. 0.36 listed. https://www.mountshastarealty.com/idx-media/20261330/8-9780f54e8d-1600.webp"
   },
   "MC26015313": {
     "apns": [
