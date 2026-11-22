@@ -23,6 +23,15 @@
     "confidence": "verified; explicit MLS tax ID and exact acreage match",
     "notes": "Lot 7 Ream Ave, Shasta Holiday subdivision; MLS tax/property ID 036-460-011; listing and GIS both 1.1 acres; listing says corner of Ream Ave and W.A. Barr Road"
   },
+  "20221288": {
+    "apns": [
+      "013-020-070",
+      "013-020-080"
+    ],
+    "source": "manual override: syndication additional APN and adjoining county polygons + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Yreka Walker Rd: published additional APN -080; adjoining -070 and -080 total 462 county acres (227 + 235). https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20221288?controller=ListingSearch&action=print_flyer"
+  },
   "20240233": {
     "apns": [
       "020-170-270",
@@ -214,6 +223,14 @@
     "confidence": "manually verified",
     "notes": "pics"
   },
+  "20251076": {
+    "apns": [
+      "011-440-070"
+    ],
+    "source": "manual override: broker Google Earth target and county parcel + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Orr Mountain: flyer Google Earth target lies inside this 80-acre county parcel, not the nearby alternatives. Flyer narrative says 81.56 acres; separate plain-text coordinates conflict. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20251076?controller=ListingSearch&action=print_flyer"
+  },
   "20251159": {
     "apns": [
       "107-350-300"
@@ -302,6 +319,15 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "Poplar Court, Weed, CA 96094"
+  },
+  "20260191": {
+    "apns": [
+      "023-250-350",
+      "023-250-360"
+    ],
+    "source": "manual override: IDX flyer additional APN and adjoining county polygons + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Duzel Creek Rd: flyer names -360 (90.9 acres); adjoining -350 (250 acres) completes 340.9 county acres. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260191?controller=ListingSearch&action=print_flyer"
   },
   "20260199": {
     "apns": [
@@ -423,6 +449,16 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "pics"
+  },
+  "20260372": {
+    "apns": [
+      "013-260-380",
+      "013-260-730",
+      "013-260-740"
+    ],
+    "source": "manual override: IDX flyer additional APNs and parcel geometry + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Yreka Ager Rd: flyer names -380 and -740; adjoining -730 completes exactly 318 county acres. Layout fits the listed paved-road split. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260372?controller=ListingSearch&action=print_flyer"
   },
   "20260396": {
     "apns": [
@@ -762,6 +798,14 @@
     "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
     "confidence": "manually verified by lot number, parcel topology, and acreage",
     "notes": "Lot 45 McCloud subdivision"
+  },
+  "20260670": {
+    "apns": [
+      "022-160-030"
+    ],
+    "source": "manual override: IDX description and Forest Service access geometry + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Gazelle–Callahan: 320 county acres, reached by USFS Crater House Rd 41N32, adjacent to public-land-coded tracts as described. Spatial match; no printed APN located. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260670?controller=ListingSearch&action=print_flyer"
   },
   "20260674": {
     "apns": [
@@ -1109,6 +1153,16 @@
     "confidence": "manually verified",
     "notes": "map in pics"
   },
+  "20260819": {
+    "apns": [
+      "023-201-540",
+      "023-240-170",
+      "023-240-200"
+    ],
+    "source": "manual override: IDX flyer and CRMLS cross-list acreage + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Duzel Creek Ranch: flyer names -540 and -170; -200 adjoins both. County fields total 274.80 acres (flyer remarks: 275); GIS measures 277.37, matching CRMLS SN26135037. MLS 257-acre field does not reconcile. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20260819?controller=ListingSearch&action=print_flyer"
+  },
   "20260820": {
     "apns": [
       "060-650-420"
@@ -1140,6 +1194,19 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "AI found it again"
+  },
+  "20260870": {
+    "apns": [
+      "008-190-580",
+      "008-190-650",
+      "008-570-380",
+      "008-570-390",
+      "008-570-400",
+      "008-570-410"
+    ],
+    "source": "manual override: broker boundary map and county address point + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "44510 State Hwy 96, Seiad Valley: broker outline matches six parcels totaling 121.71 county acres, and official address point falls in -580. https://id.land/maps/16deb4ddfd27a586d964f40bb3e75586/embed"
   },
   "20260884": {
     "apns": [
@@ -1173,6 +1240,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "map pics"
+  },
+  "20260955": {
+    "apns": [
+      "013-030-031"
+    ],
+    "source": "manual override: Redfin public record + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Yreka Walker/Humbug: syndicated APN and county 626-acre record agree. https://www.redfin.com/CA/Yreka/626-96097/home/203274378"
   },
   "20260972": {
     "apns": [
@@ -1353,6 +1428,15 @@
     "confidence": "manually verified",
     "notes": "map pics and desc / acreage"
   },
+  "20261159": {
+    "apns": [
+      "014-410-050",
+      "014-190-100"
+    ],
+    "source": "manual override: IDX flyer additional APN and adjoining county polygons + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "McAdams Creek Rd: flyer says two parcels and names -050 (60 acres); adjoining -100 (194 acres) completes 254 county acres. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20261159?controller=ListingSearch&action=print_flyer"
+  },
   "20261163": {
     "apns": [
       "004-440-261"
@@ -1417,6 +1501,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "address"
+  },
+  "20261238": {
+    "apns": [
+      "041-170-191"
+    ],
+    "source": "manual override: IDX access description and county acreage and zoning + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Fifth Avenue East: unique 81.26-acre county match; AG-1 parcel behind frontage aligns with broker's access description. MLS pin lands elsewhere. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20261238?controller=ListingSearch&action=print_flyer"
   },
   "20261251": {
     "apns": [
