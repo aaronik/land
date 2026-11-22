@@ -207,6 +207,22 @@
     "confidence": "manually verified",
     "notes": "manually triangulated, pretty sure"
   },
+  "20250861": {
+    "apns": [
+      "018-561-100"
+    ],
+    "source": "manual override: Redfin public record and county parcel geometry + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Lot 10 Lakeshore Dr, Medicine Lake. Published APN; GIS polygon is about 0.213 acre, matching 0.21 listing despite a zero county acreage field. https://www.redfin.com/CA/McCloud/Lot-10-Lakeshore-Dr-DR-96057/home/196409120"
+  },
+  "20250989": {
+    "apns": [
+      "101-181-080"
+    ],
+    "source": "manual override: listing parcel map and road context + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "3-E-45 Red Fir Rd. County and listing both say 2.95 acres, location matches Red Fir and map shows a 632-ft edge (county 631.7 ft); GIS footprint about 2.81 acres. https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20250989/org/031.jpg"
+  },
   "20251006": {
     "apns": [
       "037-400-370"
@@ -271,6 +287,14 @@
     "source": "evidence-backed APN research (e001, e002)",
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
+  },
+  "20260101": {
+    "apns": [
+      "101-031-180"
+    ],
+    "source": "manual override: dimensioned listing map + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "1-C-15 Shastina Cir. Listing map dimensions 214, 561, 200, and 565 ft match the county polygon and distinguish it from the other 2.68-acre parcel. https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20260101/org/018.jpg"
   },
   "20260108": {
     "apns": [
@@ -377,6 +401,14 @@
     "confidence": "high; evidence reviewed",
     "notes": "Research evidence: e001, e002"
   },
+  "20260233": {
+    "apns": [
+      "049-021-120"
+    ],
+    "source": "manual override: Redfin public record + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "100 Old Mill Dr. Published APN and 5.60-acre county field agree with listing; mapped area about 5.75 acres. https://www.redfin.com/CA/McCloud/100-Old-Mill-Dr-96057/home/200825556"
+  },
   "20260238": {
     "apns": [
       "106-380-060"
@@ -433,6 +465,22 @@
     "source": "Siskiyou County unique exact normalized address point intersected with county parcel GIS",
     "confidence": "high; exact county address point",
     "notes": "612 N Mt. Shasta Blvd; exact county address point intersects APN 057-141-060. Matcher fixed to accept one unique exact normalized address despite same-number South address."
+  },
+  "20260310": {
+    "apns": [
+      "101-161-140"
+    ],
+    "source": "manual override: Redfin public record + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "3-G-12 Elk Springs Dr. Published APN and county acreage field both match the 2.50-acre listing. https://www.redfin.com/CA/McCloud/Lot-3-G-12-Elk-Spring-Dr-96057/home/185483751"
+  },
+  "20260339": {
+    "apns": [
+      "101-231-080"
+    ],
+    "source": "manual override: dimensioned listing map + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Mt. Shasta Dr, Unit 3 Block I Lot 8. Side lengths including about 306, 462, and 484 ft match; both listing and county acreage field say 3.61 acres. https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20260339/org/006.jpg"
   },
   "20260352": {
     "apns": [
@@ -581,6 +629,14 @@
     "source": "user-supplied numbered McCloud aerial plat matched to county GIS topology",
     "confidence": "manually verified by lot number, parcel topology, and acreage",
     "notes": "Lot 10 McCloud subdivision"
+  },
+  "20260586": {
+    "apns": [
+      "101-121-130"
+    ],
+    "source": "manual override: dimensioned listing map + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "2-D-30 Snowline Dr. Four sides about 200, 505, 504, and 200 ft match the county polygon near Snowline Circle. Listing 2.51 acres, county field 2.50, mapped footprint about 2.31. https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20260586/org/006.jpg"
   },
   "20260598": {
     "apns": [
@@ -1119,6 +1175,14 @@
     "confidence": "manually verified by lot number, parcel topology, and acreage",
     "notes": "Lot 87 McCloud subdivision"
   },
+  "20260733": {
+    "apns": [
+      "101-121-020"
+    ],
+    "source": "manual override: dimensioned listing map + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "2-E-15 Snowline Cir. Listing-map sides 221, 508, and 511 ft match county sides 221.0, 508.4, and 510.7 ft near Snowline Circle; 2.50 acres in listing and county field. https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20260733/org/022.jpg"
+  },
   "20260748": {
     "apns": [
       "036-160-510",
@@ -1479,6 +1543,14 @@
     "confidence": "manually verified",
     "notes": "location / address"
   },
+  "20261187": {
+    "apns": [
+      "101-141-100"
+    ],
+    "source": "manual override: dimensioned listing map + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "3-C-23 Fumarole Dr. Listing-map sides about 532, 571, and 172 ft match county sides 531.6, 571.4, and 172.4 ft. County says 2.50 acres and listing 2.51; GIS footprint about 2.24. https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20261187/org/014.jpg"
+  },
   "20261209": {
     "apns": [
       "057-811-150"
@@ -1546,6 +1618,15 @@
     "source": "manual override: explicit syndicated APN and broker map + Siskiyou County GIS",
     "confidence": "high",
     "notes": "5622 Jade Ave: Jade-Quartz corner, matching listing pin and 2.60 acres. https://www.redfin.com/CA/Montague/5622-Jade-Ave-96064/home/122952103"
+  },
+  "20261255": {
+    "apns": [
+      "101-321-150",
+      "101-321-160"
+    ],
+    "source": "manual override: IDX flyer and dimensioned parcel maps + Siskiyou County GIS",
+    "confidence": "high",
+    "notes": "Ridge Dr, Unit 4 Block H Lots 6 and 7. Flyer explicitly names -160; the adjoining -150 and -160 match the two dimensioned maps. County acreage fields total 5.41, mapped area about 5.39, and listing says 5.44. https://www.realtymtshasta.com/-/listing/CA-SISKIYOU/20261255?controller=ListingSearch&action=print_flyer https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20261255/org/025.jpg https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20261255/org/026.jpg"
   },
   "20261257": {
     "apns": [
