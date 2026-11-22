@@ -335,6 +335,14 @@
     "confidence": "high; exact county address point",
     "notes": "612 N Mt. Shasta Blvd; exact county address point intersects APN 057-141-060. Matcher fixed to accept one unique exact normalized address despite same-number South address."
   },
+  "20260352": {
+    "apns": [
+      "019-090-070"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "the AI found it"
+  },
   "20260367": {
     "apns": [
       "037-100-310"
@@ -497,6 +505,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "map pics"
+  },
+  "20260614": {
+    "apns": [
+      "019-050-341"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "AI found it"
   },
   "20260617": {
     "apns": [
@@ -1020,6 +1036,14 @@
     "confidence": "high; exact county address point and acreage match",
     "notes": "532 Shasta Pines Drive; county address point lies inside APN 028-510-330; listing and GIS both 2.5 acres"
   },
+  "20260867": {
+    "apns": [
+      "024-121-630"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "AI found it again"
+  },
   "20260884": {
     "apns": [
       "057-595-540"
@@ -1035,6 +1059,14 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "map pic"
+  },
+  "20260898": {
+    "apns": [
+      "019-021-160"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "AI found it, pics match perfect"
   },
   "20260907": {
     "apns": [
