@@ -1909,6 +1909,14 @@
     "confidence": "high",
     "notes": "Lot 87 Lake Shastina Dr: three side lengths match county geometry; 0.35 county vs. 0.36 listed. https://www.mountshastarealty.com/idx-media/20261330/8-9780f54e8d-1600.webp"
   },
+  "20261336": {
+    "apns": [
+      "057-473-020"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "st/ave mismatch but clearly the right address"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
