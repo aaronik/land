@@ -1,31 +1,7 @@
 {
-  "generatedAt": "2026-11-21T12:54:58.453Z",
-  "count": 206,
+  "generatedAt": "2026-11-23T15:08:51.772Z",
+  "count": 197,
   "listings": [
-    {
-      "mlsNumber": "20261330",
-      "title": "Lot 87 Lake Shastina Drive, Weed, CA 96094",
-      "acres": 0.36,
-      "latLng": [
-        41.521692,
-        -122.374617
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261330/Lot-87-Lake-Shastina-Drive-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20261329",
-      "title": "lot 597 Dragon Dr., Montague, CA 96064",
-      "acres": 2.7,
-      "latLng": [
-        41.726852558525,
-        -122.44620948487768
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261329/lot-597-Dragon-Dr-Montague-CA-96064",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
     {
       "mlsNumber": "20261324",
       "title": "Unit 1 Lot 136 Harborview, Weed, CA 96094",
@@ -83,30 +59,6 @@
         -122.51472420665009
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261300/Lot-142-Creekside-Rd-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20261293",
-      "title": "Lot 46 Norman Dr, Weed, CA 96064",
-      "acres": 2.59,
-      "latLng": [
-        41.568154,
-        -122.330047
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261293/Lot-46-Norman-Dr-Weed-CA-96064",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260208",
-      "title": "Lot 231 Pine Ct., Hornbrook, CA 96044",
-      "acres": 2.04,
-      "latLng": [
-        41.894987,
-        -122.505611
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260208/Lot-231-Pine-Ct-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -243,18 +195,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20250861",
-      "title": "Lot 10 Lakeshore Dr., McCloud, CA 96057",
-      "acres": 0.21,
-      "latLng": [
-        41.264773207160765,
-        -122.11460654389602
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20250861/Lot-10-Lakeshore-Dr-McCloud-CA-96057",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20261097",
       "title": "Unit 4 Lot 118 Lake Shore Dr., Weed, CA 96094",
       "acres": 0.31,
@@ -287,18 +227,6 @@
         -122.51472420665009
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261093/Lot-44-Lake-Cove-Rd-Hornbrook-CA-96044",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20261092",
-      "title": "Lot 285 & 286 Cougar St, Hornbrook, CA 96044",
-      "acres": 9.4,
-      "latLng": [
-        41.888833,
-        -122.498626
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261092/Lot-285-286-Cougar-St-Hornbrook-CA-96044",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -407,18 +335,6 @@
         -122.38284917563793
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261032/9-2-Lot-260-Stone-Crest-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20261018",
-      "title": "Lots 69-72 Juniper Valley Dr, Weed, CA 96094",
-      "acres": 80,
-      "latLng": [
-        41.535656309000785,
-        -122.34823646700154
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261018/Lots-69-72-Juniper-Valley-Dr-Weed-CA-96094",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
@@ -987,18 +903,6 @@
       "status": "needs assessor-map confirmation"
     },
     {
-      "mlsNumber": "20260524",
-      "title": "Unit 7-3 Lot225 Lake Shastina, Fisher Rd., Weed, CA 96094",
-      "acres": 0.25,
-      "latLng": [
-        41.49585254480847,
-        -122.3739068468862
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260524/Unit-7-3-Lot225-Lake-Shastina-Fisher-Rd-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
       "mlsNumber": "20260518",
       "title": "Unit 2 Lot 36 Lake Shastina, Lake Shore Dr., Weed, CA 96094",
       "acres": 0.25,
@@ -1019,18 +923,6 @@
         -122.38200017689633
       ],
       "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260462/Unit-4-Lot-213-Rainbow-Dr-Weed-CA-96094",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20260310",
-      "title": "Lot 3-G-12 Elk Springs Dr, McCloud, CA 96057",
-      "acres": 2.5,
-      "latLng": [
-        41.33012713360078,
-        -122.0796093172016
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20260310/Lot-3-G-12-Elk-Springs-Dr-McCloud-CA-96057",
       "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
       "status": "needs assessor-map confirmation"
     },
