@@ -1867,6 +1867,14 @@
     "confidence": "high",
     "notes": "Lot 46 Norman Dr: listing and mapped area 2.59 acres; county acreage field is 2.8. https://www.coldwellbanker.com/ca/montague/0-norman-dr/lid-P00800000HK1UvGbhgW9mTeGqG6zrxITZma1Mc0"
   },
+  "20261302": {
+    "apns": [
+      "021-170-370"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Clear from map pics"
+  },
   "20261311": {
     "apns": [
       "060-571-370",
