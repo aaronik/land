@@ -1721,6 +1721,15 @@
     "confidence": "high",
     "notes": "3-C-23 Fumarole Dr. Listing-map sides about 532, 571, and 172 ft match county sides 531.6, 571.4, and 172.4 ft. County says 2.50 acres and listing 2.51; GIS footprint about 2.24. https://idx-photos-ihouseprd.b-cdn.net/CA-SISKIYOU/20261187/org/014.jpg"
   },
+  "20261198": {
+    "apns": [
+      "057-571-400",
+      "057-571-410"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Lots A & B, South Washington Dr, Mount Shasta. Trulia/SMLS names 057-571-400; adjoining vacant 057-571-410 shares assessor deed 20260003850 (2026-06-10). Listing 4.88 ac; assessor 5.10 ac combined; GIS polygons about 4.61 ac combined."
+  },
   "20261209": {
     "apns": [
       "057-811-150"
@@ -1924,6 +1933,30 @@
     "source": "manual override: user-verified listing APN",
     "confidence": "manually verified",
     "notes": "st/ave mismatch but clearly the right address"
+  },
+  "20261338": {
+    "apns": [
+      "100-111-070"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Nemeth Dr, Mt. Shasta Vista Block 72 Lot 23; county GIS, assessor, and listing plat"
+  },
+  "20261339": {
+    "apns": [
+      "100-061-020"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Dorothea Dr, Mt. Shasta Vista Block 78 Lot 19; county GIS, assessor, and listing plat"
+  },
+  "20261340": {
+    "apns": [
+      "100-061-010"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "Dorothea Dr, Mt. Shasta Vista Block 78 Lot 20; county GIS, assessor, and listing plat"
   },
   "MC26015313": {
     "apns": [
