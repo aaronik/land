@@ -1430,6 +1430,14 @@
     "confidence": "high",
     "notes": "Yreka Walker/Humbug: syndicated APN and county 626-acre record agree. https://www.redfin.com/CA/Yreka/626-96097/home/203274378"
   },
+  "20260956": {
+    "apns": [
+      "057-171-040"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "obvious from acreage and the building facade"
+  },
   "20260972": {
     "apns": [
       "008-481-110"
