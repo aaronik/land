@@ -38,7 +38,7 @@ GitHub Pages cannot run server code and the upstream sites do not consistently a
 
 Private listings without MLS coordinates cannot be assigned an APN automatically and are omitted from the parcel map. Public records remain visible as historical records and are marked `EXPIRED` once their advertised closing date passes.
 
-Every refresh snapshots mapped MLS listings in `data/mls-listing-archive.json`. Once a listing no longer appears in the active MLS feed, it remains available under **Previously listed (sold)**, with the first refresh date on which it disappeared. That date means only that the public feed stopped advertising it—not necessarily that it sold or was withdrawn.
+Every refresh snapshots mapped MLS listings in `data/mls-listing-archive.json`. Once a listing no longer appears in the active MLS feed, it remains available under **Previously listed**, with the first refresh date on which it disappeared. That date means only that the public feed stopped advertising it—not necessarily that it sold or was withdrawn.
 
 California Outdoor Properties listings in `data/external-listings.json` are separate from the MLS feed. The refresh checks their individual pages for the dealer's sold image badge and shows confirmed sales as previous listings without inventing a sale price or date. When the dealer blocks automated requests or the page has no conclusive status badge, the saved status is retained and a warning is logged; review those warnings and update the saved status manually when necessary. An entry with `referenceListing: true` links to a different parcel's page and skips automatic status detection; replace it with the parcel's own URL and remove that flag when published.
 
