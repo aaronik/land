@@ -1,43 +1,7 @@
 {
-  "generatedAt": "2026-11-24T15:06:07.363Z",
-  "count": 200,
+  "generatedAt": "2026-11-25T14:46:17.709Z",
+  "count": 197,
   "listings": [
-    {
-      "mlsNumber": "20261340",
-      "title": "Blk 78 Lot 20 Dorothea Dr, Montague, CA 96064",
-      "acres": 2.1,
-      "latLng": [
-        41.58629327500078,
-        -122.3471761470016
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261340/Blk-78-Lot-20-Dorothea-Dr-Montague-CA-96064",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20261339",
-      "title": "Blk 78 Lot 19 Dorothea Dr, Montague, CA 96064",
-      "acres": 2.4,
-      "latLng": [
-        41.58629327500078,
-        -122.3471761470016
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261339/Blk-78-Lot-19-Dorothea-Dr-Montague-CA-96064",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
-    {
-      "mlsNumber": "20261338",
-      "title": "Blk 72 Lot 23 Nemeth Dr, Montague, CA 96064",
-      "acres": 2.4,
-      "latLng": [
-        41.56845271800074,
-        -122.33631107700157
-      ],
-      "listingUrl": "https://www.realtymtshasta.com/idx/listing/CA-SISKIYOU/20261338/Blk-72-Lot-23-Nemeth-Dr-Montague-CA-96064",
-      "assessorSearch": "https://assr.parcelquest.com/impl/SISASSR",
-      "status": "needs assessor-map confirmation"
-    },
     {
       "mlsNumber": "20261324",
       "title": "Unit 1 Lot 136 Harborview, Weed, CA 96094",
