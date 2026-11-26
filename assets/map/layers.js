@@ -3,6 +3,7 @@
 import { landCoverTileUrl, LAND_COVER_SERVICE } from './land-cover.js';
 import { vegetationTileUrl, VEGETATION_SERVICE } from './vegetation.js';
 import { soilTextureExpression } from './soil-styles.js';
+import { SEPTIC_LAYER_ID, septicColorExpression } from './septic-screening.js';
 
 function addSpringSymbol(map) {
   const size = 24;
@@ -87,7 +88,7 @@ function addBridgeSymbol(map) {
 }
 
 function addWellSymbols(map) {
-  const colors = { shallow: [112, 228, 239], medium: [74, 196, 230], deep: [67, 132, 222], veryDeep: [118, 81, 199] };
+  const colors = { unknown: [139, 149, 156], shallow: [112, 228, 239], medium: [74, 196, 230], deep: [67, 132, 222], veryDeep: [118, 81, 199] };
   for (const [name, color] of Object.entries(colors)) {
     const size = 16;
     const data = new Uint8Array(size * size * 4);
@@ -133,6 +134,10 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('pct_markers');
   addPmtilesSource('groundwater_basins');
   addPmtilesSource('groundwater_wells');
+  map.addSource('groundwater-monitoring', {
+    type: 'geojson', data: 'data/groundwater-monitoring.geojson',
+    attribution: '<a href="https://data.cnra.ca.gov/dataset/periodic-groundwater-level-measurements" target="_blank" rel="noopener noreferrer">CA DWR Groundwater Level Monitoring</a>'
+  });
   addPmtilesSource('geology');
   addPmtilesSource('zoning');
   map.addSource('municipal_zoning', { type: 'geojson', data: municipalZoningUrl, attribution: '<a href="https://github.com/OtheringBelonging/CAZoning/tree/main/Data/Siskiyou" target="_blank">Municipal zoning-map compilation</a>' });
@@ -259,10 +264,22 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     id: 'groundwater-wells', type: 'symbol', source: 'groundwater_wells', 'source-layer': 'groundwater_wells', minzoom: 6,
     layout: {
       visibility: 'none',
-      'icon-image': ['step', ['coalesce', ['get', 'TotalCompletedDepth'], ['get', 'TotalDrillDepth'], 0], 'well-shallow', 100, 'well-medium', 250, 'well-deep', 500, 'well-veryDeep'],
+      'icon-image': ['let', 'completed', ['to-number', ['get', 'TotalCompletedDepth'], 0],
+        'drilled', ['to-number', ['get', 'TotalDrillDepth'], 0],
+        ['step', ['case', ['>', ['var', 'completed'], 0], ['var', 'completed'], ['var', 'drilled']],
+          'well-unknown', 0.01, 'well-shallow', 100, 'well-medium', 250, 'well-deep', 500, 'well-veryDeep']],
       'icon-size': ['interpolate', ['linear'], ['zoom'], 7, 0.45, 12, 0.75],
       'icon-allow-overlap': true,
       'icon-ignore-placement': true
+    }
+  });
+  map.addLayer({
+    id: 'groundwater-monitoring', type: 'circle', source: 'groundwater-monitoring', minzoom: 6,
+    layout: { visibility: 'none' },
+    paint: {
+      'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 4, 13, 7],
+      'circle-color': ['case', ['>', ['get', 'readingCount'], 0], '#f6ae3d', '#9da4ad'],
+      'circle-stroke-color': '#272020', 'circle-stroke-width': 1.5
     }
   });
   map.addLayer({
@@ -295,6 +312,7 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
     }
   });
   map.addLayer({ id: 'soils', type: 'fill', source: 'soils', 'source-layer': 'soils', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': soilTextureExpression(), 'fill-opacity': 0.33, 'fill-outline-color': 'rgba(69, 45, 25, 0.26)' } });
+  map.addLayer({ id: SEPTIC_LAYER_ID, type: 'fill', source: 'soils', 'source-layer': 'soils', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': septicColorExpression(), 'fill-opacity': 0.50, 'fill-outline-color': 'rgba(62, 43, 58, 0.35)' } });
   map.addLayer({ id: 'flood', type: 'fill', source: 'flood', 'source-layer': 'flood', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': ['case', ['==', ['get', 'SFHA_TF'], 'T'], '#00c5ff', ['all', ['==', ['get', 'FLD_ZONE'], 'X'], ['match', ['get', 'ZONE_SUBTY'], '0.2 PCT ANNUAL CHANCE FLOOD HAZARD', true, '0.2 PERCENT ANNUAL CHANCE FLOOD HAZARD', true, false]], '#75d5ec', ['==', ['get', 'FLD_ZONE'], 'D'], '#e8d15c', '#3db7de'], 'fill-opacity': 0.38, 'fill-outline-color': 'rgba(0, 104, 160, 0.8)' } });
   map.addLayer({ id: 'fire-hazard', type: 'fill', source: 'fire_hazard', 'source-layer': 'fire_hazard', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': ['match', ['get', 'HAZ_CLASS'], 'Very High', '#d73027', 'High', '#fc8d59', 'Moderate', '#fee08b', '#f5a623'], 'fill-opacity': 0.3 } });
   map.addLayer({ id: 'wildfire-perimeters-fill', type: 'fill', source: 'wildfire_perimeters', 'source-layer': 'wildfire_perimeters', minzoom: 6, layout: { visibility: 'none' }, paint: { 'fill-color': '#f5d66b', 'fill-opacity': 0.12 } });

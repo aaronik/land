@@ -8,6 +8,8 @@ import { createListingData } from './data/listings.js';
 import { createParcelDetails } from './ui/parcel-details.js';
 import { installMapSourcesAndLayers } from './map/layers.js';
 import { createWebcamViewer } from './map/webcams.js';
+import { createGroundwaterViewer } from './ui/groundwater.js';
+import { createUtilities, UTILITY_LAYER_GROUPS } from './map/utilities.js';
 import { identifyLandCover, LAND_COVER_YEAR, landCoverLegendClass } from './map/land-cover.js';
 import { identifyVegetation, loadVegetationLegend, VEGETATION_YEAR } from './map/vegetation.js';
 import { buildVegetationLegend, highlightVegetationLegend } from './ui/vegetation-legend.js';
@@ -16,6 +18,7 @@ import { initializeMobileSheet } from './state/ui.js';
 import { updateUrlParameter } from './state/url.js';
 import { LEGEND_QUERY_LAYERS, legendMatches, queryLegendFeatures, queryParcelWaterFeatures, updateLegendHighlights } from './ui/legend-highlights.js';
 import { buildSoilLegend, updateSoilLegendValues } from './ui/soil-legend.js';
+import { SEPTIC_LAYER_ID, septicPopupHtml } from './map/septic-screening.js';
 
 const COLORS = { 'private-land': '#42d7a6', 'private-home': '#7653b5', 'private-commercial': '#1684bc', 'previous-listing': '#55768d', 'public-land': '#ff9d4d', 'public-home': '#b94b18', 'tax-delinquent': '#c43c78' };
 // Colors follow the unique-value renderer saved on Siskiyou County's official
@@ -288,11 +291,14 @@ const { categories, featureCenter, filteredMappedListings, filteredUnmappedListi
 
 function parcelQuestUsageKey() { return `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`; }
 function clearSelectedParcel() {
+  septicPopup.remove();
   setSelectedApn('');
   document.querySelector('#details').innerHTML = '<h3>No parcel selected</h3>';
 }
+const utilityEvidence = createUtilities({ map, Popup: maplibregl.Popup, dataUrl: assetUrl('data/utility-evidence.geojson'), parcelsQueryUrl: PARCELS_QUERY_URL });
 const parcelDetails = createParcelDetails({
   detailsElement: document.querySelector('#details'),
+  updateParcelUtilities: utilityEvidence.updateParcel,
   directionsOrigin: DIRECTIONS_ORIGIN,
   featureCenter,
   getApnIndex: () => apnIndex,
@@ -463,6 +469,7 @@ const MAP_LAYER_STORAGE_KEY = 'shasta-land-atlas.map-layer-visibility.v1';
 const LISTING_TYPE_STORAGE_KEY = 'shasta-land-atlas.listing-type-visibility.v1';
 const LISTING_FILTER_STORAGE_KEY = 'shasta-land-atlas.listing-filter-state.v1';
 const webcamViewer = createWebcamViewer({ map, Popup: maplibregl.Popup });
+const groundwaterViewer = createGroundwaterViewer({ details: document.querySelector('#details'), historyUrl: assetUrl('data/groundwater-monitoring-history.json') });
 map.on('remove', () => webcamViewer.close());
 const mapLayerInputs = [...document.querySelectorAll('[data-map-layer]')];
 const listingTypeInputs = [...document.querySelectorAll('.filter')];
@@ -528,7 +535,9 @@ async function ensureVegetationLegend() {
     document.querySelector('.vegetation-legend-status').textContent = 'LANDFIRE legend unavailable. Turn this layer off and on to retry.';
   }
 }
+const septicPopup = new maplibregl.Popup({ closeOnClick: false, focusAfterOpen: false, maxWidth: '300px', offset: 12 });
 function toggleLayer(id, visibleValue) {
+  if (id === SEPTIC_LAYER_ID && !visibleValue) septicPopup.remove();
   const groupedLayers = {
     'topographic-contours': ['topographic-contours', 'topographic-contour-labels'],
     'usgs-3dep-slope': ['usgs-3dep-slope'],
@@ -555,7 +564,8 @@ function toggleLayer(id, visibleValue) {
     'wildfire-perimeters': ['wildfire-perimeters-fill', 'wildfire-perimeters-lines', 'recent-wildfire-perimeters-fill', 'recent-wildfire-perimeters-lines'],
     zoning: ['zoning-fill', 'zoning-lines', 'municipal-zoning-fill', 'municipal-zoning-lines']
   };
-  const layerIds = groupedLayers[id] || [id];
+  const layerIds = UTILITY_LAYER_GROUPS[id] || groupedLayers[id] || [id];
+  if (UTILITY_LAYER_GROUPS[id]) utilityEvidence.showLayer(visibleValue);
   if (id === 'webcams' && !visibleValue) webcamViewer.close();
   if (id === 'soils' && !visibleValue) clickedSoil = null;
   for (const layerId of layerIds) if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibleValue ? 'visible' : 'none');
@@ -601,6 +611,7 @@ function initializeMapLayers() {
   layersInitialized = true;
   try {
     installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, saleGeoJson, salePointGeoJson, unmappedGeoJson, municipalZoningUrl: assetUrl('data/raw/municipal_zoning.geojson') });
+  utilityEvidence.install();
   let landCoverClickSerial = 0;
   map.on('click', async event => {
     const clickSerial = ++landCoverClickSerial;
@@ -613,7 +624,7 @@ function initializeMapLayers() {
     const markerHits = map.queryRenderedFeatures([
       [event.point.x - radius, event.point.y - radius],
       [event.point.x + radius, event.point.y + radius]
-    ], { layers: ['webcams', 'surveillance', 'fatal-traffic-crashes', 'springs', 'dams', 'power-plants', 'bridges', 'landslides', 'landslide-footprints-locators', 'groundwater-wells', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
+    ], { layers: ['webcams', 'surveillance', 'fatal-traffic-crashes', 'springs', 'dams', 'power-plants', 'bridges', 'landslides', 'landslide-footprints-locators', 'groundwater-wells', 'groundwater-monitoring', 'rcra-sites', 'unmapped-markers', 'sale-markers'] });
     const lineHits = map.queryRenderedFeatures([
       [event.point.x - 5, event.point.y - 5],
       [event.point.x + 5, event.point.y + 5]
@@ -622,6 +633,12 @@ function initializeMapLayers() {
     const habitatHits = polygonHits.filter(hit => hit.layer.id === 'critical-habitat-final' || hit.layer.id === 'critical-habitat-proposed');
     const parcelHit = polygonHits.find(hit => hit.layer.id === 'sale-fill') || polygonHits.find(hit => hit.layer.id === 'parcel-fill');
     const inspectOverlay = event.originalEvent?.altKey;
+    const utilityHit = utilityEvidence.inspect(event, inspectOverlay || !parcelHit, !markerHits.length || inspectOverlay);
+    const septicHit = !utilityHit && !markerHits.length && !lineHits.length && map.getLayoutProperty(SEPTIC_LAYER_ID, 'visibility') === 'visible'
+      ? map.queryRenderedFeatures(event.point, { layers: [SEPTIC_LAYER_ID] })[0] : null;
+    if (septicHit) septicPopup.setLngLat(event.lngLat).setHTML(septicPopupHtml(septicHit.properties)).addTo(map);
+    else septicPopup.remove();
+    if (utilityHit && (inspectOverlay || !parcelHit)) return;
     const overlayHit = habitatHits[0] || polygonHits.find(hit => hit !== parcelHit && hit.layer.id !== 'parcel-fill' && hit.layer.id !== 'sale-fill' && (inspectOverlay || hit.layer.id !== 'soils'));
     const soilHit = polygonHits.find(hit => hit.layer.id === 'soils');
     // Preserve parcel selection on normal taps; also inspect soil at the tap.
@@ -630,7 +647,12 @@ function initializeMapLayers() {
       clickedSoil = soilHit.properties;
     }
     refreshLegendHighlights();
-    const feature = markerHits.find(hit => hit.layer.id === 'webcams') || markerHits[0] || (inspectOverlay ? lineHits[0] || overlayHit || parcelHit : polygonHits.find(hit => hit.layer.id === 'sale-fill') || lineHits[0] || parcelHit || overlayHit || soilHit);
+    const stationHit = markerHits.find(hit => hit.layer.id === 'groundwater-monitoring');
+    const reportHit = markerHits.find(hit => hit.layer.id === 'groundwater-wells');
+    const firstMarker = markerHits[0];
+    const wellHit = firstMarker && ['groundwater-monitoring', 'groundwater-wells'].includes(firstMarker.layer.id)
+      ? (inspectOverlay ? reportHit || stationHit : stationHit || reportHit) : firstMarker;
+    const feature = markerHits.find(hit => hit.layer.id === 'webcams') || wellHit || (inspectOverlay ? lineHits[0] || overlayHit || parcelHit : polygonHits.find(hit => hit.layer.id === 'sale-fill') || lineHits[0] || parcelHit || overlayHit || soilHit);
     if ((inspectOverlay || !parcelHit) && (feature?.layer.id === 'parcel-fill' || !feature) && map.getLayoutProperty('vegetation', 'visibility') === 'visible' && !markerHits.length && !lineHits.length && !habitatHits.length && !polygonHits.some(hit => hit.layer.id === 'sale-fill' || hit.layer.id === 'landslide-footprints-fill')) {
       const details = document.querySelector('#details');
       details.innerHTML = '<h3>Mapped vegetation community</h3><p class="meta">Checking LANDFIRE class…</p>';
@@ -761,13 +783,14 @@ function initializeMapLayers() {
       document.querySelector('#details').innerHTML = `<h3>Mapped spring</h3><p class="meta">${escapeHtml(props.GNIS_NAME || 'Unnamed NHD spring')}${coordinates}</p><p class="source-note">USGS National Hydrography Dataset mapped spring location. This does not establish current flow, water quality, public access, or water rights.</p>`;
       return;
     }
+    if (feature.layer.id === 'groundwater-monitoring') {
+      const stations = new Map(markerHits.filter(hit => hit.layer.id === 'groundwater-monitoring' && hit.properties.site !== props.site).map(hit => [hit.properties.site, hit.properties]));
+      void groundwaterViewer.openStation(props, [...stations.values()]);
+      return;
+    }
     if (feature.layer.id === 'groundwater-wells') {
-      const value = value => value === null || value === undefined || value === '' ? 'Not reported' : escapeHtml(value);
-      const completedDepth = props.TotalCompletedDepth || props.TotalDrillDepth;
-      const originalRecord = props.WCRLinks ? `<p><a href="${escapeHtml(props.WCRLinks)}" target="_blank" rel="noopener">View original DWR report ↗</a></p>` : '';
-      const range = (low, high, unit) => low === null || low === undefined ? 'Not reported' : `${value(low)}${low === high ? '' : `–${value(high)}`} ${unit}`;
-      const nearby = `<section class="sales-history"><h4>Approximate 1-mile report summary</h4><p>${value(props.NearbyReportCount)} mapped reports · median completed depth ${range(props.NearbyMedianDepthFt, props.NearbyMedianDepthFt, 'ft')}</p><p>Reported static level: ${range(props.NearbyStaticLevelMinFt, props.NearbyStaticLevelMaxFt, 'ft')}<br>Reported yield: ${range(props.NearbyYieldMinGpm, props.NearbyYieldMaxGpm, 'GPM')}<br>Newest completed report: ${value(props.NearbyNewestDate)}</p></section>`;
-      document.querySelector('#details').innerHTML = `<h3>Reported well completion</h3><p class="meta">DWR report ${value(props.WCRNumber)} · ${value(props.RecordType)}</p><p><strong>Completed depth: ${value(completedDepth)} ft</strong><br>Static water level: ${value(props.StaticWaterLevel)} ft<br>Reported yield: ${value(props.WellYield)}${props.WellYield ? ` ${value(props.WellYieldUnitofMeasure)}` : ''}<br>Use: ${value(props.PlannedUseFormerUse)}</p>${nearby}<p class="source-note">Reported completion data, not a current water-level reading or a parcel-specific prediction. DWR notes that most locations are mapped to the center of a one-mile PLSS section; verify the original report.</p>${originalRecord}`;
+      const reports = new Map(markerHits.filter(hit => hit.layer.id === 'groundwater-wells' && hit.properties.OBJECTID !== props.OBJECTID).map(hit => [hit.properties.OBJECTID, hit.properties]));
+      void groundwaterViewer.openCompletion(props, [...reports.values()]);
       return;
     }
     if (feature.layer.id === 'rcra-sites') {
@@ -806,7 +829,7 @@ function initializeMapLayers() {
     }
     selectParcel(props, null, event.lngLat);
   });
-  for (const id of ['webcams', 'surveillance', 'fatal-traffic-crashes', 'ifr-routes-low', 'ifr-routes-high', 'bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'soils', 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
+  for (const id of ['webcams', 'surveillance', 'fatal-traffic-crashes', 'ifr-routes-low', 'ifr-routes-high', 'bridges', 'power-plants', 'landslide-footprints-fill', 'landslide-footprints-locators', 'landslides', 'dams', 'transmission-lines', 'geology', 'soils', SEPTIC_LAYER_ID, 'critical-habitat-final', 'critical-habitat-proposed', 'wildfire-perimeters-fill', 'recent-wildfire-perimeters-fill', 'springs', 'groundwater-wells', 'groundwater-monitoring', 'rcra-sites', 'parcel-fill', 'sale-fill', 'sale-markers', 'unmapped-markers']) {
     map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
   }

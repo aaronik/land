@@ -102,6 +102,23 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .swatch.power-plants-overlay { background: #ffd357; border: 2px solid #3b2d12; border-radius: 50%; }
 .swatch.ifr-routes-overlay { background: repeating-linear-gradient(90deg, #d0acff 0 4px, transparent 4px 6px); border: 1px solid #46305d; }
 .swatch.transmission-lines-overlay { background: #e6b94f; border: 2px solid #342b17; }
+.swatch.utility-electric-overlay { background: rgba(178,109,19,.22); border: 2px solid #b26d13; }
+.swatch.utility-water-overlay { background: rgba(19,108,175,.25); border: 2px solid #136caf; }
+.swatch.utility-sewer-district-overlay { background: rgba(141,58,150,.2); border: 2px dashed #8d3a96; }
+.swatch.utility-sewer-lines-overlay { background: #9a2d73; }
+.swatch.utility-water-meters-overlay { background: #075f9b; border: 1px solid #fff; border-radius: 50%; }
+.utility-popup .maplibregl-popup-content { padding: 12px 18px; max-height: min(55dvh, 400px); overflow: auto; color: var(--ink); }
+.utility-popup-evidence h3 { margin: 0 10px 8px 0; }
+.utility-popup-evidence h4 { margin: 0 0 3px; }
+.utility-popup-evidence article { padding: 8px 0; border-top: 1px solid var(--line); }
+.utility-popup-evidence p { margin: 4px 0; }
+.utility-parcel { margin-top: 14px; padding: 10px 12px; background: #eef5fa; border: 1px solid var(--line); border-left: 4px solid #136caf; border-radius: 7px; font-size: 12px; }
+.utility-parcel h4 { margin: 0 0 8px; font-size: 12px; }
+.utility-parcel button { padding: 5px 8px; font: inherit; }
+.utility-parcel [data-utility-parcel-results]:not(:empty) { margin-top: 8px; }
+[data-utility-layer-status]:empty { display: none; }
+.utility-parcel dt { font-weight: 700; margin-top: 8px; }
+.utility-parcel dd { margin: 2px 0 0; }
 .swatch.dams-overlay { background: #348eb7; border: 2px solid #e3f5fa; border-radius: 0; clip-path: polygon(0 0, 100% 0, 72% 100%, 28% 100%); }
 .swatch.landslides-overlay { background: #ba7143; border: 2px solid #fbe3b2; border-radius: 0; }
 .swatch.place-names-overlay { background: linear-gradient(135deg, #b9e4ff 0 50%, #f4dc9d 50%); }
@@ -109,10 +126,24 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .swatch.incorporated-places-overlay, .key-incorporated-places { border: 2px solid #d52828 !important; background: repeating-linear-gradient(135deg, #d52828 0 3px, #fff 3px 6px) !important; }
 .swatch.flood-overlay { background: #26bce8; }
 .swatch.soils-overlay { background: repeating-linear-gradient(135deg, #9a6b3b 0 3px, #d6b06b 3px 6px); }
+.swatch.septic-overlay { background: linear-gradient(135deg, #318f79 33%, #d49a31 33% 66%, #b74d67 66%); }
+.septic-popup-content { max-width: min(270px, calc(100vw - 66px)); max-height: 44dvh; overflow: auto; color: #22352c; }
+.septic-popup-content h3 { margin: 0 16px 6px 0; }
+.septic-popup-content p { margin: 5px 0; }
+.septic-popup-content ul { margin: 4px 0; padding-left: 20px; }
 .swatch.farmland-overlay { background: linear-gradient(135deg, #8db359 0 25%, #bed984 25% 50%, #e2f7b0 50% 75%, #e3dbc5 75%); }
 .swatch.rcra-sites-overlay { border-radius: 50%; background: #d73027; border: 1px solid #3b1515; }
 .swatch.groundwater-basin-overlay { border: 2px dashed #9e6eea; background: rgba(158,110,234,.16); }
-.swatch.groundwater-well-overlay { border-radius: 50%; background: #58d7e9; }
+.swatch.groundwater-well-overlay { border-radius: 0; background: #58d7e9; }
+.swatch.groundwater-monitoring-overlay { border-radius: 50%; background: #f6ae3d; border: 1px solid #272020; }
+.groundwater-fields { margin: 8px 0; font-size: 12px; }
+.groundwater-fields > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; padding: 3px 0; }
+.groundwater-fields dt { color: #54615a; }
+.groundwater-fields dd { margin: 0; overflow-wrap: anywhere; }
+.groundwater-chart { display: block; width: 100%; font-size: 10px; }
+.groundwater-chart .well-reading { fill: #18748a; opacity: .65; }
+.groundwater-chart .well-flagged { fill: #ab6500; }
+.groundwater-choices button, [data-well-alternatives] button { margin: 4px 4px 0 0; }
 .swatch.geology-overlay { background: linear-gradient(135deg, #e7d28a 0 20%, #bd7c61 20% 40%, #ad8bd0 40% 60%, #729f83 60% 80%, #be9d62 80%); }
 .layer-note { margin: 10px 0 0; color: #687169; font-size: 10px; line-height: 1.4; }
 .layer-key { display: none; grid-template-columns: 1fr; gap: 3px; margin: -2px 0 10px 21px; padding: 7px 8px; border-left: 2px solid var(--line); color: #4f5a53; font-size: 10px; line-height: 1.25; }

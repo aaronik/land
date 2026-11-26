@@ -403,7 +403,7 @@ const LAYERS = {
     url: 'https://utility.arcgis.com/usrsvcs/servers/c074ca40fd684e41babd776eebefd009/rest/services/Environment/i07_WellCompletionReports/MapServer/0',
     where: "CountyName = 'Siskiyou'",
     pageSize: 1000,
-    fields: ['OBJECTID', 'WCRNumber', 'CountyName', 'PlannedUseFormerUse', 'RecordType', 'PermitDate', 'DateWorkEnded', 'TotalDrillDepth', 'TotalCompletedDepth', 'StaticWaterLevel', 'WellYield', 'WellYieldUnitofMeasure', 'TestType', 'PumpTestLength', 'MethodofDeterminationLL', 'LLAccuracy', 'WCRLinks', 'NearbyReportCount', 'NearbyMedianDepthFt', 'NearbyStaticLevelMinFt', 'NearbyStaticLevelMaxFt', 'NearbyYieldMinGpm', 'NearbyYieldMaxGpm', 'NearbyNewestDate']
+    fields: ['OBJECTID', 'WCRNumber', 'LegacyLogNumber', 'CountyName', 'PlannedUseFormerUse', 'RecordType', 'PermitDate', 'DateWorkEnded', 'TotalDrillDepth', 'TotalCompletedDepth', 'TopOfPerforatedInterval', 'BottomofPerforatedInterval', 'CasingDiameter', 'DrillingMethod', 'Fluid', 'StaticWaterLevel', 'TotalDrawDown', 'WellYield', 'WellYieldUnitofMeasure', 'TestType', 'PumpTestLength', 'MTRS', 'MethodofDeterminationLL', 'LLAccuracy', 'WCRLinks', 'NearbyReportCount', 'NearbyMedianDepthFt', 'NearbyStaticLevelMinFt', 'NearbyStaticLevelMaxFt', 'NearbyYieldMinGpm', 'NearbyYieldMaxGpm', 'NearbyNewestDate']
   }
 };
 

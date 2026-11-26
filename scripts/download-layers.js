@@ -96,8 +96,12 @@ function median(values) {
   return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
 }
 
+function reportedWellNumber(value) {
+  return /^-?\d+(?:\.\d+)?$/.test(String(value ?? '').trim()) ? Number(value) : NaN;
+}
+
 function numberRange(features, field) {
-  const values = features.map(feature => Number(feature.properties?.[field])).filter(Number.isFinite);
+  const values = features.map(feature => reportedWellNumber(feature.properties?.[field])).filter(Number.isFinite);
   return values.length ? [Math.min(...values), Math.max(...values)] : [null, null];
 }
 
@@ -120,11 +124,11 @@ function addNearbyWellSummaries(data) {
         if (milesBetween(feature.geometry.coordinates, candidate.geometry.coordinates) <= 1) nearby.push(candidate);
       }
     }
-    const depths = nearby.map(candidate => Number(candidate.properties.TotalCompletedDepth || candidate.properties.TotalDrillDepth)).filter(Number.isFinite);
+    const depths = nearby.map(candidate => reportedWellNumber(candidate.properties.TotalCompletedDepth)).filter(depth => depth > 0);
     const [staticMin, staticMax] = numberRange(nearby, 'StaticWaterLevel');
-    const gpm = nearby.filter(candidate => candidate.properties.WellYieldUnitofMeasure === 'GPM');
+    const gpm = nearby.filter(candidate => String(candidate.properties.WellYieldUnitofMeasure || '').trim().toUpperCase() === 'GPM');
     const [yieldMin, yieldMax] = numberRange(gpm, 'WellYield');
-    const newest = nearby.map(candidate => Number(candidate.properties.DateWorkEnded)).filter(Number.isFinite).sort((a, b) => b - a)[0];
+    const newest = nearby.map(candidate => reportedWellNumber(candidate.properties.DateWorkEnded)).filter(date => Number.isFinite(new Date(date).getTime())).sort((a, b) => b - a)[0];
     Object.assign(feature.properties, {
       NearbyReportCount: nearby.length,
       NearbyMedianDepthFt: median(depths),

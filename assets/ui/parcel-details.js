@@ -1,6 +1,8 @@
 'use strict';
 
 import { listingUrl } from '../data/listing-url.js';
+import { parcelUtilitiesSection } from '../map/utilities.js';
+import { septicPermitHistoryHtml } from '../map/septic-screening.js';
 
 const ZONING_QUERY_URL = 'https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/CDD_Zoning_Districts_Public/FeatureServer/0/query';
 const ZONING_CODE_URL = 'https://library.municode.com/ca/siskiyou_county/codes/code_of_ordinances?nodeId=TIT10PLZO';
@@ -47,7 +49,7 @@ const ZONING_EXPLANATIONS = [
   [/^(Incorporated|ROW)/, ['Not a County zoning district', 'This map label indicates incorporated area or right-of-way rather than an unincorporated Siskiyou County zoning district.', 'The relevant city or road agency—not Siskiyou County’s unincorporated-area zoning code—may control land-use rules. Confirm jurisdiction before proceeding.']]
 ];
 
-export function createParcelDetails({ detailsElement, directionsOrigin, featureCenter, getApnIndex, getSaleData, municipalZoningUrl, map, wildfirePerimetersQueryUrl, recentWildfirePerimetersQueryUrl, parcelsQueryUrl, addressPointsQueryUrl, onParcelQuest, onClose }) {
+export function createParcelDetails({ detailsElement, updateParcelUtilities, directionsOrigin, featureCenter, getApnIndex, getSaleData, municipalZoningUrl, map, wildfirePerimetersQueryUrl, recentWildfirePerimetersQueryUrl, parcelsQueryUrl, addressPointsQueryUrl, onParcelQuest, onClose }) {
   const zoningByApn = new Map();
   const acreageByApn = new Map();
   const addressPointsByApn = new Map();
@@ -317,6 +319,11 @@ export function createParcelDetails({ detailsElement, directionsOrigin, featureC
     const reportedAcres = p.Acres ?? getApnIndex()[p.APN]?.acres;
     const initialAcres = reportedAcres != null && Number(reportedAcres) > 0 ? `${escapeHtml(reportedAcres)} acres` : '— acres';
     detailsElement.innerHTML = `<div class="details-heading"><h3>${escapeHtml(displayAddress(records) || soldExternalListings[0]?.title || archivedListings[0]?.title || salesHistory[0]?.title || 'Parcel')}</h3><button class="close-parcel" type="button" data-close-parcel aria-label="Close selected parcel" title="Close selected parcel">×</button></div><p class="meta"><span data-selected-acreage>${initialAcres}</span><span data-selected-zoning> · Zoning…</span>${p.APN ? `<span> · ${escapeHtml(p.APN)}</span>` : ''}</p><p class="meta" data-selected-address hidden></p>${cards || previousCards || `${directions}${taxRecords.length ? '' : '<p class="muted">Official county parcel. No current listing or auction record is attached.</p>'}`}${researchControls(p.APN, records)}${taxDelinquencySection(taxRecords)}${!previousCards ? salesHistorySection(salesHistory) : ''}${!previousCards ? archivedListingsSection(archivedListings) : ''}${addressPointsSection()}${wildfireHistorySection(p.APN)}`;
+    detailsElement.querySelector('.research')?.insertAdjacentHTML('afterend', septicPermitHistoryHtml(p.APN));
+    if (updateParcelUtilities && p.APN) {
+      detailsElement.querySelector('.research')?.insertAdjacentHTML('afterend', parcelUtilitiesSection());
+      updateParcelUtilities(detailsElement, p.APN);
+    }
     updateParcelAcreage(p.APN, reportedAcres); updateParcelZoning(p.APN); updateAddressPoints(p.APN); updateWildfireHistory(p.APN); bindResearchControls(p.APN);
   };
   return { recordCard, showParcelDetails };
