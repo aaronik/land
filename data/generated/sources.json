@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T04:13:11.496Z",
+  "generatedAt": "2026-11-26T03:45:43.416Z",
   "layers": {
     "parcels": {
       "source": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_Public/FeatureServer/0",
@@ -158,10 +158,11 @@
     },
     "groundwater_wells": {
       "source": "https://utility.arcgis.com/usrsvcs/servers/c074ca40fd684e41babd776eebefd009/rest/services/Environment/i07_WellCompletionReports/MapServer/0",
-      "featureCount": 10816,
+      "featureCount": 10836,
       "fields": [
         "OBJECTID",
         "WCRNumber",
+        "LegacyLogNumber",
         "CountyName",
         "PlannedUseFormerUse",
         "RecordType",
@@ -169,11 +170,18 @@
         "DateWorkEnded",
         "TotalDrillDepth",
         "TotalCompletedDepth",
+        "TopOfPerforatedInterval",
+        "BottomofPerforatedInterval",
+        "CasingDiameter",
+        "DrillingMethod",
+        "Fluid",
         "StaticWaterLevel",
+        "TotalDrawDown",
         "WellYield",
         "WellYieldUnitofMeasure",
         "TestType",
         "PumpTestLength",
+        "MTRS",
         "MethodofDeterminationLL",
         "LLAccuracy",
         "WCRLinks",
