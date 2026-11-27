@@ -34,10 +34,11 @@ h2, label { display: block; margin: 0 0 10px; font-size: 12px; font-weight: 850;
 .stats strong { display: block; font-family: Georgia, serif; font-size: 25px; }
 .stats span { display: block; font-size: 10px; color: #657069; text-transform: uppercase; }
 .panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-bottom: 12px; margin-bottom: 18px; border-bottom: 1px solid var(--line); }
+.legend .panel-heading { border-bottom: 0; padding-bottom: 0; margin-bottom: 8px; }
 .panel-heading h2 { margin: 0; }
-#reset-map-layers { padding: 6px 9px; border: 1px solid var(--line); border-radius: 5px; color: #425048; background: transparent; font-size: 11px; font-weight: 700; cursor: pointer; }
-#reset-map-layers:hover { color: var(--ink); border-color: rgba(22,35,29,.4); }
-#reset-map-layers:focus-visible { outline: 2px solid #126246; outline-offset: 2px; }
+.panel-heading button { padding: 6px 9px; border: 1px solid var(--line); border-radius: 5px; color: #425048; background: transparent; font-size: 11px; font-weight: 700; cursor: pointer; }
+.panel-heading button:hover { color: var(--ink); border-color: rgba(22,35,29,.4); }
+.panel-heading button:focus-visible { outline: 2px solid #126246; outline-offset: 2px; }
 .legend-selection-note { margin: 0 0 10px; color: #5b6960; font-size: 11px; line-height: 1.35; }
 .legend .layer-group-heading { margin: 16px 0 8px; padding-top: 12px; border-top: 1px solid var(--line); color: #425048; font-size: 11px; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
 .legend .layer-group-heading:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }

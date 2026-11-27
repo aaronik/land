@@ -876,11 +876,16 @@ map.once('style.load', () => {
 });
 
 document.querySelector('#terrain-toggle').addEventListener('click', () => toggleTerrain());
-listingTypeInputs.forEach(input => input.addEventListener('change', () => {
+function listingTypesChanged() {
   enabledCategories = new Set(listingTypeInputs.filter(item => item.checked).map(item => item.value));
   saveListingTypeVisibility();
   updateSales();
-}));
+}
+listingTypeInputs.forEach(input => input.addEventListener('change', listingTypesChanged));
+document.querySelector('#listing-types-off').addEventListener('click', () => {
+  for (const input of listingTypeInputs) input.checked = false;
+  listingTypesChanged();
+});
 const minimumAcreageInput = document.querySelector('#minimum-acreage');
 const maximumAcreageInput = document.querySelector('#maximum-acreage');
 function updateAcreageFilter() {
