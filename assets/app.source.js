@@ -5,6 +5,7 @@ import mlcontour from 'maplibre-contour';
 import { Protocol } from './vendor/pmtiles/pmtiles.js';
 import { installMapControls } from './map/controls.js';
 import { createListingData } from './data/listings.js';
+import { incrementParcelQuestUsage, parcelQuestUsageLabel } from './state/parcelquest.js';
 import { createParcelDetails } from './ui/parcel-details.js';
 import { installMapSourcesAndLayers } from './map/layers.js';
 import { createWebcamViewer } from './map/webcams.js';
@@ -14,7 +15,7 @@ import { identifyLandCover, LAND_COVER_YEAR, landCoverLegendClass } from './map/
 import { identifyVegetation, loadVegetationLegend, VEGETATION_YEAR } from './map/vegetation.js';
 import { buildVegetationLegend, highlightVegetationLegend } from './ui/vegetation-legend.js';
 import { ParcelAdjustmentControl, ParcelAdjustmentMapControl } from './map/parcel-adjustment.js';
-import { initializeMobileSheet } from './state/ui.js';
+import { initializeMobileSheet, resetFilterControl } from './state/ui.js';
 import { updateUrlParameter } from './state/url.js';
 import { LEGEND_QUERY_LAYERS, legendMatches, queryLegendFeatures, queryParcelWaterFeatures, updateLegendHighlights } from './ui/legend-highlights.js';
 import { buildSoilLegend, updateSoilLegendValues } from './ui/soil-legend.js';
@@ -289,7 +290,7 @@ function money(value) { return value ? `$${Number(value).toLocaleString()}` : ''
 const listingData = createListingData(() => ({ saleData, enabledCategories, minimumAcreage, maximumAcreage, minimumPrice, maximumPrice, minimumPricePerAcre, maximumPricePerAcre, enabledPropertyTypes, minimumBeds, minimumBaths, listingKeywords, listedSince, listedBefore }));
 const { categories, featureCenter, filteredMappedListings, filteredUnmappedListings, normalizeSearch, saleGeoJson, salePointGeoJson, unmappedGeoJson } = listingData;
 
-function parcelQuestUsageKey() { return `shasta-land-parcelquest:${new Date().toISOString().slice(0, 7)}`; }
+let visibleMappedListings = [];
 function clearSelectedParcel() {
   septicPopup.remove();
   setSelectedApn('');
@@ -351,7 +352,7 @@ async function refreshSelectedLandCover() {
   if (requestId === landCoverLegendRequest) refreshLegendHighlights();
 }
 function refreshLegendHighlights() {
-  const listing = selectedApn && filteredMappedListings().find(feature => feature.properties.APN === selectedApn);
+  const listing = selectedApn && visibleMappedListings.find(feature => feature.properties.APN === selectedApn);
   const listingCategories = listing ? categories(listing) : [];
   let features = [];
   if (selectedApn && selectedLegendLocation && layersInitialized && map.isStyleLoaded()) {
@@ -392,7 +393,10 @@ function setSelectedApn(apn, { updateUrl = true, location = null } = {}) {
   if (selectedApn && map.getSource('parcels')) {
     map.setFeatureState({ source: 'parcels', sourceLayer: 'parcels', id: selectedApn }, { selected: true });
   }
-  if (updateUrl) updateSelectedParcelUrl(selectedApn);
+  if (updateUrl) {
+    initialParcelRestored = true; // A user selection or reset supersedes a pending deep link.
+    updateSelectedParcelUrl(selectedApn);
+  }
   refreshSelectedLandCover();
   void refreshSelectedVegetation();
   refreshLegendHighlights();
@@ -403,8 +407,9 @@ function selectParcel(properties, saleFeature, location) {
   showParcelDetails(properties, saleFeature);
 }
 let initialParcelRestored = false;
+let listingLoadSettled = false;
 function restoreInitialSelectedParcel() {
-  if (initialParcelRestored || !initialSelectedApn || !map.getSource('parcels')) return;
+  if (!listingLoadSettled || initialParcelRestored || !initialSelectedApn || !map.getSource('parcels')) return;
   const item = apnIndex[initialSelectedApn];
   if (!item) return;
   initialParcelRestored = true;
@@ -412,12 +417,13 @@ function restoreInitialSelectedParcel() {
   showParcelDetails({ APN: initialSelectedApn, Acres: item.acres });
 }
 function updateSales() {
-  map.getSource('sales')?.setData(saleGeoJson());
-  refreshLegendHighlights();
-  map.getSource('sale-points')?.setData(salePointGeoJson());
-  map.getSource('unmapped')?.setData(unmappedGeoJson());
   const shown = filteredMappedListings();
   const unmapped = filteredUnmappedListings();
+  visibleMappedListings = shown;
+  map.getSource('sales')?.setData(saleGeoJson(shown));
+  map.getSource('sale-points')?.setData(salePointGeoJson(shown));
+  map.getSource('unmapped')?.setData(unmappedGeoJson(unmapped));
+  refreshLegendHighlights();
   document.querySelector('#visible-count').textContent = shown.length + unmapped.length;
   document.querySelector('#private-count').textContent = shown.filter(f => [...categories(f)].some(c => c.startsWith('private-'))).length + unmapped.filter(r => r.category.startsWith('private-')).length;
   document.querySelector('#public-count').textContent = shown.filter(f => [...categories(f)].some(c => c.startsWith('public-'))).length + unmapped.filter(r => r.category.startsWith('public-')).length;
@@ -610,7 +616,7 @@ function initializeMapLayers() {
   if (layersInitialized || !map.getStyle()) return;
   layersInitialized = true;
   try {
-    installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, saleGeoJson, salePointGeoJson, unmappedGeoJson, municipalZoningUrl: assetUrl('data/raw/municipal_zoning.geojson') });
+    installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, municipalZoningUrl: assetUrl('data/raw/municipal_zoning.geojson') });
   utilityEvidence.install();
   let landCoverClickSerial = 0;
   map.on('click', async event => {
@@ -894,11 +900,21 @@ function updateAcreageFilter() {
   document.querySelector('#maximum-acreage-value').textContent = maximumLabel;
   minimumAcreageInput.setAttribute('aria-valuetext', minimumLabel);
   maximumAcreageInput.setAttribute('aria-valuetext', maximumLabel);
-  saveListingFilterState();
-  updateSales();
 }
-minimumAcreageInput.addEventListener('input', updateAcreageFilter);
-maximumAcreageInput.addEventListener('input', updateAcreageFilter);
+let filterFrame = null;
+function onFilterChange(readControls) {
+  return () => {
+    readControls();
+    saveListingFilterState();
+    if (filterFrame === null) filterFrame = requestAnimationFrame(() => {
+      filterFrame = null;
+      updateSales();
+    });
+  };
+}
+const acreageChanged = onFilterChange(updateAcreageFilter);
+minimumAcreageInput.addEventListener('input', acreageChanged);
+maximumAcreageInput.addEventListener('input', acreageChanged);
 const listedSinceInput = document.querySelector('#listed-since');
 const listedBeforeInput = document.querySelector('#listed-before');
 loadListingFilterState();
@@ -912,15 +928,14 @@ function updateListingDateFilter() {
     listedSince = listedSinceInput.value;
     listedBefore = listedBeforeInput.value;
   }
-  saveListingFilterState();
-  updateSales();
 }
-listedSinceInput.addEventListener('change', updateListingDateFilter);
-listedBeforeInput.addEventListener('change', updateListingDateFilter);
+const datesChanged = onFilterChange(updateListingDateFilter);
+listedSinceInput.addEventListener('change', datesChanged);
+listedBeforeInput.addEventListener('change', datesChanged);
 document.querySelector('#clear-listing-dates').addEventListener('click', () => {
   listedSinceInput.value = listedSinceInput.defaultValue;
   listedBeforeInput.value = listedBeforeInput.defaultValue;
-  updateListingDateFilter();
+  datesChanged();
 });
 const discoveryFilterInputs = [...document.querySelectorAll('.price-filter input, .property-filter input, .details-filter input, .details-filter select')];
 const propertyTypeInputs = [...document.querySelectorAll('.property-type-filter')];
@@ -934,12 +949,12 @@ function updateDiscoveryFilters() {
   minimumBaths = number('#minimum-baths');
   listingKeywords = normalizeSearch(document.querySelector('#listing-keywords').value);
   enabledPropertyTypes = new Set(propertyTypeInputs.filter(input => input.checked).map(input => input.value));
-  saveListingFilterState();
-  updateSales();
 }
-discoveryFilterInputs.forEach(input => input.addEventListener(input.type === 'search' ? 'input' : 'change', updateDiscoveryFilters));
+const discoveryChanged = onFilterChange(updateDiscoveryFilters);
+discoveryFilterInputs.forEach(input => input.addEventListener(input.type === 'search' ? 'input' : 'change', discoveryChanged));
 updateDiscoveryFilters();
 updateListingDateFilter();
+updateSales();
 mapLayerInputs.forEach(input => input.addEventListener('change', () => {
   toggleLayer(input.dataset.mapLayer, input.checked);
   if (input.dataset.mapLayer === 'land-cover') refreshSelectedLandCover();
@@ -952,10 +967,7 @@ document.querySelector('#reset-map-layers').addEventListener('click', () => {
   for (const input of listingTypeInputs) input.checked = defaultListingTypeVisibility[input.value];
   minimumAcreageInput.value = minimumAcreageInput.defaultValue;
   maximumAcreageInput.value = maximumAcreageInput.defaultValue;
-  for (const input of discoveryFilterInputs) {
-    if (input.type === 'checkbox') input.checked = input.defaultChecked;
-    else input.value = input.defaultValue;
-  }
+  discoveryFilterInputs.forEach(resetFilterControl);
   listedSinceInput.value = listedSinceInput.defaultValue;
   listedBeforeInput.value = listedBeforeInput.defaultValue;
   enabledCategories = new Set(listingTypeInputs.filter(input => input.checked).map(input => input.value));
@@ -975,18 +987,31 @@ document.querySelector('#reset-map-layers').addEventListener('click', () => {
   clearSelectedParcel();
 });
 document.querySelector('#cancel-parcelquest').addEventListener('click', () => document.querySelector('#parcelquest-warning').close());
-document.querySelector('#continue-parcelquest').addEventListener('click', async () => {
-  await navigator.clipboard.writeText(selectedResearchApn).catch(() => {});
-  localStorage.setItem(parcelQuestUsageKey(), String(Number(localStorage.getItem(parcelQuestUsageKey()) || 0) + 1));
+document.querySelector('#continue-parcelquest').addEventListener('click', () => {
+  void navigator.clipboard?.writeText(selectedResearchApn).catch(() => {});
+  const count = incrementParcelQuestUsage();
+  const label = document.querySelector('[data-parcelquest-usage]');
+  if (label) label.textContent = parcelQuestUsageLabel(count);
   document.querySelector('#parcelquest-warning').close();
   window.open(PARCELQUEST_URL, '_blank', 'noopener,noreferrer');
 });
 
+fetch('data/generated/apn-index.json').then(response => {
+  if (!response.ok) throw new Error(`parcel index returned ${response.status}`);
+  return response.json();
+}).then(index => {
+  apnIndex = index;
+  restoreInitialSelectedParcel();
+}).catch(error => {
+  const status = document.querySelector('#parcel-index-status');
+  status.textContent = `Parcel index unavailable: ${error.message}`;
+  status.hidden = false;
+});
+
 Promise.all([
   fetch('data/parcels.json').then(response => { if (!response.ok) throw new Error(`sale data returned ${response.status}`); return response.json(); }),
-  fetch('data/siskiyou-tax-delinquent.json').then(response => response.ok ? response.json() : { features: [] }),
-  fetch('data/generated/apn-index.json').then(response => { if (!response.ok) throw new Error(`parcel index returned ${response.status}`); return response.json(); })
-]).then(([sales, delinquent, index]) => {
+  fetch('data/siskiyou-tax-delinquent.json').then(response => response.ok ? response.json() : { features: [] })
+]).then(([sales, delinquent]) => {
   saleData = {
     ...sales,
     features: [...(sales.features || []), ...(delinquent.features || []).map(feature => ({
@@ -997,8 +1022,9 @@ Promise.all([
       }
     }))]
   };
-  apnIndex = index;
   updateSales();
-  restoreInitialSelectedParcel();
   document.querySelector('#updated').textContent = `Data refreshed ${new Date(sales.generatedAt).toLocaleString()}`;
-}).catch(error => { document.querySelector('#updated').textContent = `Could not load map data: ${error.message}`; });
+}).catch(error => { document.querySelector('#updated').textContent = `Could not load map data: ${error.message}`; }).finally(() => {
+  listingLoadSettled = true;
+  restoreInitialSelectedParcel();
+});

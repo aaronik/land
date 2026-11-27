@@ -100,7 +100,7 @@ function addWellSymbols(map) {
   }
 }
 
-export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, saleGeoJson, salePointGeoJson, unmappedGeoJson, municipalZoningUrl }) {
+export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONING_FILL_COLOR, contourDemSource, municipalZoningUrl }) {
     addPmtilesSource('public_land');
   addPmtilesSource('fire_hazard');
   addPmtilesSource('wildfire_perimeters');
@@ -161,9 +161,9 @@ export function installMapSourcesAndLayers({ map, addPmtilesSource, COLORS, ZONI
   addPmtilesSource('towns');
   addPmtilesSource('incorporated_places');
   addPmtilesSource('springs');
-  map.addSource('sales', { type: 'geojson', data: saleGeoJson() });
-  map.addSource('sale-points', { type: 'geojson', data: salePointGeoJson() });
-  map.addSource('unmapped', { type: 'geojson', data: unmappedGeoJson() });
+  for (const id of ['sales', 'sale-points', 'unmapped']) {
+    map.addSource(id, { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+  }
   map.addSource('distance-measurement', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('road-distance', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addSource('coordinate-pin', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });

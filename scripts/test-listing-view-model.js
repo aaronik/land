@@ -43,6 +43,14 @@ const assert = require('assert/strict');
   assert.equal(listings.salePointGeoJson().features.find(feature => feature.properties.salesHistory?.[0]?.mlsNumber === 'SOLD-C1')?.properties.displayCategory, 'previous-listing');
   state.enabledCategories.delete('previous-listing');
   assert.equal(listings.filteredMappedListings().filter(feature => feature.properties.APN === '001-002-005').length, 0, 'sold history toggle hides commercial sale');
+  // Geometry builders must use the supplied filtered snapshot, not read and filter the source again.
+  state.enabledPropertyTypes.clear();
+  const mapped = listings.filteredMappedListings();
+  const unmapped = listings.filteredUnmappedListings();
+  assert.ok(mapped.length && unmapped.length);
+  const expected = [listings.saleGeoJson(), listings.salePointGeoJson(), listings.unmappedGeoJson()];
+  state.minimumAcreage = 1000;
+  assert.deepEqual([listings.saleGeoJson(mapped), listings.salePointGeoJson(mapped), listings.unmappedGeoJson(unmapped)], expected);
   state.minimumAcreage = 11;
   assert.equal(listings.filteredMappedListings().length, 0);
   console.log('Passed: listing view-model filtering and marker layout tests.');

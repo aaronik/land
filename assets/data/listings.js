@@ -2,10 +2,11 @@
 
 export function createListingData(getState) {
   const state = () => getState();
+  const numberFormat = new Intl.NumberFormat('en-US', { maximumSignificantDigits: 3, useGrouping: false });
   const compactNumber = value => {
     const number = Number(value);
     if (!Number.isFinite(number) || number <= 0) return '';
-    return new Intl.NumberFormat('en-US', { maximumSignificantDigits: 3, useGrouping: false }).format(number).toLowerCase();
+    return numberFormat.format(number).toLowerCase();
   };
   const categories = feature => new Set([
     ...(feature.properties.records || []).map(record => record.category),
@@ -87,7 +88,7 @@ export function createListingData(getState) {
   };
   const filteredMappedListings = () => (state().saleData?.features || []).map(searchableFeature).filter(Boolean);
   const filteredUnmappedListings = () => (state().saleData?.unmappedListings || []).filter(record => recordIsVisible(record));
-  const saleGeoJson = () => ({ type: 'FeatureCollection', features: filteredMappedListings().map(feature => ({ ...feature, properties: { ...feature.properties, displayCategory: firstCategory(feature) } })) });
+  const saleGeoJson = (shown = filteredMappedListings()) => ({ type: 'FeatureCollection', features: shown.map(feature => ({ ...feature, properties: { ...feature.properties, displayCategory: firstCategory(feature) } })) });
   const listingMarkerKey = record => {
     const mls = normalizeSearch(record.mlsNumber);
     if (mls) return `mls:${mls}`;
@@ -95,9 +96,9 @@ export function createListingData(getState) {
     if (record.kind === 'private' && record.url) return `private-url:${record.url}`;
     return '';
   };
-  const salePointGeoJson = () => {
+  const salePointGeoJson = (shown = filteredMappedListings()) => {
     const markers = new Map();
-    for (const feature of filteredMappedListings()) {
+    for (const feature of shown) {
       const point = featureCenter(feature);
       if (!point) continue;
       const listingRecords = [
@@ -128,9 +129,9 @@ export function createListingData(getState) {
     }
     return { type: 'FeatureCollection', features: [...markers.values()] };
   };
-  const separatedUnmappedListings = () => {
+  const separatedUnmappedListings = records => {
     const groups = new Map();
-    for (const record of filteredUnmappedListings()) {
+    for (const record of records) {
       const key = record.latLng.map(value => Number(value).toFixed(6)).join(',');
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key).push(record);
@@ -144,6 +145,6 @@ export function createListingData(getState) {
     const longitudeFeetPerDegree = latitudeFeetPerDegree * Math.cos(latLng[0] * Math.PI / 180);
     return [latLng[1] + Math.cos(angle) * radiusFeet / longitudeFeetPerDegree, latLng[0] + Math.sin(angle) * radiusFeet / latitudeFeetPerDegree];
   };
-  const unmappedGeoJson = () => ({ type: 'FeatureCollection', features: separatedUnmappedListings().map(({ record, index, count }) => ({ type: 'Feature', geometry: { type: 'Point', coordinates: separatedCoordinate(record.latLng, index, count) }, properties: { ...record, sharedLocationCount: count, markerLabel: markerLabel(record) } })) });
+  const unmappedGeoJson = (records = filteredUnmappedListings()) => ({ type: 'FeatureCollection', features: separatedUnmappedListings(records).map(({ record, index, count }) => ({ type: 'Feature', geometry: { type: 'Point', coordinates: separatedCoordinate(record.latLng, index, count) }, properties: { ...record, sharedLocationCount: count, markerLabel: markerLabel(record) } })) });
   return { categories, featureCenter, filteredMappedListings, filteredUnmappedListings, markerLabel, normalizeSearch, saleGeoJson, salePointGeoJson, unmappedGeoJson };
 }

@@ -1,5 +1,6 @@
 'use strict';
 
+import { readParcelQuestUsage, parcelQuestUsageLabel } from '../state/parcelquest.js';
 import { listingUrl } from '../data/listing-url.js';
 import { parcelUtilitiesSection } from '../map/utilities.js';
 import { septicPermitHistoryHtml } from '../map/septic-screening.js';
@@ -123,13 +124,11 @@ export function createParcelDetails({ detailsElement, updateParcelUtilities, dir
     const amount = archived ? (record.price ? `Listed at ${money(record.price)}` : 'Prior MLS listing') : money(record.soldPrice);
     return `<article class="record previous-listing">${photo}<strong>${dateLabel}</strong><p>${escapeHtml(record.title || '')}</p><p>${amount}${record.acres ? ` · ${escapeHtml(record.acres)} acres` : ''}${date ? ` · ${escapeHtml(new Date(`${date}T12:00:00`).toLocaleDateString())}` : ''}</p>${archived && record.lastSeenAt ? `<p class="meta">Last seen ${escapeHtml(new Date(`${String(record.lastSeenAt).slice(0, 10)}T12:00:00`).toLocaleDateString())}</p>` : ''}${record.url ? `<a href="${escapeHtml(listingUrl(record))}" target="_blank" rel="noopener">Open historical listing ↗</a>` : ''}</article>`;
   };
-  const parcelQuestUsageKey = () => `siskiyou-county-lookup:${new Date().toISOString().slice(0, 7)}`;
   const parcelMapOwnerLink = () => '<a class="parcel-map-owner-link" href="https://map.parcelmap.app/california/siskiyou" target="_blank" rel="noopener noreferrer">Open on Parcel Map ↗</a>';
   const researchControls = (apn, records = []) => {
     if (!apn) return '';
-    const opens = Number(localStorage.getItem(parcelQuestUsageKey()) || 0);
     const mlsNumber = records.find(record => record.mlsNumber)?.mlsNumber;
-    return `<section class="research"><h4>Parcel research</h4><div class="research-actions"><button type="button" data-copy-apn>Copy APN</button>${mlsNumber ? `<button type="button" data-copy-mls="${escapeHtml(mlsNumber)}">Copy MLS #</button>` : ''}<button type="button" data-parcelquest>Open on ParcelQuest ↗</button>${parcelMapOwnerLink()}</div><p>ParcelQuest is Siskiyou County Assessor’s official parcel, value, and map lookup; the APN is copied before it opens. Parcel Map is a separate external owner lookup and does not support a direct parcel link. ${opens} ParcelQuest lookup${opens === 1 ? '' : 's'} opened from this browser this month.</p></section>`;
+    return `<section class="research"><h4>Parcel research</h4><div class="research-actions"><button type="button" data-copy-apn>Copy APN</button>${mlsNumber ? `<button type="button" data-copy-mls="${escapeHtml(mlsNumber)}">Copy MLS #</button>` : ''}<button type="button" data-parcelquest>Open on ParcelQuest ↗</button>${parcelMapOwnerLink()}</div><p>ParcelQuest is Siskiyou County Assessor’s official parcel, value, and map lookup; the APN is copied before it opens. Parcel Map is a separate external owner lookup and does not support a direct parcel link. <span data-parcelquest-usage>${parcelQuestUsageLabel(readParcelQuestUsage())}</span></p></section>`;
   };
   let municipalZoningPromise;
   const pointInRing = (point, ring) => {

@@ -1,5 +1,13 @@
 'use strict';
 
+export function resetFilterControl(input) {
+  if (input.type === 'checkbox') input.checked = input.defaultChecked;
+  else if (input.tagName === 'SELECT') {
+    const selected = [...input.options].find(option => option.defaultSelected) ?? input.options[0];
+    input.selectedIndex = selected?.index ?? -1;
+  } else input.value = input.defaultValue;
+}
+
 export function initializeMobileSheet({ panel = document.querySelector('.panel'), handle = document.querySelector('.sheet-handle') } = {}) {
   if (!panel || !handle) return;
 
