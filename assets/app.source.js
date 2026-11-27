@@ -10,7 +10,7 @@ import { createParcelDetails } from './ui/parcel-details.js';
 import { installMapSourcesAndLayers } from './map/layers.js';
 import { createWebcamViewer } from './map/webcams.js';
 import { createGroundwaterViewer } from './ui/groundwater.js';
-import { createUtilities, UTILITY_LAYER_GROUPS } from './map/utilities.js';
+import { createUtilities, UTILITY_LIMITS_KEY, UTILITY_LAYER_GROUPS } from './map/utilities.js';
 import { identifyLandCover, LAND_COVER_YEAR, landCoverLegendClass } from './map/land-cover.js';
 import { identifyVegetation, loadVegetationLegend, VEGETATION_YEAR } from './map/vegetation.js';
 import { buildVegetationLegend, highlightVegetationLegend } from './ui/vegetation-legend.js';
@@ -976,6 +976,7 @@ document.querySelector('#reset-map-layers').addEventListener('click', () => {
   updateListingDateFilter();
   try {
     localStorage.removeItem(MAP_LAYER_STORAGE_KEY);
+    localStorage.removeItem(UTILITY_LIMITS_KEY);
     localStorage.removeItem('shasta-land-atlas.soil-mode.v1');
     localStorage.removeItem(LISTING_TYPE_STORAGE_KEY);
     localStorage.removeItem(LISTING_FILTER_STORAGE_KEY);

@@ -1,6 +1,7 @@
 const item = id => `https://www.arcgis.com/home/item.html?id=${id}`;
 const link = (url, label) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`;
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+export const UTILITY_LIMITS_KEY = 'shasta-land-atlas.utility-limits.v1';
 const countyReport = 'https://siskiyou2050.com/images/docs/SKYGP_BR_FULL_2024-05-07-RL-Reduced.pdf';
 const feeds = {
   'electric-iou': { title: 'Mapped electric territory', agency: 'California Energy Commission', url: item('30410214d637434ba1003cbdcc32cf55'), note: 'Approximate electric utility territory. It does not show local distribution lines, a meter, or approval to connect.' },
@@ -83,39 +84,55 @@ export function createUtilities({ map, Popup, dataUrl, parcelsQueryUrl }) {
     }).join('')}<p><strong>Parcel availability and active hookup: not verified.</strong></p></div>`).addTo(map);
     return true;
   }
+  let parcelRequest;
   function updateParcel(details, apn) {
+    parcelRequest?.abort();
     const target = details.querySelector('[data-utility-parcel-results]');
-    const button = details.querySelector('[data-check-utility-parcel]');
+    const button = details.querySelector('[data-retry-utility-parcel]');
     if (!button || !target || !apn) return;
-    button.addEventListener('click', async () => {
-      if (/\bRW\b/i.test(apn)) {
-        target.textContent = 'This is a county right-of-way record, not an individual property. Inspect nearby utility features on the map; parcel availability is unknown.';
-        return;
-      }
-      button.disabled = true;
+    if (/\bRW\b/i.test(apn)) {
+      target.textContent = 'This is a county right-of-way record, not an individual property. Inspect nearby utility features on the map; parcel availability is unknown.';
+      return;
+    }
+    async function lookup() {
+      button.hidden = true;
+      const request = new AbortController();
+      parcelRequest = request;
       target.textContent = 'Checking mapped utility records against the county parcel…';
       try {
         const url = new URL(parcelsQueryUrl);
         url.search = new URLSearchParams({ f: 'json', where: `APN = '${String(apn).replace(/'/g, "''")}'`, outFields: 'APN', returnGeometry: 'true', outSR: '4326' });
-        const [collection, response] = await Promise.all([load(), fetch(url, { signal: AbortSignal.timeout(15000) })]);
+        const [collection, response] = await Promise.all([load(), fetch(url, { signal: AbortSignal.any([request.signal, AbortSignal.timeout(15000)]) })]);
         if (!response.ok) throw new Error(`Parcel query returned ${response.status}`);
         const { features, error } = await response.json();
         const parcels = features?.map(feature => feature.geometry?.rings).filter(rings => rings?.length);
         if (error || !parcels?.length) throw new Error('No parcel geometry');
-        if (!target.isConnected) return;
+        if (request.signal.aborted || !target.isConnected) return;
         target.innerHTML = renderParcelUtilityEvidence(matchParcelUtilities(parcels, collection.features), collection.retrieved);
-        button.textContent = 'Recheck mapped utility evidence';
+        const limits = target.querySelector('details');
+        try { limits.open = localStorage.getItem(UTILITY_LIMITS_KEY) === 'open'; } catch { /* Optional storage. */ }
+        limits.addEventListener('toggle', () => {
+          if (!limits.isConnected) return;
+          try {
+            if (limits.open) localStorage.setItem(UTILITY_LIMITS_KEY, 'open');
+            else localStorage.removeItem(UTILITY_LIMITS_KEY);
+          } catch { /* Optional storage. */ }
+        });
       } catch {
-        target.textContent = 'Utility screening unavailable for this parcel. Try again later; availability is unknown.';
+        if (request.signal.aborted || !target.isConnected) return;
+        target.textContent = 'Mapped utilities could not be checked for this parcel.';
+        button.hidden = false;
       } finally {
-        button.disabled = false;
+        if (parcelRequest === request) parcelRequest = null;
       }
-    });
+    }
+    button.addEventListener('click', lookup);
+    void lookup();
   }
   return { install, showLayer, inspect, updateParcel };
 }
 
-export const parcelUtilitiesSection = () => `<section class="utility-parcel"><h4>Utility &amp; hookup evidence</h4><button type="button" data-check-utility-parcel>Check mapped utility evidence</button><div data-utility-parcel-results aria-live="polite"></div></section>`;
+export const parcelUtilitiesSection = () => `<section class="utility-parcel"><h4>Mapped utilities</h4><div data-utility-parcel-results aria-live="polite"></div><button type="button" data-retry-utility-parcel hidden>Retry utility lookup</button></section>`;
 
 function bounds(points) {
   const box = [Infinity, Infinity, -Infinity, -Infinity];
@@ -166,11 +183,28 @@ export function matchParcelUtilities(parcels, features) {
 }
 
 export function renderParcelUtilityEvidence(matches, retrieved) {
-  const areas = key => [...new Map(matches.filter(({ properties: p }) => p.feed.startsWith(key)).map(({ properties: p }) => [`${p.name}|${p.system || ''}|${p.verification || ''}`, p])).values()].map(p => `${escapeHtml(p.name)}${p.system ? ` (${escapeHtml(p.system)}; boundary: ${escapeHtml(p.verification)})` : ''} · ${link(feeds[p.feed].url, 'source')}`).join('<br>');
-  const meters = matches.filter(({ properties: p }) => p.feed === 'water-meter').length;
-  const lines = matches.some(({ properties: p }) => p.feed === 'sewer-lines');
-  return `<dl><dt>Electric</dt><dd>${areas('electric-') || 'No mapped territory match in this snapshot.'}</dd><dd>Existing hookup: not verified; no parcel-level records in this map.</dd>
-    <dt>Drinking water</dt><dd>${areas('water-area') || 'No mapped public water service area match in this snapshot.'}</dd><dd>${meters ? `${meters} mapped ${meters === 1 ? 'meter touches or falls' : 'meters touch or fall'} inside the parcel boundary (${link(feeds['water-meter'].url, 'City of Yreka')}). Physical evidence only; the served parcel and active hookup are not verified.` : 'Existing hookup: not verified. Public meter coverage is limited to Yreka.'}</dd>
-    <dt>Public sewer</dt><dd>${areas('sewer-district') ? `Provider district (not service area): ${areas('sewer-district')}` : 'No mapped sewer provider district match in this partial snapshot.'}</dd><dd>${lines ? `A mapped ${link(feeds['sewer-lines'].url, 'Fort Jones sewer line')} touches or crosses the parcel; no lateral or active hookup verified.` : 'Existing hookup: not verified. Mapped sewer line coverage is limited to Fort Jones.'}</dd></dl>
-    <p class="source-note"><strong>Availability: unknown for all three utilities.</strong> A mapped match can be partial or touch an edge. No match does not mean service is unavailable. Ask the provider to confirm existing service or issue written approval for a new connection, including capacity, easements and costs. Snapshot retrieved ${escapeHtml(retrieved)}.</p>`;
+  const records = matches.map(match => match.properties);
+  const findings = [], limits = [];
+  const meters = records.filter(p => p.feed === 'water-meter').length;
+  if (meters) findings.push(`${meters} mapped water ${meters === 1 ? 'meter lies' : 'meters lie'} on or inside this parcel’s boundary. · ${link(feeds['water-meter'].url, 'Yreka meter map')}`);
+  else limits.push('No water meter matched. Meter records cover Yreka only.');
+  if (records.some(p => p.feed === 'sewer-lines')) findings.push(`A mapped sewer line touches or crosses this parcel. · ${link(feeds['sewer-lines'].url, 'Fort Jones sewer map')}`);
+  else limits.push('No sewer line matched. Line records cover Fort Jones only.');
+
+  for (const [prefix, label, missing] of [
+    ['water-area', 'Drinking-water system', 'No mapped public drinking-water area matched.'],
+    ['sewer-district', 'Sewer district', 'No sewer district matched in the partial district inventory.'],
+    ['electric-', 'Electric territory', 'No mapped electric territory matched.']
+  ]) {
+    const areas = new Map(records.filter(p => p.feed.startsWith(prefix)).map(p => [JSON.stringify([p.feed, p.name, p.system, p.verification]), p]));
+    if (!areas.size) limits.push(missing);
+    for (const p of areas.values()) {
+      findings.push(`${label}: ${link(feeds[p.feed].url, escapeHtml(p.name))}`);
+      if (p.system) limits.push(`${escapeHtml(p.name)}: system ${escapeHtml(p.system)}; boundary verification: ${escapeHtml(p.verification || 'Not reported')}.`);
+    }
+  }
+  return `<div class="utility-findings">${findings.length ? findings.map(text => `<p>${text}</p>`).join('') : '<p>No mapped utility records matched this parcel.</p>'}</div>
+    <details><summary>Coverage and limits</summary><ul>${limits.map(text => `<li>${text}</li>`).join('')}</ul>
+    <p>Boundaries can touch just one edge of a parcel. A district is not a sewer service area, and a meter or line may serve a different parcel. No match does not mean service is unavailable.</p>
+    <p>Ask the provider to confirm an active hookup or the cost and capacity for a new connection. Map records retrieved ${escapeHtml(retrieved)}.</p></details>`;
 }

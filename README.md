@@ -65,7 +65,7 @@ The countywide tax-delinquency crawl runs on the 1st of each month at 16:00 UTC.
 
 ### Utility service and hookup evidence
 
-Use **Utility service & hookup evidence** in the map sidebar to toggle independent overlays. Alt/Option-click a shaded area to inspect it without changing the selected parcel. Zoom in and click a mapped meter or sewer line for its source. On a selected parcel, **Check mapped utility evidence** compares the county parcel polygon with the local snapshot; a parcel that straddles a boundary can match multiple records. This lookup does not require the overlays to be visible.
+Use **Utility service & hookup evidence** in the map sidebar to toggle independent overlays. Alt/Option-click a shaded area to inspect it without changing the selected parcel. Zoom in and click a mapped meter or sewer line for its source. When you select a parcel, **Mapped utilities** automatically compares the county parcel polygon with the local snapshot; a parcel that straddles a boundary can match multiple records. This lookup does not require the overlays to be visible. Meter and line matches appear before provider areas. Expand **Coverage and limits** for unmatched records and source limitations.
 
 | Evidence | Source and coverage | What it does not show |
 | --- | --- | --- |
