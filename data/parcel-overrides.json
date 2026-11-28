@@ -1966,6 +1966,14 @@
     "confidence": "manually verified",
     "notes": "Dorothea Dr, Mt. Shasta Vista Block 78 Lot 20; county GIS, assessor, and listing plat"
   },
+  "20261341": {
+    "apns": [
+      "059-174-040"
+    ],
+    "source": "manual override: user-verified listing APN",
+    "confidence": "manually verified",
+    "notes": "address"
+  },
   "MC26015313": {
     "apns": [
       "020-170-090"
